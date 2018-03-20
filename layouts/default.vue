@@ -26,8 +26,6 @@ main {
 </style>
 
 <style>
-@import 'normalize.css';
-
 body {
   height: 100vh;
   width: 100vw;

@@ -13,7 +13,10 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
+  css: [
+    'normalize.css' // version controlled in package.json
+  ],
+  /* TODO: how is this used, does it need to stay?
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
