@@ -1,12 +1,6 @@
 <template>
-  <div>
+  <section>
     <h1>Welcome!</h1>
     <a href="">I'd like to change my password</a>
-  </div>
+  </section>
 </template>
-
-<script>
-export default {
-  name: 'Welcome'
-}
-</script>

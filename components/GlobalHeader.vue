@@ -1,14 +1,8 @@
 <template>
   <header>
-    <img src="/static/logo.svg">
+    <img src="/logo.svg">
   </header>
 </template>
-
-<script>
-export default {
-  name: 'Header'
-}
-</script>
 
 <style scoped>
 header {
