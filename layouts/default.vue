@@ -30,4 +30,8 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
+p {
+  max-width: 70ch; /* "ideal" paragraph width for reading ease */
+}
 </style>
