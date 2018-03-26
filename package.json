@@ -1,7 +1,7 @@
 {
   "name": "idp-profile-ui-nuxt",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
+  "description": "Identity management UI",
   "author": "Billy Clark <billy_clark@sil.org>",
   "private": true,
   "scripts": {
