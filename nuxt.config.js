@@ -17,10 +17,16 @@ module.exports = {
   css: [
     'normalize.css' // version controlled in package.json
   ],
-  /* TODO: how is this used, does it need to stay?
+  /* TODO: how is this used, does it need to stay? (https://nuxtjs.org/api/configuration-loading)
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+  /*
+  ** plugins
+  */
+  plugins: [
+    '~/plugins/directives.js'
+  ],
   /*
   ** Build configuration
   */
@@ -34,7 +40,10 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
+          options : {
+            fix : true
+          }
         })
       }
     }
