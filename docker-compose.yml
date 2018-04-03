@@ -5,3 +5,16 @@ services:
     build: .
     ports:
       - "3000:3000"
+  proxy:
+    # https://github.com/silinternational/traefik-https-proxy
+    image: silintl/traefik-https-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./cert/:/cert/
+    environment:
+      BACKEND1_URL: http://ui:3000
+      BACKEND2_URL: http://api:80
+    env_file:
+      - ./local.env
