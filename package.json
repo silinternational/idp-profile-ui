@@ -4,6 +4,12 @@
   "description": "Identity management UI",
   "author": "Billy Clark <billy_clark@sil.org>",
   "private": true,
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "3000"
+    }
+  },
   "scripts": {
     "//": "https://nuxtjs.org/guide/commands#list-of-commands",
     "dev": "nuxt",
@@ -19,10 +25,10 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
-    "eslint": "^4.15.0",
+    "eslint": "^4.19.1",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0",
+    "eslint-plugin-vue": "^4.4.0",
     "rimraf": "^2.6.2"
   }
 }
