@@ -15,7 +15,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./cert/:/cert/
+      - ./development/cert:/cert
     environment:
       DNS_PROVIDER: "cloudflare"
       LETS_ENCRYPT_EMAIL: "govols@example.org"
@@ -27,18 +27,18 @@ services:
       BACKEND1_URL: "http://ui:3000"
       BACKEND2_URL: "http://api:80"
     env_file:
-      - ./local.env
+      - ./development/local.env
   
   broker:
       image: silintl/idp-id-broker
-      # volumes:
-      #   - ./development/idp4/m991231_235959_insert_mfa_test_users.php:/data/console/migrations/m991231_235959_insert_mfa_test_users.php
+      volumes:
+        - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
       ports:
         - "8090:80"
       depends_on:
         - brokerDb
       env_file:
-        - ./local.env
+      - ./development/local.env
       environment:
         APP_ENV: "dev"
         IDP_NAME: "profile-ui-testing"
@@ -51,6 +51,7 @@ services:
         EMAIL_SERVICE_accessToken: "dummy"
         EMAIL_SERVICE_assertValidIp: "false"
         EMAIL_SERVICE_baseUrl: "dummy"
+        EMAIL_SERVICE_validIpRanges: "dummy"
         EMAIL_SIGNATURE: "one red pill, please"
         EMAILER_CLASS: Sil\SilIdBroker\Behat\Context\fakes\FakeEmailer
         SUPPORT_EMAIL: "support@example.org"
