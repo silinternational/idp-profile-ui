@@ -5,6 +5,9 @@ services:
     build: .
     ports:
       - "3000:3000"
+  # api:
+  #   ports:
+  #     - "80:80"
   proxy:
     # https://github.com/silinternational/traefik-https-proxy
     image: silintl/traefik-https-proxy
@@ -14,7 +17,65 @@ services:
     volumes:
       - ./cert/:/cert/
     environment:
-      BACKEND1_URL: http://ui:3000
-      BACKEND2_URL: http://api:80
+      DNS_PROVIDER: "cloudflare"
+      LETS_ENCRYPT_EMAIL: "govols@example.org"
+      LETS_ENCRYPT_CA: "staging"
+      TLD: "gtis.guru"
+      SANS: "profile.gtis.guru,profile-api.gtis.guru"
+      FRONTEND1_DOMAIN: "profile.gtis.guru"
+      FRONTEND2_DOMAIN: "profile-api.gtis.guru"
+      BACKEND1_URL: "http://ui:3000"
+      BACKEND2_URL: "http://api:80"
     env_file:
       - ./local.env
+  
+  broker:
+      image: silintl/idp-id-broker
+      # volumes:
+      #   - ./development/idp4/m991231_235959_insert_mfa_test_users.php:/data/console/migrations/m991231_235959_insert_mfa_test_users.php
+      ports:
+        - "8090:80"
+      depends_on:
+        - brokerDb
+      env_file:
+        - ./local.env
+      environment:
+        APP_ENV: "dev"
+        IDP_NAME: "profile-ui-testing"
+        API_ACCESS_KEYS: "local-testing-abc123"
+        MIGRATE_PW_FROM_LDAP: "false"
+        MYSQL_HOST: "brokerDb"
+        MYSQL_DATABASE: "broker"
+        MYSQL_USER: "user"
+        MYSQL_PASSWORD: "pass"
+        EMAIL_SERVICE_accessToken: "dummy"
+        EMAIL_SERVICE_assertValidIp: "false"
+        EMAIL_SERVICE_baseUrl: "dummy"
+        EMAIL_SIGNATURE: "one red pill, please"
+        EMAILER_CLASS: Sil\SilIdBroker\Behat\Context\fakes\FakeEmailer
+        SUPPORT_EMAIL: "support@example.org"
+        HELP_CENTER_URL: "https://example.org/help"
+        PASSWORD_FORGOT_URL: "https://example.org/forgot"
+        PASSWORD_PROFILE_URL: "https://example.org/profile"
+      command: ["bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh"]
+
+  brokerDb: 
+    image: silintl/mariadb
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "r00tp@ss!"
+      MYSQL_DATABASE: "broker"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+
+  brokerPhpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - "8091:80"
+    depends_on:
+        - brokerDb
+    environment:
+        PMA_HOST: "brokerDb"
+        PMA_USER: "user"
+        PMA_PASSWORD: "pass"
