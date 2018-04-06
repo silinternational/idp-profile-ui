@@ -4,16 +4,80 @@ services:
   ui:
     build: .
     ports:
-      - "3000:3000"
-  # api:
-  #   ports:
-  #     - "80:80"
+      - "8000:80"
+    depends_on:
+      - api
+
+  api:
+    image: silintl/idp-pw-api
+    volumes:
+      - ./development/local.php:/data/common/config/local.php
+    ports:
+      - "8080:80"
+    depends_on:
+      - profileDb
+      - broker
+      - zxcvbn
+      - idp
+    env_file:
+      - ./development/local.env
+    environment:
+      MYSQL_HOST: "profileDb"
+      MYSQL_DATABASE: "profile"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+      EMAIL_SERVICE_useEmailService: "false"
+      ALERTS_EMAIL_ENABLED: "false"
+      HELP_CENTER_URL: "https://example.org/help-center"
+      FROM_NAME: "Tech support"
+      SUPPORT_PHONE: "007-867-5309"
+      SUPPORT_EMAIL: "support@example.org"
+      SUPPORT_URL: "https://www.example.org/support"
+      SUPPORT_FEEDBACK: "https://www.example.org/support-feedback"
+      UI_URL: "https://profile.gtis.guru"
+      LOGO_URL: "https://www.sil.org"
+      UI_CORS_ORIGIN: "*"
+      ACCESS_TOKEN_HASH_KEY: "KEY4TESTING"
+      ZXCVBN_API_BASEURL: "http://zxcvbn:3000"
+      ID_BROKER_baseUrl: "http://broker"
+      ID_BROKER_accessToken: "local-testing-abc123"
+      ID_BROKER_assertValidBrokerIp: "false"
+
+  profileDb: 
+    image: silintl/mariadb
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "r00tp@ss!"
+      MYSQL_DATABASE: "profile"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+
+  profilePhpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"
+    depends_on:
+      - profileDb
+    environment:
+      PMA_HOST: "profileDb"
+      PMA_USER: "user"
+      PMA_PASSWORD: "pass"
+
+  zxcvbn:
+    image: wcjr/zxcvbn-api
+    ports:
+      - "3000"
+
   proxy:
     # https://github.com/silinternational/traefik-https-proxy
     image: silintl/traefik-https-proxy
     ports:
       - "80:80"
       - "443:443"
+    depends_on:
+      - ui
+      - api
     volumes:
       - ./development/cert:/cert
     environment:
@@ -24,41 +88,40 @@ services:
       SANS: "profile.gtis.guru,profile-api.gtis.guru"
       FRONTEND1_DOMAIN: "profile.gtis.guru"
       FRONTEND2_DOMAIN: "profile-api.gtis.guru"
-      BACKEND1_URL: "http://ui:3000"
-      BACKEND2_URL: "http://api:80"
+      BACKEND1_URL: "http://ui"
+      BACKEND2_URL: "http://api"
     env_file:
       - ./development/local.env
   
   broker:
-      image: silintl/idp-id-broker
-      volumes:
-        - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
-      ports:
-        - "8090:80"
-      depends_on:
-        - brokerDb
-      env_file:
+    image: silintl/idp-id-broker
+    volumes:
+      - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
+    ports:
+      - "8090:80"
+    depends_on:
+      - brokerDb
+    env_file:
       - ./development/local.env
-      environment:
-        APP_ENV: "dev"
-        IDP_NAME: "profile-ui-testing"
-        API_ACCESS_KEYS: "local-testing-abc123"
-        MIGRATE_PW_FROM_LDAP: "false"
-        MYSQL_HOST: "brokerDb"
-        MYSQL_DATABASE: "broker"
-        MYSQL_USER: "user"
-        MYSQL_PASSWORD: "pass"
-        EMAIL_SERVICE_accessToken: "dummy"
-        EMAIL_SERVICE_assertValidIp: "false"
-        EMAIL_SERVICE_baseUrl: "dummy"
-        EMAIL_SERVICE_validIpRanges: "dummy"
-        EMAIL_SIGNATURE: "one red pill, please"
-        EMAILER_CLASS: Sil\SilIdBroker\Behat\Context\fakes\FakeEmailer
-        SUPPORT_EMAIL: "support@example.org"
-        HELP_CENTER_URL: "https://example.org/help"
-        PASSWORD_FORGOT_URL: "https://example.org/forgot"
-        PASSWORD_PROFILE_URL: "https://example.org/profile"
-      command: ["bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh"]
+    environment:
+      APP_ENV: "dev"
+      API_ACCESS_KEYS: "local-testing-abc123"
+      MIGRATE_PW_FROM_LDAP: "false"
+      MYSQL_HOST: "brokerDb"
+      MYSQL_DATABASE: "broker"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+      EMAIL_SERVICE_accessToken: "dummy"
+      EMAIL_SERVICE_assertValidIp: "false"
+      EMAIL_SERVICE_baseUrl: "dummy"
+      EMAIL_SERVICE_validIpRanges: "dummy"
+      EMAIL_SIGNATURE: "one red pill, please"
+      EMAILER_CLASS: Sil\SilIdBroker\Behat\Context\fakes\FakeEmailer
+      SUPPORT_EMAIL: "support@example.org"
+      HELP_CENTER_URL: "https://example.org/help"
+      PASSWORD_FORGOT_URL: "https://example.org/forgot"
+      PASSWORD_PROFILE_URL: "https://example.org/profile"
+    command: ["bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh"]
 
   brokerDb: 
     image: silintl/mariadb
@@ -73,10 +136,56 @@ services:
   brokerPhpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-        - "8091:80"
+      - "8091:80"
     depends_on:
-        - brokerDb
+      - brokerDb
     environment:
-        PMA_HOST: "brokerDb"
-        PMA_USER: "user"
-        PMA_PASSWORD: "pass"
+      PMA_HOST: "brokerDb"
+      PMA_USER: "user"
+      PMA_PASSWORD: "pass"
+
+  idp:
+    image: silintl/ssp-base
+    volumes:
+      - ./development/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./development/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+      # - ./development/php-debugging.ini:/etc/php/7.0/apache2/php.ini
+      - ./development/default-logo.png:/data/vendor/simplesamlphp/simplesamlphp/www/logo.png
+    ports:
+      - "8088:80"
+    depends_on:
+      - silAuthDb
+      - broker
+    env_file:
+      - ./development/local.env
+    environment:
+      ADMIN_PASS: "a" 
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
+      THEME_USE: "material:material"
+      ADMIN_EMAIL: "admin1@example.org"
+      SECRET_SALT: "NlFalr5Faa73coPUFPP78BCi2ZUYhL+qVCOuJ466Bh4="
+      IDP_DOMAIN_NAME: "dummy"
+      MFA_SETUP_URL: "https://example.org/mfa-setup"
+      MFA_LEARN_MORE_URL: "//example.org/learn-more"
+      MYSQL_HOST: "silAuthDb"
+      MYSQL_DATABASE: "silauth"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+      ID_BROKER_BASE_URI: "http://broker"
+      ID_BROKER_ACCESS_TOKEN: "local-testing-abc123"
+      ID_BROKER_ASSERT_VALID_IP: "false"
+      REMEMBER_ME_SECRET: "dummy"
+    command: ["bash", "-c", "whenavail silAuthDb 3306 60 ./run-idp.sh"]
+
+  silAuthDb:
+    image: silintl/mariadb
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "r00tp@ss!"
+      MYSQL_DATABASE: "silauth"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"

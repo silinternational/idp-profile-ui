@@ -3,7 +3,7 @@ FROM node:alpine
 RUN mkdir -p /data
 WORKDIR /data
 
-EXPOSE 3000
+EXPOSE 80
 
 # install dependencies
 COPY ./package.json /data

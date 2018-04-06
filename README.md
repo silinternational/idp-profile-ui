@@ -15,7 +15,10 @@ This app can be run against HTTPS if needed for U2F testing. In order to run in 
 ## Run locally
 
 1.  Run `make` from the project root.
-1.  The app will be running on the localhost but may require either being referenced by the domain configured for traefik, e.g., [https://profile.gtis.guru](https://profile.gtis.guru), or simply [http://localhost:3000](http://localhost:3000).
+1.  The app will be running on the localhost but may require either being referenced by the domain configured for traefik, e.g., [https://profile.gtis.guru](https://profile.gtis.guru), or simply [http://localhost:8000](http://localhost:8000).
 
-user `a`
-pass `a`
+### Authentication
+
+1.  If authentication is required, visit [https://profile-api.gtis.guru/auth/login?client_id=abc123](https://profile-api.gtis.guru/auth/login?client_id=abc123)
+1.  Username: **a**
+1.  Password: **a**
