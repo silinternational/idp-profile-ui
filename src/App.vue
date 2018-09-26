@@ -6,7 +6,8 @@
   
     <v-content>
       <v-container>
-        <router-view/>
+        <!-- adding key here helps produce more predictable view behavior (see https://youtu.be/7YZ5DwlLSt8?t=21m22s) -->
+        <router-view :key="$route.fullPath" />
       </v-container>
     </v-content>
   </v-app>
@@ -20,7 +21,7 @@ img {
 
 <style>
 p {
-  max-width: 75ch;
+  max-width: 75ch; /* better readability supposedly */
 }
 </style>
 

@@ -1,22 +1,19 @@
 import Home from './Home';
-import CreatePassword from './password/Create';
-import Intro from './profile/Intro';
+import passwordRoutes from './password/routes'
+import profileRoutes from './profile/routes'
 
 export default [
   {
-    path: '/',
-    component: Home
-  },
-  {
     path: '/home',
-    component: Home
+    alias: '/',
+    component: Home,
   },
+  ...passwordRoutes,
+  ...profileRoutes,
   {
-    path: '/password/create',
-    component: CreatePassword
-  },
-  {
-    path: '/profile/intro',
-    component: Intro
+    path: '*',
+    component: {
+      render: h => h('span', 'page not found')
+    },
   }
 ];

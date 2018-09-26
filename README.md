@@ -30,5 +30,4 @@ This app can be run against HTTPS if needed for U2F testing. In order to run in 
 
 # Build for deployment
 
-1.  Review Environment settings.
 1.  `make dist` will produce the production-ready app in the project root's `dist` folder.

@@ -9,20 +9,14 @@
         <PasswordRequirements />
 
         <!-- TODO: users will not be looking at screen most likely, design this indicator accordingly. -->
-        <PasswordStrength :password="password.value" />
+        <PasswordStrength :password="password" />
       </v-layout>
 
       <!-- TODO:  review https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/ for form best practices -->
       <v-form @submit.prevent="save" ref="form" class="pa-3">
         <!-- TODO: don't forget to consider when to turn autocomplete="off" -->
-        <v-text-field label="Your new password" v-model="password.value"
-          :append-icon="password.show ? 'visibility_off' : 'visibility'"
-          :type="password.show ? 'text' : 'password'"
-          @click:append="password.show = !password.show"
-          :rules="rules" autofocus outline />
-<PasswordInput outline />
+        <v-text-field label="Your new password" type="password" v-model="password" :rules="rules" autofocus outline />
       </v-form>
-
     </BasePage>
 
     <ButtonBar>
@@ -38,7 +32,6 @@
 <script>
 import BasePage from '@/components/BasePage';
 import ButtonBar from '@/components/ButtonBar';
-import PasswordInput from '@/components/PasswordInput';
 import PasswordRequirements from '@/components/PasswordRequirements';
 import PasswordStrength from '@/components/PasswordStrength';
 import ProfileProgress from '@/components/ProfileProgress';
@@ -47,7 +40,6 @@ export default {
   components: {
     BasePage,
     ButtonBar,
-    PasswordInput,
     PasswordRequirements,
     PasswordStrength,
     ProfileProgress
@@ -57,10 +49,7 @@ export default {
       idp: {
         name: 'SIL'
       },
-      password: {
-        value: '',
-        show: false
-      },
+      password: '',
       rules: [v => v.length > 8 || 'too short']
     };
   },
@@ -68,7 +57,8 @@ export default {
     save: async function() {
       if (this.$refs.form.validate()) {
         this.$root.$data.password = this.password;
-        this.$router.push('/password/create');
+
+        this.$router.push('/password/confirm');
       }
     }
   }
