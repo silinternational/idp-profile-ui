@@ -7,22 +7,19 @@
 </template>
 
 <script>
-import BasePage from '@/components/BasePage';
-
 export default {
-  components: {
-    BasePage
-  },
-  data() {
-    return {
-      user: {}
-    };
-  },
+  data: () => ({
+    user: {}
+  }),
   created() {
     // simulating data call here.
-    setTimeout(() => this.user = {
-      new: true
-    }, 500);
+    setTimeout(
+      () =>
+        (this.user = {
+          new: true
+        }),
+      500
+    );
   }
 };
 </script>

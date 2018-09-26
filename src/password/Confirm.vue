@@ -27,22 +27,16 @@
 </template>
 
 <script>
-import BasePage from '@/components/BasePage';
-import ButtonBar from '@/components/ButtonBar';
-import ProfileProgress from '@/components/ProfileProgress';
+import ProfileProgress from '@/profile/ProfileProgress';
 
 export default {
   components: {
-    BasePage,
-    ButtonBar,
     ProfileProgress
   },
-  data() {
-    return {
-      password: '',
-      rules: [v => v == this.$root.$data.password || 'does not match']
-    };
-  },
+  data: vm => ({
+    password: '',
+    rules: [v => v == vm.$root.$data.password || 'does not match']
+  }),
   methods: {
     confirm: async function() {
       if (this.$refs.form.validate()) {

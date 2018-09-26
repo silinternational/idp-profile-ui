@@ -17,37 +17,35 @@
 
 <script>
 export default {
-  data() {
-    return {
-      steps: [
-        {
-          id: 1,
-          name: 'Password',
-          paths: ['/password/create', '/password/confirm', '/password/saved']
-        },
-        {
-          id: 2,
-          name: 'Password recovery',
-          path: '/password/recovery'
-        },
-        {
-          id: 3,
-          name: '2-step verification',
-          paths: [
-            '/2sv/intro',
-            '/2sv/smartphone',
-            '/2sv/usb-security-key',
-            '/2sv/printable-backup-codes'
-          ]
-        },
-        {
-          id: 4,
-          name: 'Complete',
-          paths: ['/profile/complete']
-        }
-      ]
-    };
-  },
+  data: () => ({
+    steps: [
+      {
+        id: 1,
+        name: 'Password',
+        paths: ['/password/create', '/password/confirm', '/password/saved']
+      },
+      {
+        id: 2,
+        name: 'Password recovery',
+        path: '/password/recovery'
+      },
+      {
+        id: 3,
+        name: '2-step verification',
+        paths: [
+          '/2sv/intro',
+          '/2sv/smartphone',
+          '/2sv/usb-security-key',
+          '/2sv/printable-backup-codes'
+        ]
+      },
+      {
+        id: 4,
+        name: 'Complete',
+        paths: ['/profile/complete']
+      }
+    ]
+  }),
   computed: {
     currentStep: function() {
       return this.steps.find(step =>

@@ -30,29 +30,23 @@
 </template>
 
 <script>
-import BasePage from '@/components/BasePage';
-import ButtonBar from '@/components/ButtonBar';
-import PasswordRequirements from '@/components/PasswordRequirements';
-import PasswordStrength from '@/components/PasswordStrength';
-import ProfileProgress from '@/components/ProfileProgress';
+import PasswordRequirements from './PasswordRequirements';
+import PasswordStrength from './PasswordStrength';
+import ProfileProgress from '@/profile/ProfileProgress';
 
 export default {
   components: {
-    BasePage,
-    ButtonBar,
     PasswordRequirements,
     PasswordStrength,
     ProfileProgress
   },
-  data() {
-    return {
-      idp: {
-        name: 'SIL'
-      },
-      password: '',
-      rules: [v => v.length > 8 || 'too short']
-    };
-  },
+  data: () => ({
+    idp: {
+      name: 'SIL'
+    },
+    password: '',
+    rules: [v => v.length > 8 || 'too short']
+  }),
   methods: {
     save: async function() {
       if (this.$refs.form.validate()) {

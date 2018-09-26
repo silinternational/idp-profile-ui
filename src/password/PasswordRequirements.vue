@@ -17,10 +17,8 @@
 
 <script>
 export default {
-  data() {
-    return {
-      requirements: ['At least 8 characters', 'Strength of at least 2']
-    };
-  }
+  data: () => ({
+    requirements: ['At least 8 characters', 'Strength of at least 2']
+  })
 };
 </script>

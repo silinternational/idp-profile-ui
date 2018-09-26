@@ -25,23 +25,14 @@
 </template>
 
 <script>
-import BasePage from '@/components/BasePage';
-import ButtonBar from '@/components/ButtonBar';
-
 export default {
-  components: {
-    BasePage,
-    ButtonBar
-  },
-  data() {
-    return {
-      idp: {
-        name: 'SIL'
-      },
-      user: {
-        name: 'Uncle Cam'
-      }
-    };
-  }
+  data: () => ({
+    idp: {
+      name: 'SIL'
+    },
+    user: {
+      name: 'Uncle Cam'
+    }
+  })
 };
 </script>
