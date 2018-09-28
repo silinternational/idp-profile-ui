@@ -1,9 +1,12 @@
 <template>
-  <v-stepper>
+  <v-stepper v-model="currentStep.id">
     <v-stepper-header>
       <template v-for="_step in steps">
-        <v-stepper-step :step="_step.id" :key="`step-${_step.id}`">{{ _step.name }}</v-stepper-step>
-        <v-divider v-if="! isLastStep(_step, steps)" :key="_step.id" /> <!-- not needed on the last one -->
+        <v-stepper-step :step="_step.id" :complete="_step.id < currentStep.id" :key="`step-${_step.id}`">
+          {{ _step.name }}
+        </v-stepper-step>
+
+        <v-divider v-if="! isLastStep(_step, steps)" :key="`divider-${_step.id}`" />
       </template>
     </v-stepper-header>
 
@@ -27,7 +30,7 @@ export default {
       {
         id: 2,
         name: 'Password recovery',
-        path: '/password/recovery'
+        paths: ['/password/recovery']
       },
       {
         id: 3,

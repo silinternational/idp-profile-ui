@@ -5,22 +5,21 @@
         Create a password for your <em>{{ idp.name }}</em> Identity
       </template>
 
+      <v-form @submit.prevent="save" ref="form">
+        <BaseTextField type="password" label="Your new password" v-model="password" :rules="rules" validate-on-blur autofocus />
+        <!-- TODO: consider password suggestions for the user (https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/index.html#6-validation) -->
+      </v-form>
+
       <v-layout row justify-space-around>
-        <PasswordRequirements />
+        <PasswordConstraints />
 
         <!-- TODO: users will not be looking at screen most likely, design this indicator accordingly. -->
         <PasswordStrength :password="password" />
       </v-layout>
-
-      <!-- TODO:  review https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/ for form best practices -->
-      <v-form @submit.prevent="save" ref="form" class="pa-3">
-        <!-- TODO: don't forget to consider when to turn autocomplete="off" -->
-        <v-text-field label="Your new password" type="password" v-model="password" :rules="rules" autofocus outline />
-      </v-form>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/profile/intro" flat>Back</v-btn>
+      <v-btn to="/profile/intro" flat tabindex="-1">Back</v-btn>
 
       <v-spacer></v-spacer>
 
@@ -30,21 +29,21 @@
 </template>
 
 <script>
-import PasswordRequirements from './PasswordRequirements';
+import PasswordConstraints from './PasswordConstraints';
 import PasswordStrength from './PasswordStrength';
 import ProfileProgress from '@/profile/ProfileProgress';
 
 export default {
   components: {
-    PasswordRequirements,
+    PasswordConstraints,
     PasswordStrength,
     ProfileProgress
   },
-  data: () => ({
+  data: vm => ({
     idp: {
       name: 'SIL'
     },
-    password: '',
+    password: vm.$root.$data.password || '',
     rules: [v => v.length > 8 || 'too short']
   }),
   methods: {

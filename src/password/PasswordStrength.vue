@@ -5,6 +5,10 @@
     </header>
 
     <main class="display-2">{{ strength }}</main>
+
+    <footer class="caption">
+      <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank">learn more</a>
+    </footer>
   </v-layout>  
 </template>
 

@@ -2,26 +2,18 @@
   <ProfileProgress>
     <BasePage>
       <template slot="header">
-        Confirm your new password
+        Excellent!
       </template>
 
-
-      <!-- TODO:  review https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/ for form best practices -->
-      <v-form @submit.prevent="confirm" ref="form" class="pa-3">
-        <p>
-          Just to make sure we both have your new password right, please enter it one more time.
-        </p>
-        
-        <BaseTextField type="password" label="Your new password" v-model="password" :rules="rules" validate-on-blur autofocus />
-      </v-form>
+      <p class="text-xs-center">
+        Your new password has been saved.
+      </p>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/password/create" flat tabindex="-1">Back</v-btn>
-
       <v-spacer></v-spacer>
 
-      <v-btn @click="confirm" color="primary" flat>Continue</v-btn>
+      <v-btn to="/password/recovery" color="primary" flat>Continue</v-btn>
     </ButtonBar>
   </ProfileProgress>
 </template>

@@ -4,12 +4,12 @@
       Minimum requirements:
     </v-subheader>
 
-    <v-list-tile v-for="requirement in requirements" :key="requirement">
+    <v-list-tile v-for="constraint in constraints" :key="constraint">
       <v-list-tile-avatar>
         <v-icon color="warning">warning</v-icon>
       </v-list-tile-avatar>
       <v-list-tile-content>
-        <v-list-tile-sub-title>{{ requirement }}</v-list-tile-sub-title>
+        <v-list-tile-sub-title>{{ constraint }}</v-list-tile-sub-title>
       </v-list-tile-content>
     </v-list-tile>
   </v-list>  
@@ -18,7 +18,7 @@
 <script>
 export default {
   data: () => ({
-    requirements: ['At least 8 characters', 'Strength of at least 2']
+    constraints: ['At least 8 characters', 'Strength of at least 2']
   })
 };
 </script>
