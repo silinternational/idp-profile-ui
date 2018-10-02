@@ -88,8 +88,8 @@ services:
       SANS: 'profile.gtis.guru,profile-api.gtis.guru'
       FRONTEND1_DOMAIN: 'profile.gtis.guru'
       FRONTEND2_DOMAIN: 'profile-api.gtis.guru'
-      BACKEND1_URL: 'http://ui'
-      BACKEND2_URL: 'http://api'
+      BACKEND1_URL: 'http://ui:8000'
+      BACKEND2_URL: 'http://api:80'
     env_file:
       - ./development/local.env
 
