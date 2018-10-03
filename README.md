@@ -10,12 +10,12 @@ Project is managed with [vue-cli](https://github.com/vuejs/vue-cli).
 
 ## Environment
 
-This app can be run against HTTPS if needed for U2F testing. In order to run in that mode, _traefik_ will need to be configured. Simply `cp development/local.env.dist development/local.env` and populate the traefik-related vars with the appropriate values. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
+This app can be run against HTTPS if needed for U2F testing. In order to run in that mode, _traefik_ will need to be configured. Simply `cp development/local.env.dist development/local.env` and populate the traefik-related vars with the appropriate values. Some are also located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
 
 ## Run locally
 
 1.  Run `make` from the project root.
-1.  The app will be running on the localhost but may require either being referenced by the domain configured for traefik, e.g., [https://profile.gtis.guru](https://profile.gtis.guru), or simply [http://localhost:8000](http://localhost:8000).
+1.  The app will be running on the localhost either referenced by the domain configured for traefik, e.g., [https://profile.gtis.guru](https://profile.gtis.guru), or simply [http://localhost:8000](http://localhost:8000).
 
 ### Authentication
 
