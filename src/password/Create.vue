@@ -2,11 +2,17 @@
   <ProfileProgress>
     <BasePage>
       <template slot="header">
-        Create a password for your <em>{{ idp.name }}</em> Identity
+        {{ $vuetify.t('$vuetify.password.create.header', idp.name) }}
       </template>
 
       <v-form @submit.prevent="save" ref="form">
-        <BaseTextField type="password" label="Your new password" v-model="password" :rules="rules" validate-on-blur autofocus />
+        <BaseTextField 
+          type="password" 
+          :label="$vuetify.t('$vuetify.password.create.pwInput', idp.name)" 
+          v-model="password" 
+          :rules="rules" 
+          validate-on-blur 
+          autofocus />
         <!-- TODO: consider password suggestions for the user (https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/index.html#6-validation) -->
       </v-form>
 
@@ -19,11 +25,15 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/profile/intro" flat tabindex="-1">Back</v-btn>
+      <v-btn to="/profile/intro" flat tabindex="-1">
+        {{ $vuetify.t('$vuetify.global.button.back') }}
+      </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn @click="save" color="primary" flat>Continue</v-btn>
+      <v-btn @click="save" color="primary" flat>
+        {{ $vuetify.t('$vuetify.global.button.continue') }}
+      </v-btn>
     </ButtonBar>
   </ProfileProgress>
 </template>
@@ -44,6 +54,7 @@ export default {
       name: 'SIL'
     },
     password: vm.$root.$data.password || '',
+    //TODO: need to integrate API call as well as the translations
     rules: [v => v.length > 8 || 'too short']
   }),
   methods: {

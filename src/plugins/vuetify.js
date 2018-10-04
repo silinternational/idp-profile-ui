@@ -18,9 +18,13 @@ import {
 } from 'vuetify';
 
 import 'vuetify/src/stylus/app.styl';
-
 import Vue from 'vue';
+import locales from '@/locales';
+
 Vue.use(Vuetify, {
+  lang: {
+    locales: locales
+  },
   components: {
     Vuetify,
     VApp,

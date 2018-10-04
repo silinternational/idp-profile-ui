@@ -1,0 +1,56 @@
+{
+  "global": {
+    "button": {
+      "back": "Back",
+      "continue": "Continue"
+    },
+    "learnMore": "learn more"
+  },
+  "home": {
+    "header": "Welcome!",
+    "start": "I would like to start my profile today"
+  },
+  "profile": {
+    "header": "What is a(n) “{0} Identity”?",
+    "welcome": "First of all, welcome to {0} {1}!",
+    "explanation": "Brief content introducing the term and explaining it.",
+    "diffFromEmail": "Some content helping distinguish it from their email account.",
+    "buttonStartProfile": "Begin",
+    "progress": {
+      "pwStep": "Password",
+      "pwRecoverStep": "Password recovery",
+      "2svStep": "2-step verification",
+      "completeStep": "Complete"
+    }
+  },
+  "password": {
+    "create": {
+      "header": "Create a password for your {0} Identity",
+      "pwInput": "Your new password"
+    },
+    "constraints": {
+      "header": "Minimum requirements:"
+    },
+    "strength": {
+      "header": "Password strength"
+    },
+    "confirm": {
+      "header": "Confirm your new password",
+      "explanation": "Just to make sure we both have your new password right, please enter it one more time.",
+      "pwInput": "Your new password",
+      "noMatch": "That password does not match your previous one"
+    },
+    "saved": {
+      "header": "Excellent!",
+      "info": "Your new password has been saved.",
+      "pwInput": "Your new password",
+      "noMatch": "That password does not match your previous one"
+    },
+    "recovery": {
+      "header": "What if your password does not work anymore?",
+      "explanation": "Sometimes we forget our password.  Sometimes the password we have just doesn't work. In those situations, it is important to still be able to \"recover\" your password.",
+      "advice": "We advise adding another email address like a personal one or maybe even a spouse's in the event you need to begin the recovery process.",
+      "noMatch": "That password does not match your previous one"
+    }
+  }
+}

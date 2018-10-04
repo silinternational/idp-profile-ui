@@ -1,13 +1,15 @@
 <template>
   <v-layout column align-center justify-center>
     <header class="body-2">
-      Password strength
+      {{ $vuetify.t('$vuetify.password.strength.header') }}
     </header>
 
     <main class="display-2">{{ strength }}</main>
 
     <footer class="caption">
-      <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank">learn more</a>
+      <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank">
+        {{ $vuetify.t('$vuetify.global.learnMore') }}
+      </a>
     </footer>
   </v-layout>  
 </template>

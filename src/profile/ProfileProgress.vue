@@ -20,21 +20,21 @@
 
 <script>
 export default {
-  data: () => ({
+  data: vm => ({
     steps: [
       {
         id: 1,
-        name: 'Password',
+        name: vm.$vuetify.t('$vuetify.profile.progress.pwStep'),
         paths: ['/password/create', '/password/confirm', '/password/saved']
       },
       {
         id: 2,
-        name: 'Password recovery',
+        name: vm.$vuetify.t('$vuetify.profile.progress.pwRecoverStep'),
         paths: ['/password/recovery']
       },
       {
         id: 3,
-        name: '2-step verification',
+        name: vm.$vuetify.t('$vuetify.profile.progress.2svStep'),
         paths: [
           '/2sv/intro',
           '/2sv/smartphone',
@@ -44,7 +44,7 @@ export default {
       },
       {
         id: 4,
-        name: 'Complete',
+        name: vm.$vuetify.t('$vuetify.profile.progress.completeStep'),
         paths: ['/profile/complete']
       }
     ]

@@ -1,8 +1,12 @@
 <template>
   <BasePage>
-    <template slot="header">Welcome!</template>
+    <template slot="header">
+      {{ $vuetify.t('$vuetify.home.header') }}
+    </template>
 
-    <router-link v-if="user.new" to="/profile/intro" class="text-xs-center">I'd like to start my profile today</router-link>
+    <router-link v-if="user.new" to="/profile/intro" class="text-xs-center">
+      {{ $vuetify.t('$vuetify.home.start') }}
+    </router-link>
   </BasePage>
 </template>
 

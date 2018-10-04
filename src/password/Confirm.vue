@@ -2,26 +2,36 @@
   <ProfileProgress>
     <BasePage>
       <template slot="header">
-        Confirm your new password
+        {{ $vuetify.t('$vuetify.password.confirm.header') }}
       </template>
 
 
       <!-- TODO:  review https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/ for form best practices -->
       <v-form @submit.prevent="confirm" ref="form" class="pa-3">
         <p>
-          Just to make sure we both have your new password right, please enter it one more time.
+          {{ $vuetify.t('$vuetify.password.confirm.explanation') }}
         </p>
         
-        <BaseTextField type="password" label="Your new password" v-model="password" :rules="rules" validate-on-blur autofocus />
+        <BaseTextField 
+          type="password" 
+          :label="$vuetify.t('$vuetify.password.confirm.pwInput')" 
+          v-model="password" 
+          :rules="rules" 
+          validate-on-blur 
+          autofocus />
       </v-form>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/password/create" flat tabindex="-1">Back</v-btn>
+      <v-btn to="/password/create" flat tabindex="-1">
+        {{ $vuetify.t('$vuetify.global.button.back') }}
+      </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn @click="confirm" color="primary" flat>Continue</v-btn>
+      <v-btn @click="confirm" color="primary" flat>
+        {{ $vuetify.t('$vuetify.global.button.continue') }}
+      </v-btn>
     </ButtonBar>
   </ProfileProgress>
 </template>
@@ -35,7 +45,11 @@ export default {
   },
   data: vm => ({
     password: '',
-    rules: [v => v == vm.$root.$data.password || 'does not match']
+    rules: [
+      v =>
+        v == vm.$root.$data.password ||
+        vm.$vuetify.t('$vuetify.password.confirm.noMatch')
+    ]
   }),
   beforeRouteLeave(to, from, next) {
     delete this.$root.$data.password;

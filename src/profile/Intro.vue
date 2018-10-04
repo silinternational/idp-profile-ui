@@ -1,25 +1,27 @@
 <template>
   <BasePage>
     <template slot="header">
-      What is a(n) "<em>{{ idp.name }}</em> Identity"?
+      {{ $vuetify.t('$vuetify.profile.header', idp.name) }}
     </template>
 
     <p>
-      First of all, welcome to {{ idp.name }}<span v-if="user.name"> {{ user.name }}</span>!
+      {{ $vuetify.t('$vuetify.profile.welcome', idp.name, user.name) }}
     </p>
 
     <p>
-      Brief content introducing the term and explaining it.
+      {{ $vuetify.t('$vuetify.profile.explanation') }}
     </p>
 
     <p>
-      Some content helping distinguish it from their email account.
+      {{ $vuetify.t('$vuetify.profile.diffFromEmail') }}
     </p>
 
     <ButtonBar>
         <v-spacer></v-spacer>
         
-        <v-btn to="/password/create" color="primary">Begin</v-btn>
+        <v-btn to="/password/create" color="primary">
+          {{ $vuetify.t('$vuetify.profile.buttonStartProfile') }}
+        </v-btn>
     </ButtonBar>
   </BasePage>
 </template>

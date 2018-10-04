@@ -2,18 +2,20 @@
   <ProfileProgress>
     <BasePage>
       <template slot="header">
-        Excellent!
+        {{ $vuetify.t('$vuetify.password.saved.header') }}
       </template>
 
       <p class="text-xs-center">
-        Your new password has been saved.
+        {{ $vuetify.t('$vuetify.password.saved.info') }}
       </p>
     </BasePage>
 
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/password/recovery" color="primary" flat>Continue</v-btn>
+      <v-btn to="/password/recovery" color="primary" flat>
+        {{ $vuetify.t('$vuetify.global.button.continue') }}
+      </v-btn>
     </ButtonBar>
   </ProfileProgress>
 </template>
@@ -24,22 +26,6 @@ import ProfileProgress from '@/profile/ProfileProgress';
 export default {
   components: {
     ProfileProgress
-  },
-  data: vm => ({
-    password: '',
-    rules: [v => v == vm.$root.$data.password || 'does not match']
-  }),
-  beforeRouteLeave(to, from, next) {
-    delete this.$root.$data.password;
-
-    next();
-  },
-  methods: {
-    confirm: async function() {
-      if (this.$refs.form.validate()) {
-        this.$router.push('/password/saved');
-      }
-    }
   }
 };
 </script>

@@ -12,6 +12,10 @@ Project is managed with [vue-cli](https://github.com/vuejs/vue-cli).
 
 This app can be run against HTTPS if needed for U2F testing. In order to run in that mode, _traefik_ will need to be configured. Simply `cp development/local.env.dist development/local.env` and populate the traefik-related vars with the appropriate values. Some are also located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
 
+## i18n
+
+i18n support is built-in however the translation files must be generated and dropped into the `src/locales` folder with the appropriate name, e.g., `en.json`, `fr.json`, `ko.json` before the app is built. (TODO: automate this via crowdin api's)
+
 ## Run locally
 
 1.  Run `make` from the project root.

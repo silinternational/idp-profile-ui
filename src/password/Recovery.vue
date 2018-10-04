@@ -2,22 +2,24 @@
   <ProfileProgress>
     <BasePage>
       <template slot="header">
-        What if your password does not work anymore?
+        {{ $vuetify.t('$vuetify.password.recovery.header') }}
       </template>
 
       <p>
-        Sometimes we forget our password.  Sometimes the password we have just doesn't work. In those situations, it is important to still be able to "recover" your password.
+        {{ $vuetify.t('$vuetify.password.recovery.explanation') }}
       </p>
 
       <p>
-        We advise adding another email address like a personal one or maybe even a spouse's in the event you need to begin the recovery process.
+        {{ $vuetify.t('$vuetify.password.recovery.advice') }}
       </p>
     </BasePage>
 
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/password/recovery" color="primary" flat>Continue</v-btn>
+      <v-btn to="/password/recovery" color="primary" flat>
+        {{ $vuetify.t('$vuetify.global.button.continue') }}
+      </v-btn>
     </ButtonBar>
   </ProfileProgress>
 </template>
@@ -29,9 +31,5 @@ export default {
   components: {
     ProfileProgress
   }
-  // data: ({
-  // }),
-  // methods: {
-  // }
 };
 </script>

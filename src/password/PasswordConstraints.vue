@@ -1,7 +1,7 @@
 <template>
   <v-list>
     <v-subheader>
-      Minimum requirements:
+      {{ $vuetify.t('$vuetify.password.constraints.header') }}
     </v-subheader>
 
     <v-list-tile v-for="constraint in constraints" :key="constraint">
@@ -18,6 +18,7 @@
 <script>
 export default {
   data: () => ({
+    //TODO: will need translations here OR the API needs them.
     constraints: ['At least 8 characters', 'Strength of at least 2']
   })
 };
