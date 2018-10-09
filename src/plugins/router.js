@@ -1,19 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/home/Home';
+import homeRoutes from '@/home/routes';
 import passwordRoutes from '@/password/routes';
 import profileRoutes from '@/profile/routes';
 
 Vue.use(Router);
 
-export default new Router({
+const configuredRouter = new Router({
   mode: 'history',
   routes: [
-    {
-      path: '/home',
-      alias: '/',
-      component: Home
-    },
+    ...homeRoutes,
     ...passwordRoutes,
     ...profileRoutes,
     {
@@ -24,3 +20,5 @@ export default new Router({
     }
   ]
 });
+
+export default configuredRouter;

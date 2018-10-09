@@ -1,8 +1,8 @@
 import '@babel/polyfill';
 import Vue from 'vue';
-import './plugins/vuetify';
-import App from './App.vue';
+import './plugins';
 import router from './plugins/router';
+import App from './App.vue';
 import '@/global/components';
 
 new Vue({

@@ -2,13 +2,13 @@
   <ProfileProgress>
     <BasePage>
       <template slot="header">
-        {{ $vuetify.t('$vuetify.password.create.header', idp.name) }}
+        {{ $vuetify.t('$vuetify.password.create.header', config.idpName) }}
       </template>
 
       <v-form @submit.prevent="save" ref="form">
         <BaseTextField 
           type="password" 
-          :label="$vuetify.t('$vuetify.password.create.pwInput', idp.name)" 
+          :label="$vuetify.t('$vuetify.password.create.pwInput', config.idpName)" 
           v-model="password" 
           :rules="rules" 
           validate-on-blur 
@@ -50,16 +50,19 @@ export default {
     ProfileProgress
   },
   data: vm => ({
-    idp: {
-      name: 'SIL'
-    },
+    config: {},
     password: vm.$root.$data.password || '',
     //TODO: need to integrate API call as well as the translations
     rules: [v => v.length > 8 || 'too short']
   }),
+  async created() {
+    this.config = await this.$getConfig();
+  },
   methods: {
     save: async function() {
       if (this.$refs.form.validate()) {
+        this.$API.fake();
+
         this.$root.$data.password = this.password;
 
         this.$router.push('/password/confirm');

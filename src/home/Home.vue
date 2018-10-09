@@ -15,15 +15,8 @@ export default {
   data: () => ({
     user: {}
   }),
-  created() {
-    // simulating data call here.
-    setTimeout(
-      () =>
-        (this.user = {
-          new: true
-        }),
-      500
-    );
+  async created() {
+    this.user = await this.$getUser();
   }
 };
 </script>
