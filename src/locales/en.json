@@ -55,7 +55,14 @@
       "noMatch": "That password does not match your previous one",
       "emailInput": "Enter an email address",
       "unsaved": "You have not saved your changes yet.",
-      "dontRemoveLastOne": "Please add another email address before removing this one."
+      "dontRemoveLastOne": "Please add another email address before removing this one.",
+      "invalidEmail": "Invalid email"
+    }
+  },
+  "2sv": {
+    "intro": {
+      "header": "What is 2-Step Verification?",
+      "info": "Before we go any further, we would like to introduce an important step in protecting your account."
     }
   }
 }

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import homeRoutes from '@/home/routes';
 import passwordRoutes from '@/password/routes';
 import profileRoutes from '@/profile/routes';
+import twoStepRoutes from '@/2sv/routes';
 
 Vue.use(Router);
 
@@ -11,6 +12,7 @@ const configuredRouter = new Router({
   routes: [
     ...homeRoutes,
     ...passwordRoutes,
+    ...twoStepRoutes,
     ...profileRoutes,
     {
       path: '*',

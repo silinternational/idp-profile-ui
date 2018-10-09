@@ -28,10 +28,16 @@
       </ul>
 
       <v-form @submit.prevent="add" ref="form" class="layout row pa-3">
-        <BaseTextField 
+        <!-- TODO: "bug" still when a user hits enter and there's a validation error, the form will not mark itself invalid -->
+        <BaseTextField
           type="email"
           :label="$vuetify.t('$vuetify.password.recovery.emailInput')" 
           v-model="newEmail"
+          :rules="[
+            // W3C's HTML5 type=email regex
+            v => /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) || $vuetify.t('$vuetify.password.recovery.invalidEmail')
+          ]"
+          validate-on-blur
           autofocus />
       
         <v-btn @click="add" color="success" icon class="ma-2-mod ml-3">
@@ -41,14 +47,14 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn v-if="!methods.length" to="/password/2sv/intro" color="warning" flat>
+      <v-btn v-if="!methods.length" to="/2sv/intro" color="warning" flat>
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-tooltip :disabled="!(unsaved || !methods.length)" right>
-        <v-btn to="/password/2sv/intro" slot="activator" :disabled="unsaved || !methods.length" color="primary" flat>
+        <v-btn to="/2sv/intro" slot="activator" :disabled="unsaved || !methods.length" color="primary" flat>
           {{ $vuetify.t('$vuetify.global.button.continue') }}
         </v-btn>
         <span v-if="unsaved">{{ $vuetify.t('$vuetify.password.recovery.unsaved') }}</span>
@@ -81,13 +87,15 @@ export default {
   },
   methods: {
     add: async function() {
-      this.methods.push(
-        await this.$API.fake({
-          email: this.newEmail
-        })
-      );
+      if (this.$refs.form.validate()) {
+        this.methods.push(
+          await this.$API.fake({
+            email: this.newEmail
+          })
+        );
 
-      this.newEmail = '';
+        this.newEmail = '';
+      }
     },
     remove: async function(i) {
       this.methods.splice(await this.$API.fake(i), 1);
