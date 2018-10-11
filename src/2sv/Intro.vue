@@ -1,5 +1,5 @@
 <template>
-  <ProfileProgress>
+  <ProfileWizard>
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.2sv.intro.header') }}
@@ -23,15 +23,15 @@
           {{ $vuetify.t('$vuetify.global.button.continue') }}
         </v-btn>
     </ButtonBar>
-  </ProfileProgress>
+  </ProfileWizard>
 </template>
 
 <script>
-import ProfileProgress from '@/profile/ProfileProgress';
+import ProfileWizard from '@/profile/ProfileWizard';
 
 export default {
   components: {
-    ProfileProgress
+    ProfileWizard
   }
 };
 </script>

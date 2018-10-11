@@ -4,19 +4,8 @@
       {{ $vuetify.t('$vuetify.home.header') }}
     </template>
 
-    <router-link v-if="user.new" to="/profile/intro" class="text-xs-center">
+    <router-link v-if="$user.isNew()" to="/profile/intro" class="text-xs-center">
       {{ $vuetify.t('$vuetify.home.start') }}
     </router-link>
   </BasePage>
 </template>
-
-<script>
-export default {
-  data: () => ({
-    user: {}
-  }),
-  async created() {
-    this.user = await this.$getUser();
-  }
-};
-</script>

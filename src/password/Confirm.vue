@@ -1,5 +1,5 @@
 <template>
-  <ProfileProgress>
+  <ProfileWizard>
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.password.confirm.header') }}
@@ -22,7 +22,7 @@
       </v-form>
     </BasePage>
 
-    <ButtonBar>
+    <template slot="actions">
       <v-btn to="/password/create" flat tabindex="-1">
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
@@ -32,16 +32,16 @@
       <v-btn @click="confirm" color="primary" flat>
         {{ $vuetify.t('$vuetify.global.button.continue') }}
       </v-btn>
-    </ButtonBar>
-  </ProfileProgress>
+    </template>
+  </ProfileWizard>
 </template>
 
 <script>
-import ProfileProgress from '@/profile/ProfileProgress';
+import ProfileWizard from '@/profile/ProfileWizard';
 
 export default {
   components: {
-    ProfileProgress
+    ProfileWizard
   },
   data: vm => ({
     password: '',
@@ -59,6 +59,7 @@ export default {
   methods: {
     confirm: async function() {
       if (this.$refs.form.validate()) {
+        await this.$API.fake('PUT or POST /password');
         this.$router.push('/password/saved');
       }
     }

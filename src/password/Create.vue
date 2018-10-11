@@ -1,14 +1,14 @@
 <template>
-  <ProfileProgress>
+  <ProfileWizard>
     <BasePage>
       <template slot="header">
-        {{ $vuetify.t('$vuetify.password.create.header', config.idpName) }}
+        {{ $vuetify.t('$vuetify.password.create.header', $config.idpName) }}
       </template>
 
       <v-form @submit.prevent="save" ref="form">
         <BaseTextField 
           type="password" 
-          :label="$vuetify.t('$vuetify.password.create.pwInput', config.idpName)" 
+          :label="$vuetify.t('$vuetify.password.create.pwInput', $config.idpName)" 
           v-model="password" 
           :rules="rules" 
           validate-on-blur 
@@ -24,7 +24,7 @@
       </v-layout>
     </BasePage>
 
-    <ButtonBar>
+    <template slot="actions">
       <v-btn to="/profile/intro" flat tabindex="-1">
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
@@ -34,34 +34,30 @@
       <v-btn @click="save" color="primary" flat>
         {{ $vuetify.t('$vuetify.global.button.continue') }}
       </v-btn>
-    </ButtonBar>
-  </ProfileProgress>
+    </template>
+  </ProfileWizard>
 </template>
 
 <script>
 import PasswordConstraints from './PasswordConstraints';
 import PasswordStrength from './PasswordStrength';
-import ProfileProgress from '@/profile/ProfileProgress';
+import ProfileWizard from '@/profile/ProfileWizard';
 
 export default {
   components: {
     PasswordConstraints,
     PasswordStrength,
-    ProfileProgress
+    ProfileWizard
   },
   data: vm => ({
-    config: {},
     password: vm.$root.$data.password || '',
     //TODO: need to integrate API call as well as the translations
     rules: [v => v.length > 8 || 'too short']
   }),
-  async created() {
-    this.config = await this.$getConfig();
-  },
   methods: {
     save: async function() {
       if (this.$refs.form.validate()) {
-        this.$API.fake();
+        // TODO: should we make a "verify" call to the api here? (check for reused pw or a pwned one perhaps...)
 
         this.$root.$data.password = this.password;
 

@@ -23,4 +23,10 @@ const configuredRouter = new Router({
   ]
 });
 
+configuredRouter.beforeEach(async (to, from, next) => {
+  await Vue.prototype.$user.update();
+
+  next();
+});
+
 export default configuredRouter;

@@ -1,5 +1,5 @@
 <template>
-  <ProfileProgress>
+  <ProfileWizard>
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.password.recovery.header') }}
@@ -21,7 +21,7 @@
           {{ method.email }}
 
           <v-tooltip :disabled="methods.length > 1" right>
-            <v-icon @click="remove(i)" slot="activator" :disabled="methods.length == 1" color="error" small class="pl-3">delete</v-icon>
+            <v-icon @click="remove(method, i)" slot="activator" :disabled="methods.length == 1" color="error" small class="pl-3">delete</v-icon>
             {{ $vuetify.t('$vuetify.password.recovery.dontRemoveLastOne') }}
           </v-tooltip>
         </li>
@@ -46,7 +46,7 @@
       </v-form>
     </BasePage>
 
-    <ButtonBar>
+    <template slot="actions">
       <v-btn v-if="!methods.length" to="/2sv/intro" color="warning" flat>
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
@@ -60,16 +60,16 @@
         <span v-if="unsaved">{{ $vuetify.t('$vuetify.password.recovery.unsaved') }}</span>
         <span v-else>{{ $vuetify.t('$vuetify.password.recovery.advice') }}</span>
       </v-tooltip>
-    </ButtonBar>
-  </ProfileProgress>
+    </template>
+  </ProfileWizard>
 </template>
 
 <script>
-import ProfileProgress from '@/profile/ProfileProgress';
+import ProfileWizard from '@/profile/ProfileWizard';
 
 export default {
   components: {
-    ProfileProgress
+    ProfileWizard
   },
   data: () => ({
     methods: [],
@@ -79,8 +79,9 @@ export default {
     unsaved: vm => vm.newEmail != ''
   },
   async created() {
-    this.methods = await this.$API.fake([
+    this.methods = await this.$API.fake('GET /method', [
       {
+        id: 1,
         email: 'YHWH@example.org'
       }
     ]);
@@ -89,7 +90,8 @@ export default {
     add: async function() {
       if (this.$refs.form.validate()) {
         this.methods.push(
-          await this.$API.fake({
+          await this.$API.fake('POST /method', {
+            id: this.methods.length + 1,
             email: this.newEmail
           })
         );
@@ -97,8 +99,11 @@ export default {
         this.newEmail = '';
       }
     },
-    remove: async function(i) {
-      this.methods.splice(await this.$API.fake(i), 1);
+    remove: async function(method, i) {
+      this.methods.splice(
+        await this.$API.fake(`DELETE /method/${method.id}`, i),
+        1
+      );
     }
   }
 };

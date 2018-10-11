@@ -1,11 +1,11 @@
 <template>
   <BasePage>
     <template slot="header">
-      {{ $vuetify.t('$vuetify.profile.header', config.idpName) }}
+      {{ $vuetify.t('$vuetify.profile.header', $config.idpName) }}
     </template>
 
     <p>
-      {{ $vuetify.t('$vuetify.profile.welcome', config.idpName, user.name) }}
+      {{ $vuetify.t('$vuetify.profile.welcome', $config.idpName, $user.first_name) }}
     </p>
 
     <p>
@@ -26,16 +26,3 @@
   </BasePage>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    config: {},
-    user: {}
-  }),
-  async created() {
-    this.config = await this.$getConfig();
-
-    this.user = await this.$getUser();
-  }
-};
-</script>
