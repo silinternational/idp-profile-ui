@@ -58,7 +58,6 @@ export default {
     save: async function() {
       if (this.$refs.form.validate()) {
         // TODO: should we make a "verify" call to the api here? (check for reused pw or a pwned one perhaps...)
-
         this.$root.$data.password = this.password;
 
         this.$router.push('/password/confirm');

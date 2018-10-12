@@ -18,8 +18,8 @@
       <v-stepper-content :step="currentStep.id">
         <slot />
 
-        <ButtonBar>
-          <slot name="actions" />
+        <ButtonBar >
+          <slot name="actions" :complete="complete" />
         </ButtonBar>
       </v-stepper-content>
     </v-stepper-items>
@@ -35,7 +35,7 @@ export default {
     currentStep: {}
   }),
   created() {
-    Steps.init(this.$vuetify.t, this.$user);
+    Steps.init(this.$user);
 
     this.steps = Steps.steps;
     this.currentStep = Steps.forPath(this.$route.path);
@@ -56,6 +56,12 @@ export default {
       };
 
       return map[state] || '$vuetify.icons.complete';
+    },
+    complete: function() {
+      this.currentStep.state = 'complete';
+    },
+    skipped: function() {
+      this.currentStep.state = 'skipped';
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <ProfileWizard>
+  <ProfileWizard ref="wizard">
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.password.confirm.header') }}
@@ -60,6 +60,9 @@ export default {
     confirm: async function() {
       if (this.$refs.form.validate()) {
         await this.$API.fake('PUT or POST /password');
+
+        this.$refs.wizard.complete();
+
         this.$router.push('/password/saved');
       }
     }
