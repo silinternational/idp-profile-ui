@@ -19,7 +19,7 @@
         <slot />
 
         <ButtonBar >
-          <slot name="actions" :complete="complete" />
+          <slot name="actions" />
         </ButtonBar>
       </v-stepper-content>
     </v-stepper-items>
