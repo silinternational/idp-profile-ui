@@ -10,7 +10,7 @@
           {{ _step.name }}
         </v-stepper-step>
 
-        <v-divider v-if="moreSteps(_step)" :key="`divider-${_step.id}`" />
+        <v-divider v-if="hasMoreSteps(_step)" :key="`divider-${_step.id}`" />
       </template>
     </v-stepper-header>
 
@@ -27,18 +27,21 @@
 </template>
 
 <script>
-import Steps from './Steps';
+import Steps from './steps';
 
 export default {
-  components: {
-    Steps
-  },
-  computed: {
-    steps: () => Steps.steps,
-    currentStep: vm => Steps.findByPath(vm.$route.path)
+  data: () => ({
+    steps: [],
+    currentStep: {}
+  }),
+  created() {
+    Steps.init(this.$vuetify.t, this.$user);
+
+    this.steps = Steps.steps;
+    this.currentStep = Steps.forPath(this.$route.path);
   },
   methods: {
-    moreSteps: step => !Steps.isLast(step),
+    hasMoreSteps: step => !Steps.isLast(step),
     toColor: state => {
       const map = {
         complete: 'success',
