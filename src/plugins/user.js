@@ -5,7 +5,9 @@ let user = {
   update: async function update() {
     Object.assign(this, await api.fake('GET /user/me', NEW_USER));
   },
-  new: !this.password_meta
+  new() {
+    return !this.password_meta;
+  }
 };
 
 Vue.use(theVue => {
