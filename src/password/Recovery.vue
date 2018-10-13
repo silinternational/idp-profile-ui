@@ -34,8 +34,8 @@
           :label="$vuetify.t('$vuetify.password.recovery.emailInput')" 
           v-model="newEmail"
           :rules="[
-            // W3C's HTML5 type=email regex
-            v => /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) || $vuetify.t('$vuetify.password.recovery.invalidEmail')
+            // this field is never required so it must either be empty or a valid email (W3C's HTML5 type=email regex)
+            v => /^$|^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) || $vuetify.t('$vuetify.password.recovery.invalidEmail')
           ]"
           validate-on-blur
           autofocus />
@@ -47,7 +47,7 @@
     </BasePage>
 
     <template slot="actions">
-      <v-btn v-if="!methods.length" to="/2sv/intro" @click="$refs.wizard.skipped" color="warning" flat>
+      <v-btn v-if="!methods.length" to="/2sv/intro" @click="$refs.wizard.skipped()" color="warning" flat>
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
@@ -55,7 +55,7 @@
 
       <v-tooltip :disabled="!(unsaved || !methods.length)" right>
         <v-btn to="/2sv/intro" 
-               @click="$refs.wizard.complete" 
+               @click="$refs.wizard.complete()" 
                slot="activator" 
                :disabled="unsaved || !methods.length" 
                color="primary" 
