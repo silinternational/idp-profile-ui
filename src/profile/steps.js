@@ -8,7 +8,7 @@ export default {
   steps: store.steps,
   init(user) {
     if (store.steps.length == 0) {
-      if (user.isNew()) {
+      if (user.new) {
         store.steps.push(password, recovery, twosv, complete);
       }
 

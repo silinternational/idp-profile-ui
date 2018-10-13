@@ -5,9 +5,7 @@ let user = {
   update: async function update() {
     Object.assign(this, await api.fake('GET /user/me', NEW_USER));
   },
-  isNew: function() {
-    return !this.password_meta;
-  }
+  new: !this.password_meta
 };
 
 Vue.use(theVue => {
@@ -16,8 +14,8 @@ Vue.use(theVue => {
 
 // TODO: temp stubs, remove once real calls are integrated
 const NEW_USER = {
-  idp_username: 'new_user',
-  first_name: 'New',
+  idp_username: 'n00b_user',
+  first_name: 'N00b',
   last_name: 'User'
 };
 
