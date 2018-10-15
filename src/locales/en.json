@@ -3,7 +3,9 @@
     "button": {
       "back": "Back",
       "continue": "Continue",
-      "skip": "Skip"
+      "skip": "Skip",
+      "yes": "Yes",
+      "no": "No"
     },
     "learnMore": "learn more"
   },
@@ -63,6 +65,20 @@
     "intro": {
       "header": "What is 2-Step Verification?",
       "info": "Before we go any further, we would like to introduce an important step in protecting your account."
+    },
+    "smartphone": {
+      "intro": {
+        "header": "Do you have a smartphone?",
+        "info": "If you have one and it is usually with you, this can be a very good option for your 2-Step Verification."
+      },
+      "download": {
+        "header": "Download an app",
+        "info": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.",
+        "button": {
+          "installed": "OK, I installed it on my smartphone"
+        },
+        "recommended": "Google Authenticator"
+      }
     }
   }
 }

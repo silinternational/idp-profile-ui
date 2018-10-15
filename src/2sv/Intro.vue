@@ -19,7 +19,7 @@
     <ButtonBar>
         <v-spacer></v-spacer>
         
-        <v-btn to="TBD" color="primary" flat> 
+        <v-btn to="/2sv/smartphone/intro" color="primary" flat> 
           {{ $vuetify.t('$vuetify.global.button.continue') }}
         </v-btn>
     </ButtonBar>

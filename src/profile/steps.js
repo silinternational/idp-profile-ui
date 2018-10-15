@@ -41,8 +41,9 @@ const twosv = {
   name: t('$vuetify.profile.progress.2svStep'),
   paths: [
     '/2sv/intro',
-    '/2sv/smartphone',
-    '/2sv/usb-security-key',
+    '/2sv/smartphone/intro',
+    '/2sv/smartphone/download-app',
+    '/2sv/usb-security-key/intro',
     '/2sv/printable-backup-codes'
   ]
 };

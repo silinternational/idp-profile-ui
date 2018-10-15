@@ -1,0 +1,66 @@
+<template>
+  <ProfileWizard>
+    <BasePage>
+      <template slot="header">
+        {{ $vuetify.t('$vuetify.2sv.smartphone.download.header') }}
+      </template>
+
+      <p>
+        {{ $vuetify.t('$vuetify.2sv.smartphone.download.info') }}
+      </p>
+
+      <figure class="layout row align-center justify-center mb-5">
+        <img src="@/assets/google-authenticator-logo.webp">
+
+        <figcaption class="headline ml-3">
+          {{ $vuetify.t('$vuetify.2sv.smartphone.download.recommended') }}
+        </figcaption>
+      </figure>
+
+      <figure class="badges layout row align-center justify-center justify-space-around">
+        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" >
+          <img src="@/assets/google-play-badge.png">
+        </a>
+        <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605" target="_blank">
+          <img src="@/assets/app-store-badge.png">
+        </a>
+      </figure>
+    </BasePage>
+
+    <ButtonBar>
+        <v-btn to="/2sv/intro" color="primary" flat> 
+          {{ $vuetify.t('$vuetify.global.button.back') }}
+        </v-btn>
+        <v-btn to="/2sv/smartphone/usb-security-key/intro" color="primary" flat> 
+          {{ $vuetify.t('$vuetify.global.button.skip') }}
+        </v-btn>
+
+        <v-spacer></v-spacer>
+        
+        <v-btn to="/2sv/smartphone/scan-qr" color="primary" flat> 
+          {{ $vuetify.t('$vuetify.2sv.smartphone.download.button.installed') }}
+        </v-btn>
+    </ButtonBar>
+  </ProfileWizard>
+</template>
+
+<script>
+import ProfileWizard from '@/profile/ProfileWizard';
+
+export default {
+  components: {
+    ProfileWizard
+  }
+};
+</script>
+
+<style scoped>
+img {
+  max-height: 7em;
+}
+
+/* wanted both to look the same  */
+figure.badges > a > img {
+  max-height: 40px;
+}
+</style>
