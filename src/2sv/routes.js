@@ -1,6 +1,9 @@
 import Intro from './Intro';
 import SmartphoneIntro from './smartphone/Intro';
 import DownloadApp from './smartphone/DownloadApp';
+import ScanQr from './smartphone/ScanQr';
+import VerifyQrCode from './smartphone/VerifyQrCode';
+import CodeVerified from './smartphone/CodeVerified';
 
 export default [
   {
@@ -14,5 +17,17 @@ export default [
   {
     path: '/2sv/smartphone/download-app',
     component: DownloadApp
+  },
+  {
+    path: '/2sv/smartphone/scan-qr',
+    component: ScanQr
+  },
+  {
+    path: '/2sv/smartphone/verify-qr-code',
+    component: VerifyQrCode
+  },
+  {
+    path: '/2sv/smartphone/code-verified',
+    component: CodeVerified
   }
 ];

@@ -28,17 +28,14 @@
     </BasePage>
 
     <ButtonBar>
-        <v-btn to="/2sv/intro" color="primary" flat> 
+        <v-btn to="/2sv/smartphone/intro" flat tabindex="-1"> 
           {{ $vuetify.t('$vuetify.global.button.back') }}
-        </v-btn>
-        <v-btn to="/2sv/smartphone/usb-security-key/intro" color="primary" flat> 
-          {{ $vuetify.t('$vuetify.global.button.skip') }}
         </v-btn>
 
         <v-spacer></v-spacer>
         
         <v-btn to="/2sv/smartphone/scan-qr" color="primary" flat> 
-          {{ $vuetify.t('$vuetify.2sv.smartphone.download.button.installed') }}
+          {{ $vuetify.t('$vuetify.2sv.smartphone.download.button.ok') }}
         </v-btn>
     </ButtonBar>
   </ProfileWizard>

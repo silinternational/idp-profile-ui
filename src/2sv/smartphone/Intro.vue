@@ -11,16 +11,16 @@
     </BasePage>
 
     <ButtonBar>
-        <v-btn to="/2sv/intro" color="primary" flat> 
+        <v-btn to="/2sv/intro" flat tabindex="-1"> 
           {{ $vuetify.t('$vuetify.global.button.back') }}
         </v-btn>
-        <v-btn to="/2sv/smartphone/usb-security-key/intro" color="primary" flat> 
+        <v-btn to="/2sv/smartphone/usb-security-key/intro" color="primary" flat tabindex="-1"> 
           {{ $vuetify.t('$vuetify.global.button.skip') }}
         </v-btn>
 
         <v-spacer></v-spacer>
         
-        <v-btn to="/2sv/smartphone/usb-security-key/intro" color="primary" flat> 
+        <v-btn to="/2sv/smartphone/usb-security-key/intro" color="primary" flat tabindex="-1"> 
           {{ $vuetify.t('$vuetify.global.button.no') }}
         </v-btn>
         <v-btn to="/2sv/smartphone/download-app" color="primary" flat> 

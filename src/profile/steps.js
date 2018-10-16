@@ -43,6 +43,9 @@ const twosv = {
     '/2sv/intro',
     '/2sv/smartphone/intro',
     '/2sv/smartphone/download-app',
+    '/2sv/smartphone/scan-qr',
+    '/2sv/smartphone/verify-qr-code',
+    '/2sv/smartphone/code-verified',
     '/2sv/usb-security-key/intro',
     '/2sv/printable-backup-codes'
   ]
