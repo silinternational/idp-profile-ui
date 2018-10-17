@@ -3,12 +3,12 @@ FROM node:alpine
 RUN mkdir -p /data
 WORKDIR /data
 
-EXPOSE 80
+EXPOSE 8000
 
 # install dependencies
 COPY ./package.json /data
 COPY ./package-lock.json /data
-RUN npm install && npm cache clean --force
+RUN npm install
 
 # irrelevant files referenced in .dockerignore
 COPY ./ /data
@@ -17,4 +17,4 @@ COPY ./ /data
 RUN npm run build
 
 # default command at runtime spins http server up in production mode
-CMD [ "npm", "start" ] 
+CMD [ "npm", "run", "serve:prod" ] 
