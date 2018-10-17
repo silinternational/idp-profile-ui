@@ -8,6 +8,8 @@ import KeyIntro from './key/Intro';
 import Insert from './key/Insert';
 import Touch from './key/Touch';
 import Confirmed from './key/Confirmed';
+import CodesIntro from './codes/Intro';
+import New from './codes/New';
 
 export default [
   {
@@ -49,5 +51,13 @@ export default [
   {
     path: '/2sv/usb-security-key/confirmed',
     component: Confirmed
+  },
+  {
+    path: '/2sv/printable-backup-codes/intro',
+    component: CodesIntro
+  },
+  {
+    path: '/2sv/printable-backup-codes/new',
+    component: New
   }
 ];

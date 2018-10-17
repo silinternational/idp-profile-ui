@@ -13,7 +13,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/printable-backup-codes" color="primary" flat>
+      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" flat>
         {{ $vuetify.t('$vuetify.global.button.continue') }}
       </v-btn>
     </ButtonBar>

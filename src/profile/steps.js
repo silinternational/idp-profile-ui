@@ -50,7 +50,8 @@ const twosv = {
     '/2sv/usb-security-key/insert',
     '/2sv/usb-security-key/touch',
     '/2sv/usb-security-key/confirmed',
-    '/2sv/printable-backup-codes'
+    '/2sv/printable-backup-codes/intro',
+    '/2sv/printable-backup-codes/new'
   ]
 };
 

@@ -15,16 +15,28 @@
     "start": "I would like to start my profile today"
   },
   "profile": {
-    "header": "What is a(n) “{0} Identity”?",
-    "welcome": "First of all, welcome to {0} {1}!",
-    "explanation": "Brief content introducing the term and explaining it.",
-    "diffFromEmail": "Some content helping distinguish it from their email account.",
-    "buttonStartProfile": "Begin",
+    "intro": {
+      "header": "What is a(n) “{0} Identity”?",
+      "welcome": "First of all, welcome to {0} {1}!",
+      "explanation": "Brief content introducing the term and explaining it.",
+      "diffFromEmail": "Some content helping distinguish it from their email account.",
+      "button": {
+        "start": "Begin"
+      }
+    },
     "progress": {
       "pwStep": "Password",
       "pwRecoverStep": "Password recovery",
       "2svStep": "2-step verification",
       "completeStep": "Complete"
+    },
+    "complete": {
+      "header": "Identity profile complete!",
+      "congrats": "congratulatory content",
+      "info": "links to additional info if needed",
+      "button": {
+        "newProfile": "See my new profile"
+      }
     }
   },
   "password": {
@@ -121,6 +133,19 @@
       "confirmed": {
         "header": "Excellent!",
         "info": "Your USB security key is now confirmed so you may use it to further protect your account."
+      }
+    },
+    "codes": {
+      "intro": {
+        "header": "Printable backup codes",
+        "info": "There may be times when you do not have your smartphone or USB security key with you.  When that is the case, printable backup codes can be used.",
+        "warning": "some content for those users that have NOT set up other 2sv options."
+      },
+      "new": {
+        "header": "Printable backup codes",
+        "button": {
+          "ok": "Finish"
+        }
       }
     }
   }
