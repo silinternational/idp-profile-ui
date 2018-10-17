@@ -99,6 +99,29 @@
         "header": "Excellent!",
         "info": "That was the correct code so you may now use your smartphone to further protect your account."
       }
+    },
+    "key": {
+      "intro": {
+        "header": "Do you have a USB security key?",
+        "info": "USB security keys are the most secure and convenient option for your 2-Step Verification setup.",
+        "button": {
+          "no": "No, but I'd like to get one"
+        }
+      },
+      "insert": {
+        "header": "Insert USB security key",
+        "button": {
+          "ok": "OK, I inserted it"
+        }
+      },
+      "touch": {
+        "header": "Touch or press your USB security key",
+        "info": "Your security key should be blinking now, go ahead and press its button or touch its sensor."
+      },
+      "confirmed": {
+        "header": "Excellent!",
+        "info": "Your USB security key is now confirmed so you may use it to further protect your account."
+      }
     }
   }
 }

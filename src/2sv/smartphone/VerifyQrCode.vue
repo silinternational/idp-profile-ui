@@ -24,15 +24,15 @@
     </BasePage>
 
     <ButtonBar>
-        <v-btn to="/2sv/smartphone/scan-qr" flat tabindex="-1"> 
-          {{ $vuetify.t('$vuetify.global.button.back') }}
-        </v-btn>
+      <v-btn to="/2sv/smartphone/scan-qr" flat tabindex="-1"> 
+        {{ $vuetify.t('$vuetify.global.button.back') }}
+      </v-btn>
 
-        <v-spacer></v-spacer>
-        
-        <v-btn @click="verify" color="primary" flat> 
-          {{ $vuetify.t('$vuetify.global.button.verify') }}
-        </v-btn>
+      <v-spacer></v-spacer>
+      
+      <v-btn @click="verify" color="primary" flat> 
+        {{ $vuetify.t('$vuetify.global.button.verify') }}
+      </v-btn>
     </ButtonBar>
   </ProfileWizard>
 </template>

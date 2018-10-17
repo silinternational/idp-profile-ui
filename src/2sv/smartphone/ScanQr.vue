@@ -28,15 +28,15 @@
     </BasePage>
 
     <ButtonBar>
-        <v-btn to="/2sv/smartphone/download-app" flat tabindex="-1"> 
-          {{ $vuetify.t('$vuetify.global.button.back') }}
-        </v-btn>
+      <v-btn to="/2sv/smartphone/download-app" flat tabindex="-1"> 
+        {{ $vuetify.t('$vuetify.global.button.back') }}
+      </v-btn>
 
-        <v-spacer></v-spacer>
-        
-        <v-btn to="/2sv/smartphone/verify-qr-code" color="primary" flat> 
-          {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.button.ok') }}
-        </v-btn>
+      <v-spacer></v-spacer>
+      
+      <v-btn to="/2sv/smartphone/verify-qr-code" color="primary" flat> 
+        {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.button.ok') }}
+      </v-btn>
     </ButtonBar>
   </ProfileWizard>
 </template>

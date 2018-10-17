@@ -47,6 +47,9 @@ const twosv = {
     '/2sv/smartphone/verify-qr-code',
     '/2sv/smartphone/code-verified',
     '/2sv/usb-security-key/intro',
+    '/2sv/usb-security-key/insert',
+    '/2sv/usb-security-key/touch',
+    '/2sv/usb-security-key/confirmed',
     '/2sv/printable-backup-codes'
   ]
 };
