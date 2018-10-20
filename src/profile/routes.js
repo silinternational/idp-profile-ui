@@ -1,5 +1,6 @@
 import Intro from './Intro';
 import Complete from './Complete';
+import Index from './Index';
 
 export default [
   {
@@ -9,5 +10,9 @@ export default [
   {
     path: '/profile/complete',
     component: Complete
+  },
+  {
+    path: '/profile',
+    component: Index
   }
 ];

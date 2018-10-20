@@ -4,6 +4,7 @@
       {{ $vuetify.t('$vuetify.password.strength.header') }}
     </header>
 
+    <!-- https://css-tricks.com/password-strength-meter/ -->
     <main class="display-2">{{ strength }}</main>
 
     <footer class="caption">

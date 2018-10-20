@@ -6,7 +6,9 @@
       "skip": "Skip",
       "yes": "Yes",
       "no": "No",
-      "verify": "Verify"
+      "verify": "Verify",
+      "change": "Change",
+      "remove": "Remove"
     },
     "learnMore": "learn more"
   },
@@ -36,6 +38,37 @@
       "info": "links to additional info if needed",
       "button": {
         "newProfile": "See my new profile"
+      }
+    },
+    "index": {
+      "lastLogin": "Last login: {0}",
+      "passwordCard": {
+        "title": "Password",
+        "lastChanged": "Last changed: {0}",
+        "expires": "Expires: {0}",
+        "strength": "Strength: {0}"
+      },
+      "passwordRecoveryCard": {
+        "title": "Password recovery"
+      },
+      "totpCard": {
+        "created": "Created: {0}",
+        "button": {
+          "lost": "I lost my phone"
+        }
+      },
+      "u2fCard": {
+        "created": "Created: {0}",
+        "button": {
+          "lost": "I lost my key"
+        }
+      },
+      "codeCard": {
+        "created": "Created: {0}",
+        "remaining": "Remaining: {0}",
+        "button": {
+          "replace": "Replace"
+        }
       }
     }
   },

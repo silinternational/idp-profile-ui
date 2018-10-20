@@ -17,6 +17,7 @@
       </p>
       
       <ul class="body-2">
+        <!-- TODO: we don't want users trying to enter their "work" email so we should either list it here (with an explanatory tooltip or something) in a subdued state OR we need to vlidate their entry to ensure it's not their "work" email -->
         <li v-for="(method, i) in methods" :key="i" class="layout row pb-2">
           {{ method.email }}
 
