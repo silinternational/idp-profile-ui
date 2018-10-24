@@ -9,6 +9,8 @@
         </span>
       </div>
       
+      <v-spacer />
+      
       <ProfileProgress :profile="$user"/>
     </template>
 
@@ -17,13 +19,13 @@
       <IndexPasswordRecoveryCard :methods="$user.methods" class="mx-3 mb-4" />
     </v-layout>
 
-    <v-subheader class="py-5">2-Step Verification</v-subheader>
+    <v-subheader class="py-5">
+      {{ $vuetify.t('$vuetify.profile.index.2sv') }}
+    </v-subheader>
     <v-layout row wrap>
-      <template v-for="mfa in mfasById">
-        <IndexTotpCard v-if="mfa.type == 'totp'" :key="mfa.id" :meta="mfa" class="mx-3 mb-4" />
-        <IndexU2fCard v-if="mfa.type == 'u2f'" :key="mfa.id" :meta="mfa" class="mx-3 mb-4" />
-        <IndexCodeCard v-if="mfa.type == 'backupcode'" :key="mfa.id" :meta="mfa" class="mx-3 mb-4" />
-      </template>
+      <IndexTotpCard :meta="totp" class="mx-3 mb-4" />
+      <IndexU2fCard :meta="u2f" class="mx-3 mb-4" />
+      <IndexCodeCard :meta="codes" class="mx-3 mb-4" />
     </v-layout>
   </BasePage>
 </template>
@@ -50,7 +52,9 @@ export default {
       `${new Date(
         vm.$user.password_meta.last_login
       ).toLocaleString()}, Fort Mill, South Carolina, United States`,
-    mfasById: vm => vm.$user.mfa.sort((a, b) => a.id > b.id)
+    totp: vm => vm.$user.mfa.find(mfa => mfa.type == 'totp') || {},
+    u2f: vm => vm.$user.mfa.find(mfa => mfa.type == 'u2f') || {},
+    codes: vm => vm.$user.mfa.find(mfa => mfa.type == 'backupcode') || {}
   }
 };
 </script>

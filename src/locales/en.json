@@ -8,7 +8,8 @@
       "no": "No",
       "verify": "Verify",
       "change": "Change",
-      "remove": "Remove"
+      "remove": "Remove",
+      "add": "Add"
     },
     "learnMore": "learn more"
   },
@@ -49,27 +50,36 @@
         "strength": "Strength: {0}"
       },
       "passwordRecoveryCard": {
-        "title": "Password recovery"
+        "title": "Password recovery",
+        "warning": "No recovery addresses at this time, please add one."
       },
       "totpCard": {
+        "title": "Smartphone",
         "created": "Created: {0}",
         "button": {
           "lost": "I lost my phone"
-        }
+        },
+        "warning": "No smartphone at this time, please add one."
       },
       "u2fCard": {
+        "title": "USB security key",
         "created": "Created: {0}",
         "button": {
           "lost": "I lost my key"
-        }
+        },
+        "warning": "No security key at this time, please add one."
       },
       "codeCard": {
+        "title": "Printable backup codes",
         "created": "Created: {0}",
         "remaining": "Remaining: {0}",
         "button": {
-          "replace": "Replace"
-        }
-      }
+          "replace": "Replace",
+          "add": "Create"
+        },
+        "warning": "No backup codes at this time, please create some."
+      },
+      "2sv": "2-Step Verification"
     }
   },
   "password": {
