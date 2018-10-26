@@ -1,17 +1,24 @@
 version: '2.0'
 
 services:
+  node:
+    image: node:alpine
+    volumes:
+      - .:/data/
+    working_dir: /data
+
   ui:
     build: .
+    volumes:
+      - .:/data/
+    command: npm run serve
     ports:
       - '8000:8000'
     depends_on:
       - api
 
   api:
-    image: silintl/idp-pw-api
-    volumes:
-      - ./development/local.php:/data/common/config/local.php
+    image: silintl/idp-pw-api:develop-3.0
     ports:
       - '8080:80'
     depends_on:
@@ -42,6 +49,15 @@ services:
       ID_BROKER_baseUrl: 'http://broker'
       ID_BROKER_accessToken: 'local-testing-abc123'
       ID_BROKER_assertValidBrokerIp: 'false'
+      AUTH_SAML_signRequest: 'false'
+      AUTH_SAML_checkResponseSigning: 'false'
+      AUTH_SAML_requireEncryptedAssertion: 'false'
+      AUTH_SAML_idpCertificate: ''
+      AUTH_SAML_spCertificate: ''
+      AUTH_SAML_spPrivateKey: ''
+      AUTH_SAML_entityId: 'profile-api.gtis.guru'
+      AUTH_SAML_ssoUrl: 'http://localhost:8088/saml2/idp/SSOService.php'
+      AUTH_SAML_sloUrl: 'http://localhost:8088/saml2/idp/SingleLogoutService.php'
 
   profileDb:
     image: silintl/mariadb
@@ -80,6 +96,8 @@ services:
       - api
     volumes:
       - ./development/cert:/cert
+    env_file:
+      - ./development/local.env
     environment:
       DNS_PROVIDER: 'cloudflare'
       LETS_ENCRYPT_EMAIL: 'govols@example.org'
@@ -90,11 +108,9 @@ services:
       FRONTEND2_DOMAIN: 'profile-api.gtis.guru'
       BACKEND1_URL: 'http://ui:8000'
       BACKEND2_URL: 'http://api:80'
-    env_file:
-      - ./development/local.env
 
   broker:
-    image: silintl/idp-id-broker
+    image: silintl/idp-id-broker:develop-4.0
     volumes:
       - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
     ports:

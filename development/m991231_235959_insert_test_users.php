@@ -9,8 +9,8 @@ class m991231_235959_insert_test_users extends Migration
     public function safeUp()
     {
         $this->batchInsert('{{user}}',
-            ['id','uuid'                                ,'employee_id','first_name','last_name','username','email'              ,'active','locked','last_changed_utc'   ,'last_synced_utc'    ,'require_mfa','nag_for_mfa_after'    ],[
-            [ 1  ,'2b2d424e-8cb0-49c7-8c0b-7f660340f5fa','11111'      ,'Testy'     ,'Testerson','a'       ,'testing@example.org','yes'   ,'no'    , MySqlDateTime::now(), MySqlDateTime::now(),'no'         , MySqlDateTime::today()],
+            ['id','uuid'                                ,'employee_id','first_name','last_name','username','email'              ,'active','locked','last_changed_utc'   ,'last_synced_utc'    ,'require_mfa','nag_for_mfa_after'    ,'nag_for_method_after' ],[
+            [ 1  ,'2b2d424e-8cb0-49c7-8c0b-7f660340f5fa','11111'      ,'Testy'     ,'Testerson','a'       ,'testing@example.org','yes'   ,'no'    , MySqlDateTime::now(), MySqlDateTime::now(),'no'         , MySqlDateTime::today(), MySqlDateTime::today()],
         ]);
 
         $this->batchInsert('{{password}}',

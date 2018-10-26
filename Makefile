@@ -1,21 +1,20 @@
-start:
+start: deps
 	docker-compose pull
-	docker-compose up -d
+	docker-compose up -d proxy
+
+# TODO: do we need the ability to run the app locally in "production" mode from the dist folder?
 
 deps:
-	npm install
+	docker-compose run node npm install
 
 dist: deps
-	npm run build
+	docker-compose run node npm run build
 
-dev: deps
-	npm run serve
-
-errors:
+logs:
 	docker-compose logs
 	docker-compose exec idp cat /var/log/apache2/error.log
 	
 clean:
+	docker-compose run node npm run clean
 	docker-compose kill
-	docker system prune -f
-	npm run clean
+	docker-compose rm -f

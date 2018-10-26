@@ -5,6 +5,7 @@
         {{ $vuetify.t('$vuetify.2sv.codes.new.header') }}
       </template>
     </BasePage>
+<!-- TODO: might be useful for "copy" function (https://github.com/30-seconds/30-seconds-of-code#copytoclipboard-) -->
 
     <ButtonBar>
       <v-spacer></v-spacer>

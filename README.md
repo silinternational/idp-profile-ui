@@ -10,7 +10,7 @@ Project is managed with [vue-cli](https://github.com/vuejs/vue-cli).
 
 ## Environment
 
-This app can be run against HTTPS if needed for U2F testing. In order to run in that mode, _traefik_ will need to be configured. Simply `cp development/local.env.dist development/local.env` and populate the traefik-related vars with the appropriate values. Some are also located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
+This app is setup to run against HTTPS for U2F testing. In order to facilitate this _traefik_ must be configured. Simply `cp development/local.env.dist development/local.env` and populate the traefik-related vars with the appropriate values. Some are also located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
 
 ## i18n
 
@@ -19,18 +19,17 @@ i18n support is built-in however the translation files must be generated and dro
 ## Run locally
 
 1.  Run `make` from the project root.
-1.  The app will be running on the localhost either referenced by the domain configured for traefik, e.g., [https://profile.gtis.guru](https://profile.gtis.guru), or simply [http://localhost:8000](http://localhost:8000).
+1.  The app will be running on the domain configured for traefik, e.g., [https://profile.gtis.guru](https://profile.gtis.guru).
 
 ### Authentication
 
-1.  If authentication is required, visit [https://profile-api.gtis.guru/auth/login?client_id=abc123](https://profile-api.gtis.guru/auth/login?client_id=abc123)
+1.  An IdP infrastructure will be running locally and is required for authentication into the app, it can be accessed at the traefik-configured domain, e.g., [https://profile-api.gtis.guru/auth/login?client_id=abc123](https://profile-api.gtis.guru/auth/login?client_id=abc123).
 1.  Username: **a**
 1.  Password: **a**
 
 ## Local development
 
-1.  Run `make dev` from the project root.
-1.  The app will be running on the localhost at [http://localhost:8000](http://localhost:8000).
+1.  When the `make` is run, the project will be in development mode and any updates made othe code will automatically be reloaded.
 
 # Build for deployment
 
