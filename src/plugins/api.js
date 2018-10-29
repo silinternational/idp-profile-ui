@@ -3,8 +3,7 @@ import axios from 'axios';
 
 // Full config:  https://github.com/axios/axios#request-config
 const api = axios.create({
-  // baseURL: `${process.env.VUE_APP_ADMIN_API_BASE_URL}`,
-  baseURL: '//profile-api.gtis.guru', // TODO: make an ENV var
+  baseURL: `${process.env.VUE_APP_API_BASE_URL}`,
   withCredentials: true
 });
 

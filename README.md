@@ -10,7 +10,9 @@ Project is managed with [vue-cli](https://github.com/vuejs/vue-cli).
 
 ## Environment
 
-This app is setup to run against HTTPS for U2F testing. In order to facilitate this _traefik_ must be configured. Simply `cp development/local.env.dist development/local.env` and populate the traefik-related vars with the appropriate values. Some are also located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
+1.  `cp .env.dist .env.local` and populate with appropriate values.
+
+This app is setup to run against HTTPS for U2F testing. In order to facilitate this _traefik_ must be configured. Some values are located in the `.env.local` and some are located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
 
 ## i18n
 

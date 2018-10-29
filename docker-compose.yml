@@ -27,7 +27,7 @@ services:
       - zxcvbn
       - idp
     env_file:
-      - ./development/local.env
+      - ./.env.local
     environment:
       MYSQL_HOST: 'profileDb'
       MYSQL_DATABASE: 'profile'
@@ -97,7 +97,7 @@ services:
     volumes:
       - ./development/cert:/cert
     env_file:
-      - ./development/local.env
+      - ./.env.local
     environment:
       DNS_PROVIDER: 'cloudflare'
       LETS_ENCRYPT_EMAIL: 'govols@example.org'
@@ -118,7 +118,7 @@ services:
     depends_on:
       - brokerDb
     env_file:
-      - ./development/local.env
+      - ./.env.local
     environment:
       APP_ENV: 'dev'
       API_ACCESS_KEYS: 'local-testing-abc123'
@@ -179,7 +179,7 @@ services:
       - silAuthDb
       - broker
     env_file:
-      - ./development/local.env
+      - ./.env.local
     environment:
       ADMIN_PASS: 'a'
       SECURE_COOKIE: 'false'
