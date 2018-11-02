@@ -1,9 +1,24 @@
 import Vue from 'vue';
 import api from './api';
+import token from '@/global/token';
 
 let user = {
-  update: async function update() {
-    Object.assign(this, await api.fake('GET /user/me', USER_W_NOTHING));
+  refresh: async function() {
+    Object.assign(this, await api.get('/user/me'));
+  },
+  isAuthenticated() {
+    return !!this.idp_username;
+  },
+  login(returnTo) {
+    let loginUrl = `${
+      api.defaults.baseURL
+    }/auth/login?client_id=${token.key()}`;
+
+    if (returnTo) {
+      loginUrl += `&ReturnTo=${returnTo}`;
+    }
+
+    window.location = loginUrl;
   },
   new() {
     return !this.password_meta;
@@ -13,6 +28,8 @@ let user = {
 Vue.use(theVue => {
   theVue.prototype.$user = user;
 });
+
+export default user; // provided as an export in case other plugins need the user, e.g., ./api.js
 
 // TODO: temp stubs, remove once real calls are integrated
 

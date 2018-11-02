@@ -1,22 +1,23 @@
 import Vue from 'vue';
 import axios from 'axios';
+import token from '@/global/token';
+import user from '@/plugins/user';
 
 // Full config:  https://github.com/axios/axios#request-config
 const api = axios.create({
   baseURL: `${process.env.VUE_APP_API_BASE_URL}`,
+  headers: {
+    Authorization: token.authzHeader()
+  },
   withCredentials: true
 });
 
 api.interceptors.response.use(
   response => response.data,
   error => {
-    // if (
-    //   !error.response ||
-    //   !error.response.status ||
-    //   error.response.status == 401
-    // ) {
-    //   window.location.href = `${process.env.VUE_APP_ADMIN_API_BASE_URL}/login`;
-    // }
+    if (error.response && error.response.status == 401) {
+      user.login();
+    }
 
     return Promise.reject(error);
   }

@@ -43,7 +43,7 @@ services:
       SUPPORT_FEEDBACK: 'https://www.example.org/support-feedback'
       UI_URL: 'https://profile.gtis.guru'
       LOGO_URL: 'https://www.sil.org'
-      UI_CORS_ORIGIN: '*'
+      UI_CORS_ORIGIN: 'https://profile.gtis.guru'
       ACCESS_TOKEN_HASH_KEY: 'KEY4TESTING'
       ZXCVBN_API_BASEURL: 'http://zxcvbn:3000'
       ID_BROKER_baseUrl: 'http://broker'

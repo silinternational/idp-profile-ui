@@ -4,6 +4,9 @@ export default [
   {
     path: '/home',
     alias: '/',
-    component: Home
+    component: Home,
+    meta: {
+      public: true
+    }
   }
 ];

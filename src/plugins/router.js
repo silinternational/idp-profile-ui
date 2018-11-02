@@ -24,7 +24,13 @@ const configuredRouter = new Router({
 });
 
 configuredRouter.beforeEach(async (to, from, next) => {
-  await Vue.prototype.$user.update();
+  if (!to.meta.public) {
+    try {
+      await Vue.prototype.$user.refresh();
+    } catch (e) {
+      return next(false);
+    }
+  }
 
   next();
 });
