@@ -85,10 +85,10 @@
   "password": {
     "create": {
       "header": "Create a password for your {0} Identity",
-      "pwInput": "Your new password"
-    },
-    "constraints": {
-      "header": "Minimum requirements:"
+      "pwInput": "Your new password",
+      "required": "A new password is required",
+      "tooShort": "Your new password must be at least {0} characters",
+      "tooLong": "Your new password cannot be longer than {0} characters"
     },
     "strength": {
       "header": "Password strength"

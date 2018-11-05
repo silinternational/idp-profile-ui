@@ -16,12 +16,8 @@
         <!-- TODO: consider password suggestions for the user (https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/index.html#6-validation) -->
       </v-form>
 
-      <v-layout row justify-space-around>
-        <PasswordConstraints />
-
-        <!-- TODO: users will not be looking at screen most likely, design this indicator accordingly. -->
-        <PasswordStrength :password="password" />
-      </v-layout>
+      <!-- TODO: users will not be looking at screen most likely, design this indicator accordingly. -->
+      <PasswordStrength :password="password" />
     </BasePage>
 
     <template slot="actions">
@@ -39,25 +35,35 @@
 </template>
 
 <script>
-import PasswordConstraints from './PasswordConstraints';
 import PasswordStrength from './PasswordStrength';
 import ProfileWizard from '@/profile/ProfileWizard';
 
 export default {
   components: {
-    PasswordConstraints,
     PasswordStrength,
     ProfileWizard
   },
   data: vm => ({
     password: vm.$root.$data.password || '',
-    //TODO: need to integrate API call as well as the translations
-    rules: [v => v.length > 8 || 'too short']
+    rules: [
+      v => !!v || vm.$vuetify.t('$vuetify.password.create.required'),
+      v =>
+        v.length > vm.$config.password.minLength.value ||
+        vm.$vuetify.t(
+          '$vuetify.password.create.tooShort',
+          vm.$config.password.minLength.value
+        ),
+      v =>
+        v.length < vm.$config.password.maxLength.value ||
+        vm.$vuetify.t(
+          '$vuetify.password.create.tooLong',
+          vm.$config.password.maxLength.value
+        )
+    ]
   }),
   methods: {
-    save: async function() {
+    save: function() {
       if (this.$refs.form.validate()) {
-        // TODO: should we make a "verify" call to the api here? (check for reused pw or a pwned one perhaps...)
         this.$root.$data.password = this.password;
 
         this.$router.push('/password/confirm');
