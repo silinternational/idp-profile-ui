@@ -59,7 +59,9 @@ export default {
   methods: {
     confirm: async function() {
       if (this.$refs.form.validate()) {
-        await this.$API.fake('PUT or POST /password');
+        await this.$API.put('password', {
+          password: this.password
+        });
 
         this.$refs.wizard.complete();
 
