@@ -9,22 +9,36 @@
         {{ $vuetify.t('$vuetify.password.recovery.explanation') }}
       </p>
 
-      <p v-if="methods.length">
+      <p v-if="methods.personal.length">
         {{ $vuetify.t('$vuetify.password.recovery.atLeastOneRecovery') }}
       </p>
       <p v-else>
         {{ $vuetify.t('$vuetify.password.recovery.advice') }}
       </p>
       
-      <ul class="body-2">
-        <!-- TODO: we don't want users trying to enter their "work" email so we should either list it here (with an explanatory tooltip or something) in a subdued state OR we need to vlidate their entry to ensure it's not their "work" email -->
-        <li v-for="(method, i) in methods" :key="i" class="layout row pb-2">
-          {{ method.email }}
+      <ul>
+        <li class="subheading grey--text py-2">{{ $vuetify.t('$vuetify.password.recovery.systemHeader') }}</li>
+        <li v-for="method in methods.builtIn" :key="method.type" class="pl-3">
+          {{ method.value }}
+        </li>
+      </ul>
 
-          <v-tooltip :disabled="methods.length > 1" right>
-            <v-icon @click="remove(method, i)" slot="activator" :disabled="methods.length == 1" color="error" small class="pl-3">delete</v-icon>
+      <ul>
+        <li class="subheading grey--text py-2">
+          {{ $vuetify.t('$vuetify.password.recovery.personalHeader') }}
+        </li>
+        <li v-for="method in methods.personal" :key="method.id" class="layout row pb-2 pl-3">
+          {{ method.value }}
+
+          <v-tooltip :disabled="methods.personal.length > 1" right>
+            <v-icon @click="remove(method.id)" slot="activator" :disabled="methods.personal.length == 1" color="error" small class="pl-3">
+              delete
+            </v-icon>
             {{ $vuetify.t('$vuetify.password.recovery.dontRemoveLastOne') }}
           </v-tooltip>
+        </li>
+        <li v-if="! methods.personal.length" class="pl-3">
+          <em>{{ $vuetify.t('$vuetify.password.recovery.noPersonalMethods') }}</em>
         </li>
       </ul>
 
@@ -35,7 +49,7 @@
           :label="$vuetify.t('$vuetify.password.recovery.emailInput')" 
           v-model="newEmail"
           :rules="[
-            // this field is never required so it must either be empty or a valid email (W3C's HTML5 type=email regex)
+            // this field is never required so it must either be empty or hold a VALID email (W3C's HTML5 type=email regex)
             v => /^$|^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) || $vuetify.t('$vuetify.password.recovery.invalidEmail')
           ]"
           validate-on-blur
@@ -48,17 +62,17 @@
     </BasePage>
 
     <template slot="actions">
-      <v-btn v-if="!methods.length" to="/2sv/intro" @click="$refs.wizard.skipped()" color="warning" flat>
+      <v-btn v-if="!methods.personal.length" to="/2sv/intro" @click="$refs.wizard.skipped()" color="warning" flat>
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-tooltip :disabled="!(unsaved || !methods.length)" right>
+      <v-tooltip :disabled="!(unsaved || !methods.personal.length)" right>
         <v-btn to="/2sv/intro" 
                @click="$refs.wizard.complete()" 
                slot="activator" 
-               :disabled="unsaved || !methods.length" 
+               :disabled="unsaved || !methods.personal.length" 
                color="primary" 
                flat>
           {{ $vuetify.t('$vuetify.global.button.continue') }}
@@ -78,38 +92,44 @@ export default {
     ProfileWizard
   },
   data: () => ({
-    methods: [],
+    methods: {
+      builtIn: [],
+      personal: []
+    },
     newEmail: ''
   }),
   computed: {
     unsaved: vm => vm.newEmail != ''
   },
   async created() {
-    this.methods = await this.$API.fake('GET /method', [
-      {
-        id: 1,
-        email: 'YHWH@example.org'
-      }
-    ]);
+    const all = await this.$API.get('method');
+
+    all.reduce((methods, m) => {
+      // no need to worry whether methods are verified or not in this context, that's addressed on the profile page.
+      m.type == 'email' ? methods.personal.push(m) : methods.builtIn.push(m);
+
+      return methods;
+    }, this.methods);
   },
   methods: {
     add: async function() {
       if (this.$refs.form.validate()) {
-        this.methods.push(
-          await this.$API.fake('POST /method', {
-            id: this.methods.length + 1,
-            email: this.newEmail
-          })
-        );
+        const newMethod = await this.$API.post('method', {
+          type: 'email',
+          value: this.newEmail
+        });
 
         this.newEmail = '';
+
+        this.methods.personal.push(newMethod);
       }
     },
-    remove: async function(method, i) {
-      this.methods.splice(
-        await this.$API.fake(`DELETE /method/${method.id}`, i),
-        1
-      );
+    remove: async function(id) {
+      await this.$API.delete(`method/${id}`);
+
+      const i = this.methods.personal.findIndex(m => m.id == id);
+
+      this.methods.personal.splice(i, 1);
     }
   }
 };
@@ -118,10 +138,5 @@ export default {
 <style scoped>
 li {
   list-style-type: none;
-}
-/* had to modify vuetify's ma-2 in order to vertically center the icon button on the "outlined" version of the text-field */
-.ma-2-mod {
-  margin-top: 11px !important;
-  margin-bottom: 11px !important;
 }
 </style>
