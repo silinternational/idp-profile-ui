@@ -20,8 +20,10 @@
         <li>
           <p class="layout column pl-4">
             {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.qr') }}
-            <!-- TODO: integrate api call for this qrcode -->
-            <img src="@/assets/google-authenticator-qr-code.png" class="pa-4">
+            
+            <v-layout row justify-center>
+              <v-img v-if="mfa.data" :src="mfa.data.imageUrl" max-width="200" />
+            </v-layout>
           </p>        
         </li>
       </ol>
@@ -34,7 +36,7 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/smartphone/verify-qr-code" color="primary" flat> 
+      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${mfa.id}`" :disabled="! mfa.id" color="primary" flat> 
         {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.button.ok') }}
       </v-btn>
     </ButtonBar>
@@ -47,6 +49,12 @@ import ProfileWizard from '@/profile/ProfileWizard';
 export default {
   components: {
     ProfileWizard
+  },
+  data: () => ({
+    mfa: {}
+  }),
+  async created() {
+    this.mfa = await this.$API.post('mfa', { type: 'totp' });
   }
 };
 </script>

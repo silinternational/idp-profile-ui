@@ -56,8 +56,9 @@ export default {
   methods: {
     verify: async function() {
       if (this.$refs.form.validate()) {
-        const code = this.code.trim();
-        await this.$API.fake('PUT or POST /method', code);
+        await this.$API.post(`mfa/${this.$route.query.id}/verify`, {
+          value: this.code.trim()
+        });
 
         this.$router.push('/2sv/smartphone/code-verified');
       }
