@@ -167,14 +167,14 @@
         }
       },
       "insert": {
-        "header": "Insert USB security key",
+        "header": "Insert your USB security key",
         "button": {
           "ok": "OK, I inserted it"
         }
       },
       "touch": {
         "header": "Touch or press your USB security key",
-        "info": "Your security key should be blinking now, go ahead and press its button or touch its sensor."
+        "info": "Once your security key starts blinking, go ahead and press its button or touch its sensor."
       },
       "confirmed": {
         "header": "Excellent!",
