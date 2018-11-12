@@ -4,6 +4,8 @@
       <template slot="header">
         {{ $vuetify.t('$vuetify.2sv.codes.new.header') }}
       </template>
+
+      {{ codes }}
     </BasePage>
 <!-- TODO: might be useful for "copy" function (https://github.com/30-seconds/30-seconds-of-code#copytoclipboard-) -->
 
@@ -23,6 +25,14 @@ import ProfileWizard from '@/profile/ProfileWizard';
 export default {
   components: {
     ProfileWizard
+  },
+  data: () => ({
+    codes: []
+  }),
+  async created() {
+    const newCodes = await this.$API.post('mfa', { type: 'backupcode' });
+
+    this.codes = newCodes.data;
   },
   methods: {
     finish: function() {

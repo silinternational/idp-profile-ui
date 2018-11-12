@@ -53,6 +53,7 @@ export default {
 
       this.touched = true;
 
+      // pause for a moment so user can see the checkmark.
       setTimeout(
         () => this.$router.push('/2sv/usb-security-key/confirmed'),
         500

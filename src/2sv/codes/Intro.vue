@@ -9,18 +9,17 @@
         {{ $vuetify.t('$vuetify.2sv.codes.intro.info') }}
       </p>
 
-      <p>
+      <!-- <p>
         –OR–
       </p>
 
       <p>
         {{ $vuetify.t('$vuetify.2sv.codes.intro.warning') }}
-      </p>
+      </p> -->
     </BasePage>
 
     <ButtonBar>
-      <!-- TODO: the color of this button may need to change depending on state of 2sv so far or it could always be yellow with a tooltip about the improtance of having backup codes even if you have other 2sv options. -->
-      <v-btn to="/profile/complete" flat tabindex="-1"> 
+      <v-btn to="/profile/complete" flat color="warning" tabindex="-1"> 
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
