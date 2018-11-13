@@ -1,4 +1,4 @@
-
+koc
 <template>
   <v-card class="layout column">
     <v-card-title primary-title>
@@ -6,8 +6,8 @@
     </v-card-title>
 
     <v-card-text class="grow">
-      <div v-for="method in methods" :key="method.email">
-        {{ method.email }}
+      <div v-for="method in methods" :key="method.value">
+        {{ method.value }}
       </div>
       <div v-if="! methods.length" class="layout row align-center">
         <v-icon x-large color="warning" class="pr-3">

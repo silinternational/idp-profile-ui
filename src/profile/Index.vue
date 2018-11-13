@@ -11,50 +11,58 @@
       
       <v-spacer />
       
-      <ProfileProgress :profile="$user"/>
+      <ProfileProgress :profile="{recoveryMethods, mfas}"/>
     </template>
 
     <v-layout row wrap>
-      <IndexPasswordCard :meta="$user.password_meta" class="mx-3 mb-4" />
-      <IndexPasswordRecoveryCard :methods="$user.methods" class="mx-3 mb-4" />
+      <PasswordCard :meta="$user.password_meta" class="mx-3 mb-4" />
+      <PasswordRecoveryCard :methods="recoveryMethods" class="mx-3 mb-4" />
     </v-layout>
 
     <v-subheader class="py-5">
       {{ $vuetify.t('$vuetify.profile.index.2sv') }}
     </v-subheader>
     <v-layout row wrap>
-      <IndexTotpCard :meta="totp" class="mx-3 mb-4" />
-      <IndexU2fCard :meta="u2f" class="mx-3 mb-4" />
-      <IndexCodeCard :meta="codes" class="mx-3 mb-4" />
+      <TotpCard :meta="totp" class="mx-3 mb-4" />
+      <U2fCard :meta="u2f" class="mx-3 mb-4" />
+      <BackupCodeCard :meta="codes" class="mx-3 mb-4" />
     </v-layout>
   </BasePage>
 </template>
 
 <script>
 import ProfileProgress from './ProfileProgress';
-import IndexPasswordCard from './IndexPasswordCard';
-import IndexPasswordRecoveryCard from './IndexPasswordRecoveryCard';
-import IndexTotpCard from './IndexTotpCard';
-import IndexU2fCard from './IndexU2fCard';
-import IndexCodeCard from './IndexCodeCard';
+import PasswordCard from './PasswordCard';
+import PasswordRecoveryCard from './PasswordRecoveryCard';
+import TotpCard from './TotpCard';
+import U2fCard from './U2fCard';
+import BackupCodeCard from './BackupCodeCard';
 
 export default {
   components: {
     ProfileProgress,
-    IndexPasswordCard,
-    IndexPasswordRecoveryCard,
-    IndexTotpCard,
-    IndexU2fCard,
-    IndexCodeCard
+    PasswordCard,
+    PasswordRecoveryCard,
+    TotpCard,
+    U2fCard,
+    BackupCodeCard
+  },
+  data: () => ({
+    recoveryMethods: [],
+    mfas: []
+  }),
+  async created() {
+    this.recoveryMethods = await this.$API.get('method');
+    this.mfas = await this.$API.get('mfa');
   },
   computed: {
     lastLogin: vm =>
       `${new Date(
         vm.$user.password_meta.last_login
       ).toLocaleString()}, Fort Mill, South Carolina, United States`,
-    totp: vm => vm.$user.mfa.find(mfa => mfa.type == 'totp') || {},
-    u2f: vm => vm.$user.mfa.find(mfa => mfa.type == 'u2f') || {},
-    codes: vm => vm.$user.mfa.find(mfa => mfa.type == 'backupcode') || {}
+    totp: vm => vm.mfas.find(mfa => mfa.type == 'totp') || {},
+    u2f: vm => vm.mfas.find(mfa => mfa.type == 'u2f') || {},
+    codes: vm => vm.mfas.find(mfa => mfa.type == 'backupcode') || {}
   }
 };
 </script>

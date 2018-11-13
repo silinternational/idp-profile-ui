@@ -8,7 +8,6 @@
     <v-card-text class="grow">
       <div>{{ $vuetify.t('$vuetify.profile.index.passwordCard.lastChanged', pwChanged) }}</div>
       <div>{{ $vuetify.t('$vuetify.profile.index.passwordCard.expires', pwExpires) }}</div>
-      <div>{{ $vuetify.t('$vuetify.profile.index.passwordCard.strength', meta.strength) }}</div>
     </v-card-text>
 
     <v-card-actions>

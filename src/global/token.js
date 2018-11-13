@@ -1,26 +1,16 @@
 init();
 
 export default {
-  key: () => sessionStorage.getItem('key'),
-  authzHeader() {
-    const token_type = sessionStorage.getItem('token_type');
-    const access_token = sessionStorage.getItem('access_token');
-
-    return `${token_type} ${this.key()}${access_token}`;
-  }
+  key: () => get('key'),
+  authzHeader: () => `${get('token_type')} ${get('key') + get('access_token')}`
 };
 
 function init() {
-  // TODO: currently no IE support for URLSearchParams (https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams#Browser_compatibility)
-  // check this out for further info:  https://developers.google.com/web/updates/2016/01/urlsearchparams
-  // polyfill if needed (https://github.com/jerrybendy/url-search-params-polyfill) or the WebReflection one...
-  let params = new URLSearchParams(location.search);
+  sessionStorage.setItem('key', get('key') || createKey());
+  sessionStorage.setItem('token_type', get('token_type') || 'Bearer');
+  sessionStorage.setItem('access_token', get('access_token') || '');
 
-  sessionStorage.setItem('key', sessionStorage.getItem('key') || createKey());
-  sessionStorage.setItem('token_type', params.get('token_type') || 'Bearer');
-  sessionStorage.setItem('access_token', params.get('access_token') || '');
-
-  //TODO: should I go ahead and "clear" location.search and will that cause problems if there are other qs params?
+  //TODO: should I go ahead and "clear" location.search or will that cause problems if there are other qs params?
 }
 
 function createKey() {
@@ -33,4 +23,13 @@ function createKey() {
   return key;
 }
 
-//TODO: is there a need to "clear" sessionStorage?
+function get(key) {
+  // TODO: currently no IE support for URLSearchParams (https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams#Browser_compatibility)
+  // check this out for further info:  https://developers.google.com/web/updates/2016/01/urlsearchparams
+  // polyfill if needed (https://github.com/jerrybendy/url-search-params-polyfill) or the WebReflection one...
+  const params = new URLSearchParams(location.search);
+
+  return sessionStorage.getItem(key) || params.get(key);
+}
+
+//TODO: is there a need to "clear" sessionStorage, e.g., logout perhaps?

@@ -1,5 +1,5 @@
 <template>
-  <progress :value="progress">asdfkjh</progress>
+  <progress :value="progress"></progress>
 </template>
 
 <script>
@@ -8,7 +8,10 @@ export default {
     profile: {
       type: Object,
       default: () => ({
-        profile: {}
+        profile: {
+          recoveryMethods: [],
+          mfas: []
+        }
       })
     }
   },
@@ -23,11 +26,11 @@ function deriveIndex(profile) {
   //TODO: need to discuss this algorithm.
   let index = 0;
 
-  if (profile.methods.length > 1) {
+  if (profile.recoveryMethods.length > 1) {
     index += 0.25;
   }
 
-  index += 0.25 * profile.mfa.length;
+  index += 0.25 * profile.mfas.length;
 
   return index > 1 ? 1 : index;
 }

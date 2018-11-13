@@ -46,8 +46,7 @@
       "passwordCard": {
         "title": "Password",
         "lastChanged": "Last changed: {0}",
-        "expires": "Expires: {0}",
-        "strength": "Strength: {0}"
+        "expires": "Expires: {0}"
       },
       "passwordRecoveryCard": {
         "title": "Password recovery",
