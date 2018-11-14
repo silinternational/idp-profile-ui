@@ -1,6 +1,7 @@
 // component name reference https://github.com/vuetifyjs/vuetify/tree/dev/src/components
 import {
   Vuetify,
+  VAlert,
   VApp,
   VBtn,
   VCard,
@@ -29,6 +30,7 @@ Vue.use(Vuetify, {
   },
   components: {
     Vuetify,
+    VAlert,
     VApp,
     VBtn,
     VCard,

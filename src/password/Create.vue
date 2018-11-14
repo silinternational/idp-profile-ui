@@ -13,11 +13,25 @@
           :rules="rules" 
           validate-on-blur 
           autofocus />
-        <!-- TODO: consider password suggestions for the user (https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/index.html#6-validation) -->
-      </v-form>
 
-      <!-- TODO: users will not be looking at screen most likely, design this indicator accordingly. -->
-      <PasswordStrength :password="password" />
+        <v-alert v-if="password" :value="showFeedback" :type="strength.feedback.warning ? 'error' : 'info'" outline>
+          <header class="body-2">
+            {{ strength.feedback.warning }}
+          </header>
+          
+          <ul>
+            <li v-for="suggestion in strength.feedback.suggestions" :key="suggestion">
+              {{ suggestion }}
+            </li>
+          </ul>
+
+          <footer class="layout row align-center justify-end">
+            <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank" class="caption">
+              {{ $vuetify.t('$vuetify.global.learnMore') }}
+            </a>
+          </footer>
+        </v-alert>
+      </v-form>
     </BasePage>
 
     <template slot="actions">
@@ -35,32 +49,27 @@
 </template>
 
 <script>
-import PasswordStrength from './PasswordStrength';
 import ProfileWizard from '@/profile/ProfileWizard';
+import zxcvbn from 'zxcvbn';
 
 export default {
   components: {
-    PasswordStrength,
     ProfileWizard
   },
   data: vm => ({
     password: vm.$root.$data.password || '',
     rules: [
-      v => !!v || vm.$vuetify.t('$vuetify.password.create.required'),
-      v =>
-        v.length > vm.$config.password.minLength.value ||
-        vm.$vuetify.t(
-          '$vuetify.password.create.tooShort',
-          vm.$config.password.minLength.value
-        ),
-      v =>
-        v.length < vm.$config.password.maxLength.value ||
-        vm.$vuetify.t(
-          '$vuetify.password.create.tooLong',
-          vm.$config.password.maxLength.value
-        )
+      v => required(v, vm),
+      v => minLength(v, vm),
+      v => maxLength(v, vm),
+      v => strong(v, vm)
     ]
   }),
+  computed: {
+    strength: vm => zxcvbn(vm.password),
+    showFeedback: vm =>
+      vm.strength.feedback.warning || vm.strength.feedback.suggestions.length
+  },
   methods: {
     save: function() {
       if (this.$refs.form.validate()) {
@@ -71,4 +80,25 @@ export default {
     }
   }
 };
+
+const required = (v, vm) =>
+  !!v || vm.$vuetify.t('$vuetify.password.create.required');
+
+const minLength = (v, vm) =>
+  v.length > vm.$config.password.minLength.value ||
+  vm.$vuetify.t(
+    '$vuetify.password.create.tooShort',
+    vm.$config.password.minLength.value
+  );
+
+const maxLength = (v, vm) =>
+  v.length < vm.$config.password.maxLength.value ||
+  vm.$vuetify.t(
+    '$vuetify.password.create.tooLong',
+    vm.$config.password.maxLength.value
+  );
+
+const strong = (v, vm) =>
+  vm.strength.score >= vm.$config.password.zxcvbn.minScore ||
+  vm.$vuetify.t('$vuetify.password.create.tooWeak');
 </script>
