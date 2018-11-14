@@ -10,29 +10,25 @@ export default {
       default: () => ({
         profile: {
           recoveryMethods: [],
-          mfas: []
+          mfas: [],
+          user: {}
         }
       })
     }
   },
   computed: {
-    progress: vm => deriveIndex(vm.profile)
-  },
-  created() {},
-  methods: {}
+    progress: vm => deriveCompleteness(vm.profile)
+  }
 };
 
-function deriveIndex(profile) {
-  //TODO: need to discuss this algorithm.
-  let index = 0;
+function deriveCompleteness(profile) {
+  let index = profile.user.password_meta ? 0.25 : 0;
 
-  if (profile.recoveryMethods.length > 1) {
-    index += 0.25;
-  }
+  index += 0.25 * Math.min(profile.recoveryMethods.length, 1);
 
-  index += 0.25 * profile.mfas.length;
+  index += 0.25 * Math.min(profile.mfas.length, 2);
 
-  return index > 1 ? 1 : index;
+  return index;
 }
 </script>
 

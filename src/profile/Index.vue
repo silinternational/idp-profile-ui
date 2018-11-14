@@ -11,7 +11,7 @@
       
       <v-spacer />
       
-      <ProfileProgress :profile="{recoveryMethods, mfas}"/>
+      <ProfileProgress :profile="{recoveryMethods, mfas, user: $user}"/>
     </template>
 
     <v-layout row wrap>
