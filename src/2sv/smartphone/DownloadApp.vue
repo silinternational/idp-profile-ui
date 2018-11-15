@@ -10,7 +10,7 @@
       </p>
 
       <figure class="layout row align-center justify-center mb-5">
-        <img src="@/assets/google-authenticator-logo.webp">
+        <img src="@/assets/google-authenticator-logo.jpg">
 
         <figcaption class="headline ml-3">
           {{ $vuetify.t('$vuetify.2sv.smartphone.download.recommended') }}

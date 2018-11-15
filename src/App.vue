@@ -2,7 +2,7 @@
   <v-app>
     <v-toolbar app color="primary">
       <!-- TODO: consider using v-img for ALL img's -->
-      <img src="@/assets/logo.webp">
+      <img src="@/assets/logo.png">
     </v-toolbar>
   
     <v-content>
