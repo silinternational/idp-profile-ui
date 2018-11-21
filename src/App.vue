@@ -27,11 +27,11 @@ export default {
   }),
   beforeCreate() {
     this.$API.interceptors.response.use(
-      response => response.data,
+      response => response,
       error => {
-        this.message = error.response.data.message;
+        this.message = error.message;
 
-        throw error.response.data;
+        throw error;
       }
     );
   },

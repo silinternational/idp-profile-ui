@@ -19,7 +19,7 @@ api.interceptors.response.use(
       user.login();
     }
 
-    throw error;
+    throw error.response.data;
   }
 );
 
