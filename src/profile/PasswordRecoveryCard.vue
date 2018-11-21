@@ -8,6 +8,11 @@ koc
     <v-card-text class="grow">
       <div v-for="method in methods" :key="method.value">
         {{ method.value }}
+
+        <v-tooltip v-if="method.verified == false" right>
+          <v-icon slot="activator" color="warning" small class="pl-1">warning</v-icon>
+          {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
+        </v-tooltip>
       </div>
       <div v-if="! methods.length" class="layout row align-center">
         <v-icon x-large color="warning" class="pr-3">
@@ -23,7 +28,7 @@ koc
       <v-spacer />
       
       <v-btn color="primary" flat>
-        <!-- TODO: need to make these buttons pointing to the rigt place in the wizard -->
+        <!-- TODO: need to make these buttons point to the right place in the wizard -->
         <span v-if="methods.length">{{ $vuetify.t('$vuetify.global.button.change') }}</span>
         <span v-else>{{ $vuetify.t('$vuetify.global.button.add') }}</span>
       </v-btn>
