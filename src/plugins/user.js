@@ -10,6 +10,8 @@ let user = {
     return !!this.idp_username;
   },
   login(returnTo) {
+    token.reset();
+
     let loginUrl = `${
       api.defaults.baseURL
     }/auth/login?client_id=${token.key()}`;
