@@ -115,7 +115,6 @@ export default {
     add: async function() {
       if (this.$refs.form.validate()) {
         const newMethod = await this.$API.post('method', {
-          type: 'email',
           value: this.newEmail
         });
 
