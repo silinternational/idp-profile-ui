@@ -10,7 +10,6 @@
       </div>
       
       <v-spacer />
-      
       <ProfileProgress :profile="{recoveryMethods, mfas, user: $user}"/>
     </template>
 
@@ -52,8 +51,11 @@ export default {
     mfas: []
   }),
   async created() {
-    this.recoveryMethods = await this.$API.get('method');
-    this.mfas = await this.$API.get('mfa');
+    const methodPromise = this.$API.get('method');
+    const mfaPromise = this.$API.get('mfa');
+
+    this.recoveryMethods = await methodPromise;
+    this.mfas = await mfaPromise;
   },
   computed: {
     lastLogin: vm =>
