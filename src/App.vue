@@ -6,6 +6,8 @@
     </v-toolbar>
 
     <v-content>
+      <Loading class="ma-0" />
+      
       <v-container>
         <v-alert :value="message" type="error" dismissible>
           <span class="layout row align-center justify-center">{{ message }}</span>
@@ -19,9 +21,12 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Loading from '@/global/Loading';
 
 export default {
+  components: {
+    Loading
+  },
   data: () => ({
     message: ''
   }),

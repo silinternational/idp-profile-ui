@@ -1,4 +1,4 @@
-// component name reference https://github.com/vuetifyjs/vuetify/tree/dev/src/components
+// component name reference https://github.com/vuetifyjs/vuetify/tree/master/packages/vuetify/src/components
 import {
   Vuetify,
   VAlert,
@@ -12,6 +12,7 @@ import {
   VIcon,
   VImg,
   VList,
+  VProgressLinear,
   VStepper,
   VSubheader,
   VTextField,
@@ -41,6 +42,7 @@ Vue.use(Vuetify, {
     VIcon,
     VImg,
     VList,
+    VProgressLinear,
     VStepper,
     VSubheader,
     VTextField,
