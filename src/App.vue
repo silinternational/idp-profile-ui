@@ -31,7 +31,7 @@ export default {
       error => {
         this.message = error.response.data.message;
 
-        throw error;
+        throw error.response.data;
       }
     );
   },
