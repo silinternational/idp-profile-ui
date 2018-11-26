@@ -16,8 +16,8 @@
           <v-icon v-else @click="$user.login('/profile')">person_outline</v-icon>
         </v-btn>
 
-        <span v-if="$user.isAuthenticated()">Log out</span>
-        <span v-else>Log in</span>
+        <span v-if="$user.isAuthenticated()">{{ $vuetify.t('$vuetify.app.logout') }}</span>
+        <span v-else>{{ $vuetify.t('$vuetify.app.login') }}</span>
       </v-tooltip>
     </v-toolbar>
 
