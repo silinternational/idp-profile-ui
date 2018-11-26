@@ -3,6 +3,22 @@
     <v-toolbar app color="primary">
       <!-- TODO: consider using v-img for ALL img's -->
       <img src="@/assets/logo.png">
+
+      <v-spacer />
+
+      <v-toolbar-title class="white--text">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
+
+      <v-divider vertical dark inset class="mx-2" />
+
+      <v-tooltip left>
+        <v-btn slot="activator" icon dark>
+          <v-icon v-if="$user.isAuthenticated()" @click="$user.logout()" small>exit_to_app</v-icon>
+          <v-icon v-else @click="$user.login('/profile')">person_outline</v-icon>
+        </v-btn>
+
+        <span v-if="$user.isAuthenticated()">Log out</span>
+        <span v-else>Log in</span>
+      </v-tooltip>
     </v-toolbar>
 
     <v-content>

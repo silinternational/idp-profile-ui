@@ -3,7 +3,8 @@ init();
 export default {
   key: () => get('key'),
   authzHeader: () => `${get('token_type')} ${get('key') + get('access_token')}`,
-  reset
+  reset,
+  accessToken: () => get('access_token')
 };
 
 function init() {

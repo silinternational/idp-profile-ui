@@ -22,6 +22,15 @@ let user = {
 
     window.location = loginUrl;
   },
+  logout() {
+    let logoutUrl = `${api.defaults.baseURL}/auth/logout?access_token=${
+      token.accessToken
+    }`;
+
+    token.reset();
+
+    window.location = logoutUrl;
+  },
   new() {
     return !this.password_meta;
   }
