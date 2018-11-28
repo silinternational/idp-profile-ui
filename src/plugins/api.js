@@ -13,7 +13,7 @@ const api = axios.create({
 
 api.interceptors.response.use(
   response => response.data,
-  error => Promise.reject(error.response.data)
+  error => Promise.reject((error.response && error.response.data) || error )
 );
 
 Vue.use(theVue => {
