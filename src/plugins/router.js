@@ -24,15 +24,21 @@ const configuredRouter = new Router({
 });
 
 configuredRouter.beforeEach(async (to, from, next) => {
+  let ok = true;
+
   if (!to.meta.public) {
     try {
       await Vue.prototype.$user.refresh();
     } catch (e) {
-      return next(false);
+      if (e.status == 401) {
+        Vue.prototype.$user.login(to.path);
+      }
+
+      ok = false;
     }
   }
 
-  next();
+  next(ok);
 });
 
 export default configuredRouter;

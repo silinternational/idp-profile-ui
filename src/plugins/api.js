@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
 import token from '@/global/token';
-import user from '@/plugins/user';
 
 // Full config:  https://github.com/axios/axios#request-config
 const api = axios.create({
@@ -14,13 +13,7 @@ const api = axios.create({
 
 api.interceptors.response.use(
   response => response.data,
-  error => {
-    if (error.response && error.response.status == 401) {
-      user.login();
-    }
-
-    throw error.response.data;
-  }
+  error => Promise.reject(error.response.data)
 );
 
 Vue.use(theVue => {
