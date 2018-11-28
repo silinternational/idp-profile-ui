@@ -3,7 +3,10 @@
     <v-card-title primary-title>
       <v-layout row align-center>
         <v-icon x-large>smartphone</v-icon>
-        <h3 class="headline pl-3">{{ meta.label || $vuetify.t('$vuetify.profile.index.totpCard.title') }}</h3>
+        
+        <MfaCardLabel :label="meta.label || $vuetify.t('$vuetify.profile.index.totpCard.title')" 
+                      :id="meta.id"
+                      @new-label="meta.label = $event" />
       </v-layout>
     </v-card-title>
         
@@ -40,7 +43,12 @@
 </template>
 
 <script>
+import MfaCardLabel from './MfaCardLabel';
+
 export default {
+  components: {
+    MfaCardLabel
+  },
   props: {
     meta: {
       type: Object,
