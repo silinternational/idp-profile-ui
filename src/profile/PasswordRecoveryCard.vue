@@ -57,7 +57,7 @@ export default {
       })
   },
   methods: {
-    resend: async function(method) {
+    async resend(method) {
       await this.$API.put(`method/${method.id}/resend`);
 
       method.resendable = false;

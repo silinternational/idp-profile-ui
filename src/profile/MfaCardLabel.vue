@@ -19,14 +19,14 @@ export default {
     newLabel: ''
   }),
   methods: {
-    edit: function() {
+    edit() {
       this.editing = true;
       this.newLabel = this.label;
     },
-    cancel: function() {
+    cancel() {
       this.editing = false;
     },
-    save: async function() {
+    async save() {
       const mfa = await this.$API.put(`method/${this.id}`, {
         label: this.newLabel
       });
