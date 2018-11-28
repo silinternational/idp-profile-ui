@@ -2,7 +2,7 @@
   <BasePage>
     <template slot="header">
       <div class="layout column">
-        {{ $user.first_name }} {{ $user.last_name }}
+        {{ $vuetify.t('$vuetify.profile.index.header', $config.idpName) }}
         
         <span v-if="$user.password_meta.last_login" class="caption">
           {{ $vuetify.t('$vuetify.profile.index.lastLogin', lastLogin) }}

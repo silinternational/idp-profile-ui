@@ -46,6 +46,7 @@
       }
     },
     "index": {
+      "header": "My {0} Identity",
       "lastLogin": "Last login: {0}",
       "passwordCard": {
         "title": "Password",
