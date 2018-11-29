@@ -48,11 +48,11 @@
     },
     "index": {
       "header": "My {0} Identity",
-      "lastLogin": "Last login: {0}",
+      "lastLogin": "Last login: ",
       "passwordCard": {
         "title": "Password",
-        "lastChanged": "Last changed: {0}",
-        "expires": "Expires: {0}"
+        "lastChanged": "Last changed:",
+        "expires": "Expires:"
       },
       "passwordRecoveryCard": {
         "title": "Password recovery",
@@ -62,7 +62,7 @@
       },
       "totpCard": {
         "title": "Smartphone",
-        "created": "Created: {0}",
+        "created": "Created:",
         "button": {
           "lost": "I lost my phone"
         },
@@ -70,7 +70,7 @@
       },
       "u2fCard": {
         "title": "USB security key",
-        "created": "Created: {0}",
+        "created": "Created:",
         "button": {
           "lost": "I lost my key"
         },
@@ -78,8 +78,8 @@
       },
       "codeCard": {
         "title": "Printable backup codes",
-        "created": "Created: {0}",
-        "remaining": "Remaining: {0}",
+        "created": "Created:",
+        "remaining": "Remaining:",
         "button": {
           "replace": "Replace",
           "add": "Create"

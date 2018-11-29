@@ -10,9 +10,7 @@
     </v-card-title>
         
     <v-card-text class="grow">
-      <span v-if="meta.created_utc">
-        {{ $vuetify.t('$vuetify.profile.index.u2fCard.created', created) }}
-      </span>
+      <Attribute v-if="meta.created_utc" :name="$vuetify.t('$vuetify.profile.index.u2fCard.created')" :value="meta.created_utc | format" />      
       <div v-else class="layout row align-center">
         <v-icon x-large color="warning" class="pr-3">
           warning
@@ -40,11 +38,13 @@
 </template>
 
 <script>
+import Attribute from './Attribute';
 import MfaCardLabel from './MfaCardLabel';
 import MfaCardRemove from './MfaCardRemove';
 
 export default {
   components: {
+    Attribute,
     MfaCardLabel,
     MfaCardRemove
   },
@@ -55,9 +55,6 @@ export default {
         meta: {}
       })
     }
-  },
-  computed: {
-    created: vm => new Date(vm.meta.created_utc).toLocaleString()
   }
 };
 </script>

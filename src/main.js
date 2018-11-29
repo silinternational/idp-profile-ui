@@ -4,6 +4,7 @@ import './plugins';
 import router from './plugins/router';
 import App from './App.vue';
 import '@/global/components';
+import '@/global/filters';
 
 new Vue({
   router,

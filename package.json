@@ -12,6 +12,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "date-fns": "^1.29.0",
     "u2f-api-polyfill": "^0.4.4",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",

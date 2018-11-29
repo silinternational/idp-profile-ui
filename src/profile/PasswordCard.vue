@@ -6,8 +6,8 @@
     </v-card-title>
 
     <v-card-text class="grow">
-      <div>{{ $vuetify.t('$vuetify.profile.index.passwordCard.lastChanged', pwChanged) }}</div>
-      <div>{{ $vuetify.t('$vuetify.profile.index.passwordCard.expires', pwExpires) }}</div>
+      <Attribute :name="$vuetify.t('$vuetify.profile.index.passwordCard.lastChanged')" :value="meta.last_changed | format" />
+      <Attribute :name="$vuetify.t('$vuetify.profile.index.passwordCard.expires')" :value="meta.expires | format" />
     </v-card-text>
 
     <v-card-actions>
@@ -21,7 +21,12 @@
 </template>
 
 <script>
+import Attribute from './Attribute';
+
 export default {
+  components: {
+    Attribute
+  },
   props: {
     meta: {
       type: Object,
@@ -29,10 +34,6 @@ export default {
         meta: {}
       })
     }
-  },
-  computed: {
-    pwChanged: vm => new Date(vm.meta.last_changed).toLocaleString(),
-    pwExpires: vm => new Date(vm.meta.expires).toLocaleString()
   }
 };
 </script>

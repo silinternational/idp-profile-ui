@@ -4,9 +4,9 @@
       <div class="layout column">
         {{ $vuetify.t('$vuetify.profile.index.header', $config.idpName) }}
         
-        <span v-if="$user.password_meta.last_login" class="caption">
-          {{ $vuetify.t('$vuetify.profile.index.lastLogin', lastLogin) }}
-        </span>
+        <Attribute v-if="$user.password_meta.last_login" 
+                   :name="$vuetify.t('$vuetify.profile.index.lastLogin')" 
+                   :value="$user.password_meta.last_login | format" />      
       </div>
       
       <v-spacer />
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import Attribute from './Attribute';
 import ProfileProgress from './ProfileProgress';
 import PasswordCard from './PasswordCard';
 import PasswordRecoveryCard from './PasswordRecoveryCard';
@@ -39,6 +40,7 @@ import BackupCodeCard from './BackupCodeCard';
 
 export default {
   components: {
+    Attribute,
     ProfileProgress,
     PasswordCard,
     PasswordRecoveryCard,
@@ -58,10 +60,6 @@ export default {
     this.mfas = await mfaPromise;
   },
   computed: {
-    lastLogin: vm =>
-      `${new Date(
-        vm.$user.password_meta.last_login
-      ).toLocaleString()}, Fort Mill, South Carolina, United States`,
     totp: vm => vm.mfas.find(mfa => mfa.type == 'totp') || {},
     u2f: vm => vm.mfas.find(mfa => mfa.type == 'u2f') || {},
     codes: vm => vm.mfas.find(mfa => mfa.type == 'backupcode') || {}
