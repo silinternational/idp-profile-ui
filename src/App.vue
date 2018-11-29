@@ -37,12 +37,7 @@
 </template>
 
 <script>
-import Loading from '@/global/Loading';
-
 export default {
-  components: {
-    Loading
-  },
   data: () => ({
     message: ''
   }),
