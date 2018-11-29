@@ -11,7 +11,8 @@
       "remove": "Remove",
       "add": "Add"
     },
-    "learnMore": "learn more"
+    "learnMore": "learn more",
+    "areYouSure": "Are you sure?"
   },
   "app": {
     "login": "Log in",

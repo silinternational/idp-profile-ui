@@ -5,8 +5,7 @@
         <v-icon x-large>list_alt</v-icon>
 
         <MfaCardLabel :label="meta.label || $vuetify.t('$vuetify.profile.index.codeCard.title')" 
-                      :id="meta.id"
-                      @new-label="meta.label = $event" />
+                      :id="meta.id" @new-label="meta.label = $event" />
       </v-layout>
     </v-card-title>
         
@@ -38,19 +37,19 @@
           {{ $vuetify.t('$vuetify.profile.index.codeCard.button.add') }}
         </span>
       </v-btn>
-      <v-btn v-if="meta.created_utc" color="error" flat>
-        {{ $vuetify.t('$vuetify.global.button.remove') }}
-      </v-btn>
+      <MfaCardRemove v-if="meta.created_utc" :id="meta.id" @removed="$router.go()" />
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
 import MfaCardLabel from './MfaCardLabel';
+import MfaCardRemove from './MfaCardRemove';
 
 export default {
   components: {
-    MfaCardLabel
+    MfaCardLabel,
+    MfaCardRemove
   },
   props: {
     meta: {
