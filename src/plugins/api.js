@@ -13,7 +13,15 @@ const api = axios.create({
 
 api.interceptors.response.use(
   response => response.data,
-  error => Promise.reject((error.response && error.response.data) || error )
+  error => {
+    const e = (error.response && error.response.data) || error;
+
+    if (e.status == 401) {
+      Vue.prototype.$user.login(location.pathname);
+    }
+
+    throw e;
+  }
 );
 
 Vue.use(theVue => {
