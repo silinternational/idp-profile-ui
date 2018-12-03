@@ -195,8 +195,14 @@
       },
       "new": {
         "header": "Printable backup codes",
+        "loading": "generating codes...",
+        "generated": "generated on",
         "button": {
-          "ok": "Finish"
+          "ok": "Finish",
+          "print": "Print",
+          "download": "Download",
+          "copy": "Copy",
+          "copied": "Copied"
         }
       }
     }
