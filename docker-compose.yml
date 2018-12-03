@@ -138,10 +138,6 @@ services:
       HELP_CENTER_URL: 'https://example.org/help'
       PASSWORD_FORGOT_URL: 'https://example.org/forgot'
       PASSWORD_PROFILE_URL: 'https://example.org/profile'
-      RESET_codeLength: '6'
-      RESET_maxAttempts: '10'
-      RESET_lifetimeSeconds: '3600'
-      RESET_disableDuration: '900'
     command:
       [
         'bash',
