@@ -31,7 +31,7 @@ let user = {
 
     window.location = logoutUrl;
   },
-  new() {
+  isNew() {
     return !this.password_meta;
   }
 };
