@@ -24,13 +24,11 @@
     <v-card-actions>
       <v-spacer />
       
-      <v-btn color="primary" flat>
-        <span v-if="meta.created_utc">
-          {{ $vuetify.t('$vuetify.profile.index.u2fCard.button.lost') }}
-        </span>
-        <span v-else>
-          {{ $vuetify.t('$vuetify.global.button.add') }}
-        </span>
+      <v-btn v-if="meta.created_utc" color="primary" flat>
+        {{ $vuetify.t('$vuetify.profile.index.u2fCard.button.lost') }}
+      </v-btn>
+      <v-btn v-else href="/2sv/usb-security-key/intro" color="primary" flat>
+        {{ $vuetify.t('$vuetify.global.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :id="meta.id" @removed="$router.go()" />
     </v-card-actions>

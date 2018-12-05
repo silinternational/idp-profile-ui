@@ -8,9 +8,7 @@ export default {
   steps: store.steps,
   init(user) {
     if (store.steps.length == 0) {
-      if (user.new) {
-        store.steps.push(password, recovery, twosv, complete);
-      }
+      store.steps.push(...allSteps.filter(step => step.isRelevant(user)));
 
       for (let i = 0; i < store.steps.length; i++) {
         Object.assign(store.steps[i], { id: i + 1, state: '' });
@@ -25,16 +23,26 @@ export default {
   }
 };
 
+function isRequested(paths) {
+  return paths.includes(location.pathname);
+}
+
 const t = Vue.prototype.$vuetify.t;
 
 const password = {
   name: t('$vuetify.profile.progress.pwStep'),
-  paths: ['/password/create', '/password/confirm', '/password/saved']
+  paths: ['/password/create', '/password/confirm', '/password/saved'],
+  isRelevant(user) {
+    return isRequested(this.paths) || user.isNew();
+  }
 };
 
 const recovery = {
   name: t('$vuetify.profile.progress.pwRecoverStep'),
-  paths: ['/password/recovery']
+  paths: ['/password/recovery'],
+  isRelevant(user) {
+    return isRequested(this.paths) || user.recoveryMethods.personal.length < 1;
+  }
 };
 
 const twosv = {
@@ -52,10 +60,18 @@ const twosv = {
     '/2sv/usb-security-key/confirmed',
     '/2sv/printable-backup-codes/intro',
     '/2sv/printable-backup-codes/new'
-  ]
+  ],
+  isRelevant(user) {
+    return isRequested(this.paths) || user.mfas.length < 3;
+  }
 };
 
 const complete = {
   name: t('$vuetify.profile.progress.completeStep'),
-  paths: ['/profile/complete']
+  paths: ['/profile/complete'],
+  isRelevant() {
+    return true;
+  }
 };
+
+const allSteps = [password, recovery, twosv, complete];

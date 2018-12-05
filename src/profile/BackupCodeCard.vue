@@ -25,13 +25,11 @@
     <v-card-actions>
       <v-spacer />
       
-      <v-btn color="primary" flat>
-        <span v-if="meta.created_utc">
-          {{ $vuetify.t('$vuetify.profile.index.codeCard.button.replace') }}
-        </span>
-        <span v-else>
-          {{ $vuetify.t('$vuetify.profile.index.codeCard.button.add') }}
-        </span>
+      <v-btn v-if="meta.created_utc" href="/2sv/printable-backup-codes/new" color="primary" flat>
+        {{ $vuetify.t('$vuetify.profile.index.codeCard.button.replace') }}
+      </v-btn>
+      <v-btn v-else href="/2sv/printable-backup-codes/intro" color="primary" flat>
+        {{ $vuetify.t('$vuetify.profile.index.codeCard.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :id="meta.id" @removed="$router.go()" />
     </v-card-actions>

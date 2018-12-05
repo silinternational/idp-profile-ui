@@ -3,8 +3,22 @@ import api from './api';
 import token from '@/global/token';
 
 let user = {
+  recoveryMethods: {
+    builtIn: [],
+    personal: []
+  },
+  mfas: [],
   refresh: async function() {
     Object.assign(this, await api.get('/user/me'));
+
+    const methodPromise = api.get('method');
+    const mfaPromise = api.get('mfa');
+
+    const all = await methodPromise;
+    Object.assign(this.recoveryMethods.builtIn, all.filter(m => m.type != 'email'));
+    Object.assign(this.recoveryMethods.personal, all.filter(m => m.type == 'email'));
+    
+    Object.assign(this.mfas, await mfaPromise);
   },
   isAuthenticated() {
     return !!this.idp_username;
