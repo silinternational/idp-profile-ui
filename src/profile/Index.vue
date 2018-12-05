@@ -11,12 +11,12 @@
       </div>
 
       <v-spacer/>
-      <ProfileProgress :profile="{recoveryMethods, mfas, user: $user}"/>
+      <ProfileProgress :profile="profile"/>
     </template>
 
     <v-layout row wrap>
       <PasswordCard :meta="$user.password_meta" class="mx-3 mb-4"/>
-      <PasswordRecoveryCard :methods="recoveryMethods" class="mx-3 mb-4"/>
+      <PasswordRecoveryCard :methods="$user.recoveryMethods.personal" class="mx-3 mb-4"/>
       <DoNotDiscloseCard :dnd="$user.do_not_disclose" class="mx-3 mb-4"/>
     </v-layout>
 
@@ -50,21 +50,15 @@ export default {
     BackupCodeCard,
     DoNotDiscloseCard
   },
-  data: () => ({
-    recoveryMethods: [],
-    mfas: []
-  }),
-  async created() {
-    const methodPromise = this.$API.get("method");
-    const mfaPromise = this.$API.get("mfa");
-
-    this.recoveryMethods = await methodPromise;
-    this.mfas = await mfaPromise;
-  },
   computed: {
-    totp: vm => vm.mfas.find(mfa => mfa.type == "totp") || {},
-    u2f: vm => vm.mfas.find(mfa => mfa.type == "u2f") || {},
-    codes: vm => vm.mfas.find(mfa => mfa.type == "backupcode") || {}
+    profile: vm => ({
+      recoveryMethods: vm.$user.recoveryMethods.personal,
+      mfas: vm.$user.mfas,
+      user: vm.$user
+    }),
+    totp: vm => vm.$user.mfas.find(mfa => mfa.type == "totp") || {},
+    u2f: vm => vm.$user.mfas.find(mfa => mfa.type == "u2f") || {},
+    codes: vm => vm.$user.mfas.find(mfa => mfa.type == "backupcode") || {}
   }
 };
 </script>

@@ -4,7 +4,9 @@
       <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.dndCard.title') }}</h3>
     </v-card-title>
 
-    <v-card-text>{{ $vuetify.t('$vuetify.profile.index.dndCard.info') }}</v-card-text>
+    <v-card-text>
+      <p>{{ $vuetify.t('$vuetify.profile.index.dndCard.info') }}</p>
+    </v-card-text>
 
     <v-card-actions>
       <v-spacer/>
@@ -15,7 +17,7 @@
       </v-btn>
     </v-card-actions>
   </v-card>
-</template >
+</template>
 
 <script>
 export default {
