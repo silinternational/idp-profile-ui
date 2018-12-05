@@ -1,10 +1,10 @@
 <template>
-  <v-card class="layout column">
+  <v-card>
     <v-card-title primary-title>
       <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.passwordCard.title') }}</h3>
     </v-card-title>
 
-    <v-card-text class="grow">
+    <v-card-text>
       <Attribute
         :name="$vuetify.t('$vuetify.profile.index.passwordCard.lastChanged')"
         :value="meta.last_changed | format"

@@ -1,13 +1,12 @@
 <template>
-  <v-card class="layout column">
+  <v-card>
     <v-card-title primary-title>
       <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.title') }}</h3>
     </v-card-title>
 
-    <v-card-text class="grow">
+    <v-card-text>
       <div v-for="method in methods" :key="method.id">
         {{ method.value }}
-
         <v-tooltip v-if="! method.verified && method.id != sent" right>
           <v-icon slot="activator" color="warning" small class="pl-1">warning</v-icon>
           {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
@@ -40,13 +39,13 @@
 export default {
   props: ["methods"],
   data: () => ({
-    sent: ''
+    sent: ""
   }),
   methods: {
     async resend(method) {
       await this.$API.put(`method/${method.id}/resend`);
 
-      this.sent = method.id
+      this.sent = method.id;
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <v-card class="layout column">
+  <v-card>
     <v-card-title primary-title>
       <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.dndCard.title') }}</h3>
     </v-card-title>

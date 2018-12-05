@@ -11,6 +11,7 @@
       </div>
 
       <v-spacer/>
+
       <ProfileProgress :profile="profile"/>
     </template>
 
