@@ -7,7 +7,7 @@
   </v-layout>
   <h3 v-else class="headline pl-3 layout row align-center">
     {{ label }}
-    <v-icon @click="edit" color="info" small class="pl-2">edit</v-icon>
+    <v-icon v-if="id" @click="edit" color="info" small class="pl-2">edit</v-icon>
   </h3>
 </template>
 
