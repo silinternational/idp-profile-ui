@@ -9,7 +9,7 @@
         {{ $vuetify.t('$vuetify.password.recovery.explanation') }}
       </p>
 
-      <p v-if="methods.personal.length">
+      <p v-if="$user.recoveryMethods.personal.length">
         {{ $vuetify.t('$vuetify.password.recovery.atLeastOneRecovery') }}
       </p>
       <p v-else>
@@ -18,7 +18,7 @@
       
       <ul>
         <li class="subheading grey--text py-2">{{ $vuetify.t('$vuetify.password.recovery.systemHeader') }}</li>
-        <li v-for="method in methods.builtIn" :key="method.type" class="pl-3">
+        <li v-for="method in $user.recoveryMethods.builtIn" :key="method.type" class="pl-3">
           {{ method.value }}
         </li>
       </ul>
@@ -27,17 +27,17 @@
         <li class="subheading grey--text py-2">
           {{ $vuetify.t('$vuetify.password.recovery.personalHeader') }}
         </li>
-        <li v-for="method in methods.personal" :key="method.id" class="layout row pb-2 pl-3">
+        <li v-for="method in $user.recoveryMethods.personal" :key="method.id" class="layout row pb-2 pl-3">
           {{ method.value }}
 
-          <v-tooltip :disabled="methods.personal.length > 1" right>
-            <v-icon @click="remove(method.id)" slot="activator" :disabled="methods.personal.length == 1" color="error" small class="pl-3">
+          <v-tooltip :disabled="$user.recoveryMethods.personal.length > 1" right>
+            <v-icon @click="remove(method.id)" slot="activator" :disabled="$user.recoveryMethods.personal.length == 1" color="error" small class="pl-3">
               delete
             </v-icon>
             {{ $vuetify.t('$vuetify.password.recovery.dontRemoveLastOne') }}
           </v-tooltip>
         </li>
-        <li v-if="! methods.personal.length" class="pl-3">
+        <li v-if="! $user.recoveryMethods.personal.length" class="pl-3">
           <em>{{ $vuetify.t('$vuetify.password.recovery.noPersonalMethods') }}</em>
         </li>
       </ul>
@@ -62,17 +62,17 @@
     </BasePage>
 
     <template slot="actions">
-      <v-btn v-if="!methods.personal.length" to="/2sv/intro" @click="$refs.wizard.skipped()" color="warning" flat>
+      <v-btn v-if="!$user.recoveryMethods.personal.length" to="/2sv/intro" @click="$refs.wizard.skipped()" color="warning" flat>
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-tooltip :disabled="!(unsaved || !methods.personal.length)" right>
+      <v-tooltip :disabled="!(unsaved || !$user.recoveryMethods.personal.length)" right>
         <v-btn to="/2sv/intro" 
                @click="$refs.wizard.complete()" 
                slot="activator" 
-               :disabled="unsaved || !methods.personal.length" 
+               :disabled="unsaved || !$user.recoveryMethods.personal.length" 
                color="primary" 
                flat>
           {{ $vuetify.t('$vuetify.global.button.continue') }}
@@ -91,25 +91,11 @@ export default {
   components: {
     ProfileWizard
   },
-  data: () => ({
-    methods: {
-      builtIn: [],
-      personal: []
-    },
+  data: vm => ({
     newEmail: ''
   }),
   computed: {
     unsaved: vm => vm.newEmail != ''
-  },
-  async created() {
-    const all = await this.$API.get('method');
-
-    all.reduce((methods, m) => {
-      // no need to worry whether methods are verified or not in this context, that's addressed on the profile page.
-      m.type == 'email' ? methods.personal.push(m) : methods.builtIn.push(m);
-
-      return methods;
-    }, this.methods);
   },
   methods: {
     add: async function() {
@@ -120,15 +106,16 @@ export default {
 
         this.newEmail = '';
 
-        this.methods.personal.push(newMethod);
+        this.$user.recoveryMethods.personal.push(newMethod);
       }
     },
     remove: async function(id) {
       await this.$API.delete(`method/${id}`);
 
-      const i = this.methods.personal.findIndex(m => m.id == id);
-
-      this.methods.personal.splice(i, 1);
+      // couldn't get reactivity system to work for this...
+      // const i = this.$user.recoveryMethods.personal.findIndex(m => m.id == id);
+      // this.$user.recoveryMethods.personal.splice(i, 1);
+      this.$router.go();
     }
   }
 };
