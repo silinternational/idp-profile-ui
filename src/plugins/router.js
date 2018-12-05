@@ -24,8 +24,6 @@ const configuredRouter = new Router({
 });
 
 configuredRouter.beforeEach(async (to, from, next) => {
-  let ok = true;
-
   if (!to.meta.public) {
     try {
       await Vue.prototype.$user.refresh();
@@ -34,11 +32,11 @@ configuredRouter.beforeEach(async (to, from, next) => {
         Vue.prototype.$user.login(to.path);
       }
 
-      ok = false;
+      throw e;
     }
   }
 
-  next(ok);
+  next();
 });
 
 export default configuredRouter;
