@@ -27,7 +27,7 @@ export default {
       this.editing = false;
     },
     async save() {
-      const mfa = await this.$API.put(`method/${this.id}`, {
+      const mfa = await this.$API.put(`mfa/${this.id}`, {
         label: this.newLabel
       });
 

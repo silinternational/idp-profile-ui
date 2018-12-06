@@ -4,11 +4,7 @@
       <v-layout row align-center>
         <v-icon x-large>smartphone</v-icon>
 
-        <MfaCardLabel
-          :label="meta.label || $vuetify.t('$vuetify.profile.index.totpCard.title')"
-          :id="meta.id"
-          @new-label="meta.label = $event"
-        />
+        <MfaCardLabel :label="label" :id="meta.id" @new-label="label = $event"/>
       </v-layout>
     </v-card-title>
 
@@ -54,13 +50,10 @@ export default {
     MfaCardLabel,
     MfaCardRemove
   },
-  props: {
-    meta: {
-      type: Object,
-      default: () => ({
-        meta: {}
-      })
-    }
-  }
+  props: ["meta"],
+  data: vm => ({
+    label:
+      vm.meta.label || vm.$vuetify.t("$vuetify.profile.index.totpCard.title")
+  })
 };
 </script>
