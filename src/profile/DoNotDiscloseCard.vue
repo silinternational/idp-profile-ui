@@ -1,7 +1,11 @@
 <template>
   <v-card>
     <v-card-title primary-title>
-      <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.dndCard.title') }}</h3>
+      <v-layout row align-center>
+        <v-icon :color="dnd =='yes' ? 'success' : ''" x-large>security</v-icon>
+
+        <h3 class="headline pl-3">{{ $vuetify.t('$vuetify.profile.index.dndCard.title') }}</h3>
+      </v-layout>
     </v-card-title>
 
     <v-card-text>
@@ -23,10 +27,12 @@
 export default {
   props: ["dnd"],
   methods: {
-    toggle: function() {
-      this.$API.put("user/me", {
-        do_not_disclose: this.dnd == "yes" ? "no" : "yes"
+    toggle: async function() {
+      await this.$API.put("user/me", {
+        hide: this.dnd == "yes" ? "no" : "yes"
       });
+
+      this.$router.go();
     }
   }
 };

@@ -18,7 +18,7 @@
     <v-layout row wrap>
       <PasswordCard :meta="$user.password_meta" class="mx-3 mb-4"/>
       <PasswordRecoveryCard :methods="$user.recoveryMethods.personal" class="mx-3 mb-4"/>
-      <DoNotDiscloseCard :dnd="$user.do_not_disclose" class="mx-3 mb-4"/>
+      <DoNotDiscloseCard :dnd="$user.hide" class="mx-3 mb-4"/>
     </v-layout>
 
     <v-subheader class="py-5">{{ $vuetify.t('$vuetify.profile.index.2sv') }}</v-subheader>
