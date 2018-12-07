@@ -1,6 +1,6 @@
-import Vue from 'vue';
-import api from './api';
-import token from '@/global/token';
+import Vue from 'vue'
+import api from './api'
+import token from '@/global/token'
 
 let user = {
   recoveryMethods: {
@@ -8,50 +8,50 @@ let user = {
     personal: []
   },
   mfas: [],
-  refresh: async function() {
-    Object.assign(this, await api.get('/user/me'));
+  refresh: async function () {
+    Object.assign(this, await api.get('/user/me'))
 
-    const methodPromise = api.get('method');
-    const mfaPromise = api.get('mfa');
+    const methodPromise = api.get('method')
+    const mfaPromise = api.get('mfa')
 
-    const all = await methodPromise;
-    Object.assign(this.recoveryMethods.builtIn, all.filter(m => m.type != 'email'));
-    Object.assign(this.recoveryMethods.personal, all.filter(m => m.type == 'email'));
-    
-    Object.assign(this.mfas, await mfaPromise);
+    const all = await methodPromise
+    Object.assign(this.recoveryMethods.builtIn, all.filter(m => m.type != 'email'))
+    Object.assign(this.recoveryMethods.personal, all.filter(m => m.type == 'email'))
+
+    Object.assign(this.mfas, await mfaPromise)
   },
   isAuthenticated() {
-    return !!this.idp_username;
+    return !!this.idp_username
   },
   login(returnTo) {
-    token.reset();
+    token.reset()
 
     let loginUrl = `${
       api.defaults.baseURL
-    }/auth/login?client_id=${token.key()}`;
+      }/auth/login?client_id=${token.key()}`
 
     if (returnTo) {
-      loginUrl += `&ReturnTo=${returnTo}`;
+      loginUrl += `&ReturnTo=${returnTo}`
     }
 
-    window.location = loginUrl;
+    window.location = loginUrl
   },
   logout() {
     let logoutUrl = `${api.defaults.baseURL}/auth/logout?access_token=${
       token.accessToken
-    }`;
+      }`
 
-    token.reset();
+    token.reset()
 
-    window.location = logoutUrl;
+    window.location = logoutUrl
   },
   isNew() {
-    return !this.password_meta;
+    return !this.password_meta
   }
-};
+}
 
 Vue.use(theVue => {
-  theVue.prototype.$user = user;
-});
+  theVue.prototype.$user = user
+})
 
-export default user; // provided as an export in case other plugins need the user, e.g., ./api.js
+export default user // provided as an export in case other plugins need the user, e.g., ./api.js

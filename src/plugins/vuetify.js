@@ -19,11 +19,11 @@ import {
   VToolbar,
   VTooltip,
   transitions
-} from 'vuetify';
+} from 'vuetify'
 
-import 'vuetify/src/stylus/app.styl';
-import Vue from 'vue';
-import locales from '@/locales';
+import 'vuetify/src/stylus/app.styl'
+import Vue from 'vue'
+import locales from '@/locales'
 
 Vue.use(Vuetify, {
   lang: {
@@ -54,4 +54,4 @@ Vue.use(Vuetify, {
     primary: '#015d99',
     secondary: '#791f5e'
   }
-});
+})

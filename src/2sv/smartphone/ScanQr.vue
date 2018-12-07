@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard';
+import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
@@ -54,9 +54,9 @@ export default {
     mfa: {}
   }),
   async created() {
-    this.mfa = await this.$API.post('mfa', { type: 'totp' });
+    this.mfa = await this.$API.post('mfa', { type: 'totp' })
   }
-};
+}
 </script>
 
 <style scoped>

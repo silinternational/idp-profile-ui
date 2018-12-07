@@ -1,15 +1,15 @@
-import Intro from './Intro';
-import SmartphoneIntro from './smartphone/Intro';
-import DownloadApp from './smartphone/DownloadApp';
-import ScanQr from './smartphone/ScanQr';
-import VerifyQrCode from './smartphone/VerifyQrCode';
-import CodeVerified from './smartphone/CodeVerified';
-import KeyIntro from './key/Intro';
-import Insert from './key/Insert';
-import Touch from './key/Touch';
-import Confirmed from './key/Confirmed';
-import CodesIntro from './codes/Intro';
-import New from './codes/New';
+import Intro from './Intro'
+import SmartphoneIntro from './smartphone/Intro'
+import DownloadApp from './smartphone/DownloadApp'
+import ScanQr from './smartphone/ScanQr'
+import VerifyQrCode from './smartphone/VerifyQrCode'
+import CodeVerified from './smartphone/CodeVerified'
+import KeyIntro from './key/Intro'
+import Insert from './key/Insert'
+import Touch from './key/Touch'
+import Confirmed from './key/Confirmed'
+import CodesIntro from './codes/Intro'
+import New from './codes/New'
 
 export default [
   {
@@ -60,4 +60,4 @@ export default [
     path: '/2sv/printable-backup-codes/new',
     component: New
   }
-];
+]

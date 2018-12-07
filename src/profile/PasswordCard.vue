@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Attribute from "./Attribute";
+import Attribute from './Attribute'
 
 export default {
   components: {
@@ -42,5 +42,5 @@ export default {
       })
     }
   }
-};
+}
 </script>

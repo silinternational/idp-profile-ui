@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard';
-import u2f from './u2f-api.js';
+import ProfileWizard from '@/profile/ProfileWizard'
+import u2f from './u2f-api.js'
 
 export default {
   components: {
@@ -38,27 +38,27 @@ export default {
     touched: false
   }),
   async created() {
-    this.mfa = await this.$API.post('mfa', { type: 'u2f' });
+    this.mfa = await this.$API.post('mfa', { type: 'u2f' })
 
     u2f.register(
       this.mfa.data.challenge.appId,
       [this.mfa.data.challenge],
       [],
       this.handleKeyResponse
-    );
+    )
   },
   methods: {
     handleKeyResponse: async function(response) {
-      await this.$API.post(`mfa/${this.mfa.id}/verify`, { value: response });
+      await this.$API.post(`mfa/${this.mfa.id}/verify`, { value: response })
 
-      this.touched = true;
+      this.touched = true
 
       // pause for a moment so user can see the checkmark.
       setTimeout(
         () => this.$router.push('/2sv/usb-security-key/confirmed'),
         500
-      );
+      )
     }
   }
-};
+}
 </script>

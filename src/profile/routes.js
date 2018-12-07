@@ -1,6 +1,6 @@
-import Intro from './Intro';
-import Complete from './Complete';
-import Index from './Index';
+import Intro from './Intro'
+import Complete from './Complete'
+import Index from './Index'
 
 export default [
   {
@@ -15,4 +15,4 @@ export default [
     path: '/profile',
     component: Index
   }
-];
+]

@@ -19,16 +19,16 @@ export default {
   computed: {
     progress: vm => deriveCompleteness(vm.profile)
   }
-};
+}
 
 function deriveCompleteness(profile) {
-  let index = profile.user.password_meta ? 0.25 : 0;
+  let index = profile.user.password_meta ? 0.25 : 0
 
-  index += 0.25 * Math.min(profile.recoveryMethods.length, 1);
+  index += 0.25 * Math.min(profile.recoveryMethods.length, 1)
 
-  index += 0.25 * Math.min(profile.mfas.length, 2);
+  index += 0.25 * Math.min(profile.mfas.length, 2)
 
-  return index;
+  return index
 }
 </script>
 

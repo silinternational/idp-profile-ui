@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard';
+import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
@@ -54,9 +54,9 @@ export default {
     errors: []
   }),
   beforeRouteLeave(to, from, next) {
-    delete this.$root.$data.password;
+    delete this.$root.$data.password
 
-    next();
+    next()
   },
   methods: {
     confirm: async function() {
@@ -64,20 +64,20 @@ export default {
         try {
           await this.$API.put('password', {
             password: this.password
-          });
+          })
 
-          this.$refs.wizard.complete();
+          this.$refs.wizard.complete()
 
-          this.$router.push('/password/saved');
+          this.$router.push('/password/saved')
         } catch (e) {
           if (e.status == 409) {
             this.errors.push(
               this.$vuetify.t('$vuetify.password.confirm.reused')
-            );
+            )
           }
         }
       }
     }
   }
-};
+}
 </script>

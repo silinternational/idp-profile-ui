@@ -31,14 +31,14 @@
 </template>
 
 <script>
-import Attribute from "./Attribute";
-import ProfileProgress from "./ProfileProgress";
-import PasswordCard from "./PasswordCard";
-import PasswordRecoveryCard from "./PasswordRecoveryCard";
-import TotpCard from "./TotpCard";
-import U2fCard from "./U2fCard";
-import BackupCodeCard from "./BackupCodeCard";
-import DoNotDiscloseCard from "./DoNotDiscloseCard";
+import Attribute from './Attribute'
+import ProfileProgress from './ProfileProgress'
+import PasswordCard from './PasswordCard'
+import PasswordRecoveryCard from './PasswordRecoveryCard'
+import TotpCard from './TotpCard'
+import U2fCard from './U2fCard'
+import BackupCodeCard from './BackupCodeCard'
+import DoNotDiscloseCard from './DoNotDiscloseCard'
 
 export default {
   components: {
@@ -57,9 +57,9 @@ export default {
       mfas: vm.$user.mfas,
       user: vm.$user
     }),
-    totp: vm => vm.$user.mfas.find(mfa => mfa.type == "totp") || {},
-    u2f: vm => vm.$user.mfas.find(mfa => mfa.type == "u2f") || {},
-    codes: vm => vm.$user.mfas.find(mfa => mfa.type == "backupcode") || {}
+    totp: vm => vm.$user.mfas.find(mfa => mfa.type == 'totp') || {},
+    u2f: vm => vm.$user.mfas.find(mfa => mfa.type == 'u2f') || {},
+    codes: vm => vm.$user.mfas.find(mfa => mfa.type == 'backupcode') || {}
   }
-};
+}
 </script>

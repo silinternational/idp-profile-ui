@@ -45,21 +45,21 @@ export default {
     this.$API.interceptors.response.use(
       response => response,
       error => {
-        this.message = error.message;
+        this.message = error.message
 
-        throw error;
+        throw error
       }
-    );
+    )
   },
   errorCaptured(err) {
-    this.message = err.message || err;
+    this.message = err.message || err
   },
   watch: {
     $route() {
-      this.message = '';
+      this.message = ''
     }
   }
-};
+}
 </script>
 
 <style scoped>

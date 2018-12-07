@@ -10,12 +10,12 @@ export default {
   methods: {
     async remove(id) {
       if (confirm(this.$vuetify.t('$vuetify.global.areYouSure'))) {
-        await this.$API.delete(`mfa/${id}`);
+        await this.$API.delete(`mfa/${id}`)
 
-        this.$emit('removed');
+        this.$emit('removed')
       }
     }
   }
-};
+}
 </script>
 

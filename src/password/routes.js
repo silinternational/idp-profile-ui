@@ -1,7 +1,7 @@
-import Create from './Create';
-import Confirm from './Confirm';
-import Saved from './Saved';
-import Recovery from './Recovery';
+import Create from './Create'
+import Confirm from './Confirm'
+import Saved from './Saved'
+import Recovery from './Recovery'
 
 export default [
   {
@@ -20,4 +20,4 @@ export default [
     path: '/password/recovery',
     component: Recovery
   }
-];
+]

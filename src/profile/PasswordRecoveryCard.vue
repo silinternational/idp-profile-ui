@@ -37,16 +37,16 @@
 
 <script>
 export default {
-  props: ["methods"],
+  props: ['methods'],
   data: () => ({
-    sent: ""
+    sent: ''
   }),
   methods: {
     async resend(method) {
-      await this.$API.put(`method/${method.id}/resend`);
+      await this.$API.put(`method/${method.id}/resend`)
 
-      this.sent = method.id;
+      this.sent = method.id
     }
   }
-};
+}
 </script>

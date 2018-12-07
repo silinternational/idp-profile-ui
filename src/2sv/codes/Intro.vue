@@ -8,14 +8,6 @@
       <p>
         {{ $vuetify.t('$vuetify.2sv.codes.intro.info') }}
       </p>
-
-      <!-- <p>
-        –OR–
-      </p>
-
-      <p>
-        {{ $vuetify.t('$vuetify.2sv.codes.intro.warning') }}
-      </p> -->
     </BasePage>
 
     <ButtonBar>
@@ -33,11 +25,11 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard';
+import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
     ProfileWizard
   }
-};
+}
 </script>

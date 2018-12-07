@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard';
+import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
@@ -58,13 +58,13 @@ export default {
       if (this.$refs.form.validate()) {
         await this.$API.post(`mfa/${this.$route.query.id}/verify`, {
           value: this.code.trim()
-        });
+        })
 
-        this.$router.push('/2sv/smartphone/code-verified');
+        this.$router.push('/2sv/smartphone/code-verified')
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>

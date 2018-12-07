@@ -17,9 +17,9 @@ export default {
     // teardown when components go out of "active".  Until they do that, adding a ref to the
     // text-field and forcing the focus like this will be required to get the desired ux.
     if (this.$refs.tf.autofocus) {
-      this.$nextTick(this.$refs.tf.focus);
+      this.$nextTick(this.$refs.tf.focus)
     }
   }
-};
+}
 </script>
 

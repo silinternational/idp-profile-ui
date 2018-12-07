@@ -25,15 +25,15 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard';
+import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
     ProfileWizard
   },
   mounted() {
-    this.$refs.wizard.complete();
+    this.$refs.wizard.complete()
   }
-};
+}
 </script>
 

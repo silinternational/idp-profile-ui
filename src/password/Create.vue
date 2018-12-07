@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard';
-import zxcvbn from 'zxcvbn';
+import ProfileWizard from '@/profile/ProfileWizard'
+import zxcvbn from 'zxcvbn'
 
 export default {
   components: {
@@ -73,32 +73,32 @@ export default {
   methods: {
     save: function() {
       if (this.$refs.form.validate()) {
-        this.$root.$data.password = this.password;
+        this.$root.$data.password = this.password
 
-        this.$router.push('/password/confirm');
+        this.$router.push('/password/confirm')
       }
     }
   }
-};
+}
 
 const required = (v, vm) =>
-  !!v || vm.$vuetify.t('$vuetify.password.create.required');
+  !!v || vm.$vuetify.t('$vuetify.password.create.required')
 
 const minLength = (v, vm) =>
   v.length > vm.$config.password.minLength.value ||
   vm.$vuetify.t(
     '$vuetify.password.create.tooShort',
     vm.$config.password.minLength.value
-  );
+  )
 
 const maxLength = (v, vm) =>
   v.length < vm.$config.password.maxLength.value ||
   vm.$vuetify.t(
     '$vuetify.password.create.tooLong',
     vm.$config.password.maxLength.value
-  );
+  )
 
 const strong = (v, vm) =>
   vm.strength.score >= vm.$config.password.zxcvbn.minScore ||
-  vm.$vuetify.t('$vuetify.password.create.tooWeak');
+  vm.$vuetify.t('$vuetify.password.create.tooWeak')
 </script>

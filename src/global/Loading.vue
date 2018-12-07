@@ -9,23 +9,23 @@ export default {
   }),
   beforeCreate() {
     this.$API.interceptors.request.use(config => {
-      this.loading++;
+      this.loading++
 
-      return config;
-    });
+      return config
+    })
 
     this.$API.interceptors.response.use(
       response => {
-        this.loading--;
+        this.loading--
 
-        return response;
+        return response
       },
       error => {
-        this.loading--;
+        this.loading--
 
-        throw error;
+        throw error
       }
-    );
+    )
   }
-};
+}
 </script>

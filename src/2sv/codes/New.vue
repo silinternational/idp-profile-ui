@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard';
+import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
@@ -61,45 +61,45 @@ export default {
     copied: false
   }),
   async created() {
-    const newCodes = await this.$API.post('mfa', { type: 'backupcode' });
+    const newCodes = await this.$API.post('mfa', { type: 'backupcode' })
 
-    this.codes = newCodes.data;
+    this.codes = newCodes.data
   },
   computed: {
     encodedData() {
       return encodeURIComponent(
         `${this.$config.idpName}\r\n${this.codes.join('\r\n')}`
-      );
+      )
     }
   },
   methods: {
     finish: function() {
-      this.$refs.wizard.complete();
+      this.$refs.wizard.complete()
 
-      this.$router.push('/profile/complete');
+      this.$router.push('/profile/complete')
     },
     print: function(id) {
-      this.printing = true;
-      const el = document.querySelector(id);
+      this.printing = true
+      const el = document.querySelector(id)
 
-      el.classList.add('printable');
+      el.classList.add('printable')
 
       // don't print until the renderer has run again with the newly added 'printable' class.
       this.$nextTick(() => {
-        window.print();
+        window.print()
 
-        this.printing = false;
-      });
+        this.printing = false
+      })
     },
     copy: async function() {
       await navigator.clipboard.writeText(
         `${this.$config.idpName}\r\n${this.codes.join('\r\n')}`
-      );
+      )
 
-      this.copied = true;
+      this.copied = true
     }
   }
-};
+}
 </script>
 
 <style scoped>

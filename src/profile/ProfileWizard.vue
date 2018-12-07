@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Steps from './steps';
+import Steps from './steps'
 
 export default {
   data: () => ({
@@ -35,10 +35,10 @@ export default {
     currentStep: {}
   }),
   created() {
-    Steps.init(this.$user);
+    Steps.init(this.$user)
 
-    this.steps = Steps.steps;
-    this.currentStep = Steps.forPath(this.$route.path);
+    this.steps = Steps.steps
+    this.currentStep = Steps.forPath(this.$route.path)
   },
   methods: {
     hasMoreSteps: step => !Steps.isLast(step),
@@ -46,23 +46,23 @@ export default {
       const map = {
         complete: 'success',
         skipped: 'warning'
-      };
+      }
 
-      return map[state] || 'primary';
+      return map[state] || 'primary'
     },
     toIcon: state => {
       const map = {
         skipped: '$vuetify.icons.warning'
-      };
+      }
 
-      return map[state] || '$vuetify.icons.complete';
+      return map[state] || '$vuetify.icons.complete'
     },
     complete: function() {
-      this.currentStep.state = 'complete';
+      this.currentStep.state = 'complete'
     },
     skipped: function() {
-      this.currentStep.state = 'skipped';
+      this.currentStep.state = 'skipped'
     }
   }
-};
+}
 </script>

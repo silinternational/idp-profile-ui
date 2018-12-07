@@ -1,3 +1,3 @@
-import 'u2f-api-polyfill';
+import 'u2f-api-polyfill'
 
-export default window.u2f;
+export default window.u2f

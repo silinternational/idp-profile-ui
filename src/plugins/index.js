@@ -1,5 +1,5 @@
-import './vuetify';
-import './api';
-import './router';
-import './user';
-import './config';
+import './vuetify'
+import './api'
+import './router'
+import './user'
+import './config'

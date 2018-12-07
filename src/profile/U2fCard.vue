@@ -40,9 +40,9 @@
 </template>
 
 <script>
-import Attribute from "./Attribute";
-import MfaCardLabel from "./MfaCardLabel";
-import MfaCardRemove from "./MfaCardRemove";
+import Attribute from './Attribute'
+import MfaCardLabel from './MfaCardLabel'
+import MfaCardRemove from './MfaCardRemove'
 
 export default {
   components: {
@@ -50,10 +50,10 @@ export default {
     MfaCardLabel,
     MfaCardRemove
   },
-  props: ["meta"],
+  props: ['meta'],
   data: vm => ({
     label:
-      vm.meta.label || vm.$vuetify.t("$vuetify.profile.index.u2fCard.title")
+      vm.meta.label || vm.$vuetify.t('$vuetify.profile.index.u2fCard.title')
   })
-};
+}
 </script>

@@ -42,13 +42,13 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard';
+import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
     ProfileWizard
   }
-};
+}
 </script>
 
 <style scoped>

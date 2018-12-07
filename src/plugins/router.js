@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import homeRoutes from '@/home/routes';
-import passwordRoutes from '@/password/routes';
-import profileRoutes from '@/profile/routes';
-import twoStepRoutes from '@/2sv/routes';
+import Vue from 'vue'
+import Router from 'vue-router'
+import homeRoutes from '@/home/routes'
+import passwordRoutes from '@/password/routes'
+import profileRoutes from '@/profile/routes'
+import twoStepRoutes from '@/2sv/routes'
 
-Vue.use(Router);
+Vue.use(Router)
 
 const configuredRouter = new Router({
   mode: 'history',
@@ -21,22 +21,22 @@ const configuredRouter = new Router({
       }
     }
   ]
-});
+})
 
 configuredRouter.beforeEach(async (to, from, next) => {
   if (!to.meta.public) {
     try {
-      await Vue.prototype.$user.refresh();
+      await Vue.prototype.$user.refresh()
     } catch (e) {
       if (e.status == 401) {
-        Vue.prototype.$user.login(to.path);
+        Vue.prototype.$user.login(to.path)
       }
 
-      throw e;
+      throw e
     }
   }
 
-  next();
-});
+  next()
+})
 
-export default configuredRouter;
+export default configuredRouter

@@ -25,15 +25,15 @@
 
 <script>
 export default {
-  props: ["dnd"],
+  props: ['dnd'],
   methods: {
     toggle: async function() {
-      await this.$API.put("user/me", {
-        hide: this.dnd == "yes" ? "no" : "yes"
-      });
+      await this.$API.put('user/me', {
+        hide: this.dnd == 'yes' ? 'no' : 'yes'
+      })
 
-      this.$router.go();
+      this.$router.go()
     }
   }
-};
+}
 </script>

@@ -13,28 +13,28 @@
 
 <script>
 export default {
-  props: ["label", "id"],
+  props: ['label', 'id'],
   data: () => ({
     editing: false,
-    newLabel: ""
+    newLabel: ''
   }),
   methods: {
     edit() {
-      this.editing = true;
-      this.newLabel = this.label;
+      this.editing = true
+      this.newLabel = this.label
     },
     cancel() {
-      this.editing = false;
+      this.editing = false
     },
     async save() {
       const mfa = await this.$API.put(`mfa/${this.id}`, {
         label: this.newLabel
-      });
+      })
 
-      this.$emit("new-label", mfa.label);
-      this.editing = false;
+      this.$emit('new-label', mfa.label)
+      this.editing = false
     }
   }
-};
+}
 </script>
 
