@@ -30,7 +30,7 @@ function isRequested(paths) {
 const t = Vue.prototype.$vuetify.t
 
 const password = {
-  name: t('$vuetify.profile.progress.pwStep'),
+  name: t('$vuetify.profile.steps.pwStep'),
   paths: ['/password/create', '/password/confirm', '/password/saved'],
   isRelevant(user) {
     return isRequested(this.paths) || user.isNew()
@@ -38,7 +38,7 @@ const password = {
 }
 
 const recovery = {
-  name: t('$vuetify.profile.progress.pwRecoverStep'),
+  name: t('$vuetify.profile.steps.pwRecoverStep'),
   paths: ['/password/recovery'],
   isRelevant(user) {
     return isRequested(this.paths) || user.recoveryMethods.personal.length < 1
@@ -46,7 +46,7 @@ const recovery = {
 }
 
 const twosv = {
-  name: t('$vuetify.profile.progress.2svStep'),
+  name: t('$vuetify.profile.steps.2svStep'),
   paths: [
     '/2sv/intro',
     '/2sv/smartphone/intro',
@@ -67,7 +67,7 @@ const twosv = {
 }
 
 const complete = {
-  name: t('$vuetify.profile.progress.completeStep'),
+  name: t('$vuetify.profile.steps.completeStep'),
   paths: ['/profile/complete'],
   isRelevant() {
     return true
