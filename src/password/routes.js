@@ -2,6 +2,7 @@ import Create from './Create'
 import Confirm from './Confirm'
 import Saved from './Saved'
 import Recovery from './Recovery'
+import VerifyRecoveryMethod from './VerifyRecoveryMethod'
 
 export default [
   {
@@ -19,5 +20,12 @@ export default [
   {
     path: '/password/recovery',
     component: Recovery
+  },
+  {
+    path: '/password/recovery/:id/verify',
+    component: VerifyRecoveryMethod,
+    meta: {
+      public: true
+    }
   }
 ]

@@ -139,6 +139,16 @@
       "systemHeader": "System",
       "personalHeader": "Personal",
       "noPersonalMethods": "None at this time"
+    },
+    "verifyRecovery": {
+      "header": "Recovery method verification",
+      "verifying": "Verifying your code...",
+      "verified": "Congratulations!  You have sucessfully added that recovery method just in case you ever forget your password.",
+      "expired": "Unfortunately that verification code has already expired.  I am sending you another email right now with a new verification code...",
+      "sent": "OK, I have sent that new email now, you may close this tab.",
+      "button": {
+        "profile": "Login and see my updated profile"
+      }
     }
   },
   "2sv": {
