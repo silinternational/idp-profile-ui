@@ -29,7 +29,7 @@ configuredRouter.beforeEach(async (to, from, next) => {
       await Vue.prototype.$user.refresh()
     } catch (e) {
       if (e.status == 401) {
-        Vue.prototype.$user.login(to.path)
+        Vue.prototype.$user.login(to.path, to.query.invite)
       }
 
       throw e

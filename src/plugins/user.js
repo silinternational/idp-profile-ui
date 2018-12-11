@@ -23,12 +23,16 @@ let user = {
   isAuthenticated() {
     return !!this.idp_username
   },
-  login(returnTo) {
+  login(returnTo, inviteCode = '') {
     token.reset()
 
     let loginUrl = `${
       api.defaults.baseURL
       }/auth/login?client_id=${token.key()}`
+
+    if (inviteCode) {
+      loginUrl += `&invite=${inviteCode}`
+    }
 
     if (returnTo) {
       loginUrl += `&ReturnTo=${returnTo}`
