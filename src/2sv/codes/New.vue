@@ -78,18 +78,16 @@ export default {
 
       this.$router.push('/profile/complete')
     },
-    print: function(id) {
+    print: async function(id) {
       this.printing = true
       const el = document.querySelector(id)
 
       el.classList.add('printable')
 
       // don't print until the renderer has run again with the newly added 'printable' class.
-      this.$nextTick(() => {
-        window.print()
-
-        this.printing = false
-      })
+      await this.$nextTick()
+      window.print()
+      this.printing = false
     },
     copy: async function() {
       await navigator.clipboard.writeText(
