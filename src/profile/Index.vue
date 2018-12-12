@@ -2,7 +2,7 @@
   <BasePage>
     <template slot="header">
       <div class="layout column">
-        {{ $vuetify.t('$vuetify.profile.index.header', $config.idpName) }}
+        {{ $vuetify.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
         <Attribute
           v-if="$user.password_meta.last_login"
           :name="$vuetify.t('$vuetify.profile.index.lastLogin')"

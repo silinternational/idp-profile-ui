@@ -6,7 +6,7 @@
       </template>
 
       <p v-if="printing" class="printable header">
-        {{ $config.idpName }} 
+        {{ $root.idpConfig.idpName }} 
         <span class="caption">
           ({{ $vuetify.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | format }})
         </span>
@@ -27,7 +27,7 @@
         {{ $vuetify.t('$vuetify.2sv.codes.new.button.print') }}
         <v-icon right>print</v-icon>
       </v-btn>
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$config.idpName}--printable-codes.txt`" color="secondary" flat>
+      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" color="secondary" flat>
         {{ $vuetify.t('$vuetify.2sv.codes.new.button.download') }}
         <v-icon right>cloud_download</v-icon>
       </v-btn>
@@ -68,7 +68,7 @@ export default {
   computed: {
     encodedData() {
       return encodeURIComponent(
-        `${this.$config.idpName}\r\n${this.codes.join('\r\n')}`
+        `${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`
       )
     }
   },
@@ -91,7 +91,7 @@ export default {
     },
     copy: async function() {
       await navigator.clipboard.writeText(
-        `${this.$config.idpName}\r\n${this.codes.join('\r\n')}`
+        `${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`
       )
 
       this.copied = true

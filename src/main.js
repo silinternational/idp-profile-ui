@@ -7,6 +7,12 @@ import '@/global/components'
 import '@/global/filters'
 
 new Vue({
+  data: {
+    idpConfig: {}
+  },
+  async created() {
+    this.idpConfig = await this.$API.get('config')
+  },
   router,
   render: h => h(App)
 }).$mount('#app')

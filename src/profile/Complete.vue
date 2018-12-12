@@ -2,11 +2,11 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template slot="header">
-        {{ $vuetify.t('$vuetify.profile.complete.header', $config.idpName) }}
+        {{ $vuetify.t('$vuetify.profile.complete.header', $root.idpConfig.idpName) }}
       </template>
 
       <p>
-        {{ $vuetify.t('$vuetify.profile.complete.congrats', $config.idpName, $user.first_name) }}
+        {{ $vuetify.t('$vuetify.profile.complete.congrats', $root.idpConfig.idpName, $user.first_name) }}
       </p>
 
       <p>

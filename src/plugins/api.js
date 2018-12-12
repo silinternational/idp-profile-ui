@@ -28,4 +28,4 @@ Vue.use(theVue => {
   theVue.prototype.$API = api
 })
 
-export default api // provided as an export in case other plugins need the api, e.g., ./config.js
+export default api // provided as an export in case other plugins need the api, e.g., ./user.js

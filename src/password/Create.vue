@@ -2,13 +2,13 @@
   <ProfileWizard>
     <BasePage>
       <template slot="header">
-        {{ $vuetify.t('$vuetify.password.create.header', $config.idpName) }}
+        {{ $vuetify.t('$vuetify.password.create.header', $root.idpConfig.idpName) }}
       </template>
 
       <v-form @submit.prevent="save" ref="form">
         <BaseTextField 
           type="password" 
-          :label="$vuetify.t('$vuetify.password.create.pwInput', $config.idpName)" 
+          :label="$vuetify.t('$vuetify.password.create.pwInput')" 
           v-model="password" 
           :rules="rules" 
           validate-on-blur 
@@ -85,20 +85,20 @@ const required = (v, vm) =>
   !!v || vm.$vuetify.t('$vuetify.password.create.required')
 
 const minLength = (v, vm) =>
-  v.length > vm.$config.password.minLength.value ||
+  v.length > vm.$root.idpConfig.password.minLength.value ||
   vm.$vuetify.t(
     '$vuetify.password.create.tooShort',
-    vm.$config.password.minLength.value
+    vm.$root.idpConfig.password.minLength.value
   )
 
 const maxLength = (v, vm) =>
-  v.length < vm.$config.password.maxLength.value ||
+  v.length < vm.$root.idpConfig.password.maxLength.value ||
   vm.$vuetify.t(
     '$vuetify.password.create.tooLong',
-    vm.$config.password.maxLength.value
+    vm.$root.idpConfig.password.maxLength.value
   )
 
 const strong = (v, vm) =>
-  vm.strength.score >= vm.$config.password.zxcvbn.minScore ||
+  vm.strength.score >= vm.$root.idpConfig.password.zxcvbn.minScore ||
   vm.$vuetify.t('$vuetify.password.create.tooWeak')
 </script>

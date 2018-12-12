@@ -39,8 +39,8 @@
       "completeStep": "Complete"
     },
     "complete": {
-      "header": "Identity profile complete!",
-      "congrats": "congratulatory content",
+      "header": "{0} Identity profile complete!",
+      "congrats": "congratulatory content {0} {1}",
       "info": "links to additional info if needed",
       "button": {
         "newProfile": "See my new profile"
