@@ -3,6 +3,8 @@ import Confirm from './Confirm'
 import Saved from './Saved'
 import Recovery from './Recovery'
 import VerifyRecoveryMethod from './VerifyRecoveryMethod'
+import Forgot from './Forgot'
+import ForgotEmailSent from './ForgotEmailSent'
 
 export default [
   {
@@ -24,6 +26,20 @@ export default [
   {
     path: '/password/recovery/:id/verify',
     component: VerifyRecoveryMethod,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: '/password/forgot',
+    component: Forgot,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: '/password/forgot/:id',
+    component: ForgotEmailSent,
     meta: {
       public: true
     }
