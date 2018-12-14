@@ -1,5 +1,5 @@
 <template>
-  <v-progress-linear :indeterminate="!!loading" />
+  <v-progress-linear :indeterminate="!!loading" color="secondary" height="10" background-opacity="0" />
 </template>
 
 <script>
