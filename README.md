@@ -26,9 +26,15 @@ i18n support is built-in however the translation files must be generated and dro
 
 ### Authentication
 
-1.  An IdP infrastructure will be running locally and is required for authentication into the app. If needed, it can be accessed at the traefik-configured domain, e.g., [https://profile-api.gtis.guru/auth/login?client_id=abc123](https://profile-api.gtis.guru/auth/login?client_id=abc123).
+An IdP infrastructure will be running locally and is required for authentication into the app's protected pages.
+
+#### Existing user
 1.  Username: **a**
 1.  Password: **a**
+
+#### New user (has no password yet)
+1. Enter app with a special "invitation" link, e.g., [https://profile.gtis.guru/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE](https://profile.gtis.guru/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE)
+1. Username: **b**
 
 ## Local development
 
