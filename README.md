@@ -34,7 +34,7 @@ An IdP infrastructure will be running locally and is required for authentication
 
 #### New user (has no password yet)
 1. Enter app with a special "invitation" link, e.g., [https://profile.gtis.guru/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE](https://profile.gtis.guru/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE)
-1. Username: **b**
+1. if needed, this user's username is **b**
 
 ## Local development
 
