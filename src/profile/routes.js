@@ -1,6 +1,7 @@
 import Intro from './Intro'
 import Complete from './Complete'
 import Index from './Index'
+import InviteExpired from './InviteExpired'
 
 export default [
   {
@@ -14,5 +15,12 @@ export default [
   {
     path: '/profile',
     component: Index
-  }
+  },
+  {
+    path: '/profile/invite/expired',
+    component: InviteExpired,
+    meta: {
+      public: true
+    },
+  },
 ]

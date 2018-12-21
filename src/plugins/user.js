@@ -26,12 +26,10 @@ let user = {
   login(returnTo, inviteCode = '') {
     token.reset()
 
-    let loginUrl = `${
-      api.defaults.baseURL
-      }/auth/login?client_id=${token.key()}`
+    let loginUrl = `${api.defaults.baseURL}/auth/login?client_id=${token.key()}`
 
     if (inviteCode) {
-      loginUrl += `&invite=${inviteCode}`
+      loginUrl += `&invite=${inviteCode}&ReturnToOnError=/profile/invite/expired`
     }
 
     if (returnTo) {
@@ -41,9 +39,7 @@ let user = {
     window.location = loginUrl
   },
   logout() {
-    let logoutUrl = `${api.defaults.baseURL}/auth/logout?access_token=${
-      token.accessToken
-      }`
+    let logoutUrl = `${api.defaults.baseURL}/auth/logout?access_token=${token.accessToken}`
 
     token.reset()
 
@@ -51,7 +47,7 @@ let user = {
   },
   isNew() {
     return !this.password_meta
-  }
+  },
 }
 
 Vue.use(theVue => {
