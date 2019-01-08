@@ -1,7 +1,6 @@
 <template>
   <v-layout column align-center>
     <header class="display-1 py-3 layout row align-center justify-center">
-      <!-- TODO: need to implement a dynamic page title presumably using the contents of the header -->
       <slot name="header" />
     </header>
 
