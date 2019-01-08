@@ -5,8 +5,6 @@
         {{ $vuetify.t('$vuetify.password.confirm.header') }}
       </template>
 
-
-      <!-- TODO:  review https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/ for form best practices -->
       <v-form @submit.prevent="confirm" ref="form" class="pa-3">
         <p>
           {{ $vuetify.t('$vuetify.password.confirm.explanation') }}
