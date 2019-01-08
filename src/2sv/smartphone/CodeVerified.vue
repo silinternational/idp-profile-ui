@@ -1,5 +1,5 @@
 <template>
-  <ProfileWizard>
+  <ProfileWizard ref="wizard">
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.2sv.smartphone.codeVerified.header') }}
@@ -26,6 +26,9 @@ import ProfileWizard from '@/profile/ProfileWizard'
 export default {
   components: {
     ProfileWizard
+  },
+  mounted() {
+    this.$refs.wizard.complete()
   }
 }
 </script>

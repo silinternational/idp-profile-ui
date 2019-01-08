@@ -8,10 +8,6 @@
       <p>
         {{ $vuetify.t('$vuetify.profile.complete.congrats', $root.idpConfig.idpName, $user.first_name) }}
       </p>
-
-      <p>
-        {{ $vuetify.t('$vuetify.profile.complete.info') }}
-      </p>
     </BasePage>
 
     <ButtonBar>

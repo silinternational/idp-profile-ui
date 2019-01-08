@@ -64,6 +64,8 @@ export default {
     const newCodes = await this.$API.post('mfa', { type: 'backupcode' })
 
     this.codes = newCodes.data
+    
+    this.$refs.wizard.complete()
   },
   computed: {
     encodedData() {

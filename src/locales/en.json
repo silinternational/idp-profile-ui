@@ -45,8 +45,7 @@
     },
     "complete": {
       "header": "{0} Identity profile complete!",
-      "congrats": "congratulatory content {0} {1}",
-      "info": "links to additional info if needed",
+      "congrats": "Congratulations!  You are finished, thank you for setting up your profile.",
       "button": {
         "newProfile": "See my new profile"
       }
