@@ -150,8 +150,10 @@
       "verifying": "Verifying your code...",
       "verified": "Congratulations!  You have sucessfully added that recovery method just in case you ever forget your password.",
       "expired": "Unfortunately that verification code has already expired.  I will send you another email right now with a new verification code.  You may go ahead and close this tab and check your email.",
+      "invalid": "Unfortunately something is wrong with that link.  You will need to try again.",
       "button": {
-        "profile": "Login and see my updated profile"
+        "profile": "Login and see my updated profile",
+        "again": "Try again"
       }
     },
     "forgot": {

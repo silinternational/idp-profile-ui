@@ -5,12 +5,16 @@
     <p v-if="verifying">{{ $vuetify.t('$vuetify.password.verifyRecovery.verifying') }}</p>
     <p v-if="verified">{{ $vuetify.t('$vuetify.password.verifyRecovery.verified') }}</p>
     <p v-if="expired">{{ $vuetify.t('$vuetify.password.verifyRecovery.expired') }}</p>
+    <p v-if="invalid">{{ $vuetify.t('$vuetify.password.verifyRecovery.invalid') }}</p>
 
     <ButtonBar>
       <v-spacer></v-spacer>
       
       <v-btn v-if="verified" to="/profile" color="primary">
-        {{ $vuetify.t('$vuetify.password.verifyRecovery.button.profile') }} <!-- TODO: if this page ends up requiring authn, this content will need to change  -->
+        {{ $vuetify.t('$vuetify.password.verifyRecovery.button.profile') }}
+      </v-btn>
+      <v-btn v-if="invalid" to="/password/recovery" color="primary">
+        {{ $vuetify.t('$vuetify.password.verifyRecovery.button.again') }}
       </v-btn>
     </ButtonBar>
   </BasePage>
@@ -22,6 +26,7 @@ export default {
     verifying: true,
     verified: false,
     expired: false,
+    invalid: false,
   }),
   async created() {
     try {
@@ -29,8 +34,11 @@ export default {
 
       this.verified = true
     } catch(e) {
-      this.expired = e.status == 410
-      //TODO: need an invalid message as well, i.e., e.status != 410
+      if (e.status == 410) {
+        this.expired = true
+      } else {
+        this.invalid = true
+      }
     } finally {
       this.verifying = false
     }
