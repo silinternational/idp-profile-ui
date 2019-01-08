@@ -41,7 +41,7 @@ const recovery = {
   name: t('$vuetify.profile.steps.pwRecoverStep'),
   paths: ['/password/recovery'],
   isRelevant(user) {
-    return isRequested(this.paths) || user.recoveryMethods.personal.length < 1
+    return user.auth_type == 'login' && (isRequested(this.paths) || user.recoveryMethods.personal.length < 1)
   }
 }
 
@@ -62,13 +62,13 @@ const twosv = {
     '/2sv/printable-backup-codes/new'
   ],
   isRelevant(user) {
-    return isRequested(this.paths) || user.mfas.length < 3
+    return user.auth_type == 'login' && (isRequested(this.paths) || user.mfas.length < 3)
   }
 }
 
 const complete = {
   name: t('$vuetify.profile.steps.completeStep'),
-  paths: ['/profile/complete'],
+  paths: ['/profile/complete', '/password/reset/complete'],
   isRelevant() {
     return true
   }

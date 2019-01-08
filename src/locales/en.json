@@ -170,6 +170,26 @@
       "instead": "Use this one instead",
       "too": "Sent to this email as well",
       "again": "Send link again"
+    },
+    "reset": {
+      "verify": {
+        "header": "Password reset verification",
+        "verifying": "Verifying your code...",
+        "verified": "Congratulations!  That was the correct code, you may create your new password now.",
+        "expired": "Unfortunately that verification code has already expired.  I will send you another email right now with a new verification code.  You may go ahead and close this tab and check your email.",
+        "invalid": "Unfortunately something is wrong with that link.  You will need to try again.",
+        "button": {
+          "create": "Create my new password",
+          "again": "Try again"
+        }
+      },
+      "complete": {
+        "header": "Excellent!",
+        "congrats": "Your password has been changed.  You will not have complete access to your profile until you log back in with your new password.",
+        "button": {
+          "next": "Check my profile"
+        }
+      }
     }
   },
   "2sv": {

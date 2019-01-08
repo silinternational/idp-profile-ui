@@ -5,11 +5,20 @@ import token from '@/global/token'
 // Full config:  https://github.com/axios/axios#request-config
 const api = axios.create({
   baseURL: `${process.env.VUE_APP_API_BASE_URL}`,
-  headers: {
-    Authorization: token.authzHeader()
-  },
-  withCredentials: true
+  withCredentials: true,
 })
+
+api.interceptors.request.use(
+  config => {
+    config.headers.Authorization = token.authzHeader()
+
+    return config
+  },
+  error => {
+    const e = (error.response && error.response.data) || error
+    throw e
+  }
+)
 
 api.interceptors.response.use(
   response => response.data,

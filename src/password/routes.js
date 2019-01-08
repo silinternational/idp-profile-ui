@@ -5,43 +5,56 @@ import Recovery from './Recovery'
 import VerifyRecoveryMethod from './VerifyRecoveryMethod'
 import Forgot from './Forgot'
 import ForgotEmailSent from './ForgotEmailSent'
+import VerifyReset from './VerifyReset'
+import CompleteReset from './CompleteReset'
 
 export default [
   {
     path: '/password/create',
-    component: Create
+    component: Create,
   },
   {
     path: '/password/confirm',
-    component: Confirm
+    component: Confirm,
   },
   {
     path: '/password/saved',
-    component: Saved
+    component: Saved,
   },
   {
     path: '/password/recovery',
-    component: Recovery
+    component: Recovery,
   },
   {
     path: '/password/recovery/:id/verify',
     component: VerifyRecoveryMethod,
     meta: {
       public: true
-    }
+    },
   },
   {
     path: '/password/forgot',
     component: Forgot,
     meta: {
       public: true
-    }
+    },
   },
   {
     path: '/password/forgot/:id',
     component: ForgotEmailSent,
     meta: {
       public: true
-    }
-  }
+    },
+  },
+  {
+    path: '/password/reset/:resetId/verify/:verificationId',
+    component: VerifyReset,
+    meta: {
+      public: true
+    },
+  },
+  {
+    path: '/password/reset/complete',
+    component: CompleteReset,
+  },
 ]

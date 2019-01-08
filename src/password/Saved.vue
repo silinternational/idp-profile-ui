@@ -13,7 +13,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/password/recovery" color="primary" flat>
+      <v-btn :to="nextStep" color="primary" flat>
         {{ $vuetify.t('$vuetify.global.button.continue') }}
       </v-btn>
     </ButtonBar>
@@ -26,6 +26,9 @@ import ProfileWizard from '@/profile/ProfileWizard'
 export default {
   components: {
     ProfileWizard
-  }
+  },
+  computed: {
+    nextStep: vm => vm.$user.auth_type == 'reset' ? '/password/reset/complete' : '/password/recovery'
+  },
 }
 </script>

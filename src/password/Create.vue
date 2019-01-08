@@ -35,7 +35,7 @@
     </BasePage>
 
     <template slot="actions">
-      <v-btn to="/profile/intro" flat tabindex="-1">
+      <v-btn v-if="$user.auth_type == 'login'" to="/profile/intro" flat tabindex="-1">
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
 

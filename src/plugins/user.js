@@ -11,14 +11,17 @@ let user = {
   refresh: async function () {
     Object.assign(this, await api.get('/user/me'))
 
-    const methodPromise = api.get('method')
-    const mfaPromise = api.get('mfa')
-
-    const all = await methodPromise
-    Object.assign(this.recoveryMethods.builtIn, all.filter(m => m.type != 'email'))
-    Object.assign(this.recoveryMethods.personal, all.filter(m => m.type == 'email'))
-
-    Object.assign(this.mfas, await mfaPromise)
+    // 'login' scope is the only time extra data can be gathered, e.g, method or mfa calls will return a 403 in 'reset' scope
+    if (this.auth_type == 'login') {
+      const methodPromise = api.get('method')
+      const mfaPromise = api.get('mfa')
+  
+      const all = await methodPromise
+      Object.assign(this.recoveryMethods.builtIn, all.filter(m => m.type != 'email'))
+      Object.assign(this.recoveryMethods.personal, all.filter(m => m.type == 'email'))
+  
+      Object.assign(this.mfas, await mfaPromise)
+    }
   },
   isAuthenticated() {
     return !!this.idp_username
@@ -39,7 +42,7 @@ let user = {
     window.location = loginUrl
   },
   logout() {
-    let logoutUrl = `${api.defaults.baseURL}/auth/logout?access_token=${token.accessToken}`
+    const logoutUrl = `${api.defaults.baseURL}/auth/logout?access_token=${token.accessToken}`
 
     token.reset()
 

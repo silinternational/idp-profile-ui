@@ -4,7 +4,8 @@ export default {
   key: () => get('key'),
   authzHeader: () => `${get('token_type')} ${get('key') + get('access_token')}`,
   reset,
-  accessToken: () => get('access_token')
+  accessToken: () => get('access_token'),
+  setAccessToken: (t) => sessionStorage.setItem('access_token', t)
 }
 
 function init() {
@@ -28,8 +29,8 @@ function get(key) {
   return sessionStorage.getItem(key) || params.get(key)
 }
 
-function set(key, def = '') {
-  sessionStorage.setItem(key, get(key) || def)
+function set(key, defaultValue = '') {
+  sessionStorage.setItem(key, get(key) || defaultValue)
 }
 
 function reset() {
