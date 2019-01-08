@@ -5,13 +5,12 @@
     <p v-if="verifying">{{ $vuetify.t('$vuetify.password.verifyRecovery.verifying') }}</p>
     <p v-if="verified">{{ $vuetify.t('$vuetify.password.verifyRecovery.verified') }}</p>
     <p v-if="expired">{{ $vuetify.t('$vuetify.password.verifyRecovery.expired') }}</p>
-    <p v-if="sent">{{ $vuetify.t('$vuetify.password.verifyRecovery.sent') }}</p>
 
     <ButtonBar>
       <v-spacer></v-spacer>
       
       <v-btn v-if="verified" to="/profile" color="primary">
-        {{ $vuetify.t('$vuetify.password.verifyRecovery.button.profile') }}
+        {{ $vuetify.t('$vuetify.password.verifyRecovery.button.profile') }} <!-- TODO: if this page ends up requiring authn, this content will need to change  -->
       </v-btn>
     </ButtonBar>
   </BasePage>
@@ -23,28 +22,18 @@ export default {
     verifying: true,
     verified: false,
     expired: false,
-    sent: false
   }),
   async created() {
-    const methodId = this.$route.params.id
-
     try {
-      await this.$API.put(`method/${methodId}`, {
-        code: this.$route.query.code
-      })
+      await this.$API.put(`method/${this.$route.params.id}/verify`, { code: this.$route.query.code })
 
-      this.verifying = false;
-      this.verified = true;
+      this.verified = true
     } catch(e) {
-      this.verifying = false;
-
-      if (e.status == 410) {
-        this.expired = true;
-
-        await this.$API.put(`method/${methodId}/resend`)
-        this.sent = true;
-      }
+      this.expired = e.status == 410
+      //TODO: need an invalid message as well, i.e., e.status != 410
+    } finally {
+      this.verifying = false
     }
-  }
+  },
 }
 </script>
