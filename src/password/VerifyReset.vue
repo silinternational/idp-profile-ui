@@ -47,8 +47,6 @@ export default {
         this.expired = true
       } else {
         this.invalid = true
-        console.log(e);
-        
       }
     } finally {
       this.verifying = false
