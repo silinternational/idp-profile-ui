@@ -49,7 +49,6 @@
       </ul>
 
       <v-form @submit.prevent="add" ref="form" class="layout row pa-3">
-        <!-- TODO: "bug" still when a user hits enter and there's a validation error, the form will not mark itself invalid -->
         <BaseTextField
           type="email"
           :label="$vuetify.t('$vuetify.password.recovery.emailInput')"

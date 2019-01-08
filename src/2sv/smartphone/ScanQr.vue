@@ -13,7 +13,7 @@
         <li>
           <p class="layout column pl-4">
             {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.add') }}
-            <!-- TODO: consider animation here and don't forget, if the user just downloaded the app, it will start with a "BEGIN SETUP" screen -->
+
             <img src="@/assets/google-authenticator-scan-screenshot.png" class="pa-4">
           </p>
         </li>

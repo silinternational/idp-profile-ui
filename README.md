@@ -17,7 +17,7 @@ This app is setup to run against HTTPS for U2F testing. In order to facilitate t
 
 ## i18n
 
-i18n support is built-in however the translation files must be generated and dropped into the `src/locales` folder with the appropriate name, e.g., `en.json`, `fr.json`, `ko.json` before the app is built. (TODO: automate this via crowdin api's)
+i18n support is built-in however the translation files must be generated and dropped into the `src/locales` folder with the appropriate name, e.g., `en.json`, `fr.json`, `ko.json` before the app is built.
 
 ## Run locally
 
