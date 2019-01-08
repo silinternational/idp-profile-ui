@@ -56,7 +56,7 @@ export default {
   methods: {
     verify: async function() {
       if (this.$refs.form.validate()) {
-        await this.$API.post(`mfa/${this.$route.query.id}/verify`, {
+        await this.$API.put(`mfa/${this.$route.query.id}/verify`, {
           value: this.code.trim()
         })
 

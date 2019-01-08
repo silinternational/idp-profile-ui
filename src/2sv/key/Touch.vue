@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     handleKeyResponse: async function(response) {
-      await this.$API.post(`mfa/${this.mfa.id}/verify`, { value: response })
+      await this.$API.put(`mfa/${this.mfa.id}/verify`, { value: response })
 
       this.touched = true
 
