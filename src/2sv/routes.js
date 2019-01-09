@@ -10,6 +10,7 @@ import Touch from './key/Touch'
 import Confirmed from './key/Confirmed'
 import CodesIntro from './codes/Intro'
 import New from './codes/New'
+import Lost from './Lost'
 
 export default [
   {
@@ -59,5 +60,9 @@ export default [
   {
     path: '/2sv/printable-backup-codes/new',
     component: New
-  }
+  },
+  {
+    path: '/2sv/lost/:id',
+    component: Lost
+  },
 ]

@@ -272,6 +272,14 @@
           "copied": "Copied"
         }
       }
+    },
+    "lost": {
+      "header": "Sorry to hear that!",
+      "removing": "Removing it from your account now...",
+      "removed": "That has safely been removed now.",
+      "button": {
+        "ok": "Back to my profile"
+      }
     }
   }
 }
