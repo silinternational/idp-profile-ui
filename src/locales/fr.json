@@ -1,11 +1,11 @@
 {
   "global": {
     "button": {
-      "back": "Back",
-      "continue": "Continue",
-      "skip": "Skip",
-      "yes": "Yes",
-      "no": "No",
+      "back": "Précédent",
+      "continue": "Continuer",
+      "skip": "Passer",
+      "yes": "Oui",
+      "no": "Non",
       "verify": "Verify",
       "change": "Change",
       "remove": "Remove",
