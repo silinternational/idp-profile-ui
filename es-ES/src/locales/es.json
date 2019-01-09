@@ -1,0 +1,285 @@
+{
+  "global": {
+    "button": {
+      "back": "Back",
+      "continue": "Continue",
+      "skip": "Skip",
+      "yes": "Yes",
+      "no": "No",
+      "verify": "Verify",
+      "change": "Change",
+      "remove": "Remove",
+      "add": "Add"
+    },
+    "learnMore": "learn more",
+    "areYouSure": "Are you sure?"
+  },
+  "app": {
+    "login": "Log in",
+    "logout": "Log out"
+  },
+  "home": {
+    "header": "Welcome!",
+    "start": "I would like to start my profile today",
+    "forgot": "I forgot my password"
+  },
+  "profile": {
+    "intro": {
+      "header": "What is a(n) “{0} Identity”?",
+      "welcome": "First of all, welcome to {0} {1}!",
+      "explanation": "Brief content introducing the term and explaining it.",
+      "diffFromEmail": "Some content helping distinguish it from their email account.",
+      "button": {
+        "start": "Begin"
+      }
+    },
+    "inviteExpired": {
+      "header": "Expired link",
+      "explanation": "That link has already expired so we sent you another email with a new link.  You should receive it within the minute.  You will not need this tab anymore."
+    },
+    "steps": {
+      "pwStep": "Password",
+      "pwRecoverStep": "Password recovery",
+      "2svStep": "2-step verification",
+      "completeStep": "Complete"
+    },
+    "complete": {
+      "header": "{0} Identity profile complete!",
+      "congrats": "Congratulations!  You are finished, thank you for setting up your profile.",
+      "button": {
+        "newProfile": "See my new profile"
+      }
+    },
+    "index": {
+      "header": "My {0} Identity",
+      "lastLogin": "Last login: ",
+      "passwordCard": {
+        "title": "Password",
+        "lastChanged": "Last changed:",
+        "expires": "Expires:"
+      },
+      "passwordRecoveryCard": {
+        "title": "Password recovery",
+        "warning": "No recovery addresses at this time, please add one.",
+        "unverified": "This email has not yet been verified, please check your primary account for a verification email.",
+        "resend": "resend"
+      },
+      "totpCard": {
+        "title": "Smartphone",
+        "created": "Created:",
+        "button": {
+          "lost": "I lost my phone"
+        },
+        "warning": "No smartphone at this time, please add one."
+      },
+      "u2fCard": {
+        "title": "USB security key",
+        "created": "Created:",
+        "button": {
+          "lost": "I lost my key"
+        },
+        "warning": "No security key at this time, please add one."
+      },
+      "codeCard": {
+        "title": "Printable backup codes",
+        "created": "Created:",
+        "remaining": "Remaining:",
+        "button": {
+          "replace": "Replace",
+          "add": "Create"
+        },
+        "warning": "No backup codes at this time, please create some."
+      },
+      "dndCard": {
+        "title": "Do not disclose",
+        "info": "When enabled, using the Forgot Password process will produce a message that your account does not exist. It will however still send you an email with a link you can use to reset your password.",
+        "button": {
+          "enable": "Enable",
+          "disable": "Disable"
+        }
+      },
+      "2sv": "2-Step Verification"
+    },
+    "progress": {
+      "header": "Profile strength",
+      "addMethod": "Add a recovery method",
+      "addTotp": "Add a smartphone (2SV)",
+      "addU2f": "Add a security key (2SV)",
+      "addCodes": "Add some backup codes (2SV)"
+    }
+  },
+  "password": {
+    "create": {
+      "header": "Create a password for your {0} Identity",
+      "pwInput": "Your new password",
+      "required": "A new password is required",
+      "tooShort": "Your new password must be at least {0} characters",
+      "tooLong": "Your new password cannot be longer than {0} characters",
+      "tooWeak": "Your new password must be stronger"
+    },
+    "confirm": {
+      "header": "Confirm your new password",
+      "explanation": "Just to make sure we both have your new password right, please enter it one more time.",
+      "pwInput": "Your new password",
+      "noMatch": "That password does not match your previous one",
+      "reused": "You recently used that one"
+    },
+    "saved": {
+      "header": "Excellent!",
+      "info": "Your new password has been saved.",
+      "pwInput": "Your new password",
+      "noMatch": "That password does not match your previous one"
+    },
+    "recovery": {
+      "header": "What if your password does not work anymore?",
+      "explanation": "Sometimes we forget our password.  Sometimes the password we have just doesn't seem to work. In those situations, it is important to still be able to \"recover\" your password.",
+      "advice": "We advise adding at least one personal email address in the event you need to begin the recovery process.",
+      "atLeastOneRecovery": "Thankfully you already have a personal email address we could send a special link to in case you need to begin the password recovery process.  You may have as many as you like.",
+      "noMatch": "That password does not match your previous one",
+      "emailInput": "Enter a personal email address",
+      "unsaved": "You have not saved your changes yet.",
+      "dontRemoveLastOne": "Please add another personal email address before removing this one.",
+      "invalidEmail": "Invalid email",
+      "systemHeader": "System",
+      "personalHeader": "Personal",
+      "noPersonalMethods": "None at this time"
+    },
+    "verifyRecovery": {
+      "header": "Recovery method verification",
+      "verifying": "Verifying your code...",
+      "verified": "Congratulations!  You have sucessfully added that recovery method just in case you ever forget your password.",
+      "expired": "Unfortunately that verification code has already expired.  I will send you another email right now with a new verification code.  You may go ahead and close this tab and check your email.",
+      "invalid": "Unfortunately something is wrong with that link.  You will need to try again.",
+      "button": {
+        "profile": "Login and see my updated profile",
+        "again": "Try again"
+      }
+    },
+    "forgot": {
+      "header": "Forgot my password",
+      "unameInput": "Enter your {0} username",
+      "required": "A username is required",
+      "clickOnly": "Please click me to send a link",
+      "button": {
+        "send": "Send me a link"
+      }
+    },
+    "forgotSent": {
+      "header": "Email sent",
+      "emailComing": "We will send an email with a special link to the following email address in a minute:",
+      "alternates": "If you do not currently have access to this email account, please use one of the alternates below.",
+      "instead": "Use this one instead",
+      "too": "Sent to this email as well",
+      "again": "Send link again"
+    },
+    "reset": {
+      "verify": {
+        "header": "Password reset verification",
+        "verifying": "Verifying your code...",
+        "verified": "Congratulations!  That was the correct code, you may create your new password now.",
+        "expired": "Unfortunately that verification code has already expired.  I will send you another email right now with a new verification code.  You may go ahead and close this tab and check your email.",
+        "invalid": "Unfortunately something is wrong with that link.  You will need to try again.",
+        "button": {
+          "create": "Create my new password",
+          "again": "Try again"
+        }
+      },
+      "complete": {
+        "header": "Excellent!",
+        "congrats": "Your password has been changed.  You will not have complete access to your profile until you log back in with your new password.",
+        "button": {
+          "next": "Check my profile"
+        }
+      }
+    }
+  },
+  "2sv": {
+    "intro": {
+      "header": "What is 2-Step Verification?",
+      "info": "Before we go any further, we would like to introduce an important step in protecting your account."
+    },
+    "smartphone": {
+      "intro": {
+        "header": "Do you have a smartphone?",
+        "info": "If you have one and it is usually with you, this can be a very good option for your 2-Step Verification."
+      },
+      "download": {
+        "header": "Download an app",
+        "info": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.",
+        "button": {
+          "ok": "OK, I installed it on my smartphone"
+        },
+        "recommended": "Google Authenticator"
+      },
+      "scanQr": {
+        "header": "Connect your smartphone to your account",
+        "info": "In order to connect your smartphone to your account we will need to scan the QR code below into the app you just installed.",
+        "add": "Add an account by pressing \"begin setup\" or the \"add\" button and then choosing the \"scan a barcode\" option",
+        "qr": "Point your phone at the QR code below and your app will start generating 6-digit codes",
+        "button": {
+          "ok": "OK, my app is generating codes now"
+        }
+      },
+      "verifyQrCode": {
+        "header": "Verify code from your smartphone app",
+        "info": "Your app will generate a new 6-digit code every 30 seconds, when you're ready enter the one displayed in your app and click \"Verify\".",
+        "codeInput": "6-digit code",
+        "invalidCode": "code must be 6 digits"
+      },
+      "codeVerified": {
+        "header": "Excellent!",
+        "info": "That was the correct code so you may now use your smartphone to further protect your account."
+      }
+    },
+    "key": {
+      "intro": {
+        "header": "Do you have a USB security key?",
+        "info": "USB security keys are the most secure and convenient option for your 2-Step Verification setup.",
+        "button": {
+          "no": "No, but I'd like to get one"
+        }
+      },
+      "insert": {
+        "header": "Insert your USB security key",
+        "button": {
+          "ok": "OK, I inserted it"
+        }
+      },
+      "touch": {
+        "header": "Touch or press your USB security key",
+        "info": "Once your security key starts blinking, go ahead and press its button or touch its sensor."
+      },
+      "confirmed": {
+        "header": "Excellent!",
+        "info": "Your USB security key is now confirmed so you may use it to further protect your account."
+      }
+    },
+    "codes": {
+      "intro": {
+        "header": "Printable backup codes",
+        "info": "There may be times when you do not have your smartphone or USB security key with you.  When that is the case, printable backup codes can be used.",
+        "warning": "some content for those users that have NOT set up other 2sv options."
+      },
+      "new": {
+        "header": "Printable backup codes",
+        "loading": "generating codes...",
+        "generated": "generated on",
+        "button": {
+          "ok": "Finish",
+          "print": "Print",
+          "download": "Download",
+          "copy": "Copy",
+          "copied": "Copied"
+        }
+      }
+    },
+    "lost": {
+      "header": "Sorry to hear that!",
+      "removing": "Removing it from your account now...",
+      "removed": "That has safely been removed now.",
+      "button": {
+        "ok": "Back to my profile"
+      }
+    }
+  }
+}
