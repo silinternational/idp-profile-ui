@@ -10,6 +10,14 @@
   </v-layout>
 </template>
 
+<script>
+export default {
+  created() {
+    document.title = this.$vuetify.t('$vuetify.app.title', this.$slots.header[0].text.trim())
+  }
+}
+</script>
+
 <style scoped>
 header {
   width: 100%;
