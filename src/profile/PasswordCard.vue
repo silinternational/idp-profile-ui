@@ -34,7 +34,7 @@
 
 <script>
 import Attribute from './Attribute'
-import { subWeeks } from 'date-fns'
+import { subDays } from 'date-fns'
 
 export default {
   components: {
@@ -53,7 +53,7 @@ export default {
   }),
   methods: {
     isExpiringSoon() {
-      return subWeeks(this.meta.expires, 2) <= this.today
+      return subDays(this.meta.expires, 30) <= this.today
     }
   },
 }
