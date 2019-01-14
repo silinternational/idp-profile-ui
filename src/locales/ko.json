@@ -54,6 +54,10 @@
     "index": {
       "header": "My {0} Identity",
       "lastLogin": "Last login: ",
+      "2sv": "2-Step Verification",
+      "button": {
+        "changeNow": "Expiring soon, change now"
+      },
       "passwordCard": {
         "title": "Password",
         "lastChanged": "Last changed:",
@@ -98,8 +102,7 @@
           "enable": "Enable",
           "disable": "Disable"
         }
-      },
-      "2sv": "2-Step Verification"
+      }
     },
     "progress": {
       "header": "Profile strength",
