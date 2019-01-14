@@ -1,14 +1,7 @@
 <template>
   <BasePage>
     <template slot="header">
-      <div class="layout column">
-        {{ $vuetify.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
-        <Attribute
-          v-if="$user.password_meta.last_login"
-          :name="$vuetify.t('$vuetify.profile.index.lastLogin')"
-          :value="$user.password_meta.last_login | format"
-        />
-      </div>
+      {{ $vuetify.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
 
       <v-spacer/>
 
@@ -31,7 +24,6 @@
 </template>
 
 <script>
-import Attribute from './Attribute'
 import ProfileProgress from './ProfileProgress'
 import PasswordCard from './PasswordCard'
 import PasswordRecoveryCard from './PasswordRecoveryCard'
@@ -42,7 +34,6 @@ import DoNotDiscloseCard from './DoNotDiscloseCard'
 
 export default {
   components: {
-    Attribute,
     ProfileProgress,
     PasswordCard,
     PasswordRecoveryCard,
