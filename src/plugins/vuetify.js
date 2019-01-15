@@ -1,54 +1,11 @@
-// component name reference https://github.com/vuetifyjs/vuetify/tree/master/packages/vuetify/src/components
-import {
-  Vuetify,
-  VAlert,
-  VApp,
-  VBtn,
-  VCard,
-  VDivider,
-  VFooter,
-  VForm,
-  VGrid,
-  VIcon,
-  VImg,
-  VList,
-  VProgressLinear,
-  VStepper,
-  VSubheader,
-  VTextField,
-  VToolbar,
-  VTooltip,
-  transitions
-} from 'vuetify'
-
-import 'vuetify/src/stylus/app.styl'
 import Vue from 'vue'
+import Vuetify from 'vuetify/lib';
 import locales from '@/locales'
+import 'vuetify/src/stylus/app.styl'
 
 Vue.use(Vuetify, {
   lang: {
     locales: locales
-  },
-  components: {
-    Vuetify,
-    VAlert,
-    VApp,
-    VBtn,
-    VCard,
-    VDivider,
-    VFooter,
-    VForm,
-    VGrid,
-    VIcon,
-    VImg,
-    VList,
-    VProgressLinear,
-    VStepper,
-    VSubheader,
-    VTextField,
-    VToolbar,
-    VTooltip,
-    transitions
   },
   theme: {
     primary: '#015d99',
