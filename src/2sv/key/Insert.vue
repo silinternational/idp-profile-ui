@@ -1,13 +1,17 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template slot="header">
+      <template v-if="isSupported" slot="header">
         {{ $vuetify.t('$vuetify.2sv.key.insert.header') }}
       </template>
+      <template v-else slot="header">
+        {{ $vuetify.t('$vuetify.2sv.key.insert.nosupport.header') }}
+      </template>
 
-      <figure class="layout column align-center pa-4">
+      <figure v-if="isSupported" class="layout column align-center pa-4">
         <img src="@/assets/insert-usb-security-key.png">
       </figure>
+      <p v-else>{{ $vuetify.t('$vuetify.2sv.key.insert.nosupport.info') }}</p>
     </BasePage>
 
     <ButtonBar>
@@ -17,8 +21,11 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/usb-security-key/touch" color="primary" flat tabindex="-1"> 
+      <v-btn v-if="isSupported" to="/2sv/usb-security-key/touch" color="primary" flat> 
         {{ $vuetify.t('$vuetify.2sv.key.insert.button.ok') }}
+      </v-btn>
+      <v-btn v-else to="/2sv/printable-backup-codes/intro" color="primary" flat> 
+        {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -26,10 +33,16 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
+import bowser from 'bowser'
 
 export default {
   components: {
     ProfileWizard
-  }
+  },
+  data: () => ({
+    isSupported: (bowser.chrome  && bowser.version >= 41) ||
+                 (bowser.firefox && bowser.version >= 58) ||
+                 (bowser.opera   && bowser.version >= 39)
+  })
 }
 </script>
