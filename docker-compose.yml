@@ -57,8 +57,8 @@ services:
       AUTH_SAML_spCertificate: ''
       AUTH_SAML_spPrivateKey: ''
       AUTH_SAML_entityId: 'profile-api.gtis.guru'
-      AUTH_SAML_ssoUrl: 'http://localhost:8088/saml2/idp/SSOService.php'
-      AUTH_SAML_sloUrl: 'http://localhost:8088/saml2/idp/SingleLogoutService.php'
+      AUTH_SAML_ssoUrl: 'http://profile.gtis.guru:8088/saml2/idp/SSOService.php'
+      AUTH_SAML_sloUrl: 'http://profile.gtis.guru:8088/saml2/idp/SingleLogoutService.php'
 
   profileDb:
     image: silintl/mariadb
