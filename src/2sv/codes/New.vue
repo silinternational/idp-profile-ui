@@ -8,7 +8,7 @@
       <p v-if="printing" class="printable header">
         {{ $root.idpConfig.idpName }} 
         <span class="caption">
-          ({{ $vuetify.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | format }})
+          ({{ $vuetify.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | formatLong }})
         </span>
       </p>
       <v-layout column wrap align-center justify-center id="codes">
