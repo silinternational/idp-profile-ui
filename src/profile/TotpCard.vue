@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title primary-title>
       <v-layout row align-center>
-        <v-icon x-large>smartphone</v-icon>
+        <v-icon :color="meta.created_utc ? 'success' : ''" x-large>smartphone</v-icon>
 
         <MfaCardLabel :label="label" :id="meta.id" @new-label="label = $event"/>
       </v-layout>
