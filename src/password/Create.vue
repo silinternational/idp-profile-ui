@@ -6,23 +6,14 @@
       </template>
 
       <v-form @submit.prevent="save" ref="form">
-        <BaseTextField 
-          type="password" 
-          :label="$vuetify.t('$vuetify.password.create.pwInput')" 
-          v-model="password" 
-          :rules="rules" 
-          validate-on-blur 
-          autofocus />
+        <BaseTextField type="password" :label="$vuetify.t('$vuetify.password.create.pwInput')" v-model="password" 
+                       :rules="rules" validate-on-blur @keyup.enter="blur" autofocus />
 
         <v-alert v-if="password" :value="showFeedback" :type="strength.feedback.warning ? 'error' : 'info'" outline>
-          <header class="body-2">
-            {{ strength.feedback.warning }}
-          </header>
+          <header class="body-2">{{ strength.feedback.warning }}</header>
           
           <ul>
-            <li v-for="suggestion in strength.feedback.suggestions" :key="suggestion">
-              {{ suggestion }}
-            </li>
+            <li v-for="suggestion in strength.feedback.suggestions" :key="suggestion">{{ suggestion }}</li>
           </ul>
 
           <footer class="layout row align-center justify-end">
@@ -54,7 +45,7 @@ import zxcvbn from 'zxcvbn'
 
 export default {
   components: {
-    ProfileWizard
+    ProfileWizard,
   },
   data: vm => ({
     password: vm.$root.$data.password || '',
@@ -63,21 +54,24 @@ export default {
       v => minLength(v, vm),
       v => maxLength(v, vm),
       v => strong(v, vm)
-    ]
+    ],
   }),
   computed: {
     strength: vm => zxcvbn(vm.password),
     showFeedback: vm =>
-      vm.strength.feedback.warning || vm.strength.feedback.suggestions.length
+      vm.strength.feedback.warning || vm.strength.feedback.suggestions.length,
   },
   methods: {
-    save: function() {
+    save() {
       if (this.$refs.form.validate()) {
         this.$root.$data.password = this.password
 
         this.$router.push('/password/confirm')
       }
-    }
+    },
+    blur() {
+      document.querySelector('input').blur()
+    },
   }
 }
 

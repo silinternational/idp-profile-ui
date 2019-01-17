@@ -6,18 +6,10 @@
       </template>
 
       <v-form @submit.prevent="confirm" ref="form" class="pa-3">
-        <p>
-          {{ $vuetify.t('$vuetify.password.confirm.explanation') }}
-        </p>
+        <p>{{ $vuetify.t('$vuetify.password.confirm.explanation') }}</p>
         
-        <BaseTextField 
-          type="password" 
-          :label="$vuetify.t('$vuetify.password.confirm.pwInput')" 
-          v-model="password" 
-          :rules="rules"
-          :error-messages="errors" 
-          validate-on-blur 
-          autofocus />
+        <BaseTextField type="password" :label="$vuetify.t('$vuetify.password.confirm.pwInput')" v-model="password" 
+                       :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus />
       </v-form>
     </BasePage>
 
@@ -40,7 +32,7 @@ import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
-    ProfileWizard
+    ProfileWizard,
   },
   data: vm => ({
     password: '',
@@ -49,7 +41,7 @@ export default {
         v == vm.$root.$data.password ||
         vm.$vuetify.t('$vuetify.password.confirm.noMatch')
     ],
-    errors: []
+    errors: [],
   }),
   beforeRouteLeave(to, from, next) {
     delete this.$root.$data.password
@@ -57,7 +49,7 @@ export default {
     next()
   },
   methods: {
-    confirm: async function() {
+    async confirm () {
       if (this.$refs.form.validate()) {
         try {
           await this.$API.put('password', {
@@ -75,7 +67,10 @@ export default {
           }
         }
       }
-    }
+    },
+    blur() {
+      document.querySelector('input').blur()
+    },
   }
 }
 </script>

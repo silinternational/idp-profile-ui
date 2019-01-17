@@ -7,9 +7,7 @@
                      v-model="uname"
                      :rules="[
                        v => !!v || $vuetify.t('$vuetify.password.forgot.required')
-                     ]"
-                     validate-on-blur
-                     autofocus />
+                     ]" validate-on-blur autofocus />
     </v-form>
 
     <ButtonBar>
@@ -59,7 +57,7 @@ export default {
 
         this.$router.push(`/password/forgot/${reset.uid}`)
       }
-    }
+    },
   }
 }
 

@@ -11,14 +11,8 @@
         <v-form @submit.prevent="verify" ref="form" class="pl-5">
           {{ $vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.info') }}
           
-          <BaseTextField 
-            type="text" 
-            :label="$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.codeInput')" 
-            v-model="code" 
-            :rules="rules" 
-            validate-on-blur 
-            autofocus 
-            class="mt-4" />
+          <BaseTextField type="text" :label="$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.codeInput')" v-model="code" 
+                         :rules="rules" validate-on-blur @keyup.enter="blur" autofocus class="mt-4" />
         </v-form>
       </v-layout>
     </BasePage>
@@ -42,7 +36,7 @@ import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
-    ProfileWizard
+    ProfileWizard,
   },
   data: vm => ({
     code: '',
@@ -51,10 +45,10 @@ export default {
       v =>
         /^\d{3} ?\d{3}$/.test(v) ||
         vm.$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.invalidCode')
-    ]
+    ],
   }),
   methods: {
-    verify: async function() {
+    async verify() {
       if (this.$refs.form.validate()) {
         await this.$API.put(`mfa/${this.$route.query.id}/verify`, {
           value: this.code.trim()
@@ -62,7 +56,10 @@ export default {
 
         this.$router.push('/2sv/smartphone/code-verified')
       }
-    }
+    },
+    blur() {
+      document.querySelector('input').blur()
+    },
   }
 }
 </script>
