@@ -6,6 +6,7 @@
       </template>
 
       <v-layout align-center class="px-5">
+        <!-- TODO: put something here to ensure the user knows this is an example (text perhaps or maybe the screenshot of the phone with it in there blurring the code prhaps to ensure user does not actually use the code in the sample screenshot) -->
         <img src="@/assets/google-authenticator-6-digit-code.png">
 
         <v-form @submit.prevent="verify" ref="form" class="pl-5">

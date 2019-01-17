@@ -49,6 +49,7 @@ export default {
   },
   methods: {
     handleKeyResponse: async function(response) {
+//TODO: handle the case where the user does nothing and this response looks more like a timeout response..."retry" logic perhaps
       await this.$API.put(`mfa/${this.mfa.id}/verify`, { value: response })
 
       this.touched = true
