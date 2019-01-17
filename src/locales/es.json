@@ -144,7 +144,7 @@
       "unsaved": "You have not saved your changes yet.",
       "dontRemoveLastOne": "Please add another personal email address before removing this one.",
       "invalidEmail": "Invalid email",
-      "systemHeader": "System",
+      "systemHeader": "Default",
       "personalHeader": "Personal",
       "noPersonalMethods": "None at this time"
     },
