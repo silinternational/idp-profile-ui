@@ -1,13 +1,13 @@
 {
   "global": {
     "button": {
-      "back": "Précédent",
-      "continue": "Continuer",
-      "skip": "Passer",
-      "yes": "Oui",
-      "no": "Non",
-      "verify": "Vérifier ",
-      "change": "Changer",
+      "back": "Back",
+      "continue": "Continue",
+      "skip": "Skip",
+      "yes": "Yes",
+      "no": "No",
+      "verify": "Verify",
+      "change": "Change",
       "remove": "Remove",
       "add": "Add"
     },
