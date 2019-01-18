@@ -23,7 +23,7 @@
       <v-spacer/>
 
       <v-btn v-if="isExpiringSoon()" :href="'/password/create'" color="warning">
-        {{ $vuetify.t('$vuetify.profile.index.button.changeNow') }}
+        {{ $vuetify.t('$vuetify.profile.index.passwordCard.button.changeNow') }}
       </v-btn>
       <v-btn v-else :href="'/password/create'" color="primary" flat>
         {{ $vuetify.t('$vuetify.global.button.change') }}
