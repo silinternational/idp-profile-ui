@@ -9,20 +9,16 @@
     </v-card-title>
 
     <v-card-text>
-      <Attribute
-        :name="$vuetify.t('$vuetify.profile.index.passwordCard.lastChanged')"
-        :value="meta.last_changed | format"
-      />
-      <Attribute
-        :name="$vuetify.t('$vuetify.profile.index.passwordCard.expires')"
-        :value="meta.expires | format"
-      />
+      <Attribute :name="$vuetify.t('$vuetify.profile.index.passwordCard.lastChanged')"
+                 :value="meta.last_changed | format"/>
+      <Attribute :name="$vuetify.t('$vuetify.profile.index.passwordCard.expires')"
+                 :value="meta.expires | format"/>
     </v-card-text>
 
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="isExpiringSoon()" :href="'/password/create'" color="warning">
+      <v-btn v-if="isExpiringSoon()" :href="'/password/create'" color="warning" flat>
         {{ $vuetify.t('$vuetify.profile.index.passwordCard.button.changeNow') }}
       </v-btn>
       <v-btn v-else :href="'/password/create'" color="primary" flat>
