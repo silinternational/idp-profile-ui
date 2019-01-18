@@ -55,13 +55,13 @@
       "header": "My {0} Identity",
       "lastLogin": "Last login: ",
       "2sv": "2-Step Verification",
-      "button": {
-        "changeNow": "Expiring soon, change now"
-      },
       "passwordCard": {
         "title": "Password",
         "lastChanged": "Last changed:",
-        "expires": "Expires:"
+        "expires": "Expires:",
+        "button": {
+          "changeNow": "Expiring soon, change now"
+        }
       },
       "passwordRecoveryCard": {
         "title": "Password recovery",
