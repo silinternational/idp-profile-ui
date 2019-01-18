@@ -9,16 +9,8 @@
     </v-card-title>
 
     <v-card-text>
-      <Attribute
-        v-if="meta.created_utc"
-        :name="$vuetify.t('$vuetify.profile.index.codeCard.created')"
-        :value="meta.created_utc | format"
-      />
-      <Attribute
-        v-if="meta.created_utc"
-        :name="$vuetify.t('$vuetify.profile.index.codeCard.remaining')"
-        :value="meta.data.count"
-      />
+      <Attribute v-if="meta.created_utc" :name="$vuetify.t('$vuetify.profile.index.codeCard.created')" :value="meta.created_utc | format" />
+      <Attribute v-if="meta.created_utc" :name="$vuetify.t('$vuetify.profile.index.codeCard.remaining')" :value="meta.data.count" sameline />
       <div v-else class="layout row align-center">
         <v-icon x-large color="warning" class="pr-3">warning</v-icon>
         <em>{{ $vuetify.t('$vuetify.profile.index.codeCard.warning') }}</em>
@@ -28,18 +20,12 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn
-        v-if="meta.created_utc"
-        href="/2sv/printable-backup-codes/new"
-        color="primary"
-        flat
-      >{{ $vuetify.t('$vuetify.profile.index.codeCard.button.replace') }}</v-btn>
-      <v-btn
-        v-else
-        href="/2sv/printable-backup-codes/intro"
-        color="primary"
-        flat
-      >{{ $vuetify.t('$vuetify.profile.index.codeCard.button.add') }}</v-btn>
+      <v-btn v-if="meta.created_utc" href="/2sv/printable-backup-codes/new" color="primary" flat>
+        {{ $vuetify.t('$vuetify.profile.index.codeCard.button.replace') }}
+      </v-btn>
+      <v-btn v-else href="/2sv/printable-backup-codes/intro" color="primary" flat>
+        {{ $vuetify.t('$vuetify.profile.index.codeCard.button.add') }}
+      </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :id="meta.id" @removed="$router.go()"/>
     </v-card-actions>
   </v-card>
