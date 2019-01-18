@@ -2,8 +2,15 @@
   <v-card>
     <v-card-title primary-title>
       <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.title') }}</h3>
-    </v-card-title>
 
+      <v-spacer />
+
+      <v-tooltip v-if="hasUnverifiedEmails" right>
+        <v-icon slot="activator" x-large color="warning">warning</v-icon>
+        {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.unverifiedEmails') }}
+      </v-tooltip>
+    </v-card-title>
+    
     <v-card-text>
       <div v-for="method in methods" :key="method.id">
         {{ method.value }}
@@ -41,6 +48,9 @@ export default {
   data: () => ({
     sent: ''
   }),
+  computed: {
+    hasUnverifiedEmails: vm => vm.methods.some(m => ! m.verified),
+  },
   methods: {
     async resend(method) {
       await this.$API.put(`method/${method.id}/resend`)
