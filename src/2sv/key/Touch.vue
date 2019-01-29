@@ -1,5 +1,11 @@
 <template>
   <ProfileWizard>
+    <v-alert :value="u2f.id" type="warning">
+      <span class="layout row align-center justify-center">
+        {{ $vuetify.t('$vuetify.2sv.key.warning', u2f.label) }}
+      </span>
+    </v-alert>
+
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.2sv.key.touch.header') }}
@@ -19,6 +25,9 @@
       <v-btn to="/2sv/usb-security-key/insert" flat tabindex="-1"> 
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
+      <v-btn v-if="u2f.id" to="/2sv/printable-backup-codes/intro" color="primary" flat tabindex="-1"> 
+        {{ $vuetify.t('$vuetify.global.button.skip') }}
+      </v-btn>
 
       <v-spacer></v-spacer>
     </ButtonBar>
@@ -37,6 +46,9 @@ export default {
     mfa: {},
     touched: false
   }),
+  computed: {
+    u2f: vm => vm.$user.mfas.find(mfa => mfa.type == 'u2f') || {}
+  },
   async created() {
     this.mfa = await this.$API.post('mfa', { type: 'u2f' })
 
@@ -49,7 +61,6 @@ export default {
   },
   methods: {
     handleKeyResponse: async function(response) {
-//TODO: handle the case where the user does nothing and this response looks more like a timeout response..."retry" logic perhaps
       await this.$API.put(`mfa/${this.mfa.id}/verify`, { value: response })
 
       this.touched = true

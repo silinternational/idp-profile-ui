@@ -1,5 +1,11 @@
 <template>
   <ProfileWizard>
+    <v-alert :value="backupcode.id" type="warning">
+      <span class="layout row align-center justify-center">
+        {{ $vuetify.t('$vuetify.2sv.codes.warning', backupcode.label) }}
+      </span>
+    </v-alert>
+
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.2sv.codes.intro.header') }}
@@ -30,6 +36,9 @@ import ProfileWizard from '@/profile/ProfileWizard'
 export default {
   components: {
     ProfileWizard
+  },
+  computed: {
+    backupcode: vm => vm.$user.mfas.find(mfa => mfa.type == 'backupcode') || {}
   }
 }
 </script>

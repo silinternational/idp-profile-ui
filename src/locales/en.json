@@ -204,6 +204,7 @@
       "info": "Before we go any further, we would like to introduce an important step in protecting your account."
     },
     "smartphone": {
+      "warning": "You already have a smartphone set up, ({0}), continuing will replace it.  If you do not want to replace it, you should skip this step.",
       "intro": {
         "header": "Do you have a smartphone?",
         "info": "If you have one and it is usually with you, this can be a very good option for your 2-Step Verification."
@@ -237,6 +238,7 @@
       }
     },
     "key": {
+      "warning": "You already have a USB security key set up, ({0}), continuing will replace it.  If you do not want to replace it, you should skip this step.",
       "intro": {
         "header": "Do you have a USB security key?",
         "info": "USB security keys are the most secure and convenient option for your 2-Step Verification setup.",
@@ -264,6 +266,7 @@
       }
     },
     "codes": {
+      "warning": "You already have backup codes, ({0}), continuing will replace all of them.  If you do not want to replace them, you should skip this step.",
       "intro": {
         "header": "Printable backup codes",
         "info": "There may be times when you do not have your smartphone or USB security key with you.  When that is the case, printable backup codes can be used.",

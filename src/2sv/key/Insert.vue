@@ -1,5 +1,11 @@
 <template>
   <ProfileWizard>
+    <v-alert :value="u2f.id" type="warning">
+      <span class="layout row align-center justify-center">
+        {{ $vuetify.t('$vuetify.2sv.key.warning', u2f.label) }}
+      </span>
+    </v-alert>
+
     <BasePage>
       <template v-if="isSupported" slot="header">
         {{ $vuetify.t('$vuetify.2sv.key.insert.header') }}
@@ -17,6 +23,9 @@
     <ButtonBar>
       <v-btn to="/2sv/usb-security-key/intro" flat tabindex="-1"> 
         {{ $vuetify.t('$vuetify.global.button.back') }}
+      </v-btn>
+      <v-btn v-if="u2f.id" to="/2sv/printable-backup-codes/intro" color="primary" flat tabindex="-1"> 
+        {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -43,6 +52,9 @@ export default {
     isSupported: (bowser.chrome  && bowser.version >= 41) ||
                  (bowser.firefox && bowser.version >= 58) ||
                  (bowser.opera   && bowser.version >= 39)
-  })
+  }),
+  computed: {
+    u2f: vm => vm.$user.mfas.find(mfa => mfa.type == 'u2f') || {}
+  }
 }
 </script>

@@ -1,5 +1,11 @@
 <template>
   <ProfileWizard>
+    <v-alert :value="u2f.id" type="warning">
+      <span class="layout row align-center justify-center">
+        {{ $vuetify.t('$vuetify.2sv.key.warning', u2f.label) }}
+      </span>
+    </v-alert>
+
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.2sv.key.intro.header') }}
@@ -37,6 +43,9 @@ import ProfileWizard from '@/profile/ProfileWizard'
 export default {
   components: {
     ProfileWizard
+  },
+  computed: {
+    u2f: vm => vm.$user.mfas.find(mfa => mfa.type == 'u2f') || {}
   }
 }
 </script>
