@@ -34,7 +34,10 @@ services:
       MYSQL_DATABASE: 'profile'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'pass'
-      EMAIL_SERVICE_useEmailService: 'false'
+      EMAILER_CLASS: \tests\mock\emailer\FakeEmailer
+      EMAIL_SERVICE_baseUrl: 'dummy'
+      EMAIL_SERVICE_accessToken: 'dummy'
+      EMAIL_SERVICE_assertValidIp: 'false'
       ALERTS_EMAIL_ENABLED: 'false'
       HELP_CENTER_URL: 'https://example.org/help-center'
       FROM_NAME: 'Tech support'
@@ -128,12 +131,11 @@ services:
       MYSQL_DATABASE: 'broker'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'pass'
+      EMAILER_CLASS: Sil\SilIdBroker\Behat\Context\fakes\FakeEmailer
+      EMAIL_SERVICE_baseUrl: 'dummy'
       EMAIL_SERVICE_accessToken: 'dummy'
       EMAIL_SERVICE_assertValidIp: 'false'
-      EMAIL_SERVICE_baseUrl: 'dummy'
-      EMAIL_SERVICE_validIpRanges: 'dummy'
       EMAIL_SIGNATURE: 'one red pill, please'
-      EMAILER_CLASS: Sil\SilIdBroker\Behat\Context\fakes\FakeEmailer
       SUPPORT_EMAIL: 'support@example.org'
       HELP_CENTER_URL: 'https://example.org/help'
       PASSWORD_FORGOT_URL: 'https://example.org/forgot'
