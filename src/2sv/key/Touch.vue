@@ -5,6 +5,11 @@
         {{ $vuetify.t('$vuetify.2sv.key.warning', u2f.label) }}
       </span>
     </v-alert>
+    <v-alert :value="error" type="error">
+      <span class="layout row align-center justify-center">
+        {{ $vuetify.t('$vuetify.2sv.key.touch.error') }}
+      </span>
+    </v-alert>
 
     <BasePage>
       <template slot="header">
@@ -30,6 +35,10 @@
       </v-btn>
 
       <v-spacer></v-spacer>
+
+      <v-btn v-if="error" @click="error = false; create()" color="error" flat> 
+        {{ $vuetify.t('$vuetify.2sv.key.touch.button.retry') }}
+      </v-btn>
     </ButtonBar>
   </ProfileWizard>
 </template>
@@ -44,33 +53,45 @@ export default {
   },
   data: () => ({
     mfa: {},
-    touched: false
+    touched: false,
+    error: false,
   }),
   computed: {
     u2f: vm => vm.$user.mfas.find(mfa => mfa.type == 'u2f') || {}
   },
   async created() {
-    this.mfa = await this.$API.post('mfa', { type: 'u2f' })
-
-    u2f.register(
-      this.mfa.data.challenge.appId,
-      [this.mfa.data.challenge],
-      [],
-      this.handleKeyResponse
-    )
+    this.create()
   },
   methods: {
     handleKeyResponse: async function(response) {
-      await this.$API.put(`mfa/${this.mfa.id}/verify`, { value: response })
+      if (isValid(response)) {
+        await this.$API.put(`mfa/${this.mfa.id}/verify`, { value: response })
+  
+        this.touched = true
+  
+        // pause for a moment so user can see the checkmark.
+        setTimeout(
+          () => this.$router.push('/2sv/usb-security-key/confirmed'),
+          500
+        )
+      } else {
+        this.error = true
+      }
+    },
+    async create() {
+      this.mfa = await this.$API.post('mfa', { type: 'u2f' })
 
-      this.touched = true
-
-      // pause for a moment so user can see the checkmark.
-      setTimeout(
-        () => this.$router.push('/2sv/usb-security-key/confirmed'),
-        500
+      u2f.register(
+        this.mfa.data.challenge.appId,
+        [this.mfa.data.challenge],
+        [],
+        this.handleKeyResponse
       )
     }
   }
+}
+
+function isValid(u2fResponse) {
+  return u2fResponse.clientData && u2fResponse.registrationData
 }
 </script>
