@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="fill-height layout column">
     <v-card-title primary-title>
       <v-layout row align-center>
         <v-icon :color="meta.created_utc ? 'success' : ''" x-large>smartphone</v-icon>
@@ -8,7 +8,7 @@
       </v-layout>
     </v-card-title>
 
-    <v-card-text>
+    <v-card-text class="grow">
       <Attribute
         v-if="meta.created_utc"
         :name="$vuetify.t('$vuetify.profile.index.totpCard.created')"

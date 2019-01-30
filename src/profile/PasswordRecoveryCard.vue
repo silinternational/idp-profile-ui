@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="fill-height layout column">
     <v-card-title primary-title>
       <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.title') }}</h3>
 
@@ -11,7 +11,7 @@
       </v-tooltip>
     </v-card-title>
     
-    <v-card-text>
+    <v-card-text class="grow">
       <div v-for="method in methods" :key="method.id">
         {{ method.value }}
         <v-tooltip v-if="! method.verified && method.id != sent" right>

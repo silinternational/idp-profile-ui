@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="fill-height layout column">
     <v-card-title primary-title>
       <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.passwordCard.title') }}</h3>
 
@@ -8,7 +8,7 @@
       <v-icon v-if="isExpiringSoon()" x-large color="warning">warning</v-icon>
     </v-card-title>
 
-    <v-card-text>
+    <v-card-text class="grow">
       <Attribute :name="$vuetify.t('$vuetify.profile.index.passwordCard.lastChanged')"
                  :value="meta.last_changed | format"/>
       <Attribute :name="$vuetify.t('$vuetify.profile.index.passwordCard.expires')"

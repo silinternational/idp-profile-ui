@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="fill-height layout column">
     <v-card-title primary-title>
       <v-layout row align-center>
         <v-icon :color="hide ? 'success' : ''" x-large>security</v-icon>
@@ -8,7 +8,7 @@
       </v-layout>
     </v-card-title>
 
-    <v-card-text>
+    <v-card-text class="grow">
       <p>{{ $vuetify.t('$vuetify.profile.index.dndCard.info') }}</p>
     </v-card-text>
 
