@@ -106,4 +106,9 @@ export default {
 li {
   list-style-type: none;
 }
+
+form > button.ma-2-mod {
+  margin-top: 11px !important;
+  margin-bottom: 11px !important;
+}
 </style>
