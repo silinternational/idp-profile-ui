@@ -95,8 +95,8 @@ export default {
       // this.$user.recoveryMethods.personal.splice(i, 1)
       this.$router.go()
     },
-    blur() {
-      document.querySelector('input').blur()
+    blur(event) {
+      event.target.blur()
     },
   }
 }

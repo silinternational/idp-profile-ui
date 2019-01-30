@@ -58,8 +58,8 @@ export default {
         this.$router.push('/2sv/smartphone/code-verified')
       }
     },
-    blur() {
-      document.querySelector('input').blur()
+    blur(event) {
+      event.target.blur()
     },
   }
 }

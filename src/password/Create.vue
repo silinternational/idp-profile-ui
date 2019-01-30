@@ -69,8 +69,8 @@ export default {
         this.$router.push('/password/confirm')
       }
     },
-    blur() {
-      document.querySelector('input').blur()
+    blur(event) {
+      event.target.blur()
     },
   }
 }

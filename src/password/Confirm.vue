@@ -68,8 +68,8 @@ export default {
         }
       }
     },
-    blur() {
-      document.querySelector('input').blur()
+    blur(event) {
+      event.target.blur()
     },
   }
 }
