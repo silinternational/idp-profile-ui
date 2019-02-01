@@ -19,7 +19,7 @@ This app is setup to run against HTTPS for U2F testing. In order to facilitate t
 
 i18n support is built-in however the translation files must be generated and dropped into the `src/locales` folder with the appropriate name, e.g., `en.json`, `fr.json`, `ko.json` before the app is built.
 
-## Run locally
+## Run the full app locally
 
 1.  Run `make` from the project root.
 1.  The app will be running on the domain configured for traefik, e.g., [https://profile.gtis.guru](https://profile.gtis.guru).
@@ -36,9 +36,16 @@ An IdP infrastructure will be running locally and is required for authentication
 1. Enter app with a special "invitation" link, e.g., [https://profile.gtis.guru/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE](https://profile.gtis.guru/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE)
 1. if needed, this user's username is **b**
 
+## Run the UI as a Docker container
+
+See notes in Environment section regarding HTTPS and _traefik_ configuration.  
+
+1.  Image (`silintl/idp-profile-ui`) is located on [Docker Hub](https://hub.docker.com/r/silintl/idp-profile-ui)
+1.  `VUE_APP_API_BASE_URL` must be populated as an environment variable so the UI knows how to communicate to the API.
+
 ## Local development
 
-1.  When the `make` is run, the project will be in development mode and any updates made othe code will automatically be reloaded.
+1.  When the `make` is run, the project will be in development mode and any updates made to the code will automatically be reloaded.
 
 # Build for deployment
 
