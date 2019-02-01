@@ -70,19 +70,19 @@ export default {
     ProfileWizard,
   },
   data: () => ({
-    newEmail: "",
+    newEmail: '',
   }),
   computed: {
-    unsaved: vm => vm.newEmail != "",
+    unsaved: vm => vm.newEmail != '',
   },
   methods: {
     async add() {
       if (this.$refs.form.validate()) {
-        const newMethod = await this.$API.post("method", {
+        const newMethod = await this.$API.post('method', {
           value: this.newEmail
         })
 
-        this.newEmail = ""
+        this.newEmail = ''
 
         this.$user.recoveryMethods.personal.push(newMethod)
       }
@@ -90,10 +90,11 @@ export default {
     async remove(id) {
       await this.$API.delete(`method/${id}`)
 
-      // couldn't get reactivity system to work for this...
-      // const i = this.$user.recoveryMethods.personal.findIndex(m => m.id == id)
-      // this.$user.recoveryMethods.personal.splice(i, 1)
-      this.$router.go()
+      const i = this.$user.recoveryMethods.personal.findIndex(m => m.id == id)
+      this.$user.recoveryMethods.personal.splice(i, 1)
+      
+      // couldn't get reactivity system to work for this on its own.
+      this.$forceUpdate()
     },
     blur(event) {
       event.target.blur()
