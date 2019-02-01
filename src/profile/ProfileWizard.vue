@@ -60,6 +60,11 @@ export default {
     complete: function() {
       this.currentStep.state = 'complete'
     },
+    completeAndContinue: function() {
+      this.complete()
+      
+      this.$router.push(Steps.next(this.currentStep).paths[0])
+    },
     skipped: function() {
       this.currentStep.state = 'skipped'
     }

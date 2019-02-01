@@ -1,5 +1,5 @@
 <template>
-  <ProfileWizard>
+  <ProfileWizard ref="wizard">
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.password.saved.header') }}
@@ -13,7 +13,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn :to="nextStep" color="primary" flat>
+      <v-btn @click="next" color="primary" flat>
         {{ $vuetify.t('$vuetify.global.button.continue') }}
       </v-btn>
     </ButtonBar>
@@ -27,8 +27,14 @@ export default {
   components: {
     ProfileWizard
   },
-  computed: {
-    nextStep: vm => vm.$user.auth_type == 'reset' ? '/password/reset/complete' : '/password/recovery'
+  methods: {
+    next() {
+      if (this.$user.auth_type == 'reset') {
+        this.$router.push('/password/reset/complete')
+      } else {
+        this.$refs.wizard.completeAndContinue()
+      }
+    }
   },
 }
 </script>

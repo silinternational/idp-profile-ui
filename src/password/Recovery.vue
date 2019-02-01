@@ -50,7 +50,7 @@
       <v-spacer></v-spacer>
 
       <v-tooltip :disabled="!(unsaved || !$user.recoveryMethods.personal.length)" right>
-        <v-btn to="/2sv/intro" @click="$refs.wizard.complete()" slot="activator" 
+        <v-btn @click="next" slot="activator" 
                :disabled="unsaved || !$user.recoveryMethods.personal.length" color="primary" flat>
           {{ $vuetify.t('$vuetify.global.button.continue') }}
         </v-btn>
@@ -97,6 +97,9 @@ export default {
     },
     blur(event) {
       event.target.blur()
+    },
+    next() {
+      this.$refs.wizard.completeAndContinue()
     },
   }
 }
