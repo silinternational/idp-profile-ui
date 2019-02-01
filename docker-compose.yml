@@ -104,7 +104,6 @@ services:
       - ./.env.local
     environment:
       DNS_PROVIDER: 'cloudflare'
-      LETS_ENCRYPT_EMAIL: 'govols@example.org'
       LETS_ENCRYPT_CA: 'staging'
       TLD: 'gtis.guru'
       SANS: 'profile.gtis.guru,profile-api.gtis.guru'
