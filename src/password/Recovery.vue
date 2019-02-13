@@ -98,6 +98,7 @@ export default {
     },
     blur(event) {
       event.target.blur()
+      event.target.focus()
     },
     next() {
       this.$refs.wizard.completeAndContinue()
