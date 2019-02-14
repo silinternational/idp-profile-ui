@@ -139,15 +139,15 @@
     "recovery": {
       "header": "What if your password does not work anymore?",
       "explanation": "Sometimes we forget our password.  Sometimes the password we have just doesn't seem to work. In those situations, it is important to still be able to \"recover\" your password.",
-      "advice": "We advise adding at least one personal email address in the event you need to begin the recovery process.",
-      "atLeastOneRecovery": "Thankfully you already have a personal email address we could send a special link to in case you need to begin the password recovery process.  You may have as many as you like.",
+      "advice": "We advise adding at least one alternate email address in the event you need to begin the recovery process.",
+      "atLeastOneRecovery": "Thankfully you already have alternate means we can use to send a special link in case you need to begin the password recovery process.  You may have as many as you like.",
       "noMatch": "That password does not match your previous one",
-      "emailInput": "Enter a personal email address",
+      "emailInput": "Enter an alternate email address",
       "unsaved": "You have not saved your changes yet.",
-      "dontRemoveLastOne": "Please add another personal email address before removing this one.",
+      "dontRemoveLastOne": "Please add another alternate address before removing this one.",
       "invalidEmail": "Invalid email",
       "systemHeader": "Default",
-      "personalHeader": "Personal",
+      "personalHeader": "Alternate",
       "noPersonalMethods": "None at this time"
     },
     "verifyRecovery": {
