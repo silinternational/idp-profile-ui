@@ -1,5 +1,5 @@
 <template>
-  <ProfileWizard>
+  <ProfileWizard ref="wizard">
     <v-alert :value="backupcode.id" type="warning">
       <span class="layout row align-center justify-center">
         {{ $vuetify.t('$vuetify.2sv.codes.warning', backupcode.label) }}
@@ -17,7 +17,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/profile/complete" flat color="warning" tabindex="-1"> 
+      <v-btn @click="skip" flat color="warning" tabindex="-1"> 
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
@@ -39,6 +39,15 @@ export default {
   },
   computed: {
     backupcode: vm => vm.$user.mfas.find(mfa => mfa.type == 'backupcode') || {}
-  }
+  },
+  methods: {
+    skip() {
+      if (this.$user.mfas.length < 1) {
+        this.$refs.wizard.skipped()
+      }
+
+      this.$router.push('/profile/complete')
+    }
+  },
 }
 </script>
