@@ -19,7 +19,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn to="/password/create" color="primary">
+      <v-btn to="/password/create" color="primary" outline>
         {{ $vuetify.t('$vuetify.profile.intro.button.start') }}
       </v-btn>
     </ButtonBar>

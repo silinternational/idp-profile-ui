@@ -45,13 +45,15 @@
 
     <template slot="actions">
       <v-btn v-if="!$user.recoveryMethods.personal.length" to="/2sv/intro" @click="$refs.wizard.skipped()"
-             color="warning" flat>{{ $vuetify.t('$vuetify.global.button.skip') }}</v-btn>
+             color="warning" flat outline>
+             {{ $vuetify.t('$vuetify.global.button.skip') }}
+      </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-tooltip :disabled="!(unsaved || !$user.recoveryMethods.personal.length)" right>
         <v-btn @click="next" slot="activator" 
-               :disabled="unsaved || !$user.recoveryMethods.personal.length" color="primary" flat>
+               :disabled="unsaved || !$user.recoveryMethods.personal.length" color="primary" flat outline>
           {{ $vuetify.t('$vuetify.global.button.continue') }}
         </v-btn>
         

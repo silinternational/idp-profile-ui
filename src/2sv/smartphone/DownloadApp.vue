@@ -34,16 +34,16 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/intro" flat tabindex="-1"> 
+      <v-btn to="/2sv/smartphone/intro" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
-      <v-btn v-if="totp.id" to="/2sv/usb-security-key/intro" color="primary" flat tabindex="-1"> 
+      <v-btn v-if="totp.id" to="/2sv/usb-security-key/intro" color="primary" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/smartphone/scan-qr" color="primary" flat> 
+      <v-btn to="/2sv/smartphone/scan-qr" color="primary" flat outline> 
         {{ $vuetify.t('$vuetify.2sv.smartphone.download.button.ok') }}
       </v-btn>
     </ButtonBar>

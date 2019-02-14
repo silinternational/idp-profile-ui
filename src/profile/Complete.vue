@@ -13,7 +13,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn to="/profile" color="primary" flat>
+      <v-btn to="/profile" color="primary" flat outline>
         {{ $vuetify.t('$vuetify.profile.complete.button.newProfile') }}
       </v-btn>
     </ButtonBar>

@@ -14,7 +14,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn to="/profile" color="primary" flat> 
+      <v-btn to="/profile" color="primary" flat outline> 
         {{ $vuetify.t('$vuetify.2sv.lost.button.ok') }}
       </v-btn>
     </ButtonBar>

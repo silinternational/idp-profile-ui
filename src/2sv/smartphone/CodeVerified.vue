@@ -13,7 +13,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/usb-security-key/intro" color="primary" flat>
+      <v-btn to="/2sv/usb-security-key/intro" color="primary" flat outline>
         {{ $vuetify.t('$vuetify.global.button.continue') }}
       </v-btn>
     </ButtonBar>

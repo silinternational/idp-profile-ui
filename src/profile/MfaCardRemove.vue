@@ -1,5 +1,5 @@
 <template>
-  <v-btn @click="remove(id)" color="error" flat>
+  <v-btn @click="remove(id)" color="error" flat outline>
     {{ $vuetify.t('$vuetify.global.button.remove') }}
   </v-btn>
 </template>

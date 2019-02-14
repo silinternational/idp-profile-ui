@@ -23,25 +23,25 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="print('#codes')" color="secondary" flat>
+      <v-btn @click="print('#codes')" color="secondary" flat outline>
         {{ $vuetify.t('$vuetify.2sv.codes.new.button.print') }}
         <v-icon right>print</v-icon>
       </v-btn>
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" color="secondary" flat>
+      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" color="secondary" flat outline>
         {{ $vuetify.t('$vuetify.2sv.codes.new.button.download') }}
         <v-icon right>cloud_download</v-icon>
       </v-btn>
-      <v-btn v-if="copied" @click="copy()" color="success" flat>
+      <v-btn v-if="copied" @click="copy()" color="success" flat outline>
         {{ $vuetify.t('$vuetify.2sv.codes.new.button.copied') }}
         <v-icon right>checked</v-icon>
       </v-btn>
-      <v-btn v-else @click="copy()" color="secondary" flat>
+      <v-btn v-else @click="copy()" color="secondary" flat outline>
         {{ $vuetify.t('$vuetify.2sv.codes.new.button.copy') }}
         <v-icon right>assignment</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
       
-      <v-btn @click="finish" color="primary" flat> 
+      <v-btn @click="finish" color="primary" flat outline> 
         {{ $vuetify.t('$vuetify.2sv.codes.new.button.ok') }}
       </v-btn>
     </ButtonBar>

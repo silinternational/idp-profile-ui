@@ -19,13 +19,13 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/scan-qr" flat tabindex="-1"> 
+      <v-btn to="/2sv/smartphone/scan-qr" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn @click="verify" color="primary" flat> 
+      <v-btn @click="verify" color="primary" flat outline> 
         {{ $vuetify.t('$vuetify.global.button.verify') }}
       </v-btn>
     </ButtonBar>

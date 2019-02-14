@@ -17,13 +17,13 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="skip" flat color="warning" tabindex="-1"> 
+      <v-btn @click="skip" flat color="warning" tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/printable-backup-codes/new" color="primary" flat> 
+      <v-btn to="/2sv/printable-backup-codes/new" color="primary" flat outline> 
         {{ $vuetify.t('$vuetify.global.button.continue') }}
       </v-btn>
     </ButtonBar>

@@ -27,16 +27,16 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/usb-security-key/insert" flat tabindex="-1"> 
+      <v-btn to="/2sv/usb-security-key/insert" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
-      <v-btn v-if="u2f.id" to="/2sv/printable-backup-codes/intro" color="primary" flat tabindex="-1"> 
+      <v-btn v-if="u2f.id" to="/2sv/printable-backup-codes/intro" color="primary" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn v-if="error" @click="error = false; create()" color="error" flat> 
+      <v-btn v-if="error" @click="error = false; create()" color="error" flat outline> 
         {{ $vuetify.t('$vuetify.2sv.key.touch.button.retry') }}
       </v-btn>
     </ButtonBar>

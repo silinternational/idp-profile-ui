@@ -26,13 +26,13 @@
     </BasePage>
 
     <template slot="actions">
-      <v-btn v-if="$user.auth_type == 'login'" to="/profile/intro" flat tabindex="-1">
+      <v-btn v-if="$user.auth_type == 'login'" to="/profile/intro" flat tabindex="-1" outline>
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn @click="save" color="primary" flat>
+      <v-btn @click="save" color="primary" flat outline>
         {{ $vuetify.t('$vuetify.global.button.continue') }}
       </v-btn>
     </template>

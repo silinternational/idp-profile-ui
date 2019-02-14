@@ -10,10 +10,10 @@
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn v-if="verified" to="/profile" color="primary">
+      <v-btn v-if="verified" to="/profile" color="primary" outline>
         {{ $vuetify.t('$vuetify.password.verifyRecovery.button.profile') }}
       </v-btn>
-      <v-btn v-if="invalid" to="/password/recovery" color="primary">
+      <v-btn v-if="invalid" to="/password/recovery" color="primary" outline>
         {{ $vuetify.t('$vuetify.password.verifyRecovery.button.again') }}
       </v-btn>
     </ButtonBar>

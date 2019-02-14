@@ -11,7 +11,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn to="/profile" color="primary" flat>
+      <v-btn to="/profile" color="primary" flat outline>
         {{ $vuetify.t('$vuetify.password.reset.complete.button.next') }}
       </v-btn>
     </ButtonBar>

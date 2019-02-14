@@ -14,13 +14,13 @@
     </BasePage>
 
     <template slot="actions">
-      <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" flat tabindex="-1">
+      <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" flat tabindex="-1" outline>
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn @click="confirm" color="primary" :disabled="errors.length > 0" flat>
+      <v-btn @click="confirm" color="primary" :disabled="errors.length > 0" flat outline>
         {{ $vuetify.t('$vuetify.global.button.continue') }}
       </v-btn>
     </template>
