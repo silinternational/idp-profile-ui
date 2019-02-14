@@ -4,7 +4,7 @@
 
     <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-3"/>
     
-    <a v-if="complete < 1 && ! verifiedMethods.length" href="/password/recovery" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addMethod') }}</a>
+    <a v-if="complete < 1 && ! profile.recoveryMethods.length" href="/password/recovery" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addMethod') }}</a>
     <a v-if="complete < 1 && ! smartphones.length" href="/2sv/smartphone/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addTotp') }}</a>
     <a v-if="complete < 1 && ! u2fs.length" href="/2sv/usb-security-key/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addU2f') }}</a>
     <a v-if="complete < 1 && ! backups.length" href="/2sv/printable-backup-codes/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addCodes') }}</a>
