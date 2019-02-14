@@ -55,6 +55,7 @@
       "header": "My {0} Identity",
       "lastLogin": "Last login: ",
       "2sv": "2-Step Verification",
+      "rename": "Rename",
       "passwordCard": {
         "title": "Password",
         "lastChanged": "Last changed:",
