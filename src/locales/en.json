@@ -212,7 +212,7 @@
       },
       "download": {
         "header": "Download an app",
-        "info": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.",
+        "info": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.  It is also free and will not cause you to incur any data charges.",
         "button": {
           "ok": "OK, I installed it on my smartphone"
         },
