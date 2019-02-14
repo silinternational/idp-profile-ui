@@ -24,7 +24,7 @@
       <v-spacer></v-spacer>
       
       <v-btn to="/2sv/printable-backup-codes/new" color="primary" flat outline> 
-        {{ $vuetify.t('$vuetify.global.button.continue') }}
+        {{ $vuetify.t('$vuetify.2sv.codes.intro.button.new') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

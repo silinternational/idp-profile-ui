@@ -275,7 +275,10 @@
       "intro": {
         "header": "Printable backup codes",
         "info": "There may be times when you do not have your smartphone or USB security key with you.  When that is the case, printable backup codes can be used.",
-        "warning": "some content for those users that have NOT set up other 2sv options."
+        "warning": "some content for those users that have NOT set up other 2sv options.",
+        "button": {
+          "new": "Get new codes"
+        }
       },
       "new": {
         "header": "Printable backup codes",
