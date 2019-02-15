@@ -11,8 +11,11 @@
         {{ $vuetify.t('$vuetify.2sv.codes.intro.header') }}
       </template>
 
-      <p>
-        {{ $vuetify.t('$vuetify.2sv.codes.intro.info') }}
+      <p v-if="hasOtherTypes">
+        {{ $vuetify.t('$vuetify.2sv.codes.intro.backupInfo') }}
+      </p>
+      <p v-else>
+        {{ $vuetify.t('$vuetify.2sv.codes.intro.primaryInfo') }}
       </p>
     </BasePage>
 
@@ -38,7 +41,8 @@ export default {
     ProfileWizard
   },
   computed: {
-    backupcode: vm => vm.$user.mfas.find(mfa => mfa.type == 'backupcode') || {}
+    backupcode: vm => vm.$user.mfas.find(mfa => mfa.type == 'backupcode') || {},
+    hasOtherTypes: vm => vm.$user.mfas.some(mfa => mfa.type != 'backupcode'),
   },
   methods: {
     skip() {
