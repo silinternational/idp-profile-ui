@@ -8,6 +8,10 @@
       <ProfileProgress :profile="profile"/>
     </template>
 
+    <v-alert :value="hasUnverifiedEmails" type="error">
+      <span>{{ $vuetify.t('$vuetify.profile.index.unverifiedEmails') }}</span>
+    </v-alert>
+
     <v-layout row wrap>
       <v-flex xs12 sm6 md4 py-3>
         <PasswordCard :meta="$user.password_meta" class="mx-3 mb-4"/>
@@ -62,7 +66,8 @@ export default {
     }),
     totp: vm => vm.$user.mfas.find(mfa => mfa.type == 'totp') || {},
     u2f: vm => vm.$user.mfas.find(mfa => mfa.type == 'u2f') || {},
-    codes: vm => vm.$user.mfas.find(mfa => mfa.type == 'backupcode') || {}
-  }
+    codes: vm => vm.$user.mfas.find(mfa => mfa.type == 'backupcode') || {},
+    hasUnverifiedEmails: vm => vm.profile.recoveryMethods.some(m => ! m.verified),
+  },
 }
 </script>

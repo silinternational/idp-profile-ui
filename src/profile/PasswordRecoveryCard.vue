@@ -6,7 +6,7 @@
       <v-spacer />
 
       <v-tooltip v-if="hasUnverifiedEmails" right>
-        <v-icon slot="activator" x-large color="warning">warning</v-icon>
+        <v-icon slot="activator" x-large color="error">error</v-icon>
         {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.unverifiedEmails') }}
       </v-tooltip>
     </v-card-title>
@@ -15,15 +15,13 @@
       <div v-for="method in methods" :key="method.id">
         {{ method.value }}
         <v-tooltip v-if="! method.verified && method.id != sent" right>
-          <v-icon slot="activator" color="warning" small class="pl-1">warning</v-icon>
+          <v-icon slot="activator" color="error" small class="pl-1">error</v-icon>
           {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
         </v-tooltip>
 
-        <a
-          v-if="! method.verified && method.id != sent"
-          @click="resend(method)"
-          class="caption pl-2"
-        >{{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.resend') }}</a>
+        <a v-if="! method.verified && method.id != sent" @click="resend(method)" class="caption pl-2">
+          {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.resend') }}
+        </a>
       </div>
       <div v-if="! methods.length" class="layout row align-center">
         <v-icon x-large color="warning" class="pr-3">warning</v-icon>
