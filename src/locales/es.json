@@ -75,7 +75,7 @@
         "title": "Smartphone",
         "created": "Created:",
         "button": {
-          "lost": "I lost my phone"
+          "change": "lost or new phone"
         },
         "warning": "No smartphone at this time, please add one."
       },
@@ -83,7 +83,7 @@
         "title": "USB security key",
         "created": "Created:",
         "button": {
-          "lost": "I lost my key"
+          "change": "lost or new key"
         },
         "warning": "No security key at this time, please add one."
       },
@@ -293,10 +293,10 @@
         }
       }
     },
-    "lost": {
-      "header": "Sorry to hear that!",
+    "change": {
+      "header": "Lost or new",
       "removing": "Removing it from your account now...",
-      "removed": "That has safely been removed now.",
+      "removed": "That has safely been removed now.  You may add another back if you like from your profile.",
       "button": {
         "ok": "Back to my profile"
       }
