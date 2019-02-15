@@ -5,7 +5,7 @@
 
       <v-spacer />
 
-      <v-toolbar-title class="white--text">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
+      <v-toolbar-title class="white--text">{{ $user.first_name }} {{ $user.last_name }} ({{ $user.idp_username }})</v-toolbar-title>
 
       <v-divider vertical dark inset class="mx-2" />
 
