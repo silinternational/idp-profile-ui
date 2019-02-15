@@ -1,21 +1,21 @@
 <template>
   <BasePage>
     <template slot="header">
-      {{ $vuetify.t('$vuetify.2sv.lost.header') }}
+      {{ $vuetify.t('$vuetify.2sv.change.header') }}
     </template>
 
     <p v-if="removing">
-      {{ $vuetify.t('$vuetify.2sv.lost.removing') }}
+      {{ $vuetify.t('$vuetify.2sv.change.removing') }}
     </p>
     <p v-else>
-      {{ $vuetify.t('$vuetify.2sv.lost.removed') }}
+      {{ $vuetify.t('$vuetify.2sv.change.removed') }}
     </p>
 
     <ButtonBar>
       <v-spacer></v-spacer>
       
       <v-btn to="/profile" color="primary" flat outline> 
-        {{ $vuetify.t('$vuetify.2sv.lost.button.ok') }}
+        {{ $vuetify.t('$vuetify.2sv.change.button.ok') }}
       </v-btn>
     </ButtonBar>
   </BasePage>

@@ -23,8 +23,8 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="meta.created_utc" :href="`/2sv/lost/${meta.id}`" color="primary" flat outline>
-        {{ $vuetify.t('$vuetify.profile.index.totpCard.button.lost') }}
+      <v-btn v-if="meta.created_utc" :href="`/2sv/change/${meta.id}`" color="primary" flat outline>
+        {{ $vuetify.t('$vuetify.profile.index.totpCard.button.change') }}
       </v-btn>
       <v-btn v-else href="/2sv/smartphone/intro" color="primary" flat outline>
         {{ $vuetify.t('$vuetify.global.button.add') }}

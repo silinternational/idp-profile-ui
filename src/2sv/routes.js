@@ -10,7 +10,7 @@ import Touch from './key/Touch'
 import Confirmed from './key/Confirmed'
 import CodesIntro from './codes/Intro'
 import New from './codes/New'
-import Lost from './Lost'
+import Change from './Change'
 
 export default [
   {
@@ -62,7 +62,7 @@ export default [
     component: New
   },
   {
-    path: '/2sv/lost/:id',
-    component: Lost
+    path: '/2sv/change/:id',
+    component: Change
   },
 ]
