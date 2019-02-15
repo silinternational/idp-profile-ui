@@ -1,12 +1,8 @@
 <template>
   <BasePage>
     <template slot="header">
-      {{ $vuetify.t('$vuetify.profile.intro.header', $root.idpConfig.idpName) }}
+      {{ $vuetify.t('$vuetify.profile.intro.header', $root.idpConfig.idpName, $user.first_name) }}
     </template>
-
-    <p>
-      {{ $vuetify.t('$vuetify.profile.intro.welcome', $root.idpConfig.idpName, $user.first_name) }}
-    </p>
 
     <p>
       {{ $vuetify.t('$vuetify.profile.intro.explanation') }}

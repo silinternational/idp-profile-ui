@@ -26,10 +26,9 @@
   },
   "profile": {
     "intro": {
-      "header": "What is a(n) “{0} Identity”?",
-      "welcome": "First of all, welcome to {0} {1}!",
-      "explanation": "Brief content introducing the term and explaining it.",
-      "diffFromEmail": "Some content helping distinguish it from their email account.",
+      "header": "Welcome to your {0} identity profile {1}!",
+      "explanation": "We will guide you through a few steps that will help you get your identity profile in great shape.",
+      "diffFromEmail": "Please note this is differennt than your organizational email account, e.g., your gmail account.  Your identity profile is used for access to certain applications you will need as part of your job.",
       "button": {
         "start": "Begin"
       }
