@@ -15,7 +15,7 @@
         {{ $vuetify.t('$vuetify.2sv.smartphone.download.info') }}
       </p>
 
-      <figure class="layout row align-center justify-center mb-5">
+      <figure class="layout row align-center justify-center mt-4 mb-3">
         <img src="@/assets/google-authenticator-logo.jpg">
 
         <figcaption class="headline ml-3">
@@ -23,8 +23,8 @@
         </figcaption>
       </figure>
 
-      <figure class="badges layout row align-center justify-center justify-space-around">
-        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" >
+      <figure class="badges layout row align-center justify-center">
+        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" class="pr-3">
           <img src="@/assets/google-play-badge.png">
         </a>
         <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605" target="_blank">
