@@ -28,7 +28,7 @@
     "intro": {
       "header": "Welcome to your {0} identity profile {1}!",
       "explanation": "We will guide you through a few steps that will help you get your identity profile in great shape.",
-      "diffFromEmail": "Please note this is differennt than your organizational email account, e.g., your gmail account.  Your identity profile is used for access to certain applications you will need as part of your job.",
+      "diffFromEmail": "Please note this is different than your organizational email account, e.g., your gmail account.  Your identity profile is used for access to certain applications you will need as part of your job.",
       "button": {
         "start": "Begin"
       }
