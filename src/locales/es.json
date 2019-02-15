@@ -44,10 +44,11 @@
       "completeStep": "Complete"
     },
     "complete": {
-      "header": "{0} Identity profile complete!",
-      "congrats": "Congratulations!  You are finished, thank you for setting up your profile.",
+      "header": "All done, congratulations!",
+      "info": "{0}, thank you for setting up your {1} identity profile.",
+      "unverifiedEmails": "Look for a verification email in the following account(s) so we can confirm your password recovery options:",
       "button": {
-        "newProfile": "See my new profile"
+        "profile": "See my profile"
       }
     },
     "index": {
@@ -55,7 +56,7 @@
       "lastLogin": "Last login: ",
       "2sv": "2-Step Verification",
       "rename": "Rename",
-      "unverifiedEmails": "You still have unverified email addresses, please log into those accounts and click the link provided in the verification email.",
+      "unverifiedEmails": "You have unverified email addresses, please log into those accounts and click the link provided in the verification email.",
       "passwordCard": {
         "title": "Password",
         "lastChanged": "Last changed:",
@@ -67,7 +68,7 @@
       "passwordRecoveryCard": {
         "title": "Password recovery",
         "warning": "No recovery addresses at this time, please add one.",
-        "unverifiedEmails": "You still have unverified email addresses.",
+        "unverifiedEmails": "You have unverified email addresses.",
         "unverified": "This email has not yet been verified, please check its account for a verification email.",
         "resend": "resend"
       },
