@@ -4,7 +4,7 @@
       <v-layout row align-center>
         <v-icon :color="meta.created_utc ? 'success' : ''" x-large>list_alt</v-icon>
 
-        <MfaCardLabel :label="label" :id="meta.id" @new-label="label = $event"/>
+        <MfaCardLabel :label="label" :id="meta.id" read-only />
       </v-layout>
     </v-card-title>
 

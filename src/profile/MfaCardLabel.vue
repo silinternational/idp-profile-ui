@@ -7,7 +7,7 @@
   </v-layout>
   <h3 v-else class="headline pl-3 layout row align-center">
     {{ label }}
-    <v-tooltip right>
+    <v-tooltip v-if="readOnly == undefined" right>
       <v-icon v-if="id" slot="activator" @click="edit" color="info" small class="layout row align-center pl-3">edit</v-icon>
       {{ $vuetify.t('$vuetify.profile.index.rename') }}
     </v-tooltip>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ['label', 'id'],
+  props: ['label', 'id', 'readOnly'],
   data: () => ({
     editing: false,
     newLabel: ''
@@ -36,8 +36,8 @@ export default {
 
       this.$emit('new-label', mfa.label)
       this.editing = false
-    }
-  }
+    },
+  },
 }
 </script>
 
