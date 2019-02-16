@@ -45,7 +45,7 @@
     },
     "complete": {
       "header": "All done, congratulations!",
-      "info": "{0}, thank you for setting up your {1} identity profile.",
+      "info": "{0}, thank you for setting up your {1} identity profile.  You will find your updated settings on the next page and can make any adjustments from there in the future.",
       "unverifiedEmails": "Look for a verification email in the following account(s) so we can confirm your password recovery options:",
       "button": {
         "profile": "See my profile"
