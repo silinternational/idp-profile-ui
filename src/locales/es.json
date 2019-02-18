@@ -54,6 +54,7 @@
     "index": {
       "header": "My {0} Identity",
       "lastLogin": "Last login: ",
+      "manager": "Manager: ",
       "2sv": "2-Step Verification",
       "rename": "Rename",
       "unverifiedEmails": "You have unverified email addresses, please log into those accounts and click the link provided in the verification email.",
