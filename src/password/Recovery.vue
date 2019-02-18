@@ -6,12 +6,15 @@
       <p>{{ $vuetify.t('$vuetify.password.recovery.explanation') }}</p>
 
       <p v-if="$user.recoveryMethods.personal.length">{{ $vuetify.t('$vuetify.password.recovery.atLeastOneRecovery') }}</p>
-      <p v-else>{{ $vuetify.t('$vuetify.password.recovery.advice') }}</p>
+      <p v-else>
+        {{ $vuetify.t('$vuetify.password.recovery.info', primary.value) }}
+        <span v-if="mgr.value && ! spouse.value">{{ $vuetify.t('$vuetify.password.recovery.infoWithMgrOnly', mgr.value) }}</span>
+        <span v-if="mgr.value && spouse.value">{{ $vuetify.t('$vuetify.password.recovery.infoWithMgrAndSpouse', mgr.value, spouse.value) }}</span>
+      </p>
 
-      <ul>
-        <li class="subheading grey--text py-2">{{ $vuetify.t('$vuetify.password.recovery.systemHeader') }}</li>
-        <li v-for="method in $user.recoveryMethods.builtIn" :key="method.type" class="pl-3">{{ method.value }}</li>
-      </ul>
+      <p v-if="! $user.recoveryMethods.personal.length">
+        {{ $vuetify.t('$vuetify.password.recovery.advice') }}
+      </p>
 
       <ul>
         <li class="subheading grey--text py-2">{{ $vuetify.t('$vuetify.password.recovery.personalHeader') }}</li>
@@ -76,6 +79,9 @@ export default {
   }),
   computed: {
     unsaved: vm => vm.newEmail != '',
+    primary: vm => vm.$user.recoveryMethods.builtIn.find(email => email.type == 'primary'),
+    mgr: vm => vm.$user.recoveryMethods.builtIn.find(email => email.type == 'supervisor'),
+    spouse: vm => vm.$user.recoveryMethods.builtIn.find(email => email.type == 'spouse'),
   },
   methods: {
     async add() {

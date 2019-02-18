@@ -134,21 +134,21 @@
     "saved": {
       "header": "Excellent!",
       "info": "Your new password has been saved.",
-      "pwInput": "Your new password",
-      "noMatch": "That password does not match your previous one"
+      "pwInput": "Your new password"
     },
     "recovery": {
       "header": "What if your password does not work anymore?",
       "explanation": "Sometimes we forget our password.  Sometimes the password we have just doesn't seem to work. In those situations, it is important to still be able to \"recover\" your password.",
-      "advice": "We advise adding at least one alternate email address in the event you need to begin the recovery process.",
+      "info": "If you forget your password we will send an email to {0} with a link you can use to create a new password.  ",
+      "infoWithMgrOnly": "We can also send an email to your manager at {0} with a code you can use to create a new password.",
+      "infoWithMgrAndSpouse": "We can also send an email to your manager at {0} or your spouse at {1} with a code you can use to create a new password.",
+      "advice": "In addition, we recommend you add at least one more alternate email address that you own to ensure resetting your password in the future is as easy as possible.",
       "atLeastOneRecovery": "Thankfully you already have alternate means we can use to send a special link in case you need to begin the password recovery process.  You may have as many as you like.",
-      "noMatch": "That password does not match your previous one",
       "emailInput": "Enter an alternate email address",
       "unsaved": "You have not saved your changes yet.",
       "dontRemoveLastOne": "Please add another alternate address before removing this one.",
       "invalidEmail": "Invalid email",
-      "systemHeader": "Default",
-      "personalHeader": "Alternate",
+      "personalHeader": "Alternate(s)",
       "noPersonalMethods": "None at this time"
     },
     "verifyRecovery": {
