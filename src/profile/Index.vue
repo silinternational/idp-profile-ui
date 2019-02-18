@@ -8,6 +8,11 @@
       <ProfileProgress :profile="profile"/>
     </template>
 
+    <aside class="pb-3">
+      <Attribute :name="$vuetify.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login_utc" sameline />
+      <Attribute :name="$vuetify.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
+    </aside>
+
     <v-alert :value="hasUnverifiedEmails" type="error">
       <span>{{ $vuetify.t('$vuetify.profile.index.unverifiedEmails') }}</span>
     </v-alert>
@@ -47,6 +52,7 @@ import TotpCard from './TotpCard'
 import U2fCard from './U2fCard'
 import BackupCodeCard from './BackupCodeCard'
 import DoNotDiscloseCard from './DoNotDiscloseCard'
+import Attribute from './Attribute'
 
 export default {
   components: {
@@ -56,7 +62,8 @@ export default {
     TotpCard,
     U2fCard,
     BackupCodeCard,
-    DoNotDiscloseCard
+    DoNotDiscloseCard,
+    Attribute,
   },
   computed: {
     profile: vm => ({
