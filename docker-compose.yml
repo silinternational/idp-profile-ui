@@ -62,6 +62,9 @@ services:
       AUTH_SAML_entityId: 'profile-api.gtis.guru'
       AUTH_SAML_ssoUrl: 'http://profile.gtis.guru:8088/saml2/idp/SSOService.php'
       AUTH_SAML_sloUrl: 'http://profile.gtis.guru:8088/saml2/idp/SingleLogoutService.php'
+      PASSWORD_RULE_minLength: '10'
+      PASSWORD_RULE_maxLength: '255'
+      PASSWORD_RULE_minScore: '3'
 
   profileDb:
     image: silintl/mariadb
