@@ -1,5 +1,5 @@
 import './vuetify'
 import './api'
-import './router'
+// (already loaded in main.js) import './router'
 import './user'
 import './returnTo'

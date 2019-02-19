@@ -1,15 +1,14 @@
 import Vue from 'vue'
-import api from './api'
 import token from '@/global/token'
 
-let user = {
+const user = {
   recoveryMethods: {
     builtIn: [],
     personal: []
   },
   mfas: [],
   refresh: async function () {
-    Object.assign(this, await api.get('/user/me'))
+    Object.assign(this, await Vue.prototype.$API.get('/user/me'))
 
     // 'login' scope is the only time extra data can be gathered, e.g, method or mfa calls will return a 403 in 'reset' scope
     if (this.auth_type == 'login') {
@@ -29,7 +28,7 @@ let user = {
   login(returnTo, inviteCode = '') {
     token.reset()
 
-    let loginUrl = `${api.defaults.baseURL}/auth/login?client_id=${token.key()}`
+    let loginUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/login?client_id=${token.key()}`
 
     if (inviteCode) {
       loginUrl += `&invite=${inviteCode}&ReturnToOnError=/profile/invite/expired`
@@ -42,7 +41,7 @@ let user = {
     window.location = loginUrl
   },
   logout() {
-    const logoutUrl = `${api.defaults.baseURL}/auth/logout?access_token=${token.accessToken}`
+    const logoutUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/logout?access_token=${token.accessToken}`
 
     token.reset()
 
@@ -56,5 +55,3 @@ let user = {
 Vue.use(theVue => {
   theVue.prototype.$user = user
 })
-
-export default user // provided as an export in case other plugins need the user, e.g., ./api.js
