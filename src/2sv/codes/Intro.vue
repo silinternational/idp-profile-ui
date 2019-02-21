@@ -2,7 +2,7 @@
   <ProfileWizard ref="wizard">
     <v-alert :value="backupcode.id" type="warning">
       <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.codes.warning', backupcode.label) }}
+        {{ $vuetify.t('$vuetify.2sv.codes.warning') }}
       </span>
     </v-alert>
 

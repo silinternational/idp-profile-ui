@@ -273,14 +273,14 @@
       }
     },
     "codes": {
-      "warning": "You already have backup codes, ({0}), continuing will replace all of them.  If you do not want to replace them, you should skip this step.",
+      "warning": "You already have backup codes, continuing will replace all of them.  If you do not want to replace them you should skip this step.",
       "intro": {
         "header": "Printable backup codes",
         "backupInfo": "There may be times when you do not have your smartphone or USB security key with you.  When that is the case, printable backup codes can be used.",
         "primaryInfo": "Even if you are not using a smartphone or security key for 2-step verification you can still increase the security of your account by using printable backup codes alone.",
         "warning": "some content for those users that have NOT set up other 2sv options.",
         "button": {
-          "new": "Get new codes"
+          "new": "Create new codes"
         }
       },
       "new": {
