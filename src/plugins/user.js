@@ -2,7 +2,6 @@ import Vue from 'vue'
 import token from '@/global/token'
 
 const user = {
-  mfas: [],
   refresh: async function () {
     Object.assign(this, await Vue.prototype.$API.get('/user/me'))
   },
