@@ -28,7 +28,7 @@
             {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.qr') }}
             
             <v-layout row justify-center>
-              <v-img v-if="mfa.data" :src="mfa.data.imageUrl" max-width="200" />
+              <v-img v-if="newTotp.data" :src="newTotp.data.imageUrl" max-width="200" />
             </v-layout>
           </p>        
         </li>
@@ -45,7 +45,7 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${mfa.id}`" :disabled="! mfa.id" color="primary" flat outline> 
+      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`" :disabled="! newTotp.id" color="primary" flat outline> 
         {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.button.ok') }}
       </v-btn>
     </ButtonBar>
@@ -60,13 +60,15 @@ export default {
     ProfileWizard
   },
   data: () => ({
-    mfa: {}
+    mfas: [],
+    newTotp: {}
   }),
   computed: {
-    totp: vm => vm.$user.mfas.find(mfa => mfa.type == 'totp') || {}
+    totp: vm => vm.mfas.find(mfa => mfa.type == 'totp') || {}
   },
   async created() {
-    this.mfa = await this.$API.post('mfa', { type: 'totp' })
+    this.mfas = await this.$API.get(`mfa`)
+    this.newTotp = await this.$API.post('mfa', { type: 'totp' })
   }
 }
 </script>

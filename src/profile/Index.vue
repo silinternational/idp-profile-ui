@@ -5,7 +5,7 @@
 
       <v-spacer/>
 
-      <ProfileProgress :profile="profile"/>
+      <ProfileProgress :profile="{user: $user, recoveryMethods, mfas}"/>
     </template>
 
     <aside class="pb-3">
@@ -22,7 +22,7 @@
         <PasswordCard :meta="$user.password_meta" class="mx-3 mb-4"/>
       </v-flex>
       <v-flex xs12 sm6 md4 py-3>
-        <PasswordRecoveryCard :methods="$user.recoveryMethods.personal" class="mx-3 mb-4"/>
+        <PasswordRecoveryCard :methods="recoveryMethods" class="mx-3 mb-4"/>
       </v-flex>
       <v-flex xs12 sm6 md4 py-3>
         <DoNotDiscloseCard :dnd="$user.hide" class="mx-3 mb-4"/>
@@ -65,16 +65,23 @@ export default {
     DoNotDiscloseCard,
     Attribute,
   },
+  data: () => ({
+    recoveryMethods: [],
+    mfas: [],
+  }),
   computed: {
-    profile: vm => ({
-      recoveryMethods: vm.$user.recoveryMethods.personal,
-      mfas: vm.$user.mfas,
-      user: vm.$user
-    }),
-    totp: vm => vm.$user.mfas.find(mfa => mfa.type == 'totp') || {},
-    u2f: vm => vm.$user.mfas.find(mfa => mfa.type == 'u2f') || {},
-    codes: vm => vm.$user.mfas.find(mfa => mfa.type == 'backupcode') || {},
-    hasUnverifiedEmails: vm => vm.profile.recoveryMethods.some(m => ! m.verified),
+    totp: vm => vm.mfas.find(mfa => mfa.type == 'totp') || {},
+    u2f: vm => vm.mfas.find(mfa => mfa.type == 'u2f') || {},
+    codes: vm => vm.mfas.find(mfa => mfa.type == 'backupcode') || {},
+    hasUnverifiedEmails: vm => vm.recoveryMethods.some(m => ! m.verified),
+  },
+  async created() {
+    const [allRecoveryMethods, allMfas] = await Promise.all([this.$API.get('method'), this.$API.get('mfa')])
+
+    this.recoveryMethods = allRecoveryMethods.filter(isAlternate)
+    this.mfas = allMfas
   },
 }
+
+const isAlternate = method => method.type == 'email'
 </script>

@@ -39,12 +39,22 @@ export default {
   filters: {
     joined: emails => emails.map(email => email.value).join(', ')
   },
+  data: () => ({
+    recoveryMethods: [],
+  }),
   computed: {
-    unverifiedEmails: vm => vm.$user.recoveryMethods.personal.filter(m => ! m.verified),
+    unverifiedEmails: vm => vm.recoveryMethods.filter(m => ! m.verified),
+  },
+  async created() {
+    const allRecoveryMethods = await this.$API.get('method')
+
+    this.recoveryMethods = allRecoveryMethods.filter(isAlternate)
   },
   mounted() {
     this.$refs.wizard.complete()
   }
 }
+
+const isAlternate = method => method.type == 'email'
 </script>
 

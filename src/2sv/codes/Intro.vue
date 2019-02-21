@@ -40,13 +40,19 @@ export default {
   components: {
     ProfileWizard
   },
+  data: () => ({
+    mfas: [],
+  }),
   computed: {
-    backupcode: vm => vm.$user.mfas.find(mfa => mfa.type == 'backupcode') || {},
-    hasOtherTypes: vm => vm.$user.mfas.some(mfa => mfa.type != 'backupcode'),
+    backupcode: vm => vm.mfas.find(mfa => mfa.type == 'backupcode') || {},
+    hasOtherTypes: vm => vm.mfas.some(mfa => mfa.type != 'backupcode'),
+  },
+  async created() {
+    this.mfas = await this.$API.get(`mfa`)
   },
   methods: {
     skip() {
-      if (this.$user.mfas.length < 1) {
+      if (this.mfas.length < 1) {
         this.$refs.wizard.skipped()
       }
 

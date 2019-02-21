@@ -1,5 +1,5 @@
 <template>
-  <v-stepper v-model="currentStep.id">
+  <v-stepper v-if="currentStep.id" v-model="currentStep.id">
     <v-stepper-header>
       <template v-for="_step in steps">
         <v-stepper-step :step="_step.id" 
@@ -32,10 +32,16 @@ import Steps from './steps'
 export default {
   data: () => ({
     steps: [],
-    currentStep: {}
+    currentStep: {},
   }),
-  created() {
-    Steps.init(this.$user)
+  async created() {
+    if (this.$user.auth_type == 'login') {
+      const [recoveryMethods, mfas] = await Promise.all([this.$API.get('method'), this.$API.get('mfa')])
+
+      Steps.init(this.$user, recoveryMethods, mfas)
+    } else {
+      Steps.init(this.$user)
+    }
 
     this.steps = Steps.steps
     this.currentStep = Steps.forPath(this.$route.path)

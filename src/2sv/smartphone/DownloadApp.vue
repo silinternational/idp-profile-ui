@@ -57,9 +57,15 @@ export default {
   components: {
     ProfileWizard
   },
+  data: () => ({
+    mfas: [],
+  }),
   computed: {
-    totp: vm => vm.$user.mfas.find(mfa => mfa.type == 'totp') || {}
-  }
+    totp: vm => vm.mfas.find(mfa => mfa.type == 'totp') || {}
+  },
+  async created() {
+    this.mfas = await this.$API.get(`mfa`)
+  },
 }
 </script>
 

@@ -16,6 +16,7 @@ api.interceptors.request.use(
   },
   error => {
     const e = (error.response && error.response.data) || error
+
     throw e
   }
 )
@@ -25,7 +26,7 @@ api.interceptors.response.use(
   error => {
     const e = (error.response && error.response.data) || error
 
-    if (e.status == 401) {
+    if ([401, 403].includes(e.status)) {
       Vue.prototype.$user.login(location.pathname)
     }
 

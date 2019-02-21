@@ -5,30 +5,30 @@
 
       <p>{{ $vuetify.t('$vuetify.password.recovery.explanation') }}</p>
 
-      <p v-if="$user.recoveryMethods.personal.length">{{ $vuetify.t('$vuetify.password.recovery.atLeastOneRecovery') }}</p>
+      <p v-if="alternates.length">{{ $vuetify.t('$vuetify.password.recovery.atLeastOneRecovery') }}</p>
       <p v-else>
         {{ $vuetify.t('$vuetify.password.recovery.info', primary.value) }}
         <span v-if="mgr.value && ! spouse.value">{{ $vuetify.t('$vuetify.password.recovery.infoWithMgrOnly', mgr.value) }}</span>
         <span v-if="mgr.value && spouse.value">{{ $vuetify.t('$vuetify.password.recovery.infoWithMgrAndSpouse', mgr.value, spouse.value) }}</span>
       </p>
 
-      <p v-if="! $user.recoveryMethods.personal.length">
+      <p v-if="! alternates.length">
         {{ $vuetify.t('$vuetify.password.recovery.advice') }}
       </p>
 
       <ul>
         <li class="subheading grey--text py-2">{{ $vuetify.t('$vuetify.password.recovery.personalHeader') }}</li>
-        <li v-for="method in $user.recoveryMethods.personal" :key="method.id" class="layout row pb-2 pl-3">
+
+        <li v-for="method in alternates" :key="method.id" class="layout row pb-2 pl-3">
           {{ method.value }}
-          <v-tooltip :disabled="$user.recoveryMethods.personal.length > 1" right>
-            <v-icon @click="remove(method.id)" slot="activator" :disabled="$user.recoveryMethods.personal.length == 1"
-                    color="error" small class="pl-3">
+          <v-tooltip :disabled="alternates.length > 1" right>
+            <v-icon @click="remove(method.id)" slot="activator" :disabled="alternates.length == 1" color="error" small class="pl-3">
               delete
             </v-icon>
             {{ $vuetify.t('$vuetify.password.recovery.dontRemoveLastOne') }}
           </v-tooltip>
         </li>
-        <li v-if="! $user.recoveryMethods.personal.length" class="pl-3">
+        <li v-if="! alternates.length" class="pl-3">
           <em>{{ $vuetify.t('$vuetify.password.recovery.noPersonalMethods') }}</em>
         </li>
       </ul>
@@ -47,16 +47,16 @@
     </BasePage>
 
     <template slot="actions">
-      <v-btn v-if="!$user.recoveryMethods.personal.length" to="/2sv/intro" @click="$refs.wizard.skipped()"
+      <v-btn v-if="! alternates.length" to="/2sv/intro" @click="$refs.wizard.skipped()"
              color="warning" flat outline>
-             {{ $vuetify.t('$vuetify.global.button.skip') }}
+        {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-tooltip :disabled="!(unsaved || !$user.recoveryMethods.personal.length)" right>
+      <v-tooltip :disabled="!(unsaved || ! alternates.length)" right>
         <v-btn @click="next" slot="activator" 
-               :disabled="unsaved || !$user.recoveryMethods.personal.length" color="primary" flat outline>
+               :disabled="unsaved || ! alternates.length" color="primary" flat outline>
           {{ $vuetify.t('$vuetify.global.button.continue') }}
         </v-btn>
         
@@ -75,13 +75,18 @@ export default {
     ProfileWizard,
   },
   data: () => ({
+    recoveryMethods: [],
     newEmail: '',
   }),
   computed: {
     unsaved: vm => vm.newEmail != '',
-    primary: vm => vm.$user.recoveryMethods.builtIn.find(email => email.type == 'primary'),
-    mgr: vm => vm.$user.recoveryMethods.builtIn.find(email => email.type == 'supervisor'),
-    spouse: vm => vm.$user.recoveryMethods.builtIn.find(email => email.type == 'spouse'),
+    primary: vm => vm.recoveryMethods.find(m => m.type == 'primary') || {},
+    mgr: vm => vm.recoveryMethods.find(m => m.type == 'supervisor') || {},
+    spouse: vm => vm.recoveryMethods.find(m => m.type == 'spouse') || {},
+    alternates: vm => vm.recoveryMethods.filter(m => m.type == 'email'),
+  },
+  async created() {
+    this.recoveryMethods = await this.$API.get(`method`)
   },
   methods: {
     async add() {
@@ -92,17 +97,14 @@ export default {
 
         this.newEmail = ''
 
-        this.$user.recoveryMethods.personal.push(newMethod)
+        this.recoveryMethods.push(newMethod)
       }
     },
     async remove(id) {
       await this.$API.delete(`method/${id}`)
 
-      const i = this.$user.recoveryMethods.personal.findIndex(m => m.id == id)
-      this.$user.recoveryMethods.personal.splice(i, 1)
-      
-      // couldn't get reactivity system to work for this on its own.
-      this.$forceUpdate()
+      const i = this.recoveryMethods.findIndex(m => m.id == id)
+      this.recoveryMethods.splice(i, 1)
     },
     blur(event) {
       event.target.blur()

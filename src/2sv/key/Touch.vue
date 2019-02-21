@@ -52,20 +52,23 @@ export default {
     ProfileWizard
   },
   data: () => ({
-    mfa: {},
+    mfas: [],
+    newU2f: {},
     touched: false,
     error: false,
   }),
   computed: {
-    u2f: vm => vm.$user.mfas.find(mfa => mfa.type == 'u2f') || {}
+    u2f: vm => vm.mfas.find(mfa => mfa.type == 'u2f') || {}
   },
   async created() {
+    this.mfas = await this.$API.get(`mfa`)
+
     this.create()
   },
   methods: {
     handleKeyResponse: async function(response) {
       if (isValid(response)) {
-        await this.$API.put(`mfa/${this.mfa.id}/verify`, { value: response })
+        await this.$API.put(`mfa/${this.newU2f.id}/verify`, { value: response })
   
         this.touched = true
   
@@ -79,11 +82,11 @@ export default {
       }
     },
     async create() {
-      this.mfa = await this.$API.post('mfa', { type: 'u2f' })
+      this.newU2f = await this.$API.post('mfa', { type: 'u2f' })
 
       u2f.register(
-        this.mfa.data.challenge.appId,
-        [this.mfa.data.challenge],
+        this.newU2f.data.challenge.appId,
+        [this.newU2f.data.challenge],
         [],
         this.handleKeyResponse
       )

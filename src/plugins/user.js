@@ -2,25 +2,9 @@ import Vue from 'vue'
 import token from '@/global/token'
 
 const user = {
-  recoveryMethods: {
-    builtIn: [],
-    personal: []
-  },
   mfas: [],
   refresh: async function () {
     Object.assign(this, await Vue.prototype.$API.get('/user/me'))
-
-    // 'login' scope is the only time extra data can be gathered, e.g, method or mfa calls will return a 403 in 'reset' scope
-    if (this.auth_type == 'login') {
-      const methodPromise = api.get('method')
-      const mfaPromise = api.get('mfa')
-  
-      const all = await methodPromise
-      Object.assign(this.recoveryMethods.builtIn, all.filter(m => m.type != 'email'))
-      Object.assign(this.recoveryMethods.personal, all.filter(m => m.type == 'email'))
-  
-      Object.assign(this.mfas, await mfaPromise)
-    }
   },
   isAuthenticated() {
     return !!this.idp_username

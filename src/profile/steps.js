@@ -6,9 +6,9 @@ const store = {
 
 export default {
   steps: store.steps,
-  init(user) {
+  init(user, recoveryMethods = [], mfas = []) {
     if (store.steps.length == 0) {
-      store.steps.push(...allSteps.filter(step => step.isRelevant(user)))
+      store.steps.push(...allSteps.filter(step => step.isRelevant(user, recoveryMethods, mfas)))
 
       for (let i = 0; i < store.steps.length; i++) {
         Object.assign(store.steps[i], { id: i + 1, state: '' })
@@ -27,11 +27,8 @@ export default {
   },
 }
 
-function isRequested(paths) {
-  return paths.includes(location.pathname)
-}
-
 const t = Vue.prototype.$vuetify.t
+const isRequested = paths => paths.includes(location.pathname)
 
 const password = {
   name: t('$vuetify.profile.steps.pwStep'),
@@ -44,10 +41,11 @@ const password = {
 const recovery = {
   name: t('$vuetify.profile.steps.pwRecoverStep'),
   paths: ['/password/recovery'],
-  isRelevant(user) {
-    return user.auth_type == 'login' && (isRequested(this.paths) || user.recoveryMethods.personal.length < 1)
+  isRelevant(user, recoveryMethods) {
+    return user.auth_type == 'login' && (isRequested(this.paths) || recoveryMethods.filter(isAlternate).length < 1)
   }
 }
+const isAlternate = method => method.type == 'email'
 
 const twosv = {
   name: t('$vuetify.profile.steps.2svStep'),
@@ -65,8 +63,8 @@ const twosv = {
     '/2sv/printable-backup-codes/intro',
     '/2sv/printable-backup-codes/new'
   ],
-  isRelevant(user) {
-    return user.auth_type == 'login' && (isRequested(this.paths) || user.mfas.length < 3)
+  isRelevant(user, recoveryMethods, mfas) {
+    return user.auth_type == 'login' && (isRequested(this.paths) || mfas.length < 3)
   }
 }
 

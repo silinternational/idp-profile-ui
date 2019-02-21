@@ -44,8 +44,14 @@ export default {
   components: {
     ProfileWizard
   },
+  data: () => ({
+    mfas: [],
+  }),
   computed: {
-    u2f: vm => vm.$user.mfas.find(mfa => mfa.type == 'u2f') || {}
+    u2f: vm => vm.mfas.find(mfa => mfa.type == 'u2f') || {},
+  },
+  async created() {
+    this.mfas = await this.$API.get(`mfa`)
   }
 }
 </script>
