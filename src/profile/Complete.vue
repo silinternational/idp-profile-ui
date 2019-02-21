@@ -31,6 +31,7 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
+import recoveryMethods from '@/global/recoveryMethods';
 
 export default {
   components: {
@@ -40,21 +41,14 @@ export default {
     joined: emails => emails.map(email => email.value).join(', ')
   },
   data: () => ({
-    recoveryMethods: [],
+    alternates: recoveryMethods.alternates,
   }),
   computed: {
-    unverifiedEmails: vm => vm.recoveryMethods.filter(m => ! m.verified),
-  },
-  async created() {
-    const allRecoveryMethods = await this.$API.get('method')
-
-    this.recoveryMethods = allRecoveryMethods.filter(isAlternate)
+    unverifiedEmails: vm => vm.alternates.filter(m => ! m.verified),
   },
   mounted() {
     this.$refs.wizard.complete()
   }
 }
-
-const isAlternate = method => method.type == 'email'
 </script>
 

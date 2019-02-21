@@ -28,17 +28,19 @@
 
 <script>
 import Steps from './steps'
+import { recoveryMethods, retrieve } from '@/global/recoveryMethods'
 
 export default {
   data: () => ({
     steps: [],
     currentStep: {},
+    alternates: recoveryMethods.alternates
   }),
   async created() {
     if (this.$user.auth_type == 'login') {
-      const [recoveryMethods, mfas] = await Promise.all([this.$API.get('method'), this.$API.get('mfa')])
+      const [, mfas] = await Promise.all([retrieve(), this.$API.get('mfa')])
 
-      Steps.init(this.$user, recoveryMethods, mfas)
+      Steps.init(this.$user, this.alternates, mfas)
     } else {
       Steps.init(this.$user)
     }

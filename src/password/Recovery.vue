@@ -68,44 +68,33 @@
 </template>
 
 <script>
-import ProfileWizard from "@/profile/ProfileWizard"
+import ProfileWizard from '@/profile/ProfileWizard'
+import { recoveryMethods, add, retrieve, remove } from '@/global/recoveryMethods';
 
 export default {
   components: {
     ProfileWizard,
   },
   data: () => ({
-    recoveryMethods: [],
     newEmail: '',
+    system: recoveryMethods.system,
+    alternates: recoveryMethods.alternates
   }),
   computed: {
     unsaved: vm => vm.newEmail != '',
-    primary: vm => vm.recoveryMethods.find(m => m.type == 'primary') || {},
-    mgr: vm => vm.recoveryMethods.find(m => m.type == 'supervisor') || {},
-    spouse: vm => vm.recoveryMethods.find(m => m.type == 'spouse') || {},
-    alternates: vm => vm.recoveryMethods.filter(m => m.type == 'email'),
-  },
-  async created() {
-    this.recoveryMethods = await this.$API.get(`method`)
+    primary: vm => vm.system.find(m => m.type == 'primary') || {},
+    mgr: vm => vm.system.find(m => m.type == 'supervisor') || {},
+    spouse: vm => vm.system.find(m => m.type == 'spouse') || {},
   },
   methods: {
     async add() {
       if (this.$refs.form.validate()) {
-        const newMethod = await this.$API.post('method', {
-          value: this.newEmail
-        })
+        await add(this.newEmail)
 
         this.newEmail = ''
-
-        this.recoveryMethods.push(newMethod)
       }
     },
-    async remove(id) {
-      await this.$API.delete(`method/${id}`)
-
-      const i = this.recoveryMethods.findIndex(m => m.id == id)
-      this.recoveryMethods.splice(i, 1)
-    },
+    remove,
     blur(event) {
       event.target.blur()
       event.target.focus()
