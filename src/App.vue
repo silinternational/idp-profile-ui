@@ -10,9 +10,11 @@
       <v-divider vertical dark inset class="mx-2" />
 
       <v-tooltip left>
-        <v-btn slot="activator" icon dark>
-          <v-icon v-if="$user.isAuthenticated()" @click="$user.logout()" small>exit_to_app</v-icon>
-          <v-icon v-else @click="$user.login('/profile')">person_outline</v-icon>
+        <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" slot="activator" icon dark>
+          <v-icon small>exit_to_app</v-icon>
+        </v-btn>
+        <v-btn v-else @click="$user.login('/profile')" slot="activator" icon dark>
+          <v-icon>person_outline</v-icon>
         </v-btn>
 
         <span v-if="$user.isAuthenticated()">{{ $vuetify.t('$vuetify.app.logout') }}</span>
