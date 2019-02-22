@@ -14,6 +14,9 @@ logs:
 	docker-compose logs
 	docker-compose exec idp cat /var/log/apache2/error.log
 	
+phpmyadmin:
+	docker-compose up -d brokerPhpmyadmin profilePhpmyadmin
+	
 clean:
 	docker-compose run node npm run clean
 	docker-compose kill
