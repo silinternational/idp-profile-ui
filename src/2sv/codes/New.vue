@@ -77,8 +77,6 @@ export default {
   },
   methods: {
     finish: function() {
-      this.$refs.wizard.complete()
-
       this.$router.push('/profile/complete')
     },
     print: async function(id) {

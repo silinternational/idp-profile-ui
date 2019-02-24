@@ -46,9 +46,9 @@ export default {
   computed: {
     unverifiedEmails: vm => vm.alternates.filter(m => ! m.verified),
   },
-  mounted() {
+  async created() {
+    await this.$nextTick() // best option I could figure out to ensure this.$refs.wizard.complete() was available and worked
     this.$refs.wizard.complete()
-  }
+  },
 }
 </script>
-

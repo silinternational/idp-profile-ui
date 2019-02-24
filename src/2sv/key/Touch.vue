@@ -1,10 +1,5 @@
 <template>
   <ProfileWizard>
-    <v-alert :value="mfa.u2f.id" type="warning">
-      <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.key.warning', mfa.u2f.label) }}
-      </span>
-    </v-alert>
     <v-alert :value="error" type="error">
       <span class="layout row align-center justify-center">
         {{ $vuetify.t('$vuetify.2sv.key.touch.error') }}
@@ -65,7 +60,7 @@ export default {
     handleKeyResponse: async function(response) {
       if (isValid(response)) {
         await verify(this.newU2f.id, response)
-  
+        
         this.touched = true
   
         // pause for a moment so user can see the checkmark.
