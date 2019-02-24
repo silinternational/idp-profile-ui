@@ -34,6 +34,7 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
+import { verify } from '@/global/mfa';
 
 export default {
   components: {
@@ -51,9 +52,7 @@ export default {
   methods: {
     async verify() {
       if (this.$refs.form.validate()) {
-        await this.$API.put(`mfa/${this.$route.query.id}/verify`, {
-          value: this.code.trim()
-        })
+        await verify(this.$route.query.id, this.code.trim())
 
         this.$router.push('/2sv/smartphone/code-verified')
       }

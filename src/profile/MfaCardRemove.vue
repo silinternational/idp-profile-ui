@@ -5,12 +5,14 @@
 </template>
 
 <script>
+import { remove } from '@/global/mfa';
+
 export default {
   props: ['id'],
   methods: {
     async remove(id) {
       if (confirm(this.$vuetify.t('$vuetify.global.areYouSure'))) {
-        await this.$API.delete(`mfa/${id}`)
+        await remove(id)
 
         this.$emit('removed')
       }
@@ -18,4 +20,3 @@ export default {
   }
 }
 </script>
-

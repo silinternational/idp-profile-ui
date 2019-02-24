@@ -1,8 +1,8 @@
 <template>
   <ProfileWizard>
-    <v-alert :value="u2f.id" type="warning">
+    <v-alert :value="mfa.u2f.id" type="warning">
       <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.key.warning', u2f.label) }}
+        {{ $vuetify.t('$vuetify.2sv.key.warning', mfa.u2f.label) }}
       </span>
     </v-alert>
 
@@ -39,19 +39,14 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
+import mfa from '@/global/mfa';
 
 export default {
   components: {
     ProfileWizard
   },
   data: () => ({
-    mfas: [],
+    mfa,
   }),
-  computed: {
-    u2f: vm => vm.mfas.find(mfa => mfa.type == 'u2f') || {},
-  },
-  async created() {
-    this.mfas = await this.$API.get(`mfa`)
-  }
 }
 </script>

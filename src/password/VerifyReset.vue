@@ -32,9 +32,9 @@ export default {
   }),
   async created() {
     try {
-      const { access_token } = await this.$API.put(`reset/${this.$route.params.resetId}/validate`, { 
+      const { access_token } = await this.$API.put(`reset/${this.$route.params.id}/validate`, { 
         'client_id': token.key(),
-        code: this.$route.params.verificationId,
+        code: this.$route.params.code,
       })
 
       token.setAccessToken(access_token)

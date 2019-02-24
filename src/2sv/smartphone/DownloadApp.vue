@@ -1,8 +1,8 @@
 <template>
   <ProfileWizard>
-    <v-alert :value="totp.id" type="warning">
+    <v-alert :value="mfa.totp.id" type="warning">
       <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.smartphone.warning', totp.label) }}
+        {{ $vuetify.t('$vuetify.2sv.smartphone.warning', mfa.totp.label) }}
       </span>
     </v-alert>
 
@@ -37,7 +37,7 @@
       <v-btn to="/2sv/smartphone/intro" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
-      <v-btn v-if="totp.id" to="/2sv/usb-security-key/intro" color="primary" flat tabindex="-1" outline> 
+      <v-btn v-if="mfa.totp.id" to="/2sv/usb-security-key/intro" color="primary" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
@@ -52,20 +52,15 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
+import mfa from '@/global/mfa';
 
 export default {
   components: {
     ProfileWizard
   },
   data: () => ({
-    mfas: [],
+    mfa,
   }),
-  computed: {
-    totp: vm => vm.mfas.find(mfa => mfa.type == 'totp') || {}
-  },
-  async created() {
-    this.mfas = await this.$API.get(`mfa`)
-  },
 }
 </script>
 

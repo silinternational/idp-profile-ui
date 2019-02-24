@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { change } from '@/global/mfa'
+
 export default {
   props: ['label', 'id', 'readOnly'],
   data: () => ({
@@ -30,7 +32,7 @@ export default {
       this.editing = false
     },
     async save() {
-      const mfa = await this.$API.put(`mfa/${this.id}`, {
+      const mfa = await change(this.id, {
         label: this.newLabel
       })
 

@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { verify } from '@/global/recoveryMethods'
+
 export default {
   data: () => ({
     verifying: true,
@@ -30,7 +32,7 @@ export default {
   }),
   async created() {
     try {
-      await this.$API.put(`method/${this.$route.params.id}/verify`, { code: this.$route.query.code })
+      await verify(this.$route.params.id, this.$route.params.code)
 
       this.verified = true
     } catch(e) {

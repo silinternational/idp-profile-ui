@@ -1,6 +1,6 @@
 <template>
   <ProfileWizard ref="wizard">
-    <v-alert :value="backupcode.id" type="warning">
+    <v-alert :value="mfa.backup.id" type="warning">
       <span class="layout row align-center justify-center">
         {{ $vuetify.t('$vuetify.2sv.codes.warning') }}
       </span>
@@ -35,24 +35,22 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
+import mfa from '@/global/mfa';
 
 export default {
   components: {
     ProfileWizard
   },
   data: () => ({
-    mfas: [],
+    mfa,
   }),
   computed: {
-    backupcode: vm => vm.mfas.find(mfa => mfa.type == 'backupcode') || {},
-    hasOtherTypes: vm => vm.mfas.some(mfa => mfa.type != 'backupcode'),
-  },
-  async created() {
-    this.mfas = await this.$API.get(`mfa`)
+    hasOtherTypes: vm => vm.mfa.totp.id || vm.mfa.u2f.id,
+    hasNoMfa: vm => ! (vm.mfa.totp.id || vm.mfa.u2f.id || vm.mfa.backup.id),
   },
   methods: {
     skip() {
-      if (this.mfas.length < 1) {
+      if (this.hasNoMfa) {
         this.$refs.wizard.skipped()
       }
 

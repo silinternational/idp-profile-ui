@@ -1,8 +1,8 @@
 <template>
   <ProfileWizard>
-    <v-alert :value="u2f.id" type="warning">
+    <v-alert :value="mfa.u2f.id" type="warning">
       <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.key.warning', u2f.label) }}
+        {{ $vuetify.t('$vuetify.2sv.key.warning', mfa.u2f.label) }}
       </span>
     </v-alert>
 
@@ -24,7 +24,7 @@
       <v-btn to="/2sv/usb-security-key/intro" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
-      <v-btn v-if="u2f.id" to="/2sv/printable-backup-codes/intro" color="primary" flat tabindex="-1" outline> 
+      <v-btn v-if="mfa.u2f.id" to="/2sv/printable-backup-codes/intro" color="primary" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
@@ -43,6 +43,7 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
 import bowser from 'bowser'
+import mfa from '@/global/mfa';
 
 export default {
   components: {
@@ -52,13 +53,7 @@ export default {
     isSupported: (bowser.chrome  && bowser.version >= 41) ||
                  (bowser.firefox && bowser.version >= 58) ||
                  (bowser.opera   && bowser.version >= 39),
-    mfas: [],
+    mfa,
   }),
-  computed: {
-    u2f: vm => vm.mfas.find(mfa => mfa.type == 'u2f') || {},
-  },
-  async created() {
-    this.mfas = await this.$API.get(`mfa`)
-  }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <ProfileWizard>
-    <v-alert :value="u2f.id" type="warning">
+    <v-alert :value="mfa.u2f.id" type="warning">
       <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.key.warning', u2f.label) }}
+        {{ $vuetify.t('$vuetify.2sv.key.warning', mfa.u2f.label) }}
       </span>
     </v-alert>
     <v-alert :value="error" type="error">
@@ -30,7 +30,7 @@
       <v-btn to="/2sv/usb-security-key/insert" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
-      <v-btn v-if="u2f.id" to="/2sv/printable-backup-codes/intro" color="primary" flat tabindex="-1" outline> 
+      <v-btn v-if="mfa.u2f.id" to="/2sv/printable-backup-codes/intro" color="primary" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
@@ -46,29 +46,25 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
 import u2f from './u2f-api.js'
+import { mfa, add, verify } from '@/global/mfa';
 
 export default {
   components: {
     ProfileWizard
   },
   data: () => ({
-    mfas: [],
+    mfa,
     newU2f: {},
     touched: false,
     error: false,
   }),
-  computed: {
-    u2f: vm => vm.mfas.find(mfa => mfa.type == 'u2f') || {}
-  },
   async created() {
-    this.mfas = await this.$API.get(`mfa`)
-
     this.create()
   },
   methods: {
     handleKeyResponse: async function(response) {
       if (isValid(response)) {
-        await this.$API.put(`mfa/${this.newU2f.id}/verify`, { value: response })
+        await verify(this.newU2f.id, response)
   
         this.touched = true
   
@@ -82,7 +78,7 @@ export default {
       }
     },
     async create() {
-      this.newU2f = await this.$API.post('mfa', { type: 'u2f' })
+      this.newU2f = await add('u2f')
 
       u2f.register(
         this.newU2f.data.challenge.appId,

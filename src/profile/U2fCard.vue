@@ -4,7 +4,8 @@
       <v-layout row align-center>
         <v-icon :color="meta.created_utc ? 'success' : ''" x-large>vpn_key</v-icon>
 
-        <MfaCardLabel :label="label" :id="meta.id" @new-label="label = $event"/>
+        <MfaCardLabel :label="label || meta.label || $vuetify.t('$vuetify.profile.index.u2fCard.title')" 
+                      :id="meta.id" @new-label="label = $event"/>
       </v-layout>
     </v-card-title>
 
@@ -47,8 +48,7 @@ export default {
   },
   props: ['meta'],
   data: vm => ({
-    label:
-      vm.meta.label || vm.$vuetify.t('$vuetify.profile.index.u2fCard.title')
+    label: '',
   })
 }
 </script>

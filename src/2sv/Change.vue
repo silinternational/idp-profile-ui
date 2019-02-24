@@ -22,12 +22,14 @@
 </template>
 
 <script>
+import { remove } from '@/global/mfa';
+
 export default {
   data: () => ({
     removing: true
   }),
   async created() {
-    await this.$API.delete(`mfa/${this.$route.params.id}`)
+    await remove(this.$route.params.id)
 
     this.removing = false
   }

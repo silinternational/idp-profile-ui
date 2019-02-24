@@ -50,6 +50,7 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
+import { add } from '@/global/mfa';
 
 export default {
   components: {
@@ -61,7 +62,7 @@ export default {
     copied: false
   }),
   async created() {
-    const newCodes = await this.$API.post('mfa', { type: 'backupcode' })
+    const newCodes = await add('backupcode')
 
     this.codes = newCodes.data
     

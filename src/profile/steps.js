@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods';
+import { mfa, retrieve as retrieveMfa } from '@/global/mfa';
 
 const store = {
   steps: []
@@ -6,9 +8,13 @@ const store = {
 
 export default {
   steps: store.steps,
-  init(user, recoveryMethods = [], mfas = []) {
+  async init() {
     if (store.steps.length == 0) {
-      store.steps.push(...allSteps.filter(step => step.isRelevant(user, recoveryMethods, mfas)))
+      if (Vue.prototype.$user.auth_type == 'login') {
+        await Promise.all([retrieveMethods(), retrieveMfa()])
+      }
+      
+      store.steps.push(...allSteps.filter(step => step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa)))
 
       for (let i = 0; i < store.steps.length; i++) {
         Object.assign(store.steps[i], { id: i + 1, state: '' })
@@ -63,8 +69,8 @@ const twosv = {
     '/2sv/printable-backup-codes/intro',
     '/2sv/printable-backup-codes/new'
   ],
-  isRelevant(user, recoveryMethods, mfas) {
-    return user.auth_type == 'login' && (isRequested(this.paths) || mfas.length < 3)
+  isRelevant(user, recoveryMethods, mfa) {
+    return user.auth_type == 'login' && (isRequested(this.paths) || mfa.numVerified < 3)
   }
 }
 

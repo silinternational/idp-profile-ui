@@ -20,13 +20,16 @@ export default [
   {
     path: '/password/saved',
     component: Saved,
+    meta: {
+      public: true
+    },
   },
   {
     path: '/password/recovery',
     component: Recovery,
   },
   {
-    path: '/password/recovery/:id/verify',
+    path: '/password/recovery/:id/verify/:code',
     component: VerifyRecoveryMethod,
     meta: {
       public: true
@@ -47,7 +50,7 @@ export default [
     },
   },
   {
-    path: '/password/reset/:resetId/verify/:verificationId',
+    path: '/password/reset/:id/verify/:code',
     component: VerifyReset,
     meta: {
       public: true
@@ -56,5 +59,8 @@ export default [
   {
     path: '/password/reset/complete',
     component: CompleteReset,
+    meta: {
+      public: true
+    },
   },
 ]
