@@ -41,8 +41,12 @@ function numOfVerifiedMfas(mfa) {
 
 export const remove = async (id) => {
   await Vue.prototype.$API.delete(`mfa/${id}`)
+
+  const type = Object.keys(mfa).find(key => mfa[key].id === id)
+  mfa[type] = {}
 }
 
 export const change = async (id, updates) => {
   return await Vue.prototype.$API.put(`mfa/${id}`, updates)
+  //TODO: are local updates necessary here?
 }

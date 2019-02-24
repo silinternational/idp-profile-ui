@@ -13,8 +13,6 @@ export default {
     async remove(id) {
       if (confirm(this.$vuetify.t('$vuetify.global.areYouSure'))) {
         await remove(id)
-
-        this.$emit('removed')
       }
     }
   }
