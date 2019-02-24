@@ -76,6 +76,7 @@
       "totpCard": {
         "title": "Smartphone",
         "created": "Created:",
+        "lastUsed": "Last used:",
         "button": {
           "change": "lost or new phone"
         },
@@ -84,6 +85,7 @@
       "u2fCard": {
         "title": "USB security key",
         "created": "Created:",
+        "lastUsed": "Last used:",
         "button": {
           "change": "lost or new key"
         },
@@ -92,6 +94,7 @@
       "codeCard": {
         "title": "Printable backup codes",
         "created": "Created:",
+        "lastUsed": "Last used:",
         "remaining": "Remaining:",
         "button": {
           "replace": "Replace",

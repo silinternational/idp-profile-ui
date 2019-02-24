@@ -10,15 +10,12 @@
     </v-card-title>
 
     <v-card-text class="grow">
-      <Attribute
-        v-if="meta.created_utc"
-        :name="$vuetify.t('$vuetify.profile.index.totpCard.created')"
-        :value="meta.created_utc | format"
-      />
+      <Attribute v-if="meta.created_utc" :name="$vuetify.t('$vuetify.profile.index.totpCard.created')" :value="meta.created_utc | format"/>
       <div v-else class="layout row align-center">
         <v-icon x-large color="warning" class="pr-3">warning</v-icon>
         <em>{{ $vuetify.t('$vuetify.profile.index.totpCard.warning') }}</em>
       </div>
+      <Attribute v-if="meta.last_used_utc" :name="$vuetify.t('$vuetify.profile.index.totpCard.lastUsed')" :value="meta.last_used_utc | format"/>
     </v-card-text>
 
     <v-card-actions>
