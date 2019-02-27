@@ -15,7 +15,7 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn @click="toggle()" color="primary" flat outline>
+      <v-btn @click="toggle()" :loading="toggling" color="primary" flat outline>
         <span v-if="hide">{{ $vuetify.t('$vuetify.profile.index.dndCard.button.disable') }}</span>
         <span v-else>{{ $vuetify.t('$vuetify.profile.index.dndCard.button.enable') }}</span>
       </v-btn>
@@ -27,16 +27,20 @@
 export default {
   props: ['dnd'],
   data: vm => ({
-    hide: vm.dnd == 'yes'
+    hide: vm.dnd == 'yes',
+    toggling: false,
   }),
   methods: {
     toggle: async function() {
+      this.toggling = true
+
       await this.$API.put('user/me', {
         hide: this.hide ? 'no' : 'yes'
       })
 
+      this.toggling = false
       this.hide = !this.hide
-    }
+    },
   },
 }
 </script>
