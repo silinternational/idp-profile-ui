@@ -11,58 +11,94 @@ import Confirmed from './key/Confirmed'
 import CodesIntro from './codes/Intro'
 import New from './codes/New'
 import Change from './Change'
+import mfa from '@/global/mfa'
 
 export default [
   {
     path: '/2sv/intro',
-    component: Intro
+    component: Intro,
   },
   {
     path: '/2sv/smartphone/intro',
-    component: SmartphoneIntro
+    component: SmartphoneIntro,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
+    }
   },
   {
     path: '/2sv/smartphone/download-app',
-    component: DownloadApp
+    component: DownloadApp,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
+    }
   },
   {
     path: '/2sv/smartphone/scan-qr',
-    component: ScanQr
+    component: ScanQr,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
+    }
   },
   {
     path: '/2sv/smartphone/verify-qr-code',
-    component: VerifyQrCode
+    component: VerifyQrCode,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
+    }
   },
   {
     path: '/2sv/smartphone/code-verified',
-    component: CodeVerified
+    component: CodeVerified,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
+    }
   },
   {
     path: '/2sv/usb-security-key/intro',
-    component: KeyIntro
+    component: KeyIntro,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.u2f.id, '/2sv/printable-backup-codes/intro', next)
+    }
   },
   {
     path: '/2sv/usb-security-key/insert',
-    component: Insert
+    component: Insert,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.u2f.id, '/2sv/printable-backup-codes/intro', next)
+    }
   },
   {
     path: '/2sv/usb-security-key/touch',
-    component: Touch
+    component: Touch,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.u2f.id, '/2sv/printable-backup-codes/intro', next)
+    }
   },
   {
     path: '/2sv/usb-security-key/confirmed',
-    component: Confirmed
+    component: Confirmed,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.u2f.id, '/2sv/printable-backup-codes/intro', next)
+    }
   },
   {
     path: '/2sv/printable-backup-codes/intro',
-    component: CodesIntro
+    component: CodesIntro,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.backup.id, '/profile/complete', next)
+    }
   },
   {
     path: '/2sv/printable-backup-codes/new',
-    component: New
+    component: New,
+    beforeEnter: (to, from, next) => {
+      skipWhen(mfa.backup.id, '/profile/complete', next)
+    }
   },
   {
     path: '/2sv/change/:id',
-    component: Change
+    component: Change,
   },
 ]
+
+const skipWhen = (exists, to, next) => exists ? next(to) : next()

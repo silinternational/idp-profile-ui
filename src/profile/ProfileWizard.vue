@@ -56,12 +56,15 @@ export default {
 
       return map[state] || '$vuetify.icons.complete'
     },
-    complete: function() {
+    complete: function() { //TODO: should be completed, like skipped
       this.currentStep.state = 'complete'
     },
-    completeAndContinue: function() {
+    completeAndContinue: function() { //TODO: remove this if not used anymore
       this.complete()
       
+      this.$router.push(Steps.next(this.currentStep).paths[0])
+    },
+    next: function() {
       this.$router.push(Steps.next(this.currentStep).paths[0])
     },
     skipped: function() {

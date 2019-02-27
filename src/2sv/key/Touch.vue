@@ -25,9 +25,6 @@
       <v-btn to="/2sv/usb-security-key/insert" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
-      <v-btn v-if="mfa.u2f.id" to="/2sv/printable-backup-codes/intro" color="primary" flat tabindex="-1" outline> 
-        {{ $vuetify.t('$vuetify.global.button.skip') }}
-      </v-btn>
 
       <v-spacer></v-spacer>
 
@@ -41,14 +38,13 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
 import u2f from './u2f-api.js'
-import { mfa, add, verify } from '@/global/mfa';
+import { add, verify } from '@/global/mfa';
 
 export default {
   components: {
-    ProfileWizard
+    ProfileWizard,
   },
   data: () => ({
-    mfa,
     newU2f: {},
     touched: false,
     error: false,
@@ -81,8 +77,8 @@ export default {
         [],
         this.handleKeyResponse
       )
-    }
-  }
+    },
+  },
 }
 
 function isValid(u2fResponse) {

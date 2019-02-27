@@ -47,7 +47,7 @@
     </BasePage>
 
     <template slot="actions">
-      <v-btn v-if="! alternates.length" to="/2sv/intro" @click="$refs.wizard.skipped()"
+      <v-btn v-if="! alternates.length" to="/2sv/intro" @click="skip"
              color="warning" flat outline>
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
@@ -55,7 +55,7 @@
       <v-spacer></v-spacer>
 
       <v-tooltip :disabled="!(unsaved || ! alternates.length)" right>
-        <v-btn @click="next" slot="activator" 
+        <v-btn @click="complete" slot="activator" 
                :disabled="unsaved || ! alternates.length" color="primary" flat outline>
           {{ $vuetify.t('$vuetify.global.button.continue') }}
         </v-btn>
@@ -99,10 +99,15 @@ export default {
       event.target.blur()
       event.target.focus()
     },
-    next() {
-      this.$refs.wizard.completeAndContinue()
+    skip() {
+      this.$refs.wizard.skipped()
+      this.$refs.wizard.next()
     },
-  }
+    complete() {
+      this.$refs.wizard.complete()
+      this.$refs.wizard.next()
+    },
+  },
 }
 </script>
 

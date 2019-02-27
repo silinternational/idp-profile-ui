@@ -1,11 +1,5 @@
 <template>
   <ProfileWizard>
-    <v-alert :value="mfa.totp.id" type="warning">
-      <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.smartphone.warning', mfa.totp.label) }}
-      </span>
-    </v-alert>
-
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.2sv.smartphone.intro.header') }}
@@ -38,14 +32,10 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import mfa from '@/global/mfa';
 
 export default {
   components: {
-    ProfileWizard
+    ProfileWizard,
   },
-  data: () => ({
-    mfa,
-  }),
 }
 </script>

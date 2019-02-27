@@ -1,11 +1,5 @@
 <template>
   <ProfileWizard ref="wizard">
-    <v-alert :value="mfa.backup.id" type="warning">
-      <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.codes.warning') }}
-      </span>
-    </v-alert>
-
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.2sv.codes.intro.header') }}
