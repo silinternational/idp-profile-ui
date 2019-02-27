@@ -49,9 +49,6 @@ export default [
   {
     path: '/2sv/smartphone/code-verified',
     component: CodeVerified,
-    beforeEnter: (to, from, next) => {
-      skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
-    }
   },
   {
     path: '/2sv/usb-security-key/intro',
@@ -77,9 +74,6 @@ export default [
   {
     path: '/2sv/usb-security-key/confirmed',
     component: Confirmed,
-    beforeEnter: (to, from, next) => {
-      skipWhen(mfa.u2f.id, '/2sv/printable-backup-codes/intro', next)
-    }
   },
   {
     path: '/2sv/printable-backup-codes/intro',
@@ -91,9 +85,6 @@ export default [
   {
     path: '/2sv/printable-backup-codes/new',
     component: New,
-    beforeEnter: (to, from, next) => {
-      skipWhen(mfa.backup.id, '/profile/complete', next)
-    }
   },
   {
     path: '/2sv/change/:id',
