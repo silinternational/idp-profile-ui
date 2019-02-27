@@ -65,6 +65,12 @@ services:
       PASSWORD_RULE_minLength: '10'
       PASSWORD_RULE_maxLength: '255'
       PASSWORD_RULE_minScore: '3'
+    command:
+      [
+        'bash',
+        '-c',
+        'whenavail profileDb 3306 60 ./yii migrate --interactive=0 && ./run.sh',
+      ]
 
   profileDb:
     image: silintl/mariadb
