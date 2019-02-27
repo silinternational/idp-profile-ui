@@ -24,13 +24,14 @@ import token from '@/global/token'
 
 export default {
   components: {
-    ProfileWizard
+    ProfileWizard,
   },
-  mounted() {
-    this.$refs.wizard.complete()
+  async created() {
+    await this.$nextTick() // best option I could figure out to ensure this.$refs.wizard was available
+    this.$refs.wizard.completed()
     
     token.reset()
-  }
+  },
 }
 </script>
 

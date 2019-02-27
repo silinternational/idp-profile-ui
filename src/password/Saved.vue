@@ -25,16 +25,17 @@ import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
-    ProfileWizard
+    ProfileWizard,
   },
   methods: {
     next() {
       if (this.$user.auth_type == 'reset') {
         this.$router.push('/password/reset/complete')
       } else {
-        this.$refs.wizard.completeAndContinue()
+        this.$refs.wizard.completed()
+        this.$refs.wizard.next()
       }
-    }
+    },
   },
 }
 </script>

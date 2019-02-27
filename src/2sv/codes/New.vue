@@ -54,7 +54,7 @@ import { add } from '@/global/mfa';
 
 export default {
   components: {
-    ProfileWizard
+    ProfileWizard,
   },
   data: () => ({
     codes: [],
@@ -66,18 +66,18 @@ export default {
 
     this.codes = newCodes.data
     
-    this.$refs.wizard.complete()
+    this.$refs.wizard.completed()
   },
   computed: {
     encodedData() {
       return encodeURIComponent(
         `${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`
       )
-    }
+    },
   },
   methods: {
     finish: function() {
-      this.$router.push('/profile/complete')
+      this.$refs.wizard.next()
     },
     print: async function(id) {
       this.printing = true
@@ -96,8 +96,8 @@ export default {
       )
 
       this.copied = true
-    }
-  }
+    },
+  },
 }
 </script>
 

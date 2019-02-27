@@ -28,8 +28,8 @@ export default {
     ProfileWizard,
   },
   async created() {
-    await this.$nextTick() // best option I could figure out to ensure this.$refs.wizard.complete() was available and worked
-    this.$refs.wizard.complete()
+    await this.$nextTick() // best option I could figure out to ensure this.$refs.wizard was available
+    this.$refs.wizard.completed()
   },
 }
 </script>

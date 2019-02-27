@@ -78,7 +78,7 @@ export default {
   data: () => ({
     newEmail: '',
     system: recoveryMethods.system,
-    alternates: recoveryMethods.alternates
+    alternates: recoveryMethods.alternates,
   }),
   computed: {
     unsaved: vm => vm.newEmail != '',
@@ -104,7 +104,7 @@ export default {
       this.$refs.wizard.next()
     },
     complete() {
-      this.$refs.wizard.complete()
+      this.$refs.wizard.completed()
       this.$refs.wizard.next()
     },
   },

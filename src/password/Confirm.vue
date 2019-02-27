@@ -56,7 +56,7 @@ export default {
             password: this.password
           })
 
-          this.$refs.wizard.complete()
+          this.$refs.wizard.completed()
 
           this.$router.push('/password/saved')
         } catch (e) {
@@ -71,6 +71,6 @@ export default {
     blur(event) {
       event.target.blur()
     },
-  }
+  },
 }
 </script>
