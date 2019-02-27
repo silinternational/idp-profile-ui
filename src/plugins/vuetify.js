@@ -8,7 +8,7 @@ Vue.use(Vuetify, {
     locales: locales
   },
   theme: {
-    primary: '#015d99',
-    secondary: '#791f5e'
-  }
+    primary: `${process.env.VUE_APP_PRIMARY_COLOR}`,
+    secondary: `${process.env.VUE_APP_SECONDARY_COLOR}`,
+  },
 })
