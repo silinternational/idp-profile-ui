@@ -11,20 +11,19 @@ export default mfa
 export const add = async (type) => await Vue.prototype.$API.post('mfa', { type })
 
 export const verify = async (id, verification = '') => {
-  await Vue.prototype.$API.put(`mfa/${id}/verify`, {
+  const verifiedMfa = await Vue.prototype.$API.put(`mfa/${id}/verify`, {
     value: verification
   })
 
-  //TODO: made a request to have the api changed so the updated mfa would be returned so the local store, i.e., mfa, can be refreshed
-  await retrieve()
+  mfa[verifiedMfa.type] = Object.assign({}, verifiedMfa)
 }
 
 export const retrieve = async () => {
   const all = await Vue.prototype.$API.get('mfa')
 
-  mfa.totp = Object.assign({}, mfa.totp, all.filter(m => m.type === 'totp').pop()) // only interested in the last one, newest one, etc. until the api is tweaked to disallow multiples
-  mfa.u2f = Object.assign({}, mfa.u2f, all.filter(m => m.type === 'u2f').pop())
-  mfa.backup = Object.assign({}, mfa.backup, all.find(m => m.type === 'backupcode'))
+  mfa.totp = Object.assign({}, all.filter(m => m.type === 'totp'))
+  mfa.u2f = Object.assign({}, all.filter(m => m.type === 'u2f'))
+  mfa.backup = Object.assign({}, all.find(m => m.type === 'backupcode'))
   
   mfa.numVerified = numOfVerifiedMfas(mfa) // currently, the api only returns verified mfas
 }
@@ -48,5 +47,4 @@ export const remove = async (id) => {
 
 export const change = async (id, updates) => {
   return await Vue.prototype.$API.put(`mfa/${id}`, updates)
-  //TODO: are local updates necessary here?
 }
