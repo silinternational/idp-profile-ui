@@ -34,22 +34,28 @@ export default {
 }
 
 const t = Vue.prototype.$vuetify.t
-const isRequested = paths => paths.includes(location.pathname)
+const isRequested = paths => paths.some(path => location.hash.includes(path))
 
 const password = {
   name: t('$vuetify.profile.steps.pwStep'),
-  paths: ['/password/create', '/password/confirm', '/password/saved'],
+  paths: [
+    '/password/create', 
+    '/password/confirm', 
+    '/password/saved',
+  ],
   isRelevant(user) {
     return isRequested(this.paths) || user.isNew()
-  }
+  },
 }
 
 const recovery = {
   name: t('$vuetify.profile.steps.pwRecoverStep'),
-  paths: ['/password/recovery'],
+  paths: [
+    '/password/recovery',
+  ],
   isRelevant(user, recoveryMethods) {
     return user.auth_type == 'login' && (isRequested(this.paths) || recoveryMethods.filter(isAlternate).length < 1)
-  }
+  },
 }
 const isAlternate = method => method.type == 'email'
 
@@ -67,19 +73,22 @@ const twosv = {
     '/2sv/usb-security-key/touch',
     '/2sv/usb-security-key/confirmed',
     '/2sv/printable-backup-codes/intro',
-    '/2sv/printable-backup-codes/new'
+    '/2sv/printable-backup-codes/new',
   ],
   isRelevant(user, recoveryMethods, mfa) {
     return user.auth_type == 'login' && (isRequested(this.paths) || mfa.numVerified < 3)
-  }
+  },
 }
 
 const complete = {
   name: t('$vuetify.profile.steps.completeStep'),
-  paths: ['/profile/complete', '/password/reset/complete'],
+  paths: [
+    '/profile/complete', 
+    '/password/reset/complete',
+  ],
   isRelevant() {
     return true
-  }
+  },
 }
 
 const allSteps = [password, recovery, twosv, complete]

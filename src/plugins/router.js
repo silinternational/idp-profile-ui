@@ -9,7 +9,6 @@ import PageNotFound from '@/global/PageNotFound'
 Vue.use(Router)
 
 const configuredRouter = new Router({
-  mode: 'history',
   routes: [
     ...homeRoutes,
     ...passwordRoutes,
