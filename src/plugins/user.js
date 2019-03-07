@@ -14,11 +14,11 @@ const user = {
     let loginUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/login?client_id=${token.key()}`
 
     if (inviteCode) {
-      loginUrl += `&invite=${inviteCode}&ReturnToOnError=/profile/invite/expired`
+      loginUrl += `&invite=${inviteCode}&ReturnToOnError=#/profile/invite/expired`
     }
 
     if (returnTo) {
-      loginUrl += `&ReturnTo=${returnTo}`
+      loginUrl += `&ReturnTo=#${returnTo}`
     }
 
     window.location = loginUrl
