@@ -49,4 +49,22 @@ See notes in Environment section regarding HTTPS and _traefik_ configuration.
 
 # Build for deployment
 
-1.  `make dist` will produce the production-ready app in the project root's `dist` folder.
+## Step 1 – Environment variables
+
+Copy `.env.dist` to `env.local` and update the relevant values, e.g., a UI deployment would only require the UI-related variables be presented and populated.
+
+## Step 2 – Customizations
+
+The following files can/should be replaced before running the build.
+
+* `public/app-id.json`
+* `public/favicon.ico`
+* `src/assets/logo.png`
+
+## Step 3 – Build for deployment
+
+`make dist` can be used in a docker environment, otherwise the following steps can be used in a node environment:
+
+1. `npm install` will install dependencies
+1. `npm run build` will produce the production-ready app in the project root's `dist` folder.
+1. The contents of `dist` can then be deployed.
