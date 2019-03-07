@@ -57,7 +57,7 @@ Copy `.env.dist` to `env.local` and update the relevant values, e.g., a UI deplo
 
 The following files can/should be replaced before running the build.
 
-* `public/app-id.json`
+* `cp app-id.dist.json public/app-id.json` and update the ids appropriately for U2F usage
 * `public/favicon.ico`
 * `src/assets/logo.png`
 

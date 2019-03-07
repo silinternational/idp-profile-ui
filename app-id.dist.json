@@ -2,7 +2,7 @@
   "trustedFacets": [
     {
       "version": { "major": 1, "minor": 0 },
-      "ids": ["https://profile.gtis.guru"]
+      "ids": ["https://profile.example.org"]
     }
   ]
 }
