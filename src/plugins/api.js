@@ -27,7 +27,7 @@ api.interceptors.response.use(
     const e = (error.response && error.response.data) || error
 
     if ([401, 403].includes(e.status)) {
-      Vue.prototype.$user.login(location.pathname)
+      Vue.prototype.$user.login(location.hash)
     }
 
     throw e
