@@ -21,10 +21,10 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="meta.created_utc" href="/2sv/printable-backup-codes/new" color="primary" flat outline>
+      <v-btn v-if="meta.created_utc" href="#/2sv/printable-backup-codes/new" color="primary" flat outline>
         {{ $vuetify.t('$vuetify.profile.index.codeCard.button.replace') }}
       </v-btn>
-      <v-btn v-else href="/2sv/printable-backup-codes/intro" color="primary" flat outline>
+      <v-btn v-else href="#/2sv/printable-backup-codes/intro" color="primary" flat outline>
         {{ $vuetify.t('$vuetify.profile.index.codeCard.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :id="meta.id"/>

@@ -4,10 +4,10 @@
 
     <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-3"/>
 
-    <a v-if="complete < 1 && ! profile.alternates.length" href="/password/recovery" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addMethod') }}</a>
-    <a v-if="complete < 1 && ! profile.mfa.totp.id" href="/2sv/smartphone/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addTotp') }}</a>
-    <a v-if="complete < 1 && ! profile.mfa.u2f.id" href="/2sv/usb-security-key/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addU2f') }}</a>
-    <a v-if="complete < 1 && ! profile.mfa.backup.id" href="/2sv/printable-backup-codes/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addCodes') }}</a>
+    <a v-if="complete < 1 && ! profile.alternates.length" href="#/password/recovery" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addMethod') }}</a>
+    <a v-if="complete < 1 && ! profile.mfa.totp.id" href="#/2sv/smartphone/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addTotp') }}</a>
+    <a v-if="complete < 1 && ! profile.mfa.u2f.id" href="#/2sv/usb-security-key/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addU2f') }}</a>
+    <a v-if="complete < 1 && ! profile.mfa.backup.id" href="#/2sv/printable-backup-codes/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addCodes') }}</a>
   </v-layout>
 </template>
 
