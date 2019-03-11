@@ -30,15 +30,16 @@
     </v-layout>
 
     <v-subheader class="py-5">{{ $vuetify.t('$vuetify.profile.index.2sv') }}</v-subheader>
+
     <v-layout row wrap>
       <v-flex xs12 sm6 md4 py-3>
-        <TotpCard :meta="totp" class="mx-3 mb-4"/>
+        <TotpCard :meta="mfa.totp" class="mx-3 mb-4"/>
       </v-flex>
       <v-flex xs12 sm6 md4 py-3>
-        <U2fCard :meta="u2f" class="mx-3 mb-4"/>
+        <U2fCard :meta="mfa.u2f" class="mx-3 mb-4"/>
       </v-flex>
       <v-flex xs12 sm6 md4 py-3>
-        <BackupCodeCard :meta="backup" class="mx-3 mb-4"/>
+        <BackupCodeCard :meta="mfa.backup" class="mx-3 mb-4"/>
       </v-flex>
     </v-layout>
   </BasePage>
@@ -72,9 +73,6 @@ export default {
     mfa,
   }),
   computed: {
-    totp: vm => vm.mfa.totp,
-    u2f: vm => vm.mfa.u2f,
-    backup: vm => vm.mfa.backup,
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
   },
   async created() {
