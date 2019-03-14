@@ -19,11 +19,6 @@
     "logout": "Log out",
     "title": "IdP Profile Management - {0}"
   },
-  "home": {
-    "header": "Welcome!",
-    "start": "I would like to start my profile today",
-    "forgot": "I forgot my password"
-  },
   "profile": {
     "intro": {
       "header": "Welcome to your {0} identity profile {1}!",
