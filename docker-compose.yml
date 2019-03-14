@@ -167,7 +167,7 @@ services:
       PMA_PASSWORD: 'pass'
 
   idp:
-    image: silintl/ssp-base
+    image: silintl/ssp-base:develop-5.0
     volumes:
       - ./development/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
       - ./development/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
