@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <v-toolbar app color="primary">
-      <img src="@/assets/logo.png">
+      <a href="#/profile">
+        <img src="@/assets/logo.png">
+      </a>
 
       <v-spacer />
 
@@ -72,7 +74,7 @@ export default {
 </script>
 
 <style scoped>
-img {
+a, img {
   height: 100%; /* contain img to the toolbar's height */
 }
 </style>
