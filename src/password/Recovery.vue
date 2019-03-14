@@ -8,8 +8,7 @@
       <p v-if="alternates.length">{{ $vuetify.t('$vuetify.password.recovery.atLeastOneRecovery') }}</p>
       <p v-else>
         {{ $vuetify.t('$vuetify.password.recovery.info', primary.value) }}
-        <span v-if="mgr.value && ! spouse.value">{{ $vuetify.t('$vuetify.password.recovery.infoWithMgrOnly', mgr.value) }}</span>
-        <span v-if="mgr.value && spouse.value">{{ $vuetify.t('$vuetify.password.recovery.infoWithMgrAndSpouse', mgr.value, spouse.value) }}</span>
+        <span v-if="mgr.value">{{ $vuetify.t('$vuetify.password.recovery.infoWithMgrOnly', mgr.value) }}</span>
       </p>
 
       <p v-if="! alternates.length">
@@ -84,7 +83,6 @@ export default {
     unsaved: vm => vm.newEmail != '',
     primary: vm => vm.system.find(m => m.type == 'primary') || {},
     mgr: vm => vm.system.find(m => m.type == 'supervisor') || {},
-    spouse: vm => vm.system.find(m => m.type == 'spouse') || {},
   },
   methods: {
     async add() {
