@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import homeRoutes from '@/home/routes'
-import passwordRoutes from '@/password/routes'
 import profileRoutes from '@/profile/routes'
+import passwordRoutes from '@/password/routes'
 import twoStepRoutes from '@/2sv/routes'
 import PageNotFound from '@/global/PageNotFound'
 
@@ -10,10 +9,9 @@ Vue.use(Router)
 
 const configuredRouter = new Router({
   routes: [
-    ...homeRoutes,
+    ...profileRoutes,
     ...passwordRoutes,
     ...twoStepRoutes,
-    ...profileRoutes,
     {
       path: '*',
       component: PageNotFound
