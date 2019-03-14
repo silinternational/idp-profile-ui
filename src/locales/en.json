@@ -48,6 +48,7 @@
     },
     "index": {
       "header": "My {0} Identity",
+      "username": "Username: ",
       "lastLogin": "Last login: ",
       "manager": "Manager: ",
       "2sv": "2-Step Verification",

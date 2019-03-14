@@ -9,6 +9,7 @@
     </template>
 
     <aside class="pb-3">
+      <Attribute :name="$vuetify.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
       <Attribute :name="$vuetify.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
       <Attribute :name="$vuetify.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
     </aside>
