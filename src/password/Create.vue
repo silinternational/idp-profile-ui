@@ -5,6 +5,9 @@
         {{ $vuetify.t('$vuetify.password.create.header', $root.idpConfig.idpName) }}
       </template>
 
+      <!-- TODO: what the right place and size for this video? <iframe width="560" height="315" src="https://www.youtube.com/embed/3LRnjzA8auk?rel=0" 
+              frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" /> -->
+
       <v-form @submit.prevent="save" ref="form">
         <BaseTextField type="password" :label="$vuetify.t('$vuetify.password.create.pwInput')" v-model="password" 
                        :rules="rules" validate-on-blur @keyup.enter="blur" autofocus />

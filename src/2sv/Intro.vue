@@ -9,9 +9,8 @@
         {{ $vuetify.t('$vuetify.2sv.intro.info') }}
       </p>
 
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/0mvCeNsTa1g" 
-              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="pa-3"/>
-
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/LFBfIR1gljc?rel=0" 
+              frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" />
     </BasePage>
 
     <ButtonBar>
