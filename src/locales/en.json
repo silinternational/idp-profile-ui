@@ -137,7 +137,7 @@
       "pwInput": "Your new password"
     },
     "recovery": {
-      "header": "What if your password does not work anymore?",
+      "header": "What if you forget your password?",
       "explanation": "Sometimes we forget our password.  Sometimes the password we have just doesn't seem to work. In those situations, it is important to still be able to \"recover\" your password.",
       "info": "If you forget your password we will send an email to {0} with a link you can use to create a new password.  ",
       "infoWithMgrOnly": "We can also send an email to your manager at {0} with a code you can use to create a new password.",
