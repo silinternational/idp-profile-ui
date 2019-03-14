@@ -48,6 +48,7 @@
     },
     "index": {
       "header": "My {0} Identity",
+      "username": "Username: ",
       "lastLogin": "Last login: ",
       "manager": "Manager: ",
       "2sv": "2-Step Verification",
@@ -99,7 +100,7 @@
       },
       "dndCard": {
         "title": "Do not disclose",
-        "info": "When enabled, using the Forgot Password process will produce a message that your account does not exist. It will however still send you an email with a link you can use to reset your password.",
+        "info": "When enabled, using the Forgot Password process will produce a message that your account does not exist. It will, however, still send you an email with a link you can use to reset your password.",
         "button": {
           "enable": "Turn on",
           "disable": "Turn off"
@@ -136,11 +137,10 @@
       "pwInput": "Your new password"
     },
     "recovery": {
-      "header": "What if your password does not work anymore?",
+      "header": "What if you forget your password?",
       "explanation": "Sometimes we forget our password.  Sometimes the password we have just doesn't seem to work. In those situations, it is important to still be able to \"recover\" your password.",
       "info": "If you forget your password we will send an email to {0} with a link you can use to create a new password.  ",
       "infoWithMgrOnly": "We can also send an email to your manager at {0} with a code you can use to create a new password.",
-      "infoWithMgrAndSpouse": "We can also send an email to your manager at {0} or your spouse at {1} with a code you can use to create a new password.",
       "advice": "In addition, we recommend you add at least one more alternate email address that you own to ensure resetting your password in the future is as easy as possible.",
       "atLeastOneRecovery": "Thankfully you already have alternate means we can use to send a special link in case you need to begin the password recovery process.  You may have as many as you like.",
       "emailInput": "Enter an alternate email address",
