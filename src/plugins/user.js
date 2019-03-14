@@ -24,7 +24,7 @@ const user = {
     window.location = loginUrl
   },
   logout() {
-    const logoutUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/logout?access_token=${token.accessToken}`
+    const logoutUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/logout?access_token=${token.apiToken()}`
 
     token.reset()
 
