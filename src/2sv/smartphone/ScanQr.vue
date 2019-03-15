@@ -9,10 +9,10 @@
         {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.info') }}
       </p>
 
-      <ol class="pt-4">
+      <ol>
         <li>
-          <p class="layout column pl-4">
-            {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.add') }}
+          <p class="layout row align-center pl-4">
+            <span>{{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.add') }}</span>
 
             <img src="@/assets/google-authenticator-scan-screenshot.png" class="pa-4">
           </p>
@@ -71,10 +71,10 @@ li:before {
   font-weight: bold;
 }
 li > p {
-  display: inline-flex; /* aligns counter with top of li's content */
+  display: inline-flex; /* aligns li's content and counter */
 }
-li > p img {
+/* li > p img { */
   /* keep images from stretching because of flex */
-  align-self: center;
-}
+  /* align-self: center; */
+/* } */
 </style>
