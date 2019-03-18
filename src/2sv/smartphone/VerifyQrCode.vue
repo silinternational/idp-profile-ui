@@ -6,11 +6,8 @@
       </template>
 
       <v-layout align-center class="px-5">
-        <!-- TODO: put something here to ensure the user knows this is an example (text perhaps or maybe the screenshot of the phone with it in there blurring the code prhaps to ensure user does not actually use the code in the sample screenshot) -->
-        <img src="@/assets/google-authenticator-6-digit-code.png">
-
-        <v-form @submit.prevent="verify" ref="form" class="pl-5">
-          {{ $vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.info') }}
+        <v-form @submit.prevent="verify" ref="form" class="pl-5 layout column align-center">
+          <p>{{ $vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.info') }}</p>
           
           <BaseTextField type="text" :label="$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.codeInput')" v-model="code" 
                          :rules="rules" validate-on-blur @keyup.enter="blur" autofocus class="mt-4" />
@@ -63,3 +60,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+div.v-input.v-text-field {
+  max-width: 30%;
+}
+</style>

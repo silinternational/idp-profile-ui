@@ -11,10 +11,8 @@
 
       <ol>
         <li>
-          <p class="layout row align-center pl-4">
-            <span>{{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.add') }}</span>
-
-            <img src="@/assets/google-authenticator-scan-screenshot.png" class="pa-4">
+          <p class="pl-4">
+            {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.add') }}
           </p>
         </li>
         <li>
