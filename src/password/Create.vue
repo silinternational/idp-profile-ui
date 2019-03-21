@@ -25,6 +25,10 @@
             </a>
           </footer>
         </v-alert>
+
+        <v-alert :value="strength.score >= $root.idpConfig.password.zxcvbn.minScore" type="success" outline>
+          <header class="body-2">{{ $vuetify.t('$vuetify.password.create.goodPassword') }}</header>
+        </v-alert>
       </v-form>
     </BasePage>
 
