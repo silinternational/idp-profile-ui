@@ -27,7 +27,7 @@
         {{ $vuetify.t('$vuetify.2sv.codes.new.button.print') }}
         <v-icon right>print</v-icon>
       </v-btn>
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" color="secondary" flat outline>
+      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" flat outline>
         {{ $vuetify.t('$vuetify.2sv.codes.new.button.download') }}
         <v-icon right>cloud_download</v-icon>
       </v-btn>
@@ -40,10 +40,13 @@
         <v-icon right>assignment</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
-      
-      <v-btn @click="finish" color="primary" flat outline> 
-        {{ $vuetify.t('$vuetify.2sv.codes.new.button.ok') }}
-      </v-btn>
+
+      <v-tooltip :disabled="gotEm" :value="gotEm" top>
+        <v-btn @click="finish" :disabled="!gotEm" color="primary" slot="activator" flat outline>
+          {{ $vuetify.t('$vuetify.2sv.codes.new.button.ok') }}
+        </v-btn>
+        {{ $vuetify.t('$vuetify.2sv.codes.new.personalCopy') }}
+      </v-tooltip>
     </ButtonBar>
   </ProfileWizard>
 </template>
@@ -59,7 +62,8 @@ export default {
   data: () => ({
     codes: [],
     printing: false,
-    copied: false
+    copied: false,
+    gotEm: false,
   }),
   async created() {
     const newCodes = await add('backupcode')
@@ -80,7 +84,7 @@ export default {
       this.$refs.wizard.next()
     },
     print: async function(id) {
-      this.printing = true
+      this.gotEm = this.printing = true
       const el = document.querySelector(id)
 
       el.classList.add('printable')
@@ -95,7 +99,7 @@ export default {
         `${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`
       )
 
-      this.copied = true
+      this.gotEm = this.copied = true
     },
   },
 }

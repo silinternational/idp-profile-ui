@@ -274,7 +274,6 @@
         "header": "Printable backup codes",
         "backupInfo": "There may be times when you do not have your smartphone or USB security key with you.  When that is the case, printable backup codes can be used.",
         "primaryInfo": "Even if you are not using a smartphone or security key for 2-step verification you can still increase the security of your account by using printable backup codes alone.",
-        "warning": "some content for those users that have NOT set up other 2sv options.",
         "button": {
           "new": "Create new codes"
         }
@@ -283,6 +282,7 @@
         "header": "Printable backup codes",
         "loading": "generating codes...",
         "generated": "generated on",
+        "personalCopy": "Please retain a personal copy for later use",
         "button": {
           "ok": "Finish",
           "print": "Print",
