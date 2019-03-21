@@ -122,7 +122,8 @@
       "required": "A new password is required",
       "tooShort": "Your new password must be at least {0} characters",
       "tooLong": "Your new password cannot be longer than {0} characters",
-      "tooWeak": "Your new password must be stronger"
+      "tooWeak": "Your new password must be stronger",
+      "goodPassword": "That is a great password, nice job!"
     },
     "confirm": {
       "header": "Confirm your new password",
