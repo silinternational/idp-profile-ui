@@ -39,7 +39,7 @@
             v => /^$|^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) || $vuetify.t('$vuetify.password.recovery.invalidEmail')
           ]" validate-on-blur @keyup.enter="blur" autofocus />
 
-        <v-btn @click="add" color="success" icon class="ma-2-mod ml-3">
+        <v-btn @click="add" :disabled="! newEmail" fab small color="success" class="ma-2-mod ml-3">
           <v-icon>add</v-icon>
         </v-btn>
       </v-form>
@@ -114,8 +114,8 @@ li {
   list-style-type: none;
 }
 
+/* couldn't get input and button vertically aligned using flex alone */
 form > button.ma-2-mod {
-  margin-top: 11px !important;
-  margin-bottom: 11px !important;
+  margin-top: 10px !important;
 }
 </style>
