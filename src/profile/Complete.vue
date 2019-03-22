@@ -17,6 +17,16 @@
           <span class="font-weight-bold">({{ unverifiedEmails | joined }})</span>
         </span>
       </p>
+
+      <p v-if="! alternates.length" class="layout row">
+        <v-icon color="warning" class="mr-3">warning</v-icon> 
+        {{ $vuetify.t('$vuetify.profile.complete.noAlternates') }}
+      </p>
+
+      <p v-if="! mfa.numVerified" class="layout row">
+        <v-icon color="warning" class="mr-3">warning</v-icon> 
+        {{ $vuetify.t('$vuetify.profile.complete.no2sv') }}
+      </p>
     </BasePage>
 
     <ButtonBar>
@@ -32,6 +42,8 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
 import recoveryMethods from '@/global/recoveryMethods';
+import mfa from '@/global/mfa';
+
 
 export default {
   components: {
@@ -42,6 +54,7 @@ export default {
   },
   data: () => ({
     alternates: recoveryMethods.alternates,
+    mfa,
   }),
   computed: {
     unverifiedEmails: vm => vm.alternates.filter(m => ! m.verified),
