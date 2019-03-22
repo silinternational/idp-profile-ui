@@ -86,7 +86,7 @@ const required = (v, vm) =>
   !!v || vm.$vuetify.t('$vuetify.password.create.required')
 
 const minLength = (v, vm) =>
-  v.length > vm.$root.idpConfig.password.minLength.value ||
+  v.length >= vm.$root.idpConfig.password.minLength.value ||
   vm.$vuetify.t(
     '$vuetify.password.create.tooShort',
     vm.$root.idpConfig.password.minLength.value
