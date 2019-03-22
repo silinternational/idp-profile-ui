@@ -120,6 +120,7 @@
   "password": {
     "create": {
       "header": "Create a password for your {0} Identity",
+      "username": "{0} username: ",
       "pwInput": "Your new password",
       "required": "A new password is required",
       "tooShort": "Your new password must be at least {0} characters",
