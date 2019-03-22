@@ -26,7 +26,7 @@
           </footer>
         </v-alert>
 
-        <v-alert :value="strength.score >= $root.idpConfig.password.zxcvbn.minScore" type="success" outline>
+        <v-alert :value="isGood" type="success" outline>
           <header class="body-2">{{ $vuetify.t('$vuetify.password.create.goodPassword') }}</header>
         </v-alert>
       </v-form>
@@ -67,6 +67,7 @@ export default {
     strength: vm => zxcvbn(vm.password),
     showFeedback: vm =>
       vm.strength.feedback.warning || vm.strength.feedback.suggestions.length,
+    isGood: vm => vm.password && vm.$refs.form && vm.$refs.form.validate()
   },
   methods: {
     save() {
@@ -86,20 +87,20 @@ const required = (v, vm) =>
   !!v || vm.$vuetify.t('$vuetify.password.create.required')
 
 const minLength = (v, vm) =>
-  v.length >= vm.$root.idpConfig.password.minLength.value ||
+  v.length >= vm.$root.idpConfig.passwordRules.minLength ||
   vm.$vuetify.t(
     '$vuetify.password.create.tooShort',
-    vm.$root.idpConfig.password.minLength.value
+    vm.$root.idpConfig.passwordRules.minLength
   )
 
 const maxLength = (v, vm) =>
-  v.length < vm.$root.idpConfig.password.maxLength.value ||
+  v.length < vm.$root.idpConfig.passwordRules.maxLength ||
   vm.$vuetify.t(
     '$vuetify.password.create.tooLong',
-    vm.$root.idpConfig.password.maxLength.value
+    vm.$root.idpConfig.passwordRules.maxLength
   )
 
 const strong = (v, vm) =>
-  vm.strength.score >= vm.$root.idpConfig.password.zxcvbn.minScore ||
+  vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore ||
   vm.$vuetify.t('$vuetify.password.create.tooWeak')
 </script>
