@@ -9,6 +9,8 @@
               frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" /> -->
 
       <v-form @submit.prevent="save" ref="form">
+        <p><span class="body-2">{{ $vuetify.t('$vuetify.password.create.username', $root.idpConfig.idpName) }}</span> {{ $user.idp_username }}</p>
+
         <BaseTextField type="password" :label="$vuetify.t('$vuetify.password.create.pwInput')" v-model="password" 
                        :rules="rules" validate-on-blur @keyup.enter="blur" autofocus />
 
