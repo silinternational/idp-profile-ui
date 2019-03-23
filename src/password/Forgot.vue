@@ -41,7 +41,7 @@ export default {
           callback: this.recaptchad,
           'expired-callback': this.expired
         })
-      }, this.$root.idpConfig.recaptchaKey ? 0 : 500)
+      }, this.$root.idpConfig.recaptchaKey ? 0 : 1000)
     },
     recaptchad(response) {
       this.recaptchaResponse = response
