@@ -10,7 +10,7 @@
           <p>{{ $vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.info') }}</p>
           
           <BaseTextField type="text" :label="$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.codeInput')" v-model="code" 
-                         :rules="rules" validate-on-blur @keyup.enter="blur" autofocus class="mt-4" />
+                         :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus class="mt-4" />
         </v-form>
       </v-layout>
     </BasePage>
@@ -45,13 +45,20 @@ export default {
         /^\d{3} ?\d{3}$/.test(v) ||
         vm.$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.invalidCode')
     ],
+    errors: [],
   }),
   methods: {
     async verify() {
       if (this.$refs.form.validate()) {
-        await verify(this.$route.query.id, this.code.trim())
-
-        this.$router.push('/2sv/smartphone/code-verified')
+        try {
+          await verify(this.$route.query.id, this.code.trim())
+  
+          this.$router.push('/2sv/smartphone/code-verified')
+        } catch (error) {
+          if (error.status == 400) {
+            this.errors.push(this.$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.hint'))
+          }
+        }
       }
     },
     blur(event) {
