@@ -234,7 +234,8 @@
         "header": "Verify code from your smartphone app",
         "info": "Your app will generate a new 6-digit code every 30 seconds, when you're ready enter the one displayed in your app and click \"Verify\".",
         "codeInput": "6-digit code",
-        "invalidCode": "code must be 6 digits"
+        "invalidCode": "code must be 6 digits",
+        "hint": "If you are using Google Authenticator, your time may need to be synced.  Simply tap the Menu button (three dots) within Google Authenticator and go to Settings > Time Correction for Codes > Sync now."
       },
       "codeVerified": {
         "header": "Excellent!",
