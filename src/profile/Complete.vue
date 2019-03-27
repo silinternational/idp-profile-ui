@@ -23,7 +23,7 @@
         {{ $vuetify.t('$vuetify.profile.complete.noAlternates') }}
       </p>
 
-      <p v-if="! mfa.numVerified" class="layout row">
+      <p v-if="mfa.numVerified == 0" class="layout row">
         <v-icon color="warning" class="mr-3">warning</v-icon> 
         {{ $vuetify.t('$vuetify.profile.complete.no2sv') }}
       </p>
@@ -42,7 +42,7 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
 import recoveryMethods from '@/global/recoveryMethods';
-import mfa from '@/global/mfa';
+import { mfa, retrieve as retrieveMfas } from '@/global/mfa';
 
 
 export default {
@@ -60,8 +60,10 @@ export default {
     unverifiedEmails: vm => vm.alternates.filter(m => ! m.verified),
   },
   async created() {
-    await this.$nextTick() // best option I could figure out to ensure this.$refs.wizard was available
+    await retrieveMfas()
+
     this.$refs.wizard.completed()
+    this.$forceUpdate() // couldn't figure out how to get the step to update in the UI without this.
   },
 }
 </script>
