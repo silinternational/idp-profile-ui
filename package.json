@@ -23,7 +23,7 @@
   "devDependencies": {
     "@babel/polyfill": "^7.2.5",
     "@vue/cli-plugin-babel": "^3.3.0",
-    "@vue/cli-service": "^3.3.0",
+    "@vue/cli-service": "^3.5.3",
     "axios": "^0.18.0",
     "babel-plugin-transform-imports": "^1.4.1",
     "rimraf": "^2.6.3",
