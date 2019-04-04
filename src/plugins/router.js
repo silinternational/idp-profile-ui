@@ -13,10 +13,17 @@ const configuredRouter = new Router({
     ...passwordRoutes,
     ...twoStepRoutes,
     {
+      path: '/help', // old pw-ui urls might still be bookmarked.
+      redirect: () => window.location = 'https://sites.google.com/sil.org/idphelp',
+    },
+    {
       path: '*',
-      component: PageNotFound
-    }
-  ]
+      component: PageNotFound,
+      meta: {
+        public: true
+      },  
+    },
+  ],
 })
 
 configuredRouter.beforeEach(async (to, from, next) => {
