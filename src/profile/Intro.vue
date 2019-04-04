@@ -8,7 +8,7 @@
       {{ $vuetify.t('$vuetify.profile.intro.explanation') }}
     </p>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Kh1ye4DezAM?rel=0" 
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/kXDeNWDlEqk?rel=0" 
             frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" />
 
     <ButtonBar>
