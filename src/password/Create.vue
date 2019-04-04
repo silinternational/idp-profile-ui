@@ -14,7 +14,7 @@
         </p>
 
         <BaseTextField type="password" :label="$vuetify.t('$vuetify.password.create.pwInput')" v-model="password" 
-                       :rules="rules" validate-on-blur @keyup.enter="blur" autofocus />
+                       :rules="rules" validate-on-blur @keyup.enter="blur" autofocus name="password" />
 
         <v-alert v-if="password" :value="showFeedback" :type="strength.feedback.warning ? 'error' : 'info'" outline>
           <header class="body-2">{{ strength.feedback.warning }}</header>

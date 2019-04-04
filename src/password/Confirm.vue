@@ -9,7 +9,7 @@
         <p>{{ $vuetify.t('$vuetify.password.confirm.explanation') }}</p>
         
         <BaseTextField type="password" :label="$vuetify.t('$vuetify.password.confirm.pwInput')" v-model="password" 
-                       :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus />
+                       :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
       </v-form>
     </BasePage>
 
