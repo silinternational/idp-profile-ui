@@ -19,6 +19,9 @@
     "logout": "Log out",
     "title": "IdP Profile Management - {0}"
   },
+  "pageNotFound": {
+    "header": "Not found"
+  },
   "profile": {
     "intro": {
       "header": "Welcome to your {0} identity profile {1}!",
