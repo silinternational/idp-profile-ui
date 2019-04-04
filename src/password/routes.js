@@ -14,6 +14,10 @@ export default [
     component: Create,
   },
   {
+    path: '/change', // old pw-ui urls might still be bookmarked.
+    redirect: '/password/create',
+  },
+  {
     path: '/password/confirm',
     component: Confirm,
   },
@@ -27,6 +31,22 @@ export default [
   {
     path: '/password/recovery',
     component: Recovery,
+  },
+  {
+    path: '/recovery-method/add', // old pw-ui urls might still be bookmarked.
+    redirect: '/password/recovery',
+  },
+  {
+    path: '/recovery-method/add-phone', // old pw-ui urls might still be bookmarked.
+    redirect: '/password/recovery',
+  },
+  {
+    path: '/recovery-method/verify-phone/:id', // old pw-ui urls might still be bookmarked.
+    redirect: '/password/recovery',
+  },
+  {
+    path: '/recovery-method/verify-email/:id', // old pw-ui urls might still be bookmarked.
+    redirect: '/password/recovery',
   },
   {
     path: '/password/recovery/:id/verify/:code',
@@ -43,6 +63,10 @@ export default [
     },
   },
   {
+    path: '/forgot', // old pw-ui urls might still be bookmarked.
+    redirect: '/password/forgot',
+  },
+  {
     path: '/password/forgot/:id',
     component: ForgotEmailSent,
     meta: {
@@ -55,6 +79,10 @@ export default [
     meta: {
       public: true
     },
+  },
+  {
+    path: '/reset/:id/verify/:code', // old pw-ui urls might still be bookmarked.
+    redirect: '/password/reset/:id/verify/:code',
   },
   {
     path: '/password/reset/complete',

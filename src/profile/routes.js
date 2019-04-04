@@ -9,6 +9,10 @@ export default [
     component: Intro
   },
   {
+    path: '/welcome', // old pw-ui urls might still be bookmarked.
+    redirect: '/profile/intro',
+  },
+  {
     path: '/profile/complete',
     component: Complete
   },

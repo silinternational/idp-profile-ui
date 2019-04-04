@@ -19,6 +19,18 @@ export default [
     component: Intro,
   },
   {
+    path: '/mfa/key', // old pw-ui urls might still be bookmarked.
+    redirect: '/2sv/intro',
+  },
+  {
+    path: '/mfa/app', // old pw-ui urls might still be bookmarked.
+    redirect: '/2sv/intro',
+  },
+  {
+    path: '/mfa/backup-codes/:recreate?', // old pw-ui urls might still be bookmarked.
+    redirect: '/2sv/intro',
+  },
+  {
     path: '/2sv/smartphone/intro',
     component: SmartphoneIntro,
     beforeEnter: (to, from, next) => {
