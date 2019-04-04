@@ -9,7 +9,9 @@
               frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" /> -->
 
       <v-form @submit.prevent="save" ref="form">
-        <p>{{ $vuetify.t('$vuetify.password.create.username', $root.idpConfig.idpName) }} <strong class="body-2">{{ $user.idp_username }}</strong></p>
+        <p>
+          {{ $vuetify.t('$vuetify.password.create.username', $root.idpConfig.idpName) }} <strong class="body-2">{{ $user.idp_username }}</strong>
+        </p>
 
         <BaseTextField type="password" :label="$vuetify.t('$vuetify.password.create.pwInput')" v-model="password" 
                        :rules="rules" validate-on-blur @keyup.enter="blur" autofocus />
