@@ -5,16 +5,13 @@
         {{ $vuetify.t('$vuetify.password.create.header', $root.idpConfig.idpName) }}
       </template>
 
-      <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/WTMZYuoztoM?rel=0" 
-              frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" /> -->
-
       <v-form @submit.prevent="save" ref="form">
         <p>
           {{ $vuetify.t('$vuetify.password.create.username', $root.idpConfig.idpName) }} <strong class="body-2">{{ $user.idp_username }}</strong>
         </p>
 
         <BaseTextField type="password" :label="$vuetify.t('$vuetify.password.create.pwInput')" v-model="password" 
-                       :rules="rules" validate-on-blur @keyup.enter="blur" autofocus name="password" />
+                       :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
 
         <v-alert v-if="password" :value="showFeedback" :type="strength.feedback.warning ? 'error' : 'info'" outline>
           <header class="body-2">{{ strength.feedback.warning }}</header>
@@ -64,47 +61,48 @@ export default {
       v => required(v, vm),
       v => minLength(v, vm),
       v => maxLength(v, vm),
-      v => strong(v, vm)
+      v => strong(v, vm),
     ],
+    errors: [],
   }),
   computed: {
     strength: vm => zxcvbn(vm.password),
-    showFeedback: vm =>
-      vm.strength.feedback.warning || vm.strength.feedback.suggestions.length,
-    isGood: vm => vm.password && vm.$refs.form && vm.$refs.form.validate()
+    showFeedback: vm => vm.strength.feedback.warning || vm.strength.feedback.suggestions.length,
+    isGood: vm => vm.password && vm.$refs.form && vm.$refs.form.validate(),
   },
   methods: {
-    save() {
+    async save() {
       if (this.$refs.form.validate()) {
-        this.$root.$data.password = this.password
+        try {
+          await this.$API.put('password/assess', {
+            password: this.password
+          })
 
-        this.$router.push('/password/confirm')
+          this.$root.$data.password = this.password
+
+          this.$router.push('/password/confirm')
+        } catch (e) {
+          this.errors.push(this.$vuetify.t('$vuetify.password.create.noGood'))
+
+          this.password = ''
+        }
       }
     },
     blur(event) {
       event.target.blur()
     },
-  }
+  },
+  watch: {
+    password: function () {
+      if (this.isGood) {
+        this.errors.splice(0)
+      }
+    },
+  },
 }
 
-const required = (v, vm) =>
-  !!v || vm.$vuetify.t('$vuetify.password.create.required')
-
-const minLength = (v, vm) =>
-  v.length >= vm.$root.idpConfig.passwordRules.minLength ||
-  vm.$vuetify.t(
-    '$vuetify.password.create.tooShort',
-    vm.$root.idpConfig.passwordRules.minLength
-  )
-
-const maxLength = (v, vm) =>
-  v.length < vm.$root.idpConfig.passwordRules.maxLength ||
-  vm.$vuetify.t(
-    '$vuetify.password.create.tooLong',
-    vm.$root.idpConfig.passwordRules.maxLength
-  )
-
-const strong = (v, vm) =>
-  vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore ||
-  vm.$vuetify.t('$vuetify.password.create.tooWeak')
+const required = (v, vm) => !!v || vm.$vuetify.t('$vuetify.password.create.required')
+const minLength = (v, vm) => v.length >= vm.$root.idpConfig.passwordRules.minLength || vm.$vuetify.t('$vuetify.password.create.tooShort', vm.$root.idpConfig.passwordRules.minLength)
+const maxLength = (v, vm) => v.length < vm.$root.idpConfig.passwordRules.maxLength || vm.$vuetify.t('$vuetify.password.create.tooLong', vm.$root.idpConfig.passwordRules.maxLength)
+const strong = (v, vm) => vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore || vm.$vuetify.t('$vuetify.password.create.tooWeak')
 </script>

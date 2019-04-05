@@ -37,9 +37,7 @@ export default {
   data: vm => ({
     password: '',
     rules: [
-      v =>
-        v == vm.$root.$data.password ||
-        vm.$vuetify.t('$vuetify.password.confirm.noMatch')
+      v => v == vm.$root.$data.password || vm.$vuetify.t('$vuetify.password.confirm.noMatch')
     ],
     errors: [],
   }),
@@ -51,21 +49,13 @@ export default {
   methods: {
     async confirm () {
       if (this.$refs.form.validate()) {
-        try {
-          await this.$API.put('password', {
-            password: this.password
-          })
+        await this.$API.put('password', {
+          password: this.password
+        })
 
-          this.$refs.wizard.completed()
+        this.$refs.wizard.completed()
 
-          this.$router.push('/password/saved')
-        } catch (e) {
-          if (e.status == 409) {
-            this.errors.push(
-              this.$vuetify.t('$vuetify.password.confirm.reused')
-            )
-          }
-        }
+        this.$router.push('/password/saved')
       }
     },
     blur(event) {
