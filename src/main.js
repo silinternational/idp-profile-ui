@@ -1,7 +1,6 @@
 import '@babel/polyfill'
 import Vue from 'vue'
-import './plugins'
-import router from './plugins/router'
+import { configuredRouter } from  './plugins'
 import App from './App.vue'
 import '@/global/components'
 import '@/global/filters'
@@ -13,6 +12,6 @@ new Vue({
   async created() {
     this.idpConfig = await this.$API.get('config')
   },
-  router,
+  router: configuredRouter,
   render: h => h(App)
 }).$mount('#app')

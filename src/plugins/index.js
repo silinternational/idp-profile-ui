@@ -1,5 +1,10 @@
 import './vuetify'
 import './api'
-// (already loaded in main.js) import './router'
+import configuredRouter from './router'
 import './user'
 import './returnTo'
+import './analytics'
+
+export {
+   configuredRouter,
+}
