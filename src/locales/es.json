@@ -130,14 +130,14 @@
       "tooShort": "Your new password must be at least {0} characters",
       "tooLong": "Your new password cannot be longer than {0} characters",
       "tooWeak": "Your new password must be stronger",
-      "goodPassword": "That is a great password, nice job!"
+      "noGood": "Unfortunately, it looks like that one is not going to work",
+      "goodPassword": "That is beginning to look like a great password, click continue to check it."
     },
     "confirm": {
       "header": "Confirm your new password",
       "explanation": "Just to make sure we both have your new password right, please enter it one more time.",
       "pwInput": "Your new password",
-      "noMatch": "That password does not match your previous one",
-      "reused": "You recently used that one"
+      "noMatch": "That password does not match your previous one"
     },
     "saved": {
       "header": "Excellent!",
