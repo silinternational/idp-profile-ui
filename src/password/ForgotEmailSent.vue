@@ -14,7 +14,7 @@
     
     <p v-if="alternates.length">{{ $vuetify.t('$vuetify.password.forgotSent.alternates') }}</p>
     <p v-for="alternate in alternates" :key="alternate.id" class="pl-5 font-mono layout row">
-      {{ alternate.value }}
+      <span clas="body-2 font-mono">{{ alternate.value }}</span>
 
       <v-tooltip v-if="alternate.id == sent" right>
         <v-icon slot="activator" color="success" small class="pl-3">check</v-icon>
