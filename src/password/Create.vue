@@ -21,7 +21,7 @@
           </ul>
 
           <footer class="layout row align-center justify-end">
-            <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler" target="_blank" class="caption">
+            <a href="https://idphelp.sil.org/logging-in/password/password-recommendations" target="_blank" class="caption">
               {{ $vuetify.t('$vuetify.global.learnMore') }}
             </a>
           </footer>
