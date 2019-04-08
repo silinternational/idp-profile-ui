@@ -85,6 +85,10 @@ export default {
           this.errors.push(this.$vuetify.t('$vuetify.password.create.noGood'))
 
           this.password = ''
+
+          if (e.code === 1554734183) {
+            this.$ga.event('password', 'pwned')
+          }
         }
       }
     },
