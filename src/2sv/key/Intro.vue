@@ -21,7 +21,7 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn href="https://www.yubico.com/store" target="_blank" color="primary" flat tabindex="-1" outline> 
+      <v-btn href="https://idphelp.sil.org/2sv-topics/security-key" target="_blank" color="primary" flat tabindex="-1" outline> 
         {{ $vuetify.t('$vuetify.2sv.key.intro.button.no') }}
       </v-btn>
       <v-btn to="/2sv/usb-security-key/insert" color="primary" flat outline> 
