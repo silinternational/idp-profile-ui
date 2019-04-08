@@ -10,7 +10,7 @@ export default [
   },
   {
     path: '/welcome', // old pw-ui urls might still be bookmarked.
-    redirect: '/profile/intro',
+    redirect: '/profile',
   },
   {
     path: '/profile/complete',
