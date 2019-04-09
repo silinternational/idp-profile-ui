@@ -1,5 +1,5 @@
 <template>
-  <ProfileWizard>
+  <ProfileWizard ref="wizard">
     <BasePage>
       <template slot="header">
         {{ $vuetify.t('$vuetify.password.create.header', $root.idpConfig.idpName) }}
@@ -34,8 +34,11 @@
     </BasePage>
 
     <template slot="actions">
-      <v-btn v-if="$user.auth_type == 'login'" to="/profile/intro" flat tabindex="-1" outline>
+      <v-btn v-if="$user.isNew()" to="/profile/intro" flat tabindex="-1" outline>
         {{ $vuetify.t('$vuetify.global.button.back') }}
+      </v-btn>
+      <v-btn v-else @click="skip" flat tabindex="-1" outline>
+        {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -94,6 +97,9 @@ export default {
     },
     blur(event) {
       event.target.blur()
+    },
+    skip() {
+      this.$refs.wizard.next()
     },
   },
   watch: {

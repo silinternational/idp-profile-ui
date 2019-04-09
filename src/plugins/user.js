@@ -31,7 +31,7 @@ const user = {
     window.location = logoutUrl
   },
   isNew() {
-    return !this.password_meta
+    return ! (this.password_meta && this.password_meta.last_changed)
   },
 }
 
