@@ -65,6 +65,9 @@ export default {
     skipped: function() {
       this.currentStep.state = 'skipped'
     },
+    allDone() {
+      Steps.clear()
+    },
   },
 }
 </script>

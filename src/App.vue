@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-toolbar app color="primary">
-      <a href="#/profile">
+      <a href="/">
         <img src="@/assets/logo.png">
       </a>
 

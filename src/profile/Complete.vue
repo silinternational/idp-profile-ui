@@ -37,7 +37,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn to="/profile" color="primary" flat outline>
+      <v-btn @click="done" color="primary" flat outline>
         {{ $vuetify.t('$vuetify.profile.complete.button.profile') }}
       </v-btn>
     </ButtonBar>
@@ -63,6 +63,13 @@ export default {
   }),
   computed: {
     unverifiedEmails: vm => vm.alternates.filter(m => ! m.verified),
+  },
+  methods: {
+    done() {
+      this.$refs.wizard.allDone()
+      
+      this.$router.push('/profile')
+    },
   },
   async created() {
     await retrieveMfas()
