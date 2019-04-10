@@ -62,6 +62,10 @@ export default {
       }
     )
   },
+  created() {
+    const appScope = this
+    this.$root.$on('clear-messages', () => appScope.message = '') // built for situation in Recovery.vue (temp hack hopefully)
+  },
   errorCaptured(err) {
     this.message = err.message || err
   },

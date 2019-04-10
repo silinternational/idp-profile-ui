@@ -86,6 +86,8 @@ export default {
         await add(this.newEmail)
 
         this.newEmail = ''
+
+        this.$root.$emit('clear-messages')  // listener in App.vue (this is a temporary hack hopefully)
       }
     },
     remove,
