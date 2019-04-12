@@ -11,6 +11,13 @@
 
       <iframe width="560" height="315" src="https://www.youtube.com/embed/N1CNo4AZLRQ?rel=0" 
               frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" />
+
+      <v-layout row align-center>
+        <v-icon color="info" class="mr-2">info</v-icon>
+        <p class="ma-0 body-2">
+          {{ $vuetify.t('$vuetify.2sv.intro.incentive') }}
+        </p>
+      </v-layout>
     </BasePage>
 
     <ButtonBar>
