@@ -307,6 +307,9 @@
       "button": {
         "ok": "Back to my profile"
       }
+    },
+    "remove": {
+      "lastOne": "This is your last 2SV, are you absolutely sure you want to remove it?  This will cause your password to expire sooner."
     }
   }
 }
