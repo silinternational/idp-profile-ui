@@ -13,7 +13,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
       <v-tooltip :disabled="! usedEnterKey" :value="usedEnterKey" top>
-        <v-btn color="primary" slot="activator" class="g-recaptcha" outline>
+        <v-btn :disabled="! uname" color="primary" slot="activator" class="g-recaptcha" outline>
           {{ $vuetify.t('$vuetify.password.forgot.button.send') }}
         </v-btn>
         {{ $vuetify.t('$vuetify.password.forgot.clickOnly') }}
