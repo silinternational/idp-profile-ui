@@ -209,7 +209,8 @@
   "2sv": {
     "intro": {
       "header": "What is 2-Step Verification?",
-      "info": "Before we go any further, we would like to introduce an important step in protecting your account."
+      "info": "Before we go any further, we would like to introduce an important step in protecting your account.",
+      "incentive": "Adding 2-Step Verification to your account will extend the lifespan of your password by four years!  Imagine not having to change your password again for five years..."
     },
     "smartphone": {
       "intro": {
@@ -306,6 +307,9 @@
       "button": {
         "ok": "Back to my profile"
       }
+    },
+    "remove": {
+      "lastOne": "This is your last 2SV, are you absolutely sure you want to remove it?  This will cause your password to expire sooner."
     }
   }
 }

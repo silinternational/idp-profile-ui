@@ -19,7 +19,7 @@ services:
       - api
 
   api:
-    image: silintl/idp-pw-api:develop-3.0
+    image: silintl/idp-pw-api:develop
     ports:
       - '8080:80'
     depends_on:
@@ -117,7 +117,7 @@ services:
       BACKEND2_URL: 'http://api:80'
 
   broker:
-    image: silintl/idp-id-broker:develop-4.0
+    image: silintl/idp-id-broker:develop
     volumes:
       - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
     ports:
@@ -167,7 +167,7 @@ services:
       PMA_PASSWORD: 'pass'
 
   idp:
-    image: silintl/ssp-base:develop-5.0
+    image: silintl/ssp-base:develop
     volumes:
       - ./development/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
       - ./development/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
