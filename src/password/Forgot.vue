@@ -34,14 +34,11 @@ export default {
   },
   methods: {
     recaptchaLoaded() {
-      // TODO: needed a quick fix for UX testing but this needs to be done more elegantly.
-      setTimeout(() => {
-        grecaptcha.render(document.querySelector('.g-recaptcha'), {
-          sitekey: this.$root.idpConfig.recaptchaKey,
-          callback: this.recaptchad,
-          'expired-callback': this.expired
-        })
-      }, this.$root.idpConfig.recaptchaKey ? 0 : 1000)
+      grecaptcha.render(document.querySelector('.g-recaptcha'), {
+        sitekey: `${process.env.VUE_APP_RECAPTCHA_ID}`,
+        callback: this.recaptchad,
+        'expired-callback': this.expired
+      })
     },
     recaptchad(response) {
       this.recaptchaResponse = response
