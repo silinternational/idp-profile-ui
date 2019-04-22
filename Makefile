@@ -2,8 +2,6 @@ start: deps
 	docker-compose pull
 	docker-compose up -d proxy
 
-# TODO: do we need the ability to run the app locally in "production" mode from the dist folder?
-
 deps:
 	docker-compose run node npm install
 
