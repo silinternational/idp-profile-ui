@@ -18,9 +18,14 @@
         <li v-for="method in alternates" :key="method.id" class="layout row pb-2 pl-3">
           {{ method.value }}
           <v-tooltip :disabled="alternates.length > 1" right>
-            <v-icon @click="remove(method.id)" slot="activator" :disabled="alternates.length == 1" color="error" small class="pl-3">
-              delete
-            </v-icon>
+            <template v-slot:activator="{ on }">
+              <div v-on="on">
+                <v-icon @click="remove(method.id)" :disabled="alternates.length == 1" color="error" small class="pl-3">
+                  delete
+                </v-icon>
+              </div>
+            </template>
+
             {{ $vuetify.t('$vuetify.password.recovery.dontRemoveLastOne') }}
           </v-tooltip>
         </li>
@@ -50,9 +55,13 @@
       <v-spacer></v-spacer>
 
       <v-tooltip :disabled="!(unsaved || ! alternates.length)" right>
-        <v-btn @click="complete" slot="activator" :disabled="unsaved || ! alternates.length" color="primary" flat outline>
-          {{ $vuetify.t('$vuetify.global.button.continue') }}
-        </v-btn>
+        <template v-slot:activator="{ on }">
+          <div v-on="on">
+            <v-btn @click="complete" :disabled="unsaved || ! alternates.length" color="primary" flat outline>
+              {{ $vuetify.t('$vuetify.global.button.continue') }}
+            </v-btn>
+          </div>
+        </template>
         
         <span v-if="unsaved">{{ $vuetify.t('$vuetify.password.recovery.unsaved') }}</span>
         <span v-else>{{ $vuetify.t('$vuetify.password.recovery.advice') }}</span>

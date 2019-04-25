@@ -12,10 +12,14 @@
 
     <ButtonBar>
       <v-spacer></v-spacer>
-      <v-tooltip :disabled="! usedEnterKey" :value="usedEnterKey" top>
-        <v-btn :disabled="! uname" color="primary" slot="activator" class="g-recaptcha" outline>
-          {{ $vuetify.t('$vuetify.password.forgot.button.send') }}
-        </v-btn>
+      <v-tooltip :disabled="! usedEnterKey || ! uname" :value="usedEnterKey" top>
+        <template v-slot:activator="{ on }">
+          <div v-on="on">
+            <v-btn :disabled="! uname" @click="usedEnterKey = false" color="primary" class="g-recaptcha" outline>
+              {{ $vuetify.t('$vuetify.password.forgot.button.send') }}
+            </v-btn>
+          </div>
+        </template>
 
         {{ $vuetify.t('$vuetify.password.forgot.clickOnly') }}
       </v-tooltip>

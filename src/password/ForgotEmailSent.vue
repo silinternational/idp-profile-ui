@@ -7,7 +7,10 @@
       <span clas="body-2 font-mono">{{ primary.value }}</span>
 
       <v-tooltip v-if="againable" right>
-        <v-icon @click="again()" slot="activator" color="secondary" small class="pl-3">autorenew</v-icon>
+        <template v-slot:activator="{ on }">
+          <v-icon @click="again" v-on="on" color="secondary" small class="pl-3">autorenew</v-icon>
+        </template>
+
         {{ $vuetify.t('$vuetify.password.forgotSent.again') }}
       </v-tooltip>
     </p>
@@ -17,11 +20,17 @@
       <span clas="body-2 font-mono">{{ alternate.value }}</span>
 
       <v-tooltip v-if="alternate.id == sent" right>
-        <v-icon slot="activator" color="success" small class="pl-3">check</v-icon>
+        <template v-slot:activator="{ on }">
+          <v-icon v-on="on" color="success" small class="pl-3">check</v-icon>
+        </template>
+
         {{ $vuetify.t('$vuetify.password.forgotSent.too') }}
       </v-tooltip>
       <v-tooltip v-else right>
-        <v-icon @click="resend(alternate)" slot="activator" color="secondary" small class="pl-3">send</v-icon>
+        <template v-slot:activator="{ on }">
+          <v-icon @click="resend(alternate)" v-on="on" color="secondary" small class="pl-3">send</v-icon>
+        </template>
+        
         {{ $vuetify.t('$vuetify.password.forgotSent.instead') }}
       </v-tooltip>
     </p>
@@ -29,6 +38,8 @@
 </template>
 
 <script>
+const ONE_MINUTE = 60000
+
 export default {
   data: () => ({
     primary: {},
@@ -59,8 +70,6 @@ export default {
     }
   }
 }
-
-const ONE_MINUTE = 60000;
 </script>
 
 <style scoped>

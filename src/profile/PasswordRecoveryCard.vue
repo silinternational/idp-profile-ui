@@ -6,7 +6,10 @@
       <v-spacer />
 
       <v-tooltip v-if="hasUnverifiedEmails" right>
-        <v-icon slot="activator" x-large color="error">error</v-icon>
+        <template v-slot:activator="{ on }">
+          <v-icon v-on="on" x-large color="error">error</v-icon>
+        </template>
+
         {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.unverifiedEmails') }}
       </v-tooltip>
     </v-card-title>
@@ -14,8 +17,12 @@
     <v-card-text class="grow">
       <div v-for="method in methods" :key="method.id">
         {{ method.value }}
+
         <v-tooltip v-if="! method.verified && method.id != sent" right>
-          <v-icon slot="activator" color="error" small class="pl-1">error</v-icon>
+          <template v-slot:activator="{ on }">
+            <v-icon v-on="on" color="error" small class="pl-1">error</v-icon>
+          </template>
+
           {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
         </v-tooltip>
 

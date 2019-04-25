@@ -7,8 +7,14 @@
   </v-layout>
   <h3 v-else class="headline pl-3 layout row align-center">
     {{ label }}
-    <v-tooltip v-if="readOnly == undefined" right>
-      <v-icon v-if="id" slot="activator" @click="edit" color="info" small class="layout row align-center pl-3">edit</v-icon>
+  
+    <v-tooltip v-if="id && ! readOnly" right>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on" @click="edit" color="info" small class="pl-3">
+          edit
+        </v-icon>
+      </template>
+
       {{ $vuetify.t('$vuetify.profile.index.rename') }}
     </v-tooltip>
   </h3>
@@ -18,7 +24,18 @@
 import { change } from '@/global/mfa'
 
 export default {
-  props: ['label', 'id', 'readOnly'],
+  props: {
+    label: {
+      type: String,
+    }, 
+    id: {
+      type: Number,
+    }, 
+    readOnly: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({
     editing: false,
     newLabel: ''

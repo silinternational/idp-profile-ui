@@ -42,9 +42,13 @@
       <v-spacer></v-spacer>
 
       <v-tooltip :disabled="gotEm" :value="gotEm" top>
-        <v-btn @click="finish" :disabled="!gotEm" color="primary" slot="activator" flat outline>
-          {{ $vuetify.t('$vuetify.2sv.codes.new.button.ok') }}
-        </v-btn>
+        <template v-slot:activator="{ on }">
+          <div v-on="on">
+            <v-btn @click="finish" :disabled="!gotEm" color="primary" flat outline>
+              {{ $vuetify.t('$vuetify.2sv.codes.new.button.ok') }}
+            </v-btn>
+          </div>
+        </template>
 
         {{ $vuetify.t('$vuetify.2sv.codes.new.personalCopy') }}
       </v-tooltip>

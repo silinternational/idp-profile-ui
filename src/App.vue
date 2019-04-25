@@ -12,12 +12,14 @@
       <v-divider vertical dark inset class="mx-2" />
 
       <v-tooltip left>
-        <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" slot="activator" icon dark>
-          <v-icon small>exit_to_app</v-icon>
-        </v-btn>
-        <v-btn v-else @click="$user.login('/profile')" slot="activator" icon dark>
-          <v-icon>person_outline</v-icon>
-        </v-btn>
+        <template v-slot:activator="{ on }">
+          <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" v-on="on" icon dark>
+            <v-icon small>exit_to_app</v-icon>
+          </v-btn>
+          <v-btn v-else @click="$user.login('/profile')" v-on="on" icon dark>
+            <v-icon>person_outline</v-icon>
+          </v-btn>
+        </template>
 
         <span v-if="$user.isAuthenticated()">{{ $vuetify.t('$vuetify.app.logout') }}</span>
         <span v-else>{{ $vuetify.t('$vuetify.app.login') }}</span>
