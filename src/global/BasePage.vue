@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  created() {
+  mounted() {
     document.title = this.$vuetify.t('$vuetify.app.title', this.$slots.header[0].text.trim())
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template slot="header">{{ $vuetify.t('$vuetify.password.recovery.header') }}</template>
+      <template v-slot:header>{{ $vuetify.t('$vuetify.password.recovery.header') }}</template>
 
       <p>{{ $vuetify.t('$vuetify.password.recovery.explanation') }}</p>
 
@@ -42,17 +42,15 @@
       </v-form>
     </BasePage>
 
-    <template slot="actions">
-      <v-btn v-if="! alternates.length" to="/2sv/intro" @click="skip"
-             color="warning" flat outline>
+    <template v-slot:actions>
+      <v-btn v-if="! alternates.length" to="/2sv/intro" @click="skip" color="warning" flat outline>
         {{ $vuetify.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-tooltip :disabled="!(unsaved || ! alternates.length)" right>
-        <v-btn @click="complete" slot="activator" 
-               :disabled="unsaved || ! alternates.length" color="primary" flat outline>
+        <v-btn @click="complete" slot="activator" :disabled="unsaved || ! alternates.length" color="primary" flat outline>
           {{ $vuetify.t('$vuetify.global.button.continue') }}
         </v-btn>
         

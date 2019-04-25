@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template slot="header">
+      <template v-slot:header>
         {{ $vuetify.t('$vuetify.password.confirm.header') }}
       </template>
 
@@ -13,7 +13,7 @@
       </v-form>
     </BasePage>
 
-    <template slot="actions">
+    <template v-slot:actions>
       <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" flat tabindex="-1" outline>
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>

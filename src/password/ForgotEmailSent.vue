@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template slot="header">{{ $vuetify.t('$vuetify.password.forgotSent.header') }}</template>
+    <template v-slot:header>{{ $vuetify.t('$vuetify.password.forgotSent.header') }}</template>
 
     <p>{{ $vuetify.t('$vuetify.password.forgotSent.emailComing') }}</p>
     <p class="pl-5 layout row align-center">

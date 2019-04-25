@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template slot="header">
+      <template v-slot:header>
         {{ $vuetify.t('$vuetify.2sv.codes.intro.header') }}
       </template>
 

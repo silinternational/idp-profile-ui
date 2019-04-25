@@ -19,7 +19,7 @@
     "vue": "^2.6.10",
     "vue-analytics": "^5.16.4",
     "vue-router": "^3.0.2",
-    "vuetify": "^1.4.2",
+    "vuetify": "^1.5.13",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {

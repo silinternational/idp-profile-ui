@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template slot="header">
+    <template v-slot:header>
       {{ $vuetify.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
 
       <v-spacer/>

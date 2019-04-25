@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template slot="header">{{ $vuetify.t('$vuetify.password.forgot.header') }}</template>
+    <template v-slot:header>{{ $vuetify.t('$vuetify.password.forgot.header') }}</template>
 
     <v-form @submit.prevent="usedEnterKey = !usedEnterKey" ref="form">
       <BaseTextField :label="$vuetify.t('$vuetify.password.forgot.unameInput', $root.idpConfig.idpName)"
@@ -16,6 +16,7 @@
         <v-btn :disabled="! uname" color="primary" slot="activator" class="g-recaptcha" outline>
           {{ $vuetify.t('$vuetify.password.forgot.button.send') }}
         </v-btn>
+
         {{ $vuetify.t('$vuetify.password.forgot.clickOnly') }}
       </v-tooltip>
     </ButtonBar>

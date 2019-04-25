@@ -1,10 +1,10 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-if="isSupported" slot="header">
+      <template v-if="isSupported" v-slot:header>
         {{ $vuetify.t('$vuetify.2sv.key.insert.header') }}
       </template>
-      <template v-else slot="header">
+      <template v-else v-slot:header>
         {{ $vuetify.t('$vuetify.2sv.key.insert.nosupport.header') }}
       </template>
 
