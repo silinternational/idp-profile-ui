@@ -55,12 +55,16 @@ export default {
     },
     async send() {
       if (this.$refs.form.validate()) {
-        const reset = await this.$API.post('reset', {
-          username: this.uname,
-          verification_token: this.recaptchaResponse
-        })
+        try {
+          const reset = await this.$API.post('reset', {
+            username: this.uname,
+            verification_token: this.recaptchaResponse
+          })
 
-        this.$router.push(`/password/forgot/${reset.uid}`)
+          this.$router.push(`/password/forgot/${reset.uid}`)
+        } catch (error) {
+          grecaptcha.reset()          
+        }
       }
     },
   }
