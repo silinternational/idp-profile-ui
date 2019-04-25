@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template slot="header">
+      <template v-slot:header>
         {{ $vuetify.t('$vuetify.2sv.smartphone.download.header') }}
       </template>
 

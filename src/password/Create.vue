@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template slot="header">
+      <template v-slot:header>
         {{ $vuetify.t('$vuetify.password.create.header', $root.idpConfig.idpName) }}
       </template>
 
@@ -33,7 +33,7 @@
       </v-form>
     </BasePage>
 
-    <template slot="actions">
+    <template v-slot:actions>
       <v-btn v-if="$user.isNew()" to="/profile/intro" flat tabindex="-1" outline>
         {{ $vuetify.t('$vuetify.global.button.back') }}
       </v-btn>
