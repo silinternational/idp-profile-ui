@@ -4,6 +4,7 @@ import { configuredRouter } from  './plugins'
 import App from './App.vue'
 import '@/global/components'
 import '@/global/filters'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 new Vue({
   data: {
@@ -13,5 +14,6 @@ new Vue({
     this.idpConfig = await this.$API.get('config')
   },
   router: configuredRouter,
-  render: h => h(App)
+  iconfont: 'md',
+  render: h => h(App),
 }).$mount('#app')
