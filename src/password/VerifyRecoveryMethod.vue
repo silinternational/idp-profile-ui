@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template slot="header">{{ $vuetify.t('$vuetify.password.verifyRecovery.header') }}</template>
+    <template v-slot:header>{{ $vuetify.t('$vuetify.password.verifyRecovery.header') }}</template>
 
     <p v-if="verifying">{{ $vuetify.t('$vuetify.password.verifyRecovery.verifying') }}</p>
     <p v-if="verified">{{ $vuetify.t('$vuetify.password.verifyRecovery.verified') }}</p>

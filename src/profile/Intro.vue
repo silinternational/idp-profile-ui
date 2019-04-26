@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template slot="header">
+    <template v-slot:header>
       {{ $vuetify.t('$vuetify.profile.intro.header', $root.idpConfig.idpName, $user.first_name) }}
     </template>
 
