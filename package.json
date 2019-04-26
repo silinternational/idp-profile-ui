@@ -26,7 +26,6 @@
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-service": "^3.5.3",
     "babel-plugin-transform-imports": "^1.4.1",
-    "material-design-icons-iconfont": "^4.0.5",
     "rimraf": "^2.6.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
