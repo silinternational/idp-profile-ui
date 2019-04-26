@@ -40,9 +40,11 @@ export default {
     ProfileWizard,
   },
   data: () => ({
-    isSupported: (bowser.chrome  && bowser.version >= 41) ||
-                 (bowser.firefox && bowser.version >= 58) ||
-                 (bowser.opera   && bowser.version >= 39),
+    isSupported: (bowser.chrome   && bowser.version >= 41) ||
+                 (bowser.chromium && bowser.version >= 41) ||
+                 (bowser.firefox  && bowser.version >= 58) ||
+                 (bowser.opera    && bowser.version >= 39),
+    bowser,
   }),
 }
 </script>

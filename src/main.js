@@ -13,5 +13,5 @@ new Vue({
     this.idpConfig = await this.$API.get('config')
   },
   router: configuredRouter,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app')
