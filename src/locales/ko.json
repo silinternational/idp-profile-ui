@@ -19,6 +19,17 @@
     "logout": "Log out",
     "title": "IdP Profile Management - {0}"
   },
+  "help": {
+    "title": "Support contacts",
+    "phone": "Phone:",
+    "email": "Email:",
+    "site": "Site:",
+    "feedback": "Feedback:",
+    "button": {
+      "help": "Help",
+      "ok": "Ok"
+    }
+  },
   "pageNotFound": {
     "header": "Not found"
   },
