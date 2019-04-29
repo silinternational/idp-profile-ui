@@ -12,6 +12,8 @@
       <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" flat dark>{{ $vuetify.t('$vuetify.app.logout') }}</v-btn>
       <v-btn v-else                         @click="$user.login()" flat dark>{{ $vuetify.t('$vuetify.app.login') }}</v-btn>
 
+      <v-divider vertical dark inset />
+
       <HelpButton />
     </v-toolbar>
 
@@ -89,6 +91,11 @@ p {
    and he said this would be fixed once v2.0 was released. */
 .layout.v-sheet {
   display: flex;
+}
+
+/* with the addition of the help link, the extra space on the rigth looked weird. */
+div.v-toolbar__content {
+  padding-right: initial;
 }
 </style>
 
