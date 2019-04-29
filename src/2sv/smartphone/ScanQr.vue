@@ -18,11 +18,17 @@
         <li>
           <p class="layout column pl-4">
             {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.qr') }}
-            
-            <v-layout row justify-center>
-              <v-img v-if="newTotp.data" :src="newTotp.data.imageUrl" max-width="200" />
-            </v-layout>
-          </p>        
+          </p>
+
+          <v-layout v-if="newTotp.data" row justify-center>
+            <v-img :src="newTotp.data.imageUrl" max-width="200" />
+          </v-layout>
+          <v-layout v-if="newTotp.data" row justify-center>
+            <p>
+              {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.manual') }}
+              <span class="font-mono">{{ newTotp.data.totpKey }}</span>
+            </p>
+          </v-layout>
         </li>
       </ol>
     </BasePage>
@@ -71,8 +77,8 @@ li:before {
 li > p {
   display: inline-flex; /* aligns li's content and counter */
 }
-/* li > p img { */
-  /* keep images from stretching because of flex */
-  /* align-self: center; */
-/* } */
+
+.font-mono {
+  font-family: monospace;
+}
 </style>
