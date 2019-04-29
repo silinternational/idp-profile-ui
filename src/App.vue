@@ -1,29 +1,18 @@
 <template>
   <v-app>
     <v-toolbar app color="primary">
-      <a href="/">
-        <img src="@/assets/logo.png">
-      </a>
+      <a href="/"><img src="@/assets/logo.png"></a>
 
       <v-spacer />
 
-      <v-toolbar-title class="white--text">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
+      <v-toolbar-title class="white--text pr-3">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
 
       <v-divider vertical dark inset class="mx-2" />
 
-      <v-tooltip left>
-        <template v-slot:activator="{ on }">
-          <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" v-on="on" icon dark>
-            <v-icon small>exit_to_app</v-icon>
-          </v-btn>
-          <v-btn v-else @click="$user.login('/profile')" v-on="on" icon dark>
-            <v-icon>person_outline</v-icon>
-          </v-btn>
-        </template>
+      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" flat dark>{{ $vuetify.t('$vuetify.app.logout') }}</v-btn>
+      <v-btn v-else                         @click="$user.login()" flat dark>{{ $vuetify.t('$vuetify.app.login') }}</v-btn>
 
-        <span v-if="$user.isAuthenticated()">{{ $vuetify.t('$vuetify.app.logout') }}</span>
-        <span v-else>{{ $vuetify.t('$vuetify.app.login') }}</span>
-      </v-tooltip>
+      <HelpButton />
     </v-toolbar>
 
     <v-content>
@@ -50,7 +39,11 @@
 </template>
 
 <script>
+import HelpButton from './help/HelpButton'
 export default {
+  components: {
+    HelpButton
+  },
   data: () => ({
     message: ''
   }),
