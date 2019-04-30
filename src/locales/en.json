@@ -314,15 +314,12 @@
     },
     "change": {
       "header": "Lost or new",
-      "info": "This one will need to be removed but you can add another afterward.  Are you sure you mean to remove your {0}?",
-      "lastOne": "This is your last 2SV, removing it will cause your password to expire sooner.",
-      "button": {
-        "yes": "Yes, remove this one"
-      }
+      "info": "If you have lost your {0} or gotten a new one, you need to remove the device from your account before configuring a new one. Would you like to go ahead and remove your existing device?  You will have the option to configure a new one in the next step.",
+      "lastOne": "This is your last 2SV, removing it will cause your password to expire sooner."
     },
     "removed": {
       "header": "Removed",
-      "info": "That has now been removed from your profile.  Would you like to go ahead and set another one up now?",
+      "info": "That device has been removed from your profile. Would you like to configure a new one now?",
       "button": {
         "later": "Maybe later"
       }
