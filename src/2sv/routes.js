@@ -11,6 +11,7 @@ import Confirmed from './key/Confirmed'
 import CodesIntro from './codes/Intro'
 import New from './codes/New'
 import Change from './Change'
+import Removed from './Removed'
 import mfa from '@/global/mfa'
 
 export default [
@@ -101,6 +102,10 @@ export default [
   {
     path: '/2sv/change/:id',
     component: Change,
+  },
+  {
+    path: '/2sv/removed',
+    component: Removed,
   },
 ]
 

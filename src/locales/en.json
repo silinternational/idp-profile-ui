@@ -91,7 +91,7 @@
         "created": "Created:",
         "lastUsed": "Last used:",
         "button": {
-          "change": "lost or new phone"
+          "change": "lost or new"
         },
         "warning": "No smartphone at this time, please add one."
       },
@@ -100,7 +100,7 @@
         "created": "Created:",
         "lastUsed": "Last used:",
         "button": {
-          "change": "lost or new key"
+          "change": "lost or new"
         },
         "warning": "No security key at this time, please add one."
       },
@@ -314,10 +314,17 @@
     },
     "change": {
       "header": "Lost or new",
-      "removing": "Removing it from your account now...",
-      "removed": "That has safely been removed now.  You may add another back if you like from your profile.",
+      "info": "This one will need to be removed but you can add another afterward.  Are you sure you mean to remove your {0}?",
+      "lastOne": "This is your last 2SV, removing it will cause your password to expire sooner.",
       "button": {
-        "ok": "Back to my profile"
+        "yes": "Yes, remove this one"
+      }
+    },
+    "removed": {
+      "header": "Removed",
+      "info": "That has now been removed from your profile.  Would you like to go ahead and set another one up now?",
+      "button": {
+        "later": "Maybe later"
       }
     },
     "remove": {

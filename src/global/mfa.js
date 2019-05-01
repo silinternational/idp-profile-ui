@@ -48,3 +48,9 @@ export const remove = async (id) => {
 export const change = async (id, updates) => {
   return await Vue.prototype.$API.put(`mfa/${id}`, updates)
 }
+
+export const find = id => {
+  const type = Object.keys(mfa).find(key => mfa[key].id == id)
+
+  return mfa[type]
+}
