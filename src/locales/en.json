@@ -193,8 +193,7 @@
       "emailComing": "We will send an email with a special link to the following email address in a minute:",
       "alternates": "If you do not currently have access to this email account, please use one of the alternates below.",
       "instead": "Use this one instead",
-      "too": "Sent to this email as well",
-      "again": "Send link again"
+      "too": "Sent to this email as well"
     },
     "reset": {
       "verify": {
