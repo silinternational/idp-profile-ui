@@ -229,11 +229,13 @@
       },
       "download": {
         "header": "Download an app",
-        "info": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.  It is also free and will not cause you to incur any data charges.",
+        "recommendation-authenticator": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.  It is also free and will not cause you to incur any data charges.",
+        "recommendation-authy": "There are many apps you can use for this step however we recommend Authy for its simplicity.  It is also free and will not cause you to incur any data charges.",
         "button": {
           "ok": "OK, I installed it on my smartphone"
         },
-        "recommended": "Google Authenticator"
+        "appname-authenticator": "Google Authenticator",
+        "appname-authy": "Authy"
       },
       "scanQr": {
         "header": "Connect your smartphone to your account",
