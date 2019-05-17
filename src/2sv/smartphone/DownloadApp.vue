@@ -6,22 +6,23 @@
       </template>
 
       <p>
-        {{ $vuetify.t('$vuetify.2sv.smartphone.download.info') }}
+        {{ $vuetify.t(`$vuetify.2sv.smartphone.download.recommendation-${preferredAppName}`) }}
       </p>
 
-      <figure class="layout row align-center justify-center mt-4 mb-3">
-        <img src="@/assets/google-authenticator-logo.jpg">
+      <figure class="layout row align-center justify-center pb-4 my-4">
+        <img v-if="isAuthy" src="@/assets/authy-logo.jpg">
+        <img v-else src="@/assets/authenticator-logo.jpg">
 
         <figcaption class="headline ml-3">
-          {{ $vuetify.t('$vuetify.2sv.smartphone.download.recommended') }}
+          {{ $vuetify.t(`$vuetify.2sv.smartphone.download.appname-${preferredAppName}`) }}
         </figcaption>
       </figure>
 
       <figure class="badges layout row align-center justify-center">
-        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" class="pr-3">
+        <a :href="`https://play.google.com/store/apps/details?id=${playStoreId}`" target="_blank" class="pr-3">
           <img src="@/assets/google-play-badge.png">
         </a>
-        <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605" target="_blank">
+        <a :href="`https://itunes.apple.com/us/app/${itunesAppUrl}`" target="_blank">
           <img src="@/assets/app-store-badge.png">
         </a>
       </figure>
@@ -47,6 +48,12 @@ import ProfileWizard from '@/profile/ProfileWizard'
 export default {
   components: {
     ProfileWizard,
+  },
+  computed: {
+    isAuthy: () => `${process.env.VUE_APP_TOTP_APP_RECOMMENDATION}` === 'authy',
+    preferredAppName: vm => vm.isAuthy ? 'authy' : 'authenticator',
+    playStoreId: vm => vm.isAuthy ? 'com.authy.authy' : 'com.google.android.apps.authenticator2',
+    itunesAppUrl: vm => vm.isAuthy ? 'authy/id494168017' : 'google-authenticator/id388497605',
   },
 }
 </script>
