@@ -24,6 +24,7 @@ services:
       - '8080:80'
     depends_on:
       - profileDb
+      - memcache
       - broker
       - zxcvbn
       - idp
@@ -65,6 +66,7 @@ services:
       PASSWORD_RULE_minLength: '10'
       PASSWORD_RULE_maxLength: '255'
       PASSWORD_RULE_minScore: '3'
+      MEMCACHE_CONFIG1_host: 'memcache'
     command: [ 'bash', '-c', 'whenavail profileDb 3306 60 ./yii migrate --interactive=0 && ./run.sh' ]
 
   profileDb:
@@ -88,11 +90,16 @@ services:
       PMA_USER: 'user'
       PMA_PASSWORD: 'pass'
 
+  memcache:
+    image: memcached:1.4-alpine
+    ports:
+      - "11211"  
+
   zxcvbn:
     image: wcjr/zxcvbn-api
     ports:
       - '3000'
-
+  
   proxy:
     # https://github.com/silinternational/traefik-https-proxy
     image: silintl/traefik-https-proxy
