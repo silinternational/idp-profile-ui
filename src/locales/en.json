@@ -193,8 +193,7 @@
       "emailComing": "We will send an email with a special link to the following email address in a minute:",
       "alternates": "If you do not currently have access to this email account, please use one of the alternates below.",
       "instead": "Use this one instead",
-      "too": "Sent to this email as well",
-      "again": "Send link again"
+      "too": "Sent to this email as well"
     },
     "reset": {
       "verify": {
@@ -230,11 +229,13 @@
       },
       "download": {
         "header": "Download an app",
-        "info": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.  It is also free and will not cause you to incur any data charges.",
+        "recommendation-authenticator": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.  It is free and will not use any mobile data.",
+        "recommendation-authy": "There are several authenticator apps available but Authy is the recommended option. Authy is free and does not use any mobile data.",
         "button": {
           "ok": "OK, I installed it on my smartphone"
         },
-        "recommended": "Google Authenticator"
+        "appname-authenticator": "Google Authenticator",
+        "appname-authy": "Authy"
       },
       "scanQr": {
         "header": "Connect your smartphone to your account",
