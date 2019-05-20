@@ -229,8 +229,8 @@
       },
       "download": {
         "header": "Download an app",
-        "recommendation-authenticator": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.  It is also free and will not cause you to incur any data charges.",
-        "recommendation-authy": "There are many apps you can use for this step however we recommend Authy for its simplicity.  It is also free and will not cause you to incur any data charges.",
+        "recommendation-authenticator": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.  It is free and will not use any mobile data.",
+        "recommendation-authy": "There are several authenticator apps available but Authy is the recommended option. Authy is free and does not use any mobile data.",
         "button": {
           "ok": "OK, I installed it on my smartphone"
         },
