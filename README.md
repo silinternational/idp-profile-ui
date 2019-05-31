@@ -1,3 +1,5 @@
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/idp-profile-ui/localized.svg)](https://crowdin.com/project/idp-profile-ui)
+
 # idp-profile-ui
 
 Identity management UI for a given IdP that will help users establish good passwords, recovery optins and 2-Step Verification.
