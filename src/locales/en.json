@@ -220,7 +220,7 @@
     "intro": {
       "header": "What is 2-Step Verification?",
       "info": "Before we go any further, we would like to introduce an important step in protecting your account.",
-      "incentive": "Adding 2-Step Verification to your account will extend the lifespan of your password by four years!  Imagine not having to change your password again for five years..."
+      "incentive": "Adding 2-Step Verification to your account will at least double the lifespan of your password!  Imagine not having to change your password every year anymore... Check the profile page after adding a 2SV to see what your new expiration will be."
     },
     "smartphone": {
       "intro": {
