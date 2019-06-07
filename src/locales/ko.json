@@ -1,332 +1,332 @@
 {
   "global": {
     "button": {
-      "back": "Back",
-      "continue": "Continue",
-      "skip": "Skip",
-      "yes": "Yes",
-      "no": "No",
-      "verify": "Verify",
-      "change": "Change",
-      "remove": "Remove",
-      "add": "Add"
+      "back": "뒤로",
+      "continue": "계속",
+      "skip": "건너뛰기",
+      "yes": "네",
+      "no": "아니오",
+      "verify": "확인",
+      "change": "바꾸기",
+      "remove": "제거",
+      "add": "추가"
     },
-    "learnMore": "learn more",
-    "areYouSure": "Are you sure?"
+    "learnMore": "자세히 알아보기",
+    "areYouSure": "계속 진행하시겠습니까?"
   },
   "app": {
-    "login": "Log in",
-    "logout": "Log out",
-    "title": "IdP Profile Management - {0}"
+    "login": "로그인",
+    "logout": "로그아웃",
+    "title": "IdP 프로필 관리 - {0}"
   },
   "help": {
-    "title": "Support contacts",
-    "phone": "Phone:",
-    "email": "Email:",
-    "site": "Site:",
-    "feedback": "Feedback:",
+    "title": "지원 연락처",
+    "phone": "전화번호",
+    "email": "이메일:",
+    "site": "사이트:",
+    "feedback": "고객피드백",
     "button": {
-      "help": "Help",
-      "ok": "Ok"
+      "help": "도움",
+      "ok": "확인"
     }
   },
   "pageNotFound": {
-    "header": "Not found"
+    "header": "찾을 수 없음"
   },
   "profile": {
     "intro": {
-      "header": "Welcome to your {0} identity profile {1}!",
-      "explanation": "We will guide you through a few steps that will help you get your identity profile in great shape.",
-      "username": "Your username here will be ",
+      "header": "{0} ID프로필 {1}에 오신 것을 환영합니다!",
+      "explanation": "ID 프로필을 아주 멋지게 만드는 데 도움이 될 몇 가지 단계를 안내해드립니다.",
+      "username": "여기에 사용자 이름을 입력하세요 ",
       "button": {
-        "start": "Begin"
+        "start": "시작하기"
       }
     },
     "inviteExpired": {
-      "header": "Expired link",
-      "explanation": "That link has already expired so we sent you another email with a new link.  You should receive it within the minute.  You will not need this tab anymore."
+      "header": "만료 된 링크",
+      "explanation": "링크가 이미 만료되었으므로 새로운 링크가있는 다른 이메일을 보냈습니다. 일분안에 도착할 것입니다. 더 이상 이 탭이 필요하지 않습니다."
     },
     "steps": {
-      "pwStep": "Password",
-      "pwRecoverStep": "Password recovery",
-      "2svStep": "2-step verification",
-      "completeStep": "Complete"
+      "pwStep": "패스워드\/암호",
+      "pwRecoverStep": "비밀번호 찾기",
+      "2svStep": "2단계 인증",
+      "completeStep": "완료"
     },
     "complete": {
-      "header": "That's it!",
-      "info": "{0}, thank you for setting up your {1} identity profile.  You will find your updated settings on the next page and can make any adjustments from there in the future.",
-      "unverifiedEmails": "Look for a verification email in the following account(s) so we can confirm your password recovery options:",
-      "noAlternates": "You do not have any alternate means of recovering your password should you ever forget it.  Please consider adding one in the future.",
-      "no2sv": "You do not have any 2-Step Verification options established.  Please consider adding at least one in the future.",
-      "username": "Your username here will be ",
+      "header": "끝났습니다!",
+      "info": "{0}, ID 프로필 {1} 를 설정해 주셔서 감사합니다. 다음 페이지에서 업데이트 된 설정을 찾을 수 있으며 이후에 조정할 수 있습니다.",
+      "unverifiedEmails": "비밀번호 복구 옵션을 확인할 수 있도록 다음 계정에서 이메일을 확인하십시오.",
+      "noAlternates": "암호를 잊어 버린 경우 암호를 복구 할 수있는 대체 수단이 없습니다. 나중에 추가 할 것을 고려해주십시오.",
+      "no2sv": "2 단계 인증 옵션을 설정하지 않았습니다. 나중에 최소한 하나를 추가하는 것을 고려해보십시오.",
+      "username": "여기에 사용자 이름을 입력하세요 ",
       "button": {
-        "profile": "See my profile"
+        "profile": "내 프로필보기"
       }
     },
     "index": {
-      "header": "My {0} Identity",
-      "username": "Username: ",
-      "lastLogin": "Last login: ",
-      "manager": "Manager: ",
-      "2sv": "2-Step Verification",
-      "rename": "Rename",
-      "unverifiedEmails": "You have unverified email addresses, please log into those accounts and click the link provided in the verification email.",
+      "header": "내 {0} ID",
+      "username": "사용자이름 : ",
+      "lastLogin": "마지막 로그인 ",
+      "manager": "관리자 ",
+      "2sv": "2단계 인증",
+      "rename": "\"이름 바꾸기\"",
+      "unverifiedEmails": "확인되지 않은 이메일 주소가 있습니다. 해당 계정에 로그인하고 이메일에 제공된 확인 링크를 클릭하십시오.",
       "passwordCard": {
-        "title": "Password",
-        "lastChanged": "Last changed:",
-        "expires": "Expires:",
+        "title": "패스워드\/암호",
+        "lastChanged": "마지막으로 변경 된",
+        "expires": "만료:",
         "button": {
-          "changeNow": "Expiring soon, change now"
+          "changeNow": "곧 만료 예정, 지금 변경"
         }
       },
       "passwordRecoveryCard": {
-        "title": "Password recovery",
-        "warning": "No recovery addresses at this time, please add one.",
-        "unverifiedEmails": "You have unverified email addresses.",
-        "unverified": "This email has not yet been verified, please check its account for a verification email.",
-        "resend": "resend"
+        "title": "비밀번호 찾기",
+        "warning": "현재 복구를 위한 주소가 없습니다. 주소를 추가하십시오.",
+        "unverifiedEmails": "확인되지 않은 이메일 주소가 있습니다.",
+        "unverified": "이 이메일은 아직 확인되지 않았습니다. 계정에서 이메일을 확인하십시오.",
+        "resend": "재전송"
       },
       "totpCard": {
-        "title": "Smartphone",
-        "created": "Created:",
-        "lastUsed": "Last used:",
+        "title": "스마트폰",
+        "created": "생성됨",
+        "lastUsed": "최근 사용",
         "button": {
-          "change": "lost or new"
+          "change": "분실 또는 신규"
         },
-        "warning": "No smartphone at this time, please add one."
+        "warning": "현재 스마트 폰번호가 없으므로 스마트 폰 번호를 추가하십시오."
       },
       "u2fCard": {
-        "title": "USB security key",
-        "created": "Created:",
-        "lastUsed": "Last used:",
+        "title": "USB 보안 키",
+        "created": "생성됨",
+        "lastUsed": "최근 사용",
         "button": {
-          "change": "lost or new"
+          "change": "분실 또는 신규"
         },
-        "warning": "No security key at this time, please add one."
+        "warning": "현재 보안 키가 없으므로 보안 키를 추가하십시오."
       },
       "codeCard": {
-        "title": "Printable backup codes",
-        "created": "Created:",
-        "lastUsed": "Last used:",
-        "remaining": "Remaining:",
+        "title": "인쇄 가능한 백업 코드",
+        "created": "생성됨",
+        "lastUsed": "최근 사용:",
+        "remaining": "잔여 기간:",
         "button": {
-          "replace": "Replace",
-          "add": "Create"
+          "replace": "바꾸기",
+          "add": "만들기"
         },
-        "warning": "No backup codes at this time, please create some."
+        "warning": "현재 백업 코드가 없으므로 만들어주세요."
       },
       "dndCard": {
-        "title": "Do not disclose",
-        "info": "When enabled, using the Forgot Password process will produce a message that your account does not exist. It will, however, still send you an email with a link you can use to reset your password.  This is typically used by individuals in sensitive locations.",
+        "title": "공개하지 마시오.",
+        "info": "활성화 된 경우 비밀번호 분실 프로세스를 사용하면 계정이 존재하지 않는다는 메시지가 표시됩니다. 그러나 비밀번호를 재설정하는 데 사용할 수있는 링크가 포함 된 이메일을 발송합니다. 일반적으로 민감한 지역의 개인이 사용합니다.",
         "button": {
-          "enable": "Turn on",
-          "disable": "Turn off"
+          "enable": "켜기",
+          "disable": "끄기"
         }
       }
     },
     "progress": {
-      "header": "Profile strength",
-      "addMethod": "Add a recovery method",
-      "addTotp": "Add a smartphone (2SV)",
-      "addU2f": "Add a security key (2SV)",
-      "addCodes": "Add some backup codes (2SV)"
+      "header": "프로필 완성도",
+      "addMethod": "복구 방법 추가",
+      "addTotp": "스마트 폰 추가 (2SV)",
+      "addU2f": "보안 키 추가 (2SV)",
+      "addCodes": "일부 백업 코드 추가 (2SV)"
     }
   },
   "password": {
     "create": {
-      "header": "Create a password for your {0} Identity",
-      "username": "{0} username: ",
-      "pwInput": "Your new password",
-      "required": "A new password is required",
-      "tooShort": "Your new password must be at least {0} characters",
-      "tooLong": "Your new password cannot be longer than {0} characters",
-      "tooWeak": "Your new password must be stronger",
-      "noGood": "Unfortunately, it looks like that one is not going to work",
-      "goodPassword": "That is beginning to look like a great password, click continue to check it."
+      "header": "{0} ID에 대한 비밀번호 만들기",
+      "username": "{0} 사용자 이름 : ",
+      "pwInput": "새 비밀번호",
+      "required": "새로운 암호가 필요합니다.",
+      "tooShort": "새 비밀번호는 최소 {0} 자 이상이어야합니다.",
+      "tooLong": "새 암호는 {0} 자를 초과 할 수 없습니다.",
+      "tooWeak": "새암호는 더 강해야합니다.",
+      "noGood": "불행하게도, 그것은 작동하지 않을 것 같습니다.",
+      "goodPassword": "이제 괜찮은 암호처럼 보이기 시작하였습니다. 계속 클릭하여 확인하십시오."
     },
     "confirm": {
-      "header": "Confirm your new password",
-      "explanation": "Just to make sure we both have your new password right, please enter it one more time.",
-      "pwInput": "Your new password",
-      "noMatch": "That password does not match your previous one"
+      "header": "새 비밀번호를 확인하십시오",
+      "explanation": "우리가 새 암호를 모두 가지고 있는지 확인하기 위해 한 번 더 입력하십시오.",
+      "pwInput": "새 비밀번호",
+      "noMatch": "그 암호는 이전 암호와 일치하지 않습니다."
     },
     "saved": {
-      "header": "Excellent!",
-      "info": "Your new password has been saved.",
-      "pwInput": "Your new password"
+      "header": "멋져요!",
+      "info": "새 암호가 저장되었습니다.",
+      "pwInput": "새 비밀번호"
     },
     "recovery": {
-      "header": "What if you forget your password?",
-      "explanation": "Sometimes we forget our password.  Sometimes the password we have just doesn't seem to work. In those situations, it is important to still be able to \"recover\" your password.",
-      "info": "If you forget your password we will send an email to {0} with a link you can use to create a new password.  ",
-      "advice": "In addition, we recommend you add at least one more alternate email address that you own to ensure resetting your password in the future is as easy as possible.",
-      "atLeastOneRecovery": "Thankfully you already have alternate means we can use to send a special link in case you need to begin the password recovery process.  You may have as many as you like.",
-      "emailInput": "Enter an alternate email address",
-      "unsaved": "You have not saved your changes yet.",
-      "dontRemoveLastOne": "Please add another alternate address before removing this one.",
-      "invalidEmail": "Invalid email",
-      "personalHeader": "Alternate(s)",
-      "noPersonalMethods": "None at this time"
+      "header": "비밀번호를 잊어 버리면 어떻게 할까요?",
+      "explanation": "때때로 우리는 암호를 잊어 버립니다. 때로는 우리가 가지고있는 암호가 작동하지 않는 경우가 있습니다. 이 경우 암호를 \"복구\"할 수 있어야합니다.",
+      "info": "비밀번호를 잊어 버린 경우 새 비밀번호를 만드는 데 사용할 수있는 링크가 포함 된 {0} 으로 이메일을 보내드립니다.  ",
+      "advice": "또한 향후 비밀번호를 재설정하기 위해 소유하고있는 보조 이메일 주소를 하나 이상 추가하는 것이 좋습니다.",
+      "atLeastOneRecovery": "고맙게도 암호 복구 프로세스를 시작해야 할 경우에 대비하여 특별한 링크를 보내는 데 사용할 수있는 다른 방법이 이미 있습니다. 원하는 만큼 받을수 있습니다.",
+      "emailInput": "보조 이메일 주소 입력",
+      "unsaved": "아직 변경 사항을 저장하지 않았습니다.",
+      "dontRemoveLastOne": "이 주소를 제거하기 전에 다른 대체 주소를 추가하십시오.",
+      "invalidEmail": "잘못된 이메일",
+      "personalHeader": "대체",
+      "noPersonalMethods": "현재 없음"
     },
     "verifyRecovery": {
-      "header": "Recovery method verification",
-      "verifying": "Verifying your code...",
-      "verified": "Congratulations!  You have sucessfully added that recovery method just in case you ever forget your password.",
-      "expired": "Unfortunately that verification code has already expired.  I will send you another email right now with a new verification code.  You may go ahead and close this tab and check your email.",
-      "invalid": "Unfortunately something is wrong with that link.  You will need to try again.",
+      "header": "복구 방법 확인",
+      "verifying": "코드 확인 중 ...",
+      "verified": "축하합니다! 비밀번호를 잊어 버린 경우를 대비하여 복구 방법을 성공적으로 추가했습니다.",
+      "expired": "불행히도 해당 인증 코드는 이미 만료되었습니다. 지금 새 인증 코드를 이메일로 보내 드리겠습니다. 이 탭을 닫고 이메일을 확인할 수 있습니다.",
+      "invalid": "불행히도 링크에 문제가 있습니다. 다시 시도하세요.",
       "button": {
-        "profile": "Login and see my updated profile",
-        "again": "Try again"
+        "profile": "로그인하고 업데이트 된 프로필보기",
+        "again": "다시 시도"
       }
     },
     "forgot": {
-      "header": "Forgot my password",
-      "unameInput": "Enter your {0} username",
-      "required": "A username is required",
-      "clickOnly": "Please click me to send a link",
+      "header": "비밀번호를 잊어버렸습니다",
+      "unameInput": "{0} 사용자 이름을 입력하십시오.",
+      "required": "아이디(username) 는 필수 입력사항입니다",
+      "clickOnly": "링크를 보내려면 여기를 클릭하십시오.",
       "button": {
-        "send": "Send me a link"
+        "send": "내게 링크 보내기"
       }
     },
     "forgotSent": {
-      "header": "Email sent",
-      "emailComing": "We will send an email with a special link to the following email address in a minute:",
-      "alternates": "If you do not currently have access to this email account, please use one of the alternates below.",
-      "instead": "Use this one instead",
-      "too": "Sent to this email as well"
+      "header": "이메일이 전송되었습니다.",
+      "emailComing": "잠시 후 특별한 주소로 링크되는 이메일이 발송됩니다.",
+      "alternates": "현재 이 이메일 계정에 대한 액세스 권한이 없으면 아래의 대체 중 하나를 사용하십시오.",
+      "instead": "대신 이것을 사용하십시오.",
+      "too": "이 이메일에도 보냈습니다."
     },
     "reset": {
       "verify": {
-        "header": "Password reset verification",
-        "verifying": "Verifying your code...",
-        "verified": "Congratulations!  That was the correct code, you may create your new password now.",
-        "expired": "Unfortunately that verification code has already expired.  I will send you another email right now with a new verification code.  You may go ahead and close this tab and check your email.",
-        "invalid": "Unfortunately something is wrong with that link.  You will need to try again.",
+        "header": "비밀번호 재설정 확인",
+        "verifying": "코드 확인 중...",
+        "verified": "축하합니다! 정확한 코드 였으므로 이제 새 비밀번호를 만들 수 있습니다.",
+        "expired": "불행하게도 해당 인증 코드는 이미 만료되었습니다. 지금 새 인증 코드를 이메일로 보내 드리겠습니다. 이 탭을 닫고 이메일을 확인할 수 있습니다.",
+        "invalid": "불행히도 링크에 문제가 있습니다. 다시 시도하세요.",
         "button": {
-          "create": "Create my new password",
-          "again": "Try again"
+          "create": "새로운 비밀번호 만들기",
+          "again": "다시 시도"
         }
       },
       "complete": {
-        "header": "Excellent!",
-        "congrats": "Your password has been changed.  You will not have complete access to your profile until you log back in with your new password.",
+        "header": "멋져요!",
+        "congrats": "당신의 비밀번호가 변경되었습니다. 새 암호로 다시 로그인 할 때까지는 프로필에 대한 완전한 액세스 권한이 없습니다.",
         "button": {
-          "next": "Check my profile"
+          "next": "내 프로필보기"
         }
       }
     }
   },
   "2sv": {
     "intro": {
-      "header": "What is 2-Step Verification?",
-      "info": "Before we go any further, we would like to introduce an important step in protecting your account.",
-      "incentive": "Adding 2-Step Verification to your account will at least double the lifespan of your password!  Imagine not having to change your password every year anymore... Check the profile page after adding a 2SV to see what your new expiration will be."
+      "header": "2 단계 인증이란 무엇입니까?",
+      "info": "더 나아 가기 전에 귀하의 계정을 보호하는 중요한 단계를 소개하고자합니다.",
+      "incentive": "계정에 2 단계 인증을 추가하면 비밀번호 수명이 2 배 이상 길어집니다. 2단계 인증후 매년 암호를 변경하지 않아도 됩니다. 2SV를 추가 한 후 프로필 페이지에서 새 만료일을 확인하십시오."
     },
     "smartphone": {
       "intro": {
-        "header": "Do you have a smartphone?",
-        "info": "If you have one and it is usually with you, this can be a very good option for your 2-Step Verification."
+        "header": "스마트 폰 있으십니까?",
+        "info": "만약 가지고있는 경우, 이것은 2 단계 인증에 매우 좋은 옵션입니다."
       },
       "download": {
-        "header": "Download an app",
-        "recommendation-authenticator": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.  It is free and will not use any mobile data.",
-        "recommendation-authy": "There are several authenticator apps available but Authy is the recommended option. Authy is free and does not use any mobile data.",
+        "header": "앱 다운로드",
+        "recommendation-authenticator": "이 단계에서 사용할 수있는 앱이 많이 있지만 간단하게 Google 인증 프로그램을 사용하는 것이 좋습니다. 그것은 무료이며 모바일 데이터를 사용하지 않습니다.",
+        "recommendation-authy": "여러 인증 프로그램을 사용할 수 있지만 Authy가 권장되는 옵션입니다. Authy는 무료이며 모바일 데이터를 사용하지 않습니다.",
         "button": {
-          "ok": "OK, I installed it on my smartphone"
+          "ok": "네. 내 스마트 폰에 설치 했습니다."
         },
-        "appname-authenticator": "Google Authenticator",
+        "appname-authenticator": "구글 OTP",
         "appname-authy": "Authy"
       },
       "scanQr": {
-        "header": "Connect your smartphone to your account",
-        "info": "In order to connect your smartphone to your account we will need to scan the QR code below into the app you just installed.",
-        "add": "Add an account by pressing \"begin setup\" or the \"add\" button and then choosing the \"scan a barcode\" option",
-        "qr": "Point your phone at the QR code below and your app will start generating 6-digit codes",
-        "manual": "Problems with the QR code?  Here's the manual code: ",
+        "header": "스마트 폰을 계정에 연결하십시오.",
+        "info": "스마트 폰을 계정에 연결하려면 아래 QR 코드를 방금 설치 한 앱으로 스캔해야합니다.",
+        "add": "\"설정 시작\"또는 \"추가\"버튼을 누른 다음 \"바코드 스캔\"옵션을 선택하여 계정을 추가하십시오",
+        "qr": "휴대 전화를 아래 QR코드로 가리키면 앱에서 6 자리 코드를 생성하기 시작합니다.",
+        "manual": "QR 코드에 문제가 있습니까? 여기에 수동 코드가 있습니다: ",
         "button": {
-          "ok": "OK, my app is generating codes now"
+          "ok": "좋아요, 내 앱에서 코드를 생성 중입니다."
         }
       },
       "verifyQrCode": {
-        "header": "Verify code from your smartphone app",
-        "info": "Your app will generate a new 6-digit code every 30 seconds, when you're ready enter the one displayed in your app and click \"Verify\".",
-        "codeInput": "6-digit code",
-        "invalidCode": "code must be 6 digits",
-        "hint": "If you are using Google Authenticator, your time may need to be synced.  Simply tap the Menu button (three dots) within Google Authenticator and go to Settings > Time Correction for Codes > Sync now."
+        "header": "스마트 폰 앱에서 코드 확인",
+        "info": "앱에 30 초마다 새로운 6 자리 코드가 생성됩니다. 앱에 표시된 코드를 입력하고 '확인'을 클릭하십시오.",
+        "codeInput": "6 자리 코드",
+        "invalidCode": "코드는 6 자리 여야합니다.",
+        "hint": "Google OTP를 사용하는 경우 시간을 동기화해야 할 수 있습니다. Google OTP에서 메뉴 버튼 (3 개의 점)을 탭한 다음 설정> 코드 시간 수정> 지금 동기화로 이동하십시오."
       },
       "codeVerified": {
-        "header": "Excellent!",
-        "info": "That was the correct code so you may now use your smartphone to further protect your account."
+        "header": "잘하셨어요!",
+        "info": "올바른 코드이므로 스마트 폰을 사용하여 계정을 더욱 안전하게 보호 할 수 있습니다."
       }
     },
     "key": {
       "intro": {
-        "header": "Do you have a USB security key?",
-        "info": "USB security keys are the most secure and convenient option for your 2-Step Verification setup.",
+        "header": "USB 보안 키가 있습니까?",
+        "info": "USB 보안 키는 2 단계 인증 설정에 가장 안전하고 편리한 옵션입니다.",
         "button": {
-          "no": "No, but I'd like to get one"
+          "no": "아니요, 하지만 하나 만들고 싶다"
         }
       },
       "insert": {
-        "header": "Insert your USB security key",
+        "header": "USB 보안 키 삽입",
         "button": {
-          "ok": "OK, I inserted it"
+          "ok": "네, 삽입했습니다."
         },
         "nosupport": {
-          "header": "Unsupported in your current browser",
-          "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
+          "header": "현재 브라우저에서 지원되지 않습니다.",
+          "info": "USB 보안 키는 가장 안전한 브라우저에서만 지원됩니다. Google Chrome과 같은 더욱 안전한 브라우저를 고려하십시오."
         }
       },
       "touch": {
-        "header": "Touch or press your USB security key",
-        "info": "Once your security key starts blinking, go ahead and press its button or touch its sensor.",
-        "error": "Something went wrong.  Please make sure you have the key inserted correctly and wait for the blink before pressing.",
+        "header": "USB 보안 키를 터치하거나 누르세요.",
+        "info": "보안 키가 깜박이기 시작하면 버튼을 누르거나 센서를 터치하십시오.",
+        "error": "문제가 발생했습니다. 키를 올바르게 삽입했는지 확인한 다음 깜박일 때까지 기다렸다가 키를 누르십시오.",
         "button": {
-          "retry": "Retry"
+          "retry": "다시시도"
         }
       },
       "confirmed": {
-        "header": "Excellent!",
-        "info": "Your USB security key is now confirmed so you may use it to further protect your account."
+        "header": "잘하셨어요!",
+        "info": "이제 귀하의 USB 보안 키가 확인되어 귀하의 계정을보다 안전하게 보호 할 수 있습니다."
       }
     },
     "codes": {
       "intro": {
-        "header": "Printable backup codes",
-        "backupInfo": "There may be times when you do not have your smartphone or USB security key with you.  When that is the case, printable backup codes can be used.",
-        "primaryInfo": "Even if you are not using a smartphone or security key for 2-step verification you can still increase the security of your account by using printable backup codes alone.",
+        "header": "인쇄 가능한 백업 코드",
+        "backupInfo": "스마트 폰이나 USB 보안 키가없는 경우가 있습니다. 이 경우 인쇄 가능한 백업 코드를 사용할 수 있습니다.",
+        "primaryInfo": "2 단계 인증을 위해 스마트 폰이나 보안 키를 사용하지 않더라도 인쇄 가능한 백업 코드만 사용하여 계정의 보안을 강화할 수 있습니다.",
         "button": {
-          "new": "Create new codes"
+          "new": "새 코드 만들기"
         }
       },
       "new": {
-        "header": "Printable backup codes",
-        "loading": "generating codes...",
-        "generated": "generated on",
-        "personalCopy": "Please retain a personal copy for later use",
+        "header": "인쇄 가능한 백업 코드",
+        "loading": "코드 생성 중 ...",
+        "generated": "생성되었습니다",
+        "personalCopy": "나중에 사용할 수 있도록 개인적으로 사본을 보관하십시오.",
         "button": {
-          "ok": "Finish",
-          "print": "Print",
-          "download": "Download",
-          "copy": "Copy",
-          "copied": "Copied"
+          "ok": "완료",
+          "print": "인쇄",
+          "download": "다운로드",
+          "copy": "복사",
+          "copied": "복사됨"
         }
       }
     },
     "change": {
-      "header": "Lost or new",
-      "info": "If you have lost your {0} or gotten a new one, you need to remove the device from your account before configuring a new one. Would you like to go ahead and remove your existing device?  You will have the option to configure a new one in the next step.",
-      "lastOne": "This is your last 2SV, removing it will cause your password to expire sooner."
+      "header": "분실 또는 신규",
+      "info": "{0} 을 잃어 버렸거나 새로운 것을 얻은 경우 새 장치를 구성하기 전에 계정에서 장치를 제거해야합니다. 기존 장치를 제거 하시겠습니까? 다음 단계에서 새 구성을 선택할 수 있습니다.",
+      "lastOne": "이것은 당신의 마지막 2SV입니다. 암호를 제거하면 암호가 더 빨리 만료됩니다."
     },
     "removed": {
-      "header": "Removed",
-      "info": "That device has been removed from your profile. Would you like to configure a new one now?",
+      "header": "삭제되었습니다",
+      "info": "해당 기기가 내 프로필에서 삭제되었습니다. 지금 새로운 것을 구성 하시겠습니까?",
       "button": {
-        "later": "Maybe later"
+        "later": "나중에 하기"
       }
     },
     "remove": {
-      "lastOne": "This is your last 2SV, are you absolutely sure you want to remove it?  This will cause your password to expire sooner."
+      "lastOne": "이것은 당신의 마지막 2SV입니다, 정말로 이것을 제거하고 싶습니까? 제거하면 암호가 더 빨리 만료됩니다."
     }
   }
 }
