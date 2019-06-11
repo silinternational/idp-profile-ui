@@ -198,7 +198,7 @@
     "reset": {
       "verify": {
         "header": "Verificación de restablecimiento de contraseña",
-        "verifying": "Verifying your code...",
+        "verifying": "Verificando su código...",
         "verified": "¡Felicitaciones! Ese era el código correcto, ahora puedes crear tu nueva contraseña.",
         "expired": "Desafortunadamente, el código de verificación ya ha vencido. Envio otro correo electrónico ahora mismo con un nuevo código de verificación.  Puedes cerrar esta pestaña y busca su correo electrónico.",
         "invalid": "Desafortunadamente algo no funciona con ese enlace. Necesita intentarlo de nuevo.",
@@ -294,39 +294,39 @@
       "intro": {
         "header": "Códigos de seguridad imprimibles",
         "backupInfo": "Puede presentar ocasiones cuando no tenga su teléfono inteligente o llave de seguridad USB disponible. En ese caso, se puede usar códigos de respaldo para agregar manualmente.",
-        "primaryInfo": "Even if you are not using a smartphone or security key for 2-step verification you can still increase the security of your account by using printable backup codes alone.",
+        "primaryInfo": "Si no está utilizando un teléfono inteligente o una clave de seguridad para la verificación en dos pasos, aún puede aumentar la seguridad de su cuenta utilizando solo códigos de respaldo imprimibles.",
         "button": {
-          "new": "Create new codes"
+          "new": "Crear nuevos códigos"
         }
       },
       "new": {
-        "header": "Printable backup codes",
-        "loading": "generating codes...",
-        "generated": "generated on",
-        "personalCopy": "Please retain a personal copy for later use",
+        "header": "Códigos de seguridad imprimibles",
+        "loading": "creando codigos...",
+        "generated": "creado en",
+        "personalCopy": "Por favor guarde una copia personal para uso cuando tiene la nececidad",
         "button": {
-          "ok": "Finish",
-          "print": "Print",
-          "download": "Download",
-          "copy": "Copy",
-          "copied": "Copied"
+          "ok": "Finalizado",
+          "print": "Imprimir",
+          "download": "Descargar",
+          "copy": "Copiar",
+          "copied": "Fue copiado"
         }
       }
     },
     "change": {
-      "header": "Lost or new",
-      "info": "If you have lost your {0} or gotten a new one, you need to remove the device from your account before configuring a new one. Would you like to go ahead and remove your existing device?  You will have the option to configure a new one in the next step.",
-      "lastOne": "This is your last 2SV, removing it will cause your password to expire sooner."
+      "header": "Perdido o nuevo",
+      "info": "Si ha perdido su {0} o ha obtenido un nuevo, debe eliminar el dispositivo de su cuenta antes de configurar el nuevo. ¿Se gustaría seguir adelante y eliminar tu dispositivo existente? Tendrá la opción de configurar un nuevo en el siguiente paso.",
+      "lastOne": "Este es su último verificacion de dos pasos, eliminarlo hará que su contraseña caduque antes."
     },
     "removed": {
-      "header": "Removed",
-      "info": "That device has been removed from your profile. Would you like to configure a new one now?",
+      "header": "Eliminado",
+      "info": "Ese dispositivo ha sido eliminado de tu perfil. ¿Te gustaría configurar un nuevo?",
       "button": {
-        "later": "Maybe later"
+        "later": "Tal vez luego"
       }
     },
     "remove": {
-      "lastOne": "This is your last 2SV, are you absolutely sure you want to remove it?  This will cause your password to expire sooner."
+      "lastOne": "Este es su último verificacion de dos pasos. ¿Está absolutamente seguro de que desea eliminarlo? Esto hará que su contraseña vencera mas antes."
     }
   }
 }
