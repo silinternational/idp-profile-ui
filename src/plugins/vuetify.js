@@ -5,7 +5,7 @@ import 'vuetify/src/stylus/app.styl'
 
 Vue.use(Vuetify, {
   lang: {
-    locales: locales,
+    locales,
     current: determineCurrentLanguage()
   },
   theme: {
