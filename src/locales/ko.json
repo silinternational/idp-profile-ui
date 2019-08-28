@@ -47,7 +47,7 @@
       "explanation": "링크가 이미 만료되었으므로 새로운 링크가있는 다른 이메일을 보냈습니다. 일분안에 도착할 것입니다. 더 이상 이 탭이 필요하지 않습니다."
     },
     "steps": {
-      "pwStep": "패스워드\/암호",
+      "pwStep": "패스워드/암호",
       "pwRecoverStep": "비밀번호 찾기",
       "2svStep": "2단계 인증",
       "completeStep": "완료"
@@ -67,12 +67,12 @@
       "header": "내 {0} ID",
       "username": "사용자이름 : ",
       "lastLogin": "마지막 로그인 ",
-      "manager": "관리자 ",
+      "manager": "복구 담당자: ",
       "2sv": "2단계 인증",
       "rename": "\"이름 바꾸기\"",
       "unverifiedEmails": "확인되지 않은 이메일 주소가 있습니다. 해당 계정에 로그인하고 이메일에 제공된 확인 링크를 클릭하십시오.",
       "passwordCard": {
-        "title": "패스워드\/암호",
+        "title": "패스워드/암호",
         "lastChanged": "마지막으로 변경 된",
         "expires": "만료:",
         "button": {
