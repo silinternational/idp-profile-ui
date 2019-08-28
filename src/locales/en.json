@@ -67,7 +67,7 @@
       "header": "My {0} Identity",
       "username": "Username: ",
       "lastLogin": "Last login: ",
-      "manager": "Manager: ",
+      "manager": "Recovery contact: ",
       "2sv": "2-Step Verification",
       "rename": "Rename",
       "unverifiedEmails": "You have unverified email addresses, please log into those accounts and click the link provided in the verification email.",
