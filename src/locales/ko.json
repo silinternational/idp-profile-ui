@@ -67,7 +67,7 @@
       "header": "내 {0} ID",
       "username": "사용자이름 : ",
       "lastLogin": "마지막 로그인 ",
-      "manager": "Recovery contact: ",
+      "manager": "복구 담당자: ",
       "2sv": "2단계 인증",
       "rename": "\"이름 바꾸기\"",
       "unverifiedEmails": "확인되지 않은 이메일 주소가 있습니다. 해당 계정에 로그인하고 이메일에 제공된 확인 링크를 클릭하십시오.",
