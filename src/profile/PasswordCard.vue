@@ -30,7 +30,7 @@
 
 <script>
 import Attribute from './Attribute'
-import { subDays } from 'date-fns'
+import { parseISO, subDays } from 'date-fns'
 
 export default {
   components: {
@@ -49,7 +49,7 @@ export default {
   }),
   methods: {
     isExpiringSoon() {
-      return subDays(this.meta.expires, 30) <= this.today
+      return subDays(parseISO(this.meta.expires), 30) <= this.today
     }
   },
 }
