@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar app color="primary">
+    <v-app-bar app color="primary">
       <a href="/"><img src="@/assets/logo.png"></a>
 
       <v-spacer />
@@ -9,21 +9,21 @@
 
       <v-divider vertical dark inset class="mx-2" />
 
-      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" flat dark>{{ $vuetify.t('$vuetify.app.logout') }}</v-btn>
-      <v-btn v-else                         @click="$user.login()" flat dark>{{ $vuetify.t('$vuetify.app.login') }}</v-btn>
+      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark>{{ $vuetify.lang.t('$vuetify.app.logout') }}</v-btn>
+      <v-btn v-else                         @click="$user.login()" text dark>{{ $vuetify.lang.t('$vuetify.app.login') }}</v-btn>
 
       <v-divider vertical dark inset />
 
       <HelpButton />
-    </v-toolbar>
+    </v-app-bar>
 
-    <v-content>
+    <v-main>
       <Loading class="ma-0" />
 
       <v-layout row>
         <v-spacer />
 
-        <v-btn v-if="$returnTo.url" :href="$returnTo.url" small flat dark color="secondary">
+        <v-btn v-if="$returnTo.url" :href="$returnTo.url" small text dark color="secondary">
           return to {{ $returnTo.url }}
         </v-btn>
       </v-layout>
@@ -36,7 +36,7 @@
         <!-- adding key here helps produce more predictable view behavior (see https://youtu.be/7YZ5DwlLSt8?t=21m22s) -->
         <router-view :key="$route.fullPath" />
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 

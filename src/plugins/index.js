@@ -1,4 +1,4 @@
-import './vuetify'
+import configuredVuetify from './vuetify'
 import './api'
 import configuredRouter from './router'
 import './user'
@@ -7,4 +7,5 @@ import './analytics'
 
 export {
    configuredRouter,
+   configuredVuetify
 }

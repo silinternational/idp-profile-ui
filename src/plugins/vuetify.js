@@ -1,16 +1,22 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib';
 import locales from '@/locales'
-import 'vuetify/src/stylus/app.styl'
+import 'vuetify/dist/vuetify.min.css'
 
-Vue.use(Vuetify, {
+Vue.use(Vuetify)
+
+const configuredVuetify = new Vuetify({
   lang: {
     locales,
     current: determineCurrentLanguage()
   },
   theme: {
-    primary: `${process.env.VUE_APP_PRIMARY_COLOR}`,
-    secondary: `${process.env.VUE_APP_SECONDARY_COLOR}`,
+    themes: {
+      light: {
+        primary: `${process.env.VUE_APP_PRIMARY_COLOR}`,
+        secondary: `${process.env.VUE_APP_SECONDARY_COLOR}`,
+      }
+    }
   },
 })
 
@@ -19,3 +25,5 @@ function determineCurrentLanguage() {
 
   return locales[mainLangOnly] ? mainLangOnly : 'en'
 }
+
+export default configuredVuetify
