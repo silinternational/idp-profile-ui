@@ -13,7 +13,7 @@
 <script>
 export default {
   mounted() {
-    document.title = this.$vuetify.t('$vuetify.app.title', this.$slots.header[0].text.trim())
+    document.title = this.$vuetify.lang.t('$vuetify.app.title', this.$slots.header[0].text.trim())
   }
 }
 </script>

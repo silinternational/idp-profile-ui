@@ -2,26 +2,26 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.2sv.codes.intro.header') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.intro.header') }}
       </template>
 
       <p v-if="hasOtherTypes">
-        {{ $vuetify.t('$vuetify.2sv.codes.intro.backupInfo') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.intro.backupInfo') }}
       </p>
       <p v-else>
-        {{ $vuetify.t('$vuetify.2sv.codes.intro.primaryInfo') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.intro.primaryInfo') }}
       </p>
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="skip" flat color="warning" tabindex="-1" outline> 
-        {{ $vuetify.t('$vuetify.global.button.skip') }}
+      <v-btn @click="skip" text color="warning" tabindex="-1" outlined> 
+        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/printable-backup-codes/new" color="primary" flat outline> 
-        {{ $vuetify.t('$vuetify.2sv.codes.intro.button.new') }}
+      <v-btn to="/2sv/printable-backup-codes/new" color="primary" text outlined> 
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.intro.button.new') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

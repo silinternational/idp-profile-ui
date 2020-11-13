@@ -15,7 +15,7 @@
         </v-icon>
       </template>
 
-      {{ $vuetify.t('$vuetify.profile.index.rename') }}
+      {{ $vuetify.lang.t('$vuetify.profile.index.rename') }}
     </v-tooltip>
   </h3>
 </template>

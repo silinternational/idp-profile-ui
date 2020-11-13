@@ -1,7 +1,7 @@
 <template>
   <BasePage>
     <template v-slot:header>
-      {{ $vuetify.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
+      {{ $vuetify.lang.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
 
       <v-spacer/>
 
@@ -9,13 +9,13 @@
     </template>
 
     <aside class="pb-3">
-      <Attribute :name="$vuetify.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
-      <Attribute :name="$vuetify.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
-      <Attribute :name="$vuetify.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
+      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
+      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
+      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
     </aside>
 
     <v-alert :value="hasUnverifiedEmails" type="error">
-      <span>{{ $vuetify.t('$vuetify.profile.index.unverifiedEmails') }}</span>
+      <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
     </v-alert>
 
     <v-layout row wrap>
@@ -30,7 +30,7 @@
       </v-flex>
     </v-layout>
 
-    <v-subheader class="py-5">{{ $vuetify.t('$vuetify.profile.index.2sv') }}</v-subheader>
+    <v-subheader class="py-5">{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
 
     <v-layout row wrap>
       <v-flex xs12 sm6 md4 py-3>

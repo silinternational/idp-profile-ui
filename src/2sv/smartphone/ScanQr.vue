@@ -2,22 +2,22 @@
   <ProfileWizard>
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.header') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.header') }}
       </template>
 
       <p>
-        {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.info') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.info') }}
       </p>
 
       <ol>
         <li>
           <p class="pl-4">
-            {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.add') }}
+            {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.add') }}
           </p>
         </li>
         <li>
           <p class="layout column pl-4">
-            {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.qr') }}
+            {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.qr') }}
           </p>
 
           <v-layout v-if="newTotp.data" row justify-center>
@@ -25,7 +25,7 @@
           </v-layout>
           <v-layout v-if="newTotp.data" row justify-center>
             <p>
-              {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.manual') }}
+              {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.manual') }}
               <span class="font-mono">{{ newTotp.data.totpKey }}</span>
             </p>
           </v-layout>
@@ -34,14 +34,14 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/download-app" flat tabindex="-1" outline> 
-        {{ $vuetify.t('$vuetify.global.button.back') }}
+      <v-btn to="/2sv/smartphone/download-app" text tabindex="-1" outlined> 
+        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`" :disabled="! newTotp.id" color="primary" flat outline> 
-        {{ $vuetify.t('$vuetify.2sv.smartphone.scanQr.button.ok') }}
+      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`" :disabled="! newTotp.id" color="primary" text outlined> 
+        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.button.ok') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

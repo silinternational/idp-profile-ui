@@ -3,7 +3,7 @@
     ref="tf" 
     :value="value" 
     v-bind="$attrs" 
-    outline
+    outlined
     v-on="$listeners" />
 </template>
 

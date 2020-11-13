@@ -1,12 +1,12 @@
 <template>
   <BasePage>
-    <template v-slot:header>{{ $vuetify.t('$vuetify.password.forgot.header') }}</template>
+    <template v-slot:header>{{ $vuetify.lang.t('$vuetify.password.forgot.header') }}</template>
 
     <v-form @submit.prevent="usedEnterKey = !usedEnterKey" ref="form">
-      <BaseTextField :label="$vuetify.t('$vuetify.password.forgot.unameInput', $root.idpConfig.idpName)"
+      <BaseTextField :label="$vuetify.lang.t('$vuetify.password.forgot.unameInput', $root.idpConfig.idpName)"
                      v-model="uname"
                      :rules="[
-                       v => !!v || $vuetify.t('$vuetify.password.forgot.required')
+                       v => !!v || $vuetify.lang.t('$vuetify.password.forgot.required')
                      ]" validate-on-blur autofocus />
     </v-form>
 
@@ -15,13 +15,13 @@
       <v-tooltip :disabled="! usedEnterKey || ! uname" :value="usedEnterKey" top>
         <template v-slot:activator="{ on }">
           <div v-on="on">
-            <v-btn :disabled="! uname" @click="usedEnterKey = false" color="primary" class="g-recaptcha" outline>
-              {{ $vuetify.t('$vuetify.password.forgot.button.send') }}
+            <v-btn :disabled="! uname" @click="usedEnterKey = false" color="primary" class="g-recaptcha" outlined>
+              {{ $vuetify.lang.t('$vuetify.password.forgot.button.send') }}
             </v-btn>
           </div>
         </template>
 
-        {{ $vuetify.t('$vuetify.password.forgot.clickOnly') }}
+        {{ $vuetify.lang.t('$vuetify.password.forgot.clickOnly') }}
       </v-tooltip>
     </ButtonBar>
   </BasePage>

@@ -2,43 +2,43 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.profile.complete.header') }}
+        {{ $vuetify.lang.t('$vuetify.profile.complete.header') }}
       </template>
 
       <p class="layout row">
         <v-icon color="success" class="mr-3">done</v-icon> 
-        {{ $vuetify.t('$vuetify.profile.complete.info', $user.first_name, $root.idpConfig.idpName) }}
+        {{ $vuetify.lang.t('$vuetify.profile.complete.info', $user.first_name, $root.idpConfig.idpName) }}
       </p>
 
       <p class="layout row">
         <v-icon color="success" class="mr-3">person</v-icon> 
-        {{ $vuetify.t('$vuetify.profile.complete.username') }} <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
+        {{ $vuetify.lang.t('$vuetify.profile.complete.username') }} <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
       </p>
 
       <p v-if="unverifiedEmails.length" class="layout row">
         <v-icon color="warning" class="mr-3">email</v-icon> 
         <span>
-          {{ $vuetify.t('$vuetify.profile.complete.unverifiedEmails') }}
+          {{ $vuetify.lang.t('$vuetify.profile.complete.unverifiedEmails') }}
           <span class="font-weight-bold">({{ unverifiedEmails | joined }})</span>
         </span>
       </p>
 
       <p v-if="! alternates.length" class="layout row">
         <v-icon color="warning" class="mr-3">warning</v-icon> 
-        {{ $vuetify.t('$vuetify.profile.complete.noAlternates') }}
+        {{ $vuetify.lang.t('$vuetify.profile.complete.noAlternates') }}
       </p>
 
       <p v-if="mfa.numVerified == 0" class="layout row">
         <v-icon color="warning" class="mr-3">warning</v-icon> 
-        {{ $vuetify.t('$vuetify.profile.complete.no2sv') }}
+        {{ $vuetify.lang.t('$vuetify.profile.complete.no2sv') }}
       </p>
     </BasePage>
 
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn @click="done" color="primary" flat outline>
-        {{ $vuetify.t('$vuetify.profile.complete.button.profile') }}
+      <v-btn @click="done" color="primary" text outlined>
+        {{ $vuetify.lang.t('$vuetify.profile.complete.button.profile') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

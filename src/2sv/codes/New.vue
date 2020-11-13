@@ -2,18 +2,18 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.header') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.header') }}
       </template>
 
       <p v-if="printing" class="printable header">
         {{ $root.idpConfig.idpName }} 
         <span class="caption">
-          ({{ $vuetify.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | formatLong }})
+          ({{ $vuetify.lang.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | formatLong }})
         </span>
       </p>
       <v-layout column wrap align-center justify-center id="codes">
         <p v-if="! codes.length" class="body-2">
-          {{ $vuetify.t('$vuetify.2sv.codes.new.loading') }}
+          {{ $vuetify.lang.t('$vuetify.2sv.codes.new.loading') }}
         </p>
         
         <div v-for="code in codes" :key="code" class="layout row align-center pr-5">
@@ -23,20 +23,20 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="print('#codes')" color="secondary" flat outline>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.button.print') }}
+      <v-btn @click="print('#codes')" color="secondary" text outlined>
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}
         <v-icon right>print</v-icon>
       </v-btn>
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" flat outline>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.button.download') }}
+      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" text outlined>
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}
         <v-icon right>cloud_download</v-icon>
       </v-btn>
-      <v-btn v-if="copied" @click="copy()" color="success" flat outline>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.button.copied') }}
+      <v-btn v-if="copied" @click="copy()" color="success" text outlined>
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}
         <v-icon right>checked</v-icon>
       </v-btn>
-      <v-btn v-else @click="copy()" color="secondary" flat outline>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.button.copy') }}
+      <v-btn v-else @click="copy()" color="secondary" text outlined>
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}
         <v-icon right>assignment</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
@@ -44,13 +44,13 @@
       <v-tooltip :disabled="gotEm" :value="gotEm" top>
         <template v-slot:activator="{ on }">
           <div v-on="on">
-            <v-btn @click="finish" :disabled="!gotEm" color="primary" flat outline>
-              {{ $vuetify.t('$vuetify.2sv.codes.new.button.ok') }}
+            <v-btn @click="finish" :disabled="!gotEm" color="primary" text outlined>
+              {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.ok') }}
             </v-btn>
           </div>
         </template>
 
-        {{ $vuetify.t('$vuetify.2sv.codes.new.personalCopy') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.personalCopy') }}
       </v-tooltip>
     </ButtonBar>
   </ProfileWizard>

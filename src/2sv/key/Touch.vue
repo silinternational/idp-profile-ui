@@ -2,17 +2,17 @@
   <ProfileWizard>
     <v-alert :value="error" type="error">
       <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.key.touch.error') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.error') }}
       </span>
     </v-alert>
 
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.2sv.key.touch.header') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.header') }}
       </template>
 
       <p>
-        {{ $vuetify.t('$vuetify.2sv.key.touch.info') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.info') }}
       </p>
 
       <figure class="layout column align-center pa-4">
@@ -22,14 +22,14 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/usb-security-key/insert" flat tabindex="-1" outline> 
-        {{ $vuetify.t('$vuetify.global.button.back') }}
+      <v-btn to="/2sv/usb-security-key/insert" text tabindex="-1" outlined> 
+        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn v-if="error" @click="error = false; create()" color="error" flat outline> 
-        {{ $vuetify.t('$vuetify.2sv.key.touch.button.retry') }}
+      <v-btn v-if="error" @click="error = false; create()" color="error" text outlined> 
+        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.button.retry') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

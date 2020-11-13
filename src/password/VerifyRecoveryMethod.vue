@@ -1,20 +1,20 @@
 <template>
   <BasePage>
-    <template v-slot:header>{{ $vuetify.t('$vuetify.password.verifyRecovery.header') }}</template>
+    <template v-slot:header>{{ $vuetify.lang.t('$vuetify.password.verifyRecovery.header') }}</template>
 
-    <p v-if="verifying">{{ $vuetify.t('$vuetify.password.verifyRecovery.verifying') }}</p>
-    <p v-if="verified">{{ $vuetify.t('$vuetify.password.verifyRecovery.verified') }}</p>
-    <p v-if="expired">{{ $vuetify.t('$vuetify.password.verifyRecovery.expired') }}</p>
-    <p v-if="invalid">{{ $vuetify.t('$vuetify.password.verifyRecovery.invalid') }}</p>
+    <p v-if="verifying">{{ $vuetify.lang.t('$vuetify.password.verifyRecovery.verifying') }}</p>
+    <p v-if="verified">{{ $vuetify.lang.t('$vuetify.password.verifyRecovery.verified') }}</p>
+    <p v-if="expired">{{ $vuetify.lang.t('$vuetify.password.verifyRecovery.expired') }}</p>
+    <p v-if="invalid">{{ $vuetify.lang.t('$vuetify.password.verifyRecovery.invalid') }}</p>
 
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn v-if="verified" to="/profile" color="primary" outline>
-        {{ $vuetify.t('$vuetify.password.verifyRecovery.button.profile') }}
+      <v-btn v-if="verified" to="/profile" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.password.verifyRecovery.button.profile') }}
       </v-btn>
-      <v-btn v-if="invalid" to="/password/recovery" color="primary" outline>
-        {{ $vuetify.t('$vuetify.password.verifyRecovery.button.again') }}
+      <v-btn v-if="invalid" to="/password/recovery" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.password.verifyRecovery.button.again') }}
       </v-btn>
     </ButtonBar>
   </BasePage>

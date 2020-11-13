@@ -1,7 +1,7 @@
 <template>
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
-      <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.title') }}</h3>
+      <h3 class="headline">{{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.title') }}</h3>
 
       <v-spacer />
 
@@ -10,7 +10,7 @@
           <v-icon v-on="on" x-large color="error">error</v-icon>
         </template>
 
-        {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.unverifiedEmails') }}
+        {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.unverifiedEmails') }}
       </v-tooltip>
     </v-card-title>
     
@@ -23,25 +23,25 @@
             <v-icon v-on="on" color="error" small class="pl-1">error</v-icon>
           </template>
 
-          {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
+          {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
         </v-tooltip>
 
         <a v-if="! method.verified && method.id != sent" @click="resend(method)" class="caption pl-2">
-          {{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.resend') }}
+          {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.resend') }}
         </a>
       </div>
       <div v-if="! methods.length" class="layout row align-center">
         <v-icon x-large color="warning" class="pr-3">warning</v-icon>
-        <em>{{ $vuetify.t('$vuetify.profile.index.passwordRecoveryCard.warning') }}</em>
+        <em>{{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.warning') }}</em>
       </div>
     </v-card-text>
 
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn :href="'#/password/recovery'" color="primary" flat outline>
-        <span v-if="methods.length">{{ $vuetify.t('$vuetify.global.button.change') }}</span>
-        <span v-else>{{ $vuetify.t('$vuetify.global.button.add') }}</span>
+      <v-btn :href="'#/password/recovery'" color="primary" text outlined>
+        <span v-if="methods.length">{{ $vuetify.lang.t('$vuetify.global.button.change') }}</span>
+        <span v-else>{{ $vuetify.lang.t('$vuetify.global.button.add') }}</span>
       </v-btn>
     </v-card-actions>
   </v-card>

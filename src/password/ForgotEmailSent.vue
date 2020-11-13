@@ -1,11 +1,11 @@
 <template>
   <BasePage>
-    <template v-slot:header>{{ $vuetify.t('$vuetify.password.forgotSent.header') }}</template>
+    <template v-slot:header>{{ $vuetify.lang.t('$vuetify.password.forgotSent.header') }}</template>
 
-    <p>{{ $vuetify.t('$vuetify.password.forgotSent.emailComing') }}</p>
+    <p>{{ $vuetify.lang.t('$vuetify.password.forgotSent.emailComing') }}</p>
     <p class="pl-5 layout row align-center font-mono">{{ primary.value }}</p>
     
-    <p v-if="alternates.length">{{ $vuetify.t('$vuetify.password.forgotSent.alternates') }}</p>
+    <p v-if="alternates.length">{{ $vuetify.lang.t('$vuetify.password.forgotSent.alternates') }}</p>
     <p v-for="alternate in alternates" :key="alternate.id" class="pl-5 layout row">
       <span class="font-mono">{{ alternate.value }}</span>
 
@@ -14,14 +14,14 @@
           <v-icon v-on="on" color="success" small class="pl-3">check</v-icon>
         </template>
 
-        {{ $vuetify.t('$vuetify.password.forgotSent.too') }}
+        {{ $vuetify.lang.t('$vuetify.password.forgotSent.too') }}
       </v-tooltip>
       <v-tooltip v-else right>
         <template v-slot:activator="{ on }">
           <v-icon @click="resend(alternate)" v-on="on" color="secondary" small class="pl-3">send</v-icon>
         </template>
         
-        {{ $vuetify.t('$vuetify.password.forgotSent.instead') }}
+        {{ $vuetify.lang.t('$vuetify.password.forgotSent.instead') }}
       </v-tooltip>
     </p>
   </BasePage>

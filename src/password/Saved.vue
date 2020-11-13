@@ -2,19 +2,19 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.password.saved.header') }}
+        {{ $vuetify.lang.t('$vuetify.password.saved.header') }}
       </template>
 
       <p class="text-xs-center">
-        {{ $vuetify.t('$vuetify.password.saved.info') }}
+        {{ $vuetify.lang.t('$vuetify.password.saved.info') }}
       </p>
     </BasePage>
 
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn @click="next" color="primary" flat outline>
-        {{ $vuetify.t('$vuetify.global.button.continue') }}
+      <v-btn @click="next" color="primary" text outlined>
+        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

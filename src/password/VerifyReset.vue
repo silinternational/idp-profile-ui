@@ -1,20 +1,20 @@
 <template>
   <BasePage>
-    <template v-slot:header>{{ $vuetify.t('$vuetify.password.reset.verify.header') }}</template>
+    <template v-slot:header>{{ $vuetify.lang.t('$vuetify.password.reset.verify.header') }}</template>
 
-    <p v-if="verifying">{{ $vuetify.t('$vuetify.password.reset.verify.verifying') }}</p>
-    <p v-if="verified">{{ $vuetify.t('$vuetify.password.reset.verify.verified') }}</p>
-    <p v-if="expired">{{ $vuetify.t('$vuetify.password.reset.verify.expired') }}</p>
-    <p v-if="invalid">{{ $vuetify.t('$vuetify.password.reset.verify.invalid') }}</p>
+    <p v-if="verifying">{{ $vuetify.lang.t('$vuetify.password.reset.verify.verifying') }}</p>
+    <p v-if="verified">{{ $vuetify.lang.t('$vuetify.password.reset.verify.verified') }}</p>
+    <p v-if="expired">{{ $vuetify.lang.t('$vuetify.password.reset.verify.expired') }}</p>
+    <p v-if="invalid">{{ $vuetify.lang.t('$vuetify.password.reset.verify.invalid') }}</p>
 
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn v-if="verified" to="/password/create" color="primary" outline>
-        {{ $vuetify.t('$vuetify.password.reset.verify.button.create') }}
+      <v-btn v-if="verified" to="/password/create" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.password.reset.verify.button.create') }}
       </v-btn>
-      <v-btn v-if="invalid" to="/password/forgot" color="primary" outline>
-        {{ $vuetify.t('$vuetify.password.reset.verify.button.again') }}
+      <v-btn v-if="invalid" to="/password/forgot" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.password.reset.verify.button.again') }}
       </v-btn>
     </ButtonBar>
   </BasePage>

@@ -1,7 +1,7 @@
 <template>
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
-      <h3 class="headline">{{ $vuetify.t('$vuetify.profile.index.passwordCard.title') }}</h3>
+      <h3 class="headline">{{ $vuetify.lang.t('$vuetify.profile.index.passwordCard.title') }}</h3>
 
       <v-spacer />
 
@@ -9,20 +9,20 @@
     </v-card-title>
 
     <v-card-text class="grow">
-      <Attribute :name="$vuetify.t('$vuetify.profile.index.passwordCard.lastChanged')"
+      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.passwordCard.lastChanged')"
                  :value="meta.last_changed | format"/>
-      <Attribute :name="$vuetify.t('$vuetify.profile.index.passwordCard.expires')"
+      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.passwordCard.expires')"
                  :value="meta.expires | format"/>
     </v-card-text>
 
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="isExpiringSoon()" :href="'#/password/create'" color="warning" flat outline>
-        {{ $vuetify.t('$vuetify.profile.index.passwordCard.button.changeNow') }}
+      <v-btn v-if="isExpiringSoon()" :href="'#/password/create'" color="warning" text outlined>
+        {{ $vuetify.lang.t('$vuetify.profile.index.passwordCard.button.changeNow') }}
       </v-btn>
-      <v-btn v-else :href="'#/password/create'" color="primary" flat outline>
-        {{ $vuetify.t('$vuetify.global.button.change') }}
+      <v-btn v-else :href="'#/password/create'" color="primary" text outlined>
+        {{ $vuetify.lang.t('$vuetify.global.button.change') }}
       </v-btn>
     </v-card-actions>
   </v-card>
