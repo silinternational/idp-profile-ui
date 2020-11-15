@@ -1,12 +1,12 @@
 <template>
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
-      <v-layout row align-center>
+      <v-row no-gutters align-center>
         <v-icon :color="meta.created_utc ? 'success' : ''" x-large>smartphone</v-icon>
 
         <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')" 
                       :id="meta.id" @new-label="label = $event"/>
-      </v-layout>
+      </v-row>
     </v-card-title>
 
     <v-card-text class="grow">

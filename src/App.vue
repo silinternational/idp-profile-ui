@@ -20,13 +20,13 @@
     <v-main>
       <Loading class="ma-0" />
 
-      <v-layout row>
+      <v-row no-gutters>
         <v-spacer />
 
         <v-btn v-if="$returnTo.url" :href="$returnTo.url" small text dark color="secondary">
           return to {{ $returnTo.url }}
         </v-btn>
-      </v-layout>
+      </v-row>
       
       <v-container>
         <v-alert :value="message" type="error" dismissible>

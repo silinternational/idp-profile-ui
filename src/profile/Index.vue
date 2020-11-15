@@ -18,7 +18,7 @@
       <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
     </v-alert>
 
-    <v-layout row wrap>
+    <v-row wrap>
       <v-flex xs12 sm6 md4 py-3>
         <PasswordCard :meta="$user.password_meta" class="mx-3 mb-4"/>
       </v-flex>
@@ -28,11 +28,11 @@
       <v-flex xs12 sm6 md4 py-3>
         <DoNotDiscloseCard :dnd="$user.hide" class="mx-3 mb-4"/>
       </v-flex>
-    </v-layout>
+    </v-row>
 
     <v-subheader class="py-5">{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
 
-    <v-layout row wrap>
+    <v-row wrap>
       <v-flex xs12 sm6 md4 py-3>
         <TotpCard :meta="mfa.totp" class="mx-3 mb-4"/>
       </v-flex>
@@ -42,7 +42,7 @@
       <v-flex xs12 sm6 md4 py-3>
         <BackupCodeCard :meta="mfa.backup" class="mx-3 mb-4"/>
       </v-flex>
-    </v-layout>
+    </v-row>
   </BasePage>
 </template>
 

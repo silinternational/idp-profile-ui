@@ -1,11 +1,11 @@
 <template>
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
-      <v-layout row align-center>
+      <v-row no-gutters align-center>
         <v-icon :color="hide ? 'success' : ''" x-large>security</v-icon>
 
         <h3 class="headline pl-3">{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.title') }}</h3>
-      </v-layout>
+      </v-row>
     </v-card-title>
 
     <v-card-text class="grow">
