@@ -2,7 +2,9 @@
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
       <v-row no-gutters align-center>
-        <v-icon :color="meta.created_utc ? 'success' : ''" x-large>list_alt</v-icon>
+        <v-col>
+          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>list_alt</v-icon>
+        </v-col>
 
         <MfaCardLabel :label="label" :id="meta.id" read-only />
       </v-row>
@@ -12,10 +14,14 @@
       <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.created')" :value="meta.created_utc | format" />
       <Attribute v-if="meta.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.lastUsed')" :value="meta.last_used_utc | format"/>
       <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.remaining')" :value="meta.data.count" sameline />
-      <div v-else class="layout row align-center">
-        <v-icon x-large color="warning" class="pr-3">warning</v-icon>
-        <em>{{ $vuetify.lang.t('$vuetify.profile.index.codeCard.warning') }}</em>
-      </div>
+      <v-row v-else>
+        <v-col cols="auto">
+          <v-icon x-large color="warning" class="pr-3">warning</v-icon>
+        </v-col>
+        <v-col>
+          <em>{{ $vuetify.lang.t('$vuetify.profile.index.codeCard.warning') }}</em>
+        </v-col>
+      </v-row>
     </v-card-text>
 
     <v-card-actions>

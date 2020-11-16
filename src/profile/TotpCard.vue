@@ -2,7 +2,9 @@
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
       <v-row no-gutters align-center>
-        <v-icon :color="meta.created_utc ? 'success' : ''" x-large>smartphone</v-icon>
+        <v-col>
+          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>smartphone</v-icon>
+        </v-col>
 
         <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')" 
                       :id="meta.id" @new-label="label = $event"/>
@@ -11,10 +13,14 @@
 
     <v-card-text class="grow">
       <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.created')" :value="meta.created_utc | format"/>
-      <div v-else class="layout row align-center">
-        <v-icon x-large color="warning" class="pr-3">warning</v-icon>
-        <em>{{ $vuetify.lang.t('$vuetify.profile.index.totpCard.warning') }}</em>
-      </div>
+      <v-row v-else>
+        <v-col cols="auto">
+         <v-icon x-large color="warning" class="pr-3">warning</v-icon>
+        </v-col>
+        <v-col>
+          <em>{{ $vuetify.lang.t('$vuetify.profile.index.totpCard.warning') }}</em>
+        </v-col>
+      </v-row>
       <Attribute v-if="meta.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.lastUsed')" :value="meta.last_used_utc | format"/>
     </v-card-text>
 

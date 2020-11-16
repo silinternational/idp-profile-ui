@@ -30,10 +30,14 @@
           {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.resend') }}
         </a>
       </div>
-      <div v-if="! methods.length" class="layout row align-center">
-        <v-icon x-large color="warning" class="pr-3">warning</v-icon>
-        <em>{{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.warning') }}</em>
-      </div>
+      <v-row v-if="! methods.length">
+        <v-col cols="auto">
+          <v-icon x-large color="warning">warning</v-icon>
+        </v-col>
+        <v-col>
+          <em>{{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.warning') }}</em>
+        </v-col>
+      </v-row>
     </v-card-text>
 
     <v-card-actions>
