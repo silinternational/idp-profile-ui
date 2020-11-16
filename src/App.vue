@@ -29,7 +29,7 @@
       </v-row>
       
       <v-container>
-        <v-alert :value="message" type="error" dismissible>
+        <v-alert v-if="message" type="error" dismissible>
           <span v-html="message" />
         </v-alert>
 
