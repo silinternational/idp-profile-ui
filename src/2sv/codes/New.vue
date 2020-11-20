@@ -11,31 +11,28 @@
           ({{ $vuetify.lang.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | formatLong }})
         </span>
       </p>
-      <v-layout column wrap align-center justify-center id="codes">
-        <p v-if="! codes.length" class="body-2">
-          {{ $vuetify.lang.t('$vuetify.2sv.codes.new.loading') }}
-        </p>
         
-        <div v-for="code in codes" :key="code" class="layout row align-center pr-5">
+      <v-row id="codes">
+        <v-col v-for="(code, i) in codes" :key="code" cols="6" :class="{'text-right': i % 2 === 0}">
           <v-icon class="pr-2">check_box_outline_blank</v-icon> <span class="code">{{ code }}</span>
-        </div>
-      </v-layout>
+        </v-col>
+      </v-row>
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="print('#codes')" color="secondary" text outlined>
+      <v-btn @click="print('#codes')" color="secondary" outlined class="mr-3">
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}
         <v-icon right>print</v-icon>
       </v-btn>
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" text outlined>
+      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" outlined class="mr-3">
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}
         <v-icon right>cloud_download</v-icon>
       </v-btn>
-      <v-btn v-if="copied" @click="copy()" color="success" text outlined>
+      <v-btn v-if="copied" @click="copy()" color="success" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}
         <v-icon right>checked</v-icon>
       </v-btn>
-      <v-btn v-else @click="copy()" color="secondary" text outlined>
+      <v-btn v-else @click="copy()" color="secondary" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}
         <v-icon right>assignment</v-icon>
       </v-btn>
@@ -44,7 +41,7 @@
       <v-tooltip :disabled="gotEm" :value="gotEm" top>
         <template v-slot:activator="{ on }">
           <div v-on="on">
-            <v-btn @click="finish" :disabled="!gotEm" color="primary" text outlined>
+            <v-btn @click="finish" :disabled="!gotEm" color="primary" outlined>
               {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.ok') }}
             </v-btn>
           </div>
@@ -144,6 +141,9 @@ span.code {
   .printable,
   .printable * {
     visibility: visible;
+  }
+  .printable .col {
+    padding: 12px !important;
   }
 }
 </style>
