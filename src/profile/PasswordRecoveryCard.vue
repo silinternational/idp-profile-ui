@@ -43,7 +43,7 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn :href="'#/password/recovery'" color="primary" text outlined>
+      <v-btn :href="'#/password/recovery'" color="primary" outlined>
         <span v-if="methods.length">{{ $vuetify.lang.t('$vuetify.global.button.change') }}</span>
         <span v-else>{{ $vuetify.lang.t('$vuetify.global.button.add') }}</span>
       </v-btn>

@@ -23,7 +23,7 @@
       <v-btn to="/2sv/usb-security-key/intro" color="primary" text tabindex="-1" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.no') }}
       </v-btn>
-      <v-btn to="/2sv/smartphone/download-app" color="primary" text outlined> 
+      <v-btn to="/2sv/smartphone/download-app" color="primary" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.yes') }}
       </v-btn>
     </ButtonBar>

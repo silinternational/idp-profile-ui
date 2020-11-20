@@ -35,7 +35,7 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/smartphone/scan-qr" color="primary" text outlined> 
+      <v-btn to="/2sv/smartphone/scan-qr" color="primary" outlined> 
         {{ $vuetify.lang.t('$vuetify.2sv.smartphone.download.button.ok') }}
       </v-btn>
     </ButtonBar>

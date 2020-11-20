@@ -27,10 +27,10 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="meta.created_utc" href="#/2sv/printable-backup-codes/new" color="primary" text outlined>
+      <v-btn v-if="meta.created_utc" href="#/2sv/printable-backup-codes/new" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.codeCard.button.replace') }}
       </v-btn>
-      <v-btn v-else href="#/2sv/printable-backup-codes/intro" color="primary" text outlined>
+      <v-btn v-else href="#/2sv/printable-backup-codes/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.codeCard.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :id="meta.id"/>

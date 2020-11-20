@@ -18,10 +18,10 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="isExpiringSoon()" :href="'#/password/create'" color="warning" text outlined>
+      <v-btn v-if="isExpiringSoon()" :href="'#/password/create'" color="warning" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.passwordCard.button.changeNow') }}
       </v-btn>
-      <v-btn v-else :href="'#/password/create'" color="primary" text outlined>
+      <v-btn v-else :href="'#/password/create'" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.change') }}
       </v-btn>
     </v-card-actions>

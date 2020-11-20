@@ -20,7 +20,7 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/printable-backup-codes/new" color="primary" text outlined> 
+      <v-btn to="/2sv/printable-backup-codes/new" color="primary" outlined> 
         {{ $vuetify.lang.t('$vuetify.2sv.codes.intro.button.new') }}
       </v-btn>
     </ButtonBar>

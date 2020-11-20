@@ -43,7 +43,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn @click="save" color="primary" text outlined>
+      <v-btn @click="save" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
       </v-btn>
     </template>

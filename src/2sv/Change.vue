@@ -13,13 +13,13 @@
     </p>
 
     <ButtonBar>
-      <v-btn to="/profile" text outlined> 
+      <v-btn to="/profile" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.no') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn @click="yes(requested.id)" color="primary" text outlined> 
+      <v-btn @click="yes(requested.id)" color="primary" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.yes') }}
       </v-btn>
     </ButtonBar>

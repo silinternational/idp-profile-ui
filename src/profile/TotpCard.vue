@@ -27,10 +27,10 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="meta.created_utc" :href="`#/2sv/change/${meta.id}`" color="primary" text outlined>
+      <v-btn v-if="meta.created_utc" :href="`#/2sv/change/${meta.id}`" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.totpCard.button.change') }}
       </v-btn>
-      <v-btn v-else href="#/2sv/smartphone/intro" color="primary" text outlined>
+      <v-btn v-else href="#/2sv/smartphone/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :id="meta.id"/>

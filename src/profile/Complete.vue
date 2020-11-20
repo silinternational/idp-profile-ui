@@ -37,7 +37,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn @click="done" color="primary" text outlined>
+      <v-btn @click="done" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.complete.button.profile') }}
       </v-btn>
     </ButtonBar>

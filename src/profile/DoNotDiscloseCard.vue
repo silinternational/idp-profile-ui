@@ -15,7 +15,7 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn @click="toggle()" :loading="toggling" color="primary" text outlined>
+      <v-btn @click="toggle()" :loading="toggling" color="primary" outlined>
         <span v-if="hide">{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.button.disable') }}</span>
         <span v-else>{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.button.enable') }}</span>
       </v-btn>

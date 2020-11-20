@@ -48,7 +48,7 @@
     </BasePage>
 
     <template v-slot:actions>
-      <v-btn v-if="! alternates.length" to="/2sv/intro" @click="skip" color="warning" text outlined>
+      <v-btn v-if="! alternates.length" to="/2sv/intro" @click="skip" color="warning" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
 
@@ -57,7 +57,7 @@
       <v-tooltip :disabled="!(unsaved || ! alternates.length)" right>
         <template v-slot:activator="{ on }">
           <div v-on="on">
-            <v-btn @click="complete" :disabled="unsaved || ! alternates.length" color="primary" text outlined>
+            <v-btn @click="complete" :disabled="unsaved || ! alternates.length" color="primary" outlined>
               {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
             </v-btn>
           </div>

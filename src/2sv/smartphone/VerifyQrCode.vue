@@ -22,7 +22,7 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn @click="verify" color="primary" text outlined> 
+      <v-btn @click="verify" color="primary" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.verify') }}
       </v-btn>
     </ButtonBar>

@@ -21,10 +21,10 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn v-if="isSupported" to="/2sv/usb-security-key/touch" color="primary" text outlined> 
+      <v-btn v-if="isSupported" to="/2sv/usb-security-key/touch" color="primary" outlined> 
         {{ $vuetify.lang.t('$vuetify.2sv.key.insert.button.ok') }}
       </v-btn>
-      <v-btn v-else to="/2sv/printable-backup-codes/intro" color="primary" text outlined> 
+      <v-btn v-else to="/2sv/printable-backup-codes/intro" color="primary" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
     </ButtonBar>

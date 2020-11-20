@@ -24,7 +24,7 @@
       <v-btn href="https://idphelp.sil.org/2sv-topics/security-key" target="_blank" color="primary" text tabindex="-1" outlined> 
         {{ $vuetify.lang.t('$vuetify.2sv.key.intro.button.no') }}
       </v-btn>
-      <v-btn to="/2sv/usb-security-key/insert" color="primary" text outlined> 
+      <v-btn to="/2sv/usb-security-key/insert" color="primary" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.yes') }}
       </v-btn>
     </ButtonBar>
