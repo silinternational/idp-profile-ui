@@ -30,7 +30,7 @@
       </v-btn>
       <v-btn v-if="copied" @click="copy()" color="success" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}
-        <v-icon right>checked</v-icon>
+        <v-icon right>check</v-icon>
       </v-btn>
       <v-btn v-else @click="copy()" color="secondary" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}
@@ -113,8 +113,8 @@ span.code {
   font-family: monospace;
 }
 
-.layout.column.wrap {
-  max-height: 12em; /* this height, in combination with the font-size, will limit the number of codes per column to 5. */
+i.v-icon {
+  vertical-align: text-bottom; /* vertically centers the checkbox and the code */
 }
 </style>
 
