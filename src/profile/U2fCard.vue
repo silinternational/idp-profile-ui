@@ -1,7 +1,7 @@
 <template>
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
-      <v-row no-gutters>
+      <v-row>
         <v-col>
           <v-icon :color="meta.created_utc ? 'success' : ''" x-large>vpn_key</v-icon>
         </v-col>
