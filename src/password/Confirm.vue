@@ -14,7 +14,7 @@
     </BasePage>
 
     <template v-slot:actions>
-      <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" text tabindex="-1" outlined>
+      <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" tabindex="-1" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 

@@ -22,7 +22,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/usb-security-key/insert" text tabindex="-1" outlined> 
+      <v-btn to="/2sv/usb-security-key/insert" tabindex="-1" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 

@@ -14,7 +14,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="skip" text color="warning" tabindex="-1" outlined> 
+      <v-btn @click="skip" color="warning" tabindex="-1" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
 

@@ -34,10 +34,10 @@
     </BasePage>
 
     <template v-slot:actions>
-      <v-btn v-if="$user.isNew()" to="/profile/intro" text tabindex="-1" outlined>
+      <v-btn v-if="$user.isNew()" to="/profile/intro" tabindex="-1" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
-      <v-btn v-else @click="skip" text tabindex="-1" outlined>
+      <v-btn v-else @click="skip" tabindex="-1" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
 
