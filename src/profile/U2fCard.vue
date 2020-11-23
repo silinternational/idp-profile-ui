@@ -1,7 +1,7 @@
 <template>
-  <v-card class="fill-height layout column">
+  <v-card class="fill-height">
     <v-card-title primary-title>
-      <v-row>
+      <v-row no-gutters>
         <v-col>
           <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-key</v-icon>
         </v-col>

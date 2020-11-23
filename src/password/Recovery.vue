@@ -42,7 +42,7 @@
           ]" validate-on-blur @keyup.enter="blur" autofocus />
 
         <v-btn @click="add" :disabled="! newEmail" fab small color="success" class="ma-2-mod ml-3">
-          <v-icon>mdi-add</v-icon>
+          <v-icon>mdi-plus</v-icon>
         </v-btn>
       </v-form>
     </BasePage>
