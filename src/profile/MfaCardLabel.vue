@@ -14,7 +14,7 @@
     <v-tooltip v-if="id && ! readOnly" right>
       <template v-slot:activator="{ on }">
         <v-icon v-on="on" @click="edit" color="info" small class="pl-3">
-          edit
+          mdi-pencil
         </v-icon>
       </template>
 
