@@ -4,8 +4,8 @@
       <v-text-field v-if="editing" v-model="newLabel" @keyup.enter="save" autofocus @focus="$event.target.select()"/>
     </v-col>
     <v-col>
-      <v-icon @click="save" color="success" small class="pl-2">check</v-icon>
-      <v-icon @click="cancel" color="error" small class="pl-1">close</v-icon>
+      <v-icon @click="save" color="success" small class="pl-2">mdi-check</v-icon>
+      <v-icon @click="cancel" color="error" small class="pl-1">mdi-close</v-icon>
     </v-col>
   </v-row>
   <h3 v-else class="headline pl-3 layout row align-center">
