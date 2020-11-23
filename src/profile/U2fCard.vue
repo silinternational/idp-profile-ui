@@ -3,7 +3,7 @@
     <v-card-title primary-title>
       <v-row>
         <v-col>
-          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>vpn_key</v-icon>
+          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-key</v-icon>
         </v-col>
         
         <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.u2fCard.title')" 
