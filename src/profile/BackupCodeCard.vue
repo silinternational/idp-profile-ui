@@ -3,7 +3,7 @@
     <v-card-title primary-title>
       <v-row no-gutters align-center>
         <v-col>
-          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>list_alt</v-icon>
+          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-format-list-checkbox</v-icon>
         </v-col>
 
         <MfaCardLabel :label="label" :id="meta.id" read-only />

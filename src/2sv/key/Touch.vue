@@ -17,7 +17,7 @@
 
       <figure class="layout column align-center pa-4">
         <img v-if="! touched" src="@/assets/touch-usb-security-key.png">
-        <v-icon v-else color="success" x-large>check</v-icon>
+        <v-icon v-else color="success" x-large>mdi-check</v-icon>
       </figure>
     </BasePage>
 

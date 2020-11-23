@@ -6,17 +6,17 @@
       </template>
 
       <p class="layout row">
-        <v-icon color="success" class="mr-3">done</v-icon> 
+        <v-icon color="success" class="mr-3">mdi-check</v-icon> 
         {{ $vuetify.lang.t('$vuetify.profile.complete.info', $user.first_name, $root.idpConfig.idpName) }}
       </p>
 
       <p class="layout row">
-        <v-icon color="success" class="mr-3">person</v-icon> 
+        <v-icon color="success" class="mr-3">mdi-account</v-icon> 
         {{ $vuetify.lang.t('$vuetify.profile.complete.username') }} <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
       </p>
 
       <p v-if="unverifiedEmails.length" class="layout row">
-        <v-icon color="warning" class="mr-3">email</v-icon> 
+        <v-icon color="warning" class="mr-3">mdi-email</v-icon> 
         <span>
           {{ $vuetify.lang.t('$vuetify.profile.complete.unverifiedEmails') }}
           <span class="font-weight-bold">({{ unverifiedEmails | joined }})</span>

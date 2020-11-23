@@ -14,7 +14,7 @@
         
       <v-row id="codes">
         <v-col v-for="(code, i) in codes" :key="code" cols="6" :class="{'text-right': i % 2 === 0}">
-          <v-icon class="pr-2">check_box_outline_blank</v-icon> <span class="code">{{ code }}</span>
+          <v-icon class="pr-2">mdi-checkbox-blank-outline</v-icon> <span class="code">{{ code }}</span>
         </v-col>
       </v-row>
     </BasePage>
@@ -22,19 +22,19 @@
     <ButtonBar>
       <v-btn @click="print('#codes')" color="secondary" outlined class="mr-3">
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}
-        <v-icon right>print</v-icon>
+        <v-icon right>mdi-printer</v-icon>
       </v-btn>
       <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" outlined class="mr-3">
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}
-        <v-icon right>cloud_download</v-icon>
+        <v-icon right>mdi-cloud-download</v-icon>
       </v-btn>
       <v-btn v-if="copied" @click="copy()" color="success" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}
-        <v-icon right>check</v-icon>
+        <v-icon right>mdi-check</v-icon>
       </v-btn>
       <v-btn v-else @click="copy()" color="secondary" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}
-        <v-icon right>assignment</v-icon>
+        <v-icon right>mdi-file-table-box-outline</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
 

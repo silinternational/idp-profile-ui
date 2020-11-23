@@ -21,7 +21,7 @@
             <template v-slot:activator="{ on }">
               <div v-on="on">
                 <v-icon @click="remove(method.id)" :disabled="alternates.length == 1" color="error" small class="pl-3">
-                  delete
+                  mdi-delete
                 </v-icon>
               </div>
             </template>
@@ -42,7 +42,7 @@
           ]" validate-on-blur @keyup.enter="blur" autofocus />
 
         <v-btn @click="add" :disabled="! newEmail" fab small color="success" class="ma-2-mod ml-3">
-          <v-icon>add</v-icon>
+          <v-icon>mdi-add</v-icon>
         </v-btn>
       </v-form>
     </BasePage>
