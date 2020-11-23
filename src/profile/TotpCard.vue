@@ -15,7 +15,7 @@
       <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.created')" :value="meta.created_utc | format"/>
       <v-row v-else>
         <v-col cols="auto">
-         <v-icon x-large color="warning" class="pr-3">warning</v-icon>
+         <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
         </v-col>
         <v-col>
           <em>{{ $vuetify.lang.t('$vuetify.profile.index.totpCard.warning') }}</em>

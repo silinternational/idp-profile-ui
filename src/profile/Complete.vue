@@ -24,12 +24,12 @@
       </p>
 
       <p v-if="! alternates.length" class="layout row">
-        <v-icon color="warning" class="mr-3">warning</v-icon> 
+        <v-icon color="warning" class="mr-3">mdi-alert</v-icon> 
         {{ $vuetify.lang.t('$vuetify.profile.complete.noAlternates') }}
       </p>
 
       <p v-if="mfa.numVerified == 0" class="layout row">
-        <v-icon color="warning" class="mr-3">warning</v-icon> 
+        <v-icon color="warning" class="mr-3">mdi-alert</v-icon> 
         {{ $vuetify.lang.t('$vuetify.profile.complete.no2sv') }}
       </p>
     </BasePage>

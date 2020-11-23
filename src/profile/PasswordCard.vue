@@ -5,7 +5,7 @@
 
       <v-spacer />
 
-      <v-icon v-if="isExpiringSoon()" x-large color="warning">warning</v-icon>
+      <v-icon v-if="isExpiringSoon()" x-large color="warning">mid-alert</v-icon>
     </v-card-title>
 
     <v-card-text class="grow">

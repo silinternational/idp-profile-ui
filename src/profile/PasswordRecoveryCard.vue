@@ -32,7 +32,7 @@
       </div>
       <v-row v-if="! methods.length">
         <v-col cols="auto">
-          <v-icon x-large color="warning">warning</v-icon>
+          <v-icon x-large color="warning">mdi-alert</v-icon>
         </v-col>
         <v-col>
           <em>{{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.warning') }}</em>
