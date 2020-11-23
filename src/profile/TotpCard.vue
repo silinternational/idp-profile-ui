@@ -3,7 +3,7 @@
     <v-card-title primary-title>
       <v-row no-gutters align-center>
         <v-col>
-          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>smartphone</v-icon>
+          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-cellphone</v-icon>
         </v-col>
 
         <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')" 
