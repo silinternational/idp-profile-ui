@@ -13,7 +13,7 @@
               frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" />
 
       <p class="ma-0 body-2 layout row">
-        <v-icon color="info" class="mr-2">mdi-info</v-icon>
+        <v-icon color="info" class="mr-2">mdi-information</v-icon>
         {{ $vuetify.lang.t('$vuetify.2sv.intro.incentive') }}
       </p>
     </BasePage>
