@@ -2,7 +2,7 @@
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
       <v-row no-gutters align-center>
-        <v-icon :color="hide ? 'success' : ''" x-large>security</v-icon>
+        <v-icon :color="hide ? 'success' : ''" x-large>mdi-security</v-icon>
 
         <h3 class="headline pl-3">{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.title') }}</h3>
       </v-row>
