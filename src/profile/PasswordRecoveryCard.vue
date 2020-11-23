@@ -7,7 +7,7 @@
 
       <v-tooltip v-if="hasUnverifiedEmails" right>
         <template v-slot:activator="{ on }">
-          <v-icon v-on="on" x-large color="error">error</v-icon>
+          <v-icon v-on="on" x-large color="error">mdi-alert-circle</v-icon>
         </template>
 
         {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.unverifiedEmails') }}
@@ -20,7 +20,7 @@
 
         <v-tooltip v-if="! method.verified && method.id != sent" right>
           <template v-slot:activator="{ on }">
-            <v-icon v-on="on" color="error" small class="pl-1">error</v-icon>
+            <v-icon v-on="on" color="error" small class="pl-1">mdi-alert-circle</v-icon>
           </template>
 
           {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
