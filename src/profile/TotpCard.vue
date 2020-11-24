@@ -1,13 +1,14 @@
 <template>
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
-      <v-row no-gutters align-center>
-        <v-col>
+      <v-row no-gutters align="center">
+        <v-col cols="2">
           <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-cellphone</v-icon>
         </v-col>
-
-        <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')" 
-                      :id="meta.id" @new-label="label = $event"/>
+        <v-col>
+          <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')" 
+                        :id="meta.id" @new-label="label = $event"/>
+        </v-col>
       </v-row>
     </v-card-title>
 
