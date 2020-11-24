@@ -5,7 +5,7 @@
         {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.header') }}
       </template>
 
-      <p>
+      <p class="mx-auto">
         {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.info') }}
       </p>
 
