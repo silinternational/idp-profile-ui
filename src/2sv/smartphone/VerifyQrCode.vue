@@ -5,14 +5,14 @@
         {{ $vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.header') }}
       </template>
 
-      <v-layout align-center class="px-5">
+      <v-row align="center" class="px-5">
         <v-form @submit.prevent="verify" ref="form" class="pl-5 layout column align-center">
           <p>{{ $vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.info') }}</p>
           
           <BaseTextField type="text" :label="$vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.codeInput')" v-model="code" 
                          :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus class="mt-4" />
         </v-form>
-      </v-layout>
+      </v-row>
     </BasePage>
 
     <ButtonBar>
