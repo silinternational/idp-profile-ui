@@ -1,5 +1,5 @@
 <template>
-  <v-layout column align-center>
+  <v-row align="center">
     <header class="display-1 py-3 layout row align-center justify-center">
       <slot name="header" />
     </header>
@@ -7,7 +7,7 @@
     <main class="body-1 py-3">
       <slot />
     </main>
-  </v-layout>
+  </v-row>
 </template>
 
 <script>
