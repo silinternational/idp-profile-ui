@@ -1,12 +1,13 @@
 <template>
   <v-card class="fill-height layout column">
     <v-card-title primary-title>
-      <v-row no-gutters align-center>
-        <v-col>
+      <v-row no-gutters align="center">
+        <v-col cols="2">
           <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-format-list-checkbox</v-icon>
         </v-col>
-
-        <MfaCardLabel :label="label" :id="meta.id" read-only />
+        <v-col>
+          <MfaCardLabel :label="label" :id="meta.id" read-only />
+        </v-col>
       </v-row>
     </v-card-title>
 
