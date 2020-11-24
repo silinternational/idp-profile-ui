@@ -20,15 +20,17 @@
             {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.qr') }}
           </p>
 
-          <v-layout v-if="newTotp.data" row justify-center>
+          <v-row v-if="newTotp.data" justify="center">
+            <v-col cols="auto">
             <v-img :src="newTotp.data.imageUrl" max-width="200" />
-          </v-layout>
-          <v-layout v-if="newTotp.data" row justify-center>
-            <p>
+            </v-col>
+          </v-row>
+          <v-row v-if="newTotp.data" justify="center">
+            <v-col cols="auto">
               {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.manual') }}
               <span class="font-mono">{{ newTotp.data.totpKey }}</span>
-            </p>
-          </v-layout>
+            </v-col>
+          </v-row>
         </li>
       </ol>
     </BasePage>
