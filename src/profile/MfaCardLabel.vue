@@ -1,6 +1,6 @@
 <template>
   <v-row v-if="editing">
-    <v-col cols="auto">
+    <v-col cols="8">
       <v-text-field v-if="editing" v-model="newLabel" @keyup.enter="save" autofocus @focus="$event.target.select()"/>
     </v-col>
     <v-col>
