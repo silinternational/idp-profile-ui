@@ -8,7 +8,7 @@
       <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
     </template>
 
-    <aside class="pb-3">
+    <aside class="pb-4">
       <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
       <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
       <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
@@ -18,30 +18,30 @@
       <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
     </v-alert>
 
-    <v-row wrap>
-      <v-flex xs12 sm6 md4 py-3>
-        <PasswordCard :meta="$user.password_meta" class="mx-3 mb-4"/>
-      </v-flex>
-      <v-flex xs12 sm6 md4 py-3>
-        <PasswordRecoveryCard :methods="alternates" class="mx-3 mb-4"/>
-      </v-flex>
-      <v-flex xs12 sm6 md4 py-3>
-        <DoNotDiscloseCard :dnd="$user.hide" class="mx-3 mb-4"/>
-      </v-flex>
+    <v-row no-gutters>
+      <v-col xs12 sm6 md4 py-4>
+        <PasswordCard :meta="$user.password_meta" class="mx-4 mb-6"/>
+      </v-col>
+      <v-col xs12 sm6 md4 py-4>
+        <PasswordRecoveryCard :methods="alternates" class="mx-4 mb-6"/>
+      </v-col>
+      <v-col xs12 sm6 md4 py-4>
+        <DoNotDiscloseCard :dnd="$user.hide" class="mx-4 mb-6"/>
+      </v-col>
     </v-row>
 
-    <v-subheader class="py-5">{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
+    <v-subheader class="py-12">{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
 
-    <v-row wrap>
-      <v-flex xs12 sm6 md4 py-3>
-        <TotpCard :meta="mfa.totp" class="mx-3 mb-4"/>
-      </v-flex>
-      <v-flex xs12 sm6 md4 py-3>
-        <U2fCard :meta="mfa.u2f" class="mx-3 mb-4"/>
-      </v-flex>
-      <v-flex xs12 sm6 md4 py-3>
-        <BackupCodeCard :meta="mfa.backup" class="mx-3 mb-4"/>
-      </v-flex>
+    <v-row no-gutters>
+      <v-col xs12 sm6 md4 py-4>
+        <TotpCard :meta="mfa.totp" class="mx-4 mb-6"/>
+      </v-col>
+      <v-col xs12 sm6 md4 py-4>
+        <U2fCard :meta="mfa.u2f" class="mx-4 mb-6"/>
+      </v-col>
+      <v-col xs12 sm6 md4 py-4>
+        <BackupCodeCard :meta="mfa.backup" class="mx-4 mb-6"/>
+      </v-col>
     </v-row>
   </BasePage>
 </template>
