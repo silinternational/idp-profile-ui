@@ -1,11 +1,11 @@
 <template>
   <v-row justify="center">
     <v-col cols="auto" align-self="center">
-      <header class="display-1 py-3 layout align-center justify-center">
+      <header class="display-1 py-4 layout align-center justify-center">
         <slot name="header" />
       </header>
     
-      <main class="body-1 py-3">
+      <main class="body-1 py-4">
         <slot />
       </main>
     </v-col>
