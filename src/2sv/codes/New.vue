@@ -20,11 +20,11 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="print('#codes')" color="secondary" outlined class="mr-3">
+      <v-btn @click="print('#codes')" color="secondary" outlined class="mr-3 mb-3">
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}
         <v-icon right>mdi-printer</v-icon>
       </v-btn>
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" outlined class="mr-3">
+      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" outlined class="mr-3 mb-3">
         {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}
         <v-icon right>mdi-cloud-download</v-icon>
       </v-btn>
