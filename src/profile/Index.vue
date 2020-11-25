@@ -18,29 +18,29 @@
       <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
     </v-alert>
 
-    <v-row no-gutters>
-      <v-col sm="12" md="4" py-4>
-        <PasswordCard :meta="$user.password_meta" class="mx-4 mb-6"/>
+    <v-row>
+      <v-col :cols="cols" py-4>
+        <PasswordCard :meta="$user.password_meta"/>
       </v-col>
-      <v-col sm="12" md="4" py-4>
-        <PasswordRecoveryCard :methods="alternates" class="mx-4 mb-6"/>
+      <v-col :cols="cols" py-4>
+        <PasswordRecoveryCard :methods="alternates"/>
       </v-col>
-      <v-col sm="12" md="4" py-4>
-        <DoNotDiscloseCard :dnd="$user.hide" class="mx-4 mb-6"/>
+      <v-col :cols="cols" py-4>
+        <DoNotDiscloseCard :dnd="$user.hide"/>
       </v-col>
     </v-row>
 
     <v-subheader class="py-12">{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
 
-    <v-row no-gutters>
-      <v-col xs12 sm6 md4 py-4>
-        <TotpCard :meta="mfa.totp" class="mx-4 mb-6"/>
+    <v-row>
+      <v-col :cols="cols" py-4>
+        <TotpCard :meta="mfa.totp"/>
       </v-col>
-      <v-col xs12 sm6 md4 py-4>
-        <U2fCard :meta="mfa.u2f" class="mx-4 mb-6"/>
+      <v-col :cols="cols" py-4>
+        <U2fCard :meta="mfa.u2f"/>
       </v-col>
-      <v-col xs12 sm6 md4 py-4>
-        <BackupCodeCard :meta="mfa.backup" class="mx-4 mb-6"/>
+      <v-col :cols="cols" py-4>
+        <BackupCodeCard :meta="mfa.backup"/>
       </v-col>
     </v-row>
   </BasePage>
@@ -75,6 +75,15 @@ export default {
   }),
   computed: {
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
+    cols () {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs': return 12
+        case 'sm': return 6
+        case 'md': return 4
+        case 'lg': return 4
+        case 'xl': return 4
+      }
+    }
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])
