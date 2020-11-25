@@ -5,7 +5,7 @@
         <v-col cols="2">
           <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-key</v-icon>
         </v-col>
-        <v-col>
+        <v-col class="ml-3">
           <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.u2fCard.title')" 
                         :id="meta.id" @new-label="label = $event"/>
         </v-col>
