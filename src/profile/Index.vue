@@ -19,13 +19,13 @@
     </v-alert>
 
     <v-row no-gutters>
-      <v-col xs12 sm6 md4 py-4>
+      <v-col sm="12" md="4" py-4>
         <PasswordCard :meta="$user.password_meta" class="mx-4 mb-6"/>
       </v-col>
-      <v-col xs12 sm6 md4 py-4>
+      <v-col sm="12" md="4" py-4>
         <PasswordRecoveryCard :methods="alternates" class="mx-4 mb-6"/>
       </v-col>
-      <v-col xs12 sm6 md4 py-4>
+      <v-col sm="12" md="4" py-4>
         <DoNotDiscloseCard :dnd="$user.hide" class="mx-4 mb-6"/>
       </v-col>
     </v-row>
