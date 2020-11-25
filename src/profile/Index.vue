@@ -19,13 +19,13 @@
     </v-alert>
 
     <v-row>
-      <v-col :cols="cols" py-4>
+      <v-col :cols="cols">
         <PasswordCard :meta="$user.password_meta"/>
       </v-col>
-      <v-col :cols="cols" py-4>
+      <v-col :cols="cols">
         <PasswordRecoveryCard :methods="alternates"/>
       </v-col>
-      <v-col :cols="cols" py-4>
+      <v-col :cols="cols">
         <DoNotDiscloseCard :dnd="$user.hide"/>
       </v-col>
     </v-row>
@@ -33,13 +33,13 @@
     <v-subheader class="py-12">{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
 
     <v-row>
-      <v-col :cols="cols" py-4>
+      <v-col :cols="cols">
         <TotpCard :meta="mfa.totp"/>
       </v-col>
-      <v-col :cols="cols" py-4>
+      <v-col :cols="cols">
         <U2fCard :meta="mfa.u2f"/>
       </v-col>
-      <v-col :cols="cols" py-4>
+      <v-col :cols="cols">
         <BackupCodeCard :meta="mfa.backup"/>
       </v-col>
     </v-row>
