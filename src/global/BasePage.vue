@@ -1,6 +1,6 @@
 <template>
-  <v-row>
-    <v-col>
+  <v-row justify="center">
+    <v-col cols="auto">
       <header class="display-1 py-3 layout row align-center justify-center">
         <slot name="header" />
       </header>
