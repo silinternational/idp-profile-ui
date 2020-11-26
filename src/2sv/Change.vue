@@ -8,7 +8,7 @@
       <span>{{ $vuetify.lang.t('$vuetify.2sv.change.lastOne') }}</span>
     </v-alert>
 
-    <p class="py-3">
+    <p class="py-4">
       {{ $vuetify.lang.t('$vuetify.2sv.change.info', label) }}
     </p>
 

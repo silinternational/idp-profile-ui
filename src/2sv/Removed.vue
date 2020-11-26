@@ -4,7 +4,7 @@
       {{ $vuetify.lang.t('$vuetify.2sv.removed.header') }}
     </template>
 
-    <p class="py-3">
+    <p class="py-4">
       {{ $vuetify.lang.t('$vuetify.2sv.removed.info') }}
     </p>
 
