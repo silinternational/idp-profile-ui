@@ -16,7 +16,7 @@
       </v-row>
 
       <v-row justify="center" align="center">
-        <v-col cols="1" class="text-right">
+        <v-col cols="auto" class="text-right">
           <v-icon color="info">mdi-information</v-icon>
         </v-col>
         <v-col cols="8">
