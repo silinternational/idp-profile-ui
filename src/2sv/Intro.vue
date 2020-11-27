@@ -15,7 +15,7 @@
                 frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" />
       </v-row>
 
-      <v-row justify="center" align="center" class="mx-16">
+      <v-row justify="center" align="center">
         <v-col cols="1" class="text-right">
           <v-icon color="info">mdi-information</v-icon>
         </v-col>
