@@ -13,8 +13,8 @@
       </p>
         
       <v-row id="codes">
-        <v-col v-for="(code, i) in codes" :key="code" cols="6" :class="{'text-right': i % 2 === 0}">
-          <v-icon class="pr-2">mdi-checkbox-blank-outline</v-icon> <span class="code">{{ code }}</span>
+        <v-col v-for="(code, i) in codes" :key="code" cols="6" :class="{'text-right': i % 2 === 0}" class="text-no-wrap">
+          <v-icon class="pr-2">mdi-checkbox-blank-outline</v-icon> <span class="code xsCode">{{ code }}</span>
         </v-col>
       </v-row>
     </BasePage>
@@ -115,6 +115,12 @@ span.code {
 
 i.v-icon {
   vertical-align: text-bottom; /* vertically centers the checkbox and the code */
+}
+
+@media only screen and (max-width: 480px) {
+  span.xsCode {
+    font-size: 1.2em;
+  }
 }
 </style>
 
