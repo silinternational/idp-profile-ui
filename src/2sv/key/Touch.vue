@@ -15,8 +15,8 @@
         {{ $vuetify.lang.t('$vuetify.2sv.key.touch.info') }}
       </p>
 
-      <figure class="layout column align-center pa-4">
-        <img v-if="! touched" src="@/assets/touch-usb-security-key.png">
+      <figure class="d-flex flex-column align-center pa-4">
+        <img v-if="! touched" src="@/assets/touch-usb-security-key.png" alt="A finger touching the top of a usb key.">
         <v-icon v-else color="success" x-large>mdi-check</v-icon>
       </figure>
     </BasePage>

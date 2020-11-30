@@ -6,7 +6,7 @@
       </template>
 
       <v-row align="center" class="px-5">
-        <v-form @submit.prevent="verify" ref="form" class="pl-5 layout column align-center">
+        <v-form @submit.prevent="verify" ref="form" class="pl-5 d-flex flex-column align-center">
           <p>{{ $vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.info') }}</p>
           
           <BaseTextField type="text" :label="$vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.codeInput')" v-model="code" 

@@ -9,19 +9,19 @@
         {{ $vuetify.lang.t('$vuetify.2sv.key.intro.info') }}
       </p>
 
-      <figure class="layout column align-center pa-4">
-        <img src="@/assets/usb-security-key-examples.png">
+      <figure class="d-flex flex-column align-center pa-4">
+        <v-img src="@/assets/usb-security-key-examples.png" contain alt="Three sizes of USB keys."></v-img>
       </figure>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" tabindex="-1" outlined> 
+      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" tabindex="-1" outlined class="mb-3"> 
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn href="https://idphelp.sil.org/2sv-topics/security-key" target="_blank" color="primary" tabindex="-1" outlined class="mr-3"> 
+      <v-btn href="https://idphelp.sil.org/2sv-topics/security-key" target="_blank" color="primary" tabindex="-1" outlined class="mr-3 mb-3"> 
         {{ $vuetify.lang.t('$vuetify.2sv.key.intro.button.no') }}
       </v-btn>
       <v-btn to="/2sv/usb-security-key/insert" color="primary" outlined> 

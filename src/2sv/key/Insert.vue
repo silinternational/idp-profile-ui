@@ -8,8 +8,8 @@
         {{ $vuetify.lang.t('$vuetify.2sv.key.insert.nosupport.header') }}
       </template>
 
-      <figure v-if="isSupported" class="layout column align-center pa-4">
-        <img src="@/assets/insert-usb-security-key.png">
+      <figure v-if="isSupported" class="d-flex flex-column align-center pa-4">
+        <img src="@/assets/insert-usb-security-key.png" alt="A usb key inserted into a usb port.">
       </figure>
       <p v-else>{{ $vuetify.lang.t('$vuetify.2sv.key.insert.nosupport.info') }}</p>
     </BasePage>

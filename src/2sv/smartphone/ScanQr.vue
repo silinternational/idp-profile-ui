@@ -16,7 +16,7 @@
           </p>
         </li>
         <li>
-          <p class="layout column pl-4">
+          <p class="d-flex flex-column pl-4">
             {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.qr') }}
           </p>
 
@@ -36,7 +36,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" outlined> 
+      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" outlined class="mb-3"> 
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
