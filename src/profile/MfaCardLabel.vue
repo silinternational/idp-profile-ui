@@ -1,26 +1,37 @@
 <template>
-  <v-row v-if="editing">
-    <v-col cols="8">
-      <v-text-field v-if="editing" v-model="newLabel" @keyup.enter="save" autofocus @focus="$event.target.select()"/>
+  <v-row v-if="editing" no-gutters align="center">
+    <v-col cols="9">
+      <v-text-field v-model="newLabel" @keyup.enter="save" autofocus @focus="$event.target.select()"/>
     </v-col>
+
     <v-col>
       <v-icon @click="save" color="success" small class="pl-2">mdi-check</v-icon>
+    </v-col>
+
+    <v-col>
       <v-icon @click="cancel" color="error" small class="pl-1">mdi-close</v-icon>
     </v-col>
-  </v-row>
-  <h3 v-else class="headline pl-3 layout row align-center">
-    {{ label }}
-  
-    <v-tooltip v-if="id && ! readOnly" right>
-      <template v-slot:activator="{ on }">
-        <v-icon v-on="on" @click="edit" color="info" small class="pl-3">
-          mdi-pencil
-        </v-icon>
-      </template>
+  </v-row >
 
-      {{ $vuetify.lang.t('$vuetify.profile.index.rename') }}
-    </v-tooltip>
-  </h3>
+  <v-row v-else no-gutters align="center">
+    <v-col>
+      <h3 class="headline">
+        {{ label }}
+      </h3>
+    </v-col>
+    
+    <v-col cols="auto">
+      <v-tooltip v-if="id && ! readOnly" right>
+        <template v-slot:activator="{ on }">
+          <v-icon v-on="on" @click="edit" color="info" small>
+            mdi-pencil
+          </v-icon>
+        </template>
+
+        {{ $vuetify.lang.t('$vuetify.profile.index.rename') }}
+      </v-tooltip>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -62,4 +73,3 @@ export default {
   },
 }
 </script>
-
