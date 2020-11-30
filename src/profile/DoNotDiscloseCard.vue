@@ -1,5 +1,5 @@
 <template>
-  <v-card class="fill-height layout column">
+  <v-card class="fill-height d-flex flex-column">
     <v-card-title primary-title>
       <v-row no-gutters align-center>
         <v-icon :color="hide ? 'success' : ''" x-large>mdi-security</v-icon>
@@ -8,7 +8,7 @@
       </v-row>
     </v-card-title>
 
-    <v-card-text class="grow">
+    <v-card-text class="flex-grow-1">
       <p>{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.info') }}</p>
     </v-card-text>
 

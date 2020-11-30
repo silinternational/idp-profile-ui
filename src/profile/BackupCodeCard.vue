@@ -1,5 +1,5 @@
 <template>
-  <v-card class="fill-height layout column">
+  <v-card class="fill-height d-flex flex-column">
     <v-card-title primary-title class="text-break">
       <v-row no-gutters align="center">
         <v-col cols="2">
@@ -11,7 +11,7 @@
       </v-row>
     </v-card-title>
 
-    <v-card-text class="grow">
+    <v-card-text class="flex-grow-1">
       <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.created')" :value="meta.created_utc | format" />
       <Attribute v-if="meta.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.lastUsed')" :value="meta.last_used_utc | format"/>
       <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.remaining')" :value="meta.data.count" sameline />

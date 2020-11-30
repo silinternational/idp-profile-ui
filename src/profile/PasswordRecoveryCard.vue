@@ -1,5 +1,5 @@
 <template>
-  <v-card class="fill-height layout column">
+  <v-card class="fill-height d-flex flex-column">
     <v-card-title primary-title>
       <h3 class="headline">{{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.title') }}</h3>
 
@@ -14,7 +14,7 @@
       </v-tooltip>
     </v-card-title>
     
-    <v-card-text class="grow">
+    <v-card-text class="flex-grow-1">
       <div v-for="method in methods" :key="method.id">
         {{ method.value }}
 
