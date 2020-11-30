@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-if="$root.idpConfig.support" v-model="isOpen" width="initial"> <!-- making it initial so card grows with content -->
     <template v-slot:activator="{ on }">
-      <v-btn v-on="on" text dark>{{ $vuetify.lang.t('$vuetify.help.button.help') }}</v-btn>
+      <v-btn v-on="on" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.help.button.help') : '' }}<v-icon v-if="mobile">mdi-help</v-icon></v-btn>
 
     </template>
     <v-card>
@@ -43,5 +43,13 @@ export default {
   data: () => ({
     isOpen: false,
   }),
+  computed: {
+    mobile () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return true
+          default: return false
+        }
+      },
+  },
 }
 </script>

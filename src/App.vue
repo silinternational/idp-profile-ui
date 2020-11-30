@@ -5,12 +5,12 @@
 
       <v-spacer />
 
-      <v-toolbar-title class="white--text pr-3">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
+      <v-toolbar-title class="white--text px-3">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
 
       <v-divider vertical dark inset class="mx-2" />
 
-      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark>{{ $vuetify.lang.t('$vuetify.app.logout') }}</v-btn>
-      <v-btn v-else                         @click="$user.login()" text dark>{{ $vuetify.lang.t('$vuetify.app.login') }}</v-btn>
+      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.app.logout') : '' }}<v-icon v-if="mobile">mdi-logout-variant</v-icon></v-btn>
+      <v-btn v-else                         @click="$user.login()" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.app.login') : '' }}<v-icon v-if="mobile">mdi-login</v-icon></v-btn>
 
       <v-divider vertical dark inset />
 
@@ -49,6 +49,14 @@ export default {
   data: () => ({
     message: ''
   }),
+  computed: {
+    mobile () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return true
+          default: return false
+        }
+      },
+  },
   beforeCreate() {
     this.$API.interceptors.response.use(
       response => response,
