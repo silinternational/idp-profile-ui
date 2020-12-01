@@ -20,7 +20,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn @click="confirm" color="primary" :disabled="errors.length > 0" outlined>
+      <v-btn @click.once="confirm" color="primary" :disabled="errors.length > 0" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
       </v-btn>
     </template>

@@ -19,7 +19,7 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn @click="yes(requested.id)" color="primary" outlined> 
+      <v-btn @click.once="yes(requested.id)" color="primary" outlined> 
         {{ $vuetify.lang.t('$vuetify.global.button.yes') }}
       </v-btn>
     </ButtonBar>

@@ -13,7 +13,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn @click="next" color="primary" outlined>
+      <v-btn @click.once="next" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
       </v-btn>
     </ButtonBar>

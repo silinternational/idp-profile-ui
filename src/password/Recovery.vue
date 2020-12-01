@@ -20,7 +20,7 @@
           <v-tooltip :disabled="alternates.length > 1" right>
             <template v-slot:activator="{ on }">
               <div v-on="on">
-                <v-icon @click="remove(method.id)" :disabled="alternates.length == 1" color="error" small class="pl-3">
+                <v-icon @click.once="remove(method.id)" :disabled="alternates.length == 1" color="error" small class="pl-3">
                   mdi-delete
                 </v-icon>
               </div>
@@ -48,7 +48,7 @@
     </BasePage>
 
     <template v-slot:actions>
-      <v-btn v-if="! alternates.length" to="/2sv/intro" @click="skip" color="warning" outlined>
+      <v-btn v-if="! alternates.length" to="/2sv/intro" @click.once="skip" color="warning" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
 
@@ -57,7 +57,7 @@
       <v-tooltip :disabled="!(unsaved || ! alternates.length)" right>
         <template v-slot:activator="{ on }">
           <div v-on="on">
-            <v-btn @click="complete" :disabled="unsaved || ! alternates.length" color="primary" outlined>
+            <v-btn @click.once="complete" :disabled="unsaved || ! alternates.length" color="primary" outlined>
               {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
             </v-btn>
           </div>

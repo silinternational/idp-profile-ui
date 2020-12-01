@@ -37,13 +37,13 @@
       <v-btn v-if="$user.isNew()" to="/profile/intro" tabindex="-1" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
-      <v-btn v-else @click="skip" tabindex="-1" outlined>
+      <v-btn v-else @click.once="skip" tabindex="-1" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn @click="save" color="primary" outlined>
+      <v-btn @click.once="save" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
       </v-btn>
     </template>

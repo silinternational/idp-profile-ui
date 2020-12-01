@@ -41,7 +41,7 @@
       <v-tooltip :disabled="gotEm" :value="gotEm" top>
         <template v-slot:activator="{ on }">
           <div v-on="on">
-            <v-btn @click="finish" :disabled="!gotEm" color="primary" outlined>
+            <v-btn @click.once="finish" :disabled="!gotEm" color="primary" outlined>
               {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.ok') }}
             </v-btn>
           </div>
