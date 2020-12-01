@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard>
     <v-alert :value="error" type="error">
-      <span class="layout row align-center justify-center">
+      <span class="d-flex align-center justify-center">
         {{ $vuetify.lang.t('$vuetify.2sv.key.touch.error') }}
       </span>
     </v-alert>

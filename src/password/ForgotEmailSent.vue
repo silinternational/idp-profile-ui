@@ -3,10 +3,10 @@
     <template v-slot:header>{{ $vuetify.lang.t('$vuetify.password.forgotSent.header') }}</template>
 
     <p>{{ $vuetify.lang.t('$vuetify.password.forgotSent.emailComing') }}</p>
-    <p class="pl-5 layout row align-center font-mono">{{ primary.value }}</p>
+    <p class="pl-5 d-flex align-center font-mono">{{ primary.value }}</p>
     
     <p v-if="alternates.length">{{ $vuetify.lang.t('$vuetify.password.forgotSent.alternates') }}</p>
-    <p v-for="alternate in alternates" :key="alternate.id" class="pl-5 layout row">
+    <p v-for="alternate in alternates" :key="alternate.id" class="pl-5 d-flex">
       <span class="font-mono">{{ alternate.value }}</span>
 
       <v-tooltip v-if="alternate.id == sent" right>

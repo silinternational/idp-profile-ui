@@ -9,7 +9,7 @@
         {{ $vuetify.lang.t(`$vuetify.2sv.smartphone.download.recommendation-${preferredAppName}`) }}
       </p>
 
-      <figure class="layout row align-center justify-center pb-4 my-4">
+      <figure class="d-flex align-center justify-center pb-4 my-4">
         <img v-if="isAuthy" src="@/assets/authy-logo.jpg">
         <img v-else src="@/assets/authenticator-logo.jpg">
 
@@ -18,7 +18,7 @@
         </figcaption>
       </figure>
 
-      <figure class="badges layout row align-center justify-center">
+      <figure class="badges d-flex align-center justify-center">
         <a :href="`https://play.google.com/store/apps/details?id=${playStoreId}`" target="_blank" class="pr-3">
           <img src="@/assets/google-play-badge.png">
         </a>

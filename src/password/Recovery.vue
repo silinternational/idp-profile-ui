@@ -15,7 +15,7 @@
       <ul>
         <li class="subtitle-1 grey--text py-2">{{ $vuetify.lang.t('$vuetify.password.recovery.personalHeader') }}</li>
 
-        <li v-for="method in alternates" :key="method.id" class="layout row pb-2 pl-3">
+        <li v-for="method in alternates" :key="method.id" class="d-flex pb-2 pl-3">
           {{ method.value }}
           <v-tooltip :disabled="alternates.length > 1" right>
             <template v-slot:activator="{ on }">
@@ -34,7 +34,7 @@
         </li>
       </ul>
 
-      <v-form @submit.prevent="add" ref="form" class="layout row pa-3">
+      <v-form @submit.prevent="add" ref="form" class="d-flex pa-4">
         <BaseTextField type="email" :label="$vuetify.lang.t('$vuetify.password.recovery.emailInput')" v-model="newEmail"
           :rules="[
             // this field is never required so it must either be empty or hold a VALID email (W3C's HTML5 type=email regex)

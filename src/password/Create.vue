@@ -20,7 +20,7 @@
             <li v-for="suggestion in strength.feedback.suggestions" :key="suggestion">{{ suggestion }}</li>
           </ul>
 
-          <footer class="layout row align-center justify-end">
+          <footer class="d-flex align-center justify-end">
             <a href="https://idphelp.sil.org/logging-in/password/password-recommendations" target="_blank" class="caption">
               {{ $vuetify.lang.t('$vuetify.global.learnMore') }}
             </a>
