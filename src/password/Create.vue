@@ -13,7 +13,7 @@
         <BaseTextField type="password" :label="$vuetify.lang.t('$vuetify.password.create.pwInput')" v-model="password" 
                        :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
 
-        <v-alert v-if="password" :value="showFeedback" :type="strength.feedback.warning ? 'error' : 'info'" outlined>
+        <v-alert :value="!!(showFeedback && password)" :type="strength.feedback.warning ? 'error' : 'info'" outlined>
           <header class="body-2">{{ strength.feedback.warning }}</header>
           
           <ul>
@@ -27,7 +27,7 @@
           </footer>
         </v-alert>
 
-        <v-alert :value="isGood" type="success" outlined>
+        <v-alert :value="!!isGood" type="success" outlined>
           <header class="body-2">{{ $vuetify.lang.t('$vuetify.password.create.goodPassword') }}</header>
         </v-alert>
       </v-form>
