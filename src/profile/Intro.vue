@@ -13,13 +13,11 @@
               frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-4" />
     </v-row>
 
-    <ButtonBar>
+    <ButtonBar class="mt-5">
       <v-spacer></v-spacer>
 
-      <v-col cols="auto" class="mr-4">
-        <p>
-          {{ $vuetify.lang.t('$vuetify.profile.intro.username') }} <strong class="body-2">{{ $user.idp_username }}</strong>
-        </p>
+      <v-col cols="auto" class="mr-4 align-self-center">
+        {{ $vuetify.lang.t('$vuetify.profile.intro.username') }} <strong class="body-2">{{ $user.idp_username }}</strong>
       </v-col>
 
       <v-spacer></v-spacer>
