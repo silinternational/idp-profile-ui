@@ -15,7 +15,7 @@
     </v-stepper-header>
 
     <v-stepper-items>
-      <v-stepper-content :step="currentStep.id">
+      <v-stepper-content :step="currentStep.id" class="px-2 px-sm-6">
         <slot />
 
         <ButtonBar >
