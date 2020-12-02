@@ -11,7 +11,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/intro" tabindex="-1" outlined class="mr-3 mb-3"> 
+      <v-btn to="/2sv/intro" tabindex="-1" outlined class="mr-4 mb-4"> 
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
       <v-btn to="/2sv/usb-security-key/intro" color="primary" tabindex="-1" outlined> 
@@ -20,7 +20,7 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/usb-security-key/intro" color="primary" tabindex="-1" outlined class="mr-3"> 
+      <v-btn to="/2sv/usb-security-key/intro" color="primary" tabindex="-1" outlined class="mr-4"> 
         {{ $vuetify.lang.t('$vuetify.global.button.no') }}
       </v-btn>
       <v-btn to="/2sv/smartphone/download-app" color="primary" outlined> 

@@ -4,7 +4,7 @@
       <v-row no-gutters align-center>
         <v-icon :color="hide ? 'success' : ''" x-large>mdi-security</v-icon>
 
-        <h3 class="headline pl-3">{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.title') }}</h3>
+        <h3 class="headline pl-4">{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.title') }}</h3>
       </v-row>
     </v-card-title>
 

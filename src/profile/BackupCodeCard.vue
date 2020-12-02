@@ -5,7 +5,7 @@
         <v-col cols="2">
           <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-format-list-checkbox</v-icon>
         </v-col>
-        <v-col class="ml-3">
+        <v-col class="ml-4">
           <MfaCardLabel :label="label" :id="meta.id" read-only />
         </v-col>
       </v-row>

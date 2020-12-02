@@ -12,7 +12,7 @@
       </v-row>
       <v-row justify="center">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/N1CNo4AZLRQ?rel=0" 
-                frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-3" />
+                frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-4" />
       </v-row>
 
       <v-row justify="center" align="center">

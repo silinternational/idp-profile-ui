@@ -36,7 +36,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" outlined class="mb-3"> 
+      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" outlined class="mb-4"> 
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 

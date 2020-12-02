@@ -5,7 +5,7 @@
         {{ $vuetify.lang.t('$vuetify.password.confirm.header') }}
       </template>
 
-      <v-form @submit.prevent="confirm" ref="form" class="pa-3">
+      <v-form @submit.prevent="confirm" ref="form" class="pa-4">
         <p>{{ $vuetify.lang.t('$vuetify.password.confirm.explanation') }}</p>
         
         <BaseTextField type="password" :label="$vuetify.lang.t('$vuetify.password.confirm.pwInput')" v-model="password" 

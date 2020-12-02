@@ -13,13 +13,13 @@
         <img v-if="isAuthy" src="@/assets/authy-logo.jpg">
         <img v-else src="@/assets/authenticator-logo.jpg">
 
-        <figcaption class="headline ml-3">
+        <figcaption class="headline ml-4">
           {{ $vuetify.lang.t(`$vuetify.2sv.smartphone.download.appname-${preferredAppName}`) }}
         </figcaption>
       </figure>
 
       <figure class="badges d-flex align-center justify-center">
-        <a :href="`https://play.google.com/store/apps/details?id=${playStoreId}`" target="_blank" class="pr-3">
+        <a :href="`https://play.google.com/store/apps/details?id=${playStoreId}`" target="_blank" class="pr-4">
           <img src="@/assets/google-play-badge.png">
         </a>
         <a :href="`https://itunes.apple.com/us/app/${itunesAppUrl}`" target="_blank">
@@ -29,7 +29,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/intro" tabindex="-1" outlined class="mb-3"> 
+      <v-btn to="/2sv/smartphone/intro" tabindex="-1" outlined class="mb-4"> 
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 

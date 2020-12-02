@@ -15,12 +15,12 @@
       <ul>
         <li class="subtitle-1 grey--text py-2">{{ $vuetify.lang.t('$vuetify.password.recovery.personalHeader') }}</li>
 
-        <li v-for="method in alternates" :key="method.id" class="d-flex pb-2 pl-3">
+        <li v-for="method in alternates" :key="method.id" class="d-flex pb-2 pl-4">
           {{ method.value }}
           <v-tooltip :disabled="alternates.length > 1" right>
             <template v-slot:activator="{ on }">
               <div v-on="on">
-                <v-icon @click.once="remove(method.id)" :disabled="alternates.length == 1" color="error" small class="pl-3">
+                <v-icon @click.once="remove(method.id)" :disabled="alternates.length == 1" color="error" small class="pl-4">
                   mdi-delete
                 </v-icon>
               </div>
@@ -29,7 +29,7 @@
             {{ $vuetify.lang.t('$vuetify.password.recovery.dontRemoveLastOne') }}
           </v-tooltip>
         </li>
-        <li v-if="! alternates.length" class="pl-3">
+        <li v-if="! alternates.length" class="pl-4">
           <em>{{ $vuetify.lang.t('$vuetify.password.recovery.noPersonalMethods') }}</em>
         </li>
       </ul>
@@ -41,7 +41,7 @@
             v => /^$|^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) || $vuetify.lang.t('$vuetify.password.recovery.invalidEmail')
           ]" validate-on-blur @keyup.enter="blur" autofocus />
 
-        <v-btn @click="add" :disabled="! newEmail" fab small color="success" class="ma-2-mod ml-3">
+        <v-btn @click="add" :disabled="! newEmail" fab small color="success" class="ma-2-mod ml-4">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
       </v-form>

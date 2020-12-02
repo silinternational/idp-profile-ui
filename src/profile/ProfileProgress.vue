@@ -3,7 +3,7 @@
     <v-col cols="auto">
       <p class="body-2 text-right">{{ $vuetify.lang.t('$vuetify.profile.progress.header') }}</p>
 
-    <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-3"/>
+    <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-4"/>
 
     <a v-if="complete < 1 && ! profile.alternates.length" href="#/password/recovery" class="caption">{{ $vuetify.lang.t('$vuetify.profile.progress.addMethod') }}</a>
     <a v-if="complete < 1 && ! profile.mfa.totp.id" href="#/2sv/smartphone/intro" class="caption">{{ $vuetify.lang.t('$vuetify.profile.progress.addTotp') }}</a>
