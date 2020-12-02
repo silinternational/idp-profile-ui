@@ -71,4 +71,10 @@ export default {
 div.v-input.v-text-field {
   max-width: 30%;
 }
+
+@media only screen and (max-width: 480px) {
+  div.v-input.v-text-field {
+    max-width: 60%;
+  }
+}
 </style>
