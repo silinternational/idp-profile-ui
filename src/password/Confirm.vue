@@ -2,26 +2,26 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.password.confirm.header') }}
+        {{ $vuetify.lang.t('$vuetify.password.confirm.header') }}
       </template>
 
-      <v-form @submit.prevent="confirm" ref="form" class="pa-3">
-        <p>{{ $vuetify.t('$vuetify.password.confirm.explanation') }}</p>
+      <v-form @submit.prevent="confirm" ref="form" class="pa-4">
+        <p>{{ $vuetify.lang.t('$vuetify.password.confirm.explanation') }}</p>
         
-        <BaseTextField type="password" :label="$vuetify.t('$vuetify.password.confirm.pwInput')" v-model="password" 
+        <BaseTextField type="password" :label="$vuetify.lang.t('$vuetify.password.confirm.pwInput')" v-model="password" 
                        :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
       </v-form>
     </BasePage>
 
     <template v-slot:actions>
-      <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" flat tabindex="-1" outline>
-        {{ $vuetify.t('$vuetify.global.button.back') }}
+      <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" tabindex="-1" outlined>
+        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn @click="confirm" color="primary" :disabled="errors.length > 0" flat outline>
-        {{ $vuetify.t('$vuetify.global.button.continue') }}
+      <v-btn @click.once="confirm" color="primary" :disabled="errors.length > 0" outlined>
+        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
       </v-btn>
     </template>
   </ProfileWizard>
@@ -37,7 +37,7 @@ export default {
   data: vm => ({
     password: '',
     rules: [
-      v => v == vm.$root.$data.password || vm.$vuetify.t('$vuetify.password.confirm.noMatch')
+      v => v == vm.$root.$data.password || vm.$vuetify.lang.t('$vuetify.password.confirm.noMatch')
     ],
     errors: [],
   }),

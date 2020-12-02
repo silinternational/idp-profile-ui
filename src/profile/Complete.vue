@@ -2,43 +2,64 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.profile.complete.header') }}
+        {{ $vuetify.lang.t('$vuetify.profile.complete.header') }}
       </template>
 
-      <p class="layout row">
-        <v-icon color="success" class="mr-3">done</v-icon> 
-        {{ $vuetify.t('$vuetify.profile.complete.info', $user.first_name, $root.idpConfig.idpName) }}
-      </p>
+      <v-row>
+        <v-col cols="1" class="text-right">
+          <v-icon color="success">mdi-check</v-icon>
+        </v-col>
+        
+        <v-col cols="11">
+          {{ $vuetify.lang.t('$vuetify.profile.complete.info', $user.first_name, $root.idpConfig.idpName) }}
+        </v-col>
+      </v-row>
 
-      <p class="layout row">
-        <v-icon color="success" class="mr-3">person</v-icon> 
-        {{ $vuetify.t('$vuetify.profile.complete.username') }} <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
-      </p>
+      <v-row>
+        <v-col cols="1" class="text-right">
+          <v-icon color="success">mdi-account</v-icon> 
+        </v-col>
 
-      <p v-if="unverifiedEmails.length" class="layout row">
-        <v-icon color="warning" class="mr-3">email</v-icon> 
-        <span>
-          {{ $vuetify.t('$vuetify.profile.complete.unverifiedEmails') }}
+        <v-col cols="11">
+          {{ $vuetify.lang.t('$vuetify.profile.complete.username') }} <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
+        </v-col>
+      </v-row>
+
+      <v-row v-if="unverifiedEmails.length">
+        <v-col cols="1" class="text-right">
+          <v-icon color="warning">mdi-email</v-icon> 
+        </v-col>
+
+        <v-col cols="11">
+          {{ $vuetify.lang.t('$vuetify.profile.complete.unverifiedEmails') }}
           <span class="font-weight-bold">({{ unverifiedEmails | joined }})</span>
-        </span>
-      </p>
+        </v-col>
+      </v-row>
 
-      <p v-if="! alternates.length" class="layout row">
-        <v-icon color="warning" class="mr-3">warning</v-icon> 
-        {{ $vuetify.t('$vuetify.profile.complete.noAlternates') }}
-      </p>
+      <v-row v-if="! alternates.length">
+        <v-col cols="1" class="text-right">
+          <v-icon color="warning">mdi-alert</v-icon> 
+        </v-col>
+        <v-col cols="11">
+          {{ $vuetify.lang.t('$vuetify.profile.complete.noAlternates') }}
+        </v-col>
+      </v-row>
 
-      <p v-if="mfa.numVerified == 0" class="layout row">
-        <v-icon color="warning" class="mr-3">warning</v-icon> 
-        {{ $vuetify.t('$vuetify.profile.complete.no2sv') }}
-      </p>
+      <v-row v-if="mfa.numVerified == 0">
+        <v-col cols="1" class="text-right">
+          <v-icon color="warning">mdi-alert</v-icon> 
+        </v-col>
+        <v-col cols="11">
+          {{ $vuetify.lang.t('$vuetify.profile.complete.no2sv') }}
+        </v-col>
+      </v-row>
     </BasePage>
 
     <ButtonBar>
       <v-spacer></v-spacer>
       
-      <v-btn @click="done" color="primary" flat outline>
-        {{ $vuetify.t('$vuetify.profile.complete.button.profile') }}
+      <v-btn @click.once="done" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.profile.complete.button.profile') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

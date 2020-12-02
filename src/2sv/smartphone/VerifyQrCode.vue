@@ -2,28 +2,28 @@
   <ProfileWizard>
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.header') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.header') }}
       </template>
 
-      <v-layout align-center class="px-5">
-        <v-form @submit.prevent="verify" ref="form" class="pl-5 layout column align-center">
-          <p>{{ $vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.info') }}</p>
+      <v-row align="center" class="px-5">
+        <v-form @submit.prevent="verify" ref="form" class="pl-5 d-flex flex-column align-center">
+          <p>{{ $vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.info') }}</p>
           
-          <BaseTextField type="text" :label="$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.codeInput')" v-model="code" 
+          <BaseTextField type="text" :label="$vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.codeInput')" v-model="code" 
                          :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus class="mt-4" />
         </v-form>
-      </v-layout>
+      </v-row>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/scan-qr" flat tabindex="-1" outline> 
-        {{ $vuetify.t('$vuetify.global.button.back') }}
+      <v-btn to="/2sv/smartphone/scan-qr" tabindex="-1" outlined> 
+        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn @click="verify" color="primary" flat outline> 
-        {{ $vuetify.t('$vuetify.global.button.verify') }}
+      <v-btn @click.once="verify" color="primary" outlined> 
+        {{ $vuetify.lang.t('$vuetify.global.button.verify') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -43,7 +43,7 @@ export default {
       // users may enter codes that begin with zeros or they might put a space in between digits
       v =>
         /^\d{3} ?\d{3}$/.test(v) ||
-        vm.$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.invalidCode')
+        vm.$vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.invalidCode')
     ],
     errors: [],
   }),
@@ -56,7 +56,7 @@ export default {
           this.$router.push('/2sv/smartphone/code-verified')
         } catch (error) {
           if (error.status == 400) {
-            this.errors.push(this.$vuetify.t('$vuetify.2sv.smartphone.verifyQrCode.hint'))
+            this.errors.push(this.$vuetify.lang.t('$vuetify.2sv.smartphone.verifyQrCode.hint'))
           }
         }
       }
@@ -70,5 +70,11 @@ export default {
 <style scoped>
 div.v-input.v-text-field {
   max-width: 30%;
+}
+
+@media only screen and (max-width: 480px) {
+  div.v-input.v-text-field {
+    max-width: 60%;
+  }
 }
 </style>

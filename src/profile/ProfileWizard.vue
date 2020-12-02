@@ -7,7 +7,7 @@
                         :complete-icon="toIcon(_step.state)" 
                         :color="toColor(_step.state)" 
                         :key="`step-${_step.id}`">
-          {{ _step.name }}
+          {{ $vuetify.lang.t(`$vuetify.${_step.nameKey}`) }}
         </v-stepper-step>
 
         <v-divider v-if="hasMoreSteps(_step)" :key="`divider-${_step.id}`" />
@@ -15,7 +15,7 @@
     </v-stepper-header>
 
     <v-stepper-items>
-      <v-stepper-content :step="currentStep.id">
+      <v-stepper-content :step="currentStep.id" class="px-2 px-sm-6">
         <slot />
 
         <ButtonBar >

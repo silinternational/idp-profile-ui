@@ -1,42 +1,42 @@
 <template>
   <v-app>
-    <v-toolbar app color="primary">
+    <v-app-bar app color="primary">
       <a href="/"><img src="@/assets/logo.png"></a>
 
       <v-spacer />
 
-      <v-toolbar-title class="white--text pr-3">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
+      <v-toolbar-title class="white--text px-4">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
 
       <v-divider vertical dark inset class="mx-2" />
 
-      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" flat dark>{{ $vuetify.t('$vuetify.app.logout') }}</v-btn>
-      <v-btn v-else                         @click="$user.login()" flat dark>{{ $vuetify.t('$vuetify.app.login') }}</v-btn>
+      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.app.logout') : '' }}<v-icon v-if="mobile">mdi-logout-variant</v-icon></v-btn>
+      <v-btn v-else                         @click="$user.login()" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.app.login') : '' }}<v-icon v-if="mobile">mdi-login</v-icon></v-btn>
 
       <v-divider vertical dark inset />
 
       <HelpButton />
-    </v-toolbar>
+    </v-app-bar>
 
-    <v-content>
+    <v-main>
       <Loading class="ma-0" />
 
-      <v-layout row>
+      <v-row no-gutters>
         <v-spacer />
 
-        <v-btn v-if="$returnTo.url" :href="$returnTo.url" small flat dark color="secondary">
+        <v-btn v-if="$returnTo.url" :href="$returnTo.url" small text dark color="secondary">
           return to {{ $returnTo.url }}
         </v-btn>
-      </v-layout>
+      </v-row>
       
       <v-container>
-        <v-alert :value="message" type="error" dismissible>
+        <v-alert :value="!!message" type="error" dismissible>
           <span v-html="message" />
         </v-alert>
 
         <!-- adding key here helps produce more predictable view behavior (see https://youtu.be/7YZ5DwlLSt8?t=21m22s) -->
         <router-view :key="$route.fullPath" />
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -49,6 +49,14 @@ export default {
   data: () => ({
     message: ''
   }),
+  computed: {
+    mobile () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return true
+          default: return false
+        }
+      },
+  },
   beforeCreate() {
     this.$API.interceptors.response.use(
       response => response,

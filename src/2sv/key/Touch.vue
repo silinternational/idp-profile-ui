@@ -1,35 +1,35 @@
 <template>
   <ProfileWizard>
     <v-alert :value="error" type="error">
-      <span class="layout row align-center justify-center">
-        {{ $vuetify.t('$vuetify.2sv.key.touch.error') }}
+      <span class="d-flex align-center justify-center">
+        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.error') }}
       </span>
     </v-alert>
 
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.2sv.key.touch.header') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.header') }}
       </template>
 
       <p>
-        {{ $vuetify.t('$vuetify.2sv.key.touch.info') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.info') }}
       </p>
 
-      <figure class="layout column align-center pa-4">
-        <img v-if="! touched" src="@/assets/touch-usb-security-key.png">
-        <v-icon v-else color="success" x-large>check</v-icon>
+      <figure class="d-flex flex-column align-center pa-4">
+        <img v-if="! touched" src="@/assets/touch-usb-security-key.png" alt="A finger touching the top of a usb key.">
+        <v-icon v-else color="success" x-large>mdi-check</v-icon>
       </figure>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/usb-security-key/insert" flat tabindex="-1" outline> 
-        {{ $vuetify.t('$vuetify.global.button.back') }}
+      <v-btn to="/2sv/usb-security-key/insert" tabindex="-1" outlined> 
+        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn v-if="error" @click="error = false; create()" color="error" flat outline> 
-        {{ $vuetify.t('$vuetify.2sv.key.touch.button.retry') }}
+      <v-btn v-if="error" @click="error = false; create()" color="error" outlined> 
+        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.button.retry') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

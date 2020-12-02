@@ -1,5 +1,5 @@
 <template>
-  <v-layout row>
+  <v-row no-gutters>
     <slot />
-  </v-layout>
+  </v-row>
 </template>

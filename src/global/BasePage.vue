@@ -1,19 +1,21 @@
 <template>
-  <v-layout column align-center>
-    <header class="display-1 py-3 layout row align-center justify-center">
-      <slot name="header" />
-    </header>
-
-    <main class="body-1 py-3">
-      <slot />
-    </main>
-  </v-layout>
+  <v-row justify="center">
+    <v-col cols="auto" align-self="center">
+      <header class="display-1 py-4 d-flex align-center justify-center text-center">
+        <slot name="header" />
+      </header>
+    
+      <main class="body-1 py-4">
+        <slot />
+      </main>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
 export default {
   mounted() {
-    document.title = this.$vuetify.t('$vuetify.app.title', this.$slots.header[0].text.trim())
+    document.title = this.$vuetify.lang.t('$vuetify.app.title', this.$slots.header[0].text.trim())
   }
 }
 </script>

@@ -2,55 +2,52 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.header') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.header') }}
       </template>
 
       <p v-if="printing" class="printable header">
         {{ $root.idpConfig.idpName }} 
         <span class="caption">
-          ({{ $vuetify.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | formatLong }})
+          ({{ $vuetify.lang.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | formatLong }})
         </span>
       </p>
-      <v-layout column wrap align-center justify-center id="codes">
-        <p v-if="! codes.length" class="body-2">
-          {{ $vuetify.t('$vuetify.2sv.codes.new.loading') }}
-        </p>
         
-        <div v-for="code in codes" :key="code" class="layout row align-center pr-5">
-          <v-icon class="pr-2">check_box_outline_blank</v-icon> <span class="code">{{ code }}</span>
-        </div>
-      </v-layout>
+      <v-row id="codes">
+        <v-col v-for="(code, i) in codes" :key="code" cols="6" :class="{'text-right': i % 2 === 0}" class="text-no-wrap">
+          <v-icon class="pr-2">mdi-checkbox-blank-outline</v-icon> <span class="code xsCode">{{ code }}</span>
+        </v-col>
+      </v-row>
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="print('#codes')" color="secondary" flat outline>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.button.print') }}
-        <v-icon right>print</v-icon>
+      <v-btn @click="print('#codes')" color="secondary" outlined class="mr-4 mb-4">
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}
+        <v-icon right>mdi-printer</v-icon>
       </v-btn>
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" flat outline>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.button.download') }}
-        <v-icon right>cloud_download</v-icon>
+      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" outlined class="mr-4 mb-4">
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}
+        <v-icon right>mdi-cloud-download</v-icon>
       </v-btn>
-      <v-btn v-if="copied" @click="copy()" color="success" flat outline>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.button.copied') }}
-        <v-icon right>checked</v-icon>
+      <v-btn v-if="copied" @click="copy()" color="success" outlined>
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}
+        <v-icon right>mdi-check</v-icon>
       </v-btn>
-      <v-btn v-else @click="copy()" color="secondary" flat outline>
-        {{ $vuetify.t('$vuetify.2sv.codes.new.button.copy') }}
-        <v-icon right>assignment</v-icon>
+      <v-btn v-else @click="copy()" color="secondary" outlined>
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}
+        <v-icon right>mdi-file-table-box-outline</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
 
       <v-tooltip :disabled="gotEm" :value="gotEm" top>
         <template v-slot:activator="{ on }">
           <div v-on="on">
-            <v-btn @click="finish" :disabled="!gotEm" color="primary" flat outline>
-              {{ $vuetify.t('$vuetify.2sv.codes.new.button.ok') }}
+            <v-btn @click.once="finish" :disabled="!gotEm" color="primary" outlined>
+              {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.ok') }}
             </v-btn>
           </div>
         </template>
 
-        {{ $vuetify.t('$vuetify.2sv.codes.new.personalCopy') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.personalCopy') }}
       </v-tooltip>
     </ButtonBar>
   </ProfileWizard>
@@ -116,8 +113,14 @@ span.code {
   font-family: monospace;
 }
 
-.layout.column.wrap {
-  max-height: 12em; /* this height, in combination with the font-size, will limit the number of codes per column to 5. */
+i.v-icon {
+  vertical-align: text-bottom; /* vertically centers the checkbox and the code */
+}
+
+@media only screen and (max-width: 480px) {
+  span.xsCode {
+    font-size: 1.2em;
+  }
 }
 </style>
 
@@ -144,6 +147,9 @@ span.code {
   .printable,
   .printable * {
     visibility: visible;
+  }
+  .printable .col {
+    padding: 12px !important;
   }
 }
 </style>
