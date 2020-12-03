@@ -16,7 +16,7 @@
       </p>
 
       <figure class="pa-4">
-        <v-img v-if="! touched" contained src="@/assets/touch-usb-security-key.png" alt="A finger touching the top of a usb key."></v-img>
+        <v-img v-if="! touched" contained src="@/assets/touch-usb-security-key.png" alt="A finger touching the top of a usb key."/>
         <v-icon v-else color="success" x-large>mdi-check</v-icon>
       </figure>
     </BasePage>

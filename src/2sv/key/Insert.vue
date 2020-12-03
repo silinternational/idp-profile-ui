@@ -6,7 +6,7 @@
       </template>
 
       <figure class="pa-4">
-        <v-img contain src="@/assets/insert-usb-security-key.png" alt="A usb key inserted into a usb port."></v-img>
+        <v-img contain src="@/assets/insert-usb-security-key.png" alt="A usb key inserted into a usb port."/>
       </figure>
     </BasePage>
 

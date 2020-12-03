@@ -10,7 +10,7 @@
       </p>
 
       <figure class="pa-4">
-        <v-img src="@/assets/usb-security-key-examples.png" contain alt="Three sizes of USB keys."></v-img>
+        <v-img src="@/assets/usb-security-key-examples.png" contain alt="Three sizes of USB keys."/>
       </figure>
     </BasePage>
 
