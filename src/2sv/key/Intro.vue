@@ -9,8 +9,8 @@
         {{ $vuetify.lang.t('$vuetify.2sv.key.intro.info') }}
       </p>
 
-      <figure class="d-flex flex-column align-center pa-4">
-        <v-img src="@/assets/usb-security-key-examples.png" contain alt="Three sizes of USB keys."></v-img>
+      <figure class="pa-4">
+        <v-img src="@/assets/usb-security-key-examples.png" contain alt="Three sizes of USB keys."/>
       </figure>
     </BasePage>
 
