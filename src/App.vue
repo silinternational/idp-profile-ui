@@ -93,14 +93,6 @@ p {
   max-width: 75ch; /* better readability supposedly */
 }
 
-/* cards on the profile page were losing their flex style in production 
-   builds due to the way the style modules are combined... this will increase 
-   the specificity as a work-around.  I chatted with John Leider on discord 
-   and he said this would be fixed once v2.0 was released. */
-.layout.v-sheet {
-  display: flex;
-}
-
 /* with the addition of the help link, the extra space on the rigth looked weird. */
 div.v-toolbar__content {
   padding-right: initial;

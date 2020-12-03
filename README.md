@@ -49,6 +49,12 @@ See notes in Environment section regarding HTTPS and _traefik_ configuration.
 
 1.  When the `make` is run, the project will be in development mode and any updates made to the code will automatically be reloaded.
 
+### Running production version of the app locally
+
+1. Within `docker-compose.yml` change the `ui:` container's `command: npm run serve` to `command: npm run serve:prod`
+1. Run `make dist`
+1. Run `make`
+
 # Build for deployment
 
 ## Step 1 – Environment variables
