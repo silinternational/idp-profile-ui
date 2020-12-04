@@ -9,8 +9,8 @@
 
       <v-divider vertical dark inset class="mx-2" />
 
-      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.app.logout') : '' }}<v-icon v-if="mobile">mdi-logout-variant</v-icon></v-btn>
-      <v-btn v-else                         @click="$user.login()" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.app.login') : '' }}<v-icon v-if="mobile">mdi-login</v-icon></v-btn>
+      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark :icon="mobile" class="mx-1">{{ !mobile ? $vuetify.lang.t('$vuetify.app.logout') : '' }}<v-icon v-if="mobile">mdi-logout-variant</v-icon></v-btn>
+      <v-btn v-else                         @click="$user.login()" text dark :icon="mobile" class="mx-1">{{ !mobile ? $vuetify.lang.t('$vuetify.app.login') : '' }}<v-icon v-if="mobile">mdi-login</v-icon></v-btn>
 
       <v-divider vertical dark inset />
 

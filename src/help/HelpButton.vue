@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-if="$root.idpConfig.support" v-model="isOpen" width="initial"> <!-- making it initial so card grows with content -->
     <template v-slot:activator="{ on }">
-      <v-btn v-on="on" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.help.button.help') : '' }}<v-icon v-if="mobile">mdi-help</v-icon></v-btn>
+      <v-btn v-on="on" text dark :icon="mobile" class="mx-1">{{ !mobile ? $vuetify.lang.t('$vuetify.help.button.help') : '' }}<v-icon v-if="mobile">mdi-help</v-icon></v-btn>
 
     </template>
     <v-card>
