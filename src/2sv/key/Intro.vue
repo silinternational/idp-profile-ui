@@ -15,7 +15,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" tabindex="-1" outlined class="mb-4 mb-sm-0"> 
+      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" tabindex="-1" outlined class="mr-4 mb-4 mb-sm-0"> 
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
 

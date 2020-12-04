@@ -101,5 +101,12 @@ p {
 div.v-toolbar__content {
   padding-right: initial;
 }
+
+/* Reduces font size of button content on <= 480px screens */
+@media only screen and (max-width: 480px) {
+  span.v-btn__content {
+    font-size: .8em;
+  }
+}
 </style>
 
