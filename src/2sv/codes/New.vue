@@ -20,21 +20,21 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="print('#codes')" color="secondary" outlined class="mr-4 mb-4">
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}
-        <v-icon right>mdi-printer</v-icon>
+      <v-btn @click="print('#codes')" @mouseover="info('print')" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-4 mb-4 mb-sm-0">
+        {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') : '' }}
+        <v-icon :right="! mobile" :large="mobile">mdi-printer</v-icon>
       </v-btn>
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" outlined class="mr-4 mb-4">
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}
-        <v-icon right>mdi-cloud-download</v-icon>
+      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" @mouseover="info('download')" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-4">
+        {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') : '' }}
+        <v-icon :right="! mobile" :large="mobile">mdi-cloud-download</v-icon>
       </v-btn>
-      <v-btn v-if="copied" @click="copy()" color="success" outlined>
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}
-        <v-icon right>mdi-check</v-icon>
+      <v-btn v-if="copied" @click="copy()" @mouseover="info('copy')" color="success" :outlined="! mobile" :icon="mobile">
+        {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') : '' }}
+        <v-icon :right="! mobile" :large="mobile">mdi-check</v-icon>
       </v-btn>
-      <v-btn v-else @click="copy()" color="secondary" outlined>
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}
-        <v-icon right>mdi-file-table-box-outline</v-icon>
+      <v-btn v-else @click="copy()" @mouseover="info('copy')" color="secondary" :outlined="! mobile" :icon="mobile">
+        {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') : '' }}
+        <v-icon :right="! mobile" :large="mobile">mdi-file-table-box-outline</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
 
@@ -80,6 +80,12 @@ export default {
         `${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`
       )
     },
+    mobile () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return true
+          default: return false
+        }
+      },
   },
   methods: {
     finish: function() {
@@ -103,6 +109,9 @@ export default {
 
       this.gotEm = this.copied = true
     },
+    info: function (hover) {
+      alert(hover)
+    }
   },
 }
 </script>
