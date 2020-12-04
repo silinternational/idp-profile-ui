@@ -20,21 +20,21 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="print('#codes')" @mouseover="info('print')" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-4 mb-4 mb-sm-0">
+      <v-btn @click="print('#codes')" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
         {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') : '' }}
-        <v-icon :right="! mobile" :large="mobile">mdi-printer</v-icon>
+        <v-icon :right="! mobile" :large="mobile" title="print">mdi-printer</v-icon>
       </v-btn>
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" @mouseover="info('download')" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-4">
+      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
         {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') : '' }}
         <v-icon :right="! mobile" :large="mobile">mdi-cloud-download</v-icon>
       </v-btn>
-      <v-btn v-if="copied" @click="copy()" @mouseover="info('copy')" color="success" :outlined="! mobile" :icon="mobile">
+      <v-btn v-if="copied" @click="copy()" color="success" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
         {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') : '' }}
-        <v-icon :right="! mobile" :large="mobile">mdi-check</v-icon>
+        <v-icon :right="! mobile" :large="mobile">mdi-clipboard-check-multiple-outline</v-icon>
       </v-btn>
-      <v-btn v-else @click="copy()" @mouseover="info('copy')" color="secondary" :outlined="! mobile" :icon="mobile">
+      <v-btn v-else @click="copy()" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
         {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') : '' }}
-        <v-icon :right="! mobile" :large="mobile">mdi-file-table-box-outline</v-icon>
+        <v-icon :right="! mobile" :large="mobile">mdi-clipboard-multiple-outline</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
 
@@ -109,9 +109,6 @@ export default {
 
       this.gotEm = this.copied = true
     },
-    info: function (hover) {
-      alert(hover)
-    }
   },
 }
 </script>
