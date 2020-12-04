@@ -109,11 +109,8 @@ export default {
       )
     },
     mobile () {
-        switch (this.$vuetify.breakpoint.name) {
-          case 'xs': return true
-          default: return false
-        }
-      },
+      return this.$vuetify.breakpoint.name === 'xs'
+    }
   },
   methods: {
     finish: function() {
@@ -187,4 +184,3 @@ i.v-icon {
   }
 }
 </style>
-

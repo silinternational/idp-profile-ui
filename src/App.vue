@@ -58,11 +58,8 @@ export default {
   }),
   computed: {
     mobile () {
-        switch (this.$vuetify.breakpoint.name) {
-          case 'xs': return true
-          default: return false
-        }
-      },
+      return this.$vuetify.breakpoint.name === 'xs'
+    },
   },
   beforeCreate() {
     this.$API.interceptors.response.use(
