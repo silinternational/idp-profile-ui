@@ -21,21 +21,49 @@
 
     <ButtonBar>
       <v-btn @click="print('#codes')" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
-        {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') : '' }}
-        <v-icon :right="! mobile" :large="mobile" title="print">mdi-printer</v-icon>
+        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}</span>
+
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+            <v-icon v-on="on" :right="! mobile" :large="mobile" title="print">mdi-printer</v-icon>
+          </template>
+          <span>Print</span>
+        </v-tooltip>
       </v-btn>
+
       <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
-        {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') : '' }}
-        <v-icon :right="! mobile" :large="mobile">mdi-cloud-download</v-icon>
+        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}</span>
+
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+            <v-icon v-on="on" :right="! mobile" :large="mobile">mdi-cloud-download</v-icon>
+          </template>
+          <span>Download</span>
+        </v-tooltip>
       </v-btn>
+
       <v-btn v-if="copied" @click="copy()" color="success" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
-        {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') : '' }}
-        <v-icon :right="! mobile" :large="mobile">mdi-clipboard-check-multiple-outline</v-icon>
+        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}</span>
+
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+            <v-icon v-on="on" :right="! mobile" :large="mobile">mdi-clipboard-check-multiple-outline</v-icon>
+          </template>
+          <span>Copy</span>
+        </v-tooltip>
       </v-btn>
+
       <v-btn v-else @click="copy()" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
-        {{ ! mobile ? $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') : '' }}
-        <v-icon :right="! mobile" :large="mobile">mdi-clipboard-multiple-outline</v-icon>
+        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}</span>
+
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+            <v-icon v-on="on" :right="! mobile" :large="mobile">mdi-clipboard-multiple-outline</v-icon>
+          </template>
+          <span>Copy</span>
+        </v-tooltip>
       </v-btn>
+
       <v-spacer></v-spacer>
 
       <v-tooltip :disabled="gotEm" :value="gotEm" top>
