@@ -36,13 +36,13 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" outlined class="mb-4"> 
+      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" outlined class="mobileBtn mb-4 mb-sm-0"> 
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`" :disabled="! newTotp.id" color="primary" outlined> 
+      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`" :disabled="! newTotp.id" color="primary" outlined class="mobileBtn"> 
         {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.button.ok') }}
       </v-btn>
     </ButtonBar>
@@ -82,5 +82,11 @@ li > p {
 
 .font-mono {
   font-family: monospace;
+}
+
+@media only screen and (max-width: 480px) {
+  .mobileBtn {
+    font-size: .8em;
+  }
 }
 </style>

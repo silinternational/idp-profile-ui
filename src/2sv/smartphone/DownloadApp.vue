@@ -29,13 +29,13 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/intro" tabindex="-1" outlined class="mb-4"> 
+      <v-btn to="/2sv/smartphone/intro" tabindex="-1" outlined class="mb-4 mb-sm-0 mobileBtn"> 
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/smartphone/scan-qr" color="primary" outlined> 
+      <v-btn to="/2sv/smartphone/scan-qr" color="primary" outlined class="mobileBtn"> 
         {{ $vuetify.lang.t('$vuetify.2sv.smartphone.download.button.ok') }}
       </v-btn>
     </ButtonBar>
@@ -66,5 +66,11 @@ img {
 /* wanted both to look the same  */
 figure.badges > a > img {
   max-height: 40px;
+}
+
+@media only screen and (max-width: 480px) {
+  .mobileBtn {
+    font-size: .8em;
+  }
 }
 </style>
