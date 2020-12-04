@@ -9,8 +9,15 @@
 
       <v-divider vertical dark inset class="mx-2" />
 
-      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.app.logout') : '' }}<v-icon v-if="mobile">mdi-logout-variant</v-icon></v-btn>
-      <v-btn v-else                         @click="$user.login()" text dark>{{ !mobile ? $vuetify.lang.t('$vuetify.app.login') : '' }}<v-icon v-if="mobile">mdi-login</v-icon></v-btn>
+      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark :icon="mobile" class="mx-1">
+        <v-icon v-if="mobile">mdi-logout-variant</v-icon>
+        <span v-else>{{ $vuetify.lang.t('$vuetify.app.logout') }}</span>
+      </v-btn>
+
+      <v-btn v-else @click="$user.login()" text dark :icon="mobile" class="mx-1">
+        <v-icon v-if="mobile">mdi-login</v-icon>
+        <span v-else>{{ $vuetify.lang.t('$vuetify.app.login') }}</span>
+      </v-btn>
 
       <v-divider vertical dark inset />
 
@@ -51,11 +58,8 @@ export default {
   }),
   computed: {
     mobile () {
-        switch (this.$vuetify.breakpoint.name) {
-          case 'xs': return true
-          default: return false
-        }
-      },
+      return this.$vuetify.breakpoint.name === 'xs'
+    },
   },
   beforeCreate() {
     this.$API.interceptors.response.use(
@@ -96,6 +100,13 @@ p {
 /* with the addition of the help link, the extra space on the rigth looked weird. */
 div.v-toolbar__content {
   padding-right: initial;
+}
+
+/* Reduces font size of button content on <= 480px screens */
+@media only screen and (max-width: 480px) {
+  span.v-btn__content {
+    font-size: .8em;
+  }
 }
 </style>
 
