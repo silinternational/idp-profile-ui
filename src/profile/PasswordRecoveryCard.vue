@@ -26,7 +26,7 @@
           {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
         </v-tooltip>
 
-        <a v-if="! method.verified && method.id != sent" @click="resend(method)" class="caption pl-2">
+        <a v-if="! method.verified && method.id != sent" @click="resend(method)" class="caption float-right pl-2">
           {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.resend') }}
         </a>
       </div>
