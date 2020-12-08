@@ -32,7 +32,7 @@
       </v-col>
     </v-row>
 
-    <v-subheader class="py-12">{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
+    <v-subheader>{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
 
     <v-row>
       <v-col cols="12" sm="6" md="4">
