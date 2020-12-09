@@ -59,7 +59,7 @@ See notes in Environment section regarding HTTPS and _traefik_ configuration.
 
 ## Step 1 – Environment variables
 
-Copy `.env.dist` to `env.local` and update the relevant values, e.g., a UI deployment would only require the UI-related variables be presented and populated.
+Copy `.env.dist` to `env.local` and update the relevant values, e.g., a UI deployment would only require the UI-related variables be present and populated.
 
 ## Step 2 – Customizations
 
