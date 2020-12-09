@@ -1,13 +1,13 @@
 <template>
-    <div class="display-1 d-flex flex-column align-end">
-      <p class="body-2 text-right">{{ $vuetify.lang.t('$vuetify.profile.progress.header') }}</p>
+    <div class="d-flex flex-column align-end">
+      <p class="body-2 text-right mb-1">{{ $vuetify.lang.t('$vuetify.profile.progress.header') }}</p>
 
-      <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-4"/>
-
-      <a v-if="complete < 1 && ! profile.alternates.length" href="#/password/recovery" class="caption">{{ $vuetify.lang.t('$vuetify.profile.progress.addMethod') }}</a>
-      <a v-if="complete < 1 && ! profile.mfa.totp.id" href="#/2sv/smartphone/intro" class="caption">{{ $vuetify.lang.t('$vuetify.profile.progress.addTotp') }}</a>
-      <a v-if="complete < 1 && ! profile.mfa.u2f.id" href="#/2sv/usb-security-key/intro" class="caption">{{ $vuetify.lang.t('$vuetify.profile.progress.addU2f') }}</a>
-      <a v-if="complete < 1 && ! profile.mfa.backup.id" href="#/2sv/printable-backup-codes/intro" class="caption">{{ $vuetify.lang.t('$vuetify.profile.progress.addCodes') }}</a>
+      <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-1"/>
+      
+      <a v-if="complete < 1 && ! profile.alternates.length" href="#/password/recovery" class="text-body-2">{{ $vuetify.lang.t('$vuetify.profile.progress.addMethod') }}</a>
+      <a v-if="complete < 1 && ! profile.mfa.totp.id" href="#/2sv/smartphone/intro" class="text-body-2">{{ $vuetify.lang.t('$vuetify.profile.progress.addTotp') }}</a>
+      <a v-if="complete < 1 && ! profile.mfa.u2f.id" href="#/2sv/usb-security-key/intro" class="text-body-2">{{ $vuetify.lang.t('$vuetify.profile.progress.addU2f') }}</a>
+      <a v-if="complete < 1 && ! profile.mfa.backup.id" href="#/2sv/printable-backup-codes/intro" class="text-body-2">{{ $vuetify.lang.t('$vuetify.profile.progress.addCodes') }}</a>
     </div>
 </template>
 
@@ -43,9 +43,8 @@ function deriveCompleteness(user, methods, mfa) {
 </script>
 
 <style>
-a.caption {
-  line-height: initial;
-  display: block;
-  text-align: right;
+meter {
+  height: 2em;
+  width: 10em;
 }
 </style>
