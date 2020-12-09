@@ -36,11 +36,10 @@ export default {
   },
 }
 
-const t = Vue.prototype.$vuetify.t
 const isRequested = paths => paths.some(path => location.hash.includes(path))
 
 const password = {
-  name: t('$vuetify.profile.steps.pwStep'),
+  nameKey: 'profile.steps.pwStep',
   paths: [
     '/password/create', 
     '/password/confirm', 
@@ -52,7 +51,7 @@ const password = {
 }
 
 const recovery = {
-  name: t('$vuetify.profile.steps.pwRecoverStep'),
+  nameKey: 'profile.steps.pwRecoverStep',
   paths: [
     '/password/recovery',
   ],
@@ -63,7 +62,7 @@ const recovery = {
 const isAlternate = method => method.type == 'email'
 
 const twosv = {
-  name: t('$vuetify.profile.steps.2svStep'),
+  nameKey: 'profile.steps.2svStep',
   paths: [
     '/2sv/intro',
     '/2sv/smartphone/intro',
@@ -84,7 +83,7 @@ const twosv = {
 }
 
 const complete = {
-  name: t('$vuetify.profile.steps.completeStep'),
+  nameKey: 'profile.steps.completeStep',
   paths: [
     '/profile/complete', 
     '/password/reset/complete',

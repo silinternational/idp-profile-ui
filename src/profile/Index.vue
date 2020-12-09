@@ -1,48 +1,54 @@
 <template>
   <BasePage>
     <template v-slot:header>
-      {{ $vuetify.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
-
-      <v-spacer/>
-
-      <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
+      {{ $vuetify.lang.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
     </template>
 
-    <aside class="pb-3">
-      <Attribute :name="$vuetify.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
-      <Attribute :name="$vuetify.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
-      <Attribute :name="$vuetify.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
-    </aside>
+    <v-row>
+      <v-col cols="6">
+        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
+        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
+        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
+      </v-col>
+
+      <v-col cols="6">
+        <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
+      </v-col>
+    </v-row>
 
     <v-alert :value="hasUnverifiedEmails" type="error">
-      <span>{{ $vuetify.t('$vuetify.profile.index.unverifiedEmails') }}</span>
+      <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
     </v-alert>
 
-    <v-layout row wrap>
-      <v-flex xs12 sm6 md4 py-3>
-        <PasswordCard :meta="$user.password_meta" class="mx-3 mb-4"/>
-      </v-flex>
-      <v-flex xs12 sm6 md4 py-3>
-        <PasswordRecoveryCard :methods="alternates" class="mx-3 mb-4"/>
-      </v-flex>
-      <v-flex xs12 sm6 md4 py-3>
-        <DoNotDiscloseCard :dnd="$user.hide" class="mx-3 mb-4"/>
-      </v-flex>
-    </v-layout>
+    <v-row>
+      <v-col cols="12" sm="6" md="4">
+        <PasswordCard :meta="$user.password_meta"/>
+      </v-col>
 
-    <v-subheader class="py-5">{{ $vuetify.t('$vuetify.profile.index.2sv') }}</v-subheader>
+      <v-col cols="12" sm="6" md="4">
+        <PasswordRecoveryCard :methods="alternates"/>
+      </v-col>
 
-    <v-layout row wrap>
-      <v-flex xs12 sm6 md4 py-3>
-        <TotpCard :meta="mfa.totp" class="mx-3 mb-4"/>
-      </v-flex>
-      <v-flex xs12 sm6 md4 py-3>
-        <U2fCard :meta="mfa.u2f" class="mx-3 mb-4"/>
-      </v-flex>
-      <v-flex xs12 sm6 md4 py-3>
-        <BackupCodeCard :meta="mfa.backup" class="mx-3 mb-4"/>
-      </v-flex>
-    </v-layout>
+      <v-col cols="12" sm="6" md="4">
+        <DoNotDiscloseCard :dnd="$user.hide"/>
+      </v-col>
+    </v-row>
+
+    <v-subheader>{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
+
+    <v-row>
+      <v-col cols="12" sm="6" md="4">
+        <TotpCard :meta="mfa.totp"/>
+      </v-col>
+
+      <v-col cols="12" sm="6" md="4">
+        <U2fCard :meta="mfa.u2f"/>
+      </v-col>
+
+      <v-col cols="12" sm="6" md="4">
+        <BackupCodeCard :meta="mfa.backup"/>
+      </v-col>
+    </v-row>
   </BasePage>
 </template>
 

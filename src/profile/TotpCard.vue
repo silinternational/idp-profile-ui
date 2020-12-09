@@ -1,31 +1,38 @@
 <template>
-  <v-card class="fill-height layout column">
-    <v-card-title primary-title>
-      <v-layout row align-center>
-        <v-icon :color="meta.created_utc ? 'success' : ''" x-large>smartphone</v-icon>
-
-        <MfaCardLabel :label="label || meta.label || $vuetify.t('$vuetify.profile.index.totpCard.title')" 
-                      :id="meta.id" @new-label="label = $event"/>
-      </v-layout>
+  <v-card class="fill-height d-flex flex-column">
+    <v-card-title primary-title class="text-break">
+      <v-row no-gutters align="center">
+        <v-col cols="2">
+          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-cellphone</v-icon>
+        </v-col>
+        <v-col class="ml-4">
+          <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')" 
+                        :id="meta.id" @new-label="label = $event"/>
+        </v-col>
+      </v-row>
     </v-card-title>
 
-    <v-card-text class="grow">
-      <Attribute v-if="meta.created_utc" :name="$vuetify.t('$vuetify.profile.index.totpCard.created')" :value="meta.created_utc | format"/>
-      <div v-else class="layout row align-center">
-        <v-icon x-large color="warning" class="pr-3">warning</v-icon>
-        <em>{{ $vuetify.t('$vuetify.profile.index.totpCard.warning') }}</em>
-      </div>
-      <Attribute v-if="meta.last_used_utc" :name="$vuetify.t('$vuetify.profile.index.totpCard.lastUsed')" :value="meta.last_used_utc | format"/>
+    <v-card-text class="flex-grow-1">
+      <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.created')" :value="meta.created_utc | format"/>
+      <v-row v-else>
+        <v-col cols="auto">
+         <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
+        </v-col>
+        <v-col>
+          <em>{{ $vuetify.lang.t('$vuetify.profile.index.totpCard.warning') }}</em>
+        </v-col>
+      </v-row>
+      <Attribute v-if="meta.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.lastUsed')" :value="meta.last_used_utc | format"/>
     </v-card-text>
 
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="meta.created_utc" :href="`#/2sv/change/${meta.id}`" color="primary" flat outline>
-        {{ $vuetify.t('$vuetify.profile.index.totpCard.button.change') }}
+      <v-btn v-if="meta.created_utc" :href="`#/2sv/change/${meta.id}`" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.profile.index.totpCard.button.change') }}
       </v-btn>
-      <v-btn v-else href="#/2sv/smartphone/intro" color="primary" flat outline>
-        {{ $vuetify.t('$vuetify.global.button.add') }}
+      <v-btn v-else href="#/2sv/smartphone/intro" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.global.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :id="meta.id"/>
     </v-card-actions>

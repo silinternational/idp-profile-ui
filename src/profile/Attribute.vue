@@ -4,7 +4,7 @@
   </div>
   <dl v-else>
     <dt class="body-2">{{ name }}</dt>
-    <dt class="body-1 pl-4 py-2">{{ value || '–' }}</dt>
+    <dt class="body-1 pl-6 py-2">{{ value || '–' }}</dt>
   </dl>
 </template>
 

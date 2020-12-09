@@ -1,42 +1,49 @@
 <template>
   <v-app>
-    <v-toolbar app color="primary">
+    <v-app-bar app color="primary">
       <a href="/"><img src="@/assets/logo.png"></a>
 
       <v-spacer />
 
-      <v-toolbar-title class="white--text pr-3">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
+      <v-toolbar-title class="white--text px-4">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
 
       <v-divider vertical dark inset class="mx-2" />
 
-      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" flat dark>{{ $vuetify.t('$vuetify.app.logout') }}</v-btn>
-      <v-btn v-else                         @click="$user.login()" flat dark>{{ $vuetify.t('$vuetify.app.login') }}</v-btn>
+      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark :icon="mobile" class="mx-1">
+        <v-icon v-if="mobile">mdi-logout-variant</v-icon>
+        <span v-else>{{ $vuetify.lang.t('$vuetify.app.logout') }}</span>
+      </v-btn>
+
+      <v-btn v-else @click="$user.login()" text dark :icon="mobile" class="mx-1">
+        <v-icon v-if="mobile">mdi-login</v-icon>
+        <span v-else>{{ $vuetify.lang.t('$vuetify.app.login') }}</span>
+      </v-btn>
 
       <v-divider vertical dark inset />
 
       <HelpButton />
-    </v-toolbar>
+    </v-app-bar>
 
-    <v-content>
+    <v-main>
       <Loading class="ma-0" />
 
-      <v-layout row>
+      <v-row no-gutters>
         <v-spacer />
 
-        <v-btn v-if="$returnTo.url" :href="$returnTo.url" small flat dark color="secondary">
+        <v-btn v-if="$returnTo.url" :href="$returnTo.url" small text dark color="secondary">
           return to {{ $returnTo.url }}
         </v-btn>
-      </v-layout>
+      </v-row>
       
       <v-container>
-        <v-alert :value="message" type="error" dismissible>
+        <v-alert :value="!!message" type="error" dismissible>
           <span v-html="message" />
         </v-alert>
 
         <!-- adding key here helps produce more predictable view behavior (see https://youtu.be/7YZ5DwlLSt8?t=21m22s) -->
         <router-view :key="$route.fullPath" />
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -49,6 +56,11 @@ export default {
   data: () => ({
     message: ''
   }),
+  computed: {
+    mobile () {
+      return this.$vuetify.breakpoint.name === 'xs'
+    },
+  },
   beforeCreate() {
     this.$API.interceptors.response.use(
       response => response,
@@ -85,17 +97,16 @@ p {
   max-width: 75ch; /* better readability supposedly */
 }
 
-/* cards on the profile page were losing their flex style in production 
-   builds due to the way the style modules are combined... this will increase 
-   the specificity as a work-around.  I chatted with John Leider on discord 
-   and he said this would be fixed once v2.0 was released. */
-.layout.v-sheet {
-  display: flex;
-}
-
 /* with the addition of the help link, the extra space on the rigth looked weird. */
 div.v-toolbar__content {
   padding-right: initial;
+}
+
+/* Reduces font size of button content on <= 480px screens */
+@media only screen and (max-width: 480px) {
+  span.v-btn__content {
+    font-size: .8em;
+  }
 }
 </style>
 

@@ -2,19 +2,19 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.2sv.smartphone.codeVerified.header') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.codeVerified.header') }}
       </template>
 
       <p class="text-xs-center">
-        {{ $vuetify.t('$vuetify.2sv.smartphone.codeVerified.info') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.codeVerified.info') }}
       </p>
     </BasePage>
 
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/usb-security-key/intro" color="primary" flat outline>
-        {{ $vuetify.t('$vuetify.global.button.continue') }}
+      <v-btn to="/2sv/usb-security-key/intro" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

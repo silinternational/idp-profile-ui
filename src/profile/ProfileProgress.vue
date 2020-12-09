@@ -1,14 +1,14 @@
 <template>
-  <v-layout column align-end>
-    <span class="body-2">{{ $vuetify.t('$vuetify.profile.progress.header') }}</span>
+    <div class="d-flex flex-column align-end text-right text-body-2">
+      <p class="mb-1">{{ $vuetify.lang.t('$vuetify.profile.progress.header') }}</p>
 
-    <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-3"/>
-
-    <a v-if="complete < 1 && ! profile.alternates.length" href="#/password/recovery" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addMethod') }}</a>
-    <a v-if="complete < 1 && ! profile.mfa.totp.id" href="#/2sv/smartphone/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addTotp') }}</a>
-    <a v-if="complete < 1 && ! profile.mfa.u2f.id" href="#/2sv/usb-security-key/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addU2f') }}</a>
-    <a v-if="complete < 1 && ! profile.mfa.backup.id" href="#/2sv/printable-backup-codes/intro" class="caption">{{ $vuetify.t('$vuetify.profile.progress.addCodes') }}</a>
-  </v-layout>
+      <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-1"/>
+      
+      <a v-if="complete < 1 && ! profile.alternates.length" href="#/password/recovery">{{ $vuetify.lang.t('$vuetify.profile.progress.addMethod') }}</a>
+      <a v-if="complete < 1 && ! profile.mfa.totp.id" href="#/2sv/smartphone/intro">{{ $vuetify.lang.t('$vuetify.profile.progress.addTotp') }}</a>
+      <a v-if="complete < 1 && ! profile.mfa.u2f.id" href="#/2sv/usb-security-key/intro">{{ $vuetify.lang.t('$vuetify.profile.progress.addU2f') }}</a>
+      <a v-if="complete < 1 && ! profile.mfa.backup.id" href="#/2sv/printable-backup-codes/intro">{{ $vuetify.lang.t('$vuetify.profile.progress.addCodes') }}</a>
+    </div>
 </template>
 
 <script>
@@ -42,8 +42,9 @@ function deriveCompleteness(user, methods, mfa) {
 }
 </script>
 
-<style>
-a.caption {
-  line-height: initial;
+<style scoped>
+meter {
+  height: 2em;
+  width: 10em;
 }
 </style>

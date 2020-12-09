@@ -2,24 +2,24 @@
   <ProfileWizard>
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.t('$vuetify.2sv.smartphone.download.header') }}
+        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.download.header') }}
       </template>
 
       <p>
-        {{ $vuetify.t(`$vuetify.2sv.smartphone.download.recommendation-${preferredAppName}`) }}
+        {{ $vuetify.lang.t(`$vuetify.2sv.smartphone.download.recommendation-${preferredAppName}`) }}
       </p>
 
-      <figure class="layout row align-center justify-center pb-4 my-4">
+      <figure class="d-flex align-center justify-center pb-4 my-4">
         <img v-if="isAuthy" src="@/assets/authy-logo.jpg">
         <img v-else src="@/assets/authenticator-logo.jpg">
 
-        <figcaption class="headline ml-3">
-          {{ $vuetify.t(`$vuetify.2sv.smartphone.download.appname-${preferredAppName}`) }}
+        <figcaption class="headline ml-4">
+          {{ $vuetify.lang.t(`$vuetify.2sv.smartphone.download.appname-${preferredAppName}`) }}
         </figcaption>
       </figure>
 
-      <figure class="badges layout row align-center justify-center">
-        <a :href="`https://play.google.com/store/apps/details?id=${playStoreId}`" target="_blank" class="pr-3">
+      <figure class="badges d-flex align-center justify-center">
+        <a :href="`https://play.google.com/store/apps/details?id=${playStoreId}`" target="_blank" class="pr-4">
           <img src="@/assets/google-play-badge.png">
         </a>
         <a :href="`https://itunes.apple.com/us/app/${itunesAppUrl}`" target="_blank">
@@ -29,14 +29,14 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/intro" flat tabindex="-1" outline> 
-        {{ $vuetify.t('$vuetify.global.button.back') }}
+      <v-btn to="/2sv/smartphone/intro" tabindex="-1" outlined class="mb-4 mb-sm-0"> 
+        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
       
-      <v-btn to="/2sv/smartphone/scan-qr" color="primary" flat outline> 
-        {{ $vuetify.t('$vuetify.2sv.smartphone.download.button.ok') }}
+      <v-btn to="/2sv/smartphone/scan-qr" color="primary" outlined> 
+        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.download.button.ok') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
