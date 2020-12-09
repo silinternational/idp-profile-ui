@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center">
     <v-col cols="auto" align-self="center">
-      <header class="display-1 py-4 d-flex align-center justify-center text-center">
+      <header class="display-1 d-flex align-center justify-center text-center">
         <slot name="header" />
       </header>
     

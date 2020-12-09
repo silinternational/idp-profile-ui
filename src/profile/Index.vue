@@ -2,17 +2,19 @@
   <BasePage>
     <template v-slot:header>
       {{ $vuetify.lang.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
-
-      <v-spacer/>
-
-      <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
     </template>
 
-    <aside class="pb-4">
-      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
-      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
-      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
-    </aside>
+    <v-row>
+      <v-col cols="6">
+        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
+        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
+        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
+      </v-col>
+
+      <v-col cols="6">
+        <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
+      </v-col>
+    </v-row>
 
     <v-alert :value="hasUnverifiedEmails" type="error">
       <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
