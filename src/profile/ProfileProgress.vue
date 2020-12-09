@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-column align-end">
+    <div class="d-flex flex-column align-end text-right">
       <p class="body-2 text-right mb-1">{{ $vuetify.lang.t('$vuetify.profile.progress.header') }}</p>
 
       <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-1"/>
