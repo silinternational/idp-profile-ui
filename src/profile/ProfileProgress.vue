@@ -42,7 +42,7 @@ function deriveCompleteness(user, methods, mfa) {
 }
 </script>
 
-<style>
+<style scoped>
 meter {
   height: 2em;
   width: 10em;
