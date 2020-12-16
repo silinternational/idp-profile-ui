@@ -38,7 +38,7 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
 import u2f from './u2f-api.js'
-import { add, verify } from '@/global/mfa';
+import { add, verify } from '@/global/mfa'
 
 export default {
   components: {
