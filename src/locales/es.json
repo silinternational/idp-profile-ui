@@ -271,6 +271,10 @@
         "header": "Conecta su llave de seguridad USB",
         "button": {
           "ok": "Ok lo conecté"
+        },	
+        "nosupport": {	
+          "header": "No soportado en su navegador actual",	
+          "info": "Las claves de seguridad USB solo son compatibles con los navegadores más seguros, considere un navegador más seguro como Google Chrome."	
         }
       },
       "touch": {
