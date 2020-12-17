@@ -52,7 +52,7 @@ export default {
   },
   data: () => ({
     newU2f: {},
-    touched: true,
+    touched: false,
     error: false,
     isSupported: isSupported(),
   }),
