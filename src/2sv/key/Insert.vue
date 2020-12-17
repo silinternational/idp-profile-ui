@@ -40,7 +40,7 @@ export default {
     ProfileWizard,
   },
   data: () => ({	
-    isSupported: isSupported()
+    isSupported: isSupported(),
   }),
 }
 </script>
