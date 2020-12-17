@@ -15,7 +15,7 @@
         {{ $vuetify.lang.t('$vuetify.2sv.key.touch.info') }}
       </p>
 
-      <figure class="pa-4">
+      <figure class="pa-4 d-flex flex-column">
         <v-img v-if="! touched" contained src="@/assets/touch-usb-security-key.png" alt="A finger touching the top of a usb key."/>
         <v-icon v-else color="success" x-large>mdi-check</v-icon>
       </figure>
@@ -52,7 +52,7 @@ export default {
   },
   data: () => ({
     newU2f: {},
-    touched: false,
+    touched: true,
     error: false,
     isSupported: isSupported(),
   }),
