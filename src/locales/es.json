@@ -271,12 +271,16 @@
         "header": "Conecta su llave de seguridad USB",
         "button": {
           "ok": "Ok lo conecté"
+        },	
+        "nosupport": {	
+          "header": "No soportado en su navegador actual",	
+          "info": "Las claves de seguridad USB solo son compatibles con los navegadores más seguros, considere un navegador más seguro como Google Chrome."	
         }
       },
       "touch": {
         "header": "Toca o presiona tu llave de seguridad USB",
         "info": "Una vez que su clave de seguridad comience a parpadear, presione su botón o toque su sensor.",
-        "error": "Algo salió mal. Asegúrese que has insertado la llave correctamente y espere a que parpadee antes de presionar.",
+        "error": "Algo salió mal. Asegúrese de haber insertado correctamente la llave y espere a que parpadee antes de presionar. Si su clave no parpadeó, es posible que no tenga un navegador compatible y deberá omitir este paso. Considere un navegador más seguro como Google Chrome.",
         "button": {
           "retry": "Reintentar"
         }
