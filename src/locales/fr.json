@@ -271,12 +271,16 @@
         "header": "Insérez votre clé de sécurité USB",
         "button": {
           "ok": "OK, je l'ai inséré"
+        },
+        "nosupport": {
+          "header": "Unsupported in your current browser",
+          "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
         }
       },
       "touch": {
         "header": "Touchez ou appuyez sur votre clé de sécurité USB",
         "info": "Une fois que votre clé de sécurité commence à clignoter, appuyez sur son bouton ou touchez son capteur.",
-        "error": "Quelque chose s'est mal passé. Assurez-vous que la clé est correctement insérée et attendez le clignotement avant d'appuyer sur elle.",
+        "error": "Something went wrong.  Please make sure you have the key inserted correctly and wait for the blink before pressing.  If your key did not blink, you may not have a supported browser and will need to skip this step.  Please consider a more secure browser like Google Chrome.",
         "button": {
           "retry": "Réessayer"
         }
