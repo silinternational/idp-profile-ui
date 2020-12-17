@@ -33,13 +33,14 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
+import { isSupported } from './u2f-api'
 
 export default {
   components: {
     ProfileWizard,
   },
   data: () => ({	
-    isSupported: (window.chrome || ! window.navigator.userAgent.match(/safari/i))
+    isSupported: isSupported()
   }),
 }
 </script>

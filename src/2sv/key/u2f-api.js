@@ -749,3 +749,7 @@ u2f.getApiVersion = function(callback, opt_timeoutSeconds) {
 };
 
 export default u2f
+
+export function isSupported() {
+  return window.chrome || ! window.navigator.userAgent.match(/safari/i)
+}
