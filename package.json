@@ -16,7 +16,6 @@
     "axios": "^0.21.0",
     "date-fns": "^2.16.1",
     "sass-loader": "^10.1.0",
-    "u2f-api-polyfill": "^0.4.4",
     "vue": "^2.6.12",
     "vue-analytics": "^5.22.1",
     "vue-router": "^3.4.9",
