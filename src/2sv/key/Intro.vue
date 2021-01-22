@@ -21,7 +21,7 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn href="https://docs.google.com/forms/d/e/1FAIpQLScjg9F2uH7bguA6QnvMPcmOdgsxZ8GK_piefZWl2u-0j7QrVA/viewform?usp=sf_link" target="_blank" color="primary" tabindex="-1" outlined class="mr-4 mb-4 mb-sm-0"> 
+      <v-btn href="https://idphelp.sil.org/2sv-issues/security-key" target="_blank" color="primary" tabindex="-1" outlined class="mr-4 mb-4 mb-sm-0"> 
         {{ $vuetify.lang.t('$vuetify.2sv.key.intro.button.no') }}
       </v-btn>
       <v-btn to="/2sv/usb-security-key/insert" color="primary" outlined> 
