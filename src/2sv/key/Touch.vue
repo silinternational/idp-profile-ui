@@ -41,7 +41,7 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import u2f, { isSupported } from './u2f-api.js'
+import { browserSupportsWebauthn, startRegistration } from '@simplewebauthn/browser';
 import { add, verify } from '@/global/mfa'
 
 let absTimeout
@@ -54,7 +54,7 @@ export default {
     newU2f: {},
     touched: false,
     error: false,
-    isSupported: isSupported(),
+    isSupported: browserSupportsWebauthn(),
   }),
   async created() {
     this.create()
@@ -78,24 +78,14 @@ export default {
       }
     },
     async create() {
-      if (this.isSupported) {
-        this.newU2f = await add('u2f')
-      }
-  
-      const TEN_SECS = 10000
-      absTimeout && clearTimeout(absTimeout)
-      absTimeout = setTimeout(() => {
+      if (!browserSupportsWebauthn()) {
         this.error = true
-      }, TEN_SECS)
-
-      if (this.isSupported) {
-        u2f.register(
-          this.newU2f.data.challenge.appId,
-          [this.newU2f.data.challenge],
-          [],
-          this.handleKeyResponse
-        )
+        return
       }
+
+      this.newU2f = await add('u2f')
+      registrationCredential = await startRegistration(...this.newU2f.publicKey)
+      await this.handleKeyResponse(this.newU2f)
     },
   },
 }
