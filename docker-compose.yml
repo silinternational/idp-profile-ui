@@ -2,7 +2,7 @@ version: '2.0'
 
 services:
   node:
-    image: node:alpine
+    image: node:lts-alpine
     volumes:
       - .:/data/
     working_dir: /data
