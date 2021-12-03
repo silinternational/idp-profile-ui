@@ -95,7 +95,7 @@
         },
         "warning": "Pas de smartphone à ce moment, veuillez en ajouter un."
       },
-      "securityKeyCard": {
+      "u2fCard": {
         "title": "Clé de sécurité USB",
         "created": "Créé:",
         "lastUsed": "Dernière utilisation:",
@@ -128,7 +128,7 @@
       "header": "La robustesse du profil",
       "addMethod": "Ajouter une méthode de récupération",
       "addTotp": "Ajouter un smartphone (V2E)",
-      "addSecurityKey": "Ajouter une clé de sécurité (V2E)",
+      "addU2f": "Ajouter une clé de sécurité (V2E)",
       "addCodes": "Ajouter des codes de sauvegarde (V2E)"
     }
   },
@@ -271,10 +271,10 @@
         "header": "Insérez votre clé de sécurité USB",
         "button": {
           "ok": "OK, je l'ai inséré"
-        },
-        "nosupport": {
-          "header": "Non pris en charge par votre navigateur actuel",
-          "info": "Les clés de sécurité USB ne sont prises en charge que par les navigateurs les plus sûrs. Veuillez envisager un navigateur plus sécurisé tel que Google Chrome."
+        },	
+        "nosupport": {	
+          "header": "Non pris en charge par votre navigateur actuel",	
+          "info": "Les clés de sécurité USB ne sont prises en charge que par les navigateurs les plus sûrs. Veuillez envisager un navigateur plus sécurisé tel que Google Chrome."	
         }
       },
       "touch": {

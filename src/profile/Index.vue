@@ -42,7 +42,7 @@
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
-        <SecurityKeyCard :meta="mfa.securityKey"/>
+        <U2fCard :meta="mfa.u2f"/>
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
@@ -57,7 +57,7 @@ import ProfileProgress from './ProfileProgress'
 import PasswordCard from './PasswordCard'
 import PasswordRecoveryCard from './PasswordRecoveryCard'
 import TotpCard from './TotpCard'
-import SecurityKeyCard from './SecurityKeyCard'
+import U2fCard from './U2fCard'
 import BackupCodeCard from './BackupCodeCard'
 import DoNotDiscloseCard from './DoNotDiscloseCard'
 import Attribute from './Attribute'
@@ -70,7 +70,7 @@ export default {
     PasswordCard,
     PasswordRecoveryCard,
     TotpCard,
-    SecurityKeyCard,
+    U2fCard,
     BackupCodeCard,
     DoNotDiscloseCard,
     Attribute,

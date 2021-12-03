@@ -95,7 +95,7 @@
         },
         "warning": "No hay telefono inteligente en este momento, por favor agregue uno."
       },
-      "securityKeyCard": {
+      "u2fCard": {
         "title": "Llave de seguridad USB",
         "created": "Creado:",
         "lastUsed": "Última utilización:",
@@ -128,7 +128,7 @@
       "header": "Solidez del perfil",
       "addMethod": "Añadir un método de recuperación",
       "addTotp": "Agregar un teléfono inteligente (2SV)",
-      "addSecurityKey": "Agregar una clave de seguridad (2SV)",
+      "addU2f": "Agregar una clave de seguridad (2SV)",
       "addCodes": "Añadir algunos códigos de recuperacion (2SV)"
     }
   },
@@ -271,10 +271,10 @@
         "header": "Conecta su llave de seguridad USB",
         "button": {
           "ok": "Ok lo conecté"
-        },
-        "nosupport": {
-          "header": "No soportado en su navegador actual",
-          "info": "Las claves de seguridad USB solo son compatibles con los navegadores más seguros, considere un navegador más seguro como Google Chrome."
+        },	
+        "nosupport": {	
+          "header": "No soportado en su navegador actual",	
+          "info": "Las claves de seguridad USB solo son compatibles con los navegadores más seguros, considere un navegador más seguro como Google Chrome."	
         }
       },
       "touch": {

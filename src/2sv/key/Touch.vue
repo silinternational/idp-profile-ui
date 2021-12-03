@@ -51,7 +51,7 @@ export default {
     ProfileWizard,
   },
   data: () => ({
-    newSecurityKey: {},
+    newU2f: {},
     touched: false,
     error: false,
     isSupported: browserSupportsWebauthn(),
@@ -64,7 +64,7 @@ export default {
       if (isValid(response)) {
         clearTimeout(absTimeout)
 
-        await verify(this.newSecurityKey.id, response)
+        await verify(this.newU2f.id, response)
         
         this.touched = true
   
@@ -83,14 +83,14 @@ export default {
         return
       }
 
-      this.newSecurityKey = await add('securityKey')
-      registrationCredential = await startRegistration(...this.newSecurityKey.publicKey)
-      await this.handleKeyResponse(this.newSecurityKey)
+      this.newU2f = await add('u2f')
+      registrationCredential = await startRegistration(...this.newU2f.publicKey)
+      await this.handleKeyResponse(this.newU2f)
     },
   },
 }
 
-function isValid(securityKeyResponse) {
-  return securityKeyResponse.clientData && securityKeyResponse.registrationData
+function isValid(u2fResponse) {
+  return u2fResponse.clientData && u2fResponse.registrationData
 }
 </script>

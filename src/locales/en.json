@@ -95,7 +95,7 @@
         },
         "warning": "No smartphone at this time, please add one."
       },
-      "securityKeyCard": {
+      "u2fCard": {
         "title": "USB security key",
         "created": "Created:",
         "lastUsed": "Last used:",
@@ -128,7 +128,7 @@
       "header": "Profile strength",
       "addMethod": "Add a recovery method",
       "addTotp": "Add a smartphone (2SV)",
-      "addSecurityKey": "Add a security key (2SV)",
+      "addU2f": "Add a security key (2SV)",
       "addCodes": "Add some backup codes (2SV)"
     }
   },
@@ -271,10 +271,10 @@
         "header": "Insert your USB security key",
         "button": {
           "ok": "OK, I inserted it"
-        },
-        "nosupport": {
-          "header": "Unsupported in your current browser",
-          "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
+        },	
+        "nosupport": {	
+          "header": "Unsupported in your current browser",	
+          "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."	
         }
       },
       "touch": {
