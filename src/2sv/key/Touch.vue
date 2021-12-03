@@ -83,7 +83,7 @@ export default {
         return
       }
 
-      this.newSecurityKey = await add('securityKey')
+      this.newSecurityKey = await add('webauthn')
       registrationCredential = await startRegistration(...this.newSecurityKey.publicKey)
       await this.handleKeyResponse(this.newSecurityKey)
     },
