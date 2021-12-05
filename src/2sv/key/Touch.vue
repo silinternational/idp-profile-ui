@@ -84,13 +84,14 @@ export default {
       }
 
       this.newSecurityKey = await add('webauthn')
-      registrationCredential = await startRegistration(...this.newSecurityKey.publicKey)
-      await this.handleKeyResponse(this.newSecurityKey)
+      let registrationCredential;
+      registrationCredential = await startRegistration({...this.newSecurityKey.data.publicKey})
+      await this.handleKeyResponse(registrationCredential)
     },
   },
 }
 
 function isValid(securityKeyResponse) {
-  return securityKeyResponse.clientData && securityKeyResponse.registrationData
+  return securityKeyResponse.publicKey !== ""
 }
 </script>
