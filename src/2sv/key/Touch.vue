@@ -78,14 +78,17 @@ export default {
       }
     },
     async create() {
-      if (!browserSupportsWebauthn()) {
+      if (!this.isSupported) {
         this.error = true
         return
       }
 
       this.newSecurityKey = await add('webauthn')
       let registrationCredential;
-      registrationCredential = await startRegistration({...this.newSecurityKey.data.publicKey})
+      registrationCredential = await startRegistration({
+        excludeCredentials: [],
+        ...this.newSecurityKey.data.publicKey,
+      })
       await this.handleKeyResponse(registrationCredential)
     },
   },
