@@ -3,10 +3,10 @@ start: deps
 	docker-compose up -d proxy
 
 deps:
-	docker-compose run node npm install
+	docker-compose run --rm node npm install
 
 dist: deps
-	docker-compose run node npm run build
+	docker-compose run --rm node npm run build
 
 logs:
 	docker-compose logs
@@ -16,6 +16,6 @@ phpmyadmin:
 	docker-compose up -d brokerPhpmyadmin profilePhpmyadmin
 	
 clean:
-	docker-compose run node npm run clean
+	docker-compose run --rm node npm run clean
 	docker-compose kill
 	docker-compose rm -f
