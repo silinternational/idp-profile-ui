@@ -95,14 +95,14 @@
         },
         "warning": "Pas de smartphone à ce moment, veuillez en ajouter un."
       },
-      "u2fCard": {
-        "title": "Clé de sécurité USB",
-        "created": "Créé:",
-        "lastUsed": "Dernière utilisation:",
+      "securityKeyCard": {
+        "title": "USB security key",
+        "created": "Created:",
+        "lastUsed": "Last used:",
         "button": {
-          "change": "perdu ou nouveau"
+          "change": "lost or new"
         },
-        "warning": "Aucune clé de sécurité à ce moment, veuillez en ajouter une."
+        "warning": "No security key at this time, please add one."
       },
       "codeCard": {
         "title": "Codes de sauvegarde imprimables",
@@ -128,7 +128,7 @@
       "header": "La robustesse du profil",
       "addMethod": "Ajouter une méthode de récupération",
       "addTotp": "Ajouter un smartphone (V2E)",
-      "addU2f": "Ajouter une clé de sécurité (V2E)",
+      "addSecurityKey": "Add a security key (2SV)",
       "addCodes": "Ajouter des codes de sauvegarde (V2E)"
     }
   },
