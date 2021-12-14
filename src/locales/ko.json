@@ -95,14 +95,14 @@
         },
         "warning": "현재 스마트 폰번호가 없으므로 스마트 폰 번호를 추가하십시오."
       },
-      "u2fCard": {
-        "title": "USB 보안 키",
-        "created": "생성됨",
-        "lastUsed": "최근 사용",
+      "securityKeyCard": {
+        "title": "USB security key",
+        "created": "Created:",
+        "lastUsed": "Last used:",
         "button": {
-          "change": "분실 또는 신규"
+          "change": "lost or new"
         },
-        "warning": "현재 보안 키가 없으므로 보안 키를 추가하십시오."
+        "warning": "No security key at this time, please add one."
       },
       "codeCard": {
         "title": "인쇄 가능한 백업 코드",
@@ -128,7 +128,7 @@
       "header": "프로필 완성도",
       "addMethod": "복구 방법 추가",
       "addTotp": "스마트 폰 추가 (2SV)",
-      "addU2f": "보안 키 추가 (2SV)",
+      "addSecurityKey": "Add a security key (2SV)",
       "addCodes": "일부 백업 코드 추가 (2SV)"
     }
   },
