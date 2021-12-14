@@ -41,7 +41,7 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import u2f, { isSupported } from './u2f-api.js'
+import { browserSupportsWebauthn, startRegistration } from '@simplewebauthn/browser';
 import { add, verify } from '@/global/mfa'
 
 let absTimeout
@@ -51,10 +51,10 @@ export default {
     ProfileWizard,
   },
   data: () => ({
-    newU2f: {},
+    newSecurityKey: {},
     touched: false,
     error: false,
-    isSupported: isSupported(),
+    isSupported: browserSupportsWebauthn(),
   }),
   async created() {
     this.create()
@@ -64,7 +64,7 @@ export default {
       if (isValid(response)) {
         clearTimeout(absTimeout)
 
-        await verify(this.newU2f.id, response)
+        await verify(this.newSecurityKey.id, response)
         
         this.touched = true
   
@@ -78,29 +78,23 @@ export default {
       }
     },
     async create() {
-      if (this.isSupported) {
-        this.newU2f = await add('u2f')
-      }
-  
-      const TEN_SECS = 10000
-      absTimeout && clearTimeout(absTimeout)
-      absTimeout = setTimeout(() => {
+      if (!this.isSupported) {
         this.error = true
-      }, TEN_SECS)
-
-      if (this.isSupported) {
-        u2f.register(
-          this.newU2f.data.challenge.appId,
-          [this.newU2f.data.challenge],
-          [],
-          this.handleKeyResponse
-        )
+        return
       }
+
+      this.newSecurityKey = await add('webauthn')
+      let registrationCredential;
+      registrationCredential = await startRegistration({
+        excludeCredentials: [],
+        ...this.newSecurityKey.data.publicKey,
+      })
+      await this.handleKeyResponse(registrationCredential)
     },
   },
 }
 
-function isValid(u2fResponse) {
-  return u2fResponse.clientData && u2fResponse.registrationData
+function isValid(securityKeyResponse) {
+  return securityKeyResponse.publicKey !== ""
 }
 </script>

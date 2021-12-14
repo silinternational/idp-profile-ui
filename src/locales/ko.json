@@ -95,7 +95,7 @@
         },
         "warning": "현재 스마트 폰번호가 없으므로 스마트 폰 번호를 추가하십시오."
       },
-      "u2fCard": {
+      "securityKeyCard": {
         "title": "USB 보안 키",
         "created": "생성됨",
         "lastUsed": "최근 사용",
@@ -128,7 +128,7 @@
       "header": "프로필 완성도",
       "addMethod": "복구 방법 추가",
       "addTotp": "스마트 폰 추가 (2SV)",
-      "addU2f": "보안 키 추가 (2SV)",
+      "addSecurityKey": "보안 키 추가 (2SV)",
       "addCodes": "일부 백업 코드 추가 (2SV)"
     }
   },
@@ -271,10 +271,10 @@
         "header": "USB 보안 키 삽입",
         "button": {
           "ok": "네, 삽입했습니다."
-        },	
-        "nosupport": {	
-          "header": "현재 브라우저에서 지원되지 않습니다.",	
-          "info": "USB 보안 키는 가장 안전한 브라우저에서만 지원됩니다. Google Chrome과 같은 더욱 안전한 브라우저를 고려하십시오."	
+        },
+        "nosupport": {
+          "header": "현재 브라우저에서 지원되지 않습니다.",
+          "info": "USB 보안 키는 가장 안전한 브라우저에서만 지원됩니다. Google Chrome과 같은 더욱 안전한 브라우저를 고려하십시오."
         }
       },
       "touch": {

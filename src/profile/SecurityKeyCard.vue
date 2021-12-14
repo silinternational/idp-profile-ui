@@ -6,30 +6,30 @@
           <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-key</v-icon>
         </v-col>
         <v-col class="ml-4">
-          <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.u2fCard.title')" 
+          <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title')" 
                         :id="meta.id" @new-label="label = $event"/>
         </v-col>
       </v-row>
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.u2fCard.created')" :value="meta.created_utc | format"/>
+      <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.created')" :value="meta.created_utc | format"/>
       <v-row v-else>
         <v-col cols="auto">
           <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
         </v-col>
         <v-col>
-          <em>{{ $vuetify.lang.t('$vuetify.profile.index.u2fCard.warning') }}</em>
+          <em>{{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.warning') }}</em>
         </v-col>
       </v-row>
-      <Attribute v-if="meta.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.u2fCard.lastUsed')" :value="meta.last_used_utc | format"/>
+      <Attribute v-if="meta.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.lastUsed')" :value="meta.last_used_utc | format"/>
     </v-card-text>
 
     <v-card-actions>
       <v-spacer/>
 
       <v-btn v-if="meta.created_utc" :href="`#/2sv/change/${meta.id}`" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.profile.index.u2fCard.button.change') }}
+        {{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.button.change') }}
       </v-btn>
       <v-btn v-else href="#/2sv/usb-security-key/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.add') }}

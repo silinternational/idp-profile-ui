@@ -33,14 +33,14 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import { isSupported } from './u2f-api'
+import { browserSupportsWebauthn } from '@simplewebauthn/browser';
 
 export default {
   components: {
     ProfileWizard,
   },
   data: () => ({	
-    isSupported: isSupported(),
+    isSupported: browserSupportsWebauthn(),
   }),
 }
 </script>
