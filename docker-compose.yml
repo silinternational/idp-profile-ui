@@ -19,7 +19,7 @@ services:
       - api
 
   api:
-    image: silintl/idp-pw-api:featurewebauthn
+    image: silintl/idp-pw-api:develop
     ports:
       - '8080:80'
     depends_on:
