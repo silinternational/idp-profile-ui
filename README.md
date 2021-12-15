@@ -2,7 +2,7 @@
 
 # idp-profile-ui
 
-Identity management UI for a given IdP that will help users establish good passwords, recovery optins and 2-Step Verification.
+Identity management UI for a given IdP that will help users establish good passwords, recovery options and 2-Step Verification.
 
 # Getting started
 
@@ -12,10 +12,9 @@ Project is managed with [vue-cli](https://github.com/vuejs/vue-cli).
 
 ## Environment
 
-This app is setup to run against HTTPS for U2F testing. In order to facilitate this _traefik_ must be configured. Some values are located in the `.env.local` and some are located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
+This app is setup to run against HTTPS for WebAuthn testing. In order to facilitate this _traefik_ must be configured. Some values are located in the `.env.local` and some are located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
 
 1.  `cp .env.dist .env.local` and populate with appropriate values.
-1.  `cp app-id.dist.json public/app-id.json` and ensure the UI's name will work for your U2F configuration.
 
 ## i18n
 
@@ -65,7 +64,6 @@ Copy `.env.dist` to `env.local` and update the relevant values, e.g., a UI deplo
 
 The following files can/should be replaced before running the build.
 
-* `cp app-id.dist.json public/app-id.json` and update the ids appropriately for U2F usage
 * `public/favicon.ico`
 * `src/assets/logo.png`
 
