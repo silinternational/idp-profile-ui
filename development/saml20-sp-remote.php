@@ -1,6 +1,6 @@
 <?php
-$metadata['profile-api.gtis.guru'] = [
-	'AssertionConsumerService' => 'https://profile-api.gtis.guru/auth/login',
+$metadata['dev2.gtis.guru'] = [
+	'AssertionConsumerService' => 'https://dev2.gtis.guru/auth/login',
 	'validate.authnrequest' => false,
 	'validate.logout' => false,
 	'saml20.sign.response' => false,
