@@ -48,6 +48,13 @@ See notes in Environment section regarding HTTPS and _traefik_ configuration.
 
 1.  When the `make` is run, the project will be in development mode and any updates made to the code will automatically be reloaded.
 
+### Updating dependencies
+
+Use `make depsupdate` if you want to update the npm dependencies. This command
+both does the npm update as well as updates our "installed-versions.json" file
+with what versions of our root-level dependencies are installed (to provide more
+human-readable diffs after updating npm dependencies).
+
 ### Running production version of the app locally
 
 1. Within `docker-compose.yml` change the `ui:` container's `command: npm run serve` to `command: npm run serve:prod`
