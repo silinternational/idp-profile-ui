@@ -38,8 +38,8 @@
       "resolved": "https://registry.npmjs.org/sass-loader/-/sass-loader-10.2.0.tgz"
     },
     "sass": {
-      "version": "1.44.0",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.44.0.tgz"
+      "version": "1.45.0",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.45.0.tgz"
     },
     "stylus-loader": {
       "version": "4.3.3",
@@ -54,8 +54,8 @@
       "resolved": "https://registry.npmjs.org/vue-analytics/-/vue-analytics-5.22.1.tgz"
     },
     "vue-cli-plugin-vuetify": {
-      "version": "2.4.4",
-      "resolved": "https://registry.npmjs.org/vue-cli-plugin-vuetify/-/vue-cli-plugin-vuetify-2.4.4.tgz"
+      "version": "2.4.5",
+      "resolved": "https://registry.npmjs.org/vue-cli-plugin-vuetify/-/vue-cli-plugin-vuetify-2.4.5.tgz"
     },
     "vue-router": {
       "version": "3.5.3",
