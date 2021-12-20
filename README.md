@@ -23,7 +23,7 @@ i18n support is built-in however the translation files must be generated and dro
 ## Run the full app locally
 
 1.  Run `make` from the project root.
-1.  The app will be running on the domain configured for traefik, e.g., [https://profile.gtis.guru](https://profile.gtis.guru).
+1.  The app will be running on the domain configured for traefik, e.g., <https://profile.gtis.guru>.
 
 ### Authentication
 
@@ -34,7 +34,7 @@ An IdP infrastructure will be running locally and is required for authentication
 1.  Password: **a**
 
 #### New user (has no password yet)
-1. Enter app with a special "invitation" link, e.g., [https://profile.gtis.guru/#/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE](https://profile.gtis.guru/#/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE)
+1. Enter app with a special "invitation" link, e.g., <https://profile.gtis.guru/#/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE>
 1. if needed, this user's username is **b**
 
 ## Run the UI as a Docker container
