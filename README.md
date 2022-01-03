@@ -23,7 +23,7 @@ i18n support is built-in however the translation files must be generated and dro
 ## Run the full app locally
 
 1.  Run `make` from the project root.
-1.  The app will be running on the domain configured for traefik, e.g., [https://profile.gtis.guru](https://profile.gtis.guru).
+1.  The app will be running on the domain configured for traefik, e.g., <https://profile.gtis.guru>.
 
 ### Authentication
 
@@ -34,7 +34,7 @@ An IdP infrastructure will be running locally and is required for authentication
 1.  Password: **a**
 
 #### New user (has no password yet)
-1. Enter app with a special "invitation" link, e.g., [https://profile.gtis.guru/#/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE](https://profile.gtis.guru/#/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE)
+1. Enter app with a special "invitation" link, e.g., <https://profile.gtis.guru/#/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE>
 1. if needed, this user's username is **b**
 
 ## Run the UI as a Docker container
@@ -47,6 +47,13 @@ See notes in Environment section regarding HTTPS and _traefik_ configuration.
 ## Local development
 
 1.  When the `make` is run, the project will be in development mode and any updates made to the code will automatically be reloaded.
+
+### Updating dependencies
+
+Use `make depsupdate` if you want to update the npm dependencies. This command
+both does the npm update as well as updates our "installed-versions.json" file
+with what versions of our root-level dependencies are installed (to provide more
+human-readable diffs after updating npm dependencies).
 
 ### Running production version of the app locally
 
