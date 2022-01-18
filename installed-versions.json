@@ -34,12 +34,12 @@
       "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz"
     },
     "sass-loader": {
-      "version": "10.2.0",
-      "resolved": "https://registry.npmjs.org/sass-loader/-/sass-loader-10.2.0.tgz"
+      "version": "10.2.1",
+      "resolved": "https://registry.npmjs.org/sass-loader/-/sass-loader-10.2.1.tgz"
     },
     "sass": {
-      "version": "1.45.2",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.45.2.tgz"
+      "version": "1.48.0",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.48.0.tgz"
     },
     "stylus-loader": {
       "version": "4.3.3",
