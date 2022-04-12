@@ -10,12 +10,12 @@
       "resolved": "https://registry.npmjs.org/@simplewebauthn/browser/-/browser-4.1.0.tgz"
     },
     "@vue/cli-plugin-babel": {
-      "version": "4.5.15",
-      "resolved": "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-4.5.15.tgz"
+      "version": "4.5.17",
+      "resolved": "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-4.5.17.tgz"
     },
     "@vue/cli-service": {
-      "version": "4.5.15",
-      "resolved": "https://registry.npmjs.org/@vue/cli-service/-/cli-service-4.5.15.tgz"
+      "version": "4.5.17",
+      "resolved": "https://registry.npmjs.org/@vue/cli-service/-/cli-service-4.5.17.tgz"
     },
     "axios": {
       "version": "0.21.4",
@@ -38,8 +38,8 @@
       "resolved": "https://registry.npmjs.org/sass-loader/-/sass-loader-10.2.1.tgz"
     },
     "sass": {
-      "version": "1.48.0",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.48.0.tgz"
+      "version": "1.49.11",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.49.11.tgz"
     },
     "stylus-loader": {
       "version": "4.3.3",
@@ -54,8 +54,8 @@
       "resolved": "https://registry.npmjs.org/vue-analytics/-/vue-analytics-5.22.1.tgz"
     },
     "vue-cli-plugin-vuetify": {
-      "version": "2.4.5",
-      "resolved": "https://registry.npmjs.org/vue-cli-plugin-vuetify/-/vue-cli-plugin-vuetify-2.4.5.tgz"
+      "version": "2.4.8",
+      "resolved": "https://registry.npmjs.org/vue-cli-plugin-vuetify/-/vue-cli-plugin-vuetify-2.4.8.tgz"
     },
     "vue-router": {
       "version": "3.5.3",
@@ -74,8 +74,8 @@
       "resolved": "https://registry.npmjs.org/vuetify-loader/-/vuetify-loader-1.7.3.tgz"
     },
     "vuetify": {
-      "version": "2.6.2",
-      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-2.6.2.tgz"
+      "version": "2.6.4",
+      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-2.6.4.tgz"
     },
     "zxcvbn": {
       "version": "4.4.2",
