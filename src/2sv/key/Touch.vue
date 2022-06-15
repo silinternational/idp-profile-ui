@@ -83,13 +83,18 @@ export default {
         return
       }
 
-      this.newSecurityKey = await add('webauthn')
-      let registrationCredential;
-      registrationCredential = await startRegistration({
-        excludeCredentials: [],
-        ...this.newSecurityKey.data.publicKey,
-      })
-      await this.handleKeyResponse(registrationCredential)
+      try {
+        this.newSecurityKey = await add('webauthn')
+        let registrationCredential;
+        registrationCredential = await startRegistration({
+          excludeCredentials: [],
+          ...this.newSecurityKey.data.publicKey,
+        })
+        await this.handleKeyResponse(registrationCredential)
+      } catch (error) {
+        this.error = true
+        console.error(error)
+      }
     },
   },
 }
