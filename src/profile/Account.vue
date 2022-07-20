@@ -30,7 +30,7 @@
           <v-icon>mdi-pencil</v-icon>
         </v-list-item-icon>
 
-        <v-switch v-if="item.hasSwitch" v-model="hidden" @click="toggle()" />
+        <v-switch :loading="toggling" v-if="item.hasSwitch" v-model="hidden" @click="toggle()" />
       </v-list-item>
     </v-list>
 
