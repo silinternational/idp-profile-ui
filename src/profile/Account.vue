@@ -7,19 +7,13 @@
 
     <!-- A list of account settings -->
     <v-list>
-      <v-list-item
-        v-for="item in items"
-        :key="item.title"
-        :to="item.url"
-        :exact="true"
-        :active-class="'primary--text'"
-      >
+      <v-list-item v-for="item in items" :key="item.title" :to="item.url" :exact="true" :active-class="'primary--text'">
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
-        
+
         <v-list-item two-line>
-          <v-list-item-content> 
+          <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
             <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
           </v-list-item-content>
@@ -48,7 +42,6 @@ import Attribute from './Attribute'
 import { recoveryMethods } from '@/global/recoveryMethods'
 import { mfa } from '@/global/mfa'
 
-
 export default {
   components: {
     ProfileProgress,
@@ -57,46 +50,83 @@ export default {
     DoNotDiscloseCard,
     Attribute,
   },
-  data () {
+  data() {
     return {
       alternates: recoveryMethods.alternates,
       mfa,
       toggling: false,
       hidden: this.$user.hide === 'yes',
-      lastUpdated: 'last updated ' + new Date(this.$user?.password_meta?.last_changed).toLocaleDateString(navigator.language, { year: 'numeric', month: 'long', day: 'numeric' }),
+      lastUpdated:
+        'last updated ' +
+        new Date(this.$user?.password_meta?.last_changed).toLocaleDateString(navigator.language, {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }),
       locale: localStorage.getItem('locale') || navigator.language,
     }
   },
   computed: {
-    hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
-    items () {
-    return [
-      //Todo update/add titles to locales
-      { title: this.$vuetify.lang.t('$vuetify.profile.index.username'), icon: 'mdi-account-circle', secondary: this.$user.idp_username },
-      { title: 'Preferred Language', icon: 'mdi-translate' , secondary: this.locale, hasPencil: true, action: function (locale) {this.setLocale(locale)} },
-      { title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'), icon: 'mdi-account-key', url: '/password/create', hasPencil: true, secondary: this.lastUpdated },
-      { title:  this.$vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.title'), icon: 'mdi-email-outline', url: '/password/recovery', hasPencil: true }, //Todo add tooltip
-      { title: this.$vuetify.lang.t('$vuetify.profile.index.manager'), icon: 'mdi-account-multiple', secondary: this.$user.manager_email }, //Todo add tooltip
-      { title:  this.$vuetify.lang.t('$vuetify.profile.index.dndCard.title') , icon: 'mdi-security', hasSwitch: true }, // Todo add tooltip
-    ]
+    hasUnverifiedEmails: (vm) => vm.alternates.some((m) => !m.verified),
+    items() {
+      return [
+        //Todo update/add titles to locales
+        {
+          title: this.$vuetify.lang.t('$vuetify.profile.index.username'),
+          icon: 'mdi-account-circle',
+          secondary: this.$user.idp_username,
+        },
+        {
+          title: 'Preferred Language',
+          icon: 'mdi-translate',
+          secondary: this.locale,
+          hasPencil: true,
+          action: function (locale) {
+            this.setLocale(locale)
+          },
+        },
+        {
+          title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'),
+          icon: 'mdi-account-key',
+          url: '/password/create',
+          hasPencil: true,
+          secondary: this.lastUpdated,
+        },
+        {
+          title: this.$vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.title'),
+          icon: 'mdi-email-outline',
+          url: '/password/recovery',
+          hasPencil: true,
+        }, //Todo add tooltip
+        {
+          title: this.$vuetify.lang.t('$vuetify.profile.index.manager'),
+          icon: 'mdi-account-multiple',
+          secondary: this.$user.manager_email,
+        }, //Todo add tooltip
+        {
+          title: this.$vuetify.lang.t('$vuetify.profile.index.dndCard.title'),
+          icon: 'mdi-security',
+          hasSwitch: true,
+        }, // Todo add tooltip
+      ]
     },
   },
   methods: {
-    toggle: async function() {
+    toggle: async function () {
       this.toggling = true
 
       await this.$API.put('user/me', {
-        hide: this.hidden ? 'yes' : 'no'
+        hide: this.hidden ? 'yes' : 'no',
       })
 
       this.toggling = false
     },
-    setLocale (locale) {
+    setLocale(locale) {
       if (localStorage.getItem('locale') !== locale) {
         localStorage.setItem('locale', locale)
         this.$vuetify.lang.current = locale
       }
-    }
-  }
+    },
+  },
 }
 </script>
