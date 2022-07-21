@@ -19,7 +19,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item-icon v-if="item.hasPencil" @click="item.action('ko')">
+        <v-list-item-icon v-if="item.hasPencil" @click="item.action && item.action('ko')">
           <v-icon>mdi-pencil</v-icon>
         </v-list-item-icon>
 
