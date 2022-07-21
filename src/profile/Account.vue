@@ -64,11 +64,17 @@ export default {
           day: 'numeric',
         }),
       locale: localStorage.getItem('locale') || navigator.language,
+      languages: {
+        en: 'English',
+        es: 'Español',
+        fr: 'Français',
+        ko: '한국어',
+      },
     }
   },
   computed: {
     hasUnverifiedEmails: (vm) => vm.alternates.some((m) => !m.verified),
-    items() {
+    items(vm) {
       return [
         //Todo update/add titles to locales
         {
@@ -79,7 +85,7 @@ export default {
         {
           title: 'Preferred Language',
           icon: 'mdi-translate',
-          secondary: this.locale,
+          secondary: this.languages[vm.locale],
           hasPencil: true,
           action: this.setLocale,
         },
