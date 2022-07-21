@@ -81,9 +81,7 @@ export default {
           icon: 'mdi-translate',
           secondary: this.locale,
           hasPencil: true,
-          action: function (locale) {
-            this.setLocale(locale)
-          },
+          action: this.setLocale,
         },
         {
           title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'),
@@ -125,6 +123,7 @@ export default {
       if (localStorage.getItem('locale') !== locale) {
         localStorage.setItem('locale', locale)
         this.$vuetify.lang.current = locale
+        this.locale = locale
       }
     },
   },
