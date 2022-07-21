@@ -63,7 +63,8 @@ export default {
       alternates: recoveryMethods.alternates,
       mfa,
       toggling: false,
-      hidden: this.$user.hide === 'yes'
+      hidden: this.$user.hide === 'yes',
+      lastUpdated: 'last updated ' + new Date(this.$user?.password_meta?.last_changed).toLocaleDateString(navigator.language, { year: 'numeric', month: 'long', day: 'numeric' })
     }
   },
   computed: {
@@ -73,7 +74,7 @@ export default {
       //Todo update/add titles to locales
       { title: this.$vuetify.lang.t('$vuetify.profile.index.username'), icon: 'mdi-account-circle', secondary: this.$user.idp_username },
       { title: 'preferred language', icon: 'mdi-translate' , secondary: navigator.language, hasPencil: true },
-      { title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'), icon: 'mdi-account-key', url: '/password/create', hasPencil: true, secondary: new Date(this.$user?.password_meta?.expires).toLocaleDateString()},
+      { title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'), icon: 'mdi-account-key', url: '/password/create', hasPencil: true, secondary: this.lastUpdated },
       { title:  this.$vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.title'), icon: 'mdi-email-outline', url: '/password/recovery', hasPencil: true }, //Todo add tooltip
       { title: this.$vuetify.lang.t('$vuetify.profile.index.manager'), icon: 'mdi-account-multiple', secondary: this.$user.manager_email }, //Todo add tooltip
       { title:  this.$vuetify.lang.t('$vuetify.profile.index.dndCard.title') , icon: 'mdi-security', hasSwitch: true }, // Todo add tooltip
