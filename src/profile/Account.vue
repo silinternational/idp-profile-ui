@@ -25,7 +25,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item-icon v-if="item.hasPencil">
+        <v-list-item-icon v-if="item.hasPencil" @click="item.action('ko')">
           <v-icon>mdi-pencil</v-icon>
         </v-list-item-icon>
 
@@ -63,7 +63,8 @@ export default {
       mfa,
       toggling: false,
       hidden: this.$user.hide === 'yes',
-      lastUpdated: 'last updated ' + new Date(this.$user?.password_meta?.last_changed).toLocaleDateString(navigator.language, { year: 'numeric', month: 'long', day: 'numeric' })
+      lastUpdated: 'last updated ' + new Date(this.$user?.password_meta?.last_changed).toLocaleDateString(navigator.language, { year: 'numeric', month: 'long', day: 'numeric' }),
+      locale: localStorage.getItem('locale') || navigator.language,
     }
   },
   computed: {
@@ -72,7 +73,7 @@ export default {
     return [
       //Todo update/add titles to locales
       { title: this.$vuetify.lang.t('$vuetify.profile.index.username'), icon: 'mdi-account-circle', secondary: this.$user.idp_username },
-      { title: 'Preferred Language', icon: 'mdi-translate' , secondary: navigator.language, hasPencil: true },
+      { title: 'Preferred Language', icon: 'mdi-translate' , secondary: this.locale, hasPencil: true, action: function (locale) {this.setLocale(locale)} },
       { title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'), icon: 'mdi-account-key', url: '/password/create', hasPencil: true, secondary: this.lastUpdated },
       { title:  this.$vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.title'), icon: 'mdi-email-outline', url: '/password/recovery', hasPencil: true }, //Todo add tooltip
       { title: this.$vuetify.lang.t('$vuetify.profile.index.manager'), icon: 'mdi-account-multiple', secondary: this.$user.manager_email }, //Todo add tooltip
@@ -90,6 +91,12 @@ export default {
 
       this.toggling = false
     },
+    setLocale (locale) {
+      if (localStorage.getItem('locale') !== locale) {
+        localStorage.setItem('locale', locale)
+        this.$vuetify.lang.current = locale
+      }
+    }
   }
 }
 </script>
