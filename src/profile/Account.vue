@@ -13,7 +13,6 @@
         :to="item.url"
         :exact="true"
         :active-class="'primary--text'"
-        class="text-capitalize"
       >
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
@@ -73,7 +72,7 @@ export default {
     return [
       //Todo update/add titles to locales
       { title: this.$vuetify.lang.t('$vuetify.profile.index.username'), icon: 'mdi-account-circle', secondary: this.$user.idp_username },
-      { title: 'preferred language', icon: 'mdi-translate' , secondary: navigator.language, hasPencil: true },
+      { title: 'Preferred Language', icon: 'mdi-translate' , secondary: navigator.language, hasPencil: true },
       { title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'), icon: 'mdi-account-key', url: '/password/create', hasPencil: true, secondary: this.lastUpdated },
       { title:  this.$vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.title'), icon: 'mdi-email-outline', url: '/password/recovery', hasPencil: true }, //Todo add tooltip
       { title: this.$vuetify.lang.t('$vuetify.profile.index.manager'), icon: 'mdi-account-multiple', secondary: this.$user.manager_email }, //Todo add tooltip
