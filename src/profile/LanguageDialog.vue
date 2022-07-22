@@ -7,6 +7,7 @@
     </template>
 
     <v-card>
+      <!-- Todo add title to locales -->
       <v-card-title>Choose a language</v-card-title>
       <v-card-text>
         <v-select
