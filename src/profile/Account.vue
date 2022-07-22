@@ -19,39 +19,19 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-dialog v-model="localeModalOpen" width="500">
-          <template v-slot:activator="{ on, attrs }">
-            <v-list-item-icon v-if="item.hasPencil">
-              <v-icon v-if="item.dialog" v-bind="attrs" v-on="on">mdi-pencil</v-icon>
-              <v-icon v-if="!item.dialog">mdi-pencil</v-icon>
-            </v-list-item-icon>
-          </template>
+        <LanguageDialog
+          :open="localeModalOpen"
+          :options="languages"
+          :selectedOption="language"
+          v-if="item.dialog"
+          @close="localeModalOpen = false"
+          @selected="setLocale"
+        >
+        </LanguageDialog>
 
-          <v-card>
-            <v-card-title>Choose a language</v-card-title>
-            <v-card-text>
-              <v-select
-                v-model="selectedLanguage"
-                :items="Object.values(languages)"
-                label="name"
-                item-value="code"
-                hide-details
-              ></v-select>
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer />
-              <v-row no-gutters align="center">
-                <v-col>
-                  <v-icon @click="setLocale(selectedLanguage)" color="success" small class="pl-2">mdi-check</v-icon>
-                </v-col>
-
-                <v-col>
-                  <v-icon @click="localeModalOpen = false" color="error" small class="pl-1">mdi-close</v-icon>
-                </v-col>
-              </v-row>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
+        <v-list-item-icon v-if="item.hasPencil && !item.dialog">
+          <v-icon>mdi-pencil</v-icon>
+        </v-list-item-icon>
 
         <v-switch :loading="toggling" v-if="item.hasSwitch" v-model="hidden" @change="toggle()" />
       </v-list-item>
@@ -64,6 +44,7 @@
 </template>
 
 <script>
+import LanguageDialog from './LanguageDialog.vue'
 import ProfileProgress from './ProfileProgress'
 import PasswordCard from './PasswordCard'
 import PasswordRecoveryCard from './PasswordRecoveryCard'
@@ -79,6 +60,7 @@ export default {
     PasswordRecoveryCard,
     DoNotDiscloseCard,
     Attribute,
+    LanguageDialog,
   },
   data() {
     return {
