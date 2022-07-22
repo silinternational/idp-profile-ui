@@ -117,7 +117,7 @@ export default {
         {
           title: 'Preferred Language',
           icon: 'mdi-translate',
-          secondary: this.languages[vm.locale],
+          secondary: this.language,
           hasPencil: true,
           dialog: true,
         },
