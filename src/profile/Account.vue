@@ -19,9 +19,39 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item-icon v-if="item.hasPencil" @click="item.action && item.action('ko')">
-          <v-icon>mdi-pencil</v-icon>
-        </v-list-item-icon>
+        <v-dialog v-model="localeModalOpen" width="500">
+          <template v-slot:activator="{ on, attrs }">
+            <v-list-item-icon v-if="item.hasPencil">
+              <v-icon v-if="item.dialog" v-bind="attrs" v-on="on">mdi-pencil</v-icon>
+              <v-icon v-if="!item.dialog">mdi-pencil</v-icon>
+            </v-list-item-icon>
+          </template>
+
+          <v-card>
+            <v-card-title>Choose a language</v-card-title>
+            <v-card-text>
+              <v-select
+                v-model="selectedLanguage"
+                :items="Object.values(languages)"
+                label="name"
+                item-value="code"
+                hide-details
+              ></v-select>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer />
+              <v-row no-gutters align="center">
+                <v-col>
+                  <v-icon @click="setLocale(selectedLanguage)" color="success" small class="pl-2">mdi-check</v-icon>
+                </v-col>
+
+                <v-col>
+                  <v-icon @click="localeModalOpen = false" color="error" small class="pl-1">mdi-close</v-icon>
+                </v-col>
+              </v-row>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
 
         <v-switch :loading="toggling" v-if="item.hasSwitch" v-model="hidden" @change="toggle()" />
       </v-list-item>
@@ -70,6 +100,8 @@ export default {
         fr: 'Français',
         ko: '한국어',
       },
+      localeModalOpen: false,
+      selectedLanguage: this.language,
     }
   },
   computed: {
@@ -87,7 +119,7 @@ export default {
           icon: 'mdi-translate',
           secondary: this.languages[vm.locale],
           hasPencil: true,
-          action: this.setLocale,
+          dialog: true,
         },
         {
           title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'),
@@ -114,6 +146,7 @@ export default {
         }, // Todo add tooltip
       ]
     },
+    language: (vm) => vm.languages[vm.locale],
   },
   methods: {
     toggle: async function () {
@@ -125,12 +158,16 @@ export default {
 
       this.toggling = false
     },
-    setLocale(locale) {
+    setLocale(language) {
+      const entries = Object.entries(this.languages)
+      const entry = entries.find(([, v]) => v === language)
+      const locale = entry[0]
       if (localStorage.getItem('locale') !== locale) {
         localStorage.setItem('locale', locale)
         this.$vuetify.lang.current = locale
         this.locale = locale
       }
+      this.localeModalOpen = false
     },
   },
 }
