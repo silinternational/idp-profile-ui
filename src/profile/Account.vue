@@ -154,6 +154,7 @@ export default {
 
       this.toggling = false
     },
+    //Todo see if we can move this to the api instead of local storage
     setLocale(language) {
       const entries = Object.entries(this.languages)
       const entry = entries.find(([, v]) => v === language)
