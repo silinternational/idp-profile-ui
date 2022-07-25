@@ -12,7 +12,19 @@
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
 
-        <v-list-item two-line>
+        <v-tooltip v-if="item.tooltip" max-width="240px" bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-list-item two-line v-bind="attrs" v-on="on">
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+          <span>{{ item.tooltip }}</span>
+        </v-tooltip>
+
+        <v-list-item v-if="!item.tooltip" two-line>
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
             <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
@@ -26,8 +38,7 @@
           v-if="item.dialog"
           @close="localeModalOpen = false"
           @selected="setLocale"
-        >
-        </LanguageDialog>
+        />
 
         <v-list-item-icon v-if="item.hasPencil && !item.dialog">
           <v-icon>mdi-pencil</v-icon>
@@ -62,30 +73,28 @@ export default {
     Attribute,
     LanguageDialog,
   },
-  data() {
-    return {
-      alternates: recoveryMethods.alternates,
-      mfa,
-      toggling: false,
-      hidden: this.$user.hide === 'yes',
-      lastUpdated:
-        'last updated ' +
-        new Date(this.$user?.password_meta?.last_changed).toLocaleDateString(navigator.language, {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        }),
-      locale: localStorage.getItem('locale') || navigator.language,
-      languages: {
-        en: 'English',
-        es: 'Español',
-        fr: 'Français',
-        ko: '한국어',
-      },
-      localeModalOpen: false,
-      selectedLanguage: this.language,
-    }
-  },
+  data: (vm) => ({
+    alternates: recoveryMethods.alternates,
+    mfa,
+    toggling: false,
+    hidden: vm.$user.hide === 'yes',
+    lastUpdated:
+      'last updated ' +
+      new Date(vm.$user?.password_meta?.last_changed).toLocaleDateString(navigator.language, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }),
+    locale: localStorage.getItem('locale') || navigator.language,
+    languages: {
+      en: 'English',
+      es: 'Español',
+      fr: 'Français',
+      ko: '한국어',
+    },
+    localeModalOpen: false,
+    selectedLanguage: vm.language,
+  }),
   computed: {
     hasUnverifiedEmails: (vm) => vm.alternates.some((m) => !m.verified),
     items(vm) {
@@ -115,17 +124,22 @@ export default {
           icon: 'mdi-email-outline',
           url: '/password/recovery',
           hasPencil: true,
-        }, //Todo add tooltip
+          tooltip: 'If you lose your password we’ll send a reset link to this email address. ', //Todo add this to locales
+        },
         {
           title: this.$vuetify.lang.t('$vuetify.profile.index.manager'),
           icon: 'mdi-account-multiple',
           secondary: this.$user.manager_email,
-        }, //Todo add tooltip
+          tooltip:
+            'Your recovery contact is the person who will be sent codes to allow you to re-enter your Verily account if all your 2-Step Verification methods are lost. It is likely your manager, and is set by HR.', //Todo add this to locales
+        },
         {
           title: this.$vuetify.lang.t('$vuetify.profile.index.dndCard.title'),
           icon: 'mdi-security',
           hasSwitch: true,
-        }, // Todo add tooltip
+          tooltip:
+            'When enabled, using the Forgot Password process will produce a message that your account does not exist. It will, however, still send you an email with a link you can use to reset your password. This is typically used by individuals in sensitive locations.', //Todo add this to locales
+        },
       ]
     },
     language: (vm) => vm.languages[vm.locale],
