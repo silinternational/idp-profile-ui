@@ -6,30 +6,26 @@
     </template>
 
     <!-- A list of account settings -->
-    <v-list>
+    <v-list two-line>
       <v-list-item v-for="item in items" :key="item.title" :to="item.url" :exact="true" :active-class="'primary--text'">
-        <v-list-item-icon>
+        <v-list-item-avatar>
           <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>
+        </v-list-item-avatar>
 
         <v-tooltip v-if="item.tooltip" max-width="240px" bottom>
           <template v-slot:activator="{ on, attrs }">
-            <v-list-item two-line v-bind="attrs" v-on="on">
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-                <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
+            <v-list-item-content v-bind="attrs" v-on="on">
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
+            </v-list-item-content>
           </template>
           <span>{{ item.tooltip }}</span>
         </v-tooltip>
 
-        <v-list-item v-if="!item.tooltip" two-line>
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-            <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
+        <v-list-item-content v-if="!item.tooltip" two-line>
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+          <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
+        </v-list-item-content>
 
         <LanguageDialog
           :open="localeModalOpen"
@@ -40,9 +36,9 @@
           @selected="setLocale"
         />
 
-        <v-list-item-icon v-if="item.hasPencil && !item.dialog">
+        <v-list-item-avatar v-if="item.hasPencil && !item.dialog">
           <v-icon>mdi-pencil</v-icon>
-        </v-list-item-icon>
+        </v-list-item-avatar>
 
         <v-switch :loading="toggling" v-if="item.hasSwitch" v-model="hidden" @change="toggle()" />
       </v-list-item>
