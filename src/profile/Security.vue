@@ -4,25 +4,29 @@
       {{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}
     </template>
 
+    <v-subheader>
+      You’ll be asked for your second method every 30 days. Drag and drop to reorder method preference
+    </v-subheader>
+
     <v-list three-line>
-      <template v-for="(item, index) in items">
-        <v-subheader v-if="item.header" :key="item.header" v-text="item.header"></v-subheader>
+      <v-card class="mx-auto">
+        <template v-for="(item, index) in items">
+          <v-divider v-if="item.divider" :key="index" :inset="item.inset"></v-divider>
 
-        <v-divider v-else-if="item.divider" :key="index" :inset="item.inset"></v-divider>
+          <v-list-item v-else :key="item.title">
+            <v-list-item-avatar>
+              <v-img :src="`./images/${item.avatar}`"></v-img>
+            </v-list-item-avatar>
 
-        <v-list-item v-else :key="item.title">
-          <v-list-item-avatar>
-            <v-img :src="`./images/${item.avatar}`"></v-img>
-          </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+            </v-list-item-content>
 
-          <v-list-item-content>
-            <v-list-item-title v-html="item.title"></v-list-item-title>
-            <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
-          </v-list-item-content>
-
-          <v-btn class="text-capitalize" :href="item.url" color="primary">{{ item.btnLabel }}</v-btn>
-        </v-list-item>
-      </template>
+            <v-btn v-if="item.url" :href="item.url" class="text-capitalize" color="primary">{{ item.btnLabel }}</v-btn>
+          </v-list-item>
+        </template>
+      </v-card>
     </v-list>
   </BasePage>
 </template>
@@ -47,8 +51,6 @@ export default {
   computed: {
     items: (vm) => [
       // Todo add these to locales
-      { header: 'You’ll be asked for your second method every 30 days. Drag and drop to reorder method preference' },
-      { divider: true, inset: true },
       {
         avatar: 'authy-logo.jpg',
         title: 'Code Generator',
@@ -72,7 +74,6 @@ export default {
         btnLabel: 'Get New Codes',
         url: vm.codesUrl,
       },
-      { divider: true, inset: true },
     ],
     totpUrl: (vm) => (vm.mfa.created_utc ? `#/2sv/change/${vm.mfa.id}` : '#/2sv/smartphone/intro'),
     keyUrl: (vm) =>
