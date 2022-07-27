@@ -31,15 +31,6 @@
               <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
             </v-list-item-content>
 
-            <LanguageDialog
-              :open="localeModalOpen"
-              :options="languages"
-              :selectedOption="language"
-              v-if="item.dialog"
-              @close="localeModalOpen = false"
-              @selected="setLocale"
-            />
-
             <v-list-item-avatar v-if="item.hasPencil && !item.dialog">
               <v-icon>mdi-pencil</v-icon>
             </v-list-item-avatar>
@@ -109,14 +100,6 @@ export default {
         },
         { divider: true, inset: true },
         {
-          title: 'Preferred Language',
-          icon: 'mdi-translate',
-          secondary: this.language,
-          hasPencil: true,
-          dialog: true,
-        },
-        { divider: true, inset: true },
-        {
           title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'),
           icon: 'mdi-account-key',
           url: '/password/create',
@@ -160,18 +143,6 @@ export default {
       })
 
       this.toggling = false
-    },
-    //Todo see if we can move this to the api instead of local storage
-    setLocale(language) {
-      const entries = Object.entries(this.languages)
-      const entry = entries.find(([, v]) => v === language)
-      const locale = entry[0]
-      if (localStorage.getItem('locale') !== locale) {
-        localStorage.setItem('locale', locale)
-        this.$vuetify.lang.current = locale
-        this.locale = locale
-      }
-      this.localeModalOpen = false
     },
   },
 }
