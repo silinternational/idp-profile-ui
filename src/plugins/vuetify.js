@@ -21,7 +21,7 @@ const configuredVuetify = new Vuetify({
 })
 
 function determineCurrentLanguage() {
-  const mainLangOnly = localStorage.locale || navigator.language.substring(0,2)
+  const mainLangOnly = navigator.language.substring(0,2)
 
   return locales[mainLangOnly] ? mainLangOnly : 'en'
 }
