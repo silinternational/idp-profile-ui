@@ -37,8 +37,24 @@
         </v-list>
       </v-col>
     </v-row>
-    <!--Todo add google links-->
-    <v-row> </v-row>
+
+    <v-row>
+      <v-col>
+        <h3 class="">Google Workspace</h3>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col>
+        <h5 class="">Login with your SIL Google account</h5>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col>
+        <!--Todo add google links-->
+      </v-col>
+    </v-row>
   </BasePage>
 </template>
 
