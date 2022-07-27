@@ -4,6 +4,8 @@
       <!-- Todo update other locales -->
       {{ $vuetify.lang.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
     </template>
+    
+    <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
 
     <h3 class="mt-6">Verily {{ $root.idpConfig.idpName }}</h3>
 
@@ -64,9 +66,20 @@
 </template>
 
 <script>
+import ProfileProgress from './ProfileProgress'
+import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods'
+import { mfa, retrieve as retrieveMfa } from '@/global/mfa'
+
+
 export default {
+  components: {
+    ProfileProgress
+  },
+  data: () => ({
+    alternates: recoveryMethods.alternates,
+    mfa,
+  }),
   computed: {
-    hasUnverifiedEmails: (vm) => vm.alternates.some((m) => !m.verified),
     org: (vm) => vm.$user.email.split('@')[1].split('.')[0],
     coreItems(vm) {
       return [
@@ -148,6 +161,9 @@ export default {
         },
       ]
     },
+  },
+  async created() {
+    await Promise.all([retrieveMethods(), retrieveMfa()])
   },
 }
 </script>
