@@ -32,19 +32,11 @@
 </template>
 
 <script>
-import TotpCard from './TotpCard'
-import SecurityKeyCard from './SecurityKeyCard'
-import BackupCodeCard from './BackupCodeCard'
 import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
 import { mfa, retrieve as retrieveMfa } from '@/global/mfa'
 
 export default {
-  components: {
-    TotpCard,
-    SecurityKeyCard,
-    BackupCodeCard,
-  },
-  data: (vm) => ({
+  data: () => ({
     alternates: recoveryMethods.alternates,
     mfa,
   }),
