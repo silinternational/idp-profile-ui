@@ -48,23 +48,11 @@
 </template>
 
 <script>
-import LanguageDialog from './LanguageDialog.vue'
-import ProfileProgress from './ProfileProgress'
-import PasswordCard from './PasswordCard'
-import PasswordRecoveryCard from './PasswordRecoveryCard'
-import DoNotDiscloseCard from './DoNotDiscloseCard'
-import Attribute from './Attribute'
 import { recoveryMethods } from '@/global/recoveryMethods'
 import { mfa } from '@/global/mfa'
 
 export default {
   components: {
-    ProfileProgress,
-    PasswordCard,
-    PasswordRecoveryCard,
-    DoNotDiscloseCard,
-    Attribute,
-    LanguageDialog,
   },
   data: (vm) => ({
     alternates: recoveryMethods.alternates,
