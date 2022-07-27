@@ -19,7 +19,7 @@
               <a class="text-decoration-none" :href="item.url" v-else target="_blank">
                 <v-list-item :key="item.title" @click="">
                   <v-list-item-avatar>
-                    <v-img :src="`./images/${item.avatar}`"></v-img>
+                    <v-img :src="item.avatar"></v-img>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -69,13 +69,13 @@ export default {
         {
           title: 'Wordkay',
           secondary: 'HR and organizational data',
-          avatar: 'workday.svg',
+          avatar: require('@/assets/workday.svg'),
           url: `https://www.myworkday.com/wday/authgwy/wycliffe/login-saml2.htmld`, //TODO put organization in env?
         },
         { divider: true, inset: true },
         {
           title: 'Gateway',
-          avatar: 'gateway.svg',
+          avatar: require('@/assets/gateway.svg'),
           url: 'https://gateway.sil.org/',
           secondary: `${vm.org}’s internal wiki`,
         },
@@ -83,27 +83,27 @@ export default {
         {
           title: 'Zoom',
           secondary: 'Participate in virtual meetings',
-          avatar: 'zoom.svg',
+          avatar: require('@/assets/zoom.svg'),
           url: 'https://zoom.us/signin',
         },
         { divider: true, inset: true },
         {
           title: 'Help Desk',
           secondary: 'Browse how-to articles and submit tickets',
-          avatar: vm.org + '.svg',
+          avatar: require(`@/assets/${vm.org}.svg`),
           url: 'https://gateway.sil.org/display/GHDKB/GTIS+Global+Help+Desk+Home',
         },
         { divider: true, inset: true },
         {
           title: 'REAP',
           secondary: 'Repo for Electronic Archiving and Publishing',
-          avatar: 'reap.svg',
+          avatar: require('@/assets/reap.svg'),
           url: 'https://reap.sil.org/',
         },
         {
           title: 'Cover',
           secondary: 'insurance',
-          avatar: 'cover.svg',
+          avatar: require('@/assets/cover.svg'),
           url: 'https://cover.sil.org',
         },
       ]

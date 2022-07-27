@@ -15,7 +15,7 @@
 
           <v-list-item v-else :key="item.title">
             <v-list-item-avatar>
-              <v-img :src="`./images/${item.avatar}`"></v-img>
+              <v-img :src="item.avatar"></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content>
@@ -52,7 +52,7 @@ export default {
     items: (vm) => [
       // Todo add these to locales
       {
-        avatar: 'authy-logo.jpg',
+        avatar: require('@/assets/authy-logo.jpg'),
         title: 'Code Generator',
         subtitle: `Copy/paste a six-digit code directly from your computer or phone.`,
         btnLabel: 'Set Up',
@@ -60,7 +60,7 @@ export default {
       },
       { divider: true, inset: true },
       {
-        avatar: 'key.svg',
+        avatar: require('@/assets/key.svg'),
         title: 'Security Key',
         subtitle: `After setup, insert and tap to authenticate.`,
         btnLabel: 'Replace Key',
@@ -68,7 +68,7 @@ export default {
       },
       { divider: true, inset: true },
       {
-        avatar: 'codes.svg',
+        avatar: require('@/assets/codes.svg'),
         title: 'Backup Codes',
         subtitle: 'A set of 10, one-time use codes. Keep them in a secure but accessible place.',
         btnLabel: 'Get New Codes',
