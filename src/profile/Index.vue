@@ -16,8 +16,8 @@
             <template v-for="(item, index) in coreItems">
               <v-divider v-if="item.divider" :key="index" :inset="item.inset"></v-divider>
 
-              <a class="text-decoration-none" :href="item.url" v-else target="_blank">
-                <v-list-item :key="item.title" @click="">
+              <a class="text-decoration-none" :key="index" :href="item.url" v-else target="_blank">
+                <v-list-item :key="item.title" @click="() => {}">
                   <v-list-item-avatar>
                     <v-img :src="item.avatar"></v-img>
                   </v-list-item-avatar>
@@ -40,19 +40,24 @@
 
     <v-row>
       <v-col>
-        <h3 class="">Google Workspace</h3>
+        <h3>Google Workspace</h3>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col>
-        <h5 class="">Login with your SIL Google account</h5>
+        <h5>Login with your SIL Google account</h5>
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row class="mt-10">
       <v-col>
-        <!--Todo add google links-->
+        <div class="flex row justify-space-around ml-2">
+          <a v-for="(item, index) in googleItems" :key="index" :href="item.url" target="_blank" class="text-decoration-none">
+            <v-img :id="item.label" :src="item.image" max-width="40px" class="mx-auto"/>
+            <label :for="item.label">{{item.label}}</label>
+          </a>
+        </div>
       </v-col>
     </v-row>
   </BasePage>
@@ -105,6 +110,41 @@ export default {
           secondary: 'insurance',
           avatar: require('@/assets/cover.svg'),
           url: 'https://cover.sil.org',
+        },
+      ]
+    },
+    //return google Workspace links using template literals like https://gmail.google.com/a/${vm.org}.org for gmail, calendar, meet, drive and chat
+    googleItems(vm) {
+      return [
+        {
+          image: require('@/assets/gmail.svg'),
+          url: `https://gmail.google.com/a/${vm.org}.org`,
+          label: 'Gmail',
+        },
+        {
+          image: require('@/assets/calendar.svg'),
+          url: `https://calendar.google.com/a/${vm.org}.org`,
+          label: 'Calendar',
+        },
+        {
+          image: require('@/assets/meet.svg'),
+          url: `https://meet.google.com`,
+          label: 'Meet',
+        },
+        {
+          image: require('@/assets/drive.svg'),
+          url: `https://drive.google.com/a/${vm.org}.org`,
+          label: 'Drive',
+        },
+        {
+          image: require('@/assets/docs.svg'),
+          url: `https://docs.google.com/a/${vm.org}.org`,
+          label: 'Docs',
+        },
+        {
+          image: require('@/assets/chat.svg'),
+          url: `https://chat.google.com/a/${vm.org}.org`,
+          label: 'Chat',
         },
       ]
     },
