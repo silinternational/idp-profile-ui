@@ -64,7 +64,7 @@
       }
     },
     "index": {
-      "header": "My {0} Identity",
+      "header": "{0} Core Systems",
       "username": "Username: ",
       "lastLogin": "Last login: ",
       "manager": "Recovery Contact: ",

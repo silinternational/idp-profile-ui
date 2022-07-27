@@ -60,7 +60,7 @@ export default {
       },
       { divider: true, inset: true },
       {
-        avatar: 'key.png',
+        avatar: 'key.svg',
         title: 'Security Key',
         subtitle: `After setup, insert and tap to authenticate.`,
         btnLabel: 'Replace Key',
@@ -68,7 +68,7 @@ export default {
       },
       { divider: true, inset: true },
       {
-        avatar: 'codes.png',
+        avatar: 'codes.svg',
         title: 'Backup Codes',
         subtitle: 'A set of 10, one-time use codes. Keep them in a secure but accessible place.',
         btnLabel: 'Get New Codes',

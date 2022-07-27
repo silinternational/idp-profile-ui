@@ -1,89 +1,97 @@
 <template>
   <BasePage>
     <template v-slot:header>
+      <!-- Todo update other locales -->
       {{ $vuetify.lang.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
     </template>
 
-    <v-row>
-      <v-col cols="6">
-        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
-        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
-        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
-      </v-col>
+    <h3 class="mt-6">Verily {{ $root.idpConfig.idpName }}</h3>
 
-      <v-col cols="6">
-        <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
-      </v-col>
-    </v-row>
-
-    <v-alert :value="hasUnverifiedEmails" type="error">
-      <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
-    </v-alert>
+    <h5 class="my-2">{{ $user.isAuthenticated() ? 'Already logged in' : 'Not logged in' }}</h5>
 
     <v-row>
-      <v-col cols="12" sm="6" md="4">
-        <PasswordCard :meta="$user.password_meta"/>
-      </v-col>
+      <v-col>
+        <v-list two-line>
+          <v-card class="mx-auto">
+            <template v-for="(item, index) in coreItems">
+              <v-divider v-if="item.divider" :key="index" :inset="item.inset"></v-divider>
 
-      <v-col cols="12" sm="6" md="4">
-        <PasswordRecoveryCard :methods="alternates"/>
-      </v-col>
+              <a class="text-decoration-none" :href="item.url" v-else target="_blank">
+                <v-list-item :key="item.title" @click="">
+                  <v-list-item-avatar>
+                    <v-img :src="`./images/${item.avatar}`"></v-img>
+                  </v-list-item-avatar>
 
-      <v-col cols="12" sm="6" md="4">
-        <DoNotDiscloseCard :dnd="$user.hide"/>
+                  <v-list-item-content>
+                    <v-list-item-title v-html="item.title"></v-list-item-title>
+                    <v-list-item-subtitle v-html="item.secondary"></v-list-item-subtitle>
+                  </v-list-item-content>
+
+                  <v-list-item-avatar>
+                    <v-icon>mdi-launch</v-icon>
+                  </v-list-item-avatar>
+                </v-list-item>
+              </a>
+            </template>
+          </v-card>
+        </v-list>
       </v-col>
     </v-row>
-
-    <v-subheader>{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
-
-    <v-row>
-      <v-col cols="12" sm="6" md="4">
-        <TotpCard :meta="mfa.totp"/>
-      </v-col>
-
-      <v-col cols="12" sm="6" md="4">
-        <SecurityKeyCard :meta="mfa.webauthn"/>
-      </v-col>
-
-      <v-col cols="12" sm="6" md="4">
-        <BackupCodeCard :meta="mfa.backup"/>
-      </v-col>
-    </v-row>
+    <!--Todo add google links-->
+    <v-row> </v-row>
   </BasePage>
 </template>
 
 <script>
-import ProfileProgress from './ProfileProgress'
-import PasswordCard from './PasswordCard'
-import PasswordRecoveryCard from './PasswordRecoveryCard'
-import TotpCard from './TotpCard'
-import SecurityKeyCard from './SecurityKeyCard'
-import BackupCodeCard from './BackupCodeCard'
-import DoNotDiscloseCard from './DoNotDiscloseCard'
-import Attribute from './Attribute'
-import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods';
-import { mfa, retrieve as retrieveMfa } from '@/global/mfa';
-
 export default {
-  components: {
-    ProfileProgress,
-    PasswordCard,
-    PasswordRecoveryCard,
-    TotpCard,
-    SecurityKeyCard,
-    BackupCodeCard,
-    DoNotDiscloseCard,
-    Attribute,
-  },
-  data: () => ({
-    alternates: recoveryMethods.alternates,
-    mfa,
-  }),
   computed: {
-    hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
-  },
-  async created() {
-    await Promise.all([retrieveMethods(), retrieveMfa()])
+    hasUnverifiedEmails: (vm) => vm.alternates.some((m) => !m.verified),
+    org: (vm) => vm.$user.email.split('@')[1].split('.')[0],
+    coreItems(vm) {
+      return [
+        //Todo update/add content to locales and customize links for org
+        {
+          title: 'Wordkay',
+          secondary: 'HR and organizational data',
+          avatar: 'workday.svg',
+          url: `https://www.myworkday.com/wday/authgwy/wycliffe/login-saml2.htmld`, //TODO put organization in env?
+        },
+        { divider: true, inset: true },
+        {
+          title: 'Gateway',
+          avatar: 'gateway.svg',
+          url: 'https://gateway.sil.org/',
+          secondary: `${vm.org}’s internal wiki`,
+        },
+        { divider: true, inset: true },
+        {
+          title: 'Zoom',
+          secondary: 'Participate in virtual meetings',
+          avatar: 'zoom.svg',
+          url: 'https://zoom.us/signin',
+        },
+        { divider: true, inset: true },
+        {
+          title: 'Help Desk',
+          secondary: 'Browse how-to articles and submit tickets',
+          avatar: vm.org + '.svg',
+          url: 'https://gateway.sil.org/display/GHDKB/GTIS+Global+Help+Desk+Home',
+        },
+        { divider: true, inset: true },
+        {
+          title: 'REAP',
+          secondary: 'Repo for Electronic Archiving and Publishing',
+          avatar: 'reap.svg',
+          url: 'https://reap.sil.org/',
+        },
+        {
+          title: 'Cover',
+          secondary: 'insurance',
+          avatar: 'cover.svg',
+          url: 'https://cover.sil.org',
+        },
+      ]
+    },
   },
 }
 </script>
