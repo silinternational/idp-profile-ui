@@ -66,15 +66,6 @@ export default {
         month: 'long',
         day: 'numeric',
       }),
-    locale: localStorage.getItem('locale') || navigator.language,
-    languages: {
-      en: 'English',
-      es: 'Español',
-      fr: 'Français',
-      ko: '한국어',
-    },
-    localeModalOpen: false,
-    selectedLanguage: vm.language,
   }),
   computed: {
     hasUnverifiedEmails: (vm) => vm.alternates.some((m) => !m.verified),
@@ -120,7 +111,6 @@ export default {
         },
       ]
     },
-    language: (vm) => vm.languages[vm.locale],
   },
   methods: {
     toggle: async function () {
