@@ -109,7 +109,7 @@ export default {
           title: 'Help Desk',
           secondary: 'Browse how-to articles and submit tickets',
           avatar: require(`@/assets/${vm.org}.svg`),
-          url: 'https://gateway.sil.org/display/GHDKB/GTIS+Global+Help+Desk+Home',
+          url: 'https://helpdesk.sil.org/',
         },
         { divider: true, inset: true },
         {
