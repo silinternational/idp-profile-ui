@@ -16,9 +16,9 @@
         <v-list two-line>
           <v-card class="mx-auto">
             <template v-for="(item, index) in coreItems">
-              <v-divider v-if="item.divider" :key="index" :inset="item.inset"></v-divider>
+              <v-divider v-if="showDivider(index)" :key="index" inset></v-divider>
 
-              <a class="text-decoration-none" :key="index" :href="item.url" v-else target="_blank">
+              <a class="text-decoration-none" :key="index" :href="item.url" target="_blank">
                 <v-list-item :key="item.title" @click="() => {}">
                   <v-list-item-avatar>
                     <v-img :src="item.avatar"></v-img>
@@ -48,7 +48,7 @@
 
     <v-row>
       <v-col>
-        <h5>Login with your SIL Google account</h5>
+        <h5>Login with your {{org}}'s Google account</h5>
       </v-col>
     </v-row>
 
@@ -81,52 +81,36 @@ export default {
   }),
   computed: {
     org: (vm) => vm.$user.email.split('@')[1].split('.')[0],
-    coreItems(vm) {
-      return [
-        //Todo update/add content to locales and customize links for org
-        {
-          title: 'Wordkay',
-          secondary: 'HR and organizational data',
-          avatar: require('@/assets/workday.svg'),
-          url: `https://www.myworkday.com/wday/authgwy/wycliffe/login-saml2.htmld`, //TODO put organization in env?
-        },
-        { divider: true, inset: true },
-        {
-          title: 'Gateway',
-          avatar: require('@/assets/gateway.svg'),
-          url: 'https://gateway.sil.org/',
-          secondary: `${vm.org}’s internal wiki`,
-        },
-        { divider: true, inset: true },
-        {
-          title: 'Zoom',
-          secondary: 'Participate in virtual meetings',
-          avatar: require('@/assets/zoom.svg'),
-          url: 'https://zoom.us/signin',
-        },
-        { divider: true, inset: true },
-        {
-          title: 'Help Desk',
-          secondary: 'Browse how-to articles and submit tickets',
-          avatar: require(`@/assets/${vm.org}.svg`),
-          url: 'https://helpdesk.sil.org/',
-        },
-        { divider: true, inset: true },
-        {
-          title: 'REAP',
-          secondary: 'Repo for Electronic Archiving and Publishing',
-          avatar: require('@/assets/reap.svg'),
-          url: 'https://reap.sil.org/',
-        },
-        {
-          title: 'Cover',
-          secondary: 'insurance',
-          avatar: require('@/assets/cover.svg'),
-          url: 'https://cover.sil.org',
-        },
-      ]
-    },
-    //return google Workspace links using template literals like https://gmail.google.com/a/${vm.org}.org for gmail, calendar, meet, drive and chat
+    // Todo update/add to locales
+    coreItems: () => JSON.parse(process.env?.coreItems || '[{"title":"Example", "url":"/", "avatar":"/"}]').map(item => {
+      switch (item.title) {
+        case 'Example':
+          item.secondary = 'This is an example'
+          break
+        case 'Workday':
+          item.secondary = 'HR and organizational data'
+          break
+        case 'Gateway':
+          item.secondary = `${vm.org}'s internal wiki`
+          break
+        case 'Zoom':
+          item.secondary = 'Participate in virtual meetings'
+          break
+        case 'Help Desk':
+          item.secondary = 'Browse how-to articles and submit tickets'
+          break
+        case 'REAP':
+          item.secondary = 'Repo for Electronic Archiving and Publishing'
+          break
+        case 'Cover':
+          item.secondary = 'insurance'
+          break
+        default:
+          break
+      }
+      return item
+    }),
+    
     googleItems(vm) {
       return [
         {
@@ -160,6 +144,11 @@ export default {
           label: 'Chat',
         },
       ]
+    },
+  },
+  methods: {
+    showDivider(index) {
+      return index !== 0
     },
   },
   async created() {
