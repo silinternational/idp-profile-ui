@@ -99,7 +99,7 @@ export default {
           icon: 'mdi-account-multiple',
           secondary: this.$user.manager_email,
           tooltip:
-            'Your recovery contact is the person who will be sent codes to allow you to re-enter your Verily account if all your 2-Step Verification methods are lost. It is likely your manager, and is set by HR.', //Todo add this to locales
+            'Your recovery contact is the person who will be sent codes to allow you to re-enter your account if all your 2-Step Verification methods are lost. It is likely your manager, and is set by HR.', //Todo add this to locales
         },
         { divider: true, inset: true },
         {
