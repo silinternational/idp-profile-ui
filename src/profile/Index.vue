@@ -52,7 +52,7 @@
       </v-col>
     </v-row>
 
-    <v-row class="mt-10">
+    <v-row class="my-10">
       <v-col>
         <div class="flex row justify-space-around ml-2">
           <a v-for="(item, index) in googleItems" :key="index" :href="item.url" target="_blank" class="text-decoration-none">
@@ -60,6 +60,18 @@
             <label :for="item.label">{{item.label}}</label>
           </a>
         </div>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col>
+        <v-footer>
+        <small>
+          <span v-for="(item, index) in googleItems" :key="index">
+            {{item.label + getSpaceCommaOrAnd(index, googleItems.length)}}
+          </span> are trademarks of Google LLC.
+        </small>
+        </v-footer>
       </v-col>
     </v-row>
   </BasePage>
@@ -121,27 +133,27 @@ export default {
         {
           image: 'https://lh3.googleusercontent.com/K0vgpnn9Vour8ByU3htR3ou5Cx70Me-lW_51VEAIS5dfzXCQ0otXakVuPiQVc0V6qcf9aP_vkVul59airN27m3mttf4zQ1TPv4MVrw',
           url: `https://calendar.google.com/a/${vm.org}.org`,
-          label: 'Calendar',
+          label: 'Google Calendar',
         },
         {
           image: 'https://lh3.googleusercontent.com/n3Eac1gPc5OTEh7Go1jemICnooceXtfs4VZW-4CPukCUi_doFsN9Q8njidksZ4KIFyPJVYtR7ZhLL16VoUJSPE1j74iTXT2xwCqq',
           url: `https://meet.google.com`,
-          label: 'Meet',
+          label: 'Google Meet',
         },
         {
           image: 'https://lh3.googleusercontent.com/rCwHBRBJV4wFiEIN_Mlboj94_TGJxyJtBh-MBFL4y1aZdO4hb7_Uc_PpXRyAoN7O9m_Zc1wSyp3H1vsnb829QE7t9KyGNJY9A1a3QQ',
           url: `https://drive.google.com/a/${vm.org}.org`,
-          label: 'Drive',
+          label: 'Google Drive',
         },
         {
           image: 'https://lh3.googleusercontent.com/1DECuhPQ1y2ppuL6tdEqNSuObIm_PW64w0mNhm3KGafi40acOJkc4nvsZnThoDKTH8gWyxAnipJmvCiszX8R6UAUu1UyXPfF13d7',
           url: `https://docs.google.com/a/${vm.org}.org`,
-          label: 'Docs',
+          label: 'Google Docs',
         },
         {
           image: 'https://lh3.googleusercontent.com/hK3UrUgS8y0fmfFlxr7hQFdKdkufJQ5aDWjB9Ft2hTLkVUaZTWTH_w5AvXU3C4zko7w1RVLEUQf0DnQ_id9c32IZ6upSLMVfhSWnJg',
           url: `https://chat.google.com/a/${vm.org}.org`,
-          label: 'Chat',
+          label: 'Google Chat',
         },
       ]
     },
@@ -150,6 +162,7 @@ export default {
     showDivider(index) {
       return index !== 0
     },
+    getSpaceCommaOrAnd: (index, length) => index === length - 1 ? '' : index === length - 2 ? ' and ' : ', ',
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])
