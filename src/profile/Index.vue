@@ -82,7 +82,7 @@ export default {
   computed: {
     org: (vm) => vm.$user.email.split('@')[1].split('.')[0],
     // Todo update/add to locales
-    coreItems: (vm) => JSON.parse(vm.$root.idpConfig.coreItems || '[{"title":"Example", "url":"/", "avatar":"/"}]').map(item => {
+    coreItems: (vm) => JSON.parse(vm.$root.idpConfig.coreItems || '[]').map(item => {
       switch (item.title) {
         case 'Example':
           item.secondary = 'This is an example'
