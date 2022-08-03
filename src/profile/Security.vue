@@ -48,7 +48,7 @@ export default {
     items: (vm) => [
       // Todo add these to locales
       {
-        avatar: require('@/assets/authy-logo.jpg'),
+        avatar: isAuthy ? require('@/assets/authy-logo.jpg') : require('@/assets/authenticator-logo.jpg'),
         title: 'Code Generator',
         subtitle: `Copy/paste a six-digit code directly from your computer or phone.`,
         btnLabel: vm.mfa.totp.created_utc ? 'Remove' : 'Set Up',
@@ -76,6 +76,7 @@ export default {
       vm.mfa.webauthn.created_utc ? `#/2sv/change/${vm.mfa.webauthn.id}` : '#/2sv/usb-security-key/intro',
     codesUrl: (vm) =>
       vm.mfa.backup.created_utc ? '#/2sv/printable-backup-codes/new' : '#/2sv/printable-backup-codes/intro',
+    isAuthy: () => `${process.env.VUE_APP_TOTP_APP_RECOMMENDATION}` === 'authy',
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])
