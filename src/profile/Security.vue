@@ -4,12 +4,9 @@
       {{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}
     </template>
 
-    <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
+    <ProfileProgress :profile="{ user: $user, alternates, mfa }" />
 
-
-    <v-subheader>
-      You’ll be asked for your second method every 30 days. Drag and drop to reorder method preference
-    </v-subheader>
+    <v-subheader> You’ll be asked for your second method every 30 days. </v-subheader>
 
     <v-list three-line>
       <v-card class="mx-auto">
@@ -41,7 +38,7 @@ import { mfa, retrieve as retrieveMfa } from '@/global/mfa'
 
 export default {
   components: {
-    ProfileProgress
+    ProfileProgress,
   },
   data: () => ({
     alternates: recoveryMethods.alternates,
