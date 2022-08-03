@@ -48,7 +48,7 @@
 
     <v-row>
       <v-col>
-        <h5>Login with your {{org}}'s Google account</h5>
+        <h5>Login with your {{org}} Google account</h5>
       </v-col>
     </v-row>
 
