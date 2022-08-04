@@ -7,7 +7,7 @@
 
     <ProfileProgress :profile="{ user: $user, alternates, mfa }" />
 
-    <h3 class="mt-6">{{ process.env.APP_DISPLAY_NAME || 'Idp App' }} {{ $root.idpConfig.idpName }}</h3>
+    <h3 class="mt-6">{{ appDisplayName }} {{ $root.idpConfig.idpName }}</h3>
 
     <h5 class="my-2">{{ $user.isAuthenticated() ? 'Already logged in' : 'Not logged in' }}</h5>
 
@@ -99,6 +99,7 @@ export default {
   }),
   computed: {
     org: (vm) => vm.$user.email.split('@')[1].split('.')[0],
+    appDisplayName: () => `${process.env.APP_DISPLAY_NAME}`,
     // Todo update/add to locales
     coreItems: (vm) =>
       JSON.parse(vm.$root.idpConfig.coreItems || '[]').map((item) => {
