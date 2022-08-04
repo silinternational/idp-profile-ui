@@ -48,7 +48,7 @@ export default {
     items: (vm) => [
       // Todo add these to locales
       {
-        avatar: isAuthy ? require('@/assets/authy-logo.jpg') : require('@/assets/authenticator-logo.jpg'),
+        avatar: vm.isAuthy ? require('@/assets/authy-logo.jpg') : require('@/assets/authenticator-logo.jpg'),
         title: 'Code Generator',
         subtitle: `Copy/paste a six-digit code directly from your computer or phone.`,
         btnLabel: vm.mfa.totp.created_utc ? 'Remove' : 'Set Up',
