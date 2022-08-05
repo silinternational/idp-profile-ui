@@ -9,34 +9,36 @@
     <v-list two-line>
       <v-card class="mx-auto">
         <template v-for="(item, index) in items">
-          <v-divider v-if="item.divider" :key="index" :inset="item.inset"></v-divider>
+          <div :key="item.title">
+            <v-divider v-if="showDivider(index)" inset />
 
-          <v-list-item v-else :key="item.title" :to="item.url" :exact="true" :active-class="'primary--text'">
-            <v-list-item-avatar>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-avatar>
+            <v-list-item :to="item.url" :exact="true" :active-class="'primary--text'">
+              <v-list-item-avatar>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-avatar>
 
-            <v-tooltip v-if="item.tooltip" max-width="240px" bottom>
-              <template v-slot:activator="{ on, attrs }">
-                <v-list-item-content v-bind="attrs" v-on="on">
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
-                </v-list-item-content>
-              </template>
-              <span>{{ item.tooltip }}</span>
-            </v-tooltip>
+              <v-tooltip v-if="item.tooltip" max-width="240px" bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-list-item-content v-bind="attrs" v-on="on">
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
+                  </v-list-item-content>
+                </template>
+                <span>{{ item.tooltip }}</span>
+              </v-tooltip>
 
-            <v-list-item-content v-else>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-              <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
-            </v-list-item-content>
+              <v-list-item-content v-else>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
+              </v-list-item-content>
 
-            <v-list-item-avatar v-if="item.hasPencil && !item.dialog">
-              <v-icon>mdi-pencil</v-icon>
-            </v-list-item-avatar>
+              <v-list-item-avatar v-if="item.hasPencil && !item.dialog">
+                <v-icon>mdi-pencil</v-icon>
+              </v-list-item-avatar>
 
-            <v-switch :loading="toggling" v-if="item.hasSwitch" v-model="hidden" @change="toggle()" />
-          </v-list-item>
+              <v-switch :loading="toggling" v-if="item.hasSwitch" v-model="hidden" @change="toggle()" />
+            </v-list-item>
+          </div>
         </template>
       </v-card>
     </v-list>
@@ -52,8 +54,7 @@ import { recoveryMethods } from '@/global/recoveryMethods'
 import { mfa } from '@/global/mfa'
 
 export default {
-  components: {
-  },
+  components: {},
   data: (vm) => ({
     alternates: recoveryMethods.alternates,
     mfa,
@@ -77,7 +78,6 @@ export default {
           icon: 'mdi-account-circle',
           secondary: this.$user.idp_username,
         },
-        { divider: true, inset: true },
         {
           title: this.$vuetify.lang.t('$vuetify.profile.index.passwordCard.title'),
           icon: 'mdi-account-key',
@@ -85,7 +85,6 @@ export default {
           hasPencil: true,
           secondary: this.lastUpdated,
         },
-        { divider: true, inset: true },
         {
           title: this.$vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.title'),
           icon: 'mdi-email-outline',
@@ -93,7 +92,6 @@ export default {
           hasPencil: true,
           tooltip: 'If you lose your password we’ll send a reset link to this email address. ', //Todo add this to locales
         },
-        { divider: true, inset: true },
         {
           title: this.$vuetify.lang.t('$vuetify.profile.index.manager'),
           icon: 'mdi-account-multiple',
@@ -101,7 +99,6 @@ export default {
           tooltip:
             'Your recovery contact is the person who will be sent codes to allow you to re-enter your account if all your 2-Step Verification methods are lost. It is likely your manager, and is set by HR.', //Todo add this to locales
         },
-        { divider: true, inset: true },
         {
           title: this.$vuetify.lang.t('$vuetify.profile.index.dndCard.title'),
           icon: 'mdi-security',
@@ -121,6 +118,9 @@ export default {
       })
 
       this.toggling = false
+    },
+    showDivider(index) {
+      return index !== 0
     },
   },
 }
