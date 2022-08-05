@@ -2,16 +2,19 @@
   {
     "title": "Example1",
     "url": "http://example.1.com/",
+    "secondary": "Example 1 is our main place to start",
     "avatar": "/"
   },
   {
     "title": "Example2",
     "url": "http://example.2.com/",
+    "secondary": "Example 2 is our main place to be",
     "avatar": "/"
   },
   {
     "title": "Example3",
     "url": "http://example.3.com/",
+    "secondary": "Example 3 is our main place to end",
     "avatar": "/"
   }
 ]
