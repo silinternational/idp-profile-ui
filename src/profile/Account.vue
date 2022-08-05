@@ -12,31 +12,41 @@
           <div :key="item.title">
             <v-divider v-if="showDivider(index)" inset />
 
-            <v-list-item :to="item.url" :exact="true" :active-class="'primary--text'">
+            <v-tooltip v-if="item.tooltip" max-width="240px" bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-list-item v-bind="attrs" v-on="on" :to="item.url" :exact="true" :active-class="'primary--text'">
+                  <v-list-item-avatar>
+                    <v-icon>{{ item.icon }}</v-icon>
+                  </v-list-item-avatar>
+
+                  <v-list-item-content>
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
+                  </v-list-item-content>
+
+                  <v-list-item-avatar v-if="item.hasPencil">
+                    <v-icon>mdi-pencil</v-icon>
+                  </v-list-item-avatar>
+
+                  <v-switch :loading="toggling" v-if="item.hasSwitch" v-model="hidden" @change="toggle()" />
+                </v-list-item>
+              </template>
+              <span>{{ item.tooltip }}</span>
+            </v-tooltip>
+
+            <v-list-item v-else :to="item.url" :exact="true" :active-class="'primary--text'">
               <v-list-item-avatar>
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-item-avatar>
 
-              <v-tooltip v-if="item.tooltip" max-width="240px" bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-list-item-content v-bind="attrs" v-on="on">
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                    <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
-                  </v-list-item-content>
-                </template>
-                <span>{{ item.tooltip }}</span>
-              </v-tooltip>
-
-              <v-list-item-content v-else>
+              <v-list-item-content>
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
                 <v-list-item-subtitle>{{ item.secondary }}</v-list-item-subtitle>
               </v-list-item-content>
 
-              <v-list-item-avatar v-if="item.hasPencil && !item.dialog">
+              <v-list-item-avatar v-if="item.hasPencil">
                 <v-icon>mdi-pencil</v-icon>
               </v-list-item-avatar>
-
-              <v-switch :loading="toggling" v-if="item.hasSwitch" v-model="hidden" @change="toggle()" />
             </v-list-item>
           </div>
         </template>
