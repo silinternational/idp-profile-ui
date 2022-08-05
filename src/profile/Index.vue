@@ -99,8 +99,8 @@ export default {
     mfa,
   }),
   computed: {
-    org: (vm) => vm.$user.email.split('@')[1].split('.')[0],
-    appDisplayName: () => `${process.env.APP_DISPLAY_NAME}`,
+    org: (vm) => process.env.VUE_APP_ORGANIZATION_DISPLAY_NAME || vm.$user.email.split('@')[1].split('.')[0],
+    appDisplayName: () => `${process.env.VUE_APP_DISPLAY_NAME}`,
     // Todo update/add to locales
     coreItems: (vm) =>
       coresystems.map((item) => {
