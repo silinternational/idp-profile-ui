@@ -59,7 +59,7 @@ export default {
         avatar: require('@/assets/key.svg'),
         title: 'Security Key',
         subtitle: `After setup, insert and tap to authenticate.`,
-        btnLabel: vm.mfa.webauthn.created_utc ? 'Replace' : 'Set up',
+        btnLabel: vm.mfa.webauthn.created_utc ? 'Remove' : 'Set up',
         url: vm.keyUrl,
       },
       { divider: true, inset: true },
