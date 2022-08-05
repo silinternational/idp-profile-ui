@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Example1",
+    "url": "http://example.1.com/",
+    "avatar": "/"
+  },
+  {
+    "title": "Example2",
+    "url": "http://example.2.com/",
+    "avatar": "/"
+  },
+  {
+    "title": "Example3",
+    "url": "http://example.3.com/",
+    "avatar": "/"
+  }
+]

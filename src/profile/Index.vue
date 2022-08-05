@@ -16,9 +16,9 @@
         <v-list two-line>
           <v-card class="mx-auto">
             <template v-for="(item, index) in coreItems">
-              <v-divider v-if="showDivider(index)" :key="index" inset></v-divider>
-
               <a class="text-decoration-none" :key="index" :href="item.url" target="_blank">
+                <v-divider v-if="showDivider(index)" inset />
+
                 <v-list-item :key="item.title" @click="() => {}">
                   <v-list-item-avatar>
                     <v-img :src="item.avatar"></v-img>
@@ -86,6 +86,7 @@
 
 <script>
 import ProfileProgress from './ProfileProgress'
+import coresystems from '../../coresystems.json'
 import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
 import { mfa, retrieve as retrieveMfa } from '@/global/mfa'
 
@@ -102,7 +103,7 @@ export default {
     appDisplayName: () => `${process.env.APP_DISPLAY_NAME}`,
     // Todo update/add to locales
     coreItems: (vm) =>
-      JSON.parse(vm.$root.idpConfig.coreItems || '[]').map((item) => {
+      coresystems.map((item) => {
         switch (item.title) {
           case 'Example':
             item.secondary = 'This is an example'
