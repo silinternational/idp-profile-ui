@@ -1,7 +1,7 @@
 {
   "name": "idp-profile-ui",
   "engines": {
-    "node": "=16.17.0"
+    "node": ">=16.0.0 <17.0.0"
   },
   "repository": {
     "type": "git",
