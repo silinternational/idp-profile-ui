@@ -1,5 +1,8 @@
 {
   "name": "idp-profile-ui",
+  "engines": {
+    "node": ">=16.0.0 <17.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/silinternational/idp-profile-ui"
@@ -19,7 +22,7 @@
     "vue": "^2.6.12",
     "vue-analytics": "^5.22.1",
     "vue-router": "^3.4.9",
-    "vuetify": "^2.6.7",
+    "vuetify": "^2.6.10",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
