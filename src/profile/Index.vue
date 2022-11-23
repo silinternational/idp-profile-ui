@@ -41,8 +41,12 @@
         <TotpCard :meta="mfa.totp"/>
       </v-col>
 
-      <v-col cols="12" sm="6" md="4">
-        <SecurityKeyCard :meta="mfa.webauthn"/>
+      <v-col v-if="mfa.webauthn?.length" cols="12" sm="6" md="4">
+        <SecurityKeyCard v-for="mfaKey in mfa.webauthn" :mfaKey="mfaKey"/>
+      </v-col>
+
+      <v-col v-else>
+        <SecurityKeyCard :mfaKey=[] />
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
