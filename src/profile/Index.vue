@@ -41,11 +41,11 @@
         <TotpCard :meta="mfa.totp"/>
       </v-col>
 
-      <v-col v-if="mfa.webauthn.length" cols="12" sm="6" md="4">
-        <SecurityKeyCard isFirst="true" :numberOfKeys="mfa.webauthn.length" :mfaKey="mfa.webauthn[0]"/>
+      <v-col v-if="numberOfKeys" cols="12" sm="6" md="4">
+        <SecurityKeyCard isFirst="true" :numberOfKeys="numberOfKeys" :mfaKey="mfa.webauthn[0]"/>
       </v-col>
 
-      <v-col v-else-if="mfa.webauthn.length === 0">
+      <v-col v-else-if="numberOfKeys === 0">
         <SecurityKeyCard isFirst="true" :mfaKey=[] />
       </v-col>  
 
@@ -54,15 +54,15 @@
       </v-col>
     </v-row>
 
-    <v-row v-if="mfa.webauthn.length > 1">
+    <v-row v-if="numberOfKeys > 1">
       <v-col>
         Security Keys
       </v-col>
     </v-row>
 
-    <v-row  v-if="mfa.webauthn.length > 1">
+    <v-row  v-if="numberOfKeys > 1">
       <v-col v-for="mfaKey in additionalKeys" cols="12" sm="6" md="4">
-        <SecurityKeyCard :mfaKey="mfaKey"/>
+        <SecurityKeyCard :mfaKey="mfaKey" :numberOfKeys="numberOfKeys"/>
       </v-col>
     </v-row>
   </BasePage>
@@ -98,6 +98,7 @@ export default {
   computed: {
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
     additionalKeys: vm => vm.mfa.webauthn.slice(1),
+    numberOfKeys: vm => mfa.webauthn.length
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])
