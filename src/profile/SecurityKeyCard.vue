@@ -3,7 +3,7 @@
     <v-card-title primary-title class="text-break">
       <v-row no-gutters align="center">
         <v-col cols="2">
-          <v-icon :color="mfaKey ? 'success' : ''" x-large>mdi-key</v-icon>
+          <v-icon :color="mfaKey.id ? 'success' : ''" x-large>mdi-key</v-icon>
         </v-col>
         <v-col class="ml-4">
           <MfaCardLabel :label="label || mfaKey.label || $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title')" 
@@ -28,13 +28,13 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="mfaKey.id" :href="`#/2sv/change/${mfaKey.id}`" color="primary" outlined>
+      <v-btn v-if="mfaKey.id && isFirst" :href="`#/2sv/change/${mfaKey.id}`" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.button.change') }}
       </v-btn>
-      <v-btn href="#/2sv/usb-security-key/intro" color="primary" outlined>
+      <v-btn v-if="isFirst" href="#/2sv/usb-security-key/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="mfaKey.id" :id="mfaKey.id"/>
+      <MfaCardRemove v-if="mfaKey.id" :id="mfaKey.id" />
     </v-card-actions>
   </v-card>
 </template>
@@ -50,7 +50,7 @@ export default {
     MfaCardLabel,
     MfaCardRemove
   },
-  props: ['mfaKey'],
+  props: ['mfaKey', 'isFirst', 'numberOfKeys'],
   data: vm => ({
     label: '',
   })

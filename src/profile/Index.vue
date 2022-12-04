@@ -41,16 +41,28 @@
         <TotpCard :meta="mfa.totp"/>
       </v-col>
 
-      <v-col v-if="mfa.webauthn?.length" cols="12" sm="6" md="4">
-        <SecurityKeyCard v-for="mfaKey in mfa.webauthn" :mfaKey="mfaKey"/>
+      <v-col v-if="mfa.webauthn.length" cols="12" sm="6" md="4">
+        <SecurityKeyCard isFirst="true" :numberOfKeys="mfa.webauthn.length" :mfaKey="mfa.webauthn[0]"/>
       </v-col>
 
-      <v-col v-else>
-        <SecurityKeyCard :mfaKey=[] />
-      </v-col>
+      <v-col v-else-if="mfa.webauthn.length === 0">
+        <SecurityKeyCard isFirst="true" :mfaKey=[] />
+      </v-col>  
 
       <v-col cols="12" sm="6" md="4">
         <BackupCodeCard :meta="mfa.backup"/>
+      </v-col>
+    </v-row>
+
+    <v-row v-if="mfa.webauthn.length > 1">
+      <v-col>
+        Security Keys
+      </v-col>
+    </v-row>
+
+    <v-row  v-if="mfa.webauthn.length > 1">
+      <v-col v-for="mfaKey in additionalKeys" cols="12" sm="6" md="4">
+        <SecurityKeyCard :mfaKey="mfaKey"/>
       </v-col>
     </v-row>
   </BasePage>
@@ -65,8 +77,8 @@ import SecurityKeyCard from './SecurityKeyCard'
 import BackupCodeCard from './BackupCodeCard'
 import DoNotDiscloseCard from './DoNotDiscloseCard'
 import Attribute from './Attribute'
-import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods';
-import { mfa, retrieve as retrieveMfa } from '@/global/mfa';
+import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods'
+import { mfa, retrieve as retrieveMfa } from '@/global/mfa'
 
 export default {
   components: {
@@ -85,6 +97,7 @@ export default {
   }),
   computed: {
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
+    additionalKeys: vm => vm.mfa.webauthn.slice(1),
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])
