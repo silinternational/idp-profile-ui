@@ -3,7 +3,7 @@ import Vue from 'vue'
 export const mfa = {
   totp: {},
   u2f: {},
-  webauthn: [],
+  keys: [],
   backup: {},
   numVerified: 0
 }
@@ -24,7 +24,7 @@ export const retrieve = async () => {
 
   mfa.totp = Object.assign({}, all.find(m => m.type === 'totp'))
   mfa.u2f = Object.assign({}, all.find(m => m.type === 'u2f'))
-  mfa.webauthn = all.filter(m => m.type === 'webauthn')
+  mfa.keys = all.filter(m => m.type === 'webauthn')
   mfa.backup = Object.assign({}, all.find(m => m.type === 'backupcode'))
   
   mfa.numVerified = numOfVerifiedMfas(mfa) // currently, the api only returns verified mfas
@@ -34,7 +34,7 @@ function numOfVerifiedMfas(mfa) {
   let num = 0
 
   num += mfa.totp.id ? 1 : 0
-  num += mfa.u2f.id || mfa.webauthn.id ? 1 : 0
+  num += mfa.u2f.id || mfa.keys.length || 0
   num += mfa.backup.id ? 1 : 0
 
   return num

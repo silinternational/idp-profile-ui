@@ -42,7 +42,7 @@
       </v-col>
 
       <v-col v-if="numberOfKeys" cols="12" sm="6" md="4">
-        <SecurityKeyCard isFirst="true" :numberOfKeys="numberOfKeys" :mfaKey="mfa.webauthn[0]"/>
+        <SecurityKeyCard isFirst="true" :numberOfKeys="numberOfKeys" :mfaKey="mfa.keys[0]"/>
       </v-col>
 
       <v-col v-else-if="numberOfKeys === 0">
@@ -97,8 +97,8 @@ export default {
   }),
   computed: {
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
-    additionalKeys: vm => vm.mfa.webauthn.slice(1),
-    numberOfKeys: vm => mfa.webauthn.length
+    additionalKeys: vm => vm.mfa.keys.slice(1),
+    numberOfKeys: vm => vm.mfa.keys.length
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])
