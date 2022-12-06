@@ -24,7 +24,7 @@ export const retrieve = async () => {
 
   mfa.totp = Object.assign({}, all.find(m => m.type === 'totp'))
   mfa.u2f = Object.assign({}, all.find(m => m.type === 'u2f'))
-  mfa.keys = all.filter(m => m.type === 'webauthn')[0]
+  mfa.keys = Object.assign({}, all.find(m => m.type === 'webauthn'))
   mfa.backup = Object.assign({}, all.find(m => m.type === 'backupcode'))
   
   mfa.numVerified = numOfVerifiedMfas(mfa) // currently, the api only returns verified mfas
@@ -34,7 +34,7 @@ function numOfVerifiedMfas(mfa) {
   let num = 0
 
   num += mfa.totp.id ? 1 : 0
-  num += mfa.u2f.id || mfa.keys.length || 0
+  num += mfa.u2f.id || mfa.keys.data.length || 0
   num += mfa.backup.id ? 1 : 0
 
   return num
@@ -61,25 +61,25 @@ export const verifyWebauthn = async (id,  verification = '') => {
   const verifiedMfa = await Vue.prototype.$API.put(`mfa/${id}/verify/registration`, {
     value: verification
   })
-  
-  mfa.keys.push(verifiedMfa)
+  console.log(verifiedMfa)
+  // mfa.keys.data.push(verifiedMfa)
 }
 
 // TODO finish new endpoints for webauthn
 export const removeWebauthn = async (mfaId, webauthnId) => {
   const response = await Vue.prototype.$API.delete(`mfa/${mfaId}/webauthn/${webauthnId}`)
-  // console.log(response)
-  const index = mfa.keys.findIndex(m => m.id === mfaId)
+  console.log(response)
+  const index = mfa.keys.data.findIndex(m => m.id === mfaId)
   if(index > -1) {
-    mfa.keys.splice(index, 1)
+    mfa.keys.data.splice(index, 1)
   }
 }
 
 export const changeWebauthn = async (mfaId, webauthnId, updates) => {
   const response = await Vue.prototype.$API.put(`mfa/${mfaId}/webauthn/${webauthnId}`, updates)
-  // console.log(response)
-  const index = mfa.keys.findIndex(m => m.id === mfaId)
+  console.log(response)
+  const index = mfa.keys.data.findIndex(m => m.id === mfaId)
   if(index > -1) {
-    mfa.keys[index] = response
+    mfa.keys.data[index] = response
   }
 }

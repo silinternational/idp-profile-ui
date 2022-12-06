@@ -7,14 +7,14 @@
         </v-col>
         <v-col class="ml-4">
           <MfaCardLabel :label="label || mfaKey.label || $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title')" 
-                        :id="mfaKey.id" @new-label="label = $event"/>
+                        :id="mfaKey.id"  :webauthnId="webauthnId" @new-label="label = $event"/>
         </v-col>
       </v-row>
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <Attribute v-if="mfaKey.id" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.created')" :value="mfaKey.created_utc | format"/>
-      <v-row v-else>
+      <Attribute v-if="mfaKey.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.created')" :value="mfaKey.created_utc | format"/>
+      <v-row v-else-if="!mfaKey.id">
         <v-col cols="auto">
           <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
         </v-col>
@@ -22,19 +22,19 @@
           <em>{{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.warning') }}</em>
         </v-col>
       </v-row>
-      <Attribute v-if="mfaKey.id" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.lastUsed')" :value="mfaKey.last_used_utc | format"/>
+      <Attribute v-if="mfaKey.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.lastUsed')" :value="mfaKey.last_used_utc | format"/>
     </v-card-text>
 
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="isFirst && numberOfKeys === 1" :href="`#/2sv/change/${mfaKey.id}`" color="primary" outlined>
+      <v-btn v-if="!isFirst && numberOfKeys === 1" :href="`#/2sv/change/${mfaKey.id}`" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.button.change') }}
       </v-btn>
       <v-btn v-if="isFirst" href="#/2sv/usb-security-key/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="numberOfKeys > 1" :id="mfaKey.id" />
+      <MfaCardRemove v-if="numberOfKeys > 1 && !isFirst" :id="mfaKey.id" :webauthnId="webauthnId" />
     </v-card-actions>
   </v-card>
 </template>
@@ -50,9 +50,9 @@ export default {
     MfaCardLabel,
     MfaCardRemove
   },
-  props: ['mfaKey', 'isFirst', 'numberOfKeys'],
+  props: ['mfaKey', 'isFirst', 'numberOfKeys', 'webauthnId'],
   data: vm => ({
     label: '',
-  })
+  }),
 }
 </script>

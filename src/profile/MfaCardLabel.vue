@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { change } from '@/global/mfa'
+import { changeWebauthn } from '@/global/mfa'
 
 export default {
   props: {
@@ -44,7 +44,10 @@ export default {
     }, 
     id: {
       type: Number,
-    }, 
+    },
+    webauthnId: {
+      type: Number,
+    },
     readOnly: {
       type: Boolean,
       default: false,
@@ -63,7 +66,7 @@ export default {
       this.editing = false
     },
     async save() {
-      const mfa = await change(this.id, {
+      const mfa = await changeWebauthn(this.id, this.webauthnId, {
         label: this.newLabel
       })
 

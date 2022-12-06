@@ -62,7 +62,7 @@
 
     <v-row  v-if="numberOfKeys > 1">
       <v-col v-for="mfaKey in additionalKeys" cols="12" sm="6" md="4">
-        <SecurityKeyCard :mfaKey="mfaKey" :numberOfKeys="numberOfKeys"/>
+        <SecurityKeyCard :mfaKey="mfaKey" :numberOfKeys="numberOfKeys" :webauthnId="mfa.keys.id"/>
       </v-col>
     </v-row>
   </BasePage>
@@ -97,7 +97,7 @@ export default {
   }),
   computed: {
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
-    additionalKeys: vm => vm.mfa.keys.data.slice(1),
+    additionalKeys: vm => vm.mfa.keys.data,
     numberOfKeys: vm => vm.mfa.keys.data?.length
   },
   async created() {
