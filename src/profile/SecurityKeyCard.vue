@@ -6,13 +6,14 @@
           <v-icon :color="mfaKey.id ? 'success' : ''" x-large>mdi-key</v-icon>
         </v-col>
         <v-col class="ml-4">
-          <MfaCardLabel :label="label || mfaKey.label || $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title')" 
-                        :id="mfaKey.id"  :webauthnId="webauthnId" @new-label="label = $event"/>
+          <MfaCardLabel :label="isFirst ? $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title') : label || mfaKey.label" 
+                        :id="mfaKey.id"  :webauthnId="webauthnId" :readOnly="!webauthnId" @new-label="label = $event"/>
         </v-col>
       </v-row>
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
+      <Attribute sameline v-if="isFirst" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.number')" :value="numberOfKeys"/>
       <Attribute v-if="mfaKey.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.created')" :value="mfaKey.created_utc | format"/>
       <v-row v-else-if="!mfaKey.id">
         <v-col cols="auto">

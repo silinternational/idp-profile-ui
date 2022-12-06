@@ -96,7 +96,8 @@
         "warning": "No smartphone at this time, please add one."
       },
       "securityKeyCard": {
-        "title": "USB security key",
+        "number": "Number of keys:",
+        "title": "USB security keys",
         "created": "Created:",
         "lastUsed": "Last used:",
         "button": {

@@ -96,6 +96,7 @@
         "warning": "현재 스마트 폰번호가 없으므로 스마트 폰 번호를 추가하십시오."
       },
       "securityKeyCard": {
+        "number": "열쇠의 수:",
         "title": "USB 보안 키",
         "created": "생성됨",
         "lastUsed": "최근 사용",
