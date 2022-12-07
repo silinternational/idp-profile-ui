@@ -19,9 +19,9 @@ services:
       - api
 
   api:
-    image: silintl/idp-pw-api:develop
+    image: silintl/idp-pw-api:featuremulti-webauthn
     ports:
-      - '8080:80'
+      - '8082:80'
     depends_on:
       - profileDb
       - memcache
@@ -68,6 +68,24 @@ services:
       PASSWORD_RULE_minScore: '3'
       MEMCACHE_CONFIG1_host: 'memcache'
     command: [ 'bash', '-c', 'whenavail profileDb 3306 60 ./yii migrate --interactive=0 && ./run.sh' ]
+
+
+  mfaapi:
+    build: ./serverless-mfa-api
+    ports:
+      - 8080
+    environment:
+      AWS_ENDPOINT: dynamo:8000
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: abc123
+      AWS_SECRET_ACCESS_KEY: abc123
+      AWS_DISABLE_SSL: "true"
+      API_KEY_TABLE: ApiKey
+      WEBAUTHN_TABLE: WebAuthn
+    depends_on:
+      - dynamo
+      - dynamorestart
+    working_dir: /src
 
   profileDb:
     image: mariadb:latest
@@ -126,13 +144,14 @@ services:
       BACKEND3_URL: 'http://idp:80'
 
   broker:
-    image: silintl/idp-id-broker:develop
+    image: silintl/idp-id-broker:dev-multiwebauthn
     volumes:
       - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
     ports:
       - '8090:80'
     depends_on:
       - brokerDb
+      - mfaapi
     env_file:
       - ./.env.local
     environment:
@@ -148,6 +167,13 @@ services:
       EMAIL_SERVICE_accessToken: 'dummy'
       EMAIL_SERVICE_assertValidIp: 'false'
       EMAIL_SIGNATURE: 'one red pill, please'
+      MFA_WEBAUTHN_apiBaseUrl: mfaapi:8080/
+      MFA_WEBAUTHN_apiKey: 10345678-1234-1234-1234-123456789012
+      MFA_WEBAUTHN_apiSecret: 11345678-1234-1234-1234-12345678
+      # the corresponding hash: $2a$10$8Bp9PqqfStjLvh1nQJ67JeY3CO/mEXmF1GKfe8Vk0kue1.i7fa2mC
+      MFA_WEBAUTHN_appId: idpProfile
+      MFA_WEBAUTHN_rpDisplayName: IdP Profile
+      MFA_WEBAUTHN_rpId: profile.gtis.guru
       SUPPORT_EMAIL: 'support@example.org'
       HELP_CENTER_URL: 'https://example.org/help'
       PASSWORD_FORGOT_URL: 'https://example.org/forgot'
@@ -224,3 +250,34 @@ services:
       MYSQL_DATABASE: 'silauth'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'pass'
+
+
+  dynamo:
+    image: amazon/dynamodb-local
+    ports:
+      - "8087:8000"
+    environment:
+      AWS_ACCESS_KEY_ID: abc123
+      AWS_SECRET_ACCESS_KEY: abc123
+      AWS_DEFAULT_REGION: us-east-1
+    command: "-jar DynamoDBLocal.jar -sharedDb"
+
+
+  dynamorestart:
+    build: ./dynamorestart
+    ports:
+      - 8086
+    volumes:
+      - ./dynamorestart/:/dynamo
+    environment:
+      AWS_ENDPOINT: dynamo:8000
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: abc123
+      AWS_SECRET_ACCESS_KEY: abc123
+      AWS_DISABLE_SSL: "true"
+      API_KEY_TABLE: ApiKey
+      WEBAUTHN_TABLE: WebAuthn
+    depends_on:
+      - dynamo
+    working_dir: /dynamo
+    command: bash -c "pwd && ls -al && php restart.php"
