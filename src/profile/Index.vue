@@ -41,12 +41,16 @@
         <TotpCard :meta="mfa.totp"/>
       </v-col>
 
-      <v-col v-if="numberOfKeys" cols="12" sm="6" md="4">
-        <SecurityKeyCard isFirst="true" :numberOfKeys="numberOfKeys" :mfaKey="mfa.keys"/>
+      <v-col v-if="numberOfKeys > 1" cols="12" sm="6" md="4">
+        <SecurityKeyCard isSummary="true" :numberOfKeys="numberOfKeys" :mfaKey="mfa.keys"/>
+      </v-col>
+
+      <v-col v-if="numberOfKeys === 1" cols="12" sm="6" md="4">
+        <SecurityKeyCard :numberOfKeys="numberOfKeys" :mfaKey="mfa.keys"/>
       </v-col>
 
       <v-col v-else-if="numberOfKeys === 0">
-        <SecurityKeyCard isFirst="true" :mfaKey=[] />
+        <SecurityKeyCard isSummary="true" :mfaKey=[] />
       </v-col>  
 
       <v-col cols="12" sm="6" md="4">
@@ -56,7 +60,7 @@
 
     <v-row v-if="numberOfKeys > 1">
       <v-col>
-        Security Keys
+        {{$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title')}}
       </v-col>
     </v-row>
 

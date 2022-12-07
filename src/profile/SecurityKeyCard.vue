@@ -6,14 +6,14 @@
           <v-icon :color="mfaKey.id ? 'success' : ''" x-large>mdi-key</v-icon>
         </v-col>
         <v-col class="ml-4">
-          <MfaCardLabel :label="isFirst ? $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title') : label || mfaKey.label" 
+          <MfaCardLabel :label="isSummary ? $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title') : label || mfaKey.label" 
                         :id="mfaKey.id"  :webauthnId="webauthnId" :readOnly="!webauthnId" @new-label="label = $event"/>
         </v-col>
       </v-row>
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <Attribute sameline v-if="isFirst" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.number')" :value="numberOfKeys"/>
+      <Attribute sameline v-if="isSummary" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.number')" :value="numberOfKeys"/>
       <Attribute v-if="mfaKey.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.created')" :value="mfaKey.created_utc | format"/>
       <v-row v-else-if="!mfaKey.id">
         <v-col cols="auto">
@@ -29,13 +29,13 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="!isFirst && numberOfKeys === 1" :href="`#/2sv/change/${mfaKey.id}`" color="primary" outlined>
+      <v-btn v-if="numberOfKeys === 1" :href="`#/2sv/change/${mfaKey.id}`" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.button.change') }}
       </v-btn>
-      <v-btn v-if="isFirst" href="#/2sv/usb-security-key/intro" color="primary" outlined>
+      <v-btn v-if="isSummary || numberOfKeys === 1" href="#/2sv/usb-security-key/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="numberOfKeys > 1 && !isFirst" :id="mfaKey.id" :webauthnId="webauthnId" />
+      <MfaCardRemove v-if="numberOfKeys > 1 && !isSummary" :id="mfaKey.id" :webauthnId="webauthnId" />
     </v-card-actions>
   </v-card>
 </template>
@@ -51,7 +51,7 @@ export default {
     MfaCardLabel,
     MfaCardRemove
   },
-  props: ['mfaKey', 'isFirst', 'numberOfKeys', 'webauthnId'],
+  props: ['mfaKey', 'isSummary', 'numberOfKeys', 'webauthnId'],
   data: vm => ({
     label: '',
   }),
