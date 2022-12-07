@@ -50,7 +50,7 @@
       </v-col>
 
       <v-col v-else-if="numberOfKeys === 0">
-        <SecurityKeyCard isSummary="true" :mfaKey=[] />
+        <SecurityKeyCard isSummary="true" :mfaKey="{}" />
       </v-col>  
 
       <v-col cols="12" sm="6" md="4">
@@ -102,7 +102,7 @@ export default {
   computed: {
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
     additionalKeys: vm => vm.mfa.keys.data,
-    numberOfKeys: vm => vm.mfa.keys.data?.length
+    numberOfKeys: vm => vm.mfa.keys.data?.length || 0
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])

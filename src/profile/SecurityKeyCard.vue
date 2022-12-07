@@ -13,7 +13,7 @@
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <Attribute sameline v-if="isSummary" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.number')" :value="numberOfKeys"/>
+      <Attribute sameline v-if="isSummary && numberOfKeys" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.number')" :value="numberOfKeys"/>
       <Attribute v-if="mfaKey.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.created')" :value="mfaKey.created_utc | format"/>
       <v-row v-else-if="!mfaKey.id">
         <v-col cols="auto">
