@@ -21,7 +21,7 @@
     </v-col>
     
     <v-col cols="auto">
-      <v-tooltip v-if="id && ! readOnly" right>
+      <v-tooltip v-if="keyId && !readOnly" right>
         <template v-slot:activator="{ on }">
           <v-icon v-on="on" @click="edit" color="info" small>
             mdi-pencil
@@ -42,10 +42,10 @@ export default {
     label: {
       type: String,
     }, 
-    id: {
+    keyId: {
       type: Number,
     },
-    webauthnId: {
+    mfaId: {
       type: Number,
     },
     readOnly: {
@@ -66,10 +66,9 @@ export default {
       this.editing = false
     },
     async save() {
-      const mfa = await changeWebauthn(this.id, this.webauthnId, {
+      const mfa = await changeWebauthn(this.mfaId, this.keyId, {
         label: this.newLabel
       })
-
       this.$emit('new-label', mfa.label)
       this.editing = false
     },

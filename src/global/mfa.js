@@ -77,9 +77,6 @@ export const removeWebauthn = async (mfaId, webauthnId) => {
 
 export const changeWebauthn = async (mfaId, webauthnId, updates) => {
   const response = await Vue.prototype.$API.put(`mfa/${mfaId}/webauthn/${webauthnId}`, updates)
-  console.log(response)
-  const index = mfa.keys.data.findIndex(m => m.id === mfaId)
-  if(index > -1) {
-    mfa.keys.data[index] = response
-  }
+
+  return response
 }
