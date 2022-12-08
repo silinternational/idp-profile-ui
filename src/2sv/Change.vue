@@ -40,7 +40,7 @@ export default {
   methods: {
     async yes(id) {
       if (mfa.keys.id === id) {
-        await removeWebauthn(mfa.keys.data[0].id, id)
+        await removeWebauthn(id, mfa.keys.data[0].id)
       }
       else {
         await remove(id)
