@@ -42,15 +42,15 @@
       </v-col>
 
       <v-col v-if="numberOfKeys > 1" cols="12" sm="6" md="4">
-        <SecurityKeyCard isSummary="true" :numberOfKeys="numberOfKeys" :mfaKey="mfa.keys"/>
+        <SecurityKeyCard isSummary="true" :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys"/>
       </v-col>
 
       <v-col v-if="numberOfKeys === 1" cols="12" sm="6" md="4">
-        <SecurityKeyCard :numberOfKeys="numberOfKeys" :mfaKey="mfa.keys"/>
+        <SecurityKeyCard :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys.data[0]"/>
       </v-col>
 
       <v-col v-else-if="numberOfKeys === 0">
-        <SecurityKeyCard isSummary="true" :mfaKey="{}" />
+        <SecurityKeyCard isSummary="true" :webauthnKey="{}" />
       </v-col>  
 
       <v-col cols="12" sm="6" md="4">
@@ -65,8 +65,8 @@
     </v-row>
 
     <v-row  v-if="numberOfKeys > 1">
-      <v-col v-for="mfaKey in additionalKeys" cols="12" sm="6" md="4">
-        <SecurityKeyCard :mfaKey="mfaKey" :numberOfKeys="numberOfKeys" :webauthnId="mfa.keys.id"/>
+      <v-col v-for="webauthnKey in additionalKeys" cols="12" sm="6" md="4">
+        <SecurityKeyCard :webauthnKey="webauthnKey" :numberOfKeys="numberOfKeys" :mfaId="mfa.keys.id"/>
       </v-col>
     </v-row>
   </BasePage>
@@ -102,7 +102,7 @@ export default {
   computed: {
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
     additionalKeys: vm => vm.mfa.keys.data,
-    numberOfKeys: vm => vm.mfa.keys.data?.length || 0
+    numberOfKeys: vm => vm.additionalKeys?.length || 0
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])
