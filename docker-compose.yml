@@ -173,7 +173,7 @@ services:
       # the corresponding hash: $2a$10$8Bp9PqqfStjLvh1nQJ67JeY3CO/mEXmF1GKfe8Vk0kue1.i7fa2mC
       MFA_WEBAUTHN_appId: idpProfile
       MFA_WEBAUTHN_rpDisplayName: IdP Profile
-      MFA_WEBAUTHN_rpId: profile.gtis.guru
+      MFA_WEBAUTHN_rpId: gtis.guru
       SUPPORT_EMAIL: 'support@example.org'
       HELP_CENTER_URL: 'https://example.org/help'
       PASSWORD_FORGOT_URL: 'https://example.org/forgot'
