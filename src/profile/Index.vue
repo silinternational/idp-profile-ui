@@ -46,7 +46,7 @@
       </v-col>
 
       <v-col v-if="numberOfKeys === 1" cols="12" sm="6" md="4">
-        <SecurityKeyCard :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys.data[0]"/>
+        <SecurityKeyCard :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys.data[0]" :mfaId="mfa.keys.id"/>
       </v-col>
 
       <v-col v-else-if="numberOfKeys === 0">
