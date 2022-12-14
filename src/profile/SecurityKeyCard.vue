@@ -29,7 +29,7 @@
     <v-card-actions>
       <v-spacer/>
 
-      <v-btn v-if="numberOfKeys === 1" :href="`#/2sv/change/${webauthnKey.id}`" color="primary" outlined>
+      <v-btn v-if="numberOfKeys === 1" :href="`#/2sv/change/${mfaId}`" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.button.change') }}
       </v-btn>
       <v-btn v-if="isSummary || numberOfKeys === 1" href="#/2sv/usb-security-key/intro" color="primary" outlined>
