@@ -28,14 +28,10 @@
 
     <v-card-actions>
       <v-spacer/>
-
-      <v-btn v-if="numberOfKeys === 1" :href="`#/2sv/change/${mfaId}`" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.button.change') }}
-      </v-btn>
       <v-btn v-if="isSummary || numberOfKeys === 1" href="#/2sv/usb-security-key/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="numberOfKeys > 1 && !isSummary" :keyId="webauthnKey.id" :mfaId="mfaId" />
+      <MfaCardRemove v-if="numberOfKeys >= 1 && !isSummary" :keyId="webauthnKey.id" :mfaId="mfaId" />
     </v-card-actions>
   </v-card>
 </template>
