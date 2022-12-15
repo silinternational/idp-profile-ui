@@ -100,9 +100,6 @@
         "title": "USB security keys",
         "created": "Created:",
         "lastUsed": "Last used:",
-        "button": {
-          "change": "lost or new"
-        },
         "warning": "No security key at this time, please add one."
       },
       "codeCard": {

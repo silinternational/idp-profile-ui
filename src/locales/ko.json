@@ -100,9 +100,6 @@
         "title": "USB 보안 키",
         "created": "생성됨",
         "lastUsed": "최근 사용",
-        "button": {
-          "change": "분실 또는 신규"
-        },
         "warning": "현재 보안 키가 없으므로 보안 키를 추가하십시오."
       },
       "codeCard": {

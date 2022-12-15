@@ -100,9 +100,6 @@
         "title": "Clé de sécurité USB",
         "created": "Créé:",
         "lastUsed": "Dernière utilisation:",
-        "button": {
-          "change": "perdu ou nouveau"
-        },
         "warning": "Aucune clé de sécurité à ce moment, veuillez en ajouter une."
       },
       "codeCard": {

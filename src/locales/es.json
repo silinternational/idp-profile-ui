@@ -100,9 +100,6 @@
         "title": "Llaves de seguridad USB",
         "created": "Creado:",
         "lastUsed": "Última utilización:",
-        "button": {
-          "change": "perdido o nuevo"
-        },
         "warning": "No hay clave de seguridad en este momento, por favor agregue una."
       },
       "codeCard": {
