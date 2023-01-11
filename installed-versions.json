@@ -3,83 +3,103 @@
   "dependencies": {
     "@babel/polyfill": {
       "version": "7.12.1",
-      "resolved": "https://registry.npmjs.org/@babel/polyfill/-/polyfill-7.12.1.tgz"
+      "resolved": "https://registry.npmjs.org/@babel/polyfill/-/polyfill-7.12.1.tgz",
+      "overridden": false
     },
     "@simplewebauthn/browser": {
       "version": "4.1.0",
-      "resolved": "https://registry.npmjs.org/@simplewebauthn/browser/-/browser-4.1.0.tgz"
+      "resolved": "https://registry.npmjs.org/@simplewebauthn/browser/-/browser-4.1.0.tgz",
+      "overridden": false
     },
     "@vue/cli-plugin-babel": {
-      "version": "4.5.17",
-      "resolved": "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-4.5.17.tgz"
+      "version": "5.0.8",
+      "resolved": "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-5.0.8.tgz",
+      "overridden": false
     },
     "@vue/cli-service": {
-      "version": "4.5.17",
-      "resolved": "https://registry.npmjs.org/@vue/cli-service/-/cli-service-4.5.17.tgz"
+      "version": "5.0.8",
+      "resolved": "https://registry.npmjs.org/@vue/cli-service/-/cli-service-5.0.8.tgz",
+      "overridden": false
     },
     "axios": {
-      "version": "0.21.4",
-      "resolved": "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
+      "version": "0.27.2",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz",
+      "overridden": false
     },
     "babel-plugin-transform-imports": {
       "version": "2.0.0",
-      "resolved": "https://registry.npmjs.org/babel-plugin-transform-imports/-/babel-plugin-transform-imports-2.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/babel-plugin-transform-imports/-/babel-plugin-transform-imports-2.0.0.tgz",
+      "overridden": false
     },
     "date-fns": {
-      "version": "2.28.0",
-      "resolved": "https://registry.npmjs.org/date-fns/-/date-fns-2.28.0.tgz"
+      "version": "2.29.3",
+      "resolved": "https://registry.npmjs.org/date-fns/-/date-fns-2.29.3.tgz",
+      "overridden": false
     },
     "rimraf": {
       "version": "3.0.2",
-      "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz"
+      "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz",
+      "overridden": false
     },
     "sass-loader": {
-      "version": "10.2.1",
-      "resolved": "https://registry.npmjs.org/sass-loader/-/sass-loader-10.2.1.tgz"
+      "version": "10.4.1",
+      "resolved": "https://registry.npmjs.org/sass-loader/-/sass-loader-10.4.1.tgz",
+      "overridden": false
     },
     "sass": {
-      "version": "1.49.11",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.49.11.tgz"
+      "version": "1.57.1",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.57.1.tgz",
+      "overridden": false
     },
     "stylus-loader": {
       "version": "4.3.3",
-      "resolved": "https://registry.npmjs.org/stylus-loader/-/stylus-loader-4.3.3.tgz"
+      "resolved": "https://registry.npmjs.org/stylus-loader/-/stylus-loader-4.3.3.tgz",
+      "overridden": false
     },
     "stylus": {
-      "version": "0.54.8",
-      "resolved": "https://registry.npmjs.org/stylus/-/stylus-0.54.8.tgz"
+      "version": "0.58.1",
+      "resolved": "https://registry.npmjs.org/stylus/-/stylus-0.58.1.tgz",
+      "overridden": false
     },
     "vue-analytics": {
       "version": "5.22.1",
-      "resolved": "https://registry.npmjs.org/vue-analytics/-/vue-analytics-5.22.1.tgz"
+      "resolved": "https://registry.npmjs.org/vue-analytics/-/vue-analytics-5.22.1.tgz",
+      "overridden": false
     },
     "vue-cli-plugin-vuetify": {
-      "version": "2.4.8",
-      "resolved": "https://registry.npmjs.org/vue-cli-plugin-vuetify/-/vue-cli-plugin-vuetify-2.4.8.tgz"
+      "version": "2.5.8",
+      "resolved": "https://registry.npmjs.org/vue-cli-plugin-vuetify/-/vue-cli-plugin-vuetify-2.5.8.tgz",
+      "overridden": false
     },
     "vue-router": {
-      "version": "3.5.3",
-      "resolved": "https://registry.npmjs.org/vue-router/-/vue-router-3.5.3.tgz"
+      "version": "3.6.5",
+      "resolved": "https://registry.npmjs.org/vue-router/-/vue-router-3.6.5.tgz",
+      "overridden": false
     },
     "vue-template-compiler": {
-      "version": "2.6.14",
-      "resolved": "https://registry.npmjs.org/vue-template-compiler/-/vue-template-compiler-2.6.14.tgz"
+      "version": "2.7.14",
+      "resolved": "https://registry.npmjs.org/vue-template-compiler/-/vue-template-compiler-2.7.14.tgz",
+      "overridden": false
     },
     "vue": {
-      "version": "2.6.14",
-      "resolved": "https://registry.npmjs.org/vue/-/vue-2.6.14.tgz"
+      "version": "2.7.14",
+      "resolved": "https://registry.npmjs.org/vue/-/vue-2.7.14.tgz",
+      "overridden": false
     },
     "vuetify-loader": {
-      "version": "1.7.3",
-      "resolved": "https://registry.npmjs.org/vuetify-loader/-/vuetify-loader-1.7.3.tgz"
+      "version": "1.9.2",
+      "resolved": "https://registry.npmjs.org/vuetify-loader/-/vuetify-loader-1.9.2.tgz",
+      "overridden": false
     },
     "vuetify": {
-      "version": "2.6.4",
-      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-2.6.4.tgz"
+      "version": "2.6.14",
+      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-2.6.14.tgz",
+      "overridden": false
     },
     "zxcvbn": {
       "version": "4.4.2",
-      "resolved": "https://registry.npmjs.org/zxcvbn/-/zxcvbn-4.4.2.tgz"
+      "resolved": "https://registry.npmjs.org/zxcvbn/-/zxcvbn-4.4.2.tgz",
+      "overridden": false
     }
   }
 }
