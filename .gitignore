@@ -1,7 +1,6 @@
 .DS_Store
 node_modules
 dist
-dynamorestart/vendor
 
 # local config files
 .env.local
