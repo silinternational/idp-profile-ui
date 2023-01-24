@@ -1,5 +1,5 @@
 <template>
-  <ProfileWizard ref="wizard">
+  <ProfileWizard ref="wizard" :key="wizardKey">
     <BasePage>
       <template v-slot:header>
         {{ $vuetify.lang.t('$vuetify.password.create.header', $root.idpConfig.idpName) }}
@@ -59,6 +59,7 @@ export default {
     ProfileWizard,
   },
   data: vm => ({
+    wizardKey: 0, // This is used to refresh the form, instead of leaving it frozen after a re-used password
     password: vm.$root.$data.password || '',
     rules: [
       v => required(v, vm),
@@ -74,6 +75,9 @@ export default {
     isGood: vm => vm.password && vm.$refs.form && vm.$refs.form.validate(),
   },
   methods: {
+    forceRerender() { // This is used to refresh the form, instead of leaving it frozen after a re-used password
+      this.wizardKey += 1;
+    },
     async save() {
       if (this.$refs.form.validate()) {
         try {
@@ -104,6 +108,11 @@ export default {
   },
   watch: {
     password: function () {
+      // This is used to refresh the form, instead of leaving it frozen after a re-used password
+      if (this.password == '') {
+        this.forceRerender()
+      }
+
       if (this.isGood) {
         this.errors.splice(0)
       }
