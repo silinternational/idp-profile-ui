@@ -6,7 +6,7 @@
       
       <a v-if="complete < 1 && ! profile.alternates.length" href="#/password/recovery">{{ $vuetify.lang.t('$vuetify.profile.progress.addMethod') }}</a>
       <a v-if="complete < 1 && ! profile.mfa.totp.id" href="#/2sv/smartphone/intro">{{ $vuetify.lang.t('$vuetify.profile.progress.addTotp') }}</a>
-      <a v-if="complete < 1 && ! (profile.mfa.u2f.id || profile.mfa.webauthn.id)" href="#/2sv/usb-security-key/intro">{{ $vuetify.lang.t('$vuetify.profile.progress.addSecurityKey') }}</a>
+      <a v-if="complete < 1 && ! (profile.mfa.u2f.id || profile.mfa.keys.id)" href="#/2sv/usb-security-key/intro">{{ $vuetify.lang.t('$vuetify.profile.progress.addSecurityKey') }}</a>
       <a v-if="complete < 1 && ! profile.mfa.backup.id" href="#/2sv/printable-backup-codes/intro">{{ $vuetify.lang.t('$vuetify.profile.progress.addCodes') }}</a>
     </div>
 </template>

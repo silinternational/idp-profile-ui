@@ -66,23 +66,14 @@ export default [
   {
     path: '/2sv/usb-security-key/intro',
     component: KeyIntro,
-    beforeEnter: (to, from, next) => {
-      skipWhen(mfa.u2f.id || mfa.webauthn.id, '/2sv/printable-backup-codes/intro', next)
-    }
   },
   {
     path: '/2sv/usb-security-key/insert',
     component: Insert,
-    beforeEnter: (to, from, next) => {
-      skipWhen(mfa.u2f.id || mfa.webauthn.id, '/2sv/printable-backup-codes/intro', next)
-    }
   },
   {
     path: '/2sv/usb-security-key/touch',
     component: Touch,
-    beforeEnter: (to, from, next) => {
-      skipWhen(mfa.u2f.id || mfa.webauthn.id, '/2sv/printable-backup-codes/intro', next)
-    }
   },
   {
     path: '/2sv/usb-security-key/confirmed',

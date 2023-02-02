@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { find, remove, mfa } from '@/global/mfa';
+import { find, remove, removeWebauthn, mfa, retrieve } from '@/global/mfa'
 
 export default {
   data: () => ({
@@ -35,16 +35,22 @@ export default {
   isLastOne: mfa.numVerified === 1
   }),
   computed: {
-    label: vm => vm.requested && vm.requested.label || '2SV'
+    label: vm => vm.requested?.label || '2SV',
   },
   methods: {
     async yes(id) {
-      await remove(id)
+      if (mfa.keys.id === id) {
+        await removeWebauthn(id, mfa.keys.data[0].id)
+      }
+      else {
+        await remove(id)
+      }
 
       this.$router.push('/2sv/removed')
     },
   },
-  created() {
+  async created() {
+    await retrieve()
     this.requested = find(this.$route.params.id)
   },
 }
