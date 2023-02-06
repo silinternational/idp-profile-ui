@@ -61,14 +61,11 @@ export const verifyWebauthn = async (id,  verification = '') => {
   const verifiedMfa = await Vue.prototype.$API.put(`mfa/${id}/verify/registration`, {
     value: verification
   })
-  console.log(verifiedMfa)
   mfa.keys = verifiedMfa
 }
 
-// TODO finish new endpoints for webauthn
 export const removeWebauthn = async (mfaId, webauthnId) => {
   const response = await Vue.prototype.$API.delete(`mfa/${mfaId}/webauthn/${webauthnId}`)
-  console.log(response)
   const index = mfa.keys.data.findIndex(m => m.id === mfaId)
   if(index > -1) {
     mfa.keys.data.splice(index, 1)

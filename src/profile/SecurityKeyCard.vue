@@ -23,7 +23,7 @@
           <em>{{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.warning') }}</em>
         </v-col>
       </v-row>
-      <Attribute v-if="webauthnKey.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.lastUsed')" :value="webauthnKey.last_used_utc | format"/>
+      <Attribute v-if="webauthnKey.last_used_utc && !isSummary" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.lastUsed')" :value="webauthnKey.last_used_utc | format"/>
     </v-card-text>
 
     <v-card-actions>
