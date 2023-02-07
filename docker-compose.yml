@@ -153,6 +153,8 @@ services:
       PASSWORD_FORGOT_URL: 'https://example.org/forgot'
       PASSWORD_PROFILE_URL: 'https://example.org/profile'
       MFA_WEBAUTHN_apiBaseUrl: mfaapi:8080/
+
+      # These are tied to similar values in dynamorestart/DynamoRestart.php
       MFA_WEBAUTHN_apiKey: 10345678-1234-1234-1234-123456789012
       MFA_WEBAUTHN_apiSecret: 11345678-1234-1234-1234-12345678
       MFA_WEBAUTHN_appId: https://profile.gtis.guru/
