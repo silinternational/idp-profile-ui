@@ -152,6 +152,15 @@ services:
       HELP_CENTER_URL: 'https://example.org/help'
       PASSWORD_FORGOT_URL: 'https://example.org/forgot'
       PASSWORD_PROFILE_URL: 'https://example.org/profile'
+      MFA_WEBAUTHN_apiBaseUrl: mfaapi:8080/
+
+      # These are tied to similar values in dynamorestart/DynamoRestart.php
+      MFA_WEBAUTHN_apiKey: 10345678-1234-1234-1234-123456789012
+      MFA_WEBAUTHN_apiSecret: 11345678-1234-1234-1234-12345678
+      MFA_WEBAUTHN_appId: https://profile.gtis.guru/
+      MFA_WEBAUTHN_rpDisplayName: "Local Development IDP"
+      MFA_WEBAUTHN_rpId: gtis.guru
+
     command: [ 'bash', '-c', 'whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh' ]
 
   brokerDb:
@@ -224,3 +233,53 @@ services:
       MYSQL_DATABASE: 'silauth'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'pass'
+
+
+  dynamorestart:
+    build: ./dynamorestart
+    ports:
+      - 8080
+    volumes:
+      - ./dynamorestart/:/dynamo
+    environment:
+      AWS_ENDPOINT: dynamo:8000
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: abc123
+      AWS_SECRET_ACCESS_KEY: abc123
+      AWS_DISABLE_SSL: "true"
+      API_KEY_TABLE: ApiKey
+      WEBAUTHN_TABLE: WebAuthn
+    depends_on:
+      - dynamo
+    working_dir: /dynamo
+    command: bash -c "composer update && php restart.php"
+
+  dynamo:
+    image: amazon/dynamodb-local
+    ports:
+      - "8010:8000"
+    environment:
+      AWS_ACCESS_KEY_ID: abc123
+      AWS_SECRET_ACCESS_KEY: abc123
+      AWS_DEFAULT_REGION: us-east-1
+    command: "-jar DynamoDBLocal.jar -sharedDb"
+
+  mfaapi:
+    build: ./serverless-mfa-api
+    ports:
+      - 8080
+    volumes:
+      - ./serverless-mfa-api/override:/src/override
+    environment:
+      AWS_ENDPOINT: dynamo:8000
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: abc123
+      AWS_SECRET_ACCESS_KEY: abc123
+      AWS_DISABLE_SSL: "true"
+      API_KEY_TABLE: ApiKey
+      WEBAUTHN_TABLE: WebAuthn
+    depends_on:
+      - dynamo
+      - dynamorestart
+    working_dir: /src
+    command: bash -c "go run ./server/"

@@ -1,4 +1,4 @@
-start: deps
+start: deps mfaapi
 	docker-compose pull
 	docker-compose up -d proxy
 
@@ -18,7 +18,10 @@ logs:
 	
 phpmyadmin:
 	docker-compose up -d brokerPhpmyadmin profilePhpmyadmin
-	
+
+mfaapi:
+	docker-compose up -d mfaapi
+
 clean:
 	docker-compose run --rm node npm run clean
 	docker-compose kill
