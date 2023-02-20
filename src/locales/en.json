@@ -9,7 +9,8 @@
       "verify": "Verify",
       "change": "Change",
       "remove": "Remove",
-      "add": "Add"
+      "add": "Add",
+      "close": "Close"
     },
     "learnMore": "learn more",
     "areYouSure": "Are you sure?"

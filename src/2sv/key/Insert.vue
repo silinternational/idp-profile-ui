@@ -41,6 +41,17 @@
 
     <v-snackbar v-model="snackbarIsOpen">
       {{ snackBarMessage }}
+      
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="warning"
+          text
+          v-bind="attrs"
+          @click="snackbarIsOpen = false"
+        >
+           {{ $vuetify.lang.t('$vuetify.global.button.close') }}
+        </v-btn>
+      </template>
     </v-snackbar>
   </ProfileWizard>
 </template>
