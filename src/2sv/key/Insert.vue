@@ -16,7 +16,7 @@
       <!-- TODO: Add translations for this label -->
       <label v-if="showLabelInput">
         {{ $vuetify.lang.t('$vuetify.2sv.key.insert.label') }}
-        <v-text-field v-model="input" required outlined autofocus/>
+        <v-text-field v-model="input" @keyup="onKeyup" required outlined autofocus/>
       </label>
     </BasePage>
 
@@ -76,6 +76,11 @@ export default {
   methods: {
     onOk: function() {
       this.showLabelInput = true
+    },
+    onKeyup: function(event) {
+      if(event.key == 'Enter') {
+        this.onContinue()
+      }
     },
     onContinue: function() {
       if(!this.input.trim()) {
