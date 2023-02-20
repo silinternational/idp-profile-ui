@@ -12,6 +12,12 @@
         <v-img contain src="@/assets/insert-usb-security-key.png" alt="A usb key inserted into a usb port."/>
       </figure>
       <p v-else>{{ $vuetify.lang.t('$vuetify.2sv.key.insert.nosupport.info') }}</p>
+
+      <!-- TODO: Add translations for this label -->
+      <label v-if="showModal">
+        Give your new USB security key a name:
+        <v-text-field v-model="input" required outlined autofocus/>
+      </label>
     </BasePage>
 
     <ButtonBar>
@@ -21,7 +27,12 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn v-if="isSupported" to="/2sv/usb-security-key/touch" color="primary" outlined>
+      <!-- TODO: Add translations the button below. -->
+      <v-btn v-if="isSupported && showModal" @click="onContinue" :disabled="!input" color="primary" outlined>
+        Continue
+      </v-btn>
+
+      <v-btn v-else-if="isSupported  && !showModal" @click="onOk" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.key.insert.button.ok') }}
       </v-btn>
       <v-btn v-else to="/2sv/printable-backup-codes/intro" color="primary" outlined> 	
@@ -34,6 +45,7 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
 import { browserSupportsWebauthn } from '@simplewebauthn/browser';
+import { newKeyName } from '@/global/mfa'
 
 export default {
   components: {
@@ -41,6 +53,21 @@ export default {
   },
   data: () => ({	
     isSupported: browserSupportsWebauthn(),
+    showModal: false,
+    input: '',
+    newKeyName
   }),
+  methods: {
+    onOk: function() {
+      this.showModal = true
+    },
+    onContinue: function() {
+      if(!input.trim()) {
+        return
+      }
+      this.newKeyName.set(this.input)
+      this.$router.push("/2sv/usb-security-key/touch")
+    },
+  },
 }
 </script>
