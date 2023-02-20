@@ -39,10 +39,8 @@
       </v-btn>
     </ButtonBar>
 
-    <v-snackbar
-      v-model="snackbarIsOpen"
-    >
-      {{ $vuetify.lang.t('$vuetify.2sv.key.insert.label') }}
+    <v-snackbar v-model="snackbarIsOpen">
+      {{ snackBarMessage || $vuetify.lang.t('$vuetify.2sv.key.insert.label') }}
     </v-snackbar>
   </ProfileWizard>
 </template>
@@ -50,7 +48,7 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
 import { browserSupportsWebauthn } from '@simplewebauthn/browser';
-import { newKeyName } from '@/global/mfa'
+import { newKeyName, mfa } from '@/global/mfa'
 
 export default {
   components: {
@@ -62,6 +60,7 @@ export default {
     input: '',
     newKeyName,
     snackbarIsOpen: false,
+    snackBarMessage: '',
   }),
   methods: {
     onOk: function() {
@@ -70,6 +69,11 @@ export default {
     onContinue: function() {
       if(!this.input.trim()) {
         this.snackbarIsOpen = true
+        return
+      } else if (mfa.keys.data.find(key => key.label == this.input)) {
+        this.snackbarIsOpen = true
+        this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.duplicate')
+        this.input = ''
         return
       }
       this.newKeyName.set(this.input)
