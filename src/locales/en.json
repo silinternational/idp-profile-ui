@@ -270,6 +270,7 @@
         "button": {
           "ok": "OK, I inserted it"
         },
+        "label": "Please enter a name for your new USB security key.",
         "nosupport": {
           "header": "Unsupported in your current browser",
           "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."

@@ -270,6 +270,7 @@
         "button": {
           "ok": "Ok lo conecté"
         },
+        "label": "Asigne un nombre para su nueva llave de seguridad USB",
         "nosupport": {
           "header": "No soportado en su navegador actual",
           "info": "Las claves de seguridad USB solo son compatibles con los navegadores más seguros, considere un navegador más seguro como Google Chrome."

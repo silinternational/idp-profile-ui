@@ -15,7 +15,7 @@
 
       <!-- TODO: Add translations for this label -->
       <label v-if="showModal">
-        Give your new USB security key a name:
+        {{ $vuetify.lang.t('$vuetify.2sv.key.insert.label') }}
         <v-text-field v-model="input" required outlined autofocus/>
       </label>
     </BasePage>
@@ -27,9 +27,8 @@
 
       <v-spacer></v-spacer>
       
-      <!-- TODO: Add translations the button below. -->
-      <v-btn v-if="isSupported && showModal" @click="onContinue" :disabled="!input" color="primary" outlined>
-        Continue
+      <v-btn v-if="isSupported && showModal" @click="onContinue" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
       </v-btn>
 
       <v-btn v-else-if="isSupported  && !showModal" @click="onOk" color="primary" outlined>
@@ -39,6 +38,12 @@
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}	
       </v-btn>
     </ButtonBar>
+
+    <v-snackbar
+      v-model="snackbarIsOpen"
+    >
+      {{ $vuetify.lang.t('$vuetify.2sv.key.insert.label') }}
+    </v-snackbar>
   </ProfileWizard>
 </template>
 
@@ -55,14 +60,16 @@ export default {
     isSupported: browserSupportsWebauthn(),
     showModal: false,
     input: '',
-    newKeyName
+    newKeyName,
+    snackbarIsOpen: false,
   }),
   methods: {
     onOk: function() {
       this.showModal = true
     },
     onContinue: function() {
-      if(!input.trim()) {
+      if(!this.input.trim()) {
+        this.snackbarIsOpen = true
         return
       }
       this.newKeyName.set(this.input)
