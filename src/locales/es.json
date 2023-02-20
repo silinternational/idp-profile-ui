@@ -271,6 +271,7 @@
           "ok": "Ok lo conecté"
         },
         "label": "Asigne un nombre para su nueva llave de seguridad USB",
+        "duplicate": "Ud. ya tiene una llave de seguridad USB con ese nombre. Por favor elija otro nombre.",
         "nosupport": {
           "header": "No soportado en su navegador actual",
           "info": "Las claves de seguridad USB solo son compatibles con los navegadores más seguros, considere un navegador más seguro como Google Chrome."
