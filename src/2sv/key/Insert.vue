@@ -40,7 +40,7 @@
     </ButtonBar>
 
     <v-snackbar v-model="snackbarIsOpen">
-      {{ snackBarMessage || $vuetify.lang.t('$vuetify.2sv.key.insert.label') }}
+      {{ snackBarMessage }}
     </v-snackbar>
   </ProfileWizard>
 </template>
@@ -68,9 +68,10 @@ export default {
     },
     onContinue: function() {
       if(!this.input.trim()) {
+        this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.label')
         this.snackbarIsOpen = true
         return
-      } else if (mfa.keys.data.find(key => key.label == this.input)) {
+      } else if (mfa.keys.data.find(key => key.label == this.input.trim())) {
         this.snackbarIsOpen = true
         this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.duplicate')
         this.input = ''
