@@ -82,7 +82,7 @@ export default {
         this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.label')
         this.snackbarIsOpen = true
         return
-      } else if (mfa.keys.data.find(key => key.label == this.input.trim())) {
+      } else if (mfa.keys.data?.find(key => key.label == this.input.trim())) {
         this.snackbarIsOpen = true
         this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.duplicate')
         this.input = ''
