@@ -96,12 +96,10 @@
         "warning": "No hay telefono inteligente en este momento, por favor agregue uno."
       },
       "securityKeyCard": {
-        "title": "Llave de seguridad USB",
+        "number": "Numero de llaves:",
+        "title": "Llaves de seguridad USB",
         "created": "Creado:",
         "lastUsed": "Última utilización:",
-        "button": {
-          "change": "perdido o nuevo"
-        },
         "warning": "No hay clave de seguridad en este momento, por favor agregue una."
       },
       "codeCard": {

@@ -41,12 +41,32 @@
         <TotpCard :meta="mfa.totp"/>
       </v-col>
 
-      <v-col cols="12" sm="6" md="4">
-        <SecurityKeyCard :meta="mfa.webauthn"/>
+      <v-col v-if="numberOfKeys > 1" cols="12" sm="6" md="4">
+        <SecurityKeyCard isSummary="true" :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys"/>
       </v-col>
+
+      <v-col v-if="numberOfKeys === 1" cols="12" sm="6" md="4">
+        <SecurityKeyCard :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys.data[0]" :mfaId="mfa.keys.id"/>
+      </v-col>
+
+      <v-col v-else-if="numberOfKeys === 0">
+        <SecurityKeyCard isSummary="true" :webauthnKey="{}" />
+      </v-col>  
 
       <v-col cols="12" sm="6" md="4">
         <BackupCodeCard :meta="mfa.backup"/>
+      </v-col>
+    </v-row>
+
+    <v-row v-if="numberOfKeys > 1">
+      <v-col>
+        {{$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title')}}
+      </v-col>
+    </v-row>
+
+    <v-row  v-if="numberOfKeys > 1">
+      <v-col v-for="webauthnKey in additionalKeys" cols="12" sm="6" md="4">
+        <SecurityKeyCard :webauthnKey="webauthnKey" :numberOfKeys="numberOfKeys" :mfaId="mfa.keys.id"/>
       </v-col>
     </v-row>
   </BasePage>
@@ -61,8 +81,8 @@ import SecurityKeyCard from './SecurityKeyCard'
 import BackupCodeCard from './BackupCodeCard'
 import DoNotDiscloseCard from './DoNotDiscloseCard'
 import Attribute from './Attribute'
-import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods';
-import { mfa, retrieve as retrieveMfa } from '@/global/mfa';
+import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods'
+import { mfa, retrieve as retrieveMfa } from '@/global/mfa'
 
 export default {
   components: {
@@ -81,6 +101,8 @@ export default {
   }),
   computed: {
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
+    additionalKeys: vm => vm.mfa.keys.data,
+    numberOfKeys: vm => vm.additionalKeys?.length || 0
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])
