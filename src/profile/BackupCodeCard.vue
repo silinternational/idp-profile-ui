@@ -34,7 +34,7 @@
       <v-btn v-else href="#/2sv/printable-backup-codes/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.codeCard.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="meta.created_utc" :id="meta.id"/>
+      <MfaCardRemove v-if="meta.created_utc" :mfaId="meta.id"/>
     </v-card-actions>
   </v-card>
 </template>

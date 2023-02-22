@@ -47,8 +47,8 @@
       "overridden": false
     },
     "sass": {
-      "version": "1.57.1",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.57.1.tgz",
+      "version": "1.58.3",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.58.3.tgz",
       "overridden": false
     },
     "stylus-loader": {

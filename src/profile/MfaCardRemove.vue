@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mfa, removeWebauthn } from '@/global/mfa';
+import { mfa, remove, removeWebauthn } from '@/global/mfa';
 
 export default {
   props: ['keyId', 'mfaId'],
@@ -14,7 +14,11 @@ export default {
       const content = mfa.numVerified == 1 ? '$vuetify.2sv.remove.lastOne' : '$vuetify.global.areYouSure'
 
       if (confirm(this.$vuetify.lang.t(content))) {
-        await removeWebauthn(mfaId, keyId)
+        if (keyId) {
+          await removeWebauthn(mfaId, keyId)
+        } else {
+          await remove(mfaId)
+        }
 
         this.$router.go() // needs to result in a page reload since the password expiration is affected by the absence or presence of an mfa.
       }
