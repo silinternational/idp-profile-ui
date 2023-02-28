@@ -91,7 +91,7 @@ export default {
         this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.label')
         this.snackbarIsOpen = true
         return
-      } else if (isDuplicateKeyLabel(mfa.keys, attemptedKeyLabel)) {
+      } else if (this.isDuplicateKeyLabel(mfa.keys, attemptedKeyLabel)) {
         this.snackbarIsOpen = true
         this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.duplicate')
         this.input = ''
