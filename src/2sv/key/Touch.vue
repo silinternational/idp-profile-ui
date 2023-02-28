@@ -42,7 +42,7 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
 import { browserSupportsWebauthn, startRegistration } from '@simplewebauthn/browser';
-import { add, verifyWebauthn } from '@/global/mfa'
+import { add, verifyWebauthn, newKeyName } from '@/global/mfa'
 
 let absTimeout
 
@@ -64,7 +64,7 @@ export default {
       if (isValid(response)) {
         clearTimeout(absTimeout)
 
-        await verifyWebauthn(this.newSecurityKey.id, response)
+        await verifyWebauthn(this.newSecurityKey.id, response, newKeyName.get())
         
         this.touched = true
   

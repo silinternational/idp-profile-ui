@@ -9,7 +9,8 @@
       "verify": "Verify",
       "change": "Change",
       "remove": "Remove",
-      "add": "Add"
+      "add": "Add",
+      "close": "Close"
     },
     "learnMore": "learn more",
     "areYouSure": "Are you sure?"
@@ -270,6 +271,8 @@
         "button": {
           "ok": "OK, I inserted it"
         },
+        "label": "Please enter a name for your new USB security key.",
+        "duplicate": "You already have a USB security key with that name.  Please choose a different name.",
         "nosupport": {
           "header": "Unsupported in your current browser",
           "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
