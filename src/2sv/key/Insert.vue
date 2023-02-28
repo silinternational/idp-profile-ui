@@ -77,17 +77,21 @@ export default {
     onOk: function() {
       this.showLabelInput = true
     },
+    isDuplicateKeyLabel: function(keys, attemptedKeyLabel) {
+      return keys.data?.find(key => key.label == attemptedKeyLabel)
+    },
     onKeyup: function(event) {
       if(event.key == 'Enter') {
         this.onContinue()
       }
     },
     onContinue: function() {
-      if(!this.input.trim()) {
+      const attemptedKeyLabel = this.input.trim()
+      if(!attemptedKeyLabel) {
         this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.label')
         this.snackbarIsOpen = true
         return
-      } else if (mfa.keys.data?.find(key => key.label == this.input.trim())) {
+      } else if (isDuplicateKeyLabel(mfa.keys, attemptedKeyLabel)) {
         this.snackbarIsOpen = true
         this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.duplicate')
         this.input = ''
