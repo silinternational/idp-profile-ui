@@ -9,6 +9,16 @@ export const mfa = {
 }
 export default mfa
 
+export const newKeyName = {
+  _value: '',
+  get: function () {
+    return this._value
+  },
+  set: function (value) {
+    this._value = value
+  }
+}
+
 export const add = async (type) => await Vue.prototype.$API.post('mfa', { type })
 
 export const verify = async (id, verification = '') => {
@@ -57,9 +67,10 @@ export const find = id => {
   return mfa[type]
 }
 
-export const verifyWebauthn = async (id,  verification = '') => {
+export const verifyWebauthn = async (id,  verification = '', label = '') => {
   const verifiedMfa = await Vue.prototype.$API.put(`mfa/${id}/verify/registration`, {
-    value: verification
+    value: verification,
+    label: label,
   })
   mfa.keys = verifiedMfa
 }
