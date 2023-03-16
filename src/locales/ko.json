@@ -9,7 +9,8 @@
       "verify": "확인",
       "change": "바꾸기",
       "remove": "제거",
-      "add": "추가"
+      "add": "추가",
+      "close": "Close"
     },
     "learnMore": "자세히 알아보기",
     "areYouSure": "계속 진행하시겠습니까?"
@@ -96,12 +97,10 @@
         "warning": "현재 스마트 폰번호가 없으므로 스마트 폰 번호를 추가하십시오."
       },
       "securityKeyCard": {
-        "title": "USB security key",
+        "number": "Number of keys:",
+        "title": "USB security keys",
         "created": "Created:",
         "lastUsed": "Last used:",
-        "button": {
-          "change": "lost or new"
-        },
         "warning": "No security key at this time, please add one."
       },
       "codeCard": {
@@ -272,6 +271,8 @@
         "button": {
           "ok": "네, 삽입했습니다."
         },
+        "label": "Please enter a name for your new USB security key.",
+        "duplicate": "You already have a USB security key with that name.  Please choose a different name.",
         "nosupport": {
           "header": "Unsupported in your current browser",
           "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
