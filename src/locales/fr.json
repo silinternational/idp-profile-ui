@@ -9,7 +9,8 @@
       "verify": "Vérifier ",
       "change": "Changer",
       "remove": "Supprimer",
-      "add": "Ajouter"
+      "add": "Ajouter",
+      "close": "Fermer"
     },
     "learnMore": "en savoir plus",
     "areYouSure": "Êtes-vous certain ?"
@@ -96,13 +97,11 @@
         "warning": "Pas de smartphone à ce moment, veuillez en ajouter un."
       },
       "securityKeyCard": {
-        "title": "USB security key",
-        "created": "Created:",
-        "lastUsed": "Last used:",
-        "button": {
-          "change": "lost or new"
-        },
-        "warning": "No security key at this time, please add one."
+        "number": "Nombre de clés :",
+        "title": "Clés de sécurité USB",
+        "created": "Créé:",
+        "lastUsed": "Dernière utilisation:",
+        "warning": "Aucune clé de sécurité à ce moment, veuillez en ajouter une."
       },
       "codeCard": {
         "title": "Codes de sauvegarde imprimables",
@@ -128,7 +127,7 @@
       "header": "La robustesse du profil",
       "addMethod": "Ajouter une méthode de récupération",
       "addTotp": "Ajouter un smartphone (V2E)",
-      "addSecurityKey": "Add a security key (2SV)",
+      "addSecurityKey": "Ajouter une clé de sécurité (V2E)",
       "addCodes": "Ajouter des codes de sauvegarde (V2E)"
     }
   },
@@ -272,15 +271,17 @@
         "button": {
           "ok": "OK, je l'ai inséré"
         },
+        "label": "Veuillez saisir un nom pour la nouvelle clé de sécurité",
+        "duplicate": "Vous avez déjà une clé de sécurité USB avec ce nom. Veuillez choisir un autre nom.",
         "nosupport": {
-          "header": "Unsupported in your current browser",
-          "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
+          "header": "Non pris en charge par votre navigateur actuel",
+          "info": "Les clés de sécurité USB ne sont prises en charge que par les navigateurs les plus sûrs. Veuillez envisager un navigateur plus sécurisé tel que Google Chrome."
         }
       },
       "touch": {
         "header": "Touchez ou appuyez sur votre clé de sécurité USB",
         "info": "Une fois que votre clé de sécurité commence à clignoter, appuyez sur son bouton ou touchez son capteur.",
-        "error": "Something went wrong.  Please make sure you have the key inserted correctly and wait for the blink before pressing.  If your key did not blink, you may not have a supported browser and will need to skip this step.  Please consider a more secure browser like Google Chrome.",
+        "error": "Un problème est survenu. Veuillez vous assurer que la clé est correctement insérée et attendre le clignotement avant de l'appuyer. Si votre clé ne clignote pas, vous avez peut être un navigateur incompatible et vous devriez ignorer cette étape. Veuillez considérer un navigateur plus sûr comme Google Chrome.",
         "button": {
           "retry": "Réessayer"
         }
