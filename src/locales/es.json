@@ -9,7 +9,8 @@
       "verify": "Verificar",
       "change": "Cambiar",
       "remove": "Quitar",
-      "add": "Añadir"
+      "add": "Añadir",
+      "close": "Close"
     },
     "learnMore": "más información",
     "areYouSure": "¿Seguro que quiere continuar?"
@@ -96,12 +97,10 @@
         "warning": "No hay telefono inteligente en este momento, por favor agregue uno."
       },
       "securityKeyCard": {
-        "title": "USB security key",
+        "number": "Number of keys:",
+        "title": "USB security keys",
         "created": "Created:",
         "lastUsed": "Last used:",
-        "button": {
-          "change": "lost or new"
-        },
         "warning": "No security key at this time, please add one."
       },
       "codeCard": {
@@ -272,6 +271,8 @@
         "button": {
           "ok": "Ok lo conecté"
         },
+        "label": "Please enter a name for your new USB security key.",
+        "duplicate": "You already have a USB security key with that name.  Please choose a different name.",
         "nosupport": {
           "header": "Unsupported in your current browser",
           "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
