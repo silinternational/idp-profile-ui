@@ -9,7 +9,8 @@
       "verify": "Verify",
       "change": "Change",
       "remove": "Remove",
-      "add": "Add"
+      "add": "Add",
+      "close": "Close"
     },
     "learnMore": "learn more",
     "areYouSure": "Are you sure?"
@@ -95,13 +96,11 @@
         },
         "warning": "No smartphone at this time, please add one."
       },
-      "u2fCard": {
-        "title": "USB security key",
+      "securityKeyCard": {
+        "number": "Number of keys:",
+        "title": "USB security keys",
         "created": "Created:",
         "lastUsed": "Last used:",
-        "button": {
-          "change": "lost or new"
-        },
         "warning": "No security key at this time, please add one."
       },
       "codeCard": {
@@ -128,7 +127,7 @@
       "header": "Profile strength",
       "addMethod": "Add a recovery method",
       "addTotp": "Add a smartphone (2SV)",
-      "addU2f": "Add a security key (2SV)",
+      "addSecurityKey": "Add a security key (2SV)",
       "addCodes": "Add some backup codes (2SV)"
     }
   },
@@ -271,12 +270,18 @@
         "header": "Insert your USB security key",
         "button": {
           "ok": "OK, I inserted it"
+        },
+        "label": "Please enter a name for your new USB security key.",
+        "duplicate": "You already have a USB security key with that name.  Please choose a different name.",
+        "nosupport": {
+          "header": "Unsupported in your current browser",
+          "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
         }
       },
       "touch": {
         "header": "Touch or press your USB security key",
         "info": "Once your security key starts blinking, go ahead and press its button or touch its sensor.",
-        "error": "Something went wrong.  Please make sure you have the key inserted correctly and wait for the blink before pressing.",
+        "error": "Something went wrong.  Please make sure you have the key inserted correctly and wait for the blink before pressing.  If your key did not blink, you may not have a supported browser and will need to skip this step.  Please consider a more secure browser like Google Chrome.",
         "button": {
           "retry": "Retry"
         }

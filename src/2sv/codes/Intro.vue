@@ -39,8 +39,8 @@ export default {
     mfa,
   }),
   computed: {
-    hasOtherTypes: vm => vm.mfa.totp.id || vm.mfa.u2f.id,
-    hasNoMfa: vm => ! (vm.mfa.totp.id || vm.mfa.u2f.id || vm.mfa.backup.id),
+    hasOtherTypes: vm => vm.mfa.totp.id || vm.mfa.u2f.id || vm.mfa.keys.id,
+    hasNoMfa: vm => ! (vm.mfa.totp.id || vm.mfa.u2f.id || vm.mfa.keys.id || vm.mfa.backup.id),
   },
   methods: {
     skip() {

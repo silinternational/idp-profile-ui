@@ -97,11 +97,11 @@
         "warning": "No hay telefono inteligente en este momento, por favor agregue uno."
       },
       "securityKeyCard": {
-        "number": "Number of keys:",
-        "title": "USB security keys",
-        "created": "Created:",
-        "lastUsed": "Last used:",
-        "warning": "No security key at this time, please add one."
+        "number": "Numero de llaves:",
+        "title": "Llaves de seguridad USB",
+        "created": "Creado:",
+        "lastUsed": "Última utilización:",
+        "warning": "No hay clave de seguridad en este momento, por favor agregue una."
       },
       "codeCard": {
         "title": "Códigos de copia de seguridad imprimibles",
@@ -127,7 +127,7 @@
       "header": "Solidez del perfil",
       "addMethod": "Añadir un método de recuperación",
       "addTotp": "Agregar un teléfono inteligente (2SV)",
-      "addSecurityKey": "Add a security key (2SV)",
+      "addSecurityKey": "Agregar una clave de seguridad (2SV)",
       "addCodes": "Añadir algunos códigos de recuperacion (2SV)"
     }
   },
@@ -271,17 +271,17 @@
         "button": {
           "ok": "Ok lo conecté"
         },
-        "label": "Please enter a name for your new USB security key.",
-        "duplicate": "You already have a USB security key with that name.  Please choose a different name.",
+        "label": "Asigne un nombre para su nueva llave de seguridad USB",
+        "duplicate": "Ud. ya tiene una llave de seguridad USB con ese nombre. Por favor elija otro nombre.",
         "nosupport": {
-          "header": "Unsupported in your current browser",
-          "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
+          "header": "No soportado en su navegador actual",
+          "info": "Las claves de seguridad USB solo son compatibles con los navegadores más seguros, considere un navegador más seguro como Google Chrome."
         }
       },
       "touch": {
         "header": "Toca o presiona tu llave de seguridad USB",
         "info": "Una vez que su clave de seguridad comience a parpadear, presione su botón o toque su sensor.",
-        "error": "Something went wrong.  Please make sure you have the key inserted correctly and wait for the blink before pressing.  If your key did not blink, you may not have a supported browser and will need to skip this step.  Please consider a more secure browser like Google Chrome.",
+        "error": "Algo salió mal. Asegúrese de haber insertado correctamente la llave y espere a que parpadee antes de presionar. Si su clave no parpadeó, es posible que no tenga un navegador compatible y deberá omitir este paso. Considere un navegador más seguro como Google Chrome.",
         "button": {
           "retry": "Reintentar"
         }

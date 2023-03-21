@@ -15,7 +15,7 @@
         {{ $vuetify.lang.t('$vuetify.2sv.key.touch.info') }}
       </p>
 
-      <figure class="pa-4">
+      <figure class="pa-4 d-flex flex-column">
         <v-img v-if="! touched" contained src="@/assets/touch-usb-security-key.png" alt="A finger touching the top of a usb key."/>
         <v-icon v-else color="success" x-large>mdi-check</v-icon>
       </figure>
@@ -28,8 +28,12 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn v-if="error" @click="error = false; create()" color="error" outlined> 
+      <v-btn v-if="isSupported && error" @click="error = false; create()" color="error" outlined> 
         {{ $vuetify.lang.t('$vuetify.2sv.key.touch.button.retry') }}
+      </v-btn>
+
+      <v-btn v-if="error" to="/2sv/printable-backup-codes/intro" color="warning" outlined class="ml-4">
+        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}	
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -37,17 +41,20 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import u2f from './u2f-api.js'
-import { add, verify } from '@/global/mfa';
+import { browserSupportsWebauthn, startRegistration } from '@simplewebauthn/browser';
+import { add, verifyWebauthn, newKeyName } from '@/global/mfa'
+
+let absTimeout
 
 export default {
   components: {
     ProfileWizard,
   },
   data: () => ({
-    newU2f: {},
+    newSecurityKey: {},
     touched: false,
     error: false,
+    isSupported: browserSupportsWebauthn(),
   }),
   async created() {
     this.create()
@@ -55,7 +62,9 @@ export default {
   methods: {
     handleKeyResponse: async function(response) {
       if (isValid(response)) {
-        await verify(this.newU2f.id, response)
+        clearTimeout(absTimeout)
+
+        await verifyWebauthn(this.newSecurityKey.id, response, newKeyName.get())
         
         this.touched = true
   
@@ -69,19 +78,28 @@ export default {
       }
     },
     async create() {
-      this.newU2f = await add('u2f')
+      if (!this.isSupported) {
+        this.error = true
+        return
+      }
 
-      u2f.register(
-        this.newU2f.data.challenge.appId,
-        [this.newU2f.data.challenge],
-        [],
-        this.handleKeyResponse
-      )
+      try {
+        this.newSecurityKey = await add('webauthn')
+        let registrationCredential;
+        registrationCredential = await startRegistration({
+          excludeCredentials: [],
+          ...this.newSecurityKey.data.publicKey,
+        })
+        await this.handleKeyResponse(registrationCredential)
+      } catch (error) {
+        this.error = true
+        console.error(error)
+      }
     },
   },
 }
 
-function isValid(u2fResponse) {
-  return u2fResponse.clientData && u2fResponse.registrationData
+function isValid(securityKeyResponse) {
+  return securityKeyResponse.publicKey !== ""
 }
 </script>

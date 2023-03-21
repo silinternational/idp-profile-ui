@@ -2,17 +2,19 @@
   <BasePage>
     <template v-slot:header>
       {{ $vuetify.lang.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
-
-      <v-spacer/>
-
-      <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
     </template>
 
-    <aside class="pb-4">
-      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
-      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
-      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
-    </aside>
+    <v-row>
+      <v-col cols="6">
+        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
+        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')" :value="$user.last_login | format" sameline />
+        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
+      </v-col>
+
+      <v-col cols="6">
+        <ProfileProgress :profile="{user: $user, alternates, mfa}"/>
+      </v-col>
+    </v-row>
 
     <v-alert :value="hasUnverifiedEmails" type="error">
       <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
@@ -32,19 +34,39 @@
       </v-col>
     </v-row>
 
-    <v-subheader class="py-12">{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
+    <v-subheader>{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
 
     <v-row>
       <v-col cols="12" sm="6" md="4">
         <TotpCard :meta="mfa.totp"/>
       </v-col>
 
-      <v-col cols="12" sm="6" md="4">
-        <U2fCard :meta="mfa.u2f"/>
+      <v-col v-if="numberOfKeys > 1" cols="12" sm="6" md="4">
+        <SecurityKeyCard isSummary="true" :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys"/>
       </v-col>
+
+      <v-col v-if="numberOfKeys === 1" cols="12" sm="6" md="4">
+        <SecurityKeyCard :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys.data[0]" :mfaId="mfa.keys.id"/>
+      </v-col>
+
+      <v-col v-else-if="numberOfKeys === 0">
+        <SecurityKeyCard isSummary="true" :webauthnKey="{}" />
+      </v-col>  
 
       <v-col cols="12" sm="6" md="4">
         <BackupCodeCard :meta="mfa.backup"/>
+      </v-col>
+    </v-row>
+
+    <v-row v-if="numberOfKeys > 1">
+      <v-col>
+        {{$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title')}}
+      </v-col>
+    </v-row>
+
+    <v-row  v-if="numberOfKeys > 1">
+      <v-col v-for="webauthnKey in additionalKeys" cols="12" sm="6" md="4">
+        <SecurityKeyCard :webauthnKey="webauthnKey" :numberOfKeys="numberOfKeys" :mfaId="mfa.keys.id"/>
       </v-col>
     </v-row>
   </BasePage>
@@ -55,12 +77,12 @@ import ProfileProgress from './ProfileProgress'
 import PasswordCard from './PasswordCard'
 import PasswordRecoveryCard from './PasswordRecoveryCard'
 import TotpCard from './TotpCard'
-import U2fCard from './U2fCard'
+import SecurityKeyCard from './SecurityKeyCard'
 import BackupCodeCard from './BackupCodeCard'
 import DoNotDiscloseCard from './DoNotDiscloseCard'
 import Attribute from './Attribute'
-import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods';
-import { mfa, retrieve as retrieveMfa } from '@/global/mfa';
+import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods'
+import { mfa, retrieve as retrieveMfa } from '@/global/mfa'
 
 export default {
   components: {
@@ -68,7 +90,7 @@ export default {
     PasswordCard,
     PasswordRecoveryCard,
     TotpCard,
-    U2fCard,
+    SecurityKeyCard,
     BackupCodeCard,
     DoNotDiscloseCard,
     Attribute,
@@ -79,6 +101,8 @@ export default {
   }),
   computed: {
     hasUnverifiedEmails: vm => vm.alternates.some(m => ! m.verified),
+    additionalKeys: vm => vm.mfa.keys.data,
+    numberOfKeys: vm => vm.additionalKeys?.length || 0
   },
   async created() {
     await Promise.all([retrieveMethods(), retrieveMfa()])

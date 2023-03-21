@@ -29,7 +29,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/intro" tabindex="-1" outlined class="mb-4"> 
+      <v-btn to="/2sv/smartphone/intro" tabindex="-1" outlined class="mb-4 mb-sm-0"> 
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
