@@ -97,7 +97,7 @@
         "warning": "Pas de smartphone à ce moment, veuillez en ajouter un."
       },
       "securityKeyCard": {
-        "number": "Nombre de clés:",
+        "number": "Nombre de clés :",
         "title": "Clés de sécurité USB",
         "created": "Créé:",
         "lastUsed": "Dernière utilisation:",
