@@ -9,7 +9,8 @@
       "verify": "Vérifier ",
       "change": "Changer",
       "remove": "Supprimer",
-      "add": "Ajouter"
+      "add": "Ajouter",
+      "close": "Fermer"
     },
     "learnMore": "en savoir plus",
     "areYouSure": "Êtes-vous certain ?"
@@ -97,7 +98,7 @@
       },
       "securityKeyCard": {
         "number": "Nombre de clés:",
-        "title": "Clé de sécurité USB",
+        "title": "Clés de sécurité USB",
         "created": "Créé:",
         "lastUsed": "Dernière utilisation:",
         "warning": "Aucune clé de sécurité à ce moment, veuillez en ajouter une."
@@ -270,6 +271,8 @@
         "button": {
           "ok": "OK, je l'ai inséré"
         },
+        "label": "Veuillez saisir un nom pour la nouvelle clé de sécurité",
+        "duplicate": "Vous avez déjà une clé de sécurité USB avec ce nom. Veuillez choisir un autre nom.",
         "nosupport": {
           "header": "Non pris en charge par votre navigateur actuel",
           "info": "Les clés de sécurité USB ne sont prises en charge que par les navigateurs les plus sûrs. Veuillez envisager un navigateur plus sécurisé tel que Google Chrome."
