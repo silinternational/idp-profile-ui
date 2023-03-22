@@ -10,7 +10,7 @@
       "change": "바꾸기",
       "remove": "제거",
       "add": "추가",
-      "close": "닫기"
+      "close": "Close"
     },
     "learnMore": "자세히 알아보기",
     "areYouSure": "계속 진행하시겠습니까?"
@@ -97,11 +97,11 @@
         "warning": "현재 스마트 폰번호가 없으므로 스마트 폰 번호를 추가하십시오."
       },
       "securityKeyCard": {
-        "number": "열쇠의 수:",
-        "title": "USB 보안 키",
-        "created": "생성됨",
-        "lastUsed": "최근 사용",
-        "warning": "현재 보안 키가 없으므로 보안 키를 추가하십시오."
+        "number": "Number of keys:",
+        "title": "USB security keys",
+        "created": "Created:",
+        "lastUsed": "Last used:",
+        "warning": "No security key at this time, please add one."
       },
       "codeCard": {
         "title": "인쇄 가능한 백업 코드",
@@ -127,7 +127,7 @@
       "header": "프로필 완성도",
       "addMethod": "복구 방법 추가",
       "addTotp": "스마트 폰 추가 (2SV)",
-      "addSecurityKey": "보안 키 추가 (2SV)",
+      "addSecurityKey": "Add a security key (2SV)",
       "addCodes": "일부 백업 코드 추가 (2SV)"
     }
   },
@@ -271,17 +271,17 @@
         "button": {
           "ok": "네, 삽입했습니다."
         },
-        "label": "새 USB 보안 키의 이름을 입력하세요.",
-        "duplicate": "해당 이름의 USB 보안 키가 이미 있습니다. 다른 이름을 선택하십시오.",
+        "label": "Please enter a name for your new USB security key.",
+        "duplicate": "You already have a USB security key with that name.  Please choose a different name.",
         "nosupport": {
-          "header": "현재 브라우저에서 지원되지 않습니다.",
-          "info": "USB 보안 키는 가장 안전한 브라우저에서만 지원됩니다. Google Chrome과 같은 더욱 안전한 브라우저를 고려하십시오."
+          "header": "Unsupported in your current browser",
+          "info": "USB security keys are only supported in the safest browsers, please consider a more secure browser like Google Chrome."
         }
       },
       "touch": {
         "header": "USB 보안 키를 터치하거나 누르세요.",
         "info": "보안 키가 깜박이기 시작하면 버튼을 누르거나 센서를 터치하십시오.",
-        "error": "문제가 발생했습니다. 키가 올바르게 삽입되었는지 확인하고 누르기 전에 깜박일 때까지 기다리십시오. 키가 깜박이지 않으면 지원되는 브라우저가 없을 수 있으므로이 단계를 건너 뛰어야합니다. Google 크롬과 같은 더 안전한 브라우저를 고려하십시오.",
+        "error": "Something went wrong.  Please make sure you have the key inserted correctly and wait for the blink before pressing.  If your key did not blink, you may not have a supported browser and will need to skip this step.  Please consider a more secure browser like Google Chrome.",
         "button": {
           "retry": "다시시도"
         }
