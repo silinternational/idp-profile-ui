@@ -191,8 +191,8 @@
       "header": "Email envoyé",
       "emailComing": "Nous enverrons un e-mail avec un lien spécial à l’adresse suivante dans une minute :",
       "alternates": "Si vous n’avez pas actuellement accès à ce compte email, veuillez utiliser une des alternatives ci-dessous.",
-      "instead": "Utiliser celui-ci à la place",
-      "too": "Envoyé à cet adresse email aussi"
+      "instead": "Envoyez plutôt un e-mail à cette adresse",
+      "too": "Envoyé à cet adresse email à la place"
     },
     "reset": {
       "verify": {
