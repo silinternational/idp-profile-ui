@@ -18,7 +18,7 @@
       </v-tooltip>
       <v-tooltip v-else right>
         <template v-slot:activator="{ on }">
-          <v-icon @click="resend(alternate)" v-on="on" color="primary" large class="pl-4">mdi-send</v-icon>
+          <v-icon @click="resend(alternate)" v-on="on" color="info" large class="pl-4">mdi-send</v-icon>
         </template>
         
         {{ $vuetify.lang.t('$vuetify.password.forgotSent.instead') }}
