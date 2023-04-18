@@ -9,7 +9,8 @@
       "verify": "Verificar",
       "change": "Cambiar",
       "remove": "Quitar",
-      "add": "Añadir"
+      "add": "Añadir",
+      "close": "Cerrar"
     },
     "learnMore": "más información",
     "areYouSure": "¿Seguro que quiere continuar?"
