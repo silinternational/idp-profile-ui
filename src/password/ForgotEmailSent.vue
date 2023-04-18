@@ -11,14 +11,14 @@
 
       <v-tooltip v-if="alternate.id == sent" right>
         <template v-slot:activator="{ on }">
-          <v-icon v-on="on" color="success" small class="pl-4">mdi-check</v-icon>
+          <v-icon v-on="on" color="success" medium class="pl-4">mdi-check</v-icon>
         </template>
 
         {{ $vuetify.lang.t('$vuetify.password.forgotSent.too') }}
       </v-tooltip>
       <v-tooltip v-else right>
         <template v-slot:activator="{ on }">
-          <v-icon @click="resend(alternate)" v-on="on" color="secondary" small class="pl-4">mdi-send</v-icon>
+          <v-icon @click="resend(alternate)" v-on="on" color="info" large class="pl-4">mdi-send</v-icon>
         </template>
         
         {{ $vuetify.lang.t('$vuetify.password.forgotSent.instead') }}
