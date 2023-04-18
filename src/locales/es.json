@@ -191,7 +191,7 @@
       "header": "Correo electrónico enviado",
       "emailComing": "Enviaremos un correo electrónico con un enlace especial a la siguiente dirección de correo electrónico pronto:",
       "alternates": "Si no tiene acceso a esta cuenta de correo electrónico, por favor utilice una de las alternativas que se aparece a continuación.",
-      "instead": "Utilice esta pestaña en su lugar",
+      "instead": "Email to this address instead",
       "too": "Enviado también a este correo electrónico"
     },
     "reset": {
