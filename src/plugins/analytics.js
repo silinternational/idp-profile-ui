@@ -20,8 +20,10 @@ function init() {
     send_page_view: false,
   })
 
-  configuredRouter.beforeEach((to) => {
+  configuredRouter.beforeEach( (to, from, next) => {
     trackPageView(to.path)
+  
+    next()
   })
 }
 
