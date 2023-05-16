@@ -9,7 +9,6 @@ init()
 function init() {
   loadLib()
 
-  // TODO: get the dataLayer references to play nicer with ts
   ;(window).dataLayer = (window).dataLayer || []
   window.gtag = () => (window).dataLayer.push(arguments)
 
@@ -40,7 +39,7 @@ function trackPageView(page) {
   if (page) {
     // https://developers.google.com/analytics/devguides/collection/gtagjs/pages#default_behavior
     gtag('event', 'page_view', {
-      page_path: location.pathname, //page.path or page.shortPath are also available
+      page_path: page
     })
   }
 }
