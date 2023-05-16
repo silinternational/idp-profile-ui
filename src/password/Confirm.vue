@@ -9,10 +9,7 @@
         <p>{{ $vuetify.lang.t('$vuetify.password.confirm.explanation') }}</p>
 
         <div class="password">
-          <BaseTextField v-if="passwordIsHidden" type="password" :label="$vuetify.lang.t('$vuetify.password.confirm.pwInput')" v-model="password" 
-          :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
-          
-          <BaseTextField v-else type="text" :label="$vuetify.lang.t('$vuetify.password.confirm.pwInput')" v-model="password" 
+          <BaseTextField :type="passwordIsHidden ? 'password' : 'text'" :label="$vuetify.lang.t('$vuetify.password.confirm.pwInput')" v-model="password" 
           :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
           
           <v-tooltip top>
