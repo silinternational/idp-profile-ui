@@ -10,8 +10,19 @@
           {{ $vuetify.lang.t('$vuetify.password.create.username', $root.idpConfig.idpName) }} <strong class="body-2">{{ $user.idp_username }}</strong>
         </p>
 
-        <BaseTextField type="password" :label="$vuetify.lang.t('$vuetify.password.create.pwInput')" v-model="password" 
-                       :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
+        <div class="password">
+          <BaseTextField :type="passwordIsHidden ? 'password' : 'text'" :label="$vuetify.lang.t('$vuetify.password.create.pwInput')" v-model="password" 
+          :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
+          
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn v-on="on" v-bind="attrs" class="eye" icon @click="passwordIsHidden = !passwordIsHidden" tabindex="-1">
+                <v-icon>{{ passwordIsHidden ? 'mdi-eye' : 'mdi-eye-off' }}</v-icon>
+              </v-btn>
+            </template>
+            <span>{{passwordIsHidden ? 'Show' : 'Hide'}} password</span>
+          </v-tooltip>
+          </div>
 
         <v-alert :value="!!(showFeedback && password)" :type="strength.feedback.warning ? 'error' : 'info'" outlined>
           <header class="body-2">{{ strength.feedback.warning }}</header>
@@ -61,6 +72,7 @@ export default {
   data: vm => ({
     wizardKey: 0, // This is used to refresh the form, instead of leaving it frozen after a re-used password
     password: vm.$root.$data.password || '',
+    passwordIsHidden: true,
     rules: [
       v => required(v, vm),
       v => minLength(v, vm),
@@ -125,3 +137,12 @@ const minLength = (v, vm) => v.length >= vm.$root.idpConfig.passwordRules.minLen
 const maxLength = (v, vm) => v.length < vm.$root.idpConfig.passwordRules.maxLength || vm.$vuetify.lang.t('$vuetify.password.create.tooLong', vm.$root.idpConfig.passwordRules.maxLength)
 const strong = (v, vm) => vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore || vm.$vuetify.lang.t('$vuetify.password.create.tooWeak')
 </script>
+
+<style>
+.password {
+  display: flex;
+}
+.eye {
+  margin-top: .75rem;
+}
+</style>
