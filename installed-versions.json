@@ -32,8 +32,8 @@
       "overridden": false
     },
     "date-fns": {
-      "version": "2.29.3",
-      "resolved": "https://registry.npmjs.org/date-fns/-/date-fns-2.29.3.tgz",
+      "version": "2.30.0",
+      "resolved": "https://registry.npmjs.org/date-fns/-/date-fns-2.30.0.tgz",
       "overridden": false
     },
     "rimraf": {
@@ -47,8 +47,8 @@
       "overridden": false
     },
     "sass": {
-      "version": "1.58.3",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.58.3.tgz",
+      "version": "1.62.1",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.62.1.tgz",
       "overridden": false
     },
     "stylus-loader": {
@@ -87,8 +87,8 @@
       "overridden": false
     },
     "vuetify": {
-      "version": "2.6.14",
-      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-2.6.14.tgz",
+      "version": "2.6.15",
+      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-2.6.15.tgz",
       "overridden": false
     },
     "zxcvbn": {

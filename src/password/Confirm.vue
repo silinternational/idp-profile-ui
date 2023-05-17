@@ -7,9 +7,21 @@
 
       <v-form @submit.prevent="confirm" ref="form" class="pa-4">
         <p>{{ $vuetify.lang.t('$vuetify.password.confirm.explanation') }}</p>
-        
-        <BaseTextField type="password" :label="$vuetify.lang.t('$vuetify.password.confirm.pwInput')" v-model="password" 
-                       :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
+
+        <div class="password">
+          <BaseTextField :type="passwordIsHidden ? 'password' : 'text'" :label="$vuetify.lang.t('$vuetify.password.confirm.pwInput')" v-model="password" 
+          :rules="rules" :error-messages="errors" validate-on-blur @keyup.enter="blur" autofocus name="password" />
+          
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn v-on="on" v-bind="attrs" class="eye" icon @click="passwordIsHidden = !passwordIsHidden" tabindex="-1">
+                <v-icon>{{ passwordIsHidden ? 'mdi-eye' : 'mdi-eye-off' }}</v-icon>
+              </v-btn>
+            </template>
+
+            <span>{{passwordIsHidden ? 'Show' : 'Hide'}} password</span>
+          </v-tooltip>
+        </div>
       </v-form>
     </BasePage>
 
@@ -36,6 +48,7 @@ export default {
   },
   data: vm => ({
     password: '',
+    passwordIsHidden: true,
     rules: [
       v => v == vm.$root.$data.password || vm.$vuetify.lang.t('$vuetify.password.confirm.noMatch')
     ],
@@ -64,3 +77,12 @@ export default {
   },
 }
 </script>
+
+<style>
+.password {
+  display: flex;
+}
+.eye {
+  margin-top: .75rem;
+}
+</style>
