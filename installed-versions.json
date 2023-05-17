@@ -61,11 +61,6 @@
       "resolved": "https://registry.npmjs.org/stylus/-/stylus-0.58.1.tgz",
       "overridden": false
     },
-    "vue-analytics": {
-      "version": "5.22.1",
-      "resolved": "https://registry.npmjs.org/vue-analytics/-/vue-analytics-5.22.1.tgz",
-      "overridden": false
-    },
     "vue-cli-plugin-vuetify": {
       "version": "2.5.8",
       "resolved": "https://registry.npmjs.org/vue-cli-plugin-vuetify/-/vue-cli-plugin-vuetify-2.5.8.tgz",
