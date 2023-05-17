@@ -9,10 +9,13 @@ init()
 function init() {
   loadLib()
 
-  ;(window).dataLayer = (window).dataLayer || []
-  window.gtag = () => (window).dataLayer.push(arguments)
+  window.dataLayer = window.dataLayer || []
 
-  gtag('js', new Date())
+  window.gtag = function (){
+    dataLayer.push(arguments)
+  }
+
+  gtag('js', new Date());
 
   //since we are sending manually we need to disable the default of sending each pageview
   gtag('config', GA_MEASUREMENT_ID, {
