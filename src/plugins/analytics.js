@@ -15,7 +15,7 @@ function init() {
     dataLayer.push(arguments)
   }
 
-  gtag('js', new Date());
+  gtag('js', new Date())
 
   //since we are sending manually we need to disable the default of sending each pageview
   gtag('config', GA_MEASUREMENT_ID, {
