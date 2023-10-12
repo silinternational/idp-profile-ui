@@ -1,0 +1,5 @@
+# Ignore artifacts:
+public
+
+# Ignore build dependencies
+node_modules
