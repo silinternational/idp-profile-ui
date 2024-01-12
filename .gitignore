@@ -15,7 +15,8 @@ npm-debug.log*
 
 # Editor directories and files
 .idea
-.vscode/*.log
+.vscode/
+!.vscode/settings.json
 *.suo
 *.ntvs*
 *.njsproj
