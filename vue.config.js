@@ -5,6 +5,6 @@ module.exports = {
     },
     host: '0.0.0.0',
     port: 8000,
-    allowedHosts: ['.gtis.guru']
-  }
-};
+    allowedHosts: [process.env.VUE_ALLOWED_HOSTS],
+  },
+}
