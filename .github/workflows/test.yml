@@ -1,0 +1,19 @@
+name: Build
+
+on:
+  push:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build
+        run: |
+          mv .env.dist .env.local
+          nvm install 18
+          nvm use 18
+          npm install
+          npm run build
