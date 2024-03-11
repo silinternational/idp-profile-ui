@@ -11,14 +11,9 @@
       "resolved": "https://registry.npmjs.org/@simplewebauthn/browser/-/browser-4.1.0.tgz",
       "overridden": false
     },
-    "@vue/cli-plugin-babel": {
-      "version": "5.0.8",
-      "resolved": "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-5.0.8.tgz",
-      "overridden": false
-    },
-    "@vue/cli-service": {
-      "version": "5.0.8",
-      "resolved": "https://registry.npmjs.org/@vue/cli-service/-/cli-service-5.0.8.tgz",
+    "@vitejs/plugin-vue2": {
+      "version": "2.3.1",
+      "resolved": "https://registry.npmjs.org/@vitejs/plugin-vue2/-/plugin-vue2-2.3.1.tgz",
       "overridden": false
     },
     "axios": {
@@ -61,6 +56,11 @@
       "resolved": "https://registry.npmjs.org/stylus/-/stylus-0.58.1.tgz",
       "overridden": false
     },
+    "vite": {
+      "version": "5.1.5",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-5.1.5.tgz",
+      "overridden": false
+    },
     "vue-cli-plugin-vuetify": {
       "version": "2.5.8",
       "resolved": "https://registry.npmjs.org/vue-cli-plugin-vuetify/-/vue-cli-plugin-vuetify-2.5.8.tgz",
@@ -74,6 +74,11 @@
     "vue-router": {
       "version": "3.6.5",
       "resolved": "https://registry.npmjs.org/vue-router/-/vue-router-3.6.5.tgz",
+      "overridden": false
+    },
+    "vue-template-compiler": {
+      "version": "2.7.16",
+      "resolved": "https://registry.npmjs.org/vue-template-compiler/-/vue-template-compiler-2.7.16.tgz",
       "overridden": false
     },
     "vue": {
