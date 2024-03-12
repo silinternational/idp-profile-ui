@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary">
-      <a href="/"><img src="@/assets/logo.png"></a>
+      <a href="/"><img src="@/assets/logo.png" /></a>
 
       <v-spacer />
 
@@ -34,7 +34,7 @@
           return to {{ $returnTo.url }}
         </v-btn>
       </v-row>
-      
+
       <v-container>
         <v-alert :value="!!message" type="error" dismissible>
           <span v-html="message" />
@@ -48,23 +48,23 @@
 </template>
 
 <script>
-import HelpButton from './help/HelpButton'
+import HelpButton from './help/HelpButton.vue'
 export default {
   components: {
-    HelpButton
+    HelpButton,
   },
   data: () => ({
-    message: ''
+    message: '',
   }),
   computed: {
-    mobile () {
+    mobile() {
       return this.$vuetify.breakpoint.name === 'xs'
     },
   },
   beforeCreate() {
     this.$API.interceptors.response.use(
-      response => response,
-      error => {
+      (response) => response,
+      (error) => {
         this.message = error.message
 
         throw error
@@ -73,7 +73,7 @@ export default {
   },
   created() {
     const appScope = this
-    this.$root.$on('clear-messages', () => appScope.message = '') // built for situation in Recovery.vue (temp hack hopefully)
+    this.$root.$on('clear-messages', () => (appScope.message = '')) // built for situation in Recovery.vue (temp hack hopefully)
   },
   errorCaptured(err) {
     this.message = err.message || err
@@ -81,13 +81,14 @@ export default {
   watch: {
     $route() {
       this.message = ''
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped>
-a, img {
+a,
+img {
   height: 100%; /* contain img to the toolbar's height */
 }
 </style>
@@ -105,8 +106,7 @@ div.v-toolbar__content {
 /* Reduces font size of button content on <= 480px screens */
 @media only screen and (max-width: 480px) {
   span.v-btn__content {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 }
 </style>
-

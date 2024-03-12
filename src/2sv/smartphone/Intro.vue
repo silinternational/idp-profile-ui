@@ -11,19 +11,19 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/intro" tabindex="-1" outlined class="mr-2 mr-sm-4 mb-4 mb-sm-0 "> 
+      <v-btn to="/2sv/intro" tabindex="-1" outlined class="mr-2 mr-sm-4 mb-4 mb-sm-0">
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
-      <v-btn to="/2sv/usb-security-key/intro" color="primary" tabindex="-1" outlined> 
+      <v-btn to="/2sv/usb-security-key/intro" color="primary" tabindex="-1" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
-      
-      <v-btn to="/2sv/usb-security-key/intro" color="primary" tabindex="-1" outlined class="mr-2 mr-sm-4 "> 
+
+      <v-btn to="/2sv/usb-security-key/intro" color="primary" tabindex="-1" outlined class="mr-2 mr-sm-4">
         {{ $vuetify.lang.t('$vuetify.global.button.no') }}
       </v-btn>
-      <v-btn to="/2sv/smartphone/download-app" color="primary" outlined> 
+      <v-btn to="/2sv/smartphone/download-app" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.yes') }}
       </v-btn>
     </ButtonBar>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
+import ProfileWizard from '@/profile/ProfileWizard.vue'
 
 export default {
   components: {

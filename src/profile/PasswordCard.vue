@@ -9,14 +9,18 @@
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.passwordCard.lastChanged')"
-                 :value="meta.last_changed | format"/>
-      <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.passwordCard.expires')"
-                 :value="meta.expires | format"/>
+      <Attribute
+        :name="$vuetify.lang.t('$vuetify.profile.index.passwordCard.lastChanged')"
+        :value="meta.last_changed | format"
+      />
+      <Attribute
+        :name="$vuetify.lang.t('$vuetify.profile.index.passwordCard.expires')"
+        :value="meta.expires | format"
+      />
     </v-card-text>
 
     <v-card-actions>
-      <v-spacer/>
+      <v-spacer />
 
       <v-btn v-if="isExpiringSoon()" :href="'#/password/create'" color="warning" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.passwordCard.button.changeNow') }}
@@ -29,28 +33,28 @@
 </template>
 
 <script>
-import Attribute from './Attribute'
+import Attribute from './Attribute.vue'
 import { parseISO, subDays } from 'date-fns'
 
 export default {
   components: {
-    Attribute
+    Attribute,
   },
   props: {
     meta: {
       type: Object,
       default: () => ({
-        meta: {}
-      })
-    }
+        meta: {},
+      }),
+    },
   },
   data: () => ({
-    today: new Date()
+    today: new Date(),
   }),
   methods: {
     isExpiringSoon() {
       return subDays(parseISO(this.meta.expires), 30) <= this.today
-    }
+    },
   },
 }
 </script>

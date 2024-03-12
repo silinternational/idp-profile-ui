@@ -1,17 +1,17 @@
-import Intro from './Intro'
-import SmartphoneIntro from './smartphone/Intro'
-import DownloadApp from './smartphone/DownloadApp'
-import ScanQr from './smartphone/ScanQr'
-import VerifyQrCode from './smartphone/VerifyQrCode'
-import CodeVerified from './smartphone/CodeVerified'
-import KeyIntro from './key/Intro'
-import Insert from './key/Insert'
-import Touch from './key/Touch'
-import Confirmed from './key/Confirmed'
-import CodesIntro from './codes/Intro'
-import New from './codes/New'
-import Change from './Change'
-import Removed from './Removed'
+import Intro from './Intro.vue'
+import SmartphoneIntro from './smartphone/Intro.vue'
+import DownloadApp from './smartphone/DownloadApp.vue'
+import ScanQr from './smartphone/ScanQr.vue'
+import VerifyQrCode from './smartphone/VerifyQrCode.vue'
+import CodeVerified from './smartphone/CodeVerified.vue'
+import KeyIntro from './key/Intro.vue'
+import Insert from './key/Insert.vue'
+import Touch from './key/Touch.vue'
+import Confirmed from './key/Confirmed.vue'
+import CodesIntro from './codes/Intro.vue'
+import New from './codes/New.vue'
+import Change from './Change.vue'
+import Removed from './Removed.vue'
 import mfa from '@/global/mfa'
 
 export default [
@@ -36,28 +36,28 @@ export default [
     component: SmartphoneIntro,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
-    }
+    },
   },
   {
     path: '/2sv/smartphone/download-app',
     component: DownloadApp,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
-    }
+    },
   },
   {
     path: '/2sv/smartphone/scan-qr',
     component: ScanQr,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
-    }
+    },
   },
   {
     path: '/2sv/smartphone/verify-qr-code',
     component: VerifyQrCode,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
-    }
+    },
   },
   {
     path: '/2sv/smartphone/code-verified',
@@ -84,7 +84,7 @@ export default [
     component: CodesIntro,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.backup.id, '/profile/complete', next)
-    }
+    },
   },
   {
     path: '/2sv/printable-backup-codes/new',
@@ -100,4 +100,4 @@ export default [
   },
 ]
 
-const skipWhen = (exists, to, next) => exists ? next(to) : next()
+const skipWhen = (exists, to, next) => (exists ? next(to) : next())

@@ -5,6 +5,6 @@ module.exports = {
     },
     host: '0.0.0.0',
     port: 8000,
-    allowedHosts: [process.env.VUE_ALLOWED_HOSTS],
+    allowedHosts: [import.meta.env.VUE_ALLOWED_HOSTS],
   },
 }

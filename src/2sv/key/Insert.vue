@@ -9,47 +9,42 @@
       </template>
 
       <figure v-if="isSupported" class="pa-4">
-        <v-img contain src="@/assets/insert-usb-security-key.png" alt="A usb key inserted into a usb port."/>
+        <v-img contain src="@/assets/insert-usb-security-key.png" alt="A usb key inserted into a usb port." />
       </figure>
       <p v-else>{{ $vuetify.lang.t('$vuetify.2sv.key.insert.nosupport.info') }}</p>
 
       <!-- TODO: Add translations for this label -->
       <label v-if="showLabelInput">
         {{ $vuetify.lang.t('$vuetify.2sv.key.insert.label') }}
-        <v-text-field v-model="input" @keyup="onKeyup" required outlined autofocus/>
+        <v-text-field v-model="input" @keyup="onKeyup" required outlined autofocus />
       </label>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/usb-security-key/intro" tabindex="-1" outlined> 
+      <v-btn to="/2sv/usb-security-key/intro" tabindex="-1" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
-      
+
       <v-btn v-if="isSupported && showLabelInput" @click="onContinue" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
       </v-btn>
 
-      <v-btn v-else-if="isSupported  && !showLabelInput" @click="onOk" color="primary" outlined>
+      <v-btn v-else-if="isSupported && !showLabelInput" @click="onOk" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.key.insert.button.ok') }}
       </v-btn>
-      <v-btn v-else to="/2sv/printable-backup-codes/intro" color="primary" outlined> 	
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}	
+      <v-btn v-else to="/2sv/printable-backup-codes/intro" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
     </ButtonBar>
 
     <v-snackbar v-model="snackbarIsOpen">
       {{ snackBarMessage }}
-      
+
       <template v-slot:action="{ attrs }">
-        <v-btn
-          color="warning"
-          text
-          v-bind="attrs"
-          @click="snackbarIsOpen = false"
-        >
-           {{ $vuetify.lang.t('$vuetify.global.button.close') }}
+        <v-btn color="warning" text v-bind="attrs" @click="snackbarIsOpen = false">
+          {{ $vuetify.lang.t('$vuetify.global.button.close') }}
         </v-btn>
       </template>
     </v-snackbar>
@@ -57,15 +52,15 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
-import { browserSupportsWebauthn } from '@simplewebauthn/browser';
+import ProfileWizard from '@/profile/ProfileWizard.vue'
+import { browserSupportsWebauthn } from '@simplewebauthn/browser'
 import { newKeyName, mfa } from '@/global/mfa'
 
 export default {
   components: {
     ProfileWizard,
   },
-  data: () => ({	
+  data: () => ({
     isSupported: browserSupportsWebauthn(),
     showLabelInput: false,
     input: '',
@@ -74,20 +69,20 @@ export default {
     snackBarMessage: '',
   }),
   methods: {
-    onOk: function() {
+    onOk: function () {
       this.showLabelInput = true
     },
-    isDuplicateKeyLabel: function(keys, attemptedKeyLabel) {
-      return keys.data?.find(key => key.label == attemptedKeyLabel)
+    isDuplicateKeyLabel: function (keys, attemptedKeyLabel) {
+      return keys.data?.find((key) => key.label == attemptedKeyLabel)
     },
-    onKeyup: function(event) {
-      if(event.key == 'Enter') {
+    onKeyup: function (event) {
+      if (event.key == 'Enter') {
         this.onContinue()
       }
     },
-    onContinue: function() {
+    onContinue: function () {
       const attemptedKeyLabel = this.input.trim()
-      if(!attemptedKeyLabel) {
+      if (!attemptedKeyLabel) {
         this.snackBarMessage = this.$vuetify.lang.t('$vuetify.2sv.key.insert.label')
         this.snackbarIsOpen = true
         return
@@ -98,7 +93,7 @@ export default {
         return
       }
       this.newKeyName.set(this.input)
-      this.$router.push("/2sv/usb-security-key/touch")
+      this.$router.push('/2sv/usb-security-key/touch')
     },
   },
 }

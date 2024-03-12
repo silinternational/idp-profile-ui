@@ -14,13 +14,12 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
     "@simplewebauthn/browser": "^4.1.0",
     "axios": "^1.6.0",
     "date-fns": "^2.28.0",
     "sass-loader": "^10.1.1",
     "vue": "^2.7.14",
-    "vue-demi": "^0.13.1",
+    "vue-loader": "^17.4.2",
     "vue-router": "^3.4.9",
     "vuetify": "^2.6.10",
     "zxcvbn": "^4.4.2"

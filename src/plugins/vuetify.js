@@ -13,15 +13,15 @@ const configuredVuetify = new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: `${process.env.VUE_APP_PRIMARY_COLOR}`,
-        secondary: `${process.env.VUE_APP_SECONDARY_COLOR}`,
+        primary: `${import.meta.env.VUE_APP_PRIMARY_COLOR}`,
+        secondary: `${import.meta.env.VUE_APP_SECONDARY_COLOR}`,
       }
     }
   },
 })
 
 function determineCurrentLanguage() {
-  const mainLangOnly = navigator.language.substring(0,2)
+  const mainLangOnly = navigator.language.substring(0, 2)
 
   return locales[mainLangOnly] ? mainLangOnly : 'en'
 }

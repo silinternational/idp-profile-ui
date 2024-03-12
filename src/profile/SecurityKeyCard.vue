@@ -6,15 +6,31 @@
           <v-icon :color="webauthnKey.id ? 'success' : ''" x-large>mdi-key</v-icon>
         </v-col>
         <v-col class="ml-4">
-          <MfaCardLabel :label="isSummary ? $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title') : label || webauthnKey.label" 
-                        :keyId="webauthnKey.id"  :mfaId="mfaId" :readOnly="!!isSummary" @new-label="label = $event"/>
+          <MfaCardLabel
+            :label="
+              isSummary ? $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title') : label || webauthnKey.label
+            "
+            :keyId="webauthnKey.id"
+            :mfaId="mfaId"
+            :readOnly="!!isSummary"
+            @new-label="label = $event"
+          />
         </v-col>
       </v-row>
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <Attribute sameline v-if="isSummary && numberOfKeys" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.number')" :value="numberOfKeys"/>
-      <Attribute v-if="webauthnKey.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.created')" :value="webauthnKey.created_utc | format"/>
+      <Attribute
+        sameline
+        v-if="isSummary && numberOfKeys"
+        :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.number')"
+        :value="numberOfKeys"
+      />
+      <Attribute
+        v-if="webauthnKey.created_utc"
+        :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.created')"
+        :value="webauthnKey.created_utc | format"
+      />
       <v-row v-else-if="!webauthnKey.id">
         <v-col cols="auto">
           <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
@@ -23,11 +39,15 @@
           <em>{{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.warning') }}</em>
         </v-col>
       </v-row>
-      <Attribute v-if="webauthnKey.last_used_utc && !isSummary" :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.lastUsed')" :value="webauthnKey.last_used_utc | format"/>
+      <Attribute
+        v-if="webauthnKey.last_used_utc && !isSummary"
+        :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.lastUsed')"
+        :value="webauthnKey.last_used_utc | format"
+      />
     </v-card-text>
 
     <v-card-actions>
-      <v-spacer/>
+      <v-spacer />
       <v-btn v-if="isSummary || numberOfKeys === 1" href="#/2sv/usb-security-key/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.add') }}
       </v-btn>
@@ -37,18 +57,18 @@
 </template>
 
 <script>
-import Attribute from './Attribute'
-import MfaCardLabel from './MfaCardLabel'
-import MfaCardRemove from './MfaCardRemove'
+import Attribute from './Attribute.vue'
+import MfaCardLabel from './MfaCardLabel.vue'
+import MfaCardRemove from './MfaCardRemove.vue'
 
 export default {
   components: {
     Attribute,
     MfaCardLabel,
-    MfaCardRemove
+    MfaCardRemove,
   },
   props: ['webauthnKey', 'isSummary', 'numberOfKeys', 'mfaId'],
-  data: vm => ({
+  data: (vm) => ({
     label: '',
   }),
 }

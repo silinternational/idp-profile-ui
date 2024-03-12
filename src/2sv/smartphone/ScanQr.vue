@@ -22,7 +22,7 @@
 
           <v-row v-if="newTotp.data" justify="center">
             <v-col cols="auto">
-            <v-img :src="newTotp.data.imageUrl" max-width="200" />
+              <v-img :src="newTotp.data.imageUrl" max-width="200" />
             </v-col>
           </v-row>
           <v-row v-if="newTotp.data" justify="center">
@@ -36,13 +36,13 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" outlined class="mb-4 mb-sm-0"> 
+      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" outlined class="mb-4 mb-sm-0">
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
-      
-      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`" :disabled="! newTotp.id" color="primary" outlined> 
+
+      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`" :disabled="!newTotp.id" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.smartphone.scanQr.button.ok') }}
       </v-btn>
     </ButtonBar>
@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
-import { add } from '@/global/mfa';
+import ProfileWizard from '@/profile/ProfileWizard.vue'
+import { add } from '@/global/mfa'
 
 export default {
   components: {

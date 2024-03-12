@@ -6,59 +6,93 @@
       </template>
 
       <p v-if="printing" class="printable header">
-        {{ $root.idpConfig.idpName }} 
+        {{ $root.idpConfig.idpName }}
         <span class="caption">
           ({{ $vuetify.lang.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | formatLong }})
         </span>
       </p>
-        
+
       <v-row id="codes">
-        <v-col v-for="(code, i) in codes" :key="code" cols="6" :class="{'text-right': i % 2 === 0}" class="text-no-wrap">
+        <v-col
+          v-for="(code, i) in codes"
+          :key="code"
+          cols="6"
+          :class="{ 'text-right': i % 2 === 0 }"
+          class="text-no-wrap"
+        >
           <v-icon class="pr-2">mdi-checkbox-blank-outline</v-icon> <span class="code xsCode">{{ code }}</span>
         </v-col>
       </v-row>
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click="print('#codes')" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
+      <v-btn
+        @click="print('#codes')"
+        color="secondary"
+        :outlined="!mobile"
+        :icon="mobile"
+        class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+      >
         <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}</span>
 
         <v-tooltip top>
           <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="! mobile" :large="mobile" title="print">mdi-printer</v-icon>
+            <v-icon v-on="on" :right="!mobile" :large="mobile" title="print">mdi-printer</v-icon>
           </template>
           <span>Print</span>
         </v-tooltip>
       </v-btn>
 
-      <v-btn :href="`data:text/plain,${encodedData}`" :download="`${$root.idpConfig.idpName}--printable-codes.txt`" @click="gotEm = true" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
+      <v-btn
+        :href="`data:text/plain,${encodedData}`"
+        :download="`${$root.idpConfig.idpName}--printable-codes.txt`"
+        @click="gotEm = true"
+        color="secondary"
+        :outlined="!mobile"
+        :icon="mobile"
+        class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+      >
         <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}</span>
 
         <v-tooltip top>
           <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="! mobile" :large="mobile">mdi-cloud-download</v-icon>
+            <v-icon v-on="on" :right="!mobile" :large="mobile">mdi-cloud-download</v-icon>
           </template>
           <span>Download</span>
         </v-tooltip>
       </v-btn>
 
-      <v-btn v-if="copied" @click="copy()" color="success" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
+      <v-btn
+        v-if="copied"
+        @click="copy()"
+        color="success"
+        :outlined="!mobile"
+        :icon="mobile"
+        class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+      >
         <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}</span>
 
         <v-tooltip top>
           <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="! mobile" :large="mobile">mdi-clipboard-check-multiple-outline</v-icon>
+            <v-icon v-on="on" :right="!mobile" :large="mobile">mdi-clipboard-check-multiple-outline</v-icon>
           </template>
           <span>Copy</span>
         </v-tooltip>
       </v-btn>
 
-      <v-btn v-else @click="copy()" color="secondary" :outlined="! mobile" :icon="mobile" class="mr-0 mr-sm-4 mx-4 mx-sm-0">
+      <v-btn
+        v-else
+        @click="copy()"
+        color="secondary"
+        :outlined="!mobile"
+        :icon="mobile"
+        class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+      >
         <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}</span>
 
         <v-tooltip top>
           <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="! mobile" :large="mobile">mdi-clipboard-multiple-outline</v-icon>
+            <v-icon v-on="on" :right="!mobile" :large="mobile">mdi-clipboard-multiple-outline</v-icon>
           </template>
           <span>Copy</span>
         </v-tooltip>
@@ -82,8 +116,8 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
-import { add } from '@/global/mfa';
+import ProfileWizard from '@/profile/ProfileWizard.vue'
+import { add } from '@/global/mfa'
 
 export default {
   components: {
@@ -99,24 +133,22 @@ export default {
     const newCodes = await add('backupcode')
 
     this.codes = newCodes.data
-    
+
     this.$refs.wizard.completed()
   },
   computed: {
     encodedData() {
-      return encodeURIComponent(
-        `${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`
-      )
+      return encodeURIComponent(`${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
     },
-    mobile () {
+    mobile() {
       return this.$vuetify.breakpoint.name === 'xs'
-    }
+    },
   },
   methods: {
-    finish: function() {
+    finish: function () {
       this.$refs.wizard.next()
     },
-    print: async function(id) {
+    print: async function (id) {
       this.gotEm = this.printing = true
       const el = document.querySelector(id)
 
@@ -127,10 +159,8 @@ export default {
       window.print()
       this.printing = false
     },
-    copy: async function() {
-      await navigator.clipboard.writeText(
-        `${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`
-      )
+    copy: async function () {
+      await navigator.clipboard.writeText(`${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
 
       this.gotEm = this.copied = true
     },

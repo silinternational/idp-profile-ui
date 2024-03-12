@@ -16,32 +16,45 @@
       </p>
 
       <figure class="pa-4 d-flex flex-column">
-        <v-img v-if="! touched" contained src="@/assets/touch-usb-security-key.png" alt="A finger touching the top of a usb key."/>
+        <v-img
+          v-if="!touched"
+          contained
+          src="@/assets/touch-usb-security-key.png"
+          alt="A finger touching the top of a usb key."
+        />
         <v-icon v-else color="success" x-large>mdi-check</v-icon>
       </figure>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/usb-security-key/insert" tabindex="-1" outlined> 
+      <v-btn to="/2sv/usb-security-key/insert" tabindex="-1" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn v-if="isSupported && error" @click="error = false; create()" color="error" outlined> 
+      <v-btn
+        v-if="isSupported && error"
+        @click="
+          error = false
+          create()
+        "
+        color="error"
+        outlined
+      >
         {{ $vuetify.lang.t('$vuetify.2sv.key.touch.button.retry') }}
       </v-btn>
 
       <v-btn v-if="error" to="/2sv/printable-backup-codes/intro" color="warning" outlined class="ml-4">
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}	
+        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
-import { browserSupportsWebauthn, startRegistration } from '@simplewebauthn/browser';
+import ProfileWizard from '@/profile/ProfileWizard.vue'
+import { browserSupportsWebauthn, startRegistration } from '@simplewebauthn/browser'
 import { add, verifyWebauthn, newKeyName } from '@/global/mfa'
 
 let absTimeout
@@ -60,19 +73,16 @@ export default {
     this.create()
   },
   methods: {
-    handleKeyResponse: async function(response) {
+    handleKeyResponse: async function (response) {
       if (isValid(response)) {
         clearTimeout(absTimeout)
 
         await verifyWebauthn(this.newSecurityKey.id, response, newKeyName.get())
-        
+
         this.touched = true
-  
+
         // pause for a moment so user can see the checkmark.
-        setTimeout(
-          () => this.$router.push('/2sv/usb-security-key/confirmed'),
-          500
-        )
+        setTimeout(() => this.$router.push('/2sv/usb-security-key/confirmed'), 500)
       } else {
         this.error = true
       }
@@ -85,7 +95,7 @@ export default {
 
       try {
         this.newSecurityKey = await add('webauthn')
-        let registrationCredential;
+        let registrationCredential
         registrationCredential = await startRegistration({
           excludeCredentials: [],
           ...this.newSecurityKey.data.publicKey,
@@ -100,6 +110,6 @@ export default {
 }
 
 function isValid(securityKeyResponse) {
-  return securityKeyResponse.publicKey !== ""
+  return securityKeyResponse.publicKey !== ''
 }
 </script>

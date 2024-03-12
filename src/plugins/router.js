@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import profileRoutes from '@/profile/routes'
 import passwordRoutes from '@/password/routes'
 import twoStepRoutes from '@/2sv/routes'
-import PageNotFound from '@/global/PageNotFound'
+import PageNotFound from '@/global/PageNotFound.vue'
 
 Vue.use(Router)
 
@@ -14,14 +14,14 @@ const configuredRouter = new Router({
     ...twoStepRoutes,
     {
       path: '/help', // old pw-ui urls might still be bookmarked.
-      redirect: () => window.location = 'https://sites.google.com/sil.org/idphelp',
+      redirect: () => (window.location = 'https://sites.google.com/sil.org/idphelp'),
     },
     {
       path: '*',
       component: PageNotFound,
       meta: {
-        public: true
-      },  
+        public: true,
+      },
     },
   ],
 })

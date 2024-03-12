@@ -1,12 +1,12 @@
-import Create from './Create'
-import Confirm from './Confirm'
-import Saved from './Saved'
-import Recovery from './Recovery'
-import VerifyRecoveryMethod from './VerifyRecoveryMethod'
-import Forgot from './Forgot'
-import ForgotEmailSent from './ForgotEmailSent'
-import VerifyReset from './VerifyReset'
-import CompleteReset from './CompleteReset'
+import Create from './Create.vue'
+import Confirm from './Confirm.vue'
+import Saved from './Saved.vue'
+import Recovery from './Recovery.vue'
+import VerifyRecoveryMethod from './VerifyRecoveryMethod.vue'
+import Forgot from './Forgot.vue'
+import ForgotEmailSent from './ForgotEmailSent.vue'
+import VerifyReset from './VerifyReset.vue'
+import CompleteReset from './CompleteReset.vue'
 
 export default [
   {
@@ -25,7 +25,7 @@ export default [
     path: '/password/saved',
     component: Saved,
     meta: {
-      public: true
+      public: true,
     },
   },
   {
@@ -52,14 +52,14 @@ export default [
     path: '/password/recovery/:id/verify/:code',
     component: VerifyRecoveryMethod,
     meta: {
-      public: true
+      public: true,
     },
   },
   {
     path: '/password/forgot',
     component: Forgot,
     meta: {
-      public: true
+      public: true,
     },
   },
   {
@@ -70,14 +70,14 @@ export default [
     path: '/password/forgot/:id',
     component: ForgotEmailSent,
     meta: {
-      public: true
+      public: true,
     },
   },
   {
     path: '/password/reset/:id/verify/:code',
     component: VerifyReset,
     meta: {
-      public: true
+      public: true,
     },
   },
   {
@@ -88,7 +88,7 @@ export default [
     path: '/password/reset/complete',
     component: CompleteReset,
     meta: {
-      public: true
+      public: true,
     },
   },
 ]

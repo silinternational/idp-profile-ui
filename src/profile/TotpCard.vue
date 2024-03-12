@@ -6,27 +6,38 @@
           <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-cellphone</v-icon>
         </v-col>
         <v-col class="ml-4">
-          <MfaCardLabel :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')" 
-                        :id="meta.id" @new-label="label = $event"/>
+          <MfaCardLabel
+            :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')"
+            :id="meta.id"
+            @new-label="label = $event"
+          />
         </v-col>
       </v-row>
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.created')" :value="meta.created_utc | format"/>
+      <Attribute
+        v-if="meta.created_utc"
+        :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.created')"
+        :value="meta.created_utc | format"
+      />
       <v-row v-else>
         <v-col cols="auto">
-         <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
+          <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
         </v-col>
         <v-col>
           <em>{{ $vuetify.lang.t('$vuetify.profile.index.totpCard.warning') }}</em>
         </v-col>
       </v-row>
-      <Attribute v-if="meta.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.lastUsed')" :value="meta.last_used_utc | format"/>
+      <Attribute
+        v-if="meta.last_used_utc"
+        :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.lastUsed')"
+        :value="meta.last_used_utc | format"
+      />
     </v-card-text>
 
     <v-card-actions>
-      <v-spacer/>
+      <v-spacer />
 
       <v-btn v-if="meta.created_utc" :href="`#/2sv/change/${meta.id}`" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.totpCard.button.change') }}
@@ -34,24 +45,24 @@
       <v-btn v-else href="#/2sv/smartphone/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="meta.created_utc" :mfaId="meta.id"/>
+      <MfaCardRemove v-if="meta.created_utc" :mfaId="meta.id" />
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
-import Attribute from './Attribute'
-import MfaCardLabel from './MfaCardLabel'
-import MfaCardRemove from './MfaCardRemove'
+import Attribute from './Attribute.vue'
+import MfaCardLabel from './MfaCardLabel.vue'
+import MfaCardRemove from './MfaCardRemove.vue'
 
 export default {
   components: {
     Attribute,
     MfaCardLabel,
-    MfaCardRemove
+    MfaCardRemove,
   },
   props: ['meta'],
-  data: vm => ({
+  data: (vm) => ({
     label: '',
   }),
 }
