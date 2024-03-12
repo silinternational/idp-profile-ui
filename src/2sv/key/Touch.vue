@@ -33,15 +33,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        v-if="isSupported && error"
-        @click="
-          error = false
-          create()
-        "
-        color="error"
-        outlined
-      >
+      <v-btn v-if="isSupported && error" @click=";(error = false), create()" color="error" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.key.touch.button.retry') }}
       </v-btn>
 

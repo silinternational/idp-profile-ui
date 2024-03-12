@@ -1,23 +1,27 @@
 import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
 import locales from '@/locales'
-import 'vuetify/dist/vuetify.min.css'
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 
-Vue.use(Vuetify)
+Vue.use(createVuetify)
 
-const configuredVuetify = new Vuetify({
+const configuredVuetify = new createVuetify({
   lang: {
     locales,
-    current: determineCurrentLanguage()
+    current: determineCurrentLanguage(),
   },
   theme: {
     themes: {
       light: {
         primary: `${import.meta.env.VUE_APP_PRIMARY_COLOR}`,
         secondary: `${import.meta.env.VUE_APP_SECONDARY_COLOR}`,
-      }
-    }
+      },
+    },
   },
+  components,
+  directives,
 })
 
 function determineCurrentLanguage() {
