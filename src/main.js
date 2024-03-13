@@ -1,10 +1,11 @@
-import Vue from 'vue'
 import { configuredRouter, configuredVuetify } from './plugins'
 import App from './App.vue'
 import '@/global/components'
 import '@/global/filters'
 
-new Vue({
+import { createApp } from 'vue'
+
+const app = createApp({
   data: {
     idpConfig: {},
   },
