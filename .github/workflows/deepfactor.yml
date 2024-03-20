@@ -13,4 +13,4 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Scan with Deepfactor
-      run: dfctl scan -s fs -a ${{ github.event.repository.name }} -c ${{ github.event.repository.name }} -V ${{ github.ref_name }} .
+      run: dfctl scan --source fs --app ${{ github.event.repository.name }} --config ${{ github.event.repository.name }} --version ${{ github.ref_name }} .
