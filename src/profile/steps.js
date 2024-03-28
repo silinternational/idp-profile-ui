@@ -9,16 +9,16 @@ const store = {
 export default {
   steps: store.steps,
   async init() {
-    if (store.steps.length == 0) {
-      if (Vue.prototype.$user.auth_type == 'login') {
-        await Promise.all([retrieveMethods(), retrieveMfa()])
-      }
-      
-      store.steps.push(...allSteps.filter(step => step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa)))
+    store.steps.splice(0)
 
-      for (let i = 0; i < store.steps.length; i++) {
-        Object.assign(store.steps[i], { id: i + 1, state: '' })
-      }
+    if (Vue.prototype.$user.auth_type == 'login') {
+      await Promise.all([retrieveMethods(), retrieveMfa()])
+    }
+
+    store.steps.push(...allSteps.filter(step => step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa)))
+
+    for (let i = 0; i < store.steps.length; i++) {
+      Object.assign(store.steps[i], { id: i + 1, state: '' })
     }
   },
   forPath(path) {
