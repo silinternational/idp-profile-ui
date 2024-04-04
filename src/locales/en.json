@@ -88,7 +88,7 @@
         "resend": "resend"
       },
       "totpCard": {
-        "title": "Authenticator",
+        "title": "Authenticator app",
         "created": "Created:",
         "lastUsed": "Last used:",
         "button": {
