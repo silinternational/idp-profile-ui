@@ -8,7 +8,7 @@ import Vue from 'vue'
 
 const environment = process.env.NODE_ENV || 'development'
 const dsn = process.env.VUE_APP_SENTRY_DSN
-const release = process.env.VERSION
+const release = process.env.VUE_APP_VERSION
 
 console.debug('Environment:', environment, 'Release:', release, 'DSN:', dsn)
 Sentry.init({
