@@ -6,10 +6,11 @@ import { configuredRouter, configuredVuetify } from './plugins'
 import * as Sentry from '@sentry/vue'
 import Vue from 'vue'
 
-const environment = process.env.VUE_ENVIRONMENT
+const environment = process.env.NODE_ENV || 'development'
 const dsn = process.env.VUE_APP_SENTRY_DSN
+const release = process.env.VERSION
 
-console.debug('Environment:', environment, 'DSN:', dsn)
+console.debug('Environment:', environment, 'Release:', release, 'DSN:', dsn)
 Sentry.init({
   Vue,
   dsn: 'https://examplePublicKey@o0.ingest.sentry.io/0',
