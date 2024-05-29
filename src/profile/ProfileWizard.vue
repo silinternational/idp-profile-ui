@@ -2,11 +2,13 @@
   <v-stepper v-if="currentStep.id" v-model="currentStep.id">
     <v-stepper-header>
       <template v-for="_step in relevantSteps">
-        <v-stepper-step :step="_step.id"
-                        :complete="_step.state != ''"
-                        :complete-icon="toIcon(_step.state)"
-                        :color="toColor(_step.state)"
-                        :key="`step-${_step.id}`">
+        <v-stepper-step
+          :step="_step.id"
+          :complete="_step.state != ''"
+          :complete-icon="toIcon(_step.state)"
+          :color="toColor(_step.state)"
+          :key="`step-${_step.id}`"
+        >
           {{ $vuetify.lang.t(`$vuetify.${_step.nameKey}`) }}
         </v-stepper-step>
 
@@ -41,33 +43,33 @@ export default {
   },
   computed: {
     relevantSteps() {
-      return this.steps.filter(step => step.relevant)
-    }
+      return this.steps.filter((step) => step.relevant || step.state === 'complete')
+    },
   },
   methods: {
-    hasMoreSteps: step => !Steps.isLast(step),
-    toColor: state => {
+    hasMoreSteps: (step) => !Steps.isLast(step),
+    toColor: (state) => {
       const map = {
         complete: 'success',
-        skipped: 'warning'
+        skipped: 'warning',
       }
 
       return map[state] || 'primary'
     },
-    toIcon: state => {
+    toIcon: (state) => {
       const map = {
-        skipped: '$vuetify.icons.warning'
+        skipped: '$vuetify.icons.warning',
       }
 
       return map[state] || '$vuetify.icons.complete'
     },
-    completed: function() {
+    completed: function () {
       this.currentStep.state = 'complete'
     },
-    next: function() {
+    next: function () {
       this.$router.push(Steps.next(this.currentStep).paths[0]) // this assumes the first path in step's config is the right one.
     },
-    skipped: function() {
+    skipped: function () {
       this.currentStep.state = 'skipped'
     },
     allDone() {
