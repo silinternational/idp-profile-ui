@@ -2,7 +2,7 @@ import App from './App.vue'
 import '@babel/polyfill'
 import '@/global/components'
 import '@/global/filters'
-import { configuredRouter, configuredVuetify } from './plugins'
+import { configuredRouter as router, configuredVuetify } from './plugins'
 import * as Sentry from '@sentry/vue'
 import Vue from 'vue'
 
@@ -13,8 +13,8 @@ const release = process.env.VUE_APP_VERSION
 console.debug('Environment:', environment, 'Release:', release, 'DSN:', dsn)
 Sentry.init({
   Vue,
-  dsn: 'https://examplePublicKey@o0.ingest.sentry.io/0',
-  integrations: [Sentry.browserTracingIntegration({ configuredVuetify }), Sentry.replayIntegration()],
+  dsn,
+  integrations: [Sentry.browserTracingIntegration({ router }), Sentry.replayIntegration()],
   environment,
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
@@ -38,6 +38,6 @@ new Vue({
     this.idpConfig = await this.$API.get('config')
   },
   vuetify: configuredVuetify,
-  router: configuredRouter,
+  router,
   render: (h) => h(App),
 }).$mount('#app')
