@@ -9,20 +9,20 @@ const store = {
 export default {
   steps: store.steps,
   async init() {
-    store.steps.splice(0)
-
     if (Vue.prototype.$user.auth_type === 'login') {
       await Promise.all([retrieveMethods(), retrieveMfa()])
     }
 
     // Retain all steps but mark relevant ones
     allSteps.forEach((step, index) => {
-      store.steps.push({
-        ...step,
-        id: index + 1,
-        state: '',
-        relevant: step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa),
-      })
+      if (!store.steps.some((s) => s.nameKey === step.nameKey)) {
+        store.steps.push({
+          ...step,
+          id: index + 1,
+          state: '',
+          relevant: step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa),
+        })
+      }
     })
   },
   forPath(path) {
