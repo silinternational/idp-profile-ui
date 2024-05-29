@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import { recoveryMethods, retrieve as retrieveMethods} from '@/global/recoveryMethods';
-import { mfa, retrieve as retrieveMfa } from '@/global/mfa';
+import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
+import { mfa, retrieve as retrieveMfa } from '@/global/mfa'
 
 const store = {
-  steps: []
+  steps: [],
 }
 
 export default {
@@ -11,18 +11,22 @@ export default {
   async init() {
     store.steps.splice(0)
 
-    if (Vue.prototype.$user.auth_type == 'login') {
+    if (Vue.prototype.$user.auth_type === 'login') {
       await Promise.all([retrieveMethods(), retrieveMfa()])
     }
 
-    store.steps.push(...allSteps.filter(step => step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa)))
-
-    for (let i = 0; i < store.steps.length; i++) {
-      Object.assign(store.steps[i], { id: i + 1, state: '' })
-    }
+    // Retain all steps but mark relevant ones
+    allSteps.forEach((step, index) => {
+      store.steps.push({
+        ...step,
+        id: index + 1,
+        state: '',
+        relevant: step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa),
+      })
+    })
   },
   forPath(path) {
-    return this.steps.find(step => step.paths.includes(path))
+    return this.steps.find((step) => step.paths.includes(path))
   },
   isLast(step) {
     return this.steps[this.steps.length - 1].id === step.id
@@ -36,15 +40,11 @@ export default {
   },
 }
 
-const isRequested = paths => paths.some(path => location.hash.includes(path))
+const isRequested = (paths) => paths.some((path) => location.hash.includes(path))
 
 const password = {
   nameKey: 'profile.steps.pwStep',
-  paths: [
-    '/password/create', 
-    '/password/confirm', 
-    '/password/saved',
-  ],
+  paths: ['/password/create', '/password/confirm', '/password/saved'],
   isRelevant(user) {
     return isRequested(this.paths) || user.isNew()
   },
@@ -52,14 +52,12 @@ const password = {
 
 const recovery = {
   nameKey: 'profile.steps.pwRecoverStep',
-  paths: [
-    '/password/recovery',
-  ],
+  paths: ['/password/recovery'],
   isRelevant(user, recoveryMethods) {
-    return user.auth_type == 'login' && (isRequested(this.paths) || recoveryMethods.filter(isAlternate).length < 1)
+    return user.auth_type === 'login' && (isRequested(this.paths) || recoveryMethods.filter(isAlternate).length < 1)
   },
 }
-const isAlternate = method => method.type == 'email'
+const isAlternate = (method) => method.type === 'email'
 
 const twosv = {
   nameKey: 'profile.steps.2svStep',
@@ -78,16 +76,13 @@ const twosv = {
     '/2sv/printable-backup-codes/new',
   ],
   isRelevant(user, recoveryMethods, mfa) {
-    return user.auth_type == 'login' && (isRequested(this.paths) || mfa.numVerified < 3)
+    return user.auth_type === 'login' && (isRequested(this.paths) || mfa.numVerified < 3)
   },
 }
 
 const complete = {
   nameKey: 'profile.steps.completeStep',
-  paths: [
-    '/profile/complete', 
-    '/password/reset/complete',
-  ],
+  paths: ['/profile/complete', '/password/reset/complete'],
   isRelevant() {
     return true
   },

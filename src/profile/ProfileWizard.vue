@@ -1,11 +1,11 @@
 <template>
   <v-stepper v-if="currentStep.id" v-model="currentStep.id">
     <v-stepper-header>
-      <template v-for="_step in steps">
-        <v-stepper-step :step="_step.id" 
+      <template v-for="_step in relevantSteps">
+        <v-stepper-step :step="_step.id"
                         :complete="_step.state != ''"
-                        :complete-icon="toIcon(_step.state)" 
-                        :color="toColor(_step.state)" 
+                        :complete-icon="toIcon(_step.state)"
+                        :color="toColor(_step.state)"
                         :key="`step-${_step.id}`">
           {{ $vuetify.lang.t(`$vuetify.${_step.nameKey}`) }}
         </v-stepper-step>
@@ -18,7 +18,7 @@
       <v-stepper-content :step="currentStep.id" class="px-2 px-sm-6">
         <slot />
 
-        <ButtonBar >
+        <ButtonBar>
           <slot name="actions" />
         </ButtonBar>
       </v-stepper-content>
@@ -39,6 +39,11 @@ export default {
 
     this.currentStep = Steps.forPath(this.$route.path)
   },
+  computed: {
+    relevantSteps() {
+      return this.steps.filter(step => step.relevant)
+    }
+  },
   methods: {
     hasMoreSteps: step => !Steps.isLast(step),
     toColor: state => {
@@ -56,7 +61,7 @@ export default {
 
       return map[state] || '$vuetify.icons.complete'
     },
-    completed: function() { 
+    completed: function() {
       this.currentStep.state = 'complete'
     },
     next: function() {
