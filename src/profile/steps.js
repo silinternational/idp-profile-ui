@@ -15,12 +15,14 @@ export default {
 
     // Retain all steps but mark relevant ones
     allSteps.forEach((step, index) => {
-      if (!store.steps.some((s) => s.nameKey === step.nameKey)) {
+      const isRelevant = step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa)
+      const isComplete = step.state !== ''
+      const isNotDuplicate = !store.steps.some((s) => s.nameKey === step.nameKey)
+      if (isNotDuplicate && (isRelevant || isComplete)) {
         store.steps.push({
           ...step,
           id: index + 1,
           state: '',
-          relevant: step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa),
         })
       }
     })

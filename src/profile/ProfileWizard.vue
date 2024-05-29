@@ -1,7 +1,7 @@
 <template>
   <v-stepper v-if="currentStep.id" v-model="currentStep.id">
     <v-stepper-header>
-      <template v-for="_step in relevantSteps">
+      <template v-for="_step in steps">
         <v-stepper-step
           :step="_step.id"
           :complete="_step.state != ''"
@@ -40,11 +40,6 @@ export default {
     await Steps.init()
 
     this.currentStep = Steps.forPath(this.$route.path)
-  },
-  computed: {
-    relevantSteps() {
-      return this.steps.filter((step) => step.relevant || step.state === 'complete')
-    },
   },
   methods: {
     hasMoreSteps: (step) => !Steps.isLast(step),
