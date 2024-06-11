@@ -126,7 +126,7 @@
     "progress": {
       "header": "Profile strength",
       "addMethod": "Add a recovery method",
-      "addTotp": "Add a authenticator app (2SV)",
+      "addTotp": "Add an authenticator app (2SV)",
       "addSecurityKey": "Add a security key (2SV)",
       "addCodes": "Add some backup codes (2SV)"
     }
