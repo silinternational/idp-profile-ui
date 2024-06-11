@@ -18,6 +18,7 @@ services:
 
   api:
     image: silintl/idp-pw-api:develop
+    platform: linux/amd64
     ports:
       - '8080:80'
     depends_on:
@@ -88,12 +89,14 @@ services:
 
   zxcvbn:
     image: wcjr/zxcvbn-api
+    platform: linux/amd64
     ports:
       - '3000'
   
   proxy:
     # https://github.com/silinternational/traefik-https-proxy
     image: silintl/traefik-https-proxy
+    platform: linux/amd64
     ports:
       - '80:80'
       - '443:443'
@@ -118,6 +121,7 @@ services:
 
   broker:
     image: silintl/idp-id-broker:develop
+    platform: linux/amd64
     volumes:
       - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
     ports:
@@ -177,6 +181,7 @@ services:
 
   idp:
     image: silintl/ssp-base:develop
+    platform: linux/amd64
     volumes:
       - ./development/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
       - ./development/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -247,6 +252,7 @@ services:
 
   dynamo:
     image: amazon/dynamodb-local
+    platform: linux/amd64
     ports:
       - "8010:8000"
     environment:
