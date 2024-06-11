@@ -45,7 +45,7 @@ services:
       SUPPORT_URL: 'https://www.example.org/support'
       SUPPORT_FEEDBACK: 'https://www.example.org/support-feedback'
       UI_URL: 'https://profile.gtis.guru/#'
-      LOGO_URL: 'https://www.sil.org'
+      LOGO_URL: 'https://www.example.org/logo.png'
       UI_CORS_ORIGIN: 'https://profile.gtis.guru'
       ACCESS_TOKEN_HASH_KEY: 'KEY4TESTING'
       ZXCVBN_API_BASEURL: 'http://zxcvbn:3000'
