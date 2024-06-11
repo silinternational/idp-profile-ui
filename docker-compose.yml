@@ -77,7 +77,7 @@ services:
       MYSQL_PASSWORD: 'pass'
 
   profilePhpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin:5
     ports:
       - '8081:80'
     depends_on:
@@ -169,7 +169,7 @@ services:
       MYSQL_PASSWORD: 'pass'
 
   brokerPhpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin:5
     ports:
       - '8091:80'
     depends_on:
