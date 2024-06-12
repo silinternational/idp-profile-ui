@@ -63,7 +63,9 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import zxcvbn from 'zxcvbn'
+import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core'
+import * as zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
+import * as zxcvbnEnPackage from '@zxcvbn-ts/language-en'
 
 export default {
   components: {
@@ -136,6 +138,17 @@ const required = (v, vm) => !!v || vm.$vuetify.lang.t('$vuetify.password.create.
 const minLength = (v, vm) => v.length >= vm.$root.idpConfig.passwordRules.minLength || vm.$vuetify.lang.t('$vuetify.password.create.tooShort', vm.$root.idpConfig.passwordRules.minLength)
 const maxLength = (v, vm) => v.length < vm.$root.idpConfig.passwordRules.maxLength || vm.$vuetify.lang.t('$vuetify.password.create.tooLong', vm.$root.idpConfig.passwordRules.maxLength)
 const strong = (v, vm) => vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore || vm.$vuetify.lang.t('$vuetify.password.create.tooWeak')
+const options = {
+  useLevenshteinDistance: true,
+  graphs: zxcvbnCommonPackage.adjacencyGraphs,
+  dictionary: {
+    ...zxcvbnCommonPackage.dictionary,
+    ...zxcvbnEnPackage.dictionary,
+  },
+  translations: zxcvbnEnPackage.translations,
+}
+
+zxcvbnOptions.setOptions(options)
 </script>
 
 <style>
