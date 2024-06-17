@@ -12,7 +12,8 @@
     "serve": "vue-cli-service serve",
     "serve:prod": "vue-cli-service serve --mode production",
     "build": "vue-cli-service build --modern",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "format": "prettier --write \"src/**/*.{js,vue}\""
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
