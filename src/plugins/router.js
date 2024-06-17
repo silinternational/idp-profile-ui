@@ -14,14 +14,14 @@ const configuredRouter = new Router({
     ...twoStepRoutes,
     {
       path: '/help', // old pw-ui urls might still be bookmarked.
-      redirect: () => window.location = 'https://sites.google.com/sil.org/idphelp',
+      redirect: () => (window.location = 'https://sites.google.com/sil.org/idphelp'),
     },
     {
       path: '*',
       component: PageNotFound,
       meta: {
-        public: true
-      },  
+        public: true,
+      },
     },
   ],
 })

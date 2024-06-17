@@ -9,7 +9,7 @@
         <v-col cols="1" class="text-right">
           <v-icon color="success">mdi-check</v-icon>
         </v-col>
-        
+
         <v-col cols="11">
           {{ $vuetify.lang.t('$vuetify.profile.complete.info', $user.first_name, $root.idpConfig.idpName) }}
         </v-col>
@@ -17,17 +17,18 @@
 
       <v-row>
         <v-col cols="1" class="text-right">
-          <v-icon color="success">mdi-account</v-icon> 
+          <v-icon color="success">mdi-account</v-icon>
         </v-col>
 
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.username') }} <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
+          {{ $vuetify.lang.t('$vuetify.profile.complete.username') }}
+          <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
         </v-col>
       </v-row>
 
       <v-row v-if="unverifiedEmails.length">
         <v-col cols="1" class="text-right">
-          <v-icon color="warning">mdi-email</v-icon> 
+          <v-icon color="warning">mdi-email</v-icon>
         </v-col>
 
         <v-col cols="11">
@@ -36,9 +37,9 @@
         </v-col>
       </v-row>
 
-      <v-row v-if="! alternates.length">
+      <v-row v-if="!alternates.length">
         <v-col cols="1" class="text-right">
-          <v-icon color="warning">mdi-alert</v-icon> 
+          <v-icon color="warning">mdi-alert</v-icon>
         </v-col>
         <v-col cols="11">
           {{ $vuetify.lang.t('$vuetify.profile.complete.noAlternates') }}
@@ -47,7 +48,7 @@
 
       <v-row v-if="mfa.numVerified == 0">
         <v-col cols="1" class="text-right">
-          <v-icon color="warning">mdi-alert</v-icon> 
+          <v-icon color="warning">mdi-alert</v-icon>
         </v-col>
         <v-col cols="11">
           {{ $vuetify.lang.t('$vuetify.profile.complete.no2sv') }}
@@ -57,7 +58,7 @@
 
     <ButtonBar>
       <v-spacer></v-spacer>
-      
+
       <v-btn @click.once="done" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.complete.button.profile') }}
       </v-btn>
@@ -67,28 +68,27 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import recoveryMethods from '@/global/recoveryMethods';
-import { mfa, retrieve as retrieveMfas } from '@/global/mfa';
-
+import recoveryMethods from '@/global/recoveryMethods'
+import { mfa, retrieve as retrieveMfas } from '@/global/mfa'
 
 export default {
   components: {
-    ProfileWizard
+    ProfileWizard,
   },
   filters: {
-    joined: emails => emails.map(email => email.value).join(', ')
+    joined: (emails) => emails.map((email) => email.value).join(', '),
   },
   data: () => ({
     alternates: recoveryMethods.alternates,
     mfa,
   }),
   computed: {
-    unverifiedEmails: vm => vm.alternates.filter(m => ! m.verified),
+    unverifiedEmails: (vm) => vm.alternates.filter((m) => !m.verified),
   },
   methods: {
     done() {
       this.$refs.wizard.allDone()
-      
+
       this.$router.push('/profile')
     },
   },

@@ -11,8 +11,15 @@
         </v-col>
       </v-row>
       <v-row justify="center">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/N1CNo4AZLRQ?rel=0" 
-                frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen class="pa-4" />
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/N1CNo4AZLRQ?rel=0"
+          frameborder="0"
+          allow="autoplay; encrypted-media;"
+          allowfullscreen
+          class="pa-4"
+        />
       </v-row>
 
       <v-row justify="center" align="center">
@@ -26,11 +33,11 @@
     </BasePage>
 
     <ButtonBar>
-        <v-spacer></v-spacer>
-        
-        <v-btn to="/2sv/smartphone/intro" color="primary" outlined> 
-          {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
-        </v-btn>
+      <v-spacer></v-spacer>
+
+      <v-btn to="/2sv/smartphone/intro" color="primary" outlined>
+        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
+      </v-btn>
     </ButtonBar>
   </ProfileWizard>
 </template>
@@ -40,7 +47,7 @@ import ProfileWizard from '@/profile/ProfileWizard'
 
 export default {
   components: {
-    ProfileWizard
-  }
+    ProfileWizard,
+  },
 }
 </script>

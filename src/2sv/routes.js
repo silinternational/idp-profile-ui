@@ -36,28 +36,28 @@ export default [
     component: SmartphoneIntro,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
-    }
+    },
   },
   {
     path: '/2sv/smartphone/download-app',
     component: DownloadApp,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
-    }
+    },
   },
   {
     path: '/2sv/smartphone/scan-qr',
     component: ScanQr,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
-    }
+    },
   },
   {
     path: '/2sv/smartphone/verify-qr-code',
     component: VerifyQrCode,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
-    }
+    },
   },
   {
     path: '/2sv/smartphone/code-verified',
@@ -84,7 +84,7 @@ export default [
     component: CodesIntro,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.backup.id, '/profile/complete', next)
-    }
+    },
   },
   {
     path: '/2sv/printable-backup-codes/new',
@@ -100,4 +100,4 @@ export default [
   },
 ]
 
-const skipWhen = (exists, to, next) => exists ? next(to) : next()
+const skipWhen = (exists, to, next) => (exists ? next(to) : next())

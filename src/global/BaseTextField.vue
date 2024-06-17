@@ -1,10 +1,5 @@
 <template>
-  <v-text-field 
-    ref="tf" 
-    :value="value" 
-    v-bind="$attrs" 
-    outlined
-    v-on="$listeners" />
+  <v-text-field ref="tf" :value="value" v-bind="$attrs" outlined v-on="$listeners" />
 </template>
 
 <script>
@@ -19,7 +14,6 @@ export default {
     if (this.$refs.tf.autofocus) {
       this.$nextTick(this.$refs.tf.focus)
     }
-  }
+  },
 }
 </script>
-

@@ -5,7 +5,4 @@ import './user'
 import './returnTo'
 import './analytics'
 
-export {
-   configuredRouter,
-   configuredVuetify
-}
+export { configuredRouter, configuredVuetify }
