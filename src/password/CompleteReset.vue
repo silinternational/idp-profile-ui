@@ -10,7 +10,7 @@
 
     <ButtonBar>
       <v-spacer></v-spacer>
-      
+
       <v-btn to="/profile" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.password.reset.complete.button.next') }}
       </v-btn>
@@ -29,9 +29,8 @@ export default {
   async created() {
     await this.$nextTick() // best option I could figure out to ensure this.$refs.wizard was available
     this.$refs.wizard.completed()
-    
+
     token.reset()
   },
 }
 </script>
-

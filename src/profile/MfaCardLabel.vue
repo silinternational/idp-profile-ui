@@ -1,7 +1,7 @@
 <template>
   <v-row v-if="editing" no-gutters align="center">
     <v-col cols="9">
-      <v-text-field v-model="newLabel" @keyup.enter="save" autofocus @focus="$event.target.select()"/>
+      <v-text-field v-model="newLabel" @keyup.enter="save" autofocus @focus="$event.target.select()" />
     </v-col>
 
     <v-col>
@@ -11,7 +11,7 @@
     <v-col>
       <v-icon @click="cancel" color="error" small class="pl-1">mdi-close</v-icon>
     </v-col>
-  </v-row >
+  </v-row>
 
   <v-row v-else no-gutters align="center">
     <v-col>
@@ -19,13 +19,11 @@
         {{ label }}
       </h3>
     </v-col>
-    
+
     <v-col cols="auto">
       <v-tooltip v-if="keyId && !readOnly" right>
         <template v-slot:activator="{ on }">
-          <v-icon v-on="on" @click="edit" color="info" small>
-            mdi-pencil
-          </v-icon>
+          <v-icon v-on="on" @click="edit" color="info" small> mdi-pencil </v-icon>
         </template>
 
         {{ $vuetify.lang.t('$vuetify.profile.index.rename') }}
@@ -41,7 +39,7 @@ export default {
   props: {
     label: {
       type: String,
-    }, 
+    },
     keyId: {
       type: Number,
     },
@@ -55,7 +53,7 @@ export default {
   },
   data: () => ({
     editing: false,
-    newLabel: ''
+    newLabel: '',
   }),
   methods: {
     edit() {
@@ -67,7 +65,7 @@ export default {
     },
     async save() {
       const mfa = await changeWebauthn(this.mfaId, this.keyId, {
-        label: this.newLabel
+        label: this.newLabel,
       })
       this.$emit('new-label', mfa.label)
       this.editing = false

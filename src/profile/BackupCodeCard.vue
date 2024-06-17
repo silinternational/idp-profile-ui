@@ -12,9 +12,22 @@
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.created')" :value="meta.created_utc | format" />
-      <Attribute v-if="meta.last_used_utc" :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.lastUsed')" :value="meta.last_used_utc | format"/>
-      <Attribute v-if="meta.created_utc" :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.remaining')" :value="meta.data.count" sameline />
+      <Attribute
+        v-if="meta.created_utc"
+        :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.created')"
+        :value="meta.created_utc | format"
+      />
+      <Attribute
+        v-if="meta.last_used_utc"
+        :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.lastUsed')"
+        :value="meta.last_used_utc | format"
+      />
+      <Attribute
+        v-if="meta.created_utc"
+        :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.remaining')"
+        :value="meta.data.count"
+        sameline
+      />
       <v-row v-else>
         <v-col cols="auto">
           <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
@@ -26,7 +39,7 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-spacer/>
+      <v-spacer />
 
       <v-btn v-if="meta.created_utc" href="#/2sv/printable-backup-codes/new" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.codeCard.button.replace') }}
@@ -34,7 +47,7 @@
       <v-btn v-else href="#/2sv/printable-backup-codes/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.profile.index.codeCard.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="meta.created_utc" :mfaId="meta.id"/>
+      <MfaCardRemove v-if="meta.created_utc" :mfaId="meta.id" />
     </v-card-actions>
   </v-card>
 </template>
@@ -48,12 +61,11 @@ export default {
   components: {
     Attribute,
     MfaCardLabel,
-    MfaCardRemove
+    MfaCardRemove,
   },
   props: ['meta'],
-  data: vm => ({
-    label:
-      vm.meta.label || vm.$vuetify.lang.t('$vuetify.profile.index.codeCard.title')
-  })
+  data: (vm) => ({
+    label: vm.meta.label || vm.$vuetify.lang.t('$vuetify.profile.index.codeCard.title'),
+  }),
 }
 </script>

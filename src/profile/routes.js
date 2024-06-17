@@ -6,7 +6,7 @@ import InviteExpired from './InviteExpired'
 export default [
   {
     path: '/profile/intro',
-    component: Intro
+    component: Intro,
   },
   {
     path: '/welcome', // old pw-ui urls might still be bookmarked.
@@ -14,18 +14,18 @@ export default [
   },
   {
     path: '/profile/complete',
-    component: Complete
+    component: Complete,
   },
   {
     path: '/profile',
     alias: '/',
-    component: Index
+    component: Index,
   },
   {
     path: '/profile/invite/expired',
     component: InviteExpired,
     meta: {
-      public: true
+      public: true,
     },
   },
 ]

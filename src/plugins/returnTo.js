@@ -4,10 +4,9 @@ import Vue from 'vue'
 // check this out for further info:  https://developers.google.com/web/updates/2016/01/urlsearchparams
 // polyfill if needed (https://github.com/jerrybendy/url-search-params-polyfill) or the WebReflection one...
 const returnTo = {
-  url: new URLSearchParams(location.search).get('returnTo')
+  url: new URLSearchParams(location.search).get('returnTo'),
 }
 
-Vue.use(theVue => {
+Vue.use((theVue) => {
   theVue.prototype.$returnTo = returnTo
 })
-

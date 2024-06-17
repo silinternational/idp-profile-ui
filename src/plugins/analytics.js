@@ -11,7 +11,7 @@ function init() {
 
   window.dataLayer = window.dataLayer || []
 
-  window.gtag = function (){
+  window.gtag = function () {
     dataLayer.push(arguments)
   }
 
@@ -22,9 +22,9 @@ function init() {
     send_page_view: false,
   })
 
-  configuredRouter.beforeEach( (to, from, next) => {
+  configuredRouter.beforeEach((to, from, next) => {
     trackPageView(to.path)
-  
+
     next()
   })
 }
@@ -42,7 +42,7 @@ function trackPageView(page) {
   if (page) {
     // https://developers.google.com/analytics/devguides/collection/gtagjs/pages#default_behavior
     gtag('event', 'page_view', {
-      page_path: page
+      page_path: page,
     })
   }
 }

@@ -9,7 +9,7 @@
 
     <ButtonBar>
       <v-spacer></v-spacer>
-      
+
       <v-btn v-if="verified" to="/profile" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.password.verifyRecovery.button.profile') }}
       </v-btn>
@@ -35,7 +35,7 @@ export default {
       await verify(this.$route.params.id, this.$route.params.code)
 
       this.verified = true
-    } catch(e) {
+    } catch (e) {
       if (e.status == 410) {
         this.expired = true
       } else {

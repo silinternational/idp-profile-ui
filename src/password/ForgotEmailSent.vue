@@ -4,7 +4,7 @@
 
     <p>{{ $vuetify.lang.t('$vuetify.password.forgotSent.emailComing') }}</p>
     <p class="pl-5 d-flex align-center font-mono">{{ primary.value }}</p>
-    
+
     <p v-if="alternates.length">{{ $vuetify.lang.t('$vuetify.password.forgotSent.alternates') }}</p>
     <p v-for="alternate in alternates" :key="alternate.id" class="pl-5 d-flex">
       <span class="font-mono">{{ alternate.value }}</span>
@@ -20,7 +20,7 @@
         <template v-slot:activator="{ on }">
           <v-icon @click="resend(alternate)" v-on="on" color="info" large class="pl-4">mdi-send</v-icon>
         </template>
-        
+
         {{ $vuetify.lang.t('$vuetify.password.forgotSent.instead') }}
       </v-tooltip>
     </p>
@@ -37,8 +37,8 @@ export default {
   async created() {
     const reset = await this.$API.get(`reset/${this.$route.params.id}`)
 
-    this.primary = reset.methods.find(m => m.type == 'primary')
-    this.alternates = reset.methods.filter(m => m.type != 'primary')
+    this.primary = reset.methods.find((m) => m.type == 'primary')
+    this.alternates = reset.methods.filter((m) => m.type != 'primary')
   },
   methods: {
     async resend(method) {
