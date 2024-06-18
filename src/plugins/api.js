@@ -9,12 +9,12 @@ const api = axios.create({
 })
 
 api.interceptors.request.use(
-  config => {
+  (config) => {
     config.headers.Authorization = token.authzHeader()
 
     return config
   },
-  error => {
+  (error) => {
     const e = (error.response && error.response.data) || error
 
     throw e
@@ -22,8 +22,8 @@ api.interceptors.request.use(
 )
 
 api.interceptors.response.use(
-  response => response.data,
-  error => {
+  (response) => response.data,
+  (error) => {
     const e = (error.response && error.response.data) || error
 
     if ([401, 403].includes(e.status)) {
@@ -34,6 +34,6 @@ api.interceptors.response.use(
   }
 )
 
-Vue.use(theVue => {
+Vue.use((theVue) => {
   theVue.prototype.$API = api
 })

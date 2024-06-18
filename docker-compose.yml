@@ -1,5 +1,3 @@
-version: '2.0'
-
 services:
   node:
     image: node:18-alpine
@@ -20,11 +18,11 @@ services:
 
   api:
     image: silintl/idp-pw-api:develop
+    platform: linux/amd64
     ports:
       - '8080:80'
     depends_on:
       - profileDb
-      - memcache
       - broker
       - zxcvbn
       - idp
@@ -47,7 +45,6 @@ services:
       SUPPORT_URL: 'https://www.example.org/support'
       SUPPORT_FEEDBACK: 'https://www.example.org/support-feedback'
       UI_URL: 'https://profile.gtis.guru/#'
-      LOGO_URL: 'https://www.sil.org'
       UI_CORS_ORIGIN: 'https://profile.gtis.guru'
       ACCESS_TOKEN_HASH_KEY: 'KEY4TESTING'
       ZXCVBN_API_BASEURL: 'http://zxcvbn:3000'
@@ -66,11 +63,10 @@ services:
       PASSWORD_RULE_minLength: '10'
       PASSWORD_RULE_maxLength: '255'
       PASSWORD_RULE_minScore: '3'
-      MEMCACHE_CONFIG1_host: 'memcache'
     command: [ 'bash', '-c', 'whenavail profileDb 3306 60 ./yii migrate --interactive=0 && ./run.sh' ]
 
   profileDb:
-    image: mariadb:latest
+    image: mariadb:10
     ports:
       - '3306'
     environment:
@@ -80,7 +76,7 @@ services:
       MYSQL_PASSWORD: 'pass'
 
   profilePhpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin:5
     ports:
       - '8081:80'
     depends_on:
@@ -90,19 +86,16 @@ services:
       PMA_USER: 'user'
       PMA_PASSWORD: 'pass'
 
-  memcache:
-    image: memcached:1.4-alpine
-    ports:
-      - "11211"  
-
   zxcvbn:
     image: wcjr/zxcvbn-api
+    platform: linux/amd64
     ports:
       - '3000'
   
   proxy:
     # https://github.com/silinternational/traefik-https-proxy
     image: silintl/traefik-https-proxy
+    platform: linux/amd64
     ports:
       - '80:80'
       - '443:443'
@@ -127,6 +120,7 @@ services:
 
   broker:
     image: silintl/idp-id-broker:develop
+    platform: linux/amd64
     volumes:
       - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
     ports:
@@ -164,7 +158,7 @@ services:
     command: [ 'bash', '-c', 'whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh' ]
 
   brokerDb:
-    image: mariadb:latest
+    image: mariadb:10
     ports:
       - '3306'
     environment:
@@ -174,7 +168,7 @@ services:
       MYSQL_PASSWORD: 'pass'
 
   brokerPhpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin:5
     ports:
       - '8091:80'
     depends_on:
@@ -186,6 +180,7 @@ services:
 
   idp:
     image: silintl/ssp-base:develop
+    platform: linux/amd64
     volumes:
       - ./development/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
       - ./development/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -225,7 +220,7 @@ services:
     command: [ 'bash', '-c', 'whenavail silAuthDb 3306 60 ./run-idp.sh' ]
 
   silAuthDb:
-    image: mariadb:latest
+    image: mariadb:10
     ports:
       - '3306'
     environment:
@@ -256,6 +251,7 @@ services:
 
   dynamo:
     image: amazon/dynamodb-local
+    platform: linux/amd64
     ports:
       - "8010:8000"
     environment:
