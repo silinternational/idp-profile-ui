@@ -123,7 +123,10 @@ export default {
           this.password = ''
 
           if (e.code === 1554734183) {
-            this.$ga.event('password', 'pwned')
+            window.gtag('event', 'pwned', {
+              event_category: 'password',
+              event_label: 'Password Compromise Detected',
+            })
           }
         }
       }
