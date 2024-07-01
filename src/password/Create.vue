@@ -165,7 +165,6 @@ const strong = (v, vm) =>
   vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore ||
   vm.$vuetify.lang.t('$vuetify.password.create.tooWeak')
 const options = {
-  useLevenshteinDistance: true,
   graphs: zxcvbnCommonPackage.adjacencyGraphs,
   dictionary: {
     ...zxcvbnCommonPackage.dictionary,
