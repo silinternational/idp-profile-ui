@@ -94,7 +94,13 @@ export default {
     wizardKey: 0, // This is used to refresh the form, instead of leaving it frozen after a re-used password
     password: vm.$root.$data.password || '',
     passwordIsHidden: true,
-    rules: [(v) => required(v, vm), (v) => minLength(v, vm), (v) => maxLength(v, vm), (v) => strong(v, vm)],
+    rules: [
+      (v) => required(v, vm),
+      (v) => minLength(v, vm),
+      (v) => maxLength(v, vm),
+      (v) => strong(v, vm),
+      (v) => requireAlphaAndNumeric(v, vm),
+    ],
     errors: [],
   }),
   computed: {
@@ -162,6 +168,10 @@ const maxLength = (v, vm) =>
 const strong = (v, vm) =>
   vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore ||
   vm.$vuetify.lang.t('$vuetify.password.create.tooWeak')
+const requireAlphaAndNumeric = (v, vm) =>
+  !vm.$root.idpConfig.passwordRules.requireAlphaAndNumeric ||
+  (/\p{L}/u.test(vm.password) && /\p{N}/u.test(vm.password)) ||
+  vm.$vuetify.lang.t('$vuetify.password.create.requireAlphaAndNumeric')
 </script>
 
 <style>
