@@ -9,7 +9,7 @@
 
     <ButtonBar>
       <v-spacer></v-spacer>
-      
+
       <v-btn v-if="verified" to="/password/create" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.password.reset.verify.button.create') }}
       </v-btn>
@@ -32,17 +32,17 @@ export default {
   }),
   async created() {
     try {
-      const { access_token } = await this.$API.put(`reset/${this.$route.params.id}/validate`, { 
-        'client_id': token.key(),
+      const { access_token } = await this.$API.put(`reset/${this.$route.params.id}/validate`, {
+        client_id: token.key(),
         code: this.$route.params.code,
       })
 
       token.setAccessToken(access_token)
 
       await this.$user.refresh()
-  
+
       this.verified = true
-    } catch(e) {
+    } catch (e) {
       if (e.status == 410) {
         this.expired = true
       } else {

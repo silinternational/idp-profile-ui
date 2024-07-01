@@ -9,13 +9,13 @@
     </p>
 
     <ButtonBar>
-      <v-btn to="/profile" color="warning" outlined> 
+      <v-btn to="/profile" color="warning" outlined>
         {{ $vuetify.lang.t('$vuetify.2sv.removed.button.later') }}
       </v-btn>
 
       <v-spacer></v-spacer>
-      
-      <v-btn to="/2sv/intro" color="primary" outlined> 
+
+      <v-btn to="/2sv/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.yes') }}
       </v-btn>
     </ButtonBar>
