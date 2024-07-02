@@ -140,6 +140,7 @@
       "tooShort": "Your new password must be at least {0} characters",
       "tooLong": "Your new password cannot be longer than {0} characters",
       "tooWeak": "Your new password must be stronger",
+      "requireAlphaAndNumeric": "Your new password must include both a letter and a number",
       "noGood": "Unfortunately, it looks like that one is not going to work",
       "goodPassword": "That is beginning to look like a great password, click continue to check it."
     },
