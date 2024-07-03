@@ -84,7 +84,9 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import zxcvbn from 'zxcvbn'
+import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core'
+import * as zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
+import * as zxcvbnEnPackage from '@zxcvbn-ts/language-en'
 
 export default {
   components: {
@@ -172,6 +174,16 @@ const requireAlphaAndNumeric = (v, vm) =>
   !vm.$root.idpConfig.passwordRules.requireAlphaAndNumeric ||
   (/\p{L}/u.test(vm.password) && /\p{N}/u.test(vm.password)) ||
   vm.$vuetify.lang.t('$vuetify.password.create.requireAlphaAndNumeric')
+const options = {
+  graphs: zxcvbnCommonPackage.adjacencyGraphs,
+  dictionary: {
+    ...zxcvbnCommonPackage.dictionary,
+    ...zxcvbnEnPackage.dictionary,
+  },
+  translations: zxcvbnEnPackage.translations,
+}
+
+zxcvbnOptions.setOptions(options)
 </script>
 
 <style>

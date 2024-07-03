@@ -1,6 +1,6 @@
 <?php
 
-use Sil\SilAuth\config\ConfigManager;
+use SimpleSAML\Module\silauth\Auth\Source\config\ConfigManager;
 
 $config = [
     'admin' => [
