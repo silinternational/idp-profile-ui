@@ -24,7 +24,7 @@ export default {
         this.loading--
 
         throw error
-      }
+      },
     )
   },
 }
