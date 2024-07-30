@@ -91,7 +91,7 @@ services:
     platform: linux/amd64
     ports:
       - '3000'
-  
+
   proxy:
     # https://github.com/silinternational/traefik-https-proxy
     image: silintl/traefik-https-proxy
@@ -217,6 +217,7 @@ services:
       PASSWORD_CHANGE_URL: 'https://profile.gtis.guru/#/password/create'
       PASSWORD_FORGOT_URL: 'https://profile.gtis.guru/#/password/forgot'
       PROFILE_URL: 'https://profile.gtis.guru/#'
+      TRUSTED_URL_DOMAINS: profile.gtis.guru
     command: [ 'bash', '-c', 'whenavail silAuthDb 3306 60 ./run-idp.sh' ]
 
   silAuthDb:
