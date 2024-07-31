@@ -140,6 +140,7 @@
       "tooShort": "Votre nouveau mot de passe doit comporter au moins {0} caractères",
       "tooLong": "Votre nouveau mot de passe ne doit pas dépasser {0} caractères",
       "tooWeak": "Votre nouveau mot de passe doit être plus robuste",
+      "requireAlphaAndNumeric": "Votre nouveau mot de passe doit inclure à la fois une lettre et un chiffre",
       "noGood": "Malheureusement, il semble que celui-là ne va pas marcher",
       "goodPassword": "Cela commence à ressembler à un bon mot de passe, cliquez sur Continuer pour le vérifier."
     },

@@ -84,7 +84,9 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import zxcvbn from 'zxcvbn'
+import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core'
+import * as zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
+import * as zxcvbnEnPackage from '@zxcvbn-ts/language-en'
 
 export default {
   components: {
@@ -94,7 +96,13 @@ export default {
     wizardKey: 0, // This is used to refresh the form, instead of leaving it frozen after a re-used password
     password: vm.$root.$data.password || '',
     passwordIsHidden: true,
-    rules: [(v) => required(v, vm), (v) => minLength(v, vm), (v) => maxLength(v, vm), (v) => strong(v, vm)],
+    rules: [
+      (v) => required(v, vm),
+      (v) => minLength(v, vm),
+      (v) => maxLength(v, vm),
+      (v) => strong(v, vm),
+      (v) => requireAlphaAndNumeric(v, vm),
+    ],
     errors: [],
   }),
   computed: {
@@ -123,7 +131,10 @@ export default {
           this.password = ''
 
           if (e.code === 1554734183) {
-            this.$ga.event('password', 'pwned')
+            window.gtag('event', 'pwned', {
+              event_category: 'password',
+              event_label: 'Password Compromise Detected',
+            })
           }
         }
       }
@@ -159,6 +170,20 @@ const maxLength = (v, vm) =>
 const strong = (v, vm) =>
   vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore ||
   vm.$vuetify.lang.t('$vuetify.password.create.tooWeak')
+const requireAlphaAndNumeric = (v, vm) =>
+  !vm.$root.idpConfig.passwordRules.requireAlphaAndNumeric ||
+  (/\p{L}/u.test(vm.password) && /\p{N}/u.test(vm.password)) ||
+  vm.$vuetify.lang.t('$vuetify.password.create.requireAlphaAndNumeric')
+const options = {
+  graphs: zxcvbnCommonPackage.adjacencyGraphs,
+  dictionary: {
+    ...zxcvbnCommonPackage.dictionary,
+    ...zxcvbnEnPackage.dictionary,
+  },
+  translations: zxcvbnEnPackage.translations,
+}
+
+zxcvbnOptions.setOptions(options)
 </script>
 
 <style>

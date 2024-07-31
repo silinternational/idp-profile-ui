@@ -140,6 +140,7 @@
       "tooShort": "Su nueva contraseña debe tener al menos {0} caracteres",
       "tooLong": "La contraseña no puede ser superior a {0} caracteres",
       "tooWeak": "Su nueva contraseña debe ser más fuerte",
+      "requireAlphaAndNumeric": "Su nueva contraseña debe incluir tanto una letra como un número",
       "noGood": "Desafortunadamente, parece que aquel no va a funcionar",
       "goodPassword": "Eso está empezando a parecer a una buena contraseña, haga clic en continuar para verificar."
     },

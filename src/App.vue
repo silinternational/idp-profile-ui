@@ -68,7 +68,7 @@ export default {
         this.message = error.message
 
         throw error
-      }
+      },
     )
   },
   created() {

@@ -18,7 +18,7 @@ api.interceptors.request.use(
     const e = (error.response && error.response.data) || error
 
     throw e
-  }
+  },
 )
 
 api.interceptors.response.use(
@@ -31,7 +31,7 @@ api.interceptors.response.use(
     }
 
     throw e
-  }
+  },
 )
 
 Vue.use((theVue) => {
