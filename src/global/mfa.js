@@ -34,19 +34,19 @@ export const retrieve = async () => {
 
   mfa.totp = Object.assign(
     {},
-    all.find((m) => m.type === 'totp')
+    all.find((m) => m.type === 'totp'),
   )
   mfa.u2f = Object.assign(
     {},
-    all.find((m) => m.type === 'u2f')
+    all.find((m) => m.type === 'u2f'),
   )
   mfa.keys = Object.assign(
     {},
-    all.find((m) => m.type === 'webauthn')
+    all.find((m) => m.type === 'webauthn'),
   )
   mfa.backup = Object.assign(
     {},
-    all.find((m) => m.type === 'backupcode')
+    all.find((m) => m.type === 'backupcode'),
   )
 
   mfa.numVerified = numOfVerifiedMfas(mfa) // currently, the api only returns verified mfas
