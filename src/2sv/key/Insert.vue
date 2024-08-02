@@ -53,7 +53,7 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import { browserSupportsWebauthn } from '@simplewebauthn/browser'
+import { browserSupportsWebAuthn } from '@simplewebauthn/browser'
 import { newKeyName, mfa } from '@/global/mfa'
 
 export default {
@@ -61,7 +61,7 @@ export default {
     ProfileWizard,
   },
   data: () => ({
-    isSupported: browserSupportsWebauthn(),
+    isSupported: browserSupportsWebAuthn(),
     showLabelInput: false,
     input: '',
     newKeyName,
