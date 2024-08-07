@@ -20,7 +20,6 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard'
-import token from '@/global/token'
 
 export default {
   components: {
@@ -29,8 +28,6 @@ export default {
   async created() {
     await this.$nextTick() // best option I could figure out to ensure this.$refs.wizard was available
     this.$refs.wizard.completed()
-
-    token.reset()
   },
 }
 </script>

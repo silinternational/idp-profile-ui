@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import token from '@/global/token'
-
 export default {
   data: () => ({
     verifying: true,
@@ -32,12 +30,9 @@ export default {
   }),
   async created() {
     try {
-      const { access_token } = await this.$API.put(`reset/${this.$route.params.id}/validate`, {
-        client_id: token.key(),
+       await this.$API.put(`reset/${this.$route.params.id}/validate`, {
         code: this.$route.params.code,
       })
-
-      token.setAccessToken(access_token)
 
       await this.$user.refresh()
 
