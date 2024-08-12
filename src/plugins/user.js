@@ -23,7 +23,7 @@ const user = {
     window.location = loginUrl
   },
   logout() {
-    const logoutUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/logout}`
+    const logoutUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/logout`
 
     window.location = logoutUrl
   },
