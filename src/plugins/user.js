@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import token from '@/global/token'
 
 const user = {
   refresh: async function () {
@@ -9,9 +8,7 @@ const user = {
     return !!this.idp_username
   },
   login(returnTo, inviteCode = '') {
-    token.reset()
-
-    let loginUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/login?client_id=${token.key()}`
+    let loginUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/login}`
 
     if (inviteCode) {
       loginUrl += `&invite=${inviteCode}&ReturnToOnError=/profile/invite/expired`
@@ -24,9 +21,7 @@ const user = {
     window.location = loginUrl
   },
   logout() {
-    const logoutUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/logout?access_token=${token.apiToken()}`
-
-    token.reset()
+    const logoutUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/logout}`
 
     window.location = logoutUrl
   },
