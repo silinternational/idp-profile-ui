@@ -8,7 +8,7 @@ const user = {
     return !!this.idp_username
   },
   login(returnTo, inviteCode = '') {
-    let loginUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/login}`
+    let loginUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/login`
 
     if (inviteCode) {
       loginUrl += loginUrl.includes('?')
