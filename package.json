@@ -22,7 +22,7 @@
     "@zxcvbn-ts/core": "^3.0.4",
     "@zxcvbn-ts/language-common": "^3.0.4",
     "@zxcvbn-ts/language-en": "^3.0.2",
-    "axios": "^1.6.0",
+    "axios": "^1.7.4",
     "date-fns": "^2.28.0",
     "sass-loader": "^10.1.1",
     "vue": "^2.7.14",
