@@ -32,11 +32,11 @@ export const verify = async (id, verification = '') => {
 export const retrieve = async () => {
   const all = await Vue.prototype.$API.get('mfa')
 
-  mfa.totp = Object.assign({}, all.find(m => m.type === 'totp'))
-  mfa.u2f = Object.assign({}, all.find(m => m.type === 'u2f'))
-  mfa.keys = Object.assign({}, all.find(m => m.type === 'webauthn'))
-  mfa.backup = Object.assign({}, all.find(m => m.type === 'backupcode'))
-  
+  mfa.totp = Object.assign({}, [...all]?.find(m => m.type === 'totp'))
+  mfa.u2f = Object.assign({}, [...all]?.find(m => m.type === 'u2f'))
+  mfa.keys = Object.assign({}, [...all]?.find(m => m.type === 'webauthn'))
+  mfa.backup = Object.assign({}, [...all]?.find(m => m.type === 'backupcode'))
+
   mfa.numVerified = numOfVerifiedMfas(mfa) // currently, the api only returns verified mfas
 }
 

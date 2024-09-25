@@ -10,7 +10,7 @@ export const add = async (email) => {
   const newMethod = await Vue.prototype.$API.post('method', {
     value: email
   })
-  
+
   recoveryMethods.alternates.push(newMethod)
 }
 
@@ -19,8 +19,8 @@ export const retrieve = async () => {
 
   const all = await Vue.prototype.$API.get('method')
 
-  recoveryMethods.system.push(...all.filter(m => m.type != 'email'))
-  recoveryMethods.alternates.push(...all.filter(m => m.type == 'email'))
+  recoveryMethods.system.push([...all]?.filter(m => m.type != 'email'))
+  recoveryMethods.alternates.push([...all]?.filter(m => m.type == 'email'))
 }
 
 function clear() {
