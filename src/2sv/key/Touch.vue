@@ -54,7 +54,7 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
-import { browserSupportsWebauthn, startRegistration } from '@simplewebauthn/browser'
+import { browserSupportsWebAuthn, startRegistration } from '@simplewebauthn/browser'
 import { add, verifyWebauthn, newKeyName } from '@/global/mfa'
 
 let absTimeout
