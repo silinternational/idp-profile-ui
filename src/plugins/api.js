@@ -4,7 +4,7 @@ import token from '@/global/token'
 
 // Full config:  https://github.com/axios/axios#request-config
 const api = axios.create({
-  baseURL: `${import.meta.env.VUE_APP_API_BASE_URL}`,
+  baseURL: `${import.meta.env.VITE_API_BASE_URL}`,
   withCredentials: true,
 })
 

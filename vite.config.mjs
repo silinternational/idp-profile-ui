@@ -21,9 +21,9 @@ export default defineConfig({
     },
   },
   define: {
-    'process.env.VUE_APP_VERSION': JSON.stringify(process.env.npm_package_version),
+    'process.env.VITE_VERSION': JSON.stringify(process.env.npm_package_version),
     // This is necessary in Vue 2 codebases. It is automatic in Vue 3
-    __VUE_PROD_DEVTOOLS__: 'false'
+    __VUE_PROD_DEVTOOLS__: 'false',
   },
   //resolve @/ to src/
   resolve: {

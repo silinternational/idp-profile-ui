@@ -8,15 +8,15 @@ Vue.use(Vuetify)
 const configuredVuetify = new Vuetify({
   lang: {
     locales,
-    current: determineCurrentLanguage()
+    current: determineCurrentLanguage(),
   },
   theme: {
     themes: {
       light: {
-        primary: `${import.meta.env.VUE_APP_PRIMARY_COLOR}`,
-        secondary: `${import.meta.env.VUE_APP_SECONDARY_COLOR}`,
-      }
-    }
+        primary: `${import.meta.env.VITE_PRIMARY_COLOR}`,
+        secondary: `${import.meta.env.VITE_SECONDARY_COLOR}`,
+      },
+    },
   },
 })
 
