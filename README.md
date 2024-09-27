@@ -73,7 +73,7 @@ Copy `.env.dist` to `env.local` and update the relevant values, e.g., a UI deplo
 
 The following files can/should be replaced before running the build.
 
-- `public/favicon.ico`
+- `./favicon.ico`
 - `src/assets/logo.png`
 
 ## Step 3 – Build for deployment
