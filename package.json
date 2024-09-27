@@ -1,5 +1,6 @@
 {
   "name": "idp-profile-ui",
+  "version": "6.0.0",
   "type": "module",
   "engines": {
     "node": ">=18.0.0 <19.0.0"
@@ -12,7 +13,8 @@
     "serve": "vite --port=8000",
     "serve:prod": "vite preview --port=8000",
     "build": "vite build",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "format": "prettier --write \"src/**/*.{js,vue}\""
   },
   "dependencies": {
     "@sentry/vue": "^7.113.0",
@@ -20,7 +22,7 @@
     "@zxcvbn-ts/core": "^3.0.4",
     "@zxcvbn-ts/language-common": "^3.0.4",
     "@zxcvbn-ts/language-en": "^3.0.2",
-    "axios": "^1.6.0",
+    "axios": "^1.7.4",
     "date-fns": "^2.28.0",
     "vue": "^2.7.14",
     "vue-router": "^3.4.9",

@@ -1,4 +1,5 @@
 {
+  "version": "6.0.0",
   "name": "idp-profile-ui",
   "dependencies": {
     "@sentry/vue": {

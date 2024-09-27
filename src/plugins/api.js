@@ -17,7 +17,7 @@ api.interceptors.response.use(
     }
 
     throw e
-  }
+  },
 )
 
 Vue.use((theVue) => {
