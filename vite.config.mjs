@@ -1,3 +1,4 @@
+import { version } from './package.json'
 import path from 'path'
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
@@ -24,6 +25,7 @@ export default defineConfig({
   define: {
     // This is necessary in Vue 2 codebases. It is automatic in Vue 3
     __VUE_PROD_DEVTOOLS__: 'false',
+    __APP_VERSION__: JSON.stringify(version),
   },
   //resolve @/ to src/
   resolve: {

@@ -9,9 +9,5 @@ const allLocales = {
   fr,
   ko,
 }
-contextualRequire.keys().forEach((fileName) => {
-  const messages = contextualRequire(fileName)
-  const lang = fileName.match('/(.*).json')[1]
-})
 
 export default allLocales
