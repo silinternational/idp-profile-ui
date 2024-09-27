@@ -13,12 +13,12 @@
         {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.unverifiedEmails') }}
       </v-tooltip>
     </v-card-title>
-    
+
     <v-card-text class="flex-grow-1">
       <div v-for="method in methods" :key="method.id">
         {{ method.value }}
 
-        <v-tooltip v-if="! method.verified && method.id != sent" right>
+        <v-tooltip v-if="!method.verified && method.id != sent" right>
           <template v-slot:activator="{ on }">
             <v-icon v-on="on" color="error" small class="pl-1">mdi-alert-circle</v-icon>
           </template>
@@ -26,11 +26,11 @@
           {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
         </v-tooltip>
 
-        <a v-if="! method.verified && method.id != sent" @click="resend(method)" class="caption float-right pl-2">
+        <a v-if="!method.verified && method.id != sent" @click="resend(method)" class="caption float-right pl-2">
           {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.resend') }}
         </a>
       </div>
-      <v-row v-if="! methods.length">
+      <v-row v-if="!methods.length">
         <v-col cols="auto">
           <v-icon x-large color="warning">mdi-alert</v-icon>
         </v-col>
@@ -41,7 +41,7 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-spacer/>
+      <v-spacer />
 
       <v-btn :href="'#/password/recovery'" color="primary" outlined>
         <span v-if="methods.length">{{ $vuetify.lang.t('$vuetify.global.button.change') }}</span>
@@ -55,17 +55,17 @@
 export default {
   props: ['methods'],
   data: () => ({
-    sent: ''
+    sent: '',
   }),
   computed: {
-    hasUnverifiedEmails: vm => vm.methods.some(m => ! m.verified),
+    hasUnverifiedEmails: (vm) => vm.methods.some((m) => !m.verified),
   },
   methods: {
     async resend(method) {
       await this.$API.put(`method/${method.id}/resend`)
 
       this.sent = method.id
-    }
-  }
+    },
+  },
 }
 </script>

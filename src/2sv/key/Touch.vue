@@ -67,7 +67,7 @@ export default {
     newSecurityKey: {},
     touched: false,
     error: false,
-    isSupported: browserSupportsWebauthn(),
+    isSupported: browserSupportsWebAuthn(),
   }),
   async created() {
     this.create()

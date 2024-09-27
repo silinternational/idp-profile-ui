@@ -21,6 +21,11 @@
       "resolved": "https://registry.npmjs.org/date-fns/-/date-fns-2.30.0.tgz",
       "overridden": false
     },
+    "prettier": {
+      "version": "3.3.3",
+      "resolved": "https://registry.npmjs.org/prettier/-/prettier-3.3.3.tgz",
+      "overridden": false
+    },
     "rimraf": {
       "version": "3.0.2",
       "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz",

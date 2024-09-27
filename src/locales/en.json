@@ -88,13 +88,13 @@
         "resend": "resend"
       },
       "totpCard": {
-        "title": "Smartphone",
+        "title": "Authenticator app",
         "created": "Created:",
         "lastUsed": "Last used:",
         "button": {
           "change": "lost or new"
         },
-        "warning": "No smartphone at this time, please add one."
+        "warning": "No authenticator app at this time, please add one."
       },
       "securityKeyCard": {
         "number": "Number of keys:",
@@ -126,7 +126,7 @@
     "progress": {
       "header": "Profile strength",
       "addMethod": "Add a recovery method",
-      "addTotp": "Add a smartphone (2SV)",
+      "addTotp": "Add an authenticator app (2SV)",
       "addSecurityKey": "Add a security key (2SV)",
       "addCodes": "Add some backup codes (2SV)"
     }
@@ -140,6 +140,7 @@
       "tooShort": "Your new password must be at least {0} characters",
       "tooLong": "Your new password cannot be longer than {0} characters",
       "tooWeak": "Your new password must be stronger",
+      "requireAlphaAndNumeric": "Your new password must include both a letter and a number",
       "noGood": "Unfortunately, it looks like that one is not going to work",
       "goodPassword": "That is beginning to look like a great password, click continue to check it."
     },
@@ -223,7 +224,7 @@
     },
     "smartphone": {
       "intro": {
-        "header": "Do you have a smartphone?",
+        "header": "Do you have an authenticator app?",
         "info": "If you have one and it is usually with you, this can be a very good option for your 2-Step Verification."
       },
       "download": {
@@ -231,14 +232,14 @@
         "recommendation-authenticator": "There are many apps you can use for this step however we recommend Google Authenticator for its simplicity.  It is free and will not use any mobile data.",
         "recommendation-authy": "There are several authenticator apps available but Authy is the recommended option. Authy is free and does not use any mobile data.",
         "button": {
-          "ok": "OK, I installed it on my smartphone"
+          "ok": "OK, I installed my authenticator app"
         },
         "appname-authenticator": "Google Authenticator",
         "appname-authy": "Authy"
       },
       "scanQr": {
-        "header": "Connect your smartphone to your account",
-        "info": "In order to connect your smartphone to your account we will need to scan the QR code below into the app you just installed.",
+        "header": "Connect your authenticator app to your account",
+        "info": "In order to connect your authenticator app to your account we will need to scan the QR code below into the app you just installed.",
         "add": "Add an account by pressing \"begin setup\" or the \"add\" button and then choosing the \"scan a barcode\" option",
         "qr": "Point your phone at the QR code below and your app will start generating 6-digit codes",
         "manual": "Problems with the QR code?  Here's the manual code: ",
@@ -247,7 +248,7 @@
         }
       },
       "verifyQrCode": {
-        "header": "Verify code from your smartphone app",
+        "header": "Verify code from your authenticator app",
         "info": "Your app will generate a new 6-digit code every 30 seconds, when you're ready enter the one displayed in your app and click \"Verify\".",
         "codeInput": "6-digit code",
         "invalidCode": "code must be 6 digits",
@@ -255,7 +256,7 @@
       },
       "codeVerified": {
         "header": "Excellent!",
-        "info": "That was the correct code so you may now use your smartphone to further protect your account."
+        "info": "That was the correct code so you may now use your authenticator app to further protect your account."
       }
     },
     "key": {
@@ -294,8 +295,8 @@
     "codes": {
       "intro": {
         "header": "Printable backup codes",
-        "backupInfo": "There may be times when you do not have your smartphone or USB security key with you.  When that is the case, printable backup codes can be used.",
-        "primaryInfo": "Even if you are not using a smartphone or security key for 2-step verification you can still increase the security of your account by using printable backup codes alone.",
+        "backupInfo": "There may be times when you do not have your authenticator app or USB security key with you.  When that is the case, printable backup codes can be used.",
+        "primaryInfo": "Even if you are not using an authenticator app or security key for 2-step verification you can still increase the security of your account by using printable backup codes alone.",
         "button": {
           "new": "Create new codes"
         }

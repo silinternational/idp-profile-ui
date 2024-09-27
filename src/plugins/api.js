@@ -1,25 +1,11 @@
 import Vue from 'vue'
 import axios from 'axios'
-import token from '@/global/token'
 
 // Full config:  https://github.com/axios/axios#request-config
 const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_BASE_URL}`,
   withCredentials: true,
 })
-
-api.interceptors.request.use(
-  (config) => {
-    config.headers.Authorization = token.authzHeader()
-
-    return config
-  },
-  (error) => {
-    const e = (error.response && error.response.data) || error
-
-    throw e
-  }
-)
 
 api.interceptors.response.use(
   (response) => response.data,

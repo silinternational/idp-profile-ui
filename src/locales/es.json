@@ -88,13 +88,13 @@
         "resend": "Enviar de nuevo"
       },
       "totpCard": {
-        "title": "Teléfono inteligente",
+        "title": "Aplicación de autenticación",
         "created": "Creado:",
         "lastUsed": "Última utilización:",
         "button": {
           "change": "perdido o nuevo"
         },
-        "warning": "No hay telefono inteligente en este momento, por favor agregue uno."
+        "warning": "No hay aplicación de autenticación en este momento, por favor agregue uno."
       },
       "securityKeyCard": {
         "number": "Numero de llaves:",
@@ -126,7 +126,7 @@
     "progress": {
       "header": "Solidez del perfil",
       "addMethod": "Añadir un método de recuperación",
-      "addTotp": "Agregar un teléfono inteligente (2SV)",
+      "addTotp": "Agregar una aplicación de autenticación (2SV)",
       "addSecurityKey": "Agregar una clave de seguridad (2SV)",
       "addCodes": "Añadir algunos códigos de recuperacion (2SV)"
     }
@@ -140,6 +140,7 @@
       "tooShort": "Su nueva contraseña debe tener al menos {0} caracteres",
       "tooLong": "La contraseña no puede ser superior a {0} caracteres",
       "tooWeak": "Su nueva contraseña debe ser más fuerte",
+      "requireAlphaAndNumeric": "Su nueva contraseña debe incluir tanto una letra como un número",
       "noGood": "Desafortunadamente, parece que aquel no va a funcionar",
       "goodPassword": "Eso está empezando a parecer a una buena contraseña, haga clic en continuar para verificar."
     },
@@ -223,8 +224,8 @@
     },
     "smartphone": {
       "intro": {
-        "header": "¿Tienes un teléfono inteligente?",
-        "info": "Si tiene un telefono inteligente y normalmente está con usted, esta puede ser una muy buena opción para su verificación de 2 pasos."
+        "header": "¿Tienes una aplicación de autenticación?",
+        "info": "Si tiene una aplicación de autenticación y normalmente está con usted, esta puede ser una muy buena opción para su verificación de 2 pasos."
       },
       "download": {
         "header": "Descargar la aplicacion",
@@ -237,8 +238,8 @@
         "appname-authy": "Authy"
       },
       "scanQr": {
-        "header": "Conecta su teléfono inteligente a su cuenta",
-        "info": "Para conectar su teléfono inteligente a su cuenta, necesita escanear el código QR a continuación en la aplicación que acaba de instalar.",
+        "header": "Conecte su aplicación de autenticación a su cuenta",
+        "info": "Para conectar su aplicación de autenticación a su cuenta, necesita escanear el código QR a continuación en la aplicación que acaba de instalar.",
         "add": "Agregue una cuenta haciendo clic en \"comenzar la configuración\" o el botón \"agregar\" y luego elija la opción \"escanear un código de barras\"",
         "qr": "Apunte su teléfono al código QR a continuación y su aplicación comenzará a generar códigos de 6 dígitos",
         "manual": "¿Problemas con el código QR? Aquí está el código para agregar manualmente: ",
@@ -247,7 +248,7 @@
         }
       },
       "verifyQrCode": {
-        "header": "Verifique el código de su aplicación de teléfono inteligente",
+        "header": "Verifique el código de su aplicación de autenticación",
         "info": "Su aplicación genera un nuevo código de 6 dígitos cada 30 segundos, cuando esté listo, ingrese el que se muestra en su aplicación y haga clic en \"Verificar\".",
         "codeInput": "Código de 6 dígitos",
         "invalidCode": "El PIN debe tener 6 dígitos",
@@ -255,7 +256,7 @@
       },
       "codeVerified": {
         "header": "¡Excelente!",
-        "info": "Ese era el código correcto. Ahora puede usar su teléfono inteligente para una protecion mejor de su cuenta."
+        "info": "Ese era el código correcto. Ahora puede usar su aplicación de autenticación para una protecion mejor de su cuenta."
       }
     },
     "key": {
@@ -294,8 +295,8 @@
     "codes": {
       "intro": {
         "header": "Códigos de seguridad imprimibles",
-        "backupInfo": "Puede presentar ocasiones cuando no tenga su teléfono inteligente o llave de seguridad USB disponible. En ese caso, se puede usar códigos de respaldo para agregar manualmente.",
-        "primaryInfo": "Si no está utilizando un teléfono inteligente o una clave de seguridad para la verificación en dos pasos, aún puede aumentar la seguridad de su cuenta utilizando solo códigos de respaldo imprimibles.",
+        "backupInfo": "Puede presentar ocasiones cuando no tenga su aplicación de autenticación o llave de seguridad USB disponible. En ese caso, se puede usar códigos de respaldo para agregar manualmente.",
+        "primaryInfo": "Si no está utilizando una aplicación de autenticación o una clave de seguridad para la verificación en dos pasos, aún puede aumentar la seguridad de su cuenta utilizando solo códigos de respaldo imprimibles.",
         "button": {
           "new": "Crear nuevos códigos"
         }
