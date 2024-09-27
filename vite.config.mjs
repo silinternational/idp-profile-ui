@@ -1,7 +1,7 @@
-import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
+import path from 'path'
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue2'
 
 // https://vitejs.dev/config/
@@ -12,6 +12,7 @@ export default defineConfig({
       resolvers: [VuetifyResolver()],
     }),
   ],
+  version: 2.7,
   server: {
     host: '0.0.0.0',
     port: 8000,
@@ -21,14 +22,14 @@ export default defineConfig({
     },
   },
   define: {
-    'process.env.VITE_VERSION': JSON.stringify(process.env.npm_package_version),
     // This is necessary in Vue 2 codebases. It is automatic in Vue 3
     __VUE_PROD_DEVTOOLS__: 'false',
   },
   //resolve @/ to src/
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('/src', import.meta.url)),
+      '@': path.resolve(__dirname, './src'),
     },
+    extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
   },
 })
