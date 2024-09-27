@@ -1,14 +1,34 @@
 {
   "name": "idp-profile-ui",
   "dependencies": {
+    "@sentry/vue": {
+      "version": "7.119.0",
+      "resolved": "https://registry.npmjs.org/@sentry/vue/-/vue-7.119.0.tgz",
+      "overridden": false
+    },
     "@simplewebauthn/browser": {
-      "version": "4.1.0",
-      "resolved": "https://registry.npmjs.org/@simplewebauthn/browser/-/browser-4.1.0.tgz",
+      "version": "9.0.1",
+      "resolved": "https://registry.npmjs.org/@simplewebauthn/browser/-/browser-9.0.1.tgz",
       "overridden": false
     },
     "@vitejs/plugin-vue2": {
       "version": "2.3.1",
       "resolved": "https://registry.npmjs.org/@vitejs/plugin-vue2/-/plugin-vue2-2.3.1.tgz",
+      "overridden": false
+    },
+    "@zxcvbn-ts/core": {
+      "version": "3.0.4",
+      "resolved": "https://registry.npmjs.org/@zxcvbn-ts/core/-/core-3.0.4.tgz",
+      "overridden": false
+    },
+    "@zxcvbn-ts/language-common": {
+      "version": "3.0.4",
+      "resolved": "https://registry.npmjs.org/@zxcvbn-ts/language-common/-/language-common-3.0.4.tgz",
+      "overridden": false
+    },
+    "@zxcvbn-ts/language-en": {
+      "version": "3.0.2",
+      "resolved": "https://registry.npmjs.org/@zxcvbn-ts/language-en/-/language-en-3.0.2.tgz",
       "overridden": false
     },
     "axios": {
@@ -64,11 +84,6 @@
     "vuetify": {
       "version": "2.7.2",
       "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-2.7.2.tgz",
-      "overridden": false
-    },
-    "zxcvbn": {
-      "version": "4.4.2",
-      "resolved": "https://registry.npmjs.org/zxcvbn/-/zxcvbn-4.4.2.tgz",
       "overridden": false
     }
   }
