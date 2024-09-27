@@ -1,5 +1,4 @@
 import App from './App.vue'
-import '@babel/polyfill'
 import '@/global/components'
 import '@/global/filters'
 import { configuredRouter as router, configuredVuetify } from './plugins'
