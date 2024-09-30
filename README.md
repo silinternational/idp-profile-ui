@@ -8,7 +8,7 @@ Identity management UI for a given IdP that will help users establish good passw
 
 Install [Docker](https://docs.docker.com/install), [Docker Compose](https://docs.docker.com/compose/install) and [Make](https://www.gnu.org/software/make)
 
-Project is managed with [vue-cli](https://github.com/vuejs/vue-cli).
+Project is managed with [vitejs](https://vitejs.dev/).
 
 ## Environment
 

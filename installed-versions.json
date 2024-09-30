@@ -53,13 +53,8 @@
       "overridden": false
     },
     "sass": {
-      "version": "1.79.3",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.79.3.tgz",
-      "overridden": false
-    },
-    "stylus": {
-      "version": "0.58.1",
-      "resolved": "https://registry.npmjs.org/stylus/-/stylus-0.58.1.tgz",
+      "version": "1.79.4",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.79.4.tgz",
       "overridden": false
     },
     "unplugin-vue-components": {
