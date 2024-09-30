@@ -10,8 +10,8 @@
     "url": "https://github.com/silinternational/idp-profile-ui"
   },
   "scripts": {
-    "serve": "vite --port=8000",
-    "serve:prod": "vite preview --port=8000",
+    "serve": "vite",
+    "serve:prod": "vite preview",
     "build": "vite build",
     "clean": "rimraf dist",
     "format": "prettier --write \"src/**/*.{js,vue}\""
