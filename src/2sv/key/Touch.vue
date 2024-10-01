@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
+import ProfileWizard from '@/profile/ProfileWizard.vue'
 import { browserSupportsWebAuthn, startRegistration } from '@simplewebauthn/browser'
 import { add, verifyWebauthn, newKeyName } from '@/global/mfa'
 

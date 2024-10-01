@@ -1,13 +1,12 @@
 import App from './App.vue'
-import '@babel/polyfill'
 import '@/global/components'
 import '@/global/filters'
 import { configuredRouter as router, configuredVuetify } from './plugins'
 import * as Sentry from '@sentry/vue'
 import Vue from 'vue'
 
-const dsn = process.env.VUE_APP_SENTRY_DSN
-const release = process.env.VUE_APP_VERSION
+const dsn = import.meta.env.VITE_SENTRY_DSN
+const release = __APP_VERSION__
 
 if (location.hostname !== 'profile.gtis.guru') {
   console.debug('Environment:', location.hostname, 'Release:', release, 'DSN:', dsn)

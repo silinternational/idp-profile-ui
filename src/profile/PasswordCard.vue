@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import Attribute from './Attribute'
+import Attribute from './Attribute.vue'
 import { parseISO, subDays } from 'date-fns'
 
 export default {

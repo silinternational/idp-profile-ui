@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import HelpButton from './help/HelpButton'
+import HelpButton from './help/HelpButton.vue'
 export default {
   components: {
     HelpButton,

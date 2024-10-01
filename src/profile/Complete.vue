@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
+import ProfileWizard from './ProfileWizard.vue'
 import recoveryMethods from '@/global/recoveryMethods'
 import { mfa, retrieve as retrieveMfas } from '@/global/mfa'
 

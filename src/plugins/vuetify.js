@@ -13,8 +13,8 @@ const configuredVuetify = new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: `${process.env.VUE_APP_PRIMARY_COLOR}`,
-        secondary: `${process.env.VUE_APP_SECONDARY_COLOR}`,
+        primary: import.meta.env.VITE_PRIMARY_COLOR,
+        secondary: import.meta.env.VITE_SECONDARY_COLOR,
       },
     },
   },

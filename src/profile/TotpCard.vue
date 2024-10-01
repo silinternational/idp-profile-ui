@@ -51,9 +51,9 @@
 </template>
 
 <script>
-import Attribute from './Attribute'
-import MfaCardLabel from './MfaCardLabel'
-import MfaCardRemove from './MfaCardRemove'
+import Attribute from './Attribute.vue'
+import MfaCardLabel from './MfaCardLabel.vue'
+import MfaCardRemove from './MfaCardRemove.vue'
 
 export default {
   components: {

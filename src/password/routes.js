@@ -1,12 +1,12 @@
-import Create from './Create'
-import Confirm from './Confirm'
-import Saved from './Saved'
-import Recovery from './Recovery'
-import VerifyRecoveryMethod from './VerifyRecoveryMethod'
-import Forgot from './Forgot'
-import ForgotEmailSent from './ForgotEmailSent'
-import VerifyReset from './VerifyReset'
-import CompleteReset from './CompleteReset'
+import Create from './Create.vue'
+import Confirm from './Confirm.vue'
+import Saved from './Saved.vue'
+import Recovery from './Recovery.vue'
+import VerifyRecoveryMethod from './VerifyRecoveryMethod.vue'
+import Forgot from './Forgot.vue'
+import ForgotEmailSent from './ForgotEmailSent.vue'
+import VerifyReset from './VerifyReset.vue'
+import CompleteReset from './CompleteReset.vue'
 
 export default [
   {

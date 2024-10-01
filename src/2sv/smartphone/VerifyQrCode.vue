@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
+import ProfileWizard from '@/profile/ProfileWizard.vue'
 import { verify } from '@/global/mfa'
 
 export default {
