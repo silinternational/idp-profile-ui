@@ -43,14 +43,14 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
+import ProfileWizard from '@/profile/ProfileWizard.vue'
 
 export default {
   components: {
     ProfileWizard,
   },
   computed: {
-    isAuthy: () => `${process.env.VUE_APP_TOTP_APP_RECOMMENDATION}` === 'authy',
+    isAuthy: () => import.meta.env.VITE_TOTP_APP_RECOMMENDATION === 'authy',
     preferredAppName: (vm) => (vm.isAuthy ? 'authy' : 'authenticator'),
     playStoreId: (vm) => (vm.isAuthy ? 'com.authy.authy' : 'com.google.android.apps.authenticator2'),
     itunesAppUrl: (vm) => (vm.isAuthy ? 'authy/id494168017' : 'google-authenticator/id388497605'),

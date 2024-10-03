@@ -86,8 +86,8 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
-import { recoveryMethods, add, retrieve, remove } from '@/global/recoveryMethods'
+import ProfileWizard from '@/profile/ProfileWizard.vue'
+import { recoveryMethods, add, remove } from '@/global/recoveryMethods'
 
 export default {
   components: {

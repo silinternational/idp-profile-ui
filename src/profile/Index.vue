@@ -77,14 +77,14 @@
 </template>
 
 <script setup>
-import ProfileProgress from './ProfileProgress'
-import PasswordCard from './PasswordCard'
-import PasswordRecoveryCard from './PasswordRecoveryCard'
-import TotpCard from './TotpCard'
-import SecurityKeyCard from './SecurityKeyCard'
-import BackupCodeCard from './BackupCodeCard'
-import DoNotDiscloseCard from './DoNotDiscloseCard'
-import Attribute from './Attribute'
+import ProfileProgress from './ProfileProgress.vue'
+import PasswordCard from './PasswordCard.vue'
+import PasswordRecoveryCard from './PasswordRecoveryCard.vue'
+import TotpCard from './TotpCard.vue'
+import SecurityKeyCard from './SecurityKeyCard.vue'
+import BackupCodeCard from './BackupCodeCard.vue'
+import DoNotDiscloseCard from './DoNotDiscloseCard.vue'
+import Attribute from './Attribute.vue'
 import { computed, onMounted, reactive, ref } from 'vue'
 import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
 import { mfa as globalMfa, retrieve as retrieveMfa } from '@/global/mfa'

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import profileRoutes from '@/profile/routes'
 import passwordRoutes from '@/password/routes'
 import twoStepRoutes from '@/2sv/routes'
-import PageNotFound from '@/global/PageNotFound'
+import PageNotFound from '@/global/PageNotFound.vue'
 
 Vue.use(Router)
 

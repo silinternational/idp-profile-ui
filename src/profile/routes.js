@@ -1,7 +1,7 @@
-import Intro from './Intro'
-import Complete from './Complete'
-import Index from './Index'
-import InviteExpired from './InviteExpired'
+import Intro from './Intro.vue'
+import Complete from './Complete.vue'
+import Index from './Index.vue'
+import InviteExpired from './InviteExpired.vue'
 
 export default [
   {

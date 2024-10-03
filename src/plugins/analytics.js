@@ -1,6 +1,6 @@
 import configuredRouter from './router'
 
-const GA_MEASUREMENT_ID = process.env.VUE_APP_ANALYTICS_ID || ''
+const GA_MEASUREMENT_ID = import.meta.env.VITE_ANALYTICS_ID || ''
 
 init()
 

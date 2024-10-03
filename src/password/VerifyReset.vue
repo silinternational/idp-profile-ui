@@ -30,7 +30,7 @@ export default {
   }),
   async created() {
     try {
-       await this.$API.put(`reset/${this.$route.params.id}/validate`, {
+      await this.$API.put(`reset/${this.$route.params.id}/validate`, {
         code: this.$route.params.code,
       })
 

@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import BasePage from './BasePage'
-import ButtonBar from './ButtonBar'
-import BaseTextField from './BaseTextField'
-import Loading from './Loading'
+import BasePage from './BasePage.vue'
+import ButtonBar from './ButtonBar.vue'
+import BaseTextField from './BaseTextField.vue'
+import Loading from './Loading.vue'
 
 Vue.component('BasePage', BasePage)
 Vue.component('ButtonBar', ButtonBar)

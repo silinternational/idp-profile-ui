@@ -42,7 +42,7 @@ export default {
   methods: {
     recaptchaLoaded() {
       grecaptcha.render(document.querySelector('.g-recaptcha'), {
-        sitekey: `${process.env.VUE_APP_RECAPTCHA_ID}`,
+        sitekey: `${import.meta.env.VITE_RECAPTCHA_ID}`,
         callback: this.recaptchad,
         'expired-callback': this.expired,
       })

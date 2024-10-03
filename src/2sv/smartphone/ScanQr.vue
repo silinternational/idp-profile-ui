@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import ProfileWizard from '@/profile/ProfileWizard'
+import ProfileWizard from '@/profile/ProfileWizard.vue'
 import { add } from '@/global/mfa'
 
 export default {
