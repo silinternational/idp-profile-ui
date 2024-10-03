@@ -8,7 +8,6 @@ vendor/
 .env.local
 .env.*.local
 development/cert
-app-id.json
 
 # Log files
 npm-debug.log*
