@@ -4,6 +4,15 @@
       {{ $vuetify.lang.t('$vuetify.pageNotFound.header') }}
     </template>
 
-    <img src="@/assets/riddler-geeky-world.jpg" />
+    <img :src="questionImage" />
   </BasePage>
 </template>
+
+<script>
+import questionImage from '@/assets/riddler-geeky-world.jpg'
+export default {
+  data: () => ({
+    questionImage,
+  }),
+}
+</script>
