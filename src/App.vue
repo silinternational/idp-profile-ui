@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary">
-      <a href="/"><img src="@/assets/logo.png" /></a>
+      <a href="/"><img :src="logo" /></a>
 
       <v-spacer />
 
@@ -49,12 +49,14 @@
 
 <script>
 import HelpButton from './help/HelpButton.vue'
+import logo from '@/assets/logo.png'
 export default {
   components: {
     HelpButton,
   },
   data: () => ({
     message: '',
+    logo,
   }),
   computed: {
     mobile() {

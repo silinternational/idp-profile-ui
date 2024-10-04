@@ -10,7 +10,7 @@
       </p>
 
       <figure class="pa-4">
-        <v-img src="@/assets/usb-security-key-examples.png" contain alt="Three sizes of USB keys." />
+        <v-img :src="securityKeys" contain alt="Three sizes of USB keys." />
       </figure>
     </BasePage>
 
@@ -40,10 +40,14 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
+import securityKeys from '@/assets/usb-security-key-examples.png'
 
 export default {
   components: {
     ProfileWizard,
   },
+  data: () => ({
+    securityKeys,
+  }),
 }
 </script>
