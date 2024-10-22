@@ -3,8 +3,8 @@
   "name": "idp-profile-ui",
   "dependencies": {
     "@sentry/vue": {
-      "version": "7.119.0",
-      "resolved": "https://registry.npmjs.org/@sentry/vue/-/vue-7.119.0.tgz",
+      "version": "7.119.2",
+      "resolved": "https://registry.npmjs.org/@sentry/vue/-/vue-7.119.2.tgz",
       "overridden": false
     },
     "@simplewebauthn/browser": {
@@ -53,8 +53,8 @@
       "overridden": false
     },
     "sass": {
-      "version": "1.79.4",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.79.4.tgz",
+      "version": "1.80.3",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.80.3.tgz",
       "overridden": false
     },
     "unplugin-vue-components": {
@@ -63,8 +63,8 @@
       "overridden": false
     },
     "vite": {
-      "version": "5.4.8",
-      "resolved": "https://registry.npmjs.org/vite/-/vite-5.4.8.tgz",
+      "version": "5.4.9",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-5.4.9.tgz",
       "overridden": false
     },
     "vue-router": {
