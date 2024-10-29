@@ -101,7 +101,9 @@
         "title": "Clés de sécurité USB",
         "created": "Créé:",
         "lastUsed": "Dernière utilisation:",
-        "warning": "Aucune clé de sécurité à ce moment, veuillez en ajouter une."
+        "warning": "Aucune clé de sécurité à ce moment, veuillez en ajouter une.",
+        "show": "afficher clés",
+        "hide": "masquer clés"
       },
       "codeCard": {
         "title": "Codes de sauvegarde imprimables",

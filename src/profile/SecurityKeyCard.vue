@@ -47,6 +47,9 @@
     </v-card-text>
 
     <v-card-actions>
+      <v-btn v-if="numberOfKeys > 1 && isSummary" @click="$emit('toggleKeys')" color="primary" outlined>
+        {{ keyBtnLabel }}
+      </v-btn>
       <v-spacer />
       <v-btn v-if="isSummary || numberOfKeys === 1" href="#/2sv/usb-security-key/intro" color="primary" outlined>
         {{ $vuetify.lang.t('$vuetify.global.button.add') }}
@@ -67,9 +70,16 @@ export default {
     MfaCardLabel,
     MfaCardRemove,
   },
-  props: ['webauthnKey', 'isSummary', 'numberOfKeys', 'mfaId'],
+  props: ['webauthnKey', 'isSummary', 'numberOfKeys', 'mfaId', 'showKeys'],
   data: (vm) => ({
     label: '',
   }),
+  computed: {
+    keyBtnLabel() {
+      return this.showKeys
+        ? this.$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.hide')
+        : this.$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.show')
+    },
+  },
 }
 </script>
