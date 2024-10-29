@@ -17,6 +17,7 @@
     "format": "prettier --write \"src/**/*.{js,vue}\""
   },
   "dependencies": {
+    "@sentry/vite-plugin": "^2.22.6",
     "@sentry/vue": "^7.113.0",
     "@simplewebauthn/browser": "^9",
     "@zxcvbn-ts/core": "^3.0.4",
