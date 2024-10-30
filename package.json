@@ -42,7 +42,7 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "author": "Billy Clark <billy_clark@sil.org>",
+  "author": "SIL GTIS <gtis_itse_support+idp@sil.org>",
   "license": "MIT",
   "description": "Identity management UI"
 }
