@@ -46,7 +46,13 @@
       </v-col>
 
       <v-col v-if="numberOfKeys > 1" cols="12" sm="6" md="4">
-        <SecurityKeyCard isSummary="true" :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys" />
+        <SecurityKeyCard
+          @toggleKeys="onToggleKeys"
+          isSummary="true"
+          :numberOfKeys="numberOfKeys"
+          :webauthnKey="mfa.keys"
+          :showKeys="showKeys"
+        />
       </v-col>
 
       <v-col v-if="numberOfKeys === 1" cols="12" sm="6" md="4">
@@ -62,13 +68,13 @@
       </v-col>
     </v-row>
 
-    <v-row v-if="numberOfKeys > 1">
+    <v-row v-if="showKeys && numberOfKeys > 1">
       <v-col>
         {{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title') }}
       </v-col>
     </v-row>
 
-    <v-row v-if="numberOfKeys > 1">
+    <v-row v-if="showKeys && numberOfKeys > 1">
       <v-col v-for="webauthnKey in additionalKeys" v-bind:key="additionalKeys.id" cols="12" sm="6" md="4">
         <SecurityKeyCard :webauthnKey="webauthnKey" :numberOfKeys="numberOfKeys" :mfaId="mfa.keys.id" />
       </v-col>
@@ -93,8 +99,13 @@ onMounted(async () => {
   await Promise.all([retrieveMethods(), retrieveMfa()])
 })
 const mfa = reactive(globalMfa)
+const showKeys = ref(false)
 const alternates = ref(recoveryMethods.alternates).value
 const hasUnverifiedEmails = computed(() => alternates.some((m) => !m.verified))
 const additionalKeys = computed(() => mfa.keys.data)
 const numberOfKeys = computed(() => additionalKeys.value?.length || 0)
+
+const onToggleKeys = () => {
+  showKeys.value = !showKeys.value
+}
 </script>

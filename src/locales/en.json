@@ -101,7 +101,9 @@
         "title": "USB security keys",
         "created": "Created:",
         "lastUsed": "Last used:",
-        "warning": "No security key at this time, please add one."
+        "warning": "No security key at this time, please add one.",
+        "show": "show keys",
+        "hide": "hide keys"
       },
       "codeCard": {
         "title": "Printable backup codes",

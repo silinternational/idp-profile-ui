@@ -17,7 +17,7 @@ services:
       - api
 
   api:
-    image: silintl/idp-pw-api:develop
+    image: silintl/idp-pw-api:7.0
     platform: linux/amd64
     ports:
       - '8080:80'
@@ -94,7 +94,7 @@ services:
 
   proxy:
     # https://github.com/silinternational/traefik-https-proxy
-    image: silintl/traefik-https-proxy
+    image: silintl/traefik-https-proxy:1
     platform: linux/amd64
     ports:
       - '80:80'
@@ -119,7 +119,7 @@ services:
       BACKEND3_URL: 'http://idp:80'
 
   broker:
-    image: silintl/idp-id-broker:develop
+    image: silintl/idp-id-broker:6
     platform: linux/amd64
     volumes:
       - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
@@ -179,7 +179,7 @@ services:
       PMA_PASSWORD: 'pass'
 
   idp:
-    image: silintl/ssp-base:develop
+    image: silintl/ssp-base:10.1
     platform: linux/amd64
     volumes:
       - ./development/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
@@ -250,7 +250,7 @@ services:
     command: bash -c "composer update && php restart.php"
 
   dynamo:
-    image: amazon/dynamodb-local
+    image: amazon/dynamodb-local:latest
     platform: linux/amd64
     ports:
       - '8010:8000'

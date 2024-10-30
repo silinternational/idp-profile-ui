@@ -1,5 +1,6 @@
 import { version } from './package.json'
 import path from 'path'
+import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
@@ -11,6 +12,11 @@ export default defineConfig({
     vue(),
     Components({
       resolvers: [VuetifyResolver()],
+    }),
+    sentryVitePlugin({
+      org: 'itse',
+      project: 'idp-appsdev-pw-ui',
+      authToken: process.env.SENTRY_AUTH_TOKEN,
     }),
   ],
   version: 2.7,
@@ -33,5 +39,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
     extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
+  },
+  build: {
+    sourcemap: true,
   },
 })
