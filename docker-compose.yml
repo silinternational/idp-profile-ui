@@ -94,7 +94,7 @@ services:
 
   proxy:
     # https://github.com/silinternational/traefik-https-proxy
-    image: silintl/traefik-https-proxy:latest
+    image: silintl/traefik-https-proxy:1
     platform: linux/amd64
     ports:
       - '80:80'
