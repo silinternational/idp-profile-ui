@@ -19,10 +19,10 @@
       </figure>
 
       <figure class="badges d-flex align-center justify-center">
-        <a :href="`https://play.google.com/store/apps/details?id=${playStoreId}`" target="_blank" class="pr-4">
+        <a :href="playStoreUrl" target="_blank" class="pr-4">
           <img :src="playBadge" />
         </a>
-        <a :href="`https://itunes.apple.com/us/app/${itunesAppUrl}`" target="_blank">
+        <a :href="itunesAppUrl" target="_blank">
           <img :src="appStoreBadge" />
         </a>
       </figure>
@@ -63,7 +63,9 @@ export default {
     isAuthy: () => import.meta.env.VITE_TOTP_APP_RECOMMENDATION === 'authy',
     preferredAppName: (vm) => (vm.isAuthy ? 'authy' : 'authenticator'),
     playStoreId: (vm) => (vm.isAuthy ? 'com.authy.authy' : 'com.google.android.apps.authenticator2'),
-    itunesAppUrl: (vm) => (vm.isAuthy ? 'authy/id494168017' : 'google-authenticator/id388497605'),
+    playStoreUrl: (vm) => `https://play.google.com/store/apps/details?id=${vm.playStoreId}`,
+    itunesAppId: (vm) => (vm.isAuthy ? 'authy/id494168017' : 'google-authenticator/id388497605'),
+    itunesAppUrl: (vm) => `https://itunes.apple.com/us/app/${vm.itunesAppId}`,
   },
 }
 </script>
