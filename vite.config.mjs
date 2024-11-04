@@ -15,7 +15,7 @@ export default defineConfig({
     }),
     sentryVitePlugin({
       org: 'itse',
-      project: 'idp-appsdev-pw-ui',
+      project: process.env.VITE_PROJECT_NAME,
       authToken: process.env.SENTRY_AUTH_TOKEN,
     }),
   ],
