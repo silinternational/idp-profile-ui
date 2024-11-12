@@ -13,7 +13,7 @@
             :keyId="webauthnKey.id"
             :mfaId="mfaId"
             :readOnly="!!isSummary"
-            @isWebauth="true"
+            :isWebauth="true"
             @new-label="label = $event"
           />
         </v-col>
