@@ -1,5 +1,5 @@
 {
-  "version": "7.1.0",
+  "version": "7.2.0",
   "name": "idp-profile-ui",
   "dependencies": {
     "@sentry/vite-plugin": {
@@ -58,8 +58,8 @@
       "overridden": false
     },
     "sass": {
-      "version": "1.80.4",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.80.4.tgz",
+      "version": "1.80.6",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.80.6.tgz",
       "overridden": false
     },
     "unplugin-vue-components": {
@@ -68,8 +68,8 @@
       "overridden": false
     },
     "vite": {
-      "version": "5.4.10",
-      "resolved": "https://registry.npmjs.org/vite/-/vite-5.4.10.tgz",
+      "version": "5.4.11",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-5.4.11.tgz",
       "overridden": false
     },
     "vue-router": {
