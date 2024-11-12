@@ -25,6 +25,7 @@
     "@zxcvbn-ts/language-en": "^3.0.2",
     "axios": "^1.7.4",
     "date-fns": "^2.28.0",
+    "sass": "^1.80.6",
     "vue": "^2.7.14",
     "vue-router": "^3.4.9",
     "vuetify": "^2.7"
