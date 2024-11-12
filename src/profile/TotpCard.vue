@@ -8,7 +8,8 @@
         <v-col class="ml-4">
           <MfaCardLabel
             :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')"
-            :id="meta.id"
+            :mfaId="meta.id"
+            @readOnly="false"
             @new-label="label = $event"
           />
         </v-col>
