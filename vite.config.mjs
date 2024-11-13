@@ -9,6 +9,7 @@ import vue from '@vitejs/plugin-vue2'
 export default defineConfig(({ mode }) => {
   // https://stackoverflow.com/questions/66389043/how-can-i-use-vite-env-variables-in-vite-config-js
   const env = loadEnv(mode, process.cwd(), '')
+  console.log(`Version: ${env.UI_VERSION}, Project: ${env.VITE_PROJECT_NAME}`)
   return {
     plugins: [
       vue(),
