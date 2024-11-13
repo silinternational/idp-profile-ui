@@ -16,6 +16,7 @@ jobs:
         node-version: '18.x'
     - name: Build
       run: |
+          export UI_VERSION=test
           mv .env.dist .env.local
           npm install
           npm run build
