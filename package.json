@@ -11,7 +11,7 @@
   "scripts": {
     "serve": "vite",
     "serve:prod": "vite preview",
-    "build": "echo UI_VERSION=${UI_VERSION} >> build/.env; vite build",
+    "build": "echo VITE_UI_VERSION=${UI_VERSION} >> .env; vite build",
     "clean": "rimraf dist",
     "format": "prettier --write \"src/**/*.{js,vue}\""
   },
