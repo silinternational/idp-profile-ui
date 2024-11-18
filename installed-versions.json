@@ -8,8 +8,8 @@
       "overridden": false
     },
     "@sentry/vue": {
-      "version": "7.119.2",
-      "resolved": "https://registry.npmjs.org/@sentry/vue/-/vue-7.119.2.tgz",
+      "version": "7.120.0",
+      "resolved": "https://registry.npmjs.org/@sentry/vue/-/vue-7.120.0.tgz",
       "overridden": false
     },
     "@simplewebauthn/browser": {
@@ -58,8 +58,8 @@
       "overridden": false
     },
     "sass": {
-      "version": "1.80.4",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.80.4.tgz",
+      "version": "1.81.0",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.81.0.tgz",
       "overridden": false
     },
     "unplugin-vue-components": {
@@ -75,6 +75,11 @@
     "vue-router": {
       "version": "3.6.5",
       "resolved": "https://registry.npmjs.org/vue-router/-/vue-router-3.6.5.tgz",
+      "overridden": false
+    },
+    "vue-sanitize-directive": {
+      "version": "0.2.1",
+      "resolved": "https://registry.npmjs.org/vue-sanitize-directive/-/vue-sanitize-directive-0.2.1.tgz",
       "overridden": false
     },
     "vue": {

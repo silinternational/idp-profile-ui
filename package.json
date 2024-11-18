@@ -27,6 +27,7 @@
     "date-fns": "^2.28.0",
     "vue": "^2.7.14",
     "vue-router": "^3.4.9",
+    "vue-sanitize-directive": "^0.2.1",
     "vuetify": "^2.7"
   },
   "devDependencies": {
