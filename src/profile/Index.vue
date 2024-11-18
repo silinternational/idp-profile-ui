@@ -75,7 +75,7 @@
     </v-row>
 
     <v-row v-if="showKeys && numberOfKeys > 1">
-      <v-col v-for="webauthnKey in additionalKeys" v-bind:key="additionalKeys.id" cols="12" sm="6" md="4">
+      <v-col v-for="webauthnKey in additionalKeys" :key="additionalKeys.id" cols="12" sm="6" md="4">
         <SecurityKeyCard :webauthnKey="webauthnKey" :numberOfKeys="numberOfKeys" :mfaId="mfa.keys.id" />
       </v-col>
     </v-row>

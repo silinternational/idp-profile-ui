@@ -21,7 +21,7 @@
     </v-col>
 
     <v-col cols="auto">
-      <v-tooltip v-if="keyId && !readOnly" right>
+      <v-tooltip v-if="!readOnly" right>
         <template v-slot:activator="{ on }">
           <v-icon v-on="on" @click="edit" color="info" small> mdi-pencil </v-icon>
         </template>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { changeWebauthn } from '@/global/mfa'
+import { change, changeWebauthn } from '@/global/mfa'
 
 export default {
   props: {
@@ -47,6 +47,10 @@ export default {
       type: Number,
     },
     readOnly: {
+      type: Boolean,
+      default: false,
+    },
+    isWebauthn: {
       type: Boolean,
       default: false,
     },
@@ -64,9 +68,13 @@ export default {
       this.editing = false
     },
     async save() {
-      const mfa = await changeWebauthn(this.mfaId, this.keyId, {
-        label: this.newLabel,
-      })
+      const mfa = this.isWebauthn
+        ? await changeWebauthn(this.mfaId, this.keyId, {
+            label: this.newLabel,
+          })
+        : await change(this.mfaId, {
+            label: this.newLabel,
+          })
       this.$emit('new-label', mfa.label)
       this.editing = false
     },
