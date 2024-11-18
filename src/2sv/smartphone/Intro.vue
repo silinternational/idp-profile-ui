@@ -47,7 +47,7 @@ const hasBackup = (m) => {
 
 const nextUrl = computed(() => {
   if (!hasKey(mfa)) {
-    return '/2sv/key/intro'
+    return '/2sv/usb-security-key/intro'
   }
   if (!hasBackup(mfa)) {
     return '/2sv/printable-backup-codes/intro'
