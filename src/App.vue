@@ -37,7 +37,7 @@
 
       <v-container>
         <v-alert :value="!!message" type="error" dismissible>
-          <span v-html="message" />
+          <span v-sanitize.basic="message" />
         </v-alert>
 
         <!-- adding key here helps produce more predictable view behavior (see https://youtu.be/7YZ5DwlLSt8?t=21m22s) -->

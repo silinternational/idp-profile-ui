@@ -4,6 +4,9 @@ import '@/global/filters'
 import { configuredRouter as router, configuredVuetify } from './plugins'
 import * as Sentry from '@sentry/vue'
 import Vue from 'vue'
+import VueSanitize from 'vue-sanitize-directive'
+
+Vue.use(VueSanitize)
 
 const dsn = import.meta.env.VITE_SENTRY_DSN
 const release = __APP_VERSION__
