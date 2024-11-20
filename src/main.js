@@ -30,6 +30,13 @@ if (location.hostname !== 'profile.gtis.guru') {
     // plus for 100% of sessions with an error
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
+    beforeSend(event, hint) {
+      const status = hint.originalException.status
+      if (status === 404 || status === 401 || status === 403) {
+        return null
+      }
+      return event
+    },
   })
 }
 
