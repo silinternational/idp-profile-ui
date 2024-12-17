@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mfa, remove, removeWebauthn } from '@/global/mfa';
+import { mfa, remove, removeWebauthn } from '@/global/mfa'
 
 export default {
   props: ['keyId', 'mfaId'],

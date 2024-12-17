@@ -9,7 +9,7 @@
       </template>
 
       <figure v-if="isSupported" class="pa-4">
-        <v-img contain src="@/assets/insert-usb-security-key.png" alt="A usb key inserted into a usb port." />
+        <v-img contain :src="usbKey" alt="A usb key inserted into a usb port." />
       </figure>
       <p v-else>{{ $vuetify.lang.t('$vuetify.2sv.key.insert.nosupport.info') }}</p>
 
@@ -53,20 +53,22 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
-import { browserSupportsWebauthn } from '@simplewebauthn/browser'
+import { browserSupportsWebAuthn } from '@simplewebauthn/browser'
 import { newKeyName, mfa } from '@/global/mfa'
+import usbKey from '@/assets/insert-usb-security-key.png'
 
 export default {
   components: {
     ProfileWizard,
   },
   data: () => ({
-    isSupported: browserSupportsWebauthn(),
+    isSupported: browserSupportsWebAuthn(),
     showLabelInput: false,
     input: '',
     newKeyName,
     snackbarIsOpen: false,
     snackBarMessage: '',
+    usbKey: usbKey,
   }),
   methods: {
     onOk: function () {

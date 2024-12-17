@@ -16,12 +16,7 @@
       </p>
 
       <figure class="pa-4 d-flex flex-column">
-        <v-img
-          v-if="!touched"
-          contained
-          src="@/assets/touch-usb-security-key.png"
-          alt="A finger touching the top of a usb key."
-        />
+        <v-img v-if="!touched" contained :src="usbKey" alt="A finger touching the top of a usb key." />
         <v-icon v-else color="success" x-large>mdi-check</v-icon>
       </figure>
     </BasePage>
@@ -46,8 +41,9 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
-import { browserSupportsWebauthn, startRegistration } from '@simplewebauthn/browser'
+import { browserSupportsWebAuthn, startRegistration } from '@simplewebauthn/browser'
 import { add, verifyWebauthn, newKeyName } from '@/global/mfa'
+import usbKey from '@/assets/touch-usb-security-key.png'
 
 let absTimeout
 
@@ -59,7 +55,8 @@ export default {
     newSecurityKey: {},
     touched: false,
     error: false,
-    isSupported: browserSupportsWebauthn(),
+    isSupported: browserSupportsWebAuthn(),
+    usbKey,
   }),
   async created() {
     this.create()

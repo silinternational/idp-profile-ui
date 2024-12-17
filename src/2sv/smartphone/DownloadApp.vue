@@ -10,8 +10,8 @@
       </p>
 
       <figure class="d-flex align-center justify-center pb-4 my-4">
-        <img v-if="isAuthy" src="@/assets/authy-logo.jpg" />
-        <img v-else src="@/assets/authenticator-logo.jpg" />
+        <img v-if="isAuthy" :src="authy" />
+        <img v-else :src="authenticator" />
 
         <figcaption class="headline ml-4">
           {{ $vuetify.lang.t(`$vuetify.2sv.smartphone.download.appname-${preferredAppName}`) }}
@@ -19,11 +19,11 @@
       </figure>
 
       <figure class="badges d-flex align-center justify-center">
-        <a :href="`https://play.google.com/store/apps/details?id=${playStoreId}`" target="_blank" class="pr-4">
-          <img src="@/assets/google-play-badge.png" />
+        <a :href="playStoreUrl" target="_blank" class="pr-4">
+          <img :src="playBadge" />
         </a>
-        <a :href="`https://itunes.apple.com/us/app/${itunesAppUrl}`" target="_blank">
-          <img src="@/assets/app-store-badge.png" />
+        <a :href="itunesAppUrl" target="_blank">
+          <img :src="appStoreBadge" />
         </a>
       </figure>
     </BasePage>
@@ -44,16 +44,28 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
+import authy from '@/assets/authy-logo.jpg'
+import authenticator from '@/assets/authenticator-logo.jpg'
+import playBadge from '@/assets/google-play-badge.png'
+import appStoreBadge from '@/assets/app-store-badge.png'
 
 export default {
   components: {
     ProfileWizard,
   },
+  data: () => ({
+    authy,
+    authenticator,
+    playBadge,
+    appStoreBadge,
+  }),
   computed: {
-    isAuthy: () => `${import.meta.env.VUE_APP_TOTP_APP_RECOMMENDATION}` === 'authy',
+    isAuthy: () => import.meta.env.VITE_TOTP_APP_RECOMMENDATION === 'authy',
     preferredAppName: (vm) => (vm.isAuthy ? 'authy' : 'authenticator'),
     playStoreId: (vm) => (vm.isAuthy ? 'com.authy.authy' : 'com.google.android.apps.authenticator2'),
-    itunesAppUrl: (vm) => (vm.isAuthy ? 'authy/id494168017' : 'google-authenticator/id388497605'),
+    playStoreUrl: (vm) => `https://play.google.com/store/apps/details?id=${vm.playStoreId}`,
+    itunesAppId: (vm) => (vm.isAuthy ? 'authy/id494168017' : 'google-authenticator/id388497605'),
+    itunesAppUrl: (vm) => `https://itunes.apple.com/us/app/${vm.itunesAppId}`,
   },
 }
 </script>

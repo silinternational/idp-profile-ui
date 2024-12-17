@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary">
-      <a href="/"><img src="@/assets/logo.png" /></a>
+      <a href="/"><img :src="logo" /></a>
 
       <v-spacer />
 
@@ -37,7 +37,7 @@
 
       <v-container>
         <v-alert :value="!!message" type="error" dismissible>
-          <span v-html="message" />
+          <span v-sanitize.basic="message" />
         </v-alert>
 
         <!-- adding key here helps produce more predictable view behavior (see https://youtu.be/7YZ5DwlLSt8?t=21m22s) -->
@@ -49,12 +49,14 @@
 
 <script>
 import HelpButton from './help/HelpButton.vue'
+import logo from '@/assets/logo.png'
 export default {
   components: {
     HelpButton,
   },
   data: () => ({
     message: '',
+    logo,
   }),
   computed: {
     mobile() {
@@ -68,7 +70,7 @@ export default {
         this.message = error.message
 
         throw error
-      }
+      },
     )
   },
   created() {

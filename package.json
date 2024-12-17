@@ -1,5 +1,6 @@
 {
   "name": "idp-profile-ui",
+  "type": "module",
   "engines": {
     "node": ">=18.0.0 <19.0.0"
   },
@@ -8,39 +9,46 @@
     "url": "https://github.com/silinternational/idp-profile-ui"
   },
   "scripts": {
-    "serve": "vite --port=8000",
-    "serve:prod": "vite preview --port=8000",
-    "build": "vite build",
-    "clean": "rimraf dist"
+    "serve": "vite",
+    "serve:prod": "vite preview",
+    "build": "echo UI_VERSION=${UI_VERSION} >> .env; vite build",
+    "clean": "rimraf dist",
+    "format": "prettier --write \"src/**/*.{js,vue}\""
   },
   "dependencies": {
     "@simplewebauthn/browser": "^4.1.0",
     "@vue/compat": "^3.4.21",
-    "axios": "^1.6.0",
+    "axios": "^1.7.4",
     "date-fns": "^2.28.0",
     "sass-loader": "^10.1.1",
     "vue": "^3",
-    "vue-loader": "^17.4.2",
     "vue-router": "^3.4.9",
     "vuetify": "^3",
-    "zxcvbn": "^4.4.2"
+    "zxcvbn": "^4.4.2",
+    "vite": "^5.1.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "rimraf": "^3.0.2",
-    "sass": "^1.53.0",
     "stylus": "^0.58.1",
     "stylus-loader": "^4.3.3",
-    "vite": "^5.1.5",
-    "vue-cli-plugin-vuetify": "^2.5.1",
-    "vue-template-compiler": "^2.7.16"
+    "@sentry/vite-plugin": "^2.22.6",
+    "@sentry/vue": "^7.113.0",
+    "@simplewebauthn/browser": "^9",
+    "@zxcvbn-ts/core": "^3.0.4",
+    "@zxcvbn-ts/language-common": "^3.0.4",
+    "@zxcvbn-ts/language-en": "^3.0.2",
+    "sass": "^1.80.6",
+    "vue-sanitize-directive": "^0.2.1",
+    "prettier": "^3.3.3",
+    "rimraf": "^3.0.2",
+    "unplugin-vue-components": "^0.27.4"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
   ],
-  "author": "Billy Clark <billy_clark@sil.org>",
+  "author": "SIL GTIS <gtis_itse_support+idp@sil.org>",
   "license": "MIT",
   "description": "Identity management UI"
 }

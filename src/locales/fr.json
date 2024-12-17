@@ -88,20 +88,22 @@
         "resend": "ré-envoyer"
       },
       "totpCard": {
-        "title": "Smartphone",
+        "title": "Application d'authentification",
         "created": "Créé:",
         "lastUsed": "Dernière utilisation:",
         "button": {
           "change": "perdu ou nouveau"
         },
-        "warning": "Pas de smartphone à ce moment, veuillez en ajouter un."
+        "warning": "Pas d'application d'authentification à ce moment, veuillez en ajouter un."
       },
       "securityKeyCard": {
         "number": "Nombre de clés:",
         "title": "Clés de sécurité USB",
         "created": "Créé:",
         "lastUsed": "Dernière utilisation:",
-        "warning": "Aucune clé de sécurité à ce moment, veuillez en ajouter une."
+        "warning": "Aucune clé de sécurité à ce moment, veuillez en ajouter une.",
+        "show": "afficher clés",
+        "hide": "masquer clés"
       },
       "codeCard": {
         "title": "Codes de sauvegarde imprimables",
@@ -126,7 +128,7 @@
     "progress": {
       "header": "La robustesse du profil",
       "addMethod": "Ajouter une méthode de récupération",
-      "addTotp": "Ajouter un smartphone (V2E)",
+      "addTotp": "Ajouter une application d'authentification (V2E)",
       "addSecurityKey": "Ajouter une clé de sécurité (V2E)",
       "addCodes": "Ajouter des codes de sauvegarde (V2E)"
     }
@@ -140,6 +142,7 @@
       "tooShort": "Votre nouveau mot de passe doit comporter au moins {0} caractères",
       "tooLong": "Votre nouveau mot de passe ne doit pas dépasser {0} caractères",
       "tooWeak": "Votre nouveau mot de passe doit être plus robuste",
+      "requireAlphaAndNumeric": "Votre nouveau mot de passe doit inclure à la fois une lettre et un chiffre",
       "noGood": "Malheureusement, il semble que celui-là ne va pas marcher",
       "goodPassword": "Cela commence à ressembler à un bon mot de passe, cliquez sur Continuer pour le vérifier."
     },
@@ -223,7 +226,7 @@
     },
     "smartphone": {
       "intro": {
-        "header": "Avez-vous un smartphone?",
+        "header": "Avez-vous une application d'authentification?",
         "info": "Si vous en avez un et que c'est généralement avec vous, cela peut être une très bonne option pour votre vérification en deux étapes."
       },
       "download": {
@@ -231,14 +234,14 @@
         "recommendation-authenticator": "Il existe de nombreuses applications que vous pouvez utiliser pour cette étape, mais nous recommandons Google Authenticator pour sa simplicité. C'est  gratuit et n'utilisera aucune donnée mobile.",
         "recommendation-authy": "Plusieurs applications d'authentification sont disponibles, mais l'option Authy est recommandée. Authy est gratuit et n'utilise aucune donnée mobile.",
         "button": {
-          "ok": "OK, je l'ai installée sur mon smartphone"
+          "ok": "OK, j'ai installé mon application d'authentification"
         },
         "appname-authenticator": "Google Authenticator",
         "appname-authy": "Authy"
       },
       "scanQr": {
-        "header": "Connecter votre smartphone à votre compte",
-        "info": "Afin de connecter votre smartphone à votre compte, nous devrons scanner le code QR ci-dessous dans l'application que vous venez d'installer.",
+        "header": "Connecter votre application d'authentification à votre compte",
+        "info": "Afin de connecter votre application d'authentification à votre compte, nous devrons scanner le code QR ci-dessous dans l'application que vous venez d'installer.",
         "add": "Ajoutez un compte en appuyant sur \"begin setup\" ou sur le bouton \"ajouter\" puis en choisissant l'option \"scan a barcode\"",
         "qr": "Dirigez votre téléphone vers le code QR ci-dessous et votre application commencera à générer des codes à 6 chiffres",
         "manual": "Avez-vous des problèmes avec le code QR? Voici le code manuel: ",
@@ -247,7 +250,7 @@
         }
       },
       "verifyQrCode": {
-        "header": "Vérifier le code de votre application smartphone",
+        "header": "Vérifier le code de votre application d'authentification",
         "info": "Votre application génerera un nouveau code à 6 chiffres toutes les 30 secondes. Lorsque vous êtes prêt, saisissez celui qui est affiché dans votre application et cliquez sur \"Vérifier\".",
         "codeInput": "Code à 6 chiffres",
         "invalidCode": "le code doit contenir 6 chiffres",
@@ -255,7 +258,7 @@
       },
       "codeVerified": {
         "header": "Excellent !",
-        "info": "Ce code était correct. Vous pouvez maintenant utiliser votre smartphone pour protéger davantage votre compte."
+        "info": "Ce code était correct. Vous pouvez maintenant utiliser votre application d'authentification pour protéger davantage votre compte."
       }
     },
     "key": {
@@ -294,8 +297,8 @@
     "codes": {
       "intro": {
         "header": "Codes de sauvegarde imprimables",
-        "backupInfo": "Il peut arriver que vous n'ayez pas votre smartphone ou votre clé de sécurité USB avec vous. Dans ce cas, des codes de sauvegarde imprimables peuvent être utilisés.",
-        "primaryInfo": "Même si vous n'utilisez pas de smartphone ou de clé de sécurité pour la vérification en deux étapes, vous pouvez toujours augmenter la sécurité de votre compte en utilisant uniquement des codes de sauvegarde imprimables.",
+        "backupInfo": "Il peut arriver que vous n'ayez pas votre application d'authentification ou votre clé de sécurité USB avec vous. Dans ce cas, des codes de sauvegarde imprimables peuvent être utilisés.",
+        "primaryInfo": "Même si vous n'utilisez pas d'application d'authentification ou de clé de sécurité pour la vérification en deux étapes, vous pouvez toujours augmenter la sécurité de votre compte en utilisant uniquement des codes de sauvegarde imprimables.",
         "button": {
           "new": "Créer de nouveaux codes"
         }

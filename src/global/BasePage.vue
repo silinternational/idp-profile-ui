@@ -4,7 +4,7 @@
       <header class="display-1 d-flex align-center justify-center text-center">
         <slot name="header" />
       </header>
-    
+
       <main class="body-1 py-4">
         <slot />
       </main>
@@ -16,7 +16,7 @@
 export default {
   mounted() {
     document.title = this.$vuetify.lang.t('$vuetify.app.title', this.$slots.header[0].text.trim())
-  }
+  },
 }
 </script>
 

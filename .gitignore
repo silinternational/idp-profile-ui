@@ -8,7 +8,6 @@ vendor/
 .env.local
 .env.*.local
 development/cert
-app-id.json
 
 # Log files
 npm-debug.log*
@@ -22,3 +21,6 @@ npm-debug.log*
 *.njsproj
 *.sln
 *.sw*
+
+# Sentry Config File
+.env.sentry-build-plugin

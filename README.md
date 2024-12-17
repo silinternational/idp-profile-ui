@@ -8,13 +8,17 @@ Identity management UI for a given IdP that will help users establish good passw
 
 Install [Docker](https://docs.docker.com/install), [Docker Compose](https://docs.docker.com/compose/install) and [Make](https://www.gnu.org/software/make)
 
-Project is managed with [vue-cli](https://github.com/vuejs/vue-cli).
+Project is managed with [vitejs](https://vitejs.dev/).
 
 ## Environment
 
 This app is setup to run against HTTPS for WebAuthn testing. In order to facilitate this _traefik_ must be configured. Some values are located in the `.env.local` and some are located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
 
-1.  `cp .env.dist .env.local` and populate with appropriate values.
+1. Copy `.env.dist` to  `.env.local`
+2. Edit `.env.local`:
+   - replace 'example.org' with a domain you have DNS edit permissions
+   - add a token to CLOUDFLARE_DNS_API_TOKEN
+   - add your email to LETS_ENCRYPT_EMAIL
 
 ## i18n
 
@@ -30,19 +34,21 @@ i18n support is built-in however the translation files must be generated and dro
 An IdP infrastructure will be running locally and is required for authentication into the app's protected pages.
 
 #### Existing user
+
 1.  Username: **a**
 1.  Password: **a**
 
 #### New user (has no password yet)
+
 1. Enter app with a special "invitation" link, e.g., <https://profile.gtis.guru/#/profile/intro?invite=2b2d424e-8cb0-49c7-8c0b-7f6603INVITE>
 1. if needed, this user's username is **b**
 
 ## Run the UI as a Docker container
 
-See notes in Environment section regarding HTTPS and _traefik_ configuration.  
+See notes in Environment section regarding HTTPS and _traefik_ configuration.
 
 1.  Image (`silintl/idp-profile-ui`) is located on [Docker Hub](https://hub.docker.com/r/silintl/idp-profile-ui)
-1.  `VUE_APP_API_BASE_URL` must be populated as an environment variable so the UI knows how to communicate to the API.
+1.  `VITE_API_BASE_URL` must be populated as an environment variable so the UI knows how to communicate to the API.
 
 ## Local development
 
@@ -71,8 +77,8 @@ Copy `.env.dist` to `env.local` and update the relevant values, e.g., a UI deplo
 
 The following files can/should be replaced before running the build.
 
-* `public/favicon.ico`
-* `src/assets/logo.png`
+- `./favicon.ico`
+- `src/assets/logo.png`
 
 ## Step 3 – Build for deployment
 

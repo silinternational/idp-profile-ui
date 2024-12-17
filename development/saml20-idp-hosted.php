@@ -16,7 +16,6 @@ $metadata['profile-idp'] = [
             'idBrokerTrustedIpRanges' => Env::get('ID_BROKER_TRUSTED_IP_RANGES'),
             'idpDomainName' => Env::get('IDP_DOMAIN_NAME'),
             'mfaSetupUrl' => Env::get('MFA_SETUP_URL'),
-            'mfaLearnMoreUrl' => Env::get('MFA_LEARN_MORE_URL'),
 
             // Optional:
             'loggerClass' => Psr3SamlLogger::class,
@@ -34,6 +33,7 @@ $metadata['profile-idp'] = [
         30 => [
             'class' => 'profilereview:ProfileReview',
             'employeeIdAttr' => 'employeeNumber',
+            'mfaLearnMoreUrl' => Env::get('MFA_LEARN_MORE_URL'),
             'profileUrl' => Env::get('PROFILE_URL'),
             'loggerClass' => Psr3SamlLogger::class,
         ],
