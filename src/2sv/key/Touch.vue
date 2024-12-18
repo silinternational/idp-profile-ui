@@ -2,17 +2,17 @@
   <ProfileWizard>
     <v-alert :value="error" type="error">
       <span class="d-flex align-center justify-center">
-        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.error') }}
+        {{ $t('2sv.key.touch.error') }}
       </span>
     </v-alert>
 
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.header') }}
+        {{ $t('2sv.key.touch.header') }}
       </template>
 
       <p>
-        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.info') }}
+        {{ $t('2sv.key.touch.info') }}
       </p>
 
       <figure class="pa-4 d-flex flex-column">
@@ -23,17 +23,17 @@
 
     <ButtonBar>
       <v-btn to="/2sv/usb-security-key/insert" tabindex="-1" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
+        {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-btn v-if="isSupported && error" @click=";(error = false), create()" color="error" outlined>
-        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.button.retry') }}
+        {{ $t('2sv.key.touch.button.retry') }}
       </v-btn>
 
       <v-btn v-if="error" to="/2sv/printable-backup-codes/intro" color="warning" outlined class="ml-4">
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
+        {{ $t('global.button.skip') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

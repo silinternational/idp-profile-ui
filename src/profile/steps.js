@@ -1,6 +1,6 @@
-import Vue from 'vue'
 import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
 import { mfa, retrieve as retrieveMfa } from '@/global/mfa'
+import user from '@/plugins/user'
 
 const store = {
   steps: [],
@@ -9,13 +9,13 @@ const store = {
 export default {
   steps: store.steps,
   async init() {
-    if (Vue.prototype.$user.auth_type === 'login') {
+    if (user.auth_type === 'login') {
       await Promise.all([retrieveMethods(), retrieveMfa()])
     }
 
     // Retain all steps but mark relevant ones
     allSteps.forEach((step, index) => {
-      const isRelevant = step.isRelevant(Vue.prototype.$user, recoveryMethods.alternates, mfa)
+      const isRelevant = step.isRelevant(user, recoveryMethods.alternates, mfa)
       const isComplete = step.state === 'complete'
       const isNotDuplicate = !store.steps.some((s) => s.nameKey === step.nameKey)
       if (isNotDuplicate && (isRelevant || !isComplete)) {
@@ -59,6 +59,7 @@ const recovery = {
     return user.auth_type === 'login' && (isRequested(this.paths) || recoveryMethods.filter(isAlternate).length < 1)
   },
 }
+
 const isAlternate = (method) => method.type === 'email'
 
 const twosv = {

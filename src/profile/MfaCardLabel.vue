@@ -26,7 +26,7 @@
           <v-icon v-on="on" @click="edit" color="info" small> mdi-pencil </v-icon>
         </template>
 
-        {{ $vuetify.lang.t('$vuetify.profile.index.rename') }}
+        {{ $t('profile.index.rename') }}
       </v-tooltip>
     </v-col>
   </v-row>

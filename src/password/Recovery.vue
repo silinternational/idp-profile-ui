@@ -1,19 +1,19 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>{{ $vuetify.lang.t('$vuetify.password.recovery.header') }}</template>
+      <template v-slot:header>{{ $t('password.recovery.header') }}</template>
 
-      <p>{{ $vuetify.lang.t('$vuetify.password.recovery.explanation') }}</p>
+      <p>{{ $t('password.recovery.explanation') }}</p>
 
-      <p v-if="alternates.length">{{ $vuetify.lang.t('$vuetify.password.recovery.atLeastOneRecovery') }}</p>
-      <p v-else>{{ $vuetify.lang.t('$vuetify.password.recovery.info', primary.value) }}</p>
+      <p v-if="alternates.length">{{ $t('password.recovery.atLeastOneRecovery') }}</p>
+      <p v-else>{{ $t('password.recovery.info', primary.value) }}</p>
 
       <p v-if="!alternates.length">
-        {{ $vuetify.lang.t('$vuetify.password.recovery.advice') }}
+        {{ $t('password.recovery.advice') }}
       </p>
 
       <ul>
-        <li class="subtitle-1 grey--text py-2">{{ $vuetify.lang.t('$vuetify.password.recovery.personalHeader') }}</li>
+        <li class="subtitle-1 grey--text py-2">{{ $t('password.recovery.personalHeader') }}</li>
 
         <li v-for="method in alternates" :key="method.id" class="d-flex pb-2 pl-4">
           {{ method.value }}
@@ -32,24 +32,24 @@
               </div>
             </template>
 
-            {{ $vuetify.lang.t('$vuetify.password.recovery.dontRemoveLastOne') }}
+            {{ $t('password.recovery.dontRemoveLastOne') }}
           </v-tooltip>
         </li>
         <li v-if="!alternates.length" class="pl-4">
-          <em>{{ $vuetify.lang.t('$vuetify.password.recovery.noPersonalMethods') }}</em>
+          <em>{{ $t('password.recovery.noPersonalMethods') }}</em>
         </li>
       </ul>
 
       <v-form @submit.prevent="add" ref="form" class="d-flex pa-4">
         <BaseTextField
           type="email"
-          :label="$vuetify.lang.t('$vuetify.password.recovery.emailInput')"
+          :label="$t('password.recovery.emailInput')"
           v-model="newEmail"
           :rules="[
             // this field is never required so it must either be empty or hold a VALID email (W3C's HTML5 type=email regex)
             (v) =>
               /^$|^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) ||
-              $vuetify.lang.t('$vuetify.password.recovery.invalidEmail'),
+              $t('password.recovery.invalidEmail'),
           ]"
           validate-on-blur
           @keyup.enter="blur"
@@ -64,7 +64,7 @@
 
     <template v-slot:actions>
       <v-btn v-if="!alternates.length" to="/2sv/intro" @click.once="skip" color="warning" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
+        {{ $t('global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -73,13 +73,13 @@
         <template v-slot:activator="{ on }">
           <div v-on="on">
             <v-btn @click.once="complete" :disabled="unsaved || !alternates.length" color="primary" outlined>
-              {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
+              {{ $t('global.button.continue') }}
             </v-btn>
           </div>
         </template>
 
-        <span v-if="unsaved">{{ $vuetify.lang.t('$vuetify.password.recovery.unsaved') }}</span>
-        <span v-else>{{ $vuetify.lang.t('$vuetify.password.recovery.advice') }}</span>
+        <span v-if="unsaved">{{ $t('password.recovery.unsaved') }}</span>
+        <span v-else>{{ $t('password.recovery.advice') }}</span>
       </v-tooltip>
     </template>
   </ProfileWizard>

@@ -2,11 +2,11 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.key.confirmed.header') }}
+        {{ $t('2sv.key.confirmed.header') }}
       </template>
 
       <p class="text-xs-center">
-        {{ $vuetify.lang.t('$vuetify.2sv.key.confirmed.info') }}
+        {{ $t('2sv.key.confirmed.info') }}
       </p>
     </BasePage>
 
@@ -14,7 +14,7 @@
       <v-spacer></v-spacer>
 
       <v-btn to="/2sv/printable-backup-codes/intro" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
+        {{ $t('global.button.continue') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

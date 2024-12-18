@@ -1,7 +1,7 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
     <v-card-title primary-title>
-      <h3 class="headline">{{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.title') }}</h3>
+      <h3 class="headline">{{ $t('profile.index.passwordRecoveryCard.title') }}</h3>
 
       <v-spacer />
 
@@ -10,7 +10,7 @@
           <v-icon v-on="on" x-large color="error">mdi-alert-circle</v-icon>
         </template>
 
-        {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.unverifiedEmails') }}
+        {{ $t('profile.index.passwordRecoveryCard.unverifiedEmails') }}
       </v-tooltip>
     </v-card-title>
 
@@ -23,11 +23,11 @@
             <v-icon v-on="on" color="error" small class="pl-1">mdi-alert-circle</v-icon>
           </template>
 
-          {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.unverified') }}
+          {{ $t('profile.index.passwordRecoveryCard.unverified') }}
         </v-tooltip>
 
         <a v-if="!method.verified && method.id != sent" @click="resend(method)" class="caption float-right pl-2">
-          {{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.resend') }}
+          {{ $t('profile.index.passwordRecoveryCard.resend') }}
         </a>
       </div>
       <v-row v-if="!methods.length">
@@ -35,7 +35,7 @@
           <v-icon x-large color="warning">mdi-alert</v-icon>
         </v-col>
         <v-col>
-          <em>{{ $vuetify.lang.t('$vuetify.profile.index.passwordRecoveryCard.warning') }}</em>
+          <em>{{ $t('profile.index.passwordRecoveryCard.warning') }}</em>
         </v-col>
       </v-row>
     </v-card-text>
@@ -44,8 +44,8 @@
       <v-spacer />
 
       <v-btn :href="'#/password/recovery'" color="primary" outlined>
-        <span v-if="methods.length">{{ $vuetify.lang.t('$vuetify.global.button.change') }}</span>
-        <span v-else>{{ $vuetify.lang.t('$vuetify.global.button.add') }}</span>
+        <span v-if="methods.length">{{ $t('global.button.change') }}</span>
+        <span v-else>{{ $t('global.button.add') }}</span>
       </v-btn>
     </v-card-actions>
   </v-card>

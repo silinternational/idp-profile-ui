@@ -2,19 +2,19 @@
   <ProfileWizard ref="wizard" :key="wizardKey">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.password.create.header', $root.idpConfig.idpName) }}
+        {{ $t('password.create.header', $idpConfig.idpName) }}
       </template>
 
       <v-form @submit.prevent="save" ref="form">
         <p>
-          {{ $vuetify.lang.t('$vuetify.password.create.username', $root.idpConfig.idpName) }}
+          {{ $t('password.create.username', $idpConfig.idpName) }}
           <strong class="body-2">{{ $user.idp_username }}</strong>
         </p>
 
         <div class="password">
           <BaseTextField
             :type="passwordIsHidden ? 'password' : 'text'"
-            :label="$vuetify.lang.t('$vuetify.password.create.pwInput')"
+            :label="$t('password.create.pwInput')"
             v-model="password"
             :rules="rules"
             :error-messages="errors"
@@ -54,29 +54,29 @@
               target="_blank"
               class="caption"
             >
-              {{ $vuetify.lang.t('$vuetify.global.learnMore') }}
+              {{ $t('global.learnMore') }}
             </a>
           </footer>
         </v-alert>
 
         <v-alert :value="!!isGood" type="success" outlined>
-          <header class="body-2">{{ $vuetify.lang.t('$vuetify.password.create.goodPassword') }}</header>
+          <header class="body-2">{{ $t('password.create.goodPassword') }}</header>
         </v-alert>
       </v-form>
     </BasePage>
 
     <template v-slot:actions>
       <v-btn v-if="$user.isNew()" to="/profile/intro" tabindex="-1" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
+        {{ $t('global.button.back') }}
       </v-btn>
       <v-btn v-else @click.once="skip" tabindex="-1" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
+        {{ $t('global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-btn @click.once="save" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
+        {{ $t('global.button.continue') }}
       </v-btn>
     </template>
   </ProfileWizard>
@@ -126,7 +126,7 @@ export default {
 
           this.$router.push('/password/confirm')
         } catch (e) {
-          this.errors.push(this.$vuetify.lang.t('$vuetify.password.create.noGood'))
+          this.errors.push(this.$t('password.create.noGood'))
 
           this.password = ''
 
@@ -160,20 +160,18 @@ export default {
   },
 }
 
-const required = (v, vm) => !!v || vm.$vuetify.lang.t('$vuetify.password.create.required')
+const required = (v, vm) => !!v || vm.$t('password.create.required')
 const minLength = (v, vm) =>
-  v.length >= vm.$root.idpConfig.passwordRules.minLength ||
-  vm.$vuetify.lang.t('$vuetify.password.create.tooShort', vm.$root.idpConfig.passwordRules.minLength)
+  v.length >= vm.$idpConfig.passwordRules.minLength ||
+  vm.$t('password.create.tooShort', vm.$idpConfig.passwordRules.minLength)
 const maxLength = (v, vm) =>
-  v.length < vm.$root.idpConfig.passwordRules.maxLength ||
-  vm.$vuetify.lang.t('$vuetify.password.create.tooLong', vm.$root.idpConfig.passwordRules.maxLength)
-const strong = (v, vm) =>
-  vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore ||
-  vm.$vuetify.lang.t('$vuetify.password.create.tooWeak')
+  v.length < vm.$idpConfig.passwordRules.maxLength ||
+  vm.$t('password.create.tooLong', vm.$idpConfig.passwordRules.maxLength)
+const strong = (v, vm) => vm.strength.score >= vm.$idpConfig.passwordRules.minScore || vm.$t('password.create.tooWeak')
 const requireAlphaAndNumeric = (v, vm) =>
-  !vm.$root.idpConfig.passwordRules.requireAlphaAndNumeric ||
+  !vm.$idpConfig.passwordRules.requireAlphaAndNumeric ||
   (/\p{L}/u.test(vm.password) && /\p{N}/u.test(vm.password)) ||
-  vm.$vuetify.lang.t('$vuetify.password.create.requireAlphaAndNumeric')
+  vm.$t('password.create.requireAlphaAndNumeric')
 const options = {
   graphs: zxcvbnCommonPackage.adjacencyGraphs,
   dictionary: {

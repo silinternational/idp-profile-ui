@@ -1,22 +1,22 @@
 <template>
   <v-app>
     <v-app-bar app color="primary">
-      <a href="/"><img :src="logo" /></a>
+      <a href="/"><img :src="logo" alt="Logo" /></a>
 
       <v-spacer />
 
-      <v-toolbar-title class="white--text px-4">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
+      <v-toolbar-title class="white--text px-4">{{ user.first_name }} {{ user.last_name }}</v-toolbar-title>
 
       <v-divider vertical dark inset class="mx-2" />
 
-      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark :icon="mobile" class="mx-1">
+      <v-btn v-if="user.isAuthenticated()" @click="logout" text dark :icon="mobile" class="mx-1">
         <v-icon v-if="mobile">mdi-logout-variant</v-icon>
-        <span v-else>{{ $vuetify.lang.t('$vuetify.app.logout') }}</span>
+        <span v-else>{{ $t('app.logout') }}</span>
       </v-btn>
 
-      <v-btn v-else @click="$user.login()" text dark :icon="mobile" class="mx-1">
+      <v-btn v-else @click="login" text dark :icon="mobile" class="mx-1">
         <v-icon v-if="mobile">mdi-login</v-icon>
-        <span v-else>{{ $vuetify.lang.t('$vuetify.app.login') }}</span>
+        <span v-else>{{ $t('app.login') }}</span>
       </v-btn>
 
       <v-divider vertical dark inset />
@@ -30,8 +30,8 @@
       <v-row no-gutters>
         <v-spacer />
 
-        <v-btn v-if="$returnTo.url" :href="$returnTo.url" small text dark color="secondary">
-          return to {{ $returnTo.url }}
+        <v-btn v-if="returnTo.url" :href="returnTo.url" small text dark color="secondary">
+          return to {{ returnTo.url }}
         </v-btn>
       </v-row>
 
@@ -50,32 +50,35 @@
 <script>
 import HelpButton from './help/HelpButton.vue'
 import logo from '@/assets/logo.png'
+import user from '@/plugins/user'
+import returnTo from '@/plugins/returnTo'
+import eventBus from '@/eventBus'
+
 export default {
   components: {
     HelpButton,
   },
-  data: () => ({
-    message: '',
-    logo,
-  }),
+  data() {
+    return {
+      message: '',
+      logo,
+    }
+  },
   computed: {
     mobile() {
-      return this.$vuetify.breakpoint.name === 'xs'
+      return this?.$vuetify?.breakpoint?.name === 'xs'
+    },
+    user() {
+      return user // Access user directly
+    },
+    returnTo() {
+      return returnTo
     },
   },
-  beforeCreate() {
-    this.$API.interceptors.response.use(
-      (response) => response,
-      (error) => {
-        this.message = error.message
-
-        throw error
-      },
-    )
-  },
   created() {
-    const appScope = this
-    this.$root.$on('clear-messages', () => (appScope.message = '')) // built for situation in Recovery.vue (temp hack hopefully)
+    eventBus.on('clear-messages', () => {
+      this.message = ''
+    })
   },
   errorCaptured(err) {
     this.message = err.message || err
@@ -83,6 +86,14 @@ export default {
   watch: {
     $route() {
       this.message = ''
+    },
+  },
+  methods: {
+    logout() {
+      this.user.logout()
+    },
+    login() {
+      this.user.login()
     },
   },
 }
@@ -100,7 +111,7 @@ p {
   max-width: 75ch; /* better readability supposedly */
 }
 
-/* with the addition of the help link, the extra space on the rigth looked weird. */
+/* with the addition of the help link, the extra space on the right looked weird. */
 div.v-toolbar__content {
   padding-right: initial;
 }

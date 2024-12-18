@@ -2,16 +2,16 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.password.confirm.header') }}
+        {{ $t('password.confirm.header') }}
       </template>
 
       <v-form @submit.prevent="confirm" ref="form" class="pa-4">
-        <p>{{ $vuetify.lang.t('$vuetify.password.confirm.explanation') }}</p>
+        <p>{{ $t('password.confirm.explanation') }}</p>
 
         <div class="password">
           <BaseTextField
             :type="passwordIsHidden ? 'password' : 'text'"
-            :label="$vuetify.lang.t('$vuetify.password.confirm.pwInput')"
+            :label="$t('password.confirm.pwInput')"
             v-model="password"
             :rules="rules"
             :error-messages="errors"
@@ -43,13 +43,13 @@
 
     <template v-slot:actions>
       <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" tabindex="-1" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
+        {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-btn @click.once="confirm" color="primary" :disabled="errors.length > 0" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
+        {{ $t('global.button.continue') }}
       </v-btn>
     </template>
   </ProfileWizard>
@@ -65,7 +65,7 @@ export default {
   data: (vm) => ({
     password: '',
     passwordIsHidden: true,
-    rules: [(v) => v == vm.$root.$data.password || vm.$vuetify.lang.t('$vuetify.password.confirm.noMatch')],
+    rules: [(v) => v == vm.$data.password || vm.$t('password.confirm.noMatch')],
     errors: [],
   }),
   beforeRouteLeave(to, from, next) {

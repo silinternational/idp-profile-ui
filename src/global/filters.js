@@ -1,5 +1,9 @@
-import Vue from 'vue'
 import { format, parseISO } from 'date-fns'
 
-Vue.filter('format', (date, fmt = 'iiii, LLLL do yyyy') => (date ? format(parseISO(date), fmt) : '–'))
-Vue.filter('formatLong', (date, fmt = 'iiii, LLLL do yyyy, h:mm:ss a') => (date ? format(date, fmt) : '–'))
+export function formatDate(date, fmt = 'iiii, LLLL do yyyy') {
+  return date ? format(parseISO(date), fmt) : '–'
+}
+
+export function formatLongDate(date, fmt = 'iiii, LLLL do yyyy, h:mm:ss a') {
+  return date ? format(date, fmt) : '–'
+}

@@ -2,11 +2,11 @@
   <ProfileWizard>
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.download.header') }}
+        {{ $t('2sv.smartphone.download.header') }}
       </template>
 
       <p>
-        {{ $vuetify.lang.t(`$vuetify.2sv.smartphone.download.recommendation-${preferredAppName}`) }}
+        {{ $t(`2sv.smartphone.download.recommendation-${preferredAppName}`) }}
       </p>
 
       <figure class="d-flex align-center justify-center pb-4 my-4">
@@ -14,7 +14,7 @@
         <img v-else :src="authenticator" />
 
         <figcaption class="headline ml-4">
-          {{ $vuetify.lang.t(`$vuetify.2sv.smartphone.download.appname-${preferredAppName}`) }}
+          {{ $t(`2sv.smartphone.download.appname-${preferredAppName}`) }}
         </figcaption>
       </figure>
 
@@ -30,13 +30,13 @@
 
     <ButtonBar>
       <v-btn to="/2sv/smartphone/intro" tabindex="-1" outlined class="mb-4 mb-sm-0">
-        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
+        {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-btn to="/2sv/smartphone/scan-qr" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.download.button.ok') }}
+        {{ $t('2sv.smartphone.download.button.ok') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

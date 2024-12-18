@@ -14,17 +14,17 @@
     <v-card-text class="flex-grow-1">
       <Attribute
         v-if="meta.created_utc"
-        :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.created')"
-        :value="meta.created_utc | format"
+        :name="$t('profile.index.codeCard.created')"
+        :value="formatDate(meta.created_utc)"
       />
       <Attribute
         v-if="meta.last_used_utc"
-        :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.lastUsed')"
-        :value="meta.last_used_utc | format"
+        :name="$t('profile.index.codeCard.lastUsed')"
+        :value="formatDate(meta.last_used_utc)"
       />
       <Attribute
         v-if="meta.created_utc"
-        :name="$vuetify.lang.t('$vuetify.profile.index.codeCard.remaining')"
+        :name="$t('profile.index.codeCard.remaining')"
         :value="meta.data.count"
         sameline
       />
@@ -33,7 +33,7 @@
           <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
         </v-col>
         <v-col>
-          <em>{{ $vuetify.lang.t('$vuetify.profile.index.codeCard.warning') }}</em>
+          <em>{{ $t('profile.index.codeCard.warning') }}</em>
         </v-col>
       </v-row>
     </v-card-text>
@@ -42,10 +42,10 @@
       <v-spacer />
 
       <v-btn v-if="meta.created_utc" href="#/2sv/printable-backup-codes/new" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.profile.index.codeCard.button.replace') }}
+        {{ $t('profile.index.codeCard.button.replace') }}
       </v-btn>
       <v-btn v-else href="#/2sv/printable-backup-codes/intro" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.profile.index.codeCard.button.add') }}
+        {{ $t('profile.index.codeCard.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :mfaId="meta.id" />
     </v-card-actions>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { formatDate } from '@/global/filters'
 import Attribute from './Attribute.vue'
 import MfaCardLabel from './MfaCardLabel.vue'
 import MfaCardRemove from './MfaCardRemove.vue'
@@ -65,7 +66,10 @@ export default {
   },
   props: ['meta'],
   data: (vm) => ({
-    label: vm.meta.label || vm.$vuetify.lang.t('$vuetify.profile.index.codeCard.title'),
+    label: vm.meta.label || vm.$t('profile.index.codeCard.title'),
   }),
+  methods: {
+    formatDate,
+  },
 }
 </script>

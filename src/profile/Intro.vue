@@ -1,12 +1,12 @@
 <template>
   <BasePage>
     <template v-slot:header>
-      {{ $vuetify.lang.t('$vuetify.profile.intro.header', $root.idpConfig.idpName, $user.first_name) }}
+      {{ $t('profile.intro.header', $idpConfig.idpName, $user.first_name) }}
     </template>
 
     <v-row justify="center">
       <p class="mx-4">
-        {{ $vuetify.lang.t('$vuetify.profile.intro.explanation') }}
+        {{ $t('profile.intro.explanation') }}
       </p>
 
       <iframe
@@ -24,7 +24,7 @@
       <v-spacer></v-spacer>
 
       <v-col cols="auto" class="mr-4 align-self-center">
-        {{ $vuetify.lang.t('$vuetify.profile.intro.username') }}
+        {{ $t('profile.intro.username') }}
         <strong class="body-2">{{ $user.idp_username }}</strong>
       </v-col>
 
@@ -32,7 +32,7 @@
 
       <v-col cols="auto">
         <v-btn to="/password/create" color="primary" outlined>
-          {{ $vuetify.lang.t('$vuetify.profile.intro.button.start') }}
+          {{ $t('profile.intro.button.start') }}
         </v-btn>
       </v-col>
 

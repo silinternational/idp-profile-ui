@@ -1,26 +1,26 @@
 <template>
   <BasePage>
     <template v-slot:header>
-      {{ $vuetify.lang.t('$vuetify.2sv.change.header') }}
+      {{ $t('2sv.change.header') }}
     </template>
 
     <v-alert :value="isLastOne" type="error">
-      <span>{{ $vuetify.lang.t('$vuetify.2sv.change.lastOne') }}</span>
+      <span>{{ $t('2sv.change.lastOne') }}</span>
     </v-alert>
 
     <p class="py-4">
-      {{ $vuetify.lang.t('$vuetify.2sv.change.info', label) }}
+      {{ $t('2sv.change.info', label) }}
     </p>
 
     <ButtonBar>
       <v-btn to="/profile" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.no') }}
+        {{ $t('global.button.no') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-btn @click.once="yes(requested.id)" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.yes') }}
+        {{ $t('global.button.yes') }}
       </v-btn>
     </ButtonBar>
   </BasePage>

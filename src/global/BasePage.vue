@@ -15,7 +15,7 @@
 <script>
 export default {
   mounted() {
-    document.title = this.$vuetify.lang.t('$vuetify.app.title', this.$slots.header[0].text.trim())
+    // TODO document.title = this.$t('app.title', this.$slots.header[0].text.trim())
   },
 }
 </script>

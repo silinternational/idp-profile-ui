@@ -4,20 +4,20 @@
       <v-row no-gutters align-center>
         <v-icon :color="hide ? 'success' : ''" x-large>mdi-security</v-icon>
 
-        <h3 class="headline pl-4">{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.title') }}</h3>
+        <h3 class="headline pl-4">{{ $t('profile.index.dndCard.title') }}</h3>
       </v-row>
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <p>{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.info') }}</p>
+      <p>{{ $t('profile.index.dndCard.info') }}</p>
     </v-card-text>
 
     <v-card-actions>
       <v-spacer />
 
       <v-btn @click="toggle()" :loading="toggling" color="primary" outlined>
-        <span v-if="hide">{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.button.disable') }}</span>
-        <span v-else>{{ $vuetify.lang.t('$vuetify.profile.index.dndCard.button.enable') }}</span>
+        <span v-if="hide">{{ $t('profile.index.dndCard.button.disable') }}</span>
+        <span v-else>{{ $t('profile.index.dndCard.button.enable') }}</span>
       </v-btn>
     </v-card-actions>
   </v-card>

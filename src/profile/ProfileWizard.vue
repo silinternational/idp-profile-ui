@@ -8,7 +8,7 @@
           :complete-icon="toIcon(_step.state)"
           :color="toColor(_step.state)"
         >
-          {{ $vuetify.lang.t(`$vuetify.${_step.nameKey}`) }}
+          {{ $t(`${_step.nameKey}`) }}
         </v-stepper-step>
 
         <v-divider v-if="hasMoreSteps(_step)" :key="`divider-${_step.id}`" />
@@ -52,10 +52,10 @@ export default {
     },
     toIcon: (state) => {
       const map = {
-        skipped: '$vuetify.icons.warning',
+        skipped: 'icons.warning',
       }
 
-      return map[state] || '$vuetify.icons.complete'
+      return map[state] || 'icons.complete'
     },
     completed: function () {
       this.currentStep.state = 'complete'

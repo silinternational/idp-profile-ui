@@ -2,7 +2,7 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.profile.complete.header') }}
+        {{ $t('profile.complete.header') }}
       </template>
 
       <v-row>
@@ -11,7 +11,7 @@
         </v-col>
 
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.info', $user.first_name, $root.idpConfig.idpName) }}
+          {{ $t('profile.complete.info', $user.first_name, $idpConfig.idpName) }}
         </v-col>
       </v-row>
 
@@ -21,7 +21,7 @@
         </v-col>
 
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.username') }}
+          {{ $t('profile.complete.username') }}
           <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
         </v-col>
       </v-row>
@@ -32,8 +32,8 @@
         </v-col>
 
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.unverifiedEmails') }}
-          <span class="font-weight-bold">({{ unverifiedEmails | joined }})</span>
+          {{ $t('profile.complete.unverifiedEmails') }}
+          <span class="font-weight-bold">({{ joined(unverifiedEmails) }})</span>
         </v-col>
       </v-row>
 
@@ -42,7 +42,7 @@
           <v-icon color="warning">mdi-alert</v-icon>
         </v-col>
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.noAlternates') }}
+          {{ $t('profile.complete.noAlternates') }}
         </v-col>
       </v-row>
 
@@ -51,7 +51,7 @@
           <v-icon color="warning">mdi-alert</v-icon>
         </v-col>
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.no2sv') }}
+          {{ $t('profile.complete.no2sv') }}
         </v-col>
       </v-row>
     </BasePage>
@@ -60,7 +60,7 @@
       <v-spacer></v-spacer>
 
       <v-btn @click.once="done" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.profile.complete.button.profile') }}
+        {{ $t('profile.complete.button.profile') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -75,9 +75,6 @@ export default {
   components: {
     ProfileWizard,
   },
-  filters: {
-    joined: (emails) => emails.map((email) => email.value).join(', '),
-  },
   data: () => ({
     alternates: recoveryMethods.alternates,
     mfa,
@@ -86,6 +83,7 @@ export default {
     unverifiedEmails: (vm) => vm.alternates.filter((m) => !m.verified),
   },
   methods: {
+    joined: (emails) => emails.map((email) => email.value).join(', '),
     done() {
       this.$refs.wizard.allDone()
 

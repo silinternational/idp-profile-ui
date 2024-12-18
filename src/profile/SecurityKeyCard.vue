@@ -7,9 +7,7 @@
         </v-col>
         <v-col class="ml-4">
           <MfaCardLabel
-            :label="
-              isSummary ? $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title') : label || webauthnKey.label
-            "
+            :label="isSummary ? $t('profile.index.securityKeyCard.title') : label || webauthnKey.label"
             :keyId="webauthnKey.id"
             :mfaId="mfaId"
             :readOnly="!!isSummary"
@@ -24,26 +22,26 @@
       <Attribute
         sameline
         v-if="isSummary && numberOfKeys"
-        :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.number')"
+        :name="$t('profile.index.securityKeyCard.number')"
         :value="numberOfKeys"
       />
       <Attribute
         v-if="webauthnKey.created_utc"
-        :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.created')"
-        :value="webauthnKey.created_utc | format"
+        :name="$t('profile.index.securityKeyCard.created')"
+        :value="formatDate(webauthnKey.created_utc)"
       />
       <v-row v-else-if="!webauthnKey.id">
         <v-col cols="auto">
           <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
         </v-col>
         <v-col>
-          <em>{{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.warning') }}</em>
+          <em>{{ $t('profile.index.securityKeyCard.warning') }}</em>
         </v-col>
       </v-row>
       <Attribute
         v-if="webauthnKey.last_used_utc && !isSummary"
-        :name="$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.lastUsed')"
-        :value="webauthnKey.last_used_utc | format"
+        :name="$t('profile.index.securityKeyCard.lastUsed')"
+        :value="formatDate(webauthnKey.last_used_utc)"
       />
     </v-card-text>
 
@@ -53,7 +51,7 @@
       </v-btn>
       <v-spacer />
       <v-btn v-if="isSummary || numberOfKeys === 1" href="#/2sv/usb-security-key/intro" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.add') }}
+        {{ $t('global.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="numberOfKeys >= 1 && !isSummary" :keyId="webauthnKey.id" :mfaId="mfaId" />
     </v-card-actions>
@@ -62,6 +60,7 @@
 
 <script>
 import Attribute from './Attribute.vue'
+import { formatDate } from '@/global/filters'
 import MfaCardLabel from './MfaCardLabel.vue'
 import MfaCardRemove from './MfaCardRemove.vue'
 
@@ -78,9 +77,12 @@ export default {
   computed: {
     keyBtnLabel() {
       return this.showKeys
-        ? this.$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.hide')
-        : this.$vuetify.lang.t('$vuetify.profile.index.securityKeyCard.show')
+        ? this.$t('profile.index.securityKeyCard.hide')
+        : this.$t('profile.index.securityKeyCard.show')
     },
+  },
+  methods: {
+    formatDate,
   },
 }
 </script>

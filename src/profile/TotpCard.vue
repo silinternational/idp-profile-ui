@@ -7,7 +7,7 @@
         </v-col>
         <v-col class="ml-4">
           <MfaCardLabel
-            :label="label || meta.label || $vuetify.lang.t('$vuetify.profile.index.totpCard.title')"
+            :label="label || meta.label || $t('profile.index.totpCard.title')"
             :mfaId="meta.id"
             :readOnly="false"
             @new-label="label = $event"
@@ -19,21 +19,21 @@
     <v-card-text class="flex-grow-1">
       <Attribute
         v-if="meta.created_utc"
-        :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.created')"
-        :value="meta.created_utc | format"
+        :name="$t('profile.index.totpCard.created')"
+        :value="formatDate(meta.created_utc)"
       />
       <v-row v-else>
         <v-col cols="auto">
           <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
         </v-col>
         <v-col>
-          <em>{{ $vuetify.lang.t('$vuetify.profile.index.totpCard.warning') }}</em>
+          <em>{{ $t('profile.index.totpCard.warning') }}</em>
         </v-col>
       </v-row>
       <Attribute
         v-if="meta.last_used_utc"
-        :name="$vuetify.lang.t('$vuetify.profile.index.totpCard.lastUsed')"
-        :value="meta.last_used_utc | format"
+        :name="$t('profile.index.totpCard.lastUsed')"
+        :value="formatDate(meta.last_used_utc)"
       />
     </v-card-text>
 
@@ -41,10 +41,10 @@
       <v-spacer />
 
       <v-btn v-if="meta.created_utc" :href="`#/2sv/change/${meta.id}`" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.profile.index.totpCard.button.change') }}
+        {{ $t('profile.index.totpCard.button.change') }}
       </v-btn>
       <v-btn v-else href="#/2sv/smartphone/intro" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.add') }}
+        {{ $t('global.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :mfaId="meta.id" />
     </v-card-actions>
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import { formatDate } from '@/global/filters'
 import Attribute from './Attribute.vue'
 import MfaCardLabel from './MfaCardLabel.vue'
 import MfaCardRemove from './MfaCardRemove.vue'
@@ -66,5 +67,8 @@ export default {
   data: (vm) => ({
     label: '',
   }),
+  methods: {
+    formatDate,
+  },
 }
 </script>

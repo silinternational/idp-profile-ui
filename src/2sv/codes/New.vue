@@ -2,14 +2,12 @@
   <ProfileWizard ref="wizard">
     <BasePage>
       <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.header') }}
+        {{ $t('2sv.codes.new.header') }}
       </template>
 
       <p v-if="printing" class="printable header">
-        {{ $root.idpConfig.idpName }}
-        <span class="caption">
-          ({{ $vuetify.lang.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | formatLong }})
-        </span>
+        {{ $idpConfig.idpName }}
+        <span class="caption"> ({{ $t('2sv.codes.new.generated') }} {{ formatLongDate(Date.now()) }}) </span>
       </p>
 
       <v-row id="codes">
@@ -20,7 +18,8 @@
           :class="{ 'text-right': i % 2 === 0 }"
           class="text-no-wrap"
         >
-          <v-icon class="pr-2">mdi-checkbox-blank-outline</v-icon> <span class="code xsCode">{{ code }}</span>
+          <v-icon class="pr-2">mdi-checkbox-blank-outline</v-icon>
+          <span class="code xsCode">{{ code }}</span>
         </v-col>
       </v-row>
     </BasePage>
@@ -33,7 +32,7 @@
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
       >
-        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}</span>
+        <span v-if="!mobile">{{ $t('2sv.codes.new.button.print') }}</span>
 
         <v-tooltip top>
           <template v-slot:activator="{ on }">
@@ -45,14 +44,14 @@
 
       <v-btn
         :href="`data:text/plain,${encodedData}`"
-        :download="`${$root.idpConfig.idpName}--printable-codes.txt`"
+        :download="`${$idpConfig.idpName}--printable-codes.txt`"
         @click="gotEm = true"
         color="secondary"
         :outlined="!mobile"
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
       >
-        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}</span>
+        <span v-if="!mobile">{{ $t('2sv.codes.new.button.download') }}</span>
 
         <v-tooltip top>
           <template v-slot:activator="{ on }">
@@ -70,7 +69,7 @@
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
       >
-        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}</span>
+        <span v-if="!mobile">{{ $t('2sv.codes.new.button.copied') }}</span>
 
         <v-tooltip top>
           <template v-slot:activator="{ on }">
@@ -88,7 +87,7 @@
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
       >
-        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}</span>
+        <span v-if="!mobile">{{ $t('2sv.codes.new.button.copy') }}</span>
 
         <v-tooltip top>
           <template v-slot:activator="{ on }">
@@ -104,12 +103,12 @@
         <template v-slot:activator="{ on }">
           <div v-on="on">
             <v-btn @click.once="finish" :disabled="!gotEm" color="primary" outlined>
-              {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.ok') }}
+              {{ $t('2sv.codes.new.button.ok') }}
             </v-btn>
           </div>
         </template>
 
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.personalCopy') }}
+        {{ $t('2sv.codes.new.personalCopy') }}
       </v-tooltip>
     </ButtonBar>
   </ProfileWizard>
@@ -118,49 +117,56 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 import { add } from '@/global/mfa'
+import { formatLongDate } from '@/global/filters'
 
 export default {
   components: {
     ProfileWizard,
   },
-  data: () => ({
-    codes: [],
-    printing: false,
-    copied: false,
-    gotEm: false,
-  }),
-  async created() {
-    const newCodes = await add('backupcode')
-
-    this.codes = newCodes.data
-
-    this.$refs.wizard.completed()
+  data() {
+    return {
+      codes: [],
+      printing: false,
+      copied: false,
+      gotEm: false,
+    }
   },
   computed: {
+    idpConfig() {
+      return this.idpConfig
+    },
     encodedData() {
-      return encodeURIComponent(`${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
+      return encodeURIComponent(`${this.$idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
     },
     mobile() {
-      return this.$vuetify.breakpoint.name === 'xs'
+      return this.breakpoint.name === 'xs'
     },
   },
+  async created() {
+    const newCodes = await add('backupcode')
+    this.codes = newCodes.data
+    this.$refs.wizard.completed()
+  },
   methods: {
-    finish: function () {
+    formatLongDate,
+    finish() {
       this.$refs.wizard.next()
     },
-    print: async function (id) {
+    async print(id) {
       this.gotEm = this.printing = true
       const el = document.querySelector(id)
 
       el.classList.add('printable')
 
-      // don't print until the renderer has run again with the newly added 'printable' class.
+      // Wait for DOM updates
       await this.$nextTick()
+
       window.print()
+
       this.printing = false
     },
-    copy: async function () {
-      await navigator.clipboard.writeText(`${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
+    async copy() {
+      await navigator.clipboard.writeText(`${this.$idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
 
       this.gotEm = this.copied = true
     },
@@ -200,15 +206,18 @@ i.v-icon {
     top: 30%;
     left: 0;
   }
+
   .printable.header {
     position: absolute;
     top: 0;
     left: 0;
   }
+
   .printable,
   .printable * {
     visibility: visible;
   }
+
   .printable .col {
     padding: 12px !important;
   }

@@ -1,32 +1,28 @@
 <template>
   <BasePage>
     <template v-slot:header>
-      {{ $vuetify.lang.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
+      {{ $t('profile.index.header', idpConfig.idpName) }}
     </template>
 
     <v-row>
       <v-col cols="6">
-        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
-        <Attribute
-          :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')"
-          :value="$user.last_login | format"
-          sameline
-        />
-        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
+        <Attribute :name="t('profile.index.username')" :value="user.idp_username" sameline />
+        <Attribute :name="t('profile.index.lastLogin')" :value="user.last_login" sameline />
+        <Attribute :name="t('profile.index.manager')" :value="user.manager_email" sameline />
       </v-col>
 
       <v-col cols="6">
-        <ProfileProgress :profile="{ user: $user, alternates, mfa }" />
+        <ProfileProgress :profile="{ user: user, alternates, mfa }" />
       </v-col>
     </v-row>
 
     <v-alert :value="hasUnverifiedEmails" type="error">
-      <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
+      <span>{{ $t('profile.index.unverifiedEmails') }}</span>
     </v-alert>
 
     <v-row>
       <v-col cols="12" sm="6" md="4">
-        <PasswordCard :meta="$user.password_meta" />
+        <PasswordCard :meta="user.password_meta" />
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
@@ -34,11 +30,11 @@
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
-        <DoNotDiscloseCard :dnd="$user.hide" />
+        <DoNotDiscloseCard :dnd="user.hide" />
       </v-col>
     </v-row>
 
-    <v-subheader>{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
+    <v-subheader>{{ $t('profile.index.2sv') }}</v-subheader>
 
     <v-row>
       <v-col cols="12" sm="6" md="4">
@@ -70,7 +66,7 @@
 
     <v-row v-if="showKeys && numberOfKeys > 1">
       <v-col>
-        {{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title') }}
+        {{ $t('profile.index.securityKeyCard.title') }}
       </v-col>
     </v-row>
 
@@ -94,6 +90,14 @@ import Attribute from './Attribute.vue'
 import { computed, onMounted, reactive, ref } from 'vue'
 import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
 import { mfa as globalMfa, retrieve as retrieveMfa } from '@/global/mfa'
+import { getCurrentInstance } from 'vue'
+import { useLocale } from 'vuetify'
+import user from '@/plugins/user'
+
+const { t } = useLocale()
+
+const { appContext } = getCurrentInstance()
+const idpConfig = appContext.config.globalProperties.$idpConfig || {}
 
 onMounted(async () => {
   await Promise.all([retrieveMethods(), retrieveMfa()])

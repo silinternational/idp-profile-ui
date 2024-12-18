@@ -1,6 +1,6 @@
 <template>
   <v-btn @click="remove(mfaId, keyId)" color="error" outlined>
-    {{ $vuetify.lang.t('$vuetify.global.button.remove') }}
+    {{ $t('global.button.remove') }}
   </v-btn>
 </template>
 
@@ -11,9 +11,9 @@ export default {
   props: ['keyId', 'mfaId'],
   methods: {
     async remove(mfaId, keyId) {
-      const content = mfa.numVerified == 1 ? '$vuetify.2sv.remove.lastOne' : '$vuetify.global.areYouSure'
+      const content = mfa.numVerified == 1 ? '2sv.remove.lastOne' : 'global.areYouSure'
 
-      if (confirm(this.$vuetify.lang.t(content))) {
+      if (confirm(this.$t(content))) {
         if (keyId) {
           await removeWebauthn(mfaId, keyId)
         } else {
