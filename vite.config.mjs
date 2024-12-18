@@ -1,8 +1,8 @@
 import path from 'path'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
-import { VuetifyResolver } from 'unplugin-vue-components/resolvers'
-import Components from 'unplugin-vue-components/vite'
 import { defineConfig, loadEnv } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vuetify from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -11,17 +11,22 @@ export default defineConfig(({ mode }) => {
   console.log(`Version: ${env.UI_VERSION}, Project: ${env.VITE_PROJECT_NAME}`)
   return {
     plugins: [
-      vue(),
-      Components({
-        resolvers: [VuetifyResolver()],
+      vue({
+        template: {
+          compilerOptions: {
+            compatConfig: {
+              MODE: 2,
+            },
+          },
+        },
       }),
+      vuetify({ autoImport: true }),
       sentryVitePlugin({
         org: 'itse',
         project: env.VITE_PROJECT_NAME,
         authToken: env.SENTRY_AUTH_TOKEN,
       }),
     ],
-    version: 2.7,
     server: {
       host: '0.0.0.0',
       port: 8000,
@@ -31,8 +36,6 @@ export default defineConfig(({ mode }) => {
       },
     },
     define: {
-      // This is necessary in Vue 2 codebases. It is automatic in Vue 3
-      __VUE_PROD_DEVTOOLS__: 'false',
       __APP_VERSION__: JSON.stringify(env.UI_VERSION),
     },
     //resolve @/ to src/
