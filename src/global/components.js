@@ -7,5 +7,5 @@ export default (app) => {
   app.component('BasePage', BasePage)
   app.component('ButtonBar', ButtonBar)
   app.component('BaseTextField', BaseTextField)
-  app.component('Loading', Loading)
+  app.component('LoadingIndicator', Loading)
 }

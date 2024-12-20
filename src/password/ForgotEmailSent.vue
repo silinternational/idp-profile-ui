@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template v-slot:header>{{ $t('password.forgotSent.header') }}</template>
+    <template #header>{{ $t('password.forgotSent.header') }}</template>
 
     <p>{{ $t('password.forgotSent.emailComing') }}</p>
     <p class="pl-5 d-flex align-center font-mono">{{ primary.value }}</p>
@@ -9,16 +9,16 @@
     <p v-for="alternate in alternates" :key="alternate.id" class="pl-5 d-flex">
       <span class="font-mono">{{ alternate.value }}</span>
 
-      <v-tooltip v-if="alternate.id == sent" right>
-        <template v-slot:activator="{ on }">
-          <v-icon v-on="on" color="success" medium class="pl-4">mdi-check</v-icon>
+      <v-tooltip v-if="alternate.id == sent" location="right">
+        <template #activator="{ props }">
+          <v-icon color="success" size="medium" class="pl-4" v-bind="props"> mdi-check </v-icon>
         </template>
 
         {{ $t('password.forgotSent.too') }}
       </v-tooltip>
-      <v-tooltip v-else right>
-        <template v-slot:activator="{ on }">
-          <v-icon @click="resend(alternate)" v-on="on" color="info" large class="pl-4">mdi-send</v-icon>
+      <v-tooltip v-else location="right">
+        <template #activator="{ props }">
+          <v-icon color="info" size="large" class="pl-4" v-bind="props" @click="resend(alternate)"> mdi-send </v-icon>
         </template>
 
         {{ $t('password.forgotSent.instead') }}

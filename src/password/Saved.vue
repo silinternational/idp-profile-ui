@@ -1,11 +1,11 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('password.saved.header') }}
       </template>
 
-      <p class="text-xs-center">
+      <p class="text-center">
         {{ $t('password.saved.info') }}
       </p>
     </BasePage>
@@ -13,7 +13,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn @click.once="next" color="primary" outlined>
+      <v-btn color="primary" variant="outlined" @click.once="next">
         {{ $t('global.button.continue') }}
       </v-btn>
     </ButtonBar>
@@ -24,6 +24,7 @@
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 
 export default {
+  name: 'PasswordSaved',
   components: {
     ProfileWizard,
   },

@@ -1,20 +1,20 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary">
+    <v-app-bar color="primary">
       <a href="/"><img :src="logo" alt="Logo" /></a>
 
       <v-spacer />
 
-      <v-toolbar-title class="white--text px-4">{{ user.first_name }} {{ user.last_name }}</v-toolbar-title>
+      <v-toolbar-title class="text-white px-4">{{ user.first_name }} {{ user.last_name }}</v-toolbar-title>
 
       <v-divider vertical dark inset class="mx-2" />
 
-      <v-btn v-if="user.isAuthenticated()" @click="logout" text dark :icon="mobile" class="mx-1">
+      <v-btn v-if="user.isAuthenticated()" variant="text" :icon="mobile" class="mx-1" @click="logout">
         <v-icon v-if="mobile">mdi-logout-variant</v-icon>
         <span v-else>{{ $t('app.logout') }}</span>
       </v-btn>
 
-      <v-btn v-else @click="login" text dark :icon="mobile" class="mx-1">
+      <v-btn v-else variant="text" :icon="mobile" class="mx-1" @click="login">
         <v-icon v-if="mobile">mdi-login</v-icon>
         <span v-else>{{ $t('app.login') }}</span>
       </v-btn>
@@ -30,13 +30,13 @@
       <v-row no-gutters>
         <v-spacer />
 
-        <v-btn v-if="returnTo.url" :href="returnTo.url" small text dark color="secondary">
+        <v-btn v-if="returnTo.url" :href="returnTo.url" size="small" variant="text" color="secondary">
           return to {{ returnTo.url }}
         </v-btn>
       </v-row>
 
       <v-container>
-        <v-alert :value="!!message" type="error" dismissible>
+        <v-alert :value="!!message" type="error" closable>
           <span v-sanitize.basic="message" />
         </v-alert>
 
@@ -75,6 +75,11 @@ export default {
       return returnTo
     },
   },
+  watch: {
+    $route() {
+      this.message = ''
+    },
+  },
   created() {
     eventBus.on('clear-messages', () => {
       this.message = ''
@@ -82,11 +87,6 @@ export default {
   },
   errorCaptured(err) {
     this.message = err.message || err
-  },
-  watch: {
-    $route() {
-      this.message = ''
-    },
   },
   methods: {
     logout() {

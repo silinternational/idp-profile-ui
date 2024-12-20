@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template v-slot:header>
+    <template #header>
       {{ $t('pageNotFound.header') }}
     </template>
 

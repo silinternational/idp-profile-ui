@@ -1,5 +1,5 @@
 <template>
-  <v-progress-linear :indeterminate="loading > 0" color="secondary" height="10" background-opacity="0" />
+  <v-progress-linear :indeterminate="loading > 0" color="secondary" height="10" bg-opacity="0" />
 </template>
 
 <script>
@@ -7,6 +7,7 @@ import { ref, onBeforeUnmount } from 'vue'
 import api from '@/plugins/api'
 
 export default {
+  name: 'LoadingIndicator',
   setup() {
     const loading = ref(0)
     const requestInterceptor = api.interceptors.request.use((config) => {

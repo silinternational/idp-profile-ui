@@ -3,10 +3,10 @@
     <v-card-title primary-title class="text-break">
       <v-row no-gutters align="center">
         <v-col cols="2">
-          <v-icon :color="meta.created_utc ? 'success' : ''" x-large>mdi-format-list-checkbox</v-icon>
+          <v-icon :color="meta.created_utc ? 'success' : ''" size="x-large"> mdi-format-list-checkbox </v-icon>
         </v-col>
         <v-col class="ml-4">
-          <MfaCardLabel :label="label" :mfaId="meta.id" read-only />
+          <MfaCardLabel :label="label" :mfa-id="meta.id" read-only />
         </v-col>
       </v-row>
     </v-card-title>
@@ -30,7 +30,7 @@
       />
       <v-row v-else>
         <v-col cols="auto">
-          <v-icon x-large color="warning" class="pr-3">mdi-alert</v-icon>
+          <v-icon size="x-large" color="warning" class="pr-3">mdi-alert</v-icon>
         </v-col>
         <v-col>
           <em>{{ $t('profile.index.codeCard.warning') }}</em>
@@ -41,13 +41,13 @@
     <v-card-actions>
       <v-spacer />
 
-      <v-btn v-if="meta.created_utc" href="#/2sv/printable-backup-codes/new" color="primary" outlined>
+      <v-btn v-if="meta.created_utc" href="#/2sv/printable-backup-codes/new" color="primary" variant="outlined">
         {{ $t('profile.index.codeCard.button.replace') }}
       </v-btn>
-      <v-btn v-else href="#/2sv/printable-backup-codes/intro" color="primary" outlined>
+      <v-btn v-else href="#/2sv/printable-backup-codes/intro" color="primary" variant="outlined">
         {{ $t('profile.index.codeCard.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="meta.created_utc" :mfaId="meta.id" />
+      <MfaCardRemove v-if="meta.created_utc" :mfa-id="meta.id" />
     </v-card-actions>
   </v-card>
 </template>
@@ -64,7 +64,12 @@ export default {
     MfaCardLabel,
     MfaCardRemove,
   },
-  props: ['meta'],
+  props: {
+    meta: {
+      type: Object,
+      required: true,
+    },
+  },
   data: (vm) => ({
     label: vm.meta.label || vm.$t('profile.index.codeCard.title'),
   }),

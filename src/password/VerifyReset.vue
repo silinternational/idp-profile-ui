@@ -1,6 +1,8 @@
 <template>
   <BasePage>
-    <template v-slot:header>{{ $t('password.reset.verify.header') }}</template>
+    <template #header>
+      {{ $t('password.reset.verify.header') }}
+    </template>
 
     <p v-if="verifying">{{ $t('password.reset.verify.verifying') }}</p>
     <p v-if="verified">{{ $t('password.reset.verify.verified') }}</p>
@@ -8,12 +10,12 @@
     <p v-if="invalid">{{ $t('password.reset.verify.invalid') }}</p>
 
     <ButtonBar>
-      <v-spacer></v-spacer>
+      <v-spacer />
 
-      <v-btn v-if="verified" to="/password/create" color="primary" outlined>
+      <v-btn v-if="verified" to="/password/create" color="primary" variant="outlined">
         {{ $t('password.reset.verify.button.create') }}
       </v-btn>
-      <v-btn v-if="invalid" to="/password/forgot" color="primary" outlined>
+      <v-btn v-if="invalid" to="/password/forgot" color="primary" variant="outlined">
         {{ $t('password.reset.verify.button.again') }}
       </v-btn>
     </ButtonBar>

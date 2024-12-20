@@ -7,7 +7,7 @@
     </v-alert>
 
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.key.touch.header') }}
       </template>
 
@@ -17,22 +17,22 @@
 
       <figure class="pa-4 d-flex flex-column">
         <v-img v-if="!touched" contained :src="usbKey" alt="A finger touching the top of a usb key." />
-        <v-icon v-else color="success" x-large>mdi-check</v-icon>
+        <v-icon v-else color="success" size="x-large">mdi-check</v-icon>
       </figure>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/usb-security-key/insert" tabindex="-1" outlined>
+      <v-btn to="/2sv/usb-security-key/insert" tabindex="-1" variant="outlined">
         {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn v-if="isSupported && error" @click=";(error = false), create()" color="error" outlined>
+      <v-btn v-if="isSupported && error" color="error" variant="outlined" @click=";(error = false), create()">
         {{ $t('2sv.key.touch.button.retry') }}
       </v-btn>
 
-      <v-btn v-if="error" to="/2sv/printable-backup-codes/intro" color="warning" outlined class="ml-4">
+      <v-btn v-if="error" to="/2sv/printable-backup-codes/intro" color="warning" variant="outlined" class="ml-4">
         {{ $t('global.button.skip') }}
       </v-btn>
     </ButtonBar>
@@ -48,6 +48,7 @@ import usbKey from '@/assets/touch-usb-security-key.png'
 let absTimeout
 
 export default {
+  name: 'TouchKey',
   components: {
     ProfileWizard,
   },

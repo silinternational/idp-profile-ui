@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('password.reset.complete.header') }}
       </template>
 
@@ -11,7 +11,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/profile" color="primary" outlined>
+      <v-btn to="/profile" color="primary" variant="outlined">
         {{ $t('password.reset.complete.button.next') }}
       </v-btn>
     </ButtonBar>

@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template v-slot:header>
+    <template #header>
       {{ $t('profile.intro.header', $idpConfig.idpName, $user.first_name) }}
     </template>
 
@@ -25,13 +25,13 @@
 
       <v-col cols="auto" class="mr-4 align-self-center">
         {{ $t('profile.intro.username') }}
-        <strong class="body-2">{{ $user.idp_username }}</strong>
+        <strong class="text-body-2">{{ $user.idp_username }}</strong>
       </v-col>
 
       <v-spacer></v-spacer>
 
       <v-col cols="auto">
-        <v-btn to="/password/create" color="primary" outlined>
+        <v-btn to="/password/create" color="primary" variant="outlined">
           {{ $t('profile.intro.button.start') }}
         </v-btn>
       </v-col>
@@ -40,3 +40,9 @@
     </ButtonBar>
   </BasePage>
 </template>
+
+<script>
+export default {
+  name: 'ProfileIntro',
+}
+</script>

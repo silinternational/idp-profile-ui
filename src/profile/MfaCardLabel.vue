@@ -1,29 +1,29 @@
 <template>
   <v-row v-if="editing" no-gutters align="center">
     <v-col cols="9">
-      <v-text-field v-model="newLabel" @keyup.enter="save" autofocus @focus="$event.target.select()" />
+      <v-text-field v-model="newLabel" autofocus @keyup.enter="save" @focus="$event.target.select()" />
     </v-col>
 
     <v-col>
-      <v-icon @click="save" color="success" small class="pl-2">mdi-check</v-icon>
+      <v-icon color="success" size="small" class="pl-2" @click="save"> mdi-check </v-icon>
     </v-col>
 
     <v-col>
-      <v-icon @click="cancel" color="error" small class="pl-1">mdi-close</v-icon>
+      <v-icon color="error" size="small" class="pl-1" @click="cancel"> mdi-close </v-icon>
     </v-col>
   </v-row>
 
   <v-row v-else no-gutters align="center">
     <v-col>
-      <h3 class="headline">
+      <h3 class="text-h5">
         {{ label }}
       </h3>
     </v-col>
 
     <v-col cols="auto">
-      <v-tooltip v-if="!readOnly" right>
-        <template v-slot:activator="{ on }">
-          <v-icon v-on="on" @click="edit" color="info" small> mdi-pencil </v-icon>
+      <v-tooltip v-if="!readOnly" location="right">
+        <template #activator="{ props }">
+          <v-icon color="info" size="small" v-bind="props" @click="edit"> mdi-pencil </v-icon>
         </template>
 
         {{ $t('profile.index.rename') }}
@@ -39,12 +39,15 @@ export default {
   props: {
     label: {
       type: String,
+      default: '',
     },
     keyId: {
       type: Number,
+      default: null,
     },
     mfaId: {
       type: Number,
+      default: null,
     },
     readOnly: {
       type: Boolean,
@@ -55,6 +58,7 @@ export default {
       default: false,
     },
   },
+  emits: ['new-label'],
   data: () => ({
     editing: false,
     newLabel: '',

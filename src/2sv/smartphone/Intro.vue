@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.smartphone.intro.header') }}
       </template>
 
@@ -11,24 +11,30 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/intro" tabindex="-1" outlined class="mr-2 mr-sm-4 mb-4 mb-sm-0">
+      <v-btn to="/2sv/intro" tabindex="-1" variant="outlined" class="mr-2 mr-sm-4 mb-4 mb-sm-0">
         {{ $t('global.button.back') }}
       </v-btn>
-      <v-btn :to="nextUrl" color="primary" tabindex="-1" outlined>
+      <v-btn :to="nextUrl" color="primary" tabindex="-1" variant="outlined">
         {{ $t('global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn :to="nextUrl" color="primary" tabindex="-1" outlined class="mr-2 mr-sm-4">
+      <v-btn :to="nextUrl" color="primary" tabindex="-1" variant="outlined" class="mr-2 mr-sm-4">
         {{ $t('global.button.no') }}
       </v-btn>
-      <v-btn to="/2sv/smartphone/download-app" color="primary" outlined>
+      <v-btn to="/2sv/smartphone/download-app" color="primary" variant="outlined">
         {{ $t('global.button.yes') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
 </template>
+
+<script>
+export default {
+  name: 'IntroSmartphone',
+}
+</script>
 
 <script setup>
 import ProfileWizard from '@/profile/ProfileWizard.vue'

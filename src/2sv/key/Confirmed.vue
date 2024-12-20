@@ -1,11 +1,11 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.key.confirmed.header') }}
       </template>
 
-      <p class="text-xs-center">
+      <p class="text-center">
         {{ $t('2sv.key.confirmed.info') }}
       </p>
     </BasePage>
@@ -13,7 +13,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" outlined>
+      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" variant="outlined">
         {{ $t('global.button.continue') }}
       </v-btn>
     </ButtonBar>
@@ -24,6 +24,7 @@
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 
 export default {
+  name: 'ConfirmedKey',
   components: {
     ProfileWizard,
   },

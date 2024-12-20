@@ -1,37 +1,37 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.smartphone.verifyQrCode.header') }}
       </template>
 
       <v-row align="center" class="px-5">
-        <v-form @submit.prevent="verify" ref="form" class="pl-2 d-flex flex-column align-center">
+        <v-form ref="form" class="pl-2 d-flex flex-column align-center" @submit.prevent="verify">
           <p>{{ $t('2sv.smartphone.verifyQrCode.info') }}</p>
 
           <BaseTextField
+            v-model="code"
             type="text"
             :label="$t('2sv.smartphone.verifyQrCode.codeInput')"
-            v-model="code"
             :rules="rules"
             :error-messages="errors"
             validate-on-blur
-            @keyup.enter="blur"
             autofocus
             class="mt-4"
+            @keyup.enter="blur"
           />
         </v-form>
       </v-row>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/scan-qr" tabindex="-1" outlined>
+      <v-btn to="/2sv/smartphone/scan-qr" tabindex="-1" variant="outlined">
         {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn @click.once="verify" color="primary" outlined>
+      <v-btn color="primary" variant="outlined" @click.once="verify">
         {{ $t('global.button.verify') }}
       </v-btn>
     </ButtonBar>

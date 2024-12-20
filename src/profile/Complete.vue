@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('profile.complete.header') }}
       </template>
 
@@ -22,13 +22,13 @@
 
         <v-col cols="11">
           {{ $t('profile.complete.username') }}
-          <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
+          <strong class="text-body-2 pl-1">{{ $user.idp_username }}</strong>
         </v-col>
       </v-row>
 
       <v-row v-if="unverifiedEmails.length">
         <v-col cols="1" class="text-right">
-          <v-icon color="warning">mdi-email</v-icon>
+          <v-icon color="warning"> mdi-email </v-icon>
         </v-col>
 
         <v-col cols="11">
@@ -59,7 +59,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn @click.once="done" color="primary" outlined>
+      <v-btn color="primary" variant="outlined" @click.once="done">
         {{ $t('profile.complete.button.profile') }}
       </v-btn>
     </ButtonBar>
@@ -72,6 +72,7 @@ import recoveryMethods from '@/global/recoveryMethods'
 import { mfa, retrieve as retrieveMfas } from '@/global/mfa'
 
 export default {
+  name: 'ProfileComplete',
   components: {
     ProfileWizard,
   },
@@ -82,6 +83,12 @@ export default {
   computed: {
     unverifiedEmails: (vm) => vm.alternates.filter((m) => !m.verified),
   },
+  async created() {
+    await retrieveMfas()
+
+    this.$refs.wizard.completed()
+    this.$forceUpdate() // couldn't figure out how to get the step to update in the UI without this.
+  },
   methods: {
     joined: (emails) => emails.map((email) => email.value).join(', '),
     done() {
@@ -89,12 +96,6 @@ export default {
 
       this.$router.push('/profile')
     },
-  },
-  async created() {
-    await retrieveMfas()
-
-    this.$refs.wizard.completed()
-    this.$forceUpdate() // couldn't figure out how to get the step to update in the UI without this.
   },
 }
 </script>

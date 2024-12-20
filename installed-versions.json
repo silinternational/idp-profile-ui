@@ -1,6 +1,11 @@
 {
   "name": "idp-profile-ui",
   "dependencies": {
+    "@eslint/js": {
+      "version": "9.17.0",
+      "resolved": "https://registry.npmjs.org/@eslint/js/-/js-9.17.0.tgz",
+      "overridden": false
+    },
     "@intlify/unplugin-vue-i18n": {
       "version": "6.0.1",
       "resolved": "https://registry.npmjs.org/@intlify/unplugin-vue-i18n/-/unplugin-vue-i18n-6.0.1.tgz",
@@ -54,6 +59,26 @@
     "date-fns": {
       "version": "2.30.0",
       "resolved": "https://registry.npmjs.org/date-fns/-/date-fns-2.30.0.tgz",
+      "overridden": false
+    },
+    "eslint-plugin-prettier": {
+      "version": "5.2.1",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-5.2.1.tgz",
+      "overridden": false
+    },
+    "eslint-plugin-vue": {
+      "version": "9.32.0",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-9.32.0.tgz",
+      "overridden": false
+    },
+    "eslint-plugin-vuetify": {
+      "version": "2.5.1",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-vuetify/-/eslint-plugin-vuetify-2.5.1.tgz",
+      "overridden": false
+    },
+    "eslint": {
+      "version": "9.17.0",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.17.0.tgz",
       "overridden": false
     },
     "prettier": {
@@ -112,8 +137,8 @@
       "overridden": false
     },
     "vuetify": {
-      "version": "3.7.5",
-      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.5.tgz",
+      "version": "3.7.6",
+      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.6.tgz",
       "overridden": false
     },
     "zxcvbn": {

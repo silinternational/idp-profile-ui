@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template v-slot:header>
+    <template #header>
       {{ $t('2sv.change.header') }}
     </template>
 
@@ -13,13 +13,13 @@
     </p>
 
     <ButtonBar>
-      <v-btn to="/profile" outlined>
+      <v-btn to="/profile" variant="outlined">
         {{ $t('global.button.no') }}
       </v-btn>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
-      <v-btn @click.once="yes(requested.id)" color="primary" outlined>
+      <v-btn color="primary" variant="outlined" @click.once="yes(requested.id)">
         {{ $t('global.button.yes') }}
       </v-btn>
     </ButtonBar>
@@ -30,12 +30,17 @@
 import { find, remove, removeWebauthn, mfa, retrieve } from '@/global/mfa'
 
 export default {
+  name: 'Change2SV',
   data: () => ({
     requested: {},
     isLastOne: mfa.numVerified === 1,
   }),
   computed: {
     label: (vm) => vm.requested?.label || '2SV',
+  },
+  async created() {
+    await retrieve()
+    this.requested = find(this.$route.params.id)
   },
   methods: {
     async yes(id) {
@@ -47,10 +52,6 @@ export default {
 
       this.$router.push('/2sv/removed')
     },
-  },
-  async created() {
-    await retrieve()
-    this.requested = find(this.$route.params.id)
   },
 }
 </script>

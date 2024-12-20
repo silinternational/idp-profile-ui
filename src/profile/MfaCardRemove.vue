@@ -1,5 +1,5 @@
 <template>
-  <v-btn @click="remove(mfaId, keyId)" color="error" outlined>
+  <v-btn color="error" variant="outlined" @click="remove(mfaId, keyId)">
     {{ $t('global.button.remove') }}
   </v-btn>
 </template>
@@ -8,7 +8,16 @@
 import { mfa, remove, removeWebauthn } from '@/global/mfa'
 
 export default {
-  props: ['keyId', 'mfaId'],
+  props: {
+    keyId: {
+      type: String,
+      required: true,
+    },
+    mfaId: {
+      type: String,
+      required: true,
+    },
+  },
   methods: {
     async remove(mfaId, keyId) {
       const content = mfa.numVerified == 1 ? '2sv.remove.lastOne' : 'global.areYouSure'

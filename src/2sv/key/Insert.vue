@@ -1,40 +1,40 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-if="isSupported" v-slot:header>
+      <template v-if="isSupported" #header>
         {{ $t('2sv.key.insert.header') }}
       </template>
-      <template v-else v-slot:header>
+      <template v-else #header>
         {{ $t('2sv.key.insert.nosupport.header') }}
       </template>
 
       <figure v-if="isSupported" class="pa-4">
-        <v-img contain :src="usbKey" alt="A usb key inserted into a usb port." />
+        <v-img cover :src="usbKey" alt="A usb key inserted into a usb port." />
       </figure>
       <p v-else>{{ $t('2sv.key.insert.nosupport.info') }}</p>
 
       <!-- TODO: Add translations for this label -->
       <label v-if="showLabelInput">
         {{ $t('2sv.key.insert.label') }}
-        <v-text-field v-model="input" @keyup="onKeyup" required outlined autofocus />
+        <v-text-field v-model="input" required variant="outlined" autofocus @keyup="onKeyup" />
       </label>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/usb-security-key/intro" tabindex="-1" outlined>
+      <v-btn to="/2sv/usb-security-key/intro" tabindex="-1" variant="outlined">
         {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn v-if="isSupported && showLabelInput" @click="onContinue" color="primary" outlined>
+      <v-btn v-if="isSupported && showLabelInput" color="primary" variant="outlined" @click="onContinue">
         {{ $t('global.button.continue') }}
       </v-btn>
 
-      <v-btn v-else-if="isSupported && !showLabelInput" @click="onOk" color="primary" outlined>
+      <v-btn v-else-if="isSupported && !showLabelInput" color="primary" variant="outlined" @click="onOk">
         {{ $t('2sv.key.insert.button.ok') }}
       </v-btn>
-      <v-btn v-else to="/2sv/printable-backup-codes/intro" color="primary" outlined>
+      <v-btn v-else to="/2sv/printable-backup-codes/intro" color="primary" variant="outlined">
         {{ $t('global.button.skip') }}
       </v-btn>
     </ButtonBar>
@@ -42,8 +42,8 @@
     <v-snackbar v-model="snackbarIsOpen">
       {{ snackBarMessage }}
 
-      <template v-slot:action="{ attrs }">
-        <v-btn color="warning" text v-bind="attrs" @click="snackbarIsOpen = false">
+      <template #actions="{ attrs }">
+        <v-btn color="warning" variant="text" v-bind="attrs" @click="snackbarIsOpen = false">
           {{ $t('global.button.close') }}
         </v-btn>
       </template>
@@ -58,6 +58,7 @@ import { newKeyName, mfa } from '@/global/mfa'
 import usbKey from '@/assets/insert-usb-security-key.png'
 
 export default {
+  name: 'InsertKey',
   components: {
     ProfileWizard,
   },

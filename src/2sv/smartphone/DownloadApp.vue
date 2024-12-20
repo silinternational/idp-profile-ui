@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.smartphone.download.header') }}
       </template>
 
@@ -13,7 +13,7 @@
         <img v-if="isAuthy" :src="authy" />
         <img v-else :src="authenticator" />
 
-        <figcaption class="headline ml-4">
+        <figcaption class="text-h5 ml-4">
           {{ $t(`2sv.smartphone.download.appname-${preferredAppName}`) }}
         </figcaption>
       </figure>
@@ -29,13 +29,13 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/intro" tabindex="-1" outlined class="mb-4 mb-sm-0">
+      <v-btn to="/2sv/smartphone/intro" tabindex="-1" variant="outlined" class="mb-4 mb-sm-0">
         {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/smartphone/scan-qr" color="primary" outlined>
+      <v-btn to="/2sv/smartphone/scan-qr" color="primary" variant="outlined">
         {{ $t('2sv.smartphone.download.button.ok') }}
       </v-btn>
     </ButtonBar>

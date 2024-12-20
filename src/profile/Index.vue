@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template v-slot:header>
+    <template #header>
       {{ $t('profile.index.header', idpConfig.idpName) }}
     </template>
 
@@ -34,7 +34,7 @@
       </v-col>
     </v-row>
 
-    <v-subheader>{{ $t('profile.index.2sv') }}</v-subheader>
+    <v-list-subheader>{{ $t('profile.index.2sv') }}</v-list-subheader>
 
     <v-row>
       <v-col cols="12" sm="6" md="4">
@@ -43,20 +43,20 @@
 
       <v-col v-if="numberOfKeys > 1" cols="12" sm="6" md="4">
         <SecurityKeyCard
-          @toggleKeys="onToggleKeys"
-          isSummary="true"
-          :numberOfKeys="numberOfKeys"
-          :webauthnKey="mfa.keys"
-          :showKeys="showKeys"
+          is-summary="true"
+          :number-of-keys="numberOfKeys"
+          :webauthn-key="mfa.keys"
+          :show-keys="showKeys"
+          @toggle-keys="onToggleKeys"
         />
       </v-col>
 
       <v-col v-if="numberOfKeys === 1" cols="12" sm="6" md="4">
-        <SecurityKeyCard :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys.data[0]" :mfaId="mfa.keys.id" />
+        <SecurityKeyCard :number-of-keys="numberOfKeys" :webauthn-key="mfa.keys.data[0]" :mfa-id="mfa.keys.id" />
       </v-col>
 
       <v-col v-else-if="numberOfKeys === 0">
-        <SecurityKeyCard isSummary="true" :webauthnKey="{}" />
+        <SecurityKeyCard is-summary="true" :webauthn-key="{}" />
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
@@ -71,12 +71,17 @@
     </v-row>
 
     <v-row v-if="showKeys && numberOfKeys > 1">
-      <v-col v-for="webauthnKey in additionalKeys" :key="additionalKeys.id" cols="12" sm="6" md="4">
-        <SecurityKeyCard :webauthnKey="webauthnKey" :numberOfKeys="numberOfKeys" :mfaId="mfa.keys.id" />
+      <v-col v-for="webauthnKey in additionalKeys" :key="webauthnKey.id" cols="12" sm="6" md="4">
+        <SecurityKeyCard :webauthn-key="webauthnKey" :number-of-keys="numberOfKeys" :mfa-id="mfa.keys.id" />
       </v-col>
     </v-row>
   </BasePage>
 </template>
+<script>
+export default {
+  name: 'ProfileIndex',
+}
+</script>
 
 <script setup>
 import ProfileProgress from './ProfileProgress.vue'

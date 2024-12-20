@@ -1,13 +1,13 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
     <v-card-title primary-title>
-      <h3 class="headline">{{ $t('profile.index.passwordRecoveryCard.title') }}</h3>
+      <h3 class="text-h5">{{ $t('profile.index.passwordRecoveryCard.title') }}</h3>
 
       <v-spacer />
 
-      <v-tooltip v-if="hasUnverifiedEmails" right>
-        <template v-slot:activator="{ on }">
-          <v-icon v-on="on" x-large color="error">mdi-alert-circle</v-icon>
+      <v-tooltip v-if="hasUnverifiedEmails" location="right">
+        <template #activator="{ props }">
+          <v-icon size="x-large" color="error" v-bind="props">mdi-alert-circle</v-icon>
         </template>
 
         {{ $t('profile.index.passwordRecoveryCard.unverifiedEmails') }}
@@ -18,21 +18,21 @@
       <div v-for="method in methods" :key="method.id">
         {{ method.value }}
 
-        <v-tooltip v-if="!method.verified && method.id != sent" right>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" color="error" small class="pl-1">mdi-alert-circle</v-icon>
+        <v-tooltip v-if="!method.verified && method.id != sent" location="right">
+          <template #activator="{ props }">
+            <v-icon color="error" size="small" class="pl-1" v-bind="props">mdi-alert-circle</v-icon>
           </template>
 
           {{ $t('profile.index.passwordRecoveryCard.unverified') }}
         </v-tooltip>
 
-        <a v-if="!method.verified && method.id != sent" @click="resend(method)" class="caption float-right pl-2">
+        <a v-if="!method.verified && method.id != sent" class="text-caption float-right pl-2" @click="resend(method)">
           {{ $t('profile.index.passwordRecoveryCard.resend') }}
         </a>
       </div>
       <v-row v-if="!methods.length">
         <v-col cols="auto">
-          <v-icon x-large color="warning">mdi-alert</v-icon>
+          <v-icon size="x-large" color="warning">mdi-alert</v-icon>
         </v-col>
         <v-col>
           <em>{{ $t('profile.index.passwordRecoveryCard.warning') }}</em>
@@ -43,7 +43,7 @@
     <v-card-actions>
       <v-spacer />
 
-      <v-btn :href="'#/password/recovery'" color="primary" outlined>
+      <v-btn :href="'#/password/recovery'" color="primary" variant="outlined">
         <span v-if="methods.length">{{ $t('global.button.change') }}</span>
         <span v-else>{{ $t('global.button.add') }}</span>
       </v-btn>
@@ -53,7 +53,12 @@
 
 <script>
 export default {
-  props: ['methods'],
+  props: {
+    methods: {
+      type: Array,
+      required: true,
+    },
+  },
   data: () => ({
     sent: '',
   }),

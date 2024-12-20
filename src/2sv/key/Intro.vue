@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.key.intro.header') }}
       </template>
 
@@ -10,12 +10,18 @@
       </p>
 
       <figure class="pa-4">
-        <v-img :src="securityKeys" contain alt="Three sizes of USB keys." />
+        <v-img :src="securityKeys" cover alt="Three sizes of USB keys." />
       </figure>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" tabindex="-1" outlined class="mr-4 mb-4 mb-sm-0">
+      <v-btn
+        to="/2sv/printable-backup-codes/intro"
+        color="primary"
+        tabindex="-1"
+        variant="outlined"
+        class="mr-4 mb-4 mb-sm-0"
+      >
         {{ $t('global.button.skip') }}
       </v-btn>
 
@@ -26,12 +32,12 @@
         target="_blank"
         color="primary"
         tabindex="-1"
-        outlined
+        variant="outlined"
         class="mr-4 mb-4 mb-sm-0"
       >
         {{ $t('2sv.key.intro.button.no') }}
       </v-btn>
-      <v-btn to="/2sv/usb-security-key/insert" color="primary" outlined>
+      <v-btn to="/2sv/usb-security-key/insert" color="primary" variant="outlined">
         {{ $t('global.button.yes') }}
       </v-btn>
     </ButtonBar>
@@ -43,6 +49,7 @@ import ProfileWizard from '@/profile/ProfileWizard.vue'
 import securityKeys from '@/assets/usb-security-key-examples.png'
 
 export default {
+  name: 'IntroKey',
   components: {
     ProfileWizard,
   },

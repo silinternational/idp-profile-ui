@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.codes.intro.header') }}
       </template>
 
@@ -14,13 +14,13 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click.once="skip" color="warning" tabindex="-1" outlined>
+      <v-btn color="warning" tabindex="-1" variant="outlined" @click.once="skip">
         {{ $t('global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/printable-backup-codes/new" color="primary" outlined>
+      <v-btn to="/2sv/printable-backup-codes/new" color="primary" variant="outlined">
         {{ $t('2sv.codes.intro.button.new') }}
       </v-btn>
     </ButtonBar>
@@ -32,6 +32,7 @@ import ProfileWizard from '@/profile/ProfileWizard.vue'
 import mfa from '@/global/mfa'
 
 export default {
+  name: 'IntroPage',
   components: {
     ProfileWizard,
   },

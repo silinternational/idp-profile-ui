@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.smartphone.scanQr.header') }}
       </template>
 
@@ -36,13 +36,18 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" outlined class="mb-4 mb-sm-0">
+      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" variant="outlined" class="mb-4 mb-sm-0">
         {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`" :disabled="!newTotp.id" color="primary" outlined>
+      <v-btn
+        :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`"
+        :disabled="!newTotp.id"
+        color="primary"
+        variant="outlined"
+      >
         {{ $t('2sv.smartphone.scanQr.button.ok') }}
       </v-btn>
     </ButtonBar>

@@ -1,6 +1,6 @@
 <template>
   <BasePage>
-    <template v-slot:header>
+    <template #header>
       {{ $t('2sv.removed.header') }}
     </template>
 
@@ -9,13 +9,13 @@
     </p>
 
     <ButtonBar>
-      <v-btn to="/profile" color="warning" outlined>
+      <v-btn to="/profile" color="warning" variant="outlined">
         {{ $t('2sv.removed.button.later') }}
       </v-btn>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
-      <v-btn to="/2sv/intro" color="primary" outlined>
+      <v-btn to="/2sv/intro" color="primary" variant="outlined">
         {{ $t('global.button.yes') }}
       </v-btn>
     </ButtonBar>
@@ -26,6 +26,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: '2svRemoved',
   methods: {
     someMethod() {
       console.log(this.$t('some.translation.key'))

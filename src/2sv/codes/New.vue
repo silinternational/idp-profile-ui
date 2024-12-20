@@ -1,13 +1,13 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.codes.new.header') }}
       </template>
 
       <p v-if="printing" class="printable header">
         {{ $idpConfig.idpName }}
-        <span class="caption"> ({{ $t('2sv.codes.new.generated') }} {{ formatLongDate(Date.now()) }}) </span>
+        <span class="text-caption"> ({{ $t('2sv.codes.new.generated') }} {{ formatLongDate(Date.now()) }}) </span>
       </p>
 
       <v-row id="codes">
@@ -26,17 +26,19 @@
 
     <ButtonBar>
       <v-btn
-        @click="print('#codes')"
         color="secondary"
-        :outlined="!mobile"
+        :variant="!mobile ? 'outlined' : undefined"
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+        @click="print('#codes')"
       >
         <span v-if="!mobile">{{ $t('2sv.codes.new.button.print') }}</span>
 
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="!mobile" :large="mobile" title="print">mdi-printer</v-icon>
+        <v-tooltip location="top">
+          <template #activator="{ props }">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : undefined" title="print">
+              mdi-printer
+            </v-icon>
           </template>
           <span>Print</span>
         </v-tooltip>
@@ -45,17 +47,17 @@
       <v-btn
         :href="`data:text/plain,${encodedData}`"
         :download="`${$idpConfig.idpName}--printable-codes.txt`"
-        @click="gotEm = true"
         color="secondary"
-        :outlined="!mobile"
+        :variant="!mobile ? 'outlined' : undefined"
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+        @click="gotEm = true"
       >
         <span v-if="!mobile">{{ $t('2sv.codes.new.button.download') }}</span>
 
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="!mobile" :large="mobile">mdi-cloud-download</v-icon>
+        <v-tooltip location="top">
+          <template #activator="{ props }">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : undefined">mdi-cloud-download</v-icon>
           </template>
           <span>Download</span>
         </v-tooltip>
@@ -63,17 +65,19 @@
 
       <v-btn
         v-if="copied"
-        @click="copy()"
         color="success"
-        :outlined="!mobile"
+        :variant="!mobile ? 'outlined' : undefined"
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+        @click="copy()"
       >
         <span v-if="!mobile">{{ $t('2sv.codes.new.button.copied') }}</span>
 
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="!mobile" :large="mobile">mdi-clipboard-check-multiple-outline</v-icon>
+        <v-tooltip location="top">
+          <template #activator="{ props }">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : undefined">
+              mdi-clipboard-check-multiple-outline
+            </v-icon>
           </template>
           <span>Copy</span>
         </v-tooltip>
@@ -81,17 +85,19 @@
 
       <v-btn
         v-else
-        @click="copy()"
         color="secondary"
-        :outlined="!mobile"
+        :variant="!mobile ? 'outlined' : undefined"
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+        @click="copy()"
       >
         <span v-if="!mobile">{{ $t('2sv.codes.new.button.copy') }}</span>
 
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="!mobile" :large="mobile">mdi-clipboard-multiple-outline</v-icon>
+        <v-tooltip location="top">
+          <template #activator="{ props }">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : undefined">
+              mdi-clipboard-multiple-outline
+            </v-icon>
           </template>
           <span>Copy</span>
         </v-tooltip>
@@ -99,10 +105,10 @@
 
       <v-spacer></v-spacer>
 
-      <v-tooltip :disabled="gotEm" :value="gotEm" top>
-        <template v-slot:activator="{ on }">
-          <div v-on="on">
-            <v-btn @click.once="finish" :disabled="!gotEm" color="primary" outlined>
+      <v-tooltip :disabled="gotEm" :model-value="gotEm" location="top">
+        <template #activator="{ props }">
+          <div v-bind="props">
+            <v-btn :disabled="!gotEm" color="primary" variant="outlined" @click.once="finish">
               {{ $t('2sv.codes.new.button.ok') }}
             </v-btn>
           </div>
@@ -120,6 +126,7 @@ import { add } from '@/global/mfa'
 import { formatLongDate } from '@/global/filters'
 
 export default {
+  name: 'NewCodes',
   components: {
     ProfileWizard,
   },

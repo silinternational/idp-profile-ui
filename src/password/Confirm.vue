@@ -1,36 +1,29 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('password.confirm.header') }}
       </template>
 
-      <v-form @submit.prevent="confirm" ref="form" class="pa-4">
+      <v-form ref="form" class="pa-4" @submit.prevent="confirm">
         <p>{{ $t('password.confirm.explanation') }}</p>
 
         <div class="password">
           <BaseTextField
+            v-model="password"
             :type="passwordIsHidden ? 'password' : 'text'"
             :label="$t('password.confirm.pwInput')"
-            v-model="password"
             :rules="rules"
             :error-messages="errors"
             validate-on-blur
-            @keyup.enter="blur"
             autofocus
             name="password"
+            @keyup.enter="blur"
           />
 
-          <v-tooltip top>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                v-on="on"
-                v-bind="attrs"
-                class="eye"
-                icon
-                @click="passwordIsHidden = !passwordIsHidden"
-                tabindex="-1"
-              >
+          <v-tooltip location="top">
+            <template #activator="{ props }">
+              <v-btn class="eye" icon tabindex="-1" v-bind="props" @click="passwordIsHidden = !passwordIsHidden">
                 <v-icon>{{ passwordIsHidden ? 'mdi-eye' : 'mdi-eye-off' }}</v-icon>
               </v-btn>
             </template>
@@ -41,14 +34,14 @@
       </v-form>
     </BasePage>
 
-    <template v-slot:actions>
-      <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" tabindex="-1" outlined>
+    <template #actions>
+      <v-btn to="/password/create" :color="errors.length ? 'primary' : ''" tabindex="-1" variant="outlined">
         {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn @click.once="confirm" color="primary" :disabled="errors.length > 0" outlined>
+      <v-btn color="primary" :disabled="errors.length > 0" variant="outlined" @click.once="confirm">
         {{ $t('global.button.continue') }}
       </v-btn>
     </template>
@@ -59,8 +52,14 @@
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 
 export default {
+  name: 'PasswordConfirm',
   components: {
     ProfileWizard,
+  },
+  beforeRouteLeave(to, from, next) {
+    delete this.$root.$data.password
+
+    next()
   },
   data: (vm) => ({
     password: '',
@@ -68,11 +67,6 @@ export default {
     rules: [(v) => v == vm.$data.password || vm.$t('password.confirm.noMatch')],
     errors: [],
   }),
-  beforeRouteLeave(to, from, next) {
-    delete this.$root.$data.password
-
-    next()
-  },
   methods: {
     async confirm() {
       if (this.$refs.form.validate()) {

@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>{{ $t('password.recovery.header') }}</template>
+      <template #header>{{ $t('password.recovery.header') }} </template>
 
       <p>{{ $t('password.recovery.explanation') }}</p>
 
@@ -13,19 +13,19 @@
       </p>
 
       <ul>
-        <li class="subtitle-1 grey--text py-2">{{ $t('password.recovery.personalHeader') }}</li>
+        <li class="text-subtitle-1 text-grey py-2">{{ $t('password.recovery.personalHeader') }}</li>
 
         <li v-for="method in alternates" :key="method.id" class="d-flex pb-2 pl-4">
           {{ method.value }}
-          <v-tooltip :disabled="alternates.length > 1" right>
-            <template v-slot:activator="{ on }">
-              <div v-on="on">
+          <v-tooltip :disabled="alternates.length > 1" location="right">
+            <template #activator="{ props }">
+              <div v-bind="props">
                 <v-icon
-                  @click.once="remove(method.id)"
                   :disabled="alternates.length == 1"
                   color="error"
-                  small
+                  size="small"
                   class="pl-4"
+                  @click.once="remove(method.id)"
                 >
                   mdi-delete
                 </v-icon>
@@ -40,11 +40,11 @@
         </li>
       </ul>
 
-      <v-form @submit.prevent="add" ref="form" class="d-flex pa-4">
+      <v-form ref="form" class="d-flex pa-4" @submit.prevent="add">
         <BaseTextField
+          v-model="newEmail"
           type="email"
           :label="$t('password.recovery.emailInput')"
-          v-model="newEmail"
           :rules="[
             // this field is never required so it must either be empty or hold a VALID email (W3C's HTML5 type=email regex)
             (v) =>
@@ -52,27 +52,27 @@
               $t('password.recovery.invalidEmail'),
           ]"
           validate-on-blur
-          @keyup.enter="blur"
           autofocus
+          @keyup.enter="blur"
         />
 
-        <v-btn @click="add" :disabled="!newEmail" fab small color="success" class="ma-2-mod ml-4">
+        <v-btn :disabled="!newEmail" size="small" color="success" class="ma-2-mod ml-4" @click="add">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
       </v-form>
     </BasePage>
 
-    <template v-slot:actions>
-      <v-btn v-if="!alternates.length" to="/2sv/intro" @click.once="skip" color="warning" outlined>
+    <template #actions>
+      <v-btn v-if="!alternates.length" to="/2sv/intro" color="warning" variant="outlined" @click.once="skip">
         {{ $t('global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-tooltip :disabled="!(unsaved || !alternates.length)" right>
-        <template v-slot:activator="{ on }">
-          <div v-on="on">
-            <v-btn @click.once="complete" :disabled="unsaved || !alternates.length" color="primary" outlined>
+      <v-tooltip :disabled="!(unsaved || !alternates.length)" location="right">
+        <template #activator="{ props }">
+          <div v-bind="props">
+            <v-btn :disabled="unsaved || !alternates.length" color="primary" variant="outlined" @click.once="complete">
               {{ $t('global.button.continue') }}
             </v-btn>
           </div>
@@ -90,6 +90,7 @@ import ProfileWizard from '@/profile/ProfileWizard.vue'
 import { recoveryMethods, add, remove } from '@/global/recoveryMethods'
 
 export default {
+  name: 'PasswordRecovery',
   components: {
     ProfileWizard,
   },

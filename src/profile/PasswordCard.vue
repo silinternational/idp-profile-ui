@@ -1,9 +1,9 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
     <v-card-title primary-title>
-      <h3 class="headline">{{ $t('profile.index.passwordCard.title') }}</h3>
+      <h3 class="text-h5">{{ $t('profile.index.passwordCard.title') }}</h3>
       <v-spacer />
-      <v-icon v-if="isExpiringSoon()" x-large color="warning">mid-alert</v-icon>
+      <v-icon v-if="isExpiringSoon()" size="x-large" color="warning"> mid-alert </v-icon>
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
@@ -13,10 +13,10 @@
 
     <v-card-actions>
       <v-spacer />
-      <v-btn v-if="isExpiringSoon()" :href="'#/password/create'" color="warning" outlined>
+      <v-btn v-if="isExpiringSoon()" :href="'#/password/create'" color="warning" variant="outlined">
         {{ $t('profile.index.passwordCard.button.changeNow') }}
       </v-btn>
-      <v-btn v-else :href="'#/password/create'" color="primary" outlined>
+      <v-btn v-else :href="'#/password/create'" color="primary" variant="outlined">
         {{ $t('global.button.change') }}
       </v-btn>
     </v-card-actions>

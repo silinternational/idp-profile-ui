@@ -1,7 +1,7 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-slot:header>
+      <template #header>
         {{ $t('2sv.intro.header') }}
       </template>
 
@@ -24,7 +24,7 @@
 
       <v-row justify="center" align="center">
         <v-col cols="auto" class="text-right">
-          <v-icon color="info">mdi-information</v-icon>
+          <v-icon color="info"> mdi-information </v-icon>
         </v-col>
         <v-col cols="8">
           {{ $t('2sv.intro.incentive') }}
@@ -35,7 +35,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/smartphone/intro" color="primary" outlined>
+      <v-btn to="/2sv/smartphone/intro" color="primary" variant="outlined">
         {{ $t('global.button.continue') }}
       </v-btn>
     </ButtonBar>
@@ -46,6 +46,7 @@
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 
 export default {
+  name: '2svIntro',
   components: {
     ProfileWizard,
   },
