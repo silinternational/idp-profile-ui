@@ -2,28 +2,25 @@
   <v-stepper v-if="currentStep.id" v-model="currentStep.id">
     <v-stepper-header>
       <template v-for="_step in steps" :key="`step-${_step.id}`">
-        <v-stepper-step
-          :step="_step.id"
-          :complete="_step.state != ''"
-          :complete-icon="toIcon(_step.state)"
-          :color="toColor(_step.state)"
-        >
-          {{ $t(`${_step.nameKey}`) }}
-        </v-stepper-step>
+        <v-stepper-item :value="_step.id" :complete="_step.state !== ''" :title="$t(`${_step.nameKey}`)">
+          <template #icon>
+            <v-icon :icon="toIcon(_step.state)" :color="toColor(_step.state)"></v-icon>
+          </template>
+        </v-stepper-item>
 
         <v-divider v-if="hasMoreSteps(_step)" :key="`divider-${_step.id}`" />
       </template>
     </v-stepper-header>
 
-    <v-stepper-items>
-      <v-stepper-content :step="currentStep.id" class="px-2 px-sm-6">
+    <v-stepper-window :value="currentStep.id">
+      <v-stepper-window-item :value="currentStep.id" class="px-2 px-sm-6">
         <slot />
 
         <ButtonBar>
           <slot name="actions" />
         </ButtonBar>
-      </v-stepper-content>
-    </v-stepper-items>
+      </v-stepper-window-item>
+    </v-stepper-window>
   </v-stepper>
 </template>
 
@@ -52,10 +49,10 @@ export default {
     },
     toIcon: (state) => {
       const map = {
-        skipped: 'icons.warning',
+        complete: '$complete',
+        skipped: '$warning',
       }
-
-      return map[state] || 'icons.complete'
+      return map[state] || '$complete'
     },
     completed: function () {
       this.currentStep.state = 'complete'
