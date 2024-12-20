@@ -51,9 +51,8 @@
               /^$|^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) ||
               $t('password.recovery.invalidEmail'),
           ]"
-          validate-on-blur
+          validate-on-input
           autofocus
-          @keyup.enter="blur"
         />
 
         <v-btn :disabled="!newEmail" size="small" color="success" class="ma-2-mod ml-4" @click="add">
@@ -114,10 +113,6 @@ export default {
       }
     },
     remove,
-    blur(event) {
-      event.target.blur()
-      event.target.focus()
-    },
     skip() {
       this.$refs.wizard.skipped()
       this.$refs.wizard.next()
