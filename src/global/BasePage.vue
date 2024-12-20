@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center">
     <v-col cols="auto" align-self="center">
-      <header class="text-h4 d-flex align-center justify-center text-center">
+      <header v-if="$slots.header" class="text-h4 d-flex align-center justify-center text-center">
         <slot name="header" />
       </header>
 
@@ -15,7 +15,12 @@
 <script>
 export default {
   mounted() {
-    // TODO document.title = this.$t('app.title', this.$slots.header[0].text.trim())
+    document.title = this.$t('app.title', [this.getHeader()])
+  },
+  methods: {
+    getHeader() {
+      return this.$slots.header()[0].children.trim()
+    },
   },
 }
 </script>
