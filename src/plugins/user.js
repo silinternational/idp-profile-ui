@@ -1,6 +1,7 @@
+import { reactive } from 'vue'
 import api from '@/plugins/api' // Adjust the path as necessary
 
-const user = {
+const user = reactive({
   async refresh() {
     const userData = await api.get('/user/me') // Use the API instance
     Object.assign(this, userData)
@@ -29,6 +30,6 @@ const user = {
   isNew() {
     return !(this.password_meta && this.password_meta.last_changed)
   },
-}
+})
 
 export default user
