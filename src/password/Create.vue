@@ -2,12 +2,12 @@
   <ProfileWizard ref="wizard" :key="wizardKey">
     <BasePage>
       <template #header>
-        {{ $t('password.create.header', $idpConfig.idpName) }}
+        {{ $t('password.create.header', [$idpConfig.idpName]) }}
       </template>
 
       <v-form ref="form" @submit.prevent="save">
         <p>
-          {{ $t('password.create.username', $idpConfig.idpName) }}
+          {{ $t('password.create.username', [$idpConfig.idpName]) }}
           <strong class="text-body-2">{{ $user.idp_username }}</strong>
         </p>
 
@@ -167,10 +167,10 @@ export default {
 const required = (v, vm) => !!v || vm.$t('password.create.required')
 const minLength = (v, vm) =>
   v.length >= vm.$idpConfig.passwordRules.minLength ||
-  vm.$t('password.create.tooShort', vm.$idpConfig.passwordRules.minLength)
+  vm.$t('password.create.tooShort', [vm.$idpConfig.passwordRules.minLength])
 const maxLength = (v, vm) =>
   v.length < vm.$idpConfig.passwordRules.maxLength ||
-  vm.$t('password.create.tooLong', vm.$idpConfig.passwordRules.maxLength)
+  vm.$t('password.create.tooLong', [vm.$idpConfig.passwordRules.maxLength])
 const strong = (v, vm) => vm.strength.score >= vm.$idpConfig.passwordRules.minScore || vm.$t('password.create.tooWeak')
 const requireAlphaAndNumeric = (v, vm) =>
   !vm.$idpConfig.passwordRules.requireAlphaAndNumeric ||

@@ -1,7 +1,7 @@
 <template>
   <BasePage>
     <template #header>
-      {{ $t('profile.intro.header', $idpConfig.idpName, $user.first_name) }}
+      {{ $t('profile.intro.header', [$idpConfig.idpName, $user.first_name]) }}
     </template>
 
     <v-row justify="center">

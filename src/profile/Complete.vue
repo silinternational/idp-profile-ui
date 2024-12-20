@@ -11,7 +11,7 @@
         </v-col>
 
         <v-col cols="11">
-          {{ $t('profile.complete.info', $user.first_name, $idpConfig.idpName) }}
+          {{ $t('profile.complete.info', [$user.first_name, $idpConfig.idpName]) }}
         </v-col>
       </v-row>
 
@@ -28,7 +28,7 @@
 
       <v-row v-if="unverifiedEmails.length">
         <v-col cols="1" class="text-right">
-          <v-icon color="warning"> mdi-email </v-icon>
+          <v-icon color="warning">mdi-email</v-icon>
         </v-col>
 
         <v-col cols="11">

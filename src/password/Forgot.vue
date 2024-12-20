@@ -5,7 +5,7 @@
     <v-form ref="form" @submit.prevent="usedEnterKey = !usedEnterKey">
       <BaseTextField
         v-model="uname"
-        :label="$t('password.forgot.unameInput', $idpConfig.idpName)"
+        :label="$t('password.forgot.unameInput', [$idpConfig.idpName])"
         :rules="[(v) => !!v || $t('password.forgot.required')]"
         validate-on-blur
         autofocus

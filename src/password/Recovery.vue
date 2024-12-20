@@ -6,7 +6,7 @@
       <p>{{ $t('password.recovery.explanation') }}</p>
 
       <p v-if="alternates.length">{{ $t('password.recovery.atLeastOneRecovery') }}</p>
-      <p v-else>{{ $t('password.recovery.info', primary.value) }}</p>
+      <p v-else>{{ $t('password.recovery.info', [`primary.value`]) }}</p>
 
       <p v-if="!alternates.length">
         {{ $t('password.recovery.advice') }}

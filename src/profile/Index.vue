@@ -1,7 +1,7 @@
 <template>
   <BasePage>
     <template #header>
-      {{ $t('profile.index.header', idpConfig.idpName) }}
+      {{ $t('profile.index.header', [idpConfig.idpName]) }}
     </template>
 
     <v-row>

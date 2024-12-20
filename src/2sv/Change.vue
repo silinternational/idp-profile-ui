@@ -9,7 +9,7 @@
     </v-alert>
 
     <p class="py-4">
-      {{ $t('2sv.change.info', label) }}
+      {{ $t('2sv.change.info', [label]) }}
     </p>
 
     <ButtonBar>
