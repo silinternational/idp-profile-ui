@@ -1,20 +1,20 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.key.confirmed.header') }}
+      <template #header>
+        {{ $t('2sv.key.confirmed.header') }}
       </template>
 
-      <p class="text-xs-center">
-        {{ $vuetify.lang.t('$vuetify.2sv.key.confirmed.info') }}
+      <p class="text-center">
+        {{ $t('2sv.key.confirmed.info') }}
       </p>
     </BasePage>
 
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
+      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" variant="outlined">
+        {{ $t('global.button.continue') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -24,6 +24,7 @@
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 
 export default {
+  name: 'ConfirmedKey',
   components: {
     ProfileWizard,
   },

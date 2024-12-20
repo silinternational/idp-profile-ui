@@ -1,20 +1,20 @@
 <template>
   <div class="d-flex flex-column align-end text-right text-body-2">
-    <p class="mb-1">{{ $vuetify.lang.t('$vuetify.profile.progress.header') }}</p>
+    <p class="mb-1">{{ $t('profile.progress.header') }}</p>
 
     <meter low="0.5" high="0.8" optimum="1" :value="complete" class="pb-1" />
 
     <a v-if="complete < 1 && !profile.alternates.length" href="#/password/recovery">{{
-      $vuetify.lang.t('$vuetify.profile.progress.addMethod')
+      $t('profile.progress.addMethod')
     }}</a>
     <a v-if="complete < 1 && !profile.mfa.totp.id" href="#/2sv/smartphone/intro">{{
-      $vuetify.lang.t('$vuetify.profile.progress.addTotp')
+      $t('profile.progress.addTotp')
     }}</a>
     <a v-if="complete < 1 && !(profile.mfa.u2f.id || profile.mfa.keys.id)" href="#/2sv/usb-security-key/intro">{{
-      $vuetify.lang.t('$vuetify.profile.progress.addSecurityKey')
+      $t('profile.progress.addSecurityKey')
     }}</a>
     <a v-if="complete < 1 && !profile.mfa.backup.id" href="#/2sv/printable-backup-codes/intro">{{
-      $vuetify.lang.t('$vuetify.profile.progress.addCodes')
+      $t('profile.progress.addCodes')
     }}</a>
   </div>
 </template>

@@ -1,34 +1,40 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.intro.header') }}
+      <template #header>
+        {{ $t('2sv.smartphone.intro.header') }}
       </template>
 
       <p>
-        {{ $vuetify.lang.t('$vuetify.2sv.smartphone.intro.info') }}
+        {{ $t('2sv.smartphone.intro.info') }}
       </p>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/intro" tabindex="-1" outlined class="mr-2 mr-sm-4 mb-4 mb-sm-0">
-        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
+      <v-btn to="/2sv/intro" tabindex="-1" variant="outlined" class="mr-2 mr-sm-4 mb-4 mb-sm-0">
+        {{ $t('global.button.back') }}
       </v-btn>
-      <v-btn :to="nextUrl" color="primary" tabindex="-1" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
+      <v-btn :to="nextUrl" color="primary" tabindex="-1" variant="outlined">
+        {{ $t('global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn :to="nextUrl" color="primary" tabindex="-1" outlined class="mr-2 mr-sm-4">
-        {{ $vuetify.lang.t('$vuetify.global.button.no') }}
+      <v-btn :to="nextUrl" color="primary" tabindex="-1" variant="outlined" class="mr-2 mr-sm-4">
+        {{ $t('global.button.no') }}
       </v-btn>
-      <v-btn to="/2sv/smartphone/download-app" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.yes') }}
+      <v-btn to="/2sv/smartphone/download-app" color="primary" variant="outlined">
+        {{ $t('global.button.yes') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
 </template>
+
+<script>
+export default {
+  name: 'IntroSmartphone',
+}
+</script>
 
 <script setup>
 import ProfileWizard from '@/profile/ProfileWizard.vue'

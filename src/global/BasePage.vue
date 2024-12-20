@@ -1,11 +1,11 @@
 <template>
   <v-row justify="center">
     <v-col cols="auto" align-self="center">
-      <header class="display-1 d-flex align-center justify-center text-center">
+      <header v-if="$slots.header" class="text-h4 d-flex align-center justify-center text-center">
         <slot name="header" />
       </header>
 
-      <main class="body-1 py-4">
+      <main class="text-body-1 py-4">
         <slot />
       </main>
     </v-col>
@@ -15,7 +15,12 @@
 <script>
 export default {
   mounted() {
-    document.title = this.$vuetify.lang.t('$vuetify.app.title', this.$slots.header[0].text.trim())
+    document.title = this.$t('app.title', [this.getHeader()])
+  },
+  methods: {
+    getHeader() {
+      return this.$slots.header()[0].children.trim()
+    },
   },
 }
 </script>

@@ -1,31 +1,39 @@
 <template>
-  <v-progress-linear :indeterminate="!!loading" color="secondary" height="10" background-opacity="0" />
+  <v-progress-linear :indeterminate="loading > 0" color="secondary" height="10" bg-opacity="0" />
 </template>
 
 <script>
-export default {
-  data: () => ({
-    loading: 0,
-  }),
-  beforeCreate() {
-    this.$API.interceptors.request.use((config) => {
-      this.loading++
+import { ref, onBeforeUnmount } from 'vue'
+import api from '@/plugins/api'
 
+export default {
+  name: 'LoadingIndicator',
+  setup() {
+    const loading = ref(0)
+    const requestInterceptor = api.interceptors.request.use((config) => {
+      loading.value++
       return config
     })
 
-    this.$API.interceptors.response.use(
+    const responseInterceptor = api.interceptors.response.use(
       (response) => {
-        this.loading--
-
+        loading.value--
         return response
       },
       (error) => {
-        this.loading--
-
+        loading.value--
         throw error
       },
     )
+
+    onBeforeUnmount(() => {
+      api.interceptors.request.eject(requestInterceptor)
+      api.interceptors.response.eject(responseInterceptor)
+    })
+
+    return {
+      loading,
+    }
   },
 }
 </script>

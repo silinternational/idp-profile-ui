@@ -1,40 +1,40 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import profileRoutes from '@/profile/routes'
 import passwordRoutes from '@/password/routes'
 import twoStepRoutes from '@/2sv/routes'
 import PageNotFound from '@/global/PageNotFound.vue'
+import user from '@/plugins/user'
 
-Vue.use(Router)
+const routes = [
+  ...profileRoutes,
+  ...passwordRoutes,
+  ...twoStepRoutes,
+  {
+    path: '/help', // old pw-ui urls might still be bookmarked.
+    redirect: () => (window.location = 'https://sites.google.com/sil.org/idphelp'),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: PageNotFound,
+    meta: {
+      public: true,
+    },
+  },
+]
 
-const configuredRouter = new Router({
-  routes: [
-    ...profileRoutes,
-    ...passwordRoutes,
-    ...twoStepRoutes,
-    {
-      path: '/help', // old pw-ui urls might still be bookmarked.
-      redirect: () => (window.location = 'https://sites.google.com/sil.org/idphelp'),
-    },
-    {
-      path: '*',
-      component: PageNotFound,
-      meta: {
-        public: true,
-      },
-    },
-  ],
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
 })
 
-configuredRouter.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (!to.meta.public) {
     try {
-      await Vue.prototype.$user.refresh()
+      await user.refresh()
     } catch (e) {
-      if (e.status == 401) {
-        Vue.prototype.$user.login(to.path, to.query.invite)
+      if (e.status === 401) {
+        user.login(to.path, to.query.invite)
       }
-
       throw e
     }
   }
@@ -42,4 +42,4 @@ configuredRouter.beforeEach(async (to, from, next) => {
   next()
 })
 
-export default configuredRouter
+export default router

@@ -14,7 +14,7 @@ Project is managed with [vitejs](https://vitejs.dev/).
 
 This app is setup to run against HTTPS for WebAuthn testing. In order to facilitate this _traefik_ must be configured. Some values are located in the `.env.local` and some are located in the `docker-compose.yml` under the `proxy` service. See [traefik docs](https://github.com/silinternational/traefik-https-proxy) for more information.
 
-1. Copy `.env.dist` to  `.env.local`
+1. Copy `.env.dist` to `.env.local`
 2. Edit `.env.local`:
    - replace 'example.org' with a domain you have DNS edit permissions
    - add a token to CLOUDFLARE_DNS_API_TOKEN

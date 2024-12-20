@@ -3,11 +3,9 @@ import es from './es.json'
 import fr from './fr.json'
 import ko from './ko.json'
 
-const allLocales = {
+export default {
   en,
   es,
   fr,
   ko,
 }
-
-export default allLocales

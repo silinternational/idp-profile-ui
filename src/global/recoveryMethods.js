@@ -1,13 +1,13 @@
-import Vue from 'vue'
+import { reactive } from 'vue'
+import api from '@/plugins/api'
 
-export const recoveryMethods = {
+export const recoveryMethods = reactive({
   system: [],
   alternates: [],
-}
-export default recoveryMethods
+})
 
 export const add = async (email) => {
-  const newMethod = await Vue.prototype.$API.post('method', {
+  const newMethod = await api.post('method', {
     value: email,
   })
 
@@ -17,7 +17,7 @@ export const add = async (email) => {
 export const retrieve = async () => {
   clear()
 
-  const all = await Vue.prototype.$API.get('method')
+  const all = await api.get('method')
 
   recoveryMethods.system.push(...all.filter((m) => m.type != 'email'))
   recoveryMethods.alternates.push(...all.filter((m) => m.type == 'email'))
@@ -29,14 +29,16 @@ function clear() {
 }
 
 export const remove = async (id) => {
-  await Vue.prototype.$API.delete(`method/${id}`)
+  await api.delete(`method/${id}`)
 
   const i = recoveryMethods.alternates.findIndex((m) => m.id == id)
   recoveryMethods.alternates.splice(i, 1)
 }
 
 export const verify = async (id, verificationCode = '') => {
-  await Vue.prototype.$API.put(`method/${id}/verify`, {
+  await api.put(`method/${id}/verify`, {
     code: verificationCode,
   })
 }
+
+export default recoveryMethods

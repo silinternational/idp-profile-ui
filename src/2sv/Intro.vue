@@ -1,13 +1,13 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.intro.header') }}
+      <template #header>
+        {{ $t('2sv.intro.header') }}
       </template>
 
       <v-row justify="center">
         <v-col cols="auto">
-          {{ $vuetify.lang.t('$vuetify.2sv.intro.info') }}
+          {{ $t('2sv.intro.info') }}
         </v-col>
       </v-row>
       <v-row justify="center">
@@ -24,10 +24,10 @@
 
       <v-row justify="center" align="center">
         <v-col cols="auto" class="text-right">
-          <v-icon color="info">mdi-information</v-icon>
+          <v-icon color="info"> mdi-information </v-icon>
         </v-col>
         <v-col cols="8">
-          {{ $vuetify.lang.t('$vuetify.2sv.intro.incentive') }}
+          {{ $t('2sv.intro.incentive') }}
         </v-col>
       </v-row>
     </BasePage>
@@ -35,8 +35,8 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/smartphone/intro" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
+      <v-btn to="/2sv/smartphone/intro" color="primary" variant="outlined">
+        {{ $t('global.button.continue') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -46,6 +46,7 @@
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 
 export default {
+  name: '2svIntro',
   components: {
     ProfileWizard,
   },

@@ -1,27 +1,27 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.intro.header') }}
+      <template #header>
+        {{ $t('2sv.codes.intro.header') }}
       </template>
 
       <p v-if="hasOtherTypes">
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.intro.backupInfo') }}
+        {{ $t('2sv.codes.intro.backupInfo') }}
       </p>
       <p v-else>
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.intro.primaryInfo') }}
+        {{ $t('2sv.codes.intro.primaryInfo') }}
       </p>
     </BasePage>
 
     <ButtonBar>
-      <v-btn @click.once="skip" color="warning" tabindex="-1" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
+      <v-btn color="warning" tabindex="-1" variant="outlined" @click.once="skip">
+        {{ $t('global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/printable-backup-codes/new" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.intro.button.new') }}
+      <v-btn to="/2sv/printable-backup-codes/new" color="primary" variant="outlined">
+        {{ $t('2sv.codes.intro.button.new') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -32,6 +32,7 @@ import ProfileWizard from '@/profile/ProfileWizard.vue'
 import mfa from '@/global/mfa'
 
 export default {
+  name: 'IntroPage',
   components: {
     ProfileWizard,
   },
