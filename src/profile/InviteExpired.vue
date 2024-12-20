@@ -9,3 +9,9 @@
     </p>
   </BasePage>
 </template>
+
+<script>
+export default {
+  name: 'InviteExpired',
+}
+</script>

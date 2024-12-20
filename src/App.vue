@@ -25,7 +25,7 @@
     </v-app-bar>
 
     <v-main>
-      <Loading class="ma-0" />
+      <LoadingIndicator class="ma-0" />
 
       <v-row no-gutters>
         <v-spacer />

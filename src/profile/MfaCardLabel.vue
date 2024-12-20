@@ -42,11 +42,11 @@ export default {
       default: '',
     },
     keyId: {
-      type: Number,
+      type: String,
       default: null,
     },
     mfaId: {
-      type: Number,
+      type: String,
       default: null,
     },
     readOnly: {

@@ -43,7 +43,7 @@
 
       <v-col v-if="numberOfKeys > 1" cols="12" sm="6" md="4">
         <SecurityKeyCard
-          is-summary="true"
+          is-summary
           :number-of-keys="numberOfKeys"
           :webauthn-key="mfa.keys"
           :show-keys="showKeys"
@@ -56,7 +56,7 @@
       </v-col>
 
       <v-col v-else-if="numberOfKeys === 0">
-        <SecurityKeyCard is-summary="true" :webauthn-key="{}" />
+        <SecurityKeyCard is-summary :webauthn-key="{}" />
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
