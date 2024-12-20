@@ -14,7 +14,7 @@ app.config.globalProperties.$idpConfig = {}
 ;(async () => {
   try {
     const config = await api.get('config')
-    app.config.globalProperties.$idpConfig = config.data
+    app.config.globalProperties.$idpConfig = config
   } catch (error) {
     console.error('Failed to load IDP configuration:', error)
   }
