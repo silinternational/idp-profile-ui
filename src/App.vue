@@ -53,6 +53,7 @@ import logo from '@/assets/logo.png'
 import user from '@/plugins/user'
 import returnTo from '@/plugins/returnTo'
 import eventBus from '@/eventBus'
+import { useDisplay } from 'vuetify'
 
 export default {
   components: {
@@ -66,7 +67,8 @@ export default {
   },
   computed: {
     mobile() {
-      return this?.$vuetify?.breakpoint?.name === 'xs'
+      const { xs } = useDisplay()
+      return xs.value
     },
     user() {
       return user // Access user directly

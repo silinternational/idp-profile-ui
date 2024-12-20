@@ -124,6 +124,7 @@
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 import { add } from '@/global/mfa'
 import { formatLongDate } from '@/global/filters'
+import { useDisplay } from 'vuetify'
 
 export default {
   name: 'NewCodes',
@@ -146,7 +147,8 @@ export default {
       return encodeURIComponent(`${this.$idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
     },
     mobile() {
-      return this.breakpoint.name === 'xs'
+      const { xs } = useDisplay()
+      return xs.value
     },
   },
   async created() {
