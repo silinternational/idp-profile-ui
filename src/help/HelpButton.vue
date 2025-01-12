@@ -1,9 +1,10 @@
 <template>
-  <v-dialog v-if="$idpConfig.support" v-model="isOpen" width="initial">
+  <v-dialog v-model="isOpen" width="initial" v-bind="!!$idpConfig.support">
     <!-- making it initial so card grows with content -->
     <template #activator="{ props }">
-      <v-btn variant="text" :icon="mobile" class="mx-1" v-bind="props">
-        {{ !mobile ? $t('help.button.help') : '' }}<v-icon v-if="mobile"> mdi-help </v-icon>
+      <v-btn variant="text" :icon="xs" class="mx-1" v-bind="props">
+        <span v-if="!xs">{{ $t('help.button.help') }}</span>
+        <v-icon v-if="xs">mdi-help</v-icon>
       </v-btn>
     </template>
     <v-card>
@@ -11,21 +12,21 @@
 
       <v-card-text>
         <p v-if="$idpConfig.support.phone">
-          {{ $t('help.phone') }}<span class="text-subtitle-1"> {{ $idpConfig.support.phone }}</span>
+          {{ $t('help.phone') }}<span class="text-subtitle-1"> {{ $idpConfig.support?.phone }}</span>
         </p>
         <p v-if="$idpConfig.support.email">
-          {{ $t('help.email') }}<span class="text-subtitle-1"> {{ $idpConfig.support.email }}</span>
+          {{ $t('help.email') }}<span class="text-subtitle-1"> {{ $idpConfig.support?.email }}</span>
         </p>
         <p v-if="$idpConfig.support.url">
           {{ $t('help.site') }}
-          <a :href="$idpConfig.support.url" target="_blank" class="text-subtitle-1">
+          <a :href="$idpConfig.support?.url" target="_blank" class="text-subtitle-1">
             {{ $idpConfig.support.url }}
           </a>
         </p>
-        <p v-if="$idpConfig.support.feedbackUrl">
+        <p v-if="$idpConfig.support?.feedbackUrl">
           {{ $t('help.feedback') }}
-          <a :href="$idpConfig.support.feedbackUrl" target="_blank" class="text-subtitle-1">
-            {{ $idpConfig.support.feedbackUrl }}
+          <a :href="$idpConfig.support?.feedbackUrl" target="_blank" class="text-subtitle-1">
+            {{ $idpConfig.support?.feedbackUrl }}
           </a>
         </p>
       </v-card-text>
@@ -40,20 +41,11 @@
   </v-dialog>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    isOpen: false,
-  }),
-  computed: {
-    mobile() {
-      switch (this.breakpoint.name) {
-        case 'xs':
-          return true
-        default:
-          return false
-      }
-    },
-  },
-}
+<script setup>
+import { ref } from 'vue'
+import { useDisplay } from 'vuetify'
+
+const isOpen = ref(false)
+
+const { xs } = useDisplay()
 </script>
