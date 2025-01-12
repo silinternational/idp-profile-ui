@@ -7,7 +7,7 @@
 
       <v-toolbar-title class="text-white px-4">{{ user.first_name }} {{ user.last_name }}</v-toolbar-title>
 
-      <v-divider vertical dark inset class="mx-2" />
+      <v-divider vertical inset class="mx-2" />
 
       <v-btn v-if="user.isAuthenticated()" variant="text" :icon="mobile" class="mx-1" @click="logout">
         <v-icon v-if="mobile">mdi-logout-variant</v-icon>
@@ -19,7 +19,7 @@
         <span v-else>{{ $t('app.login') }}</span>
       </v-btn>
 
-      <v-divider vertical dark inset />
+      <v-divider vertical inset />
 
       <HelpButton />
     </v-app-bar>
