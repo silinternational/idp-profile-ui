@@ -43,6 +43,7 @@
         <v-alert
           v-show="!!(showFeedback && password && strength)"
           :type="strength.feedback.warning ? 'error' : 'info'"
+          :icon="strength.feedback.warning ? 'mdi-alert' : 'mdi-information'"
           variant="outlined"
         >
           <header class="text-body-2">

@@ -36,7 +36,7 @@
       </v-row>
 
       <v-container>
-        <v-alert v-show="!!message" type="error" closable @click:close="message = ''">
+        <v-alert v-show="!!message" type="error" icon="mdi-alert" closable @click:close="message = ''">
           <span v-sanitize.basic="message" />
         </v-alert>
 
