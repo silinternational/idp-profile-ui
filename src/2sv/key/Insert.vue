@@ -43,7 +43,7 @@
       {{ snackBarMessage }}
 
       <template #actions="{ attrs }">
-        <v-btn color="warning" variant="text" v-bind="attrs" @click="snackbarIsOpen = false">
+        <v-btn v-bind="attrs" color="warning" variant="text" @click="snackbarIsOpen = false">
           {{ $t('global.button.close') }}
         </v-btn>
       </template>

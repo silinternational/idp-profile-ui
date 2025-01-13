@@ -26,7 +26,7 @@
 
           <v-tooltip location="top">
             <template #activator="{ props }">
-              <v-btn class="eye" icon tabindex="-1" v-bind="props" @click="passwordIsHidden = !passwordIsHidden">
+              <v-btn v-bind="props" class="eye" icon tabindex="-1" @click="passwordIsHidden = !passwordIsHidden">
                 <v-icon>{{ passwordIsHidden ? 'mdi-eye' : 'mdi-eye-off' }}</v-icon>
               </v-btn>
             </template>

@@ -19,17 +19,16 @@
           {{ method.value }}
           <v-tooltip :disabled="alternates.length > 1" location="right">
             <template #activator="{ props }">
-              <div v-bind="props">
-                <v-icon
-                  :disabled="alternates.length == 1"
-                  color="error"
-                  size="small"
-                  class="pl-4"
-                  @click.once="remove(method.id)"
-                >
-                  mdi-delete
-                </v-icon>
-              </div>
+              <v-icon
+                v-bind="props"
+                :disabled="alternates.length == 1"
+                color="error"
+                size="small"
+                class="pl-4"
+                @click.once="remove(method.id)"
+              >
+                mdi-delete
+              </v-icon>
             </template>
 
             {{ $t('password.recovery.dontRemoveLastOne') }}
@@ -70,11 +69,15 @@
 
       <v-tooltip :disabled="!(unsaved || !alternates.length)" location="right">
         <template #activator="{ props }">
-          <div v-bind="props">
-            <v-btn :disabled="unsaved || !alternates.length" color="primary" variant="outlined" @click.once="complete">
-              {{ $t('global.button.continue') }}
-            </v-btn>
-          </div>
+          <v-btn
+            v-bind="props"
+            :disabled="unsaved || !alternates.length"
+            color="primary"
+            variant="outlined"
+            @click.once="complete"
+          >
+            {{ $t('global.button.continue') }}
+          </v-btn>
         </template>
 
         <span v-if="unsaved">{{ $t('password.recovery.unsaved') }}</span>

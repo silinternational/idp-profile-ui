@@ -23,7 +23,7 @@
     <v-col cols="auto">
       <v-tooltip v-if="!readOnly" location="right">
         <template #activator="{ props }">
-          <v-icon color="info" size="small" v-bind="props" @click="edit"> mdi-pencil </v-icon>
+          <v-icon v-bind="props" color="info" size="small" @click="edit"> mdi-pencil </v-icon>
         </template>
 
         {{ $t('profile.index.rename') }}

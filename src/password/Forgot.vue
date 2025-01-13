@@ -16,17 +16,16 @@
       <v-spacer />
       <v-tooltip :disabled="!usedEnterKey || !uname" :model-value="usedEnterKey" location="top">
         <template #activator="{ props }">
-          <div v-bind="props">
-            <v-btn
-              :disabled="!uname"
-              color="primary"
-              class="g-recaptcha"
-              variant="outlined"
-              @click="usedEnterKey = false"
-            >
-              {{ $t('password.forgot.button.send') }}
-            </v-btn>
-          </div>
+          <v-btn
+            v-bind="props"
+            :disabled="!uname"
+            color="primary"
+            class="g-recaptcha"
+            variant="outlined"
+            @click="usedEnterKey = false"
+          >
+            {{ $t('password.forgot.button.send') }}
+          </v-btn>
         </template>
 
         {{ $t('password.forgot.clickOnly') }}

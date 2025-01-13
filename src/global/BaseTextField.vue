@@ -1,9 +1,9 @@
 <template>
   <v-text-field
+    v-bind="$attrs"
     ref="tf"
     :model-value="modelValue"
     variant="outlined"
-    v-bind="$attrs"
     @update:model-value="$emit('update:model-value', $event)"
     v-on="
       Object.keys($attrs).reduce((listeners, key) => {

@@ -7,7 +7,7 @@
 
       <v-tooltip v-if="hasUnverifiedEmails" location="right">
         <template #activator="{ props }">
-          <v-icon size="x-large" color="error" v-bind="props">mdi-alert-circle</v-icon>
+          <v-icon v-bind="props" size="x-large" color="error">mdi-alert-circle</v-icon>
         </template>
 
         {{ $t('profile.index.passwordRecoveryCard.unverifiedEmails') }}
@@ -20,7 +20,7 @@
 
         <v-tooltip v-if="!method.verified && method.id != sent" location="right">
           <template #activator="{ props }">
-            <v-icon color="error" size="small" class="pl-1" v-bind="props">mdi-alert-circle</v-icon>
+            <v-icon v-bind="props" color="error" size="small" class="pl-1">mdi-alert-circle</v-icon>
           </template>
 
           {{ $t('profile.index.passwordRecoveryCard.unverified') }}

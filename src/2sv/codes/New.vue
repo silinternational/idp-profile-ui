@@ -107,11 +107,9 @@
 
       <v-tooltip :disabled="gotEm" :model-value="gotEm" location="top">
         <template #activator="{ props }">
-          <div v-bind="props">
-            <v-btn :disabled="!gotEm" color="primary" variant="outlined" @click.once="finish">
-              {{ $t('2sv.codes.new.button.ok') }}
-            </v-btn>
-          </div>
+          <v-btn v-bind="props" :disabled="!gotEm" color="primary" variant="outlined" @click.once="finish">
+            {{ $t('2sv.codes.new.button.ok') }}
+          </v-btn>
         </template>
 
         {{ $t('2sv.codes.new.personalCopy') }}
@@ -162,7 +160,8 @@ export default {
       this.$refs.wizard.next()
     },
     async print(id) {
-      this.gotEm = this.printing = true
+      this.printing = true
+      this.gotEm = this.printing === true
       const el = document.querySelector(id)
 
       el.classList.add('printable')
@@ -176,8 +175,8 @@ export default {
     },
     async copy() {
       await navigator.clipboard.writeText(`${this.$idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
-
-      this.gotEm = this.copied = true
+      this.copied = true
+      this.gotEm = this.copied === true
     },
   },
 }

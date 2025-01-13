@@ -11,14 +11,14 @@
 
       <v-tooltip v-if="alternate.id == sent" location="right">
         <template #activator="{ props }">
-          <v-icon color="success" size="medium" class="pl-4" v-bind="props"> mdi-check </v-icon>
+          <v-icon v-bind="props" color="success" size="medium" class="pl-4"> mdi-check </v-icon>
         </template>
 
         {{ $t('password.forgotSent.too') }}
       </v-tooltip>
       <v-tooltip v-else location="right">
         <template #activator="{ props }">
-          <v-icon color="info" size="large" class="pl-4" v-bind="props" @click="resend(alternate)"> mdi-send </v-icon>
+          <v-icon v-bind="props" color="info" size="large" class="pl-4" @click="resend(alternate)"> mdi-send </v-icon>
         </template>
 
         {{ $t('password.forgotSent.instead') }}
