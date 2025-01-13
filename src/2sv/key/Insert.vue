@@ -95,7 +95,7 @@ export default {
         this.input = ''
         return
       }
-      this.newKeyName = this.input
+      this.newKeyName.set(this.input)
       this.$router.push('/2sv/usb-security-key/touch')
     },
   },

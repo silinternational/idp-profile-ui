@@ -9,15 +9,15 @@ export const mfa = reactive({
   numVerified: 0,
 })
 
-export const newKeyName = reactive({
+export const newKeyName = {
   _value: '',
-  get value() {
+  get: function () {
     return this._value
   },
-  set value(newValue) {
-    this._value = newValue
+  set: function (value) {
+    this._value = value
   },
-})
+}
 
 export const add = async (type) => await api.post('mfa', { type })
 

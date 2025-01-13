@@ -67,7 +67,7 @@ export default {
       if (isValid(response)) {
         clearTimeout(absTimeout)
 
-        await verifyWebauthn(this.newSecurityKey.id, response, newKeyName.value)
+        await verifyWebauthn(this.newSecurityKey.id, response, newKeyName.get())
 
         this.touched = true
 
