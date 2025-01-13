@@ -5,12 +5,13 @@
         {{ $t('2sv.smartphone.verifyQrCode.header') }}
       </template>
 
-      <v-row align="center" class="px-5">
+      <v-row class="px-5">
         <v-form ref="form" class="pl-2 d-flex flex-column align-center" @submit.prevent="verify">
           <p>{{ $t('2sv.smartphone.verifyQrCode.info') }}</p>
 
           <BaseTextField
             v-model="code"
+            width="100%"
             type="text"
             :label="$t('2sv.smartphone.verifyQrCode.codeInput')"
             :rules="rules"
