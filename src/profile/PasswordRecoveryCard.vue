@@ -15,16 +15,18 @@
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <div v-for="method in methods" :key="method.id">
-        {{ method.value }}
+      <div v-for="method in methods" :key="method.id" class="d-flex justify-space-between">
+        <div>
+          {{ method.value }}
 
-        <v-tooltip v-if="!method.verified && method.id != sent" location="right">
-          <template #activator="{ props }">
-            <v-icon v-bind="props" color="error" size="small" class="pl-1">mdi-alert-circle</v-icon>
-          </template>
+          <v-tooltip v-if="!method.verified && method.id != sent" location="right">
+            <template #activator="{ props }">
+              <v-icon v-bind="props" color="error" size="small" class="pl-1">mdi-alert-circle</v-icon>
+            </template>
 
-          {{ $t('profile.index.passwordRecoveryCard.unverified') }}
-        </v-tooltip>
+            {{ $t('profile.index.passwordRecoveryCard.unverified') }}
+          </v-tooltip>
+        </div>
 
         <a v-if="!method.verified && method.id != sent" class="text-caption float-right pl-2" @click="resend(method)">
           {{ $t('profile.index.passwordRecoveryCard.resend') }}
