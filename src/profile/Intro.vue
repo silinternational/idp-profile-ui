@@ -5,19 +5,21 @@
     </template>
 
     <v-row justify="center">
-      <p class="mx-4">
-        {{ $t('profile.intro.explanation') }}
-      </p>
+      <v-col cols="auto" class="d-flex flex-column align-center">
+        <p class="mx-4">
+          {{ $t('profile.intro.explanation') }}
+        </p>
 
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/kXDeNWDlEqk?rel=0"
-        frameborder="0"
-        allow="autoplay; encrypted-media;"
-        allowfullscreen
-        class="pa-4"
-      />
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/kXDeNWDlEqk?rel=0"
+          frameborder="0"
+          allow="autoplay; encrypted-media;"
+          allowfullscreen
+          class="pa-4"
+        />
+      </v-col>
     </v-row>
 
     <ButtonBar class="mt-5">
