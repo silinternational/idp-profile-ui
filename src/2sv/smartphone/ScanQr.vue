@@ -22,7 +22,7 @@
 
           <v-row v-if="newTotp.data" justify="center">
             <v-col cols="auto">
-              <v-img :src="newTotp.data.imageUrl" max-width="200" />
+              <v-img :src="newTotp.data.imageUrl" alt="qr code" width="200" />
             </v-col>
           </v-row>
           <v-row v-if="newTotp.data" justify="center">
