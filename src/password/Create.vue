@@ -11,7 +11,7 @@
           <strong class="text-body-2">{{ $user.idp_username }}</strong>
         </p>
 
-        <div class="password">
+        <div class="d-flex">
           <BaseTextField
             v-model="password"
             :type="passwordIsHidden ? 'password' : 'text'"
@@ -26,7 +26,13 @@
 
           <v-tooltip location="top">
             <template #activator="{ props }">
-              <v-btn v-bind="props" class="eye" icon tabindex="-1" @click="passwordIsHidden = !passwordIsHidden">
+              <v-btn
+                v-bind="props"
+                class="align-center"
+                icon
+                tabindex="-1"
+                @click="passwordIsHidden = !passwordIsHidden"
+              >
                 <v-icon>{{ passwordIsHidden ? 'mdi-eye' : 'mdi-eye-off' }}</v-icon>
               </v-btn>
             </template>
@@ -35,7 +41,7 @@
         </div>
 
         <v-alert
-          :value="!!(showFeedback && password)"
+          v-show="!!(showFeedback && password)"
           :type="strength.feedback.warning ? 'error' : 'info'"
           variant="outlined"
         >
@@ -60,7 +66,7 @@
           </footer>
         </v-alert>
 
-        <v-alert :value="!!isGood" type="success" variant="outlined">
+        <v-alert v-show="!!isGood" type="success" variant="outlined">
           <header class="text-body-2">
             {{ $t('password.create.goodPassword') }}
           </header>
@@ -187,12 +193,3 @@ const options = {
 
 zxcvbnOptions.setOptions(options)
 </script>
-
-<style>
-.password {
-  display: flex;
-}
-.eye {
-  margin-top: 0.75rem;
-}
-</style>
