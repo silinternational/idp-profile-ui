@@ -1,6 +1,6 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
-    <v-card-title primary-title>
+    <v-card-title primary-title class="d-flex align-center">
       <h3 class="text-h5">{{ $t('profile.index.passwordRecoveryCard.title') }}</h3>
 
       <v-spacer />
