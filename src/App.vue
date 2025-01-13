@@ -9,13 +9,13 @@
 
       <v-divider vertical inset class="mx-2" />
 
-      <v-btn v-if="user.isAuthenticated()" variant="text" :icon="mobile" class="mx-1" @click="logout">
-        <v-icon v-if="mobile">mdi-logout-variant</v-icon>
+      <v-btn v-if="user.isAuthenticated()" variant="text" :icon="xs" class="mx-1" @click="logout">
+        <v-icon v-if="xs">mdi-logout-variant</v-icon>
         <span v-else>{{ $t('app.logout') }}</span>
       </v-btn>
 
-      <v-btn v-else variant="text" :icon="mobile" class="mx-1" @click="login">
-        <v-icon v-if="mobile">mdi-login</v-icon>
+      <v-btn v-else variant="text" :icon="xs" class="mx-1" @click="login">
+        <v-icon v-if="xs">mdi-login</v-icon>
         <span v-else>{{ $t('app.login') }}</span>
       </v-btn>
 
@@ -36,7 +36,7 @@
       </v-row>
 
       <v-container>
-        <v-alert :value="!!message" type="error" closable>
+        <v-alert v-show="!!message" type="error" closable @click:close="message = ''">
           <span v-sanitize.basic="message" />
         </v-alert>
 
@@ -47,57 +47,46 @@
   </v-app>
 </template>
 
-<script>
+<script setup>
 import HelpButton from './help/HelpButton.vue'
 import logo from '@/assets/logo.png'
 import user from '@/plugins/user'
 import returnTo from '@/plugins/returnTo'
 import eventBus from '@/eventBus'
+import { ref, watch, onMounted, onErrorCaptured } from 'vue'
+import { useRoute } from 'vue-router'
 import { useDisplay } from 'vuetify'
 
-export default {
-  components: {
-    HelpButton,
+const message = ref('')
+
+const { xs } = useDisplay()
+
+const route = useRoute()
+
+watch(
+  () => route.fullPath,
+  () => {
+    message.value = ''
   },
-  data() {
-    return {
-      message: '',
-      logo,
-    }
-  },
-  computed: {
-    mobile() {
-      const { xs } = useDisplay()
-      return xs.value
-    },
-    user() {
-      return user // Access user directly
-    },
-    returnTo() {
-      return returnTo
-    },
-  },
-  watch: {
-    $route() {
-      this.message = ''
-    },
-  },
-  created() {
-    eventBus.on('clear-messages', () => {
-      this.message = ''
-    })
-  },
-  errorCaptured(err) {
-    this.message = err.message || err
-  },
-  methods: {
-    logout() {
-      this.user.logout()
-    },
-    login() {
-      this.user.login()
-    },
-  },
+)
+
+onMounted(() => {
+  eventBus.on('clear-messages', () => {
+    message.value = ''
+  })
+})
+
+onErrorCaptured((err) => {
+  message.value = err.message || err
+  return true // Prevent the error from propagating further
+})
+
+const logout = () => {
+  user.logout()
+}
+
+const login = () => {
+  user.login()
 }
 </script>
 
