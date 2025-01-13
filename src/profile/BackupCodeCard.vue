@@ -6,7 +6,7 @@
           <v-icon :color="meta.created_utc ? 'success' : ''" size="x-large"> mdi-format-list-checkbox </v-icon>
         </v-col>
         <v-col class="ml-4">
-          <MfaCardLabel :label="label" :mfa-id="meta.id" read-only />
+          <MfaCardLabel :label="label" :mfa-id="String(meta.id)" read-only />
         </v-col>
       </v-row>
     </v-card-title>
@@ -25,7 +25,7 @@
       <Attribute
         v-if="meta.created_utc"
         :name="$t('profile.index.codeCard.remaining')"
-        :value="meta.data.count"
+        :value="String(meta.data.count)"
         sameline
       />
       <v-row v-else>
@@ -47,7 +47,7 @@
       <v-btn v-else href="#/2sv/printable-backup-codes/intro" color="primary" variant="outlined">
         {{ $t('profile.index.codeCard.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="meta.created_utc" :mfa-id="meta.id" />
+      <MfaCardRemove v-if="meta.created_utc" :mfa-id="String(meta.id)" />
     </v-card-actions>
   </v-card>
 </template>

@@ -11,7 +11,7 @@ export default {
   props: {
     keyId: {
       type: String,
-      required: true,
+      required: false,
     },
     mfaId: {
       type: String,
