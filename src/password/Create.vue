@@ -41,7 +41,7 @@
         </div>
 
         <v-alert
-          v-show="!!(showFeedback && password)"
+          v-show="!!(showFeedback && password && strength)"
           :type="strength.feedback.warning ? 'error' : 'info'"
           variant="outlined"
         >
@@ -92,6 +92,7 @@
 </template>
 
 <script>
+import { usePasswordStore } from './password'
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core'
 import * as zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
@@ -102,21 +103,35 @@ export default {
   components: {
     ProfileWizard,
   },
-  data: (vm) => ({
-    wizardKey: 0, // This is used to refresh the form, instead of leaving it frozen after a re-used password
-    password: vm.$root.$data.password || '',
-    passwordIsHidden: true,
-    rules: [
-      (v) => required(v, vm),
-      (v) => minLength(v, vm),
-      (v) => maxLength(v, vm),
-      (v) => strong(v, vm),
-      (v) => requireAlphaAndNumeric(v, vm),
-    ],
-    errors: [],
-  }),
+  data() {
+    return {
+      wizardKey: 0,
+      passwordIsHidden: true,
+      rules: [
+        (v) => required(v, this),
+        (v) => minLength(v, this),
+        (v) => maxLength(v, this),
+        (v) => strong(v, this),
+        (v) => requireAlphaAndNumeric(v, this),
+      ],
+      errors: [],
+    }
+  },
   computed: {
-    strength: (vm) => zxcvbn(vm.password),
+    passwordStore() {
+      return usePasswordStore()
+    },
+    password: {
+      get() {
+        return this.passwordStore.password.value
+      },
+      set(value) {
+        this.passwordStore.setPassword(value)
+      },
+    },
+    strength() {
+      return zxcvbn(this.password)
+    },
     showFeedback: (vm) => vm.strength.feedback.warning || vm.strength.feedback.suggestions.length,
     isGood: (vm) => vm.password && vm.$refs.form && vm.$refs.form.validate(),
   },
@@ -143,8 +158,6 @@ export default {
           await this.$API.put('password/assess', {
             password: this.password,
           })
-
-          this.$root.$data.password = this.password
 
           this.$router.push('/password/confirm')
         } catch (e) {

@@ -8,7 +8,7 @@
       <v-form ref="form" class="pa-4" @submit.prevent="confirm">
         <p>{{ $t('password.confirm.explanation') }}</p>
 
-        <div class="password">
+        <div class="d-flex">
           <BaseTextField
             v-model="password"
             :type="passwordIsHidden ? 'password' : 'text'"
@@ -23,7 +23,13 @@
 
           <v-tooltip location="top">
             <template #activator="{ props }">
-              <v-btn v-bind="props" class="eye" icon tabindex="-1" @click="passwordIsHidden = !passwordIsHidden">
+              <v-btn
+                v-bind="props"
+                class="align-center"
+                icon
+                tabindex="-1"
+                @click="passwordIsHidden = !passwordIsHidden"
+              >
                 <v-icon>{{ passwordIsHidden ? 'mdi-eye' : 'mdi-eye-off' }}</v-icon>
               </v-btn>
             </template>
@@ -49,6 +55,7 @@
 </template>
 
 <script>
+import { usePasswordStore } from './password'
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 
 export default {
@@ -57,16 +64,30 @@ export default {
     ProfileWizard,
   },
   beforeRouteLeave(to, from, next) {
-    delete this.$root.$data.password
+    this.password = ''
 
     next()
   },
-  data: (vm) => ({
-    password: '',
-    passwordIsHidden: true,
-    rules: [(v) => v == vm.$data.password || vm.$t('password.confirm.noMatch')],
-    errors: [],
-  }),
+  data() {
+    return {
+      passwordIsHidden: true,
+      rules: [(v) => v === this.password || this.$t('password.confirm.noMatch')],
+      errors: [],
+    }
+  },
+  computed: {
+    passwordStore() {
+      return usePasswordStore()
+    },
+    password: {
+      get() {
+        return this.passwordStore.password.value
+      },
+      set(value) {
+        this.passwordStore.setPassword(value)
+      },
+    },
+  },
   methods: {
     async confirm() {
       if (this.$refs.form.validate()) {
@@ -85,12 +106,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.password {
-  display: flex;
-}
-.eye {
-  margin-top: 0.75rem;
-}
-</style>
