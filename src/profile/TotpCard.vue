@@ -8,7 +8,7 @@
         <MfaCardLabel
           :label="label || meta.label || $t('profile.index.totpCard.title')"
           :mfa-id="meta.id"
-          :read-only="false"
+          :read-only="!meta.id"
           @new-label="label = $event"
         />
       </v-col>
@@ -48,29 +48,19 @@
   </v-card>
 </template>
 
-<script>
+<script setup>
 import { formatDate } from '@/global/filters'
 import Attribute from './Attribute.vue'
 import MfaCardLabel from './MfaCardLabel.vue'
 import MfaCardRemove from './MfaCardRemove.vue'
+import { ref } from 'vue'
 
-export default {
-  components: {
-    Attribute,
-    MfaCardLabel,
-    MfaCardRemove,
+defineProps({
+  meta: {
+    type: Object,
+    required: true,
   },
-  props: {
-    meta: {
-      type: Object,
-      required: true,
-    },
-  },
-  data: (vm) => ({
-    label: '',
-  }),
-  methods: {
-    formatDate,
-  },
-}
+})
+
+const label = ref('')
 </script>
