@@ -1,8 +1,8 @@
 <template>
-  <v-dialog v-model="isOpen" width="initial" v-bind="!!$idpConfig.support">
+  <v-dialog v-bind="!!$idpConfig.support" v-model="isOpen" width="initial">
     <!-- making it initial so card grows with content -->
     <template #activator="{ props }">
-      <v-btn variant="text" :icon="xs" class="mx-1" v-bind="props">
+      <v-btn v-bind="props" variant="text" :icon="xs" class="mx-1">
         <span v-if="!xs">{{ $t('help.button.help') }}</span>
         <v-icon v-if="xs">mdi-help</v-icon>
       </v-btn>
