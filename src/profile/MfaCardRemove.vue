@@ -12,6 +12,7 @@ export default {
     keyId: {
       type: String,
       required: false,
+      default: '',
     },
     mfaId: {
       type: String,
