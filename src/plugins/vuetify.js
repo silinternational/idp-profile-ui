@@ -10,6 +10,10 @@ const vuetify = createVuetify({
         colors: {
           primary: import.meta.env.VITE_PRIMARY_COLOR,
           secondary: import.meta.env.VITE_SECONDARY_COLOR,
+          error: '#FF5252', // Same as Vuetify 2
+          success: '#4CAF50', // Same as Vuetify 2 (darker green)
+          info: '#2196F3', // Same as Vuetify 2 (blue)
+          warning: '#FF9800', // Same as Vuetify 2 (amber)
         },
       },
     },
