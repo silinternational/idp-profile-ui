@@ -1,7 +1,7 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
     <v-card-title primary-title>
-      <v-row no-gutters align-center>
+      <v-row no-gutters align="center">
         <v-icon :color="hide ? 'success' : ''" size="x-large">mdi-security</v-icon>
 
         <h3 class="text-h5 pl-4">{{ $t('profile.index.dndCard.title') }}</h3>
