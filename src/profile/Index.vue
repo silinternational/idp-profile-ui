@@ -7,7 +7,7 @@
     <v-row>
       <v-col cols="6">
         <Attribute :name="$t('profile.index.username')" :value="user.idp_username" sameline />
-        <Attribute :name="$t('profile.index.lastLogin')" :value="user.last_login" sameline />
+        <Attribute :name="$t('profile.index.lastLogin')" :value="formatDate(user.last_login)" sameline />
         <Attribute :name="$t('profile.index.manager')" :value="user.manager_email" sameline />
       </v-col>
 
@@ -84,14 +84,15 @@ export default {
 </script>
 
 <script setup>
+import Attribute from './Attribute.vue'
+import BackupCodeCard from './BackupCodeCard.vue'
+import DoNotDiscloseCard from './DoNotDiscloseCard.vue'
+import { formatDate } from '@/global/filters'
 import ProfileProgress from './ProfileProgress.vue'
 import PasswordCard from './PasswordCard.vue'
 import PasswordRecoveryCard from './PasswordRecoveryCard.vue'
-import TotpCard from './TotpCard.vue'
 import SecurityKeyCard from './SecurityKeyCard.vue'
-import BackupCodeCard from './BackupCodeCard.vue'
-import DoNotDiscloseCard from './DoNotDiscloseCard.vue'
-import Attribute from './Attribute.vue'
+import TotpCard from './TotpCard.vue'
 import { computed, onMounted, reactive, ref } from 'vue'
 import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
 import { mfa as globalMfa, retrieve as retrieveMfa } from '@/global/mfa'
