@@ -36,7 +36,7 @@
 
         <v-tooltip location="top">
           <template #activator="{ props }">
-            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : undefined" title="print">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : 'medium'" title="print">
               mdi-printer
             </v-icon>
           </template>
@@ -57,7 +57,7 @@
 
         <v-tooltip location="top">
           <template #activator="{ props }">
-            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : undefined">mdi-cloud-download</v-icon>
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : 'medium'">mdi-cloud-download</v-icon>
           </template>
           <span>Download</span>
         </v-tooltip>
@@ -75,7 +75,7 @@
 
         <v-tooltip location="top">
           <template #activator="{ props }">
-            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : undefined">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : 'medium'">
               mdi-clipboard-check-multiple-outline
             </v-icon>
           </template>
@@ -95,7 +95,7 @@
 
         <v-tooltip location="top">
           <template #activator="{ props }">
-            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : undefined">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : 'medium'">
               mdi-clipboard-multiple-outline
             </v-icon>
           </template>
