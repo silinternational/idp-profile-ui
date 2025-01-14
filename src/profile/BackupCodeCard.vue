@@ -1,6 +1,6 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
-    <v-row no-gutters align="center pa-4">
+    <v-row no-gutters align="center" class="pa-4">
       <v-col cols="2">
         <v-icon :color="meta.created_utc ? 'success' : ''" size="x-large"> mdi-format-list-checkbox </v-icon>
       </v-col>
