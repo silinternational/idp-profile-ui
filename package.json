@@ -15,7 +15,7 @@
     "clean": "rimraf dist",
     "format": "prettier --write \"src/**/*.{js,vue}\"",
     "fix": "eslint --fix \"src/**/*.{js,vue}\"",
-    "lint": "eslint \"src/**/*.{js,vue}\""
+    "lint": "prettier --check . && eslint \"src/**/*.{js,vue}\""
   },
   "dependencies": {
     "@intlify/unplugin-vue-i18n": "^6.0.1",
