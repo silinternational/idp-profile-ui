@@ -1,5 +1,5 @@
 <template>
-  <div v-if="sameline || sameline == ''">
+  <div v-if="sameline">
     <span class="text-body-2 pr-2">{{ name }}</span>
     {{ value || '–' }}
   </div>

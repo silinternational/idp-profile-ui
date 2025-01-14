@@ -34,7 +34,7 @@
       </v-col>
     </v-row>
 
-    <v-list-subheader>{{ $t('profile.index.2sv') }}</v-list-subheader>
+    <v-list-subheader class="px-4">{{ $t('profile.index.2sv') }}</v-list-subheader>
 
     <v-row>
       <v-col cols="12" sm="6" md="4">

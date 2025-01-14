@@ -1,24 +1,22 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
-    <v-card-title primary-title class="text-break">
-      <v-row no-gutters align="center">
-        <v-col cols="2">
-          <v-icon :color="webauthnKey.id ? 'success' : ''" size="x-large">mdi-key</v-icon>
-        </v-col>
-        <v-col class="ml-4">
-          <MfaCardLabel
-            :label="isSummary ? $t('profile.index.securityKeyCard.title') : label || webauthnKey.label"
-            :key-id="webauthnKey.id"
-            :mfa-id="mfaId"
-            :read-only="!!isSummary"
-            is-webauthn
-            @new-label="label = $event"
-          />
-        </v-col>
-      </v-row>
-    </v-card-title>
+    <v-row no-gutters align="center" class="pa-4">
+      <v-col cols="2">
+        <v-icon :color="webauthnKey.id ? 'success' : ''" size="x-large">mdi-key</v-icon>
+      </v-col>
+      <v-col class="ml-4">
+        <MfaCardLabel
+          :label="isSummary ? $t('profile.index.securityKeyCard.title') : label || webauthnKey.label"
+          :key-id="webauthnKey.id"
+          :mfa-id="mfaId"
+          :read-only="!!isSummary"
+          is-webauthn
+          @new-label="label = $event"
+        />
+      </v-col>
+    </v-row>
 
-    <v-card-text class="flex-grow-1">
+    <div class="flex-grow-1 pa-4">
       <Attribute
         v-if="isSummary && numberOfKeys"
         sameline
@@ -43,9 +41,9 @@
         :name="$t('profile.index.securityKeyCard.lastUsed')"
         :value="formatDate(webauthnKey.last_used_utc)"
       />
-    </v-card-text>
+    </div>
 
-    <v-card-actions>
+    <template #actions>
       <v-btn v-if="numberOfKeys > 1 && isSummary" color="primary" variant="outlined" @click="$emit('toggleKeys')">
         {{ keyBtnLabel }}
       </v-btn>
@@ -59,7 +57,7 @@
         {{ $t('global.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="numberOfKeys >= 1 && !isSummary" :key-id="webauthnKey.id" :mfa-id="mfaId" />
-    </v-card-actions>
+    </template>
   </v-card>
 </template>
 

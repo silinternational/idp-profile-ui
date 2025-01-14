@@ -1,22 +1,20 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
-    <v-card-title primary-title class="text-break">
-      <v-row no-gutters align="center">
-        <v-col cols="2">
-          <v-icon :color="meta.created_utc ? 'success' : ''" size="x-large"> mdi-cellphone </v-icon>
-        </v-col>
-        <v-col class="ml-4">
-          <MfaCardLabel
-            :label="label || meta.label || $t('profile.index.totpCard.title')"
-            :mfa-id="meta.id"
-            :read-only="false"
-            @new-label="label = $event"
-          />
-        </v-col>
-      </v-row>
-    </v-card-title>
+    <v-row no-gutters align="center" class="pa-4">
+      <v-col cols="2">
+        <v-icon :color="meta.created_utc ? 'success' : ''" size="x-large">mdi-cellphone</v-icon>
+      </v-col>
+      <v-col class="ml-4">
+        <MfaCardLabel
+          :label="label || meta.label || $t('profile.index.totpCard.title')"
+          :mfa-id="meta.id"
+          :read-only="false"
+          @new-label="label = $event"
+        />
+      </v-col>
+    </v-row>
 
-    <v-card-text class="flex-grow-1">
+    <div class="flex-grow-1 pa-4">
       <Attribute
         v-if="meta.created_utc"
         :name="$t('profile.index.totpCard.created')"
@@ -35,11 +33,10 @@
         :name="$t('profile.index.totpCard.lastUsed')"
         :value="formatDate(meta.last_used_utc)"
       />
-    </v-card-text>
+    </div>
 
-    <v-card-actions>
+    <template #actions>
       <v-spacer />
-
       <v-btn v-if="meta.created_utc" :href="`#/2sv/change/${meta.id}`" color="primary" variant="outlined">
         {{ $t('profile.index.totpCard.button.change') }}
       </v-btn>
@@ -47,7 +44,7 @@
         {{ $t('global.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :mfa-id="meta.id" />
-    </v-card-actions>
+    </template>
   </v-card>
 </template>
 

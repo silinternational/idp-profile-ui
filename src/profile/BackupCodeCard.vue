@@ -1,17 +1,15 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
-    <v-card-title primary-title class="text-break">
-      <v-row no-gutters align="center">
-        <v-col cols="2">
-          <v-icon :color="meta.created_utc ? 'success' : ''" size="x-large"> mdi-format-list-checkbox </v-icon>
-        </v-col>
-        <v-col class="ml-4">
-          <MfaCardLabel :label="label" :mfa-id="String(meta.id)" read-only />
-        </v-col>
-      </v-row>
-    </v-card-title>
+    <v-row no-gutters align="center pa-4">
+      <v-col cols="2">
+        <v-icon :color="meta.created_utc ? 'success' : ''" size="x-large"> mdi-format-list-checkbox </v-icon>
+      </v-col>
+      <v-col class="ml-4">
+        <MfaCardLabel :label="label" :mfa-id="String(meta.id)" read-only />
+      </v-col>
+    </v-row>
 
-    <v-card-text class="flex-grow-1">
+    <div class="flex-grow-1 pa-4">
       <Attribute
         v-if="meta.created_utc"
         :name="$t('profile.index.codeCard.created')"
@@ -36,9 +34,9 @@
           <em>{{ $t('profile.index.codeCard.warning') }}</em>
         </v-col>
       </v-row>
-    </v-card-text>
+    </div>
 
-    <v-card-actions>
+    <template #actions>
       <v-spacer />
 
       <v-btn v-if="meta.created_utc" href="#/2sv/printable-backup-codes/new" color="primary" variant="outlined">
@@ -48,7 +46,7 @@
         {{ $t('profile.index.codeCard.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :mfa-id="String(meta.id)" />
-    </v-card-actions>
+    </template>
   </v-card>
 </template>
 
