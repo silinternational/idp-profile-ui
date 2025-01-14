@@ -31,11 +31,6 @@
       "resolved": "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-5.2.1.tgz",
       "overridden": false
     },
-    "@vue/compat": {
-      "version": "3.5.13",
-      "resolved": "https://registry.npmjs.org/@vue/compat/-/compat-3.5.13.tgz",
-      "overridden": false
-    },
     "@zxcvbn-ts/core": {
       "version": "3.0.4",
       "resolved": "https://registry.npmjs.org/@zxcvbn-ts/core/-/core-3.0.4.tgz",
