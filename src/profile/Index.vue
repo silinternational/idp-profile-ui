@@ -87,20 +87,16 @@ export default {
 import Attribute from './Attribute.vue'
 import BackupCodeCard from './BackupCodeCard.vue'
 import DoNotDiscloseCard from './DoNotDiscloseCard.vue'
-import { formatDate } from '@/global/filters'
 import ProfileProgress from './ProfileProgress.vue'
 import PasswordCard from './PasswordCard.vue'
 import PasswordRecoveryCard from './PasswordRecoveryCard.vue'
 import SecurityKeyCard from './SecurityKeyCard.vue'
 import TotpCard from './TotpCard.vue'
-import { computed, onMounted, reactive, ref } from 'vue'
-import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
+import { formatDate } from '@/global/filters'
 import { mfa as globalMfa, retrieve as retrieveMfa } from '@/global/mfa'
-import { getCurrentInstance } from 'vue'
-import { useLocale } from 'vuetify'
+import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
 import user from '@/plugins/user'
-
-const { t } = useLocale()
+import { computed, getCurrentInstance, onMounted, reactive, ref } from 'vue'
 
 const { appContext } = getCurrentInstance()
 const idpConfig = appContext.config.globalProperties.$idpConfig || {}
