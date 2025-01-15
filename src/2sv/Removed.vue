@@ -27,10 +27,5 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: '2svRemoved',
-  methods: {
-    someMethod() {
-      console.log(this.$t('some.translation.key'))
-    },
-  },
 })
 </script>
