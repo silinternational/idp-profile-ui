@@ -3,7 +3,9 @@ import { reactive } from 'vue'
 const eventBus = reactive({
   events: {},
   emit(event, data) {
-    if (!this.events[event]) return
+    if (!this.events[event]) {
+      return
+    }
     this.events[event].forEach((callback) => callback(data))
   },
   on(event, callback) {
