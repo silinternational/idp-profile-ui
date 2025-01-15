@@ -9,21 +9,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: ${{ fromJSON(vars.DEFAULT_JOB_TIMEOUT_MINUTES) }}
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18.x'
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
 
-      - name: Install Dependencies
-        run: npm install
+    - name: Install Dependencies
+      run: npm ci install
 
-      - name: Run Linting (eslint)
-        run: npm run lint
+    - name: check formatting (prettier)
+      run: npm run format:check
 
-      - name: Build
-        run: |
-          export UI_VERSION=test
-          mv .env.dist .env.local
-          npm run build
+    - name: Run Linting (eslint)
+      run: npm run lint
+
+    - name: Build
+      run: |
+        export UI_VERSION=test
+        mv .env.dist .env.local
+        npm run build

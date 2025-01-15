@@ -14,8 +14,9 @@
     "build": "echo UI_VERSION=${UI_VERSION} >> .env; vite build",
     "clean": "rimraf dist",
     "format": "prettier --write \"src/**/*.{js,vue}\"",
+    "format:check": "prettier --check \"src/**/*.{js,vue}\"",
     "fix": "eslint --fix \"src/**/*.{js,vue}\"",
-    "lint": "prettier --check  \"src/**/*.{js,vue}\" && eslint \"src/**/*.{js,vue}\""
+    "lint": "eslint \"src/**/*.{js,vue}\""
   },
   "dependencies": {
     "@intlify/unplugin-vue-i18n": "^6.0.1",
