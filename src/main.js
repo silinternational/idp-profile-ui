@@ -11,15 +11,14 @@ const release = __APP_VERSION__
 const app = createApp(App)
 
 app.config.globalProperties.$idpConfig = {}
-async function getConfig() {
+;(async () => {
   try {
     const config = await api.get('config')
     app.config.globalProperties.$idpConfig = config
   } catch (error) {
     console.error('Failed to load IDP configuration:', error)
   }
-}
-await getConfig()
+})()
 
 app.config.globalProperties.$API = api
 app.config.globalProperties.$user = user
