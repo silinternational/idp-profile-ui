@@ -161,7 +161,7 @@ export default {
     },
     async print(id) {
       this.printing = true
-      this.gotEm = this.printing === true
+      this.gotEm = true
       const el = document.querySelector(id)
 
       el.classList.add('printable')
@@ -176,7 +176,7 @@ export default {
     async copy() {
       await navigator.clipboard.writeText(`${this.$idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
       this.copied = true
-      this.gotEm = this.copied === true
+      this.gotEm = true
     },
   },
 }
