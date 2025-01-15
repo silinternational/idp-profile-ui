@@ -7,7 +7,7 @@
       <v-col class="ml-4">
         <MfaCardLabel
           :label="label || meta.label || $t('profile.index.totpCard.title')"
-          :mfa-id="meta.id"
+          :mfa-id="String(meta.id)"
           :read-only="!meta.id"
           @new-label="label = $event"
         />
@@ -43,7 +43,7 @@
       <v-btn v-else href="#/2sv/smartphone/intro" color="primary" variant="outlined">
         {{ $t('global.button.add') }}
       </v-btn>
-      <MfaCardRemove v-if="meta.created_utc" :mfa-id="meta.id" />
+      <MfaCardRemove v-if="meta.created_utc" :mfa-id="String(meta.id)" />
     </template>
   </v-card>
 </template>

@@ -7,7 +7,7 @@
       <v-col class="ml-4">
         <MfaCardLabel
           :label="isSummary ? $t('profile.index.securityKeyCard.title') : label || webauthnKey.label"
-          :key-id="webauthnKey.id"
+          :key-id="String(webauthnKey.id)"
           :mfa-id="mfaId"
           :read-only="!!isSummary"
           is-webauthn

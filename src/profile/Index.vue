@@ -52,7 +52,11 @@
       </v-col>
 
       <v-col v-if="numberOfKeys === 1" cols="12" sm="6" md="4">
-        <SecurityKeyCard :number-of-keys="numberOfKeys" :webauthn-key="mfa.keys.data[0]" :mfa-id="mfa.keys.id" />
+        <SecurityKeyCard
+          :number-of-keys="numberOfKeys"
+          :webauthn-key="mfa.keys.data[0]"
+          :mfa-id="String(mfa.keys.id)"
+        />
       </v-col>
 
       <v-col v-else-if="numberOfKeys === 0">
@@ -72,7 +76,7 @@
 
     <v-row v-if="showKeys && numberOfKeys > 1">
       <v-col v-for="webauthnKey in additionalKeys" :key="webauthnKey.id" cols="12" sm="6" md="4">
-        <SecurityKeyCard :webauthn-key="webauthnKey" :number-of-keys="numberOfKeys" :mfa-id="mfa.keys.id" />
+        <SecurityKeyCard :webauthn-key="webauthnKey" :number-of-keys="numberOfKeys" :mfa-id="String(mfa.keys.id)" />
       </v-col>
     </v-row>
   </BasePage>
