@@ -4,7 +4,7 @@
       {{ $t('2sv.change.header') }}
     </template>
 
-    <v-alert :value="isLastOne" type="error" icon="mdi-alert">
+    <v-alert :model-value="isLastOne" type="error" icon="mdi-alert">
       <span>{{ $t('2sv.change.lastOne') }}</span>
     </v-alert>
 

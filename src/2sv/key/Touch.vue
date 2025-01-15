@@ -1,6 +1,6 @@
 <template>
   <ProfileWizard>
-    <v-alert :value="error" type="error" icon="mdi-alert">
+    <v-alert :model-value="error" type="error" icon="mdi-alert">
       <span class="d-flex align-center justify-center">
         {{ $t('2sv.key.touch.error') }}
       </span>
