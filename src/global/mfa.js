@@ -1,13 +1,13 @@
-import Vue from 'vue'
+import { reactive } from 'vue'
+import api from '@/plugins/api'
 
-export const mfa = {
+export const mfa = reactive({
   totp: {},
   u2f: {},
   keys: {},
   backup: {},
   numVerified: 0,
-}
-export default mfa
+})
 
 export const newKeyName = {
   _value: '',
@@ -19,10 +19,10 @@ export const newKeyName = {
   },
 }
 
-export const add = async (type) => await Vue.prototype.$API.post('mfa', { type })
+export const add = async (type) => await api.post('mfa', { type })
 
 export const verify = async (id, verification = '') => {
-  const verifiedMfa = await Vue.prototype.$API.put(`mfa/${id}/verify`, {
+  const verifiedMfa = await api.put(`mfa/${id}/verify`, {
     value: verification,
   })
 
@@ -30,7 +30,7 @@ export const verify = async (id, verification = '') => {
 }
 
 export const retrieve = async () => {
-  const all = await Vue.prototype.$API.get('mfa')
+  const all = await api.get('mfa')
 
   mfa.totp = Object.assign(
     {},
@@ -63,24 +63,23 @@ function numOfVerifiedMfas(mfa) {
 }
 
 export const remove = async (id) => {
-  await Vue.prototype.$API.delete(`mfa/${id}`)
+  await api.delete(`mfa/${id}`)
 
   const type = Object.keys(mfa).find((key) => mfa[key].id === id)
   mfa[type] = {}
 }
 
 export const change = async (id, updates) => {
-  return await Vue.prototype.$API.put(`mfa/${id}`, updates)
+  return await api.put(`mfa/${id}`, updates)
 }
 
 export const find = (id) => {
   const type = Object.keys(mfa).find((key) => mfa[key].id == id)
-
   return mfa[type]
 }
 
 export const verifyWebauthn = async (id, verification = '', label = '') => {
-  const verifiedMfa = await Vue.prototype.$API.put(`mfa/${id}/verify/registration`, {
+  const verifiedMfa = await api.put(`mfa/${id}/verify/registration`, {
     value: verification,
     label: label,
   })
@@ -88,7 +87,7 @@ export const verifyWebauthn = async (id, verification = '', label = '') => {
 }
 
 export const removeWebauthn = async (mfaId, webauthnId) => {
-  const response = await Vue.prototype.$API.delete(`mfa/${mfaId}/webauthn/${webauthnId}`)
+  await api.delete(`mfa/${mfaId}/webauthn/${webauthnId}`)
   const index = mfa.keys.data.findIndex((m) => m.id === mfaId)
   if (index > -1) {
     mfa.keys.data.splice(index, 1)
@@ -96,7 +95,7 @@ export const removeWebauthn = async (mfaId, webauthnId) => {
 }
 
 export const changeWebauthn = async (mfaId, webauthnId, updates) => {
-  const response = await Vue.prototype.$API.put(`mfa/${mfaId}/webauthn/${webauthnId}`, updates)
-
-  return response
+  return await api.put(`mfa/${mfaId}/webauthn/${webauthnId}`, updates)
 }
+
+export default mfa

@@ -1,47 +1,39 @@
 <template>
   <ProfileWizard>
-    <v-alert :value="error" type="error">
+    <v-alert :model-value="error" type="error" icon="mdi-alert">
       <span class="d-flex align-center justify-center">
-        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.error') }}
+        {{ $t('2sv.key.touch.error') }}
       </span>
     </v-alert>
 
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.header') }}
+      <template #header>
+        {{ $t('2sv.key.touch.header') }}
       </template>
 
       <p>
-        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.info') }}
+        {{ $t('2sv.key.touch.info') }}
       </p>
 
       <figure class="pa-4 d-flex flex-column">
         <v-img v-if="!touched" contained :src="usbKey" alt="A finger touching the top of a usb key." />
-        <v-icon v-else color="success" x-large>mdi-check</v-icon>
+        <v-icon v-else color="success" size="x-large">mdi-check</v-icon>
       </figure>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/usb-security-key/insert" tabindex="-1" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
+      <v-btn to="/2sv/usb-security-key/insert" tabindex="-1" variant="outlined">
+        {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        v-if="isSupported && error"
-        @click="
-          error = false
-          create()
-        "
-        color="error"
-        outlined
-      >
-        {{ $vuetify.lang.t('$vuetify.2sv.key.touch.button.retry') }}
+      <v-btn v-if="isSupported && error" color="error" variant="outlined" @click=";(error = false), create()">
+        {{ $t('2sv.key.touch.button.retry') }}
       </v-btn>
 
-      <v-btn v-if="error" to="/2sv/printable-backup-codes/intro" color="warning" outlined class="ml-4">
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
+      <v-btn v-if="error" to="/2sv/printable-backup-codes/intro" color="warning" variant="outlined" class="ml-4">
+        {{ $t('global.button.skip') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -56,6 +48,7 @@ import usbKey from '@/assets/touch-usb-security-key.png'
 let absTimeout
 
 export default {
+  name: 'TouchKey',
   components: {
     ProfileWizard,
   },

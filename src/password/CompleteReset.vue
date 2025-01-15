@@ -1,18 +1,18 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.password.reset.complete.header') }}
+      <template #header>
+        {{ $t('password.reset.complete.header') }}
       </template>
 
-      <p>{{ $vuetify.lang.t('$vuetify.password.reset.complete.congrats') }}</p>
+      <p>{{ $t('password.reset.complete.congrats') }}</p>
     </BasePage>
 
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/profile" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.password.reset.complete.button.next') }}
+      <v-btn to="/profile" color="primary" variant="outlined">
+        {{ $t('password.reset.complete.button.next') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

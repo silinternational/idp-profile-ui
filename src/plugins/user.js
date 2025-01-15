@@ -1,14 +1,16 @@
-import Vue from 'vue'
+import { reactive } from 'vue'
+import api from '@/plugins/api' // Adjust the path as necessary
 
-const user = {
-  refresh: async function () {
-    Object.assign(this, await Vue.prototype.$API.get('/user/me'))
+const user = reactive({
+  async refresh() {
+    const userData = await api.get('/user/me') // Use the API instance
+    Object.assign(this, userData)
   },
   isAuthenticated() {
     return !!this.idp_username
   },
   login(returnTo, inviteCode = '') {
-    let loginUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/login`
+    let loginUrl = `${api.defaults.baseURL}/auth/login`
 
     if (inviteCode) {
       loginUrl += `?invite=${inviteCode}&ReturnToOnError=/profile/invite/expired`
@@ -21,15 +23,13 @@ const user = {
     window.location = loginUrl
   },
   logout() {
-    const logoutUrl = `${Vue.prototype.$API.defaults.baseURL}/auth/logout`
+    const logoutUrl = `${api.defaults.baseURL}/auth/logout`
 
     window.location = logoutUrl
   },
   isNew() {
     return !(this.password_meta && this.password_meta.last_changed)
   },
-}
-
-Vue.use((theVue) => {
-  theVue.prototype.$user = user
 })
+
+export default user

@@ -1,29 +1,34 @@
 <template>
   <BasePage>
-    <template v-slot:header>{{ $vuetify.lang.t('$vuetify.password.forgot.header') }}</template>
+    <template #header> {{ $t('password.forgot.header') }} </template>
 
-    <v-form @submit.prevent="usedEnterKey = !usedEnterKey" ref="form">
+    <v-form ref="form" @submit.prevent="usedEnterKey = !usedEnterKey">
       <BaseTextField
-        :label="$vuetify.lang.t('$vuetify.password.forgot.unameInput', $root.idpConfig.idpName)"
         v-model="uname"
-        :rules="[(v) => !!v || $vuetify.lang.t('$vuetify.password.forgot.required')]"
+        :label="$t('password.forgot.unameInput', [$idpConfig.idpName])"
+        :rules="[(v) => !!v || $t('password.forgot.required')]"
         validate-on-blur
         autofocus
       />
     </v-form>
 
     <ButtonBar>
-      <v-spacer></v-spacer>
-      <v-tooltip :disabled="!usedEnterKey || !uname" :value="usedEnterKey" top>
-        <template v-slot:activator="{ on }">
-          <div v-on="on">
-            <v-btn :disabled="!uname" @click="usedEnterKey = false" color="primary" class="g-recaptcha" outlined>
-              {{ $vuetify.lang.t('$vuetify.password.forgot.button.send') }}
-            </v-btn>
-          </div>
+      <v-spacer />
+      <v-tooltip :disabled="!usedEnterKey || !uname" :model-value="usedEnterKey" location="top">
+        <template #activator="{ props }">
+          <v-btn
+            v-bind="props"
+            :disabled="!uname"
+            color="primary"
+            class="g-recaptcha"
+            variant="outlined"
+            @click="usedEnterKey = false"
+          >
+            {{ $t('password.forgot.button.send') }}
+          </v-btn>
         </template>
 
-        {{ $vuetify.lang.t('$vuetify.password.forgot.clickOnly') }}
+        {{ $t('password.forgot.clickOnly') }}
       </v-tooltip>
     </ButtonBar>
   </BasePage>
@@ -31,6 +36,7 @@
 
 <script>
 export default {
+  name: 'ForgotPassword',
   data: () => ({
     uname: '',
     recaptchaResponse: '',

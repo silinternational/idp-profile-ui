@@ -1,8 +1,8 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.profile.complete.header') }}
+      <template #header>
+        {{ $t('profile.complete.header') }}
       </template>
 
       <v-row>
@@ -11,7 +11,7 @@
         </v-col>
 
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.info', $user.first_name, $root.idpConfig.idpName) }}
+          {{ $t('profile.complete.info', [$user.first_name, $idpConfig.idpName]) }}
         </v-col>
       </v-row>
 
@@ -21,8 +21,8 @@
         </v-col>
 
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.username') }}
-          <strong class="body-2 pl-1">{{ $user.idp_username }}</strong>
+          {{ $t('profile.complete.username') }}
+          <strong class="text-body-2 pl-1">{{ $user.idp_username }}</strong>
         </v-col>
       </v-row>
 
@@ -32,8 +32,8 @@
         </v-col>
 
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.unverifiedEmails') }}
-          <span class="font-weight-bold">({{ unverifiedEmails | joined }})</span>
+          {{ $t('profile.complete.unverifiedEmails') }}
+          <span class="font-weight-bold">({{ joined(unverifiedEmails) }})</span>
         </v-col>
       </v-row>
 
@@ -42,7 +42,7 @@
           <v-icon color="warning">mdi-alert</v-icon>
         </v-col>
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.noAlternates') }}
+          {{ $t('profile.complete.noAlternates') }}
         </v-col>
       </v-row>
 
@@ -51,7 +51,7 @@
           <v-icon color="warning">mdi-alert</v-icon>
         </v-col>
         <v-col cols="11">
-          {{ $vuetify.lang.t('$vuetify.profile.complete.no2sv') }}
+          {{ $t('profile.complete.no2sv') }}
         </v-col>
       </v-row>
     </BasePage>
@@ -59,8 +59,8 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn @click.once="done" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.profile.complete.button.profile') }}
+      <v-btn color="primary" variant="outlined" @click.once="done">
+        {{ $t('profile.complete.button.profile') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -72,11 +72,9 @@ import recoveryMethods from '@/global/recoveryMethods'
 import { mfa, retrieve as retrieveMfas } from '@/global/mfa'
 
 export default {
+  name: 'ProfileComplete',
   components: {
     ProfileWizard,
-  },
-  filters: {
-    joined: (emails) => emails.map((email) => email.value).join(', '),
   },
   data: () => ({
     alternates: recoveryMethods.alternates,
@@ -85,18 +83,19 @@ export default {
   computed: {
     unverifiedEmails: (vm) => vm.alternates.filter((m) => !m.verified),
   },
-  methods: {
-    done() {
-      this.$refs.wizard.allDone()
-
-      this.$router.push('/profile')
-    },
-  },
   async created() {
     await retrieveMfas()
 
     this.$refs.wizard.completed()
     this.$forceUpdate() // couldn't figure out how to get the step to update in the UI without this.
+  },
+  methods: {
+    joined: (emails) => emails.map((email) => email.value).join(', '),
+    done() {
+      this.$refs.wizard.allDone()
+
+      this.$router.push('/profile')
+    },
   },
 }
 </script>

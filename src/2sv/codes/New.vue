@@ -1,15 +1,13 @@
 <template>
   <ProfileWizard ref="wizard">
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.header') }}
+      <template #header>
+        {{ $t('2sv.codes.new.header') }}
       </template>
 
       <p v-if="printing" class="printable header">
-        {{ $root.idpConfig.idpName }}
-        <span class="caption">
-          ({{ $vuetify.lang.t('$vuetify.2sv.codes.new.generated') }} {{ Date.now() | formatLong }})
-        </span>
+        {{ $idpConfig.idpName }}
+        <span class="text-caption"> ({{ $t('2sv.codes.new.generated') }} {{ formatLongDate(Date.now()) }}) </span>
       </p>
 
       <v-row id="codes">
@@ -20,24 +18,27 @@
           :class="{ 'text-right': i % 2 === 0 }"
           class="text-no-wrap"
         >
-          <v-icon class="pr-2">mdi-checkbox-blank-outline</v-icon> <span class="code xsCode">{{ code }}</span>
+          <v-icon class="pr-2">mdi-checkbox-blank-outline</v-icon>
+          <span class="code xsCode">{{ code }}</span>
         </v-col>
       </v-row>
     </BasePage>
 
     <ButtonBar>
       <v-btn
-        @click="print('#codes')"
         color="secondary"
-        :outlined="!mobile"
+        :variant="!mobile ? 'outlined' : undefined"
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+        @click="print('#codes')"
       >
-        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.print') }}</span>
+        <span v-if="!mobile">{{ $t('2sv.codes.new.button.print') }}</span>
 
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="!mobile" :large="mobile" title="print">mdi-printer</v-icon>
+        <v-tooltip location="top">
+          <template #activator="{ props }">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : 'medium'" title="print">
+              mdi-printer
+            </v-icon>
           </template>
           <span>Print</span>
         </v-tooltip>
@@ -45,18 +46,18 @@
 
       <v-btn
         :href="`data:text/plain,${encodedData}`"
-        :download="`${$root.idpConfig.idpName}--printable-codes.txt`"
-        @click="gotEm = true"
+        :download="`${$idpConfig.idpName}--printable-codes.txt`"
         color="secondary"
-        :outlined="!mobile"
+        :variant="!mobile ? 'outlined' : undefined"
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+        @click="gotEm = true"
       >
-        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.download') }}</span>
+        <span v-if="!mobile">{{ $t('2sv.codes.new.button.download') }}</span>
 
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="!mobile" :large="mobile">mdi-cloud-download</v-icon>
+        <v-tooltip location="top">
+          <template #activator="{ props }">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : 'medium'">mdi-cloud-download</v-icon>
           </template>
           <span>Download</span>
         </v-tooltip>
@@ -64,17 +65,19 @@
 
       <v-btn
         v-if="copied"
-        @click="copy()"
         color="success"
-        :outlined="!mobile"
+        :variant="!mobile ? 'outlined' : undefined"
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+        @click="copy()"
       >
-        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copied') }}</span>
+        <span v-if="!mobile">{{ $t('2sv.codes.new.button.copied') }}</span>
 
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="!mobile" :large="mobile">mdi-clipboard-check-multiple-outline</v-icon>
+        <v-tooltip location="top">
+          <template #activator="{ props }">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : 'medium'">
+              mdi-clipboard-check-multiple-outline
+            </v-icon>
           </template>
           <span>Copy</span>
         </v-tooltip>
@@ -82,17 +85,19 @@
 
       <v-btn
         v-else
-        @click="copy()"
         color="secondary"
-        :outlined="!mobile"
+        :variant="!mobile ? 'outlined' : undefined"
         :icon="mobile"
         class="mr-0 mr-sm-4 mx-4 mx-sm-0"
+        @click="copy()"
       >
-        <span v-if="!mobile">{{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.copy') }}</span>
+        <span v-if="!mobile">{{ $t('2sv.codes.new.button.copy') }}</span>
 
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" :right="!mobile" :large="mobile">mdi-clipboard-multiple-outline</v-icon>
+        <v-tooltip location="top">
+          <template #activator="{ props }">
+            <v-icon v-bind="props" :end="!mobile" :size="mobile ? 'large' : 'medium'">
+              mdi-clipboard-multiple-outline
+            </v-icon>
           </template>
           <span>Copy</span>
         </v-tooltip>
@@ -100,16 +105,14 @@
 
       <v-spacer></v-spacer>
 
-      <v-tooltip :disabled="gotEm" :value="gotEm" top>
-        <template v-slot:activator="{ on }">
-          <div v-on="on">
-            <v-btn @click.once="finish" :disabled="!gotEm" color="primary" outlined>
-              {{ $vuetify.lang.t('$vuetify.2sv.codes.new.button.ok') }}
-            </v-btn>
-          </div>
+      <v-tooltip :disabled="gotEm" :model-value="gotEm" location="top">
+        <template #activator="{ props }">
+          <v-btn v-bind="props" :disabled="!gotEm" color="primary" variant="outlined" @click.once="finish">
+            {{ $t('2sv.codes.new.button.ok') }}
+          </v-btn>
         </template>
 
-        {{ $vuetify.lang.t('$vuetify.2sv.codes.new.personalCopy') }}
+        {{ $t('2sv.codes.new.personalCopy') }}
       </v-tooltip>
     </ButtonBar>
   </ProfileWizard>
@@ -118,51 +121,62 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 import { add } from '@/global/mfa'
+import { formatLongDate } from '@/global/filters'
+import { useDisplay } from 'vuetify'
 
 export default {
+  name: 'NewCodes',
   components: {
     ProfileWizard,
   },
-  data: () => ({
-    codes: [],
-    printing: false,
-    copied: false,
-    gotEm: false,
-  }),
-  async created() {
-    const newCodes = await add('backupcode')
-
-    this.codes = newCodes.data
-
-    this.$refs.wizard.completed()
+  data() {
+    return {
+      codes: [],
+      printing: false,
+      copied: false,
+      gotEm: false,
+    }
   },
   computed: {
+    idpConfig() {
+      return this.idpConfig
+    },
     encodedData() {
-      return encodeURIComponent(`${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
+      return encodeURIComponent(`${this.$idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
     },
     mobile() {
-      return this.$vuetify.breakpoint.name === 'xs'
+      const { xs } = useDisplay()
+      return xs.value
     },
   },
+  async created() {
+    const newCodes = await add('backupcode')
+    this.codes = newCodes.data
+    this.$refs.wizard.completed()
+  },
   methods: {
-    finish: function () {
+    formatLongDate,
+    finish() {
       this.$refs.wizard.next()
     },
-    print: async function (id) {
-      this.gotEm = this.printing = true
+    async print(id) {
+      this.printing = true
+      this.gotEm = true
       const el = document.querySelector(id)
 
       el.classList.add('printable')
 
-      // don't print until the renderer has run again with the newly added 'printable' class.
+      // Wait for DOM updates
       await this.$nextTick()
+
       window.print()
+
       this.printing = false
     },
-    copy: async function () {
-      await navigator.clipboard.writeText(`${this.$root.idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
-
-      this.gotEm = this.copied = true
+    async copy() {
+      await navigator.clipboard.writeText(`${this.$idpConfig.idpName}\r\n${this.codes.join('\r\n')}`)
+      this.copied = true
+      this.gotEm = true
     },
   },
 }
@@ -200,15 +214,18 @@ i.v-icon {
     top: 30%;
     left: 0;
   }
+
   .printable.header {
     position: absolute;
     top: 0;
     left: 0;
   }
+
   .printable,
   .printable * {
     visibility: visible;
   }
+
   .printable .col {
     padding: 12px !important;
   }

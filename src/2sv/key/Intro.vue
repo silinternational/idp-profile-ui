@@ -1,22 +1,28 @@
 <template>
   <ProfileWizard>
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.2sv.key.intro.header') }}
+      <template #header>
+        {{ $t('2sv.key.intro.header') }}
       </template>
 
       <p>
-        {{ $vuetify.lang.t('$vuetify.2sv.key.intro.info') }}
+        {{ $t('2sv.key.intro.info') }}
       </p>
 
       <figure class="pa-4">
-        <v-img :src="securityKeys" contain alt="Three sizes of USB keys." />
+        <v-img :src="securityKeys" cover alt="Three sizes of USB keys." />
       </figure>
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/printable-backup-codes/intro" color="primary" tabindex="-1" outlined class="mr-4 mb-4 mb-sm-0">
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
+      <v-btn
+        to="/2sv/printable-backup-codes/intro"
+        color="primary"
+        tabindex="-1"
+        variant="outlined"
+        class="mr-4 mb-4 mb-sm-0"
+      >
+        {{ $t('global.button.skip') }}
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -26,13 +32,13 @@
         target="_blank"
         color="primary"
         tabindex="-1"
-        outlined
+        variant="outlined"
         class="mr-4 mb-4 mb-sm-0"
       >
-        {{ $vuetify.lang.t('$vuetify.2sv.key.intro.button.no') }}
+        {{ $t('2sv.key.intro.button.no') }}
       </v-btn>
-      <v-btn to="/2sv/usb-security-key/insert" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.yes') }}
+      <v-btn to="/2sv/usb-security-key/insert" color="primary" variant="outlined">
+        {{ $t('global.button.yes') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>
@@ -43,6 +49,7 @@ import ProfileWizard from '@/profile/ProfileWizard.vue'
 import securityKeys from '@/assets/usb-security-key-examples.png'
 
 export default {
+  name: 'IntroKey',
   components: {
     ProfileWizard,
   },

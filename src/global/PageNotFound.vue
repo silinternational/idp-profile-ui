@@ -1,7 +1,7 @@
 <template>
   <BasePage>
-    <template v-slot:header>
-      {{ $vuetify.lang.t('$vuetify.pageNotFound.header') }}
+    <template #header>
+      {{ $t('pageNotFound.header') }}
     </template>
 
     <img :src="questionImage" />

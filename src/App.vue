@@ -1,42 +1,42 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary">
-      <a href="/"><img :src="logo" /></a>
+    <v-app-bar color="primary">
+      <a href="/"><img :src="logo" alt="Logo" /></a>
 
       <v-spacer />
 
-      <v-toolbar-title class="white--text px-4">{{ $user.first_name }} {{ $user.last_name }}</v-toolbar-title>
+      <v-toolbar-title class="text-white px-4">{{ user.first_name }} {{ user.last_name }}</v-toolbar-title>
 
-      <v-divider vertical dark inset class="mx-2" />
+      <v-divider vertical inset class="mx-2" />
 
-      <v-btn v-if="$user.isAuthenticated()" @click="$user.logout()" text dark :icon="mobile" class="mx-1">
-        <v-icon v-if="mobile">mdi-logout-variant</v-icon>
-        <span v-else>{{ $vuetify.lang.t('$vuetify.app.logout') }}</span>
+      <v-btn v-if="user.isAuthenticated()" variant="text" :icon="xs" class="mx-1" @click="logout">
+        <v-icon v-if="xs">mdi-logout-variant</v-icon>
+        <span v-else>{{ $t('app.logout') }}</span>
       </v-btn>
 
-      <v-btn v-else @click="$user.login()" text dark :icon="mobile" class="mx-1">
-        <v-icon v-if="mobile">mdi-login</v-icon>
-        <span v-else>{{ $vuetify.lang.t('$vuetify.app.login') }}</span>
+      <v-btn v-else variant="text" :icon="xs" class="mx-1" @click="login">
+        <v-icon v-if="xs">mdi-login</v-icon>
+        <span v-else>{{ $t('app.login') }}</span>
       </v-btn>
 
-      <v-divider vertical dark inset />
+      <v-divider vertical inset />
 
       <HelpButton />
     </v-app-bar>
 
     <v-main>
-      <Loading class="ma-0" />
+      <LoadingIndicator class="ma-0" />
 
       <v-row no-gutters>
         <v-spacer />
 
-        <v-btn v-if="$returnTo.url" :href="$returnTo.url" small text dark color="secondary">
-          return to {{ $returnTo.url }}
+        <v-btn v-if="returnTo.url" :href="returnTo.url" size="small" variant="text" color="secondary">
+          return to {{ returnTo.url }}
         </v-btn>
       </v-row>
 
       <v-container>
-        <v-alert :value="!!message" type="error" dismissible>
+        <v-alert v-show="!!message" type="error" icon="mdi-alert" closable @click:close="message = ''">
           <span v-sanitize.basic="message" />
         </v-alert>
 
@@ -47,44 +47,46 @@
   </v-app>
 </template>
 
-<script>
+<script setup>
 import HelpButton from './help/HelpButton.vue'
 import logo from '@/assets/logo.png'
-export default {
-  components: {
-    HelpButton,
-  },
-  data: () => ({
-    message: '',
-    logo,
-  }),
-  computed: {
-    mobile() {
-      return this.$vuetify.breakpoint.name === 'xs'
-    },
-  },
-  beforeCreate() {
-    this.$API.interceptors.response.use(
-      (response) => response,
-      (error) => {
-        this.message = error.message
+import user from '@/plugins/user'
+import returnTo from '@/plugins/returnTo'
+import eventBus from '@/eventBus'
+import { ref, watch, onMounted, onErrorCaptured } from 'vue'
+import { useRoute } from 'vue-router'
+import { useDisplay } from 'vuetify'
 
-        throw error
-      },
-    )
+const message = ref('')
+
+const { xs } = useDisplay()
+
+const route = useRoute()
+
+watch(
+  () => route.fullPath,
+  () => {
+    message.value = ''
   },
-  created() {
-    const appScope = this
-    this.$root.$on('clear-messages', () => (appScope.message = '')) // built for situation in Recovery.vue (temp hack hopefully)
-  },
-  errorCaptured(err) {
-    this.message = err.message || err
-  },
-  watch: {
-    $route() {
-      this.message = ''
-    },
-  },
+)
+
+onMounted(() => {
+  eventBus.on('clear-messages', () => {
+    message.value = ''
+  })
+})
+
+onErrorCaptured((err) => {
+  message.value = err.message || err
+  return true // Prevent the error from propagating further
+})
+
+const logout = () => {
+  user.logout()
+}
+
+const login = () => {
+  user.login()
 }
 </script>
 
@@ -100,7 +102,7 @@ p {
   max-width: 75ch; /* better readability supposedly */
 }
 
-/* with the addition of the help link, the extra space on the rigth looked weird. */
+/* with the addition of the help link, the extra space on the right looked weird. */
 div.v-toolbar__content {
   padding-right: initial;
 }

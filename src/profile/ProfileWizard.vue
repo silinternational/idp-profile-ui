@@ -1,30 +1,29 @@
 <template>
-  <v-stepper v-if="currentStep.id" v-model="currentStep.id">
-    <v-stepper-header>
-      <template v-for="_step in steps">
-        <v-stepper-step
-          :step="_step.id"
-          :complete="_step.state != ''"
-          :complete-icon="toIcon(_step.state)"
+  <v-stepper v-if="currentStep?.id" v-model="currentStep.id">
+    <v-stepper-header :steps="steps">
+      <template v-for="_step in steps" :key="`step-${_step.id}`">
+        <v-stepper-item
+          :value="_step.id"
+          :icon="toIcon(_step.state)"
           :color="toColor(_step.state)"
-          :key="`step-${_step.id}`"
+          :complete="_step.state === 'complete'"
+          :title="$t(`${_step.nameKey}`)"
         >
-          {{ $vuetify.lang.t(`$vuetify.${_step.nameKey}`) }}
-        </v-stepper-step>
+        </v-stepper-item>
 
         <v-divider v-if="hasMoreSteps(_step)" :key="`divider-${_step.id}`" />
       </template>
     </v-stepper-header>
 
-    <v-stepper-items>
-      <v-stepper-content :step="currentStep.id" class="px-2 px-sm-6">
+    <v-stepper-window :value="currentStep.id">
+      <v-stepper-window-item :value="currentStep.id" class="px-2 px-sm-6">
         <slot />
 
         <ButtonBar>
           <slot name="actions" />
         </ButtonBar>
-      </v-stepper-content>
-    </v-stepper-items>
+      </v-stepper-window-item>
+    </v-stepper-window>
   </v-stepper>
 </template>
 
@@ -39,7 +38,8 @@ export default {
   async created() {
     await Steps.init()
 
-    this.currentStep = Steps.forPath(this.$route.path)
+    const step = Steps.forPath(this.$route.path)
+    this.currentStep = step || {}
   },
   methods: {
     hasMoreSteps: (step) => !Steps.isLast(step),
@@ -53,11 +53,12 @@ export default {
     },
     toIcon: (state) => {
       const map = {
-        skipped: '$vuetify.icons.warning',
+        complete: '$complete',
+        skipped: '$warning',
       }
-
-      return map[state] || '$vuetify.icons.complete'
+      return map[state]
     },
+    // Used in components called by this.$refs.wizard.<method>
     completed: function () {
       this.currentStep.state = 'complete'
     },

@@ -1,38 +1,37 @@
 <template>
   <ProfileWizard ref="wizard" :key="wizardKey">
     <BasePage>
-      <template v-slot:header>
-        {{ $vuetify.lang.t('$vuetify.password.create.header', $root.idpConfig.idpName) }}
+      <template #header>
+        {{ $t('password.create.header', [$idpConfig.idpName]) }}
       </template>
 
-      <v-form @submit.prevent="save" ref="form">
+      <v-form ref="form" @submit.prevent="save">
         <p>
-          {{ $vuetify.lang.t('$vuetify.password.create.username', $root.idpConfig.idpName) }}
-          <strong class="body-2">{{ $user.idp_username }}</strong>
+          {{ $t('password.create.username', [$idpConfig.idpName]) }}
+          <strong class="text-body-2">{{ $user.idp_username }}</strong>
         </p>
 
-        <div class="password">
+        <div class="d-flex">
           <BaseTextField
-            :type="passwordIsHidden ? 'password' : 'text'"
-            :label="$vuetify.lang.t('$vuetify.password.create.pwInput')"
             v-model="password"
+            :type="passwordIsHidden ? 'password' : 'text'"
+            :label="$t('password.create.pwInput')"
             :rules="rules"
             :error-messages="errors"
             validate-on-input
-            @keyup.enter="blur"
             autofocus
             name="password"
+            @keyup.enter="blur"
           />
 
-          <v-tooltip top>
-            <template v-slot:activator="{ on, attrs }">
+          <v-tooltip location="top">
+            <template #activator="{ props }">
               <v-btn
-                v-on="on"
-                v-bind="attrs"
-                class="eye"
+                v-bind="props"
+                class="align-center"
                 icon
-                @click="passwordIsHidden = !passwordIsHidden"
                 tabindex="-1"
+                @click="passwordIsHidden = !passwordIsHidden"
               >
                 <v-icon>{{ passwordIsHidden ? 'mdi-eye' : 'mdi-eye-off' }}</v-icon>
               </v-btn>
@@ -41,74 +40,113 @@
           </v-tooltip>
         </div>
 
-        <v-alert :value="!!(showFeedback && password)" :type="strength.feedback.warning ? 'error' : 'info'" outlined>
-          <header class="body-2">{{ strength.feedback.warning }}</header>
+        <v-alert
+          v-show="!!(showFeedback && password && strength)"
+          :type="strength.feedback.warning ? 'error' : 'info'"
+          :icon="strength.feedback.warning ? 'mdi-alert' : 'mdi-information'"
+          variant="outlined"
+        >
+          <header class="text-body-2">
+            {{ strength.feedback.warning }}
+          </header>
 
           <ul>
-            <li v-for="suggestion in strength.feedback.suggestions" :key="suggestion">{{ suggestion }}</li>
+            <li v-for="suggestion in strength.feedback.suggestions" :key="suggestion">
+              {{ suggestion }}
+            </li>
           </ul>
 
           <footer class="d-flex align-center justify-end">
             <a
               href="https://idphelp.sil.org/logging-in/password/password-recommendations"
               target="_blank"
-              class="caption"
+              class="text-caption"
             >
-              {{ $vuetify.lang.t('$vuetify.global.learnMore') }}
+              {{ $t('global.learnMore') }}
             </a>
           </footer>
         </v-alert>
 
-        <v-alert :value="!!isGood" type="success" outlined>
-          <header class="body-2">{{ $vuetify.lang.t('$vuetify.password.create.goodPassword') }}</header>
+        <v-alert v-show="!!isGood" type="success" variant="outlined">
+          <header class="text-body-2">
+            {{ $t('password.create.goodPassword') }}
+          </header>
         </v-alert>
       </v-form>
     </BasePage>
 
-    <template v-slot:actions>
-      <v-btn v-if="$user.isNew()" to="/profile/intro" tabindex="-1" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.back') }}
+    <template #actions>
+      <v-btn v-if="$user.isNew()" to="/profile/intro" tabindex="-1" variant="outlined">
+        {{ $t('global.button.back') }}
       </v-btn>
-      <v-btn v-else @click.once="skip" tabindex="-1" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.skip') }}
+      <v-btn v-else tabindex="-1" variant="outlined" @click.once="skip">
+        {{ $t('global.button.skip') }}
       </v-btn>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
-      <v-btn @click.once="save" color="primary" outlined>
-        {{ $vuetify.lang.t('$vuetify.global.button.continue') }}
+      <v-btn color="primary" variant="outlined" @click.once="save">
+        {{ $t('global.button.continue') }}
       </v-btn>
     </template>
   </ProfileWizard>
 </template>
 
 <script>
+import { usePasswordStore } from './password'
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core'
 import * as zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
 import * as zxcvbnEnPackage from '@zxcvbn-ts/language-en'
 
 export default {
+  name: 'CreatePassword',
   components: {
     ProfileWizard,
   },
-  data: (vm) => ({
-    wizardKey: 0, // This is used to refresh the form, instead of leaving it frozen after a re-used password
-    password: vm.$root.$data.password || '',
-    passwordIsHidden: true,
-    rules: [
-      (v) => required(v, vm),
-      (v) => minLength(v, vm),
-      (v) => maxLength(v, vm),
-      (v) => strong(v, vm),
-      (v) => requireAlphaAndNumeric(v, vm),
-    ],
-    errors: [],
-  }),
+  data() {
+    return {
+      wizardKey: 0,
+      passwordIsHidden: true,
+      rules: [
+        (v) => required(v, this),
+        (v) => minLength(v, this),
+        (v) => maxLength(v, this),
+        (v) => strong(v, this),
+        (v) => requireAlphaAndNumeric(v, this),
+      ],
+      errors: [],
+    }
+  },
   computed: {
-    strength: (vm) => zxcvbn(vm.password),
+    passwordStore() {
+      return usePasswordStore()
+    },
+    password: {
+      get() {
+        return this.passwordStore.password.value
+      },
+      set(value) {
+        this.passwordStore.setPassword(value)
+      },
+    },
+    strength() {
+      return zxcvbn(this.password)
+    },
     showFeedback: (vm) => vm.strength.feedback.warning || vm.strength.feedback.suggestions.length,
     isGood: (vm) => vm.password && vm.$refs.form && vm.$refs.form.validate(),
+  },
+  watch: {
+    password: function () {
+      // This is used to refresh the form, instead of leaving it frozen after a re-used password
+      if (this.password == '') {
+        this.forceRerender()
+      }
+
+      if (this.isGood) {
+        this.errors.splice(0)
+      }
+    },
   },
   methods: {
     forceRerender() {
@@ -122,11 +160,9 @@ export default {
             password: this.password,
           })
 
-          this.$root.$data.password = this.password
-
           this.$router.push('/password/confirm')
         } catch (e) {
-          this.errors.push(this.$vuetify.lang.t('$vuetify.password.create.noGood'))
+          this.errors.push(this.$t('password.create.noGood'))
 
           this.password = ''
 
@@ -146,34 +182,20 @@ export default {
       this.$refs.wizard.next()
     },
   },
-  watch: {
-    password: function () {
-      // This is used to refresh the form, instead of leaving it frozen after a re-used password
-      if (this.password == '') {
-        this.forceRerender()
-      }
-
-      if (this.isGood) {
-        this.errors.splice(0)
-      }
-    },
-  },
 }
 
-const required = (v, vm) => !!v || vm.$vuetify.lang.t('$vuetify.password.create.required')
+const required = (v, vm) => !!v || vm.$t('password.create.required')
 const minLength = (v, vm) =>
-  v.length >= vm.$root.idpConfig.passwordRules.minLength ||
-  vm.$vuetify.lang.t('$vuetify.password.create.tooShort', vm.$root.idpConfig.passwordRules.minLength)
+  v.length >= vm.$idpConfig.passwordRules.minLength ||
+  vm.$t('password.create.tooShort', [vm.$idpConfig.passwordRules.minLength])
 const maxLength = (v, vm) =>
-  v.length < vm.$root.idpConfig.passwordRules.maxLength ||
-  vm.$vuetify.lang.t('$vuetify.password.create.tooLong', vm.$root.idpConfig.passwordRules.maxLength)
-const strong = (v, vm) =>
-  vm.strength.score >= vm.$root.idpConfig.passwordRules.minScore ||
-  vm.$vuetify.lang.t('$vuetify.password.create.tooWeak')
+  v.length < vm.$idpConfig.passwordRules.maxLength ||
+  vm.$t('password.create.tooLong', [vm.$idpConfig.passwordRules.maxLength])
+const strong = (v, vm) => vm.strength.score >= vm.$idpConfig.passwordRules.minScore || vm.$t('password.create.tooWeak')
 const requireAlphaAndNumeric = (v, vm) =>
-  !vm.$root.idpConfig.passwordRules.requireAlphaAndNumeric ||
+  !vm.$idpConfig.passwordRules.requireAlphaAndNumeric ||
   (/\p{L}/u.test(vm.password) && /\p{N}/u.test(vm.password)) ||
-  vm.$vuetify.lang.t('$vuetify.password.create.requireAlphaAndNumeric')
+  vm.$t('password.create.requireAlphaAndNumeric')
 const options = {
   graphs: zxcvbnCommonPackage.adjacencyGraphs,
   dictionary: {
@@ -185,12 +207,3 @@ const options = {
 
 zxcvbnOptions.setOptions(options)
 </script>
-
-<style>
-.password {
-  display: flex;
-}
-.eye {
-  margin-top: 0.75rem;
-}
-</style>

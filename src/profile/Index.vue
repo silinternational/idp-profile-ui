@@ -1,32 +1,28 @@
 <template>
   <BasePage>
-    <template v-slot:header>
-      {{ $vuetify.lang.t('$vuetify.profile.index.header', $root.idpConfig.idpName) }}
+    <template #header>
+      {{ $t('profile.index.header', [idpConfig.idpName]) }}
     </template>
 
     <v-row>
       <v-col cols="6">
-        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.username')" :value="$user.idp_username" sameline />
-        <Attribute
-          :name="$vuetify.lang.t('$vuetify.profile.index.lastLogin')"
-          :value="$user.last_login | format"
-          sameline
-        />
-        <Attribute :name="$vuetify.lang.t('$vuetify.profile.index.manager')" :value="$user.manager_email" sameline />
+        <Attribute :name="$t('profile.index.username')" :value="user.idp_username" sameline />
+        <Attribute :name="$t('profile.index.lastLogin')" :value="formatDate(user.last_login)" sameline />
+        <Attribute :name="$t('profile.index.manager')" :value="user.manager_email" sameline />
       </v-col>
 
       <v-col cols="6">
-        <ProfileProgress :profile="{ user: $user, alternates, mfa }" />
+        <ProfileProgress :profile="{ user: user, alternates, mfa }" />
       </v-col>
     </v-row>
 
-    <v-alert :value="hasUnverifiedEmails" type="error">
-      <span>{{ $vuetify.lang.t('$vuetify.profile.index.unverifiedEmails') }}</span>
+    <v-alert :model-value="hasUnverifiedEmails" type="error" icon="mdi-alert">
+      <span>{{ $t('profile.index.unverifiedEmails') }}</span>
     </v-alert>
 
     <v-row>
       <v-col cols="12" sm="6" md="4">
-        <PasswordCard :meta="$user.password_meta" />
+        <PasswordCard :meta="user.password_meta" />
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
@@ -34,11 +30,11 @@
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
-        <DoNotDiscloseCard :dnd="$user.hide" />
+        <DoNotDiscloseCard :dnd="user.hide" />
       </v-col>
     </v-row>
 
-    <v-subheader>{{ $vuetify.lang.t('$vuetify.profile.index.2sv') }}</v-subheader>
+    <v-list-subheader class="px-4">{{ $t('profile.index.2sv') }}</v-list-subheader>
 
     <v-row>
       <v-col cols="12" sm="6" md="4">
@@ -47,20 +43,24 @@
 
       <v-col v-if="numberOfKeys > 1" cols="12" sm="6" md="4">
         <SecurityKeyCard
-          @toggleKeys="onToggleKeys"
-          isSummary="true"
-          :numberOfKeys="numberOfKeys"
-          :webauthnKey="mfa.keys"
-          :showKeys="showKeys"
+          is-summary
+          :number-of-keys="numberOfKeys"
+          :webauthn-key="mfa.keys"
+          :show-keys="showKeys"
+          @toggle-keys="onToggleKeys"
         />
       </v-col>
 
       <v-col v-if="numberOfKeys === 1" cols="12" sm="6" md="4">
-        <SecurityKeyCard :numberOfKeys="numberOfKeys" :webauthnKey="mfa.keys.data[0]" :mfaId="mfa.keys.id" />
+        <SecurityKeyCard
+          :number-of-keys="numberOfKeys"
+          :webauthn-key="mfa.keys.data[0]"
+          :mfa-id="String(mfa.keys.id)"
+        />
       </v-col>
 
       <v-col v-else-if="numberOfKeys === 0">
-        <SecurityKeyCard isSummary="true" :webauthnKey="{}" />
+        <SecurityKeyCard is-summary :webauthn-key="{}" />
       </v-col>
 
       <v-col cols="12" sm="6" md="4">
@@ -70,30 +70,40 @@
 
     <v-row v-if="showKeys && numberOfKeys > 1">
       <v-col>
-        {{ $vuetify.lang.t('$vuetify.profile.index.securityKeyCard.title') }}
+        {{ $t('profile.index.securityKeyCard.title') }}
       </v-col>
     </v-row>
 
     <v-row v-if="showKeys && numberOfKeys > 1">
-      <v-col v-for="webauthnKey in additionalKeys" :key="additionalKeys.id" cols="12" sm="6" md="4">
-        <SecurityKeyCard :webauthnKey="webauthnKey" :numberOfKeys="numberOfKeys" :mfaId="mfa.keys.id" />
+      <v-col v-for="webauthnKey in additionalKeys" :key="webauthnKey.id" cols="12" sm="6" md="4">
+        <SecurityKeyCard :webauthn-key="webauthnKey" :number-of-keys="numberOfKeys" :mfa-id="String(mfa.keys.id)" />
       </v-col>
     </v-row>
   </BasePage>
 </template>
+<script>
+export default {
+  name: 'ProfileIndex',
+}
+</script>
 
 <script setup>
+import Attribute from './Attribute.vue'
+import BackupCodeCard from './BackupCodeCard.vue'
+import DoNotDiscloseCard from './DoNotDiscloseCard.vue'
 import ProfileProgress from './ProfileProgress.vue'
 import PasswordCard from './PasswordCard.vue'
 import PasswordRecoveryCard from './PasswordRecoveryCard.vue'
-import TotpCard from './TotpCard.vue'
 import SecurityKeyCard from './SecurityKeyCard.vue'
-import BackupCodeCard from './BackupCodeCard.vue'
-import DoNotDiscloseCard from './DoNotDiscloseCard.vue'
-import Attribute from './Attribute.vue'
-import { computed, onMounted, reactive, ref } from 'vue'
-import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
+import TotpCard from './TotpCard.vue'
+import { formatDate } from '@/global/filters'
 import { mfa as globalMfa, retrieve as retrieveMfa } from '@/global/mfa'
+import { recoveryMethods, retrieve as retrieveMethods } from '@/global/recoveryMethods'
+import user from '@/plugins/user'
+import { computed, getCurrentInstance, onMounted, reactive, ref } from 'vue'
+
+const { appContext } = getCurrentInstance()
+const idpConfig = appContext.config.globalProperties.$idpConfig || {}
 
 onMounted(async () => {
   await Promise.all([retrieveMethods(), retrieveMfa()])

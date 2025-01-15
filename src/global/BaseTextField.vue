@@ -1,11 +1,29 @@
 <template>
-  <v-text-field ref="tf" :value="value" v-bind="$attrs" outlined v-on="$listeners" />
+  <v-text-field
+    v-bind="$attrs"
+    ref="tf"
+    :model-value="modelValue"
+    variant="outlined"
+    @update:model-value="$emit('update:model-value', $event)"
+    v-on="
+      Object.keys($attrs).reduce((listeners, key) => {
+        if (key.startsWith('on')) listeners[key] = $attrs[key]
+        return listeners
+      }, {})
+    "
+  />
 </template>
 
 <script>
 export default {
   inheritAttrs: false,
-  props: ['value'],
+  props: {
+    modelValue: {
+      type: [String, Number], // Define the type(s) for the value prop
+      required: true,
+    },
+  },
+  emits: ['update:model-value'],
   mounted() {
     // had to do this since textfield's autofocus won't work during stepper transitions...
     // I chatted with John Leider in discord and he said they need to build in some better
