@@ -1,11 +1,14 @@
 <template>
-  <v-stepper v-if="currentStep.id" v-model="currentStep.id">
-    <v-stepper-header>
+  <v-stepper v-if="currentStep?.id" v-model="currentStep.id">
+    <v-stepper-header :steps="steps">
       <template v-for="_step in steps" :key="`step-${_step.id}`">
-        <v-stepper-item :value="_step.id" :complete="_step.state !== ''" :title="$t(`${_step.nameKey}`)">
-          <template #icon>
-            <v-icon :icon="toIcon(_step.state)" :color="toColor(_step.state)"></v-icon>
-          </template>
+        <v-stepper-item
+          :value="_step.id"
+          :icon="toIcon(_step.state)"
+          :color="toColor(_step.state)"
+          :complete="_step.state === 'complete'"
+          :title="$t(`${_step.nameKey}`)"
+        >
         </v-stepper-item>
 
         <v-divider v-if="hasMoreSteps(_step)" :key="`divider-${_step.id}`" />
@@ -35,7 +38,8 @@ export default {
   async created() {
     await Steps.init()
 
-    this.currentStep = Steps.forPath(this.$route.path)
+    const step = Steps.forPath(this.$route.path)
+    this.currentStep = step || {}
   },
   methods: {
     hasMoreSteps: (step) => !Steps.isLast(step),
@@ -52,8 +56,9 @@ export default {
         complete: '$complete',
         skipped: '$warning',
       }
-      return map[state] || '$complete'
+      return map[state]
     },
+    // Used in components called by this.$refs.wizard.<method>
     completed: function () {
       this.currentStep.state = 'complete'
     },
