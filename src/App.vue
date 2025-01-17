@@ -100,10 +100,12 @@ img {
 <style>
 p {
   max-width: 75ch; /* better readability supposedly */
+  margin-bottom: 16px;
 }
 
 /* with the addition of the help link, the extra space on the right looked weird. */
 div.v-toolbar__content {
+  padding: 4px 16px; /* back to vuetify 2 default */
   padding-right: initial;
 }
 
