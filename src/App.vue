@@ -36,7 +36,7 @@
       </v-row>
 
       <v-container>
-        <v-alert v-if="!!message" type="error" icon="mdi-alert" closable @click:close="message = ''">
+        <v-alert v-if="!!message" type="error" icon="mdi-alert" closable class="my-2" @click:close="message = ''">
           <span v-sanitize.basic="message" />
         </v-alert>
 
@@ -53,7 +53,7 @@ import logo from '@/assets/logo.png'
 import user from '@/plugins/user'
 import returnTo from '@/plugins/returnTo'
 import eventBus from '@/eventBus'
-import { ref, watch, onMounted, onErrorCaptured } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDisplay } from 'vuetify'
 
