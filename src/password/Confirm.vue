@@ -25,7 +25,8 @@
             <template #activator="{ props }">
               <v-btn
                 v-bind="props"
-                class="align-center"
+                class="align-center ml-1"
+                variant="text"
                 icon
                 tabindex="-1"
                 @click="passwordIsHidden = !passwordIsHidden"
@@ -64,14 +65,15 @@ export default {
     ProfileWizard,
   },
   beforeRouteLeave(to, from, next) {
-    this.password = ''
+    this.storedPassword = ''
 
     next()
   },
   data() {
     return {
+      password: '',
       passwordIsHidden: true,
-      rules: [(v) => v === this.password || this.$t('password.confirm.noMatch')],
+      rules: [(v) => v === this.storedPassword || this.$t('password.confirm.noMatch')],
       errors: [],
     }
   },
@@ -79,7 +81,7 @@ export default {
     passwordStore() {
       return usePasswordStore()
     },
-    password: {
+    storedPassword: {
       get() {
         return this.passwordStore.password.value
       },

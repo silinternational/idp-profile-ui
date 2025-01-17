@@ -29,6 +29,7 @@
               <v-btn
                 v-bind="props"
                 class="align-center"
+                variant="text ml-1"
                 icon
                 tabindex="-1"
                 @click="passwordIsHidden = !passwordIsHidden"
