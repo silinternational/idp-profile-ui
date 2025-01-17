@@ -36,7 +36,7 @@
       </v-row>
 
       <v-container>
-        <v-alert v-show="!!message" type="error" icon="mdi-alert" closable @click:close="message = ''">
+        <v-alert v-if="!!message" type="error" icon="mdi-alert" closable @click:close="message = ''">
           <span v-sanitize.basic="message" />
         </v-alert>
 
@@ -74,11 +74,9 @@ onMounted(() => {
   eventBus.on('clear-messages', () => {
     message.value = ''
   })
-})
-
-onErrorCaptured((err) => {
-  message.value = err.message || err
-  return true // Prevent the error from propagating further
+  eventBus.on('error', (err) => {
+    message.value = err.message || err
+  })
 })
 
 const logout = () => {

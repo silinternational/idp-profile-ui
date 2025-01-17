@@ -1,4 +1,5 @@
 import App from './App.vue'
+import eventBus from './eventBus'
 import registerComponents from '@/global/components'
 import { api, i18n, returnTo, router, user, vuetify } from './plugins'
 import { createApp } from 'vue'
@@ -24,6 +25,10 @@ function main() {
 
   app.config.globalProperties.$API = api
   app.config.globalProperties.$user = user
+
+  app.config.errorHandler = (err) => {
+    eventBus.emit('error', err)
+  }
 
   registerComponents(app)
   app.use(i18n)
