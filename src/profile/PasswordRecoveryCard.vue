@@ -15,7 +15,7 @@
     </v-card-title>
 
     <v-card-text class="flex-grow-1">
-      <div v-for="method in methods" :key="method.id" class="d-flex justify-space-between">
+      <div v-for="method in methods" :key="method.id" class="d-flex justify-space-between align-center">
         <div>
           {{ method.value }}
 
@@ -28,9 +28,16 @@
           </v-tooltip>
         </div>
 
-        <a v-if="!method.verified && method.id != sent" class="text-caption float-right pl-2" @click="resend(method)">
+        <v-btn
+          v-if="!method.verified && method.id != sent"
+          variant="text"
+          color="primary"
+          density="compact"
+          class="text-caption float-right pl-2"
+          @click="resend(method)"
+        >
           {{ $t('profile.index.passwordRecoveryCard.resend') }}
-        </a>
+        </v-btn>
       </div>
       <v-row v-if="!methods.length">
         <v-col cols="auto">

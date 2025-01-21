@@ -36,7 +36,7 @@
       </v-row>
 
       <v-container>
-        <v-alert v-show="!!message" type="error" icon="mdi-alert" closable @click:close="message = ''">
+        <v-alert v-if="!!message" type="error" icon="mdi-alert" closable class="my-2" @click:close="message = ''">
           <span v-sanitize.basic="message" />
         </v-alert>
 
@@ -53,7 +53,7 @@ import logo from '@/assets/logo.png'
 import user from '@/plugins/user'
 import returnTo from '@/plugins/returnTo'
 import eventBus from '@/eventBus'
-import { ref, watch, onMounted, onErrorCaptured } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDisplay } from 'vuetify'
 
@@ -74,11 +74,9 @@ onMounted(() => {
   eventBus.on('clear-messages', () => {
     message.value = ''
   })
-})
-
-onErrorCaptured((err) => {
-  message.value = err.message || err
-  return true // Prevent the error from propagating further
+  eventBus.on('error', (err) => {
+    message.value = err.message || err
+  })
 })
 
 const logout = () => {
@@ -100,10 +98,12 @@ img {
 <style>
 p {
   max-width: 75ch; /* better readability supposedly */
+  margin-bottom: 16px;
 }
 
 /* with the addition of the help link, the extra space on the right looked weird. */
 div.v-toolbar__content {
+  padding: 4px 16px; /* back to vuetify 2 default */
   padding-right: initial;
 }
 

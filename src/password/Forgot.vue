@@ -72,6 +72,7 @@ export default {
           this.$router.push(`/password/forgot/${reset.uid}`)
         } catch (error) {
           grecaptcha.reset()
+          throw error
         }
       }
     },

@@ -29,3 +29,6 @@ clean:
 
 format:
 	docker compose run --rm node npm run format
+
+lint:
+	docker compose run --rm node npm run lint

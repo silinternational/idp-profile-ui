@@ -2,23 +2,23 @@
   "name": "idp-profile-ui",
   "dependencies": {
     "@eslint/js": {
-      "version": "9.17.0",
-      "resolved": "https://registry.npmjs.org/@eslint/js/-/js-9.17.0.tgz",
+      "version": "9.18.0",
+      "resolved": "https://registry.npmjs.org/@eslint/js/-/js-9.18.0.tgz",
       "overridden": false
     },
     "@intlify/unplugin-vue-i18n": {
-      "version": "6.0.1",
-      "resolved": "https://registry.npmjs.org/@intlify/unplugin-vue-i18n/-/unplugin-vue-i18n-6.0.1.tgz",
+      "version": "6.0.3",
+      "resolved": "https://registry.npmjs.org/@intlify/unplugin-vue-i18n/-/unplugin-vue-i18n-6.0.3.tgz",
       "overridden": false
     },
     "@sentry/vite-plugin": {
-      "version": "2.22.7",
-      "resolved": "https://registry.npmjs.org/@sentry/vite-plugin/-/vite-plugin-2.22.7.tgz",
+      "version": "2.23.0",
+      "resolved": "https://registry.npmjs.org/@sentry/vite-plugin/-/vite-plugin-2.23.0.tgz",
       "overridden": false
     },
     "@sentry/vue": {
-      "version": "7.120.2",
-      "resolved": "https://registry.npmjs.org/@sentry/vue/-/vue-7.120.2.tgz",
+      "version": "7.120.3",
+      "resolved": "https://registry.npmjs.org/@sentry/vue/-/vue-7.120.3.tgz",
       "overridden": false
     },
     "@simplewebauthn/browser": {
@@ -57,8 +57,8 @@
       "overridden": false
     },
     "eslint-plugin-prettier": {
-      "version": "5.2.1",
-      "resolved": "https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-5.2.1.tgz",
+      "version": "5.2.2",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-5.2.2.tgz",
       "overridden": false
     },
     "eslint-plugin-vue": {
@@ -72,8 +72,8 @@
       "overridden": false
     },
     "eslint": {
-      "version": "9.17.0",
-      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.17.0.tgz",
+      "version": "9.18.0",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.18.0.tgz",
       "overridden": false
     },
     "prettier": {
@@ -92,8 +92,8 @@
       "overridden": false
     },
     "sass": {
-      "version": "1.83.0",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.83.0.tgz",
+      "version": "1.83.4",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.83.4.tgz",
       "overridden": false
     },
     "unplugin-vue-components": {

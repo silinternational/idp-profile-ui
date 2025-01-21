@@ -16,7 +16,7 @@
       </v-col>
     </v-row>
 
-    <v-alert :model-value="hasUnverifiedEmails" type="error" icon="mdi-alert">
+    <v-alert :model-value="hasUnverifiedEmails" class="my-2" type="error" icon="mdi-alert">
       <span>{{ $t('profile.index.unverifiedEmails') }}</span>
     </v-alert>
 

@@ -204,9 +204,6 @@ i.v-icon {
   body * {
     visibility: hidden;
     overflow: visible !important;
-    padding: initial !important;
-    margin: initial !important;
-    height: initial !important;
   }
 
   .printable {
@@ -224,10 +221,6 @@ i.v-icon {
   .printable,
   .printable * {
     visibility: visible;
-  }
-
-  .printable .col {
-    padding: 12px !important;
   }
 }
 </style>
