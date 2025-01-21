@@ -30,6 +30,11 @@ function main() {
     eventBus.emit('error', err)
   }
 
+  // catches method and async errors
+  window.onunhandledrejection = (event) => {
+    eventBus.emit('error', event.reason)
+  }
+
   registerComponents(app)
   app.use(i18n)
   app.use(returnTo)

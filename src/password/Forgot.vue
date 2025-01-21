@@ -35,8 +35,6 @@
 </template>
 
 <script>
-import eventBus from '@/eventBus'
-
 export default {
   name: 'ForgotPassword',
   data: () => ({
@@ -74,7 +72,7 @@ export default {
           this.$router.push(`/password/forgot/${reset.uid}`)
         } catch (error) {
           grecaptcha.reset()
-          eventBus.emit('error', error)
+          throw error
         }
       }
     },
