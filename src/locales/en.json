@@ -48,9 +48,11 @@
       "explanation": "That link has already expired so we sent you another email with a new link.  You should receive it within the minute.  You will not need this tab anymore."
     },
     "steps": {
+      "authenticator": "Authenticator app",
+      "backupCodes": "Backup codes",
+      "securityKeyStep": "Security key",
       "pwStep": "Password",
       "pwRecoverStep": "Password recovery",
-      "2svStep": "2-step verification",
       "completeStep": "Complete"
     },
     "complete": {

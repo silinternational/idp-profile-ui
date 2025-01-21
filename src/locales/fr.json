@@ -48,9 +48,11 @@
       "explanation": "Ce lien a déjà expiré, alors nous vous avons envoyé un autre email avec un nouveau lien.  Vous devriez le recevoir dans la minute.  Vous n’aurez plus besoin de cet onglet."
     },
     "steps": {
+      "authenticator": "Application d'authentification",
+      "backupCodes": "Codes de sauvegarde",
+      "securityKeyStep": "Clés de sécurité",
       "pwStep": "Mot de Passe",
       "pwRecoverStep": "Récupération du mot de passe",
-      "2svStep": "Vérification en 2 étapes",
       "completeStep": "Compléter"
     },
     "complete": {

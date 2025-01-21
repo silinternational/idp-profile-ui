@@ -16,13 +16,13 @@ export default {
     // Retain all steps but mark relevant ones
     allSteps.forEach((step, index) => {
       const isRelevant = step.isRelevant(user, recoveryMethods.alternates, mfa)
-      const isComplete = step.state === 'complete'
       const isNotDuplicate = !store.steps.some((s) => s.nameKey === step.nameKey)
-      if (isNotDuplicate && (isRelevant || !isComplete)) {
+      if (isNotDuplicate) {
         store.steps.push({
           ...step,
           id: index + 1,
           state: '',
+          skip: !isRelevant,
         })
       }
     })
@@ -62,8 +62,8 @@ const recovery = {
 
 const isAlternate = (method) => method.type === 'email'
 
-const twosv = {
-  nameKey: 'profile.steps.2svStep',
+const totp = {
+  nameKey: 'profile.steps.authenticator',
   paths: [
     '/2sv/intro',
     '/2sv/smartphone/intro',
@@ -71,13 +71,30 @@ const twosv = {
     '/2sv/smartphone/scan-qr',
     '/2sv/smartphone/verify-qr-code',
     '/2sv/smartphone/code-verified',
+  ],
+  isRelevant(user, recoveryMethods, mfa) {
+    return user.auth_type === 'login' && (isRequested(this.paths) || mfa.numVerified < 3)
+  },
+}
+
+const securityKeyStep = {
+  nameKey: 'profile.steps.securityKeyStep',
+  paths: [
     '/2sv/usb-security-key/intro',
     '/2sv/usb-security-key/insert',
     '/2sv/usb-security-key/touch',
     '/2sv/usb-security-key/confirmed',
-    '/2sv/printable-backup-codes/intro',
-    '/2sv/printable-backup-codes/new',
   ],
+  isRelevant(user, recoveryMethods, mfa) {
+    const numberOfKeys = (mfa.keys.data?.length || 0) + (mfa.u2f?.id ? 1 : 0)
+
+    return user.auth_type === 'login' && (isRequested(this.paths) || numberOfKeys === 0)
+  },
+}
+
+const backupCodesStep = {
+  nameKey: 'profile.steps.backupCodes',
+  paths: ['/2sv/printable-backup-codes/intro', '/2sv/printable-backup-codes/new'],
   isRelevant(user, recoveryMethods, mfa) {
     return user.auth_type === 'login' && (isRequested(this.paths) || mfa.numVerified < 3)
   },
@@ -91,4 +108,4 @@ const complete = {
   },
 }
 
-const allSteps = [password, recovery, twosv, complete]
+const allSteps = [password, recovery, totp, securityKeyStep, backupCodesStep, complete]

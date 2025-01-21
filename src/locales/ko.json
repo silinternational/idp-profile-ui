@@ -48,9 +48,11 @@
       "explanation": "링크가 이미 만료되었으므로 새로운 링크가있는 다른 이메일을 보냈습니다. 일분안에 도착할 것입니다. 더 이상 이 탭이 필요하지 않습니다."
     },
     "steps": {
+      "authenticator": "인증 앱",
+      "backupCodes": "백업 코드",
+      "securityKey": "보안 키",
       "pwStep": "패스워드/암호",
       "pwRecoverStep": "비밀번호 찾기",
-      "2svStep": "2단계 인증",
       "completeStep": "완료"
     },
     "complete": {

@@ -1,5 +1,5 @@
 <template>
-  <ProfileWizard>
+  <ProfileWizard ref="wizard">
     <BasePage>
       <template #header>
         {{ $t('2sv.key.intro.header') }}
@@ -47,6 +47,7 @@
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
 import securityKeys from '@/assets/usb-security-key-examples.png'
+import Steps from '@/profile/steps'
 
 export default {
   name: 'IntroKey',
@@ -55,6 +56,16 @@ export default {
   },
   data: () => ({
     securityKeys,
+    currentStep: {},
   }),
+  async created() {
+    const step = Steps.forPath(this.$route.path)
+    this.currentStep = step || {}
+  },
+  mounted() {
+    if (this.currentStep.skip) {
+      this.$router.push('/2sv/printable-backup-codes/intro')
+    }
+  },
 }
 </script>

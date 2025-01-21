@@ -48,9 +48,11 @@
       "explanation": "Ese enlace ya se ha vencido, así que te hemos enviado otro correo electrónico con un nuevo enlace.  Debes recibirlo dentro de un minuto.  Ya no necesitarás esta pestaña."
     },
     "steps": {
+      "authenticator": "Aplicación de autenticación",
+      "backupCodes": "Códigos de copia de seguridad",
+      "securityKeyStep": "Llave de seguridad",
       "pwStep": "Contraseña",
       "pwRecoverStep": "Recuperar contraseña",
-      "2svStep": "Verificación de 2 pasos",
       "completeStep": "Completo"
     },
     "complete": {
