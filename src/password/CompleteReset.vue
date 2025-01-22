@@ -1,5 +1,5 @@
 <template>
-  <ProfileWizard ref="wizard">
+  <ProfileWizard>
     <BasePage>
       <template #header>
         {{ $t('password.reset.complete.header') }}
