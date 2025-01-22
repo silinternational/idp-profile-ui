@@ -26,11 +26,13 @@ async function main() {
   app.config.globalProperties.$user = user
 
   app.config.errorHandler = (err) => {
+    console.error('error: ', err)
     eventBus.emit('error', err)
   }
 
   // catches method and async errors
   window.onunhandledrejection = (event) => {
+    console.error('error: ', event.reason)
     eventBus.emit('error', event.reason)
   }
 

@@ -52,7 +52,7 @@ const hasBackup = (m) => {
 }
 
 const nextUrl = computed(() => {
-  if (!hasKey(mfa)) {
+  if (!hasKey(mfa) || mfa.numVerified < 3) {
     return '/2sv/usb-security-key/intro'
   }
   if (!hasBackup(mfa)) {

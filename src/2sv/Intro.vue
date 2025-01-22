@@ -52,11 +52,13 @@ export default {
     ProfileWizard,
   },
   async created() {
-    const thisStep = Steps.forPath(this.$route.path) || {}
-    const keyStep = Steps.next(thisStep)
-    const codesStep = Steps.next(keyStep)
-    if (thisStep.skip && keyStep.skip && codesStep.skip) {
-      this.$router.push('/profile/complete')
+    if (this.Steps) {
+      const thisStep = Steps.forPath(this.$route.path) || {}
+      const keyStep = Steps.next(thisStep)
+      const codesStep = Steps.next(keyStep)
+      if (thisStep.skip && keyStep.skip && codesStep.skip) {
+        this.$router.push('/profile/complete')
+      }
     }
   },
 }
