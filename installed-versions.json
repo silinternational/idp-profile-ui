@@ -57,8 +57,8 @@
       "overridden": false
     },
     "eslint-plugin-prettier": {
-      "version": "5.2.2",
-      "resolved": "https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-5.2.2.tgz",
+      "version": "5.2.3",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-5.2.3.tgz",
       "overridden": false
     },
     "eslint-plugin-vue": {
@@ -107,8 +107,8 @@
       "overridden": false
     },
     "vite": {
-      "version": "5.4.11",
-      "resolved": "https://registry.npmjs.org/vite/-/vite-5.4.11.tgz",
+      "version": "5.4.14",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-5.4.14.tgz",
       "overridden": false
     },
     "vue-i18n": {
@@ -132,8 +132,8 @@
       "overridden": false
     },
     "vuetify": {
-      "version": "3.7.6",
-      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.6.tgz",
+      "version": "3.7.7",
+      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.7.tgz",
       "overridden": false
     },
     "zxcvbn": {
