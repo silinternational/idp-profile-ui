@@ -20,14 +20,15 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
+import steps from '../profile/steps'
 
 export default {
   components: {
     ProfileWizard,
   },
   async created() {
-    await this.$nextTick() // best option I could figure out to ensure this.$refs.wizard was available
-    this.$refs.wizard.completed()
+    const step = steps.forPath(this.$route.path)
+    step.state = 'complete'
   },
 }
 </script>
