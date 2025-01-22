@@ -73,7 +73,7 @@ const totp = {
     '/2sv/smartphone/code-verified',
   ],
   isRelevant(user, recoveryMethods, mfa) {
-    return user.auth_type === 'login' && (isRequested(this.paths) || mfa.numVerified < 3)
+    return user.auth_type === 'login' && (isRequested(this.paths) || (!mfa.totp?.id && mfa.numVerified < 3))
   },
 }
 
@@ -88,7 +88,7 @@ const securityKeyStep = {
   isRelevant(user, recoveryMethods, mfa) {
     const numberOfKeys = (mfa.keys.data?.length || 0) + (mfa.u2f?.id ? 1 : 0)
 
-    return user.auth_type === 'login' && (isRequested(this.paths) || numberOfKeys === 0)
+    return user.auth_type === 'login' && (isRequested(this.paths) || numberOfKeys === 0 || mfa.numVerified < 3)
   },
 }
 
