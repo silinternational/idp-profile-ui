@@ -50,7 +50,9 @@
     "steps": {
       "pwStep": "Password",
       "pwRecoverStep": "Password recovery",
-      "2svStep": "2-step verification",
+      "authenticator": "Authenticator app",
+      "backupCodes": "Backup codes",
+      "securityKeyStep": "Security key",
       "completeStep": "Complete"
     },
     "complete": {

@@ -50,7 +50,9 @@
     "steps": {
       "pwStep": "패스워드/암호",
       "pwRecoverStep": "비밀번호 찾기",
-      "2svStep": "2단계 인증",
+      "authenticator": "인증 앱",
+      "backupCodes": "백업 코드",
+      "securityKey": "보안 키",
       "completeStep": "완료"
     },
     "complete": {

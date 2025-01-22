@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-bind="!!$idpConfig.support" v-model="isOpen" width="initial">
+  <v-dialog v-if="!!$idpConfig.support" v-model="isOpen" width="initial">
     <!-- making it initial so card grows with content -->
     <template #activator="{ props }">
       <v-btn v-bind="props" variant="text" :icon="xs" class="mx-1">

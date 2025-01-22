@@ -8,7 +8,7 @@ import VueSanitize from 'vue-sanitize-directive'
 
 const app = createApp(App)
 
-function main() {
+async function main() {
   const dsn = import.meta.env.VITE_SENTRY_DSN
   const release = __APP_VERSION__
 
@@ -21,7 +21,6 @@ function main() {
       console.error('Failed to load IDP configuration:', error)
     }
   }
-  loadConfig()
 
   app.config.globalProperties.$API = api
   app.config.globalProperties.$user = user
@@ -41,6 +40,8 @@ function main() {
   app.use(router)
   app.use(vuetify)
   app.use(VueSanitize)
+
+  await loadConfig()
 
   app.mount('#app')
 

@@ -56,7 +56,7 @@ function numOfVerifiedMfas(mfa) {
   let num = 0
 
   num += mfa.totp.id ? 1 : 0
-  num += mfa.u2f.id || mfa.keys.data?.length || 0
+  num += (mfa.u2f.id ? 1 : 0) + (mfa.keys.data?.length || 0)
   num += mfa.backup.id ? 1 : 0
 
   return num

@@ -44,11 +44,20 @@
 
 <script>
 import ProfileWizard from '@/profile/ProfileWizard.vue'
+import Steps from '@/profile/steps'
 
 export default {
   name: '2svIntro',
   components: {
     ProfileWizard,
+  },
+  async created() {
+    const thisStep = Steps.forPath(this.$route.path) || {}
+    const keyStep = Steps.next(thisStep)
+    const codesStep = Steps.next(keyStep)
+    if (thisStep.skip && keyStep.skip && codesStep.skip) {
+      this.$router.push('/profile/complete')
+    }
   },
 }
 </script>

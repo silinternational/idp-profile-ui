@@ -50,7 +50,9 @@
     "steps": {
       "pwStep": "Contraseña",
       "pwRecoverStep": "Recuperar contraseña",
-      "2svStep": "Verificación de 2 pasos",
+      "authenticator": "Aplicación de autenticación",
+      "backupCodes": "Códigos de copia de seguridad",
+      "securityKeyStep": "Llave de seguridad",
       "completeStep": "Completo"
     },
     "complete": {
