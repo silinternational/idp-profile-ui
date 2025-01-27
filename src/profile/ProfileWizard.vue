@@ -4,11 +4,13 @@
       <template v-for="_step in steps" :key="`step-${_step.id}`">
         <v-stepper-item
           :value="_step.id"
-          :icon="toIcon(_step.state)"
+          :complete-icon="toIcon(_step.state)"
           :color="toColor(_step.state)"
           :complete="_step.state === 'complete'"
-          :title="$t(`${_step.nameKey}`)"
         >
+          <template #title>
+            <span :class="{ 'max-width text-truncate d-inline-block': isMd }">{{ $t(`${_step.nameKey}`) }}</span>
+          </template>
         </v-stepper-item>
 
         <v-divider v-if="hasMoreSteps(_step)" :key="`divider-${_step.id}`" />
@@ -29,8 +31,17 @@
 
 <script>
 import Steps from './steps'
+import { useDisplay } from 'vuetify'
 
 export default {
+  setup() {
+    const { mdAndDown, smAndDown } = useDisplay()
+
+    return {
+      isMd: mdAndDown,
+      isSm: smAndDown,
+    }
+  },
   data: () => ({
     steps: Steps.steps,
     currentStep: {},
@@ -74,3 +85,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.max-width {
+  max-width: 120px;
+}
+</style>
