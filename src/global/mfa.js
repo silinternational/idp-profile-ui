@@ -88,7 +88,7 @@ export const verifyWebauthn = async (id, verification = '', label = '') => {
 
 export const removeWebauthn = async (mfaId, webauthnId) => {
   await api.delete(`mfa/${mfaId}/webauthn/${webauthnId}`)
-  const index = mfa.keys.data.findIndex((m) => m.id === mfaId)
+  const index = mfa.keys.data.findIndex((m) => m.id === webauthnId)
   if (index > -1) {
     mfa.keys.data.splice(index, 1)
   }

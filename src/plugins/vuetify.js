@@ -5,6 +5,15 @@ import * as directives from 'vuetify/directives'
 
 const vuetify = createVuetify({
   theme: {
+    breakpoints: {
+      thresholds: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1264,
+        xl: 1904, // Match Vuetify 2 breakpoints
+      },
+    },
     themes: {
       light: {
         colors: {
