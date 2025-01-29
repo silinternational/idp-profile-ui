@@ -36,7 +36,7 @@
       </v-row>
 
       <v-container>
-        <v-dialog v-model="isModalOpen" max-width="400">
+        <v-dialog @after-leave="closeModal" v-model="isModalOpen" max-width="400">
           <v-card>
             <v-card-title>
               <v-icon color="error" class="mr-2">mdi-alert</v-icon>
@@ -78,17 +78,16 @@ const { xs } = useDisplay()
 
 const route = useRoute()
 
-watch(message, (newValue) => {
-  if (newValue) isModalOpen.value = true
-})
-
 watch(
   () => route.fullPath,
   () => {
     message.value = ''
-    isModalOpen.value = false // Close modal (if open)
   },
 )
+
+watch(message, () => {
+  isModalOpen.value = !!message.value
+})
 
 onMounted(() => {
   eventBus.on('clear-messages', () => {
@@ -109,7 +108,6 @@ const login = () => {
 
 const closeModal = () => {
   message.value = ''
-  isModalOpen.value = false
 }
 </script>
 
