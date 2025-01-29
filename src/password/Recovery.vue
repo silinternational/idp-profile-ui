@@ -49,6 +49,8 @@
             (v) =>
               /^$|^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) ||
               $t('password.recovery.invalidEmail'),
+            (v) => v?.length <= 65 || $t('password.recovery.emailTooLong'),
+            (v) => !isAlias(v, primary.value) || $t('password.recovery.isPrimaryEmail'),
           ]"
           validate-on-input
           autofocus
@@ -107,12 +109,15 @@ export default {
   },
   methods: {
     async add() {
-      if (this.$refs.form.validate()) {
+      const { valid, errors } = await this.$refs.form.validate()
+      if (valid) {
         await add(this.newEmail)
 
         this.newEmail = ''
 
         this.$root.$emit('clear-messages') // listener in App.vue (this is a temporary hack hopefully)
+      } else {
+        throw Error(errors[0].errorMessages)
       }
     },
     remove,
@@ -123,6 +128,17 @@ export default {
     complete() {
       this.$refs.wizard.completed()
       this.$refs.wizard.next()
+    },
+    isAlias(email, primaryEmail) {
+      const normalizeEmail = (email) => {
+        const [localPart, domain] = email.split('@')
+        const cleanedLocalPart = localPart.includes('+') ? localPart.split('+')[0] : localPart
+        const normalizedLocalPart = cleanedLocalPart.replace(/\./g, '')
+
+        return `${normalizedLocalPart}@${domain}`.toLowerCase()
+      }
+
+      return normalizeEmail(email) === normalizeEmail(primaryEmail)
     },
   },
 }
