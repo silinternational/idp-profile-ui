@@ -62,7 +62,9 @@ export default {
       this.recaptchaResponse = ''
     },
     async send() {
-      if (this.$refs.form.validate()) {
+      const { valid, errors } = await this.$refs.form.validate()
+
+      if (valid) {
         try {
           const reset = await this.$API.post('reset', {
             username: this.uname,
@@ -74,6 +76,8 @@ export default {
           grecaptcha.reset()
           throw error
         }
+      } else {
+        throw Error(errors[0].errorMessages)
       }
     },
   },

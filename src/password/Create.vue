@@ -155,7 +155,9 @@ export default {
       this.wizardKey += 1
     },
     async save() {
-      if (this.$refs.form.validate()) {
+      const { valid, errors } = await this.$refs.form.validate()
+
+      if (valid) {
         try {
           await this.$API.put('password/assess', {
             password: this.password,
@@ -174,6 +176,8 @@ export default {
             })
           }
         }
+      } else {
+        throw Error(errors[0].errorMessages)
       }
     },
     blur(event) {

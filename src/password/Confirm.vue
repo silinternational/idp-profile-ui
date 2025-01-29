@@ -92,7 +92,8 @@ export default {
   },
   methods: {
     async confirm() {
-      if (this.$refs.form.validate()) {
+      const { valid, errors } = await this.$refs.form.validate()
+      if (valid) {
         await this.$API.put('password', {
           password: this.password,
         })
@@ -100,6 +101,8 @@ export default {
         this.$refs.wizard.completed()
 
         this.$router.push('/password/saved')
+      } else {
+        throw Error(errors[0].errorMessages)
       }
     },
     blur(event) {
