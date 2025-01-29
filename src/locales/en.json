@@ -14,7 +14,8 @@
     },
     "learnMore": "learn more",
     "areYouSure": "Are you sure?",
-    "error": "Error"
+    "error": "Error",
+    "mfaLabelTooLong": "The label should contain at most 64 characters"
   },
   "app": {
     "login": "Log in",
@@ -170,7 +171,6 @@
       "unsaved": "You have not saved your changes yet.",
       "dontRemoveLastOne": "Please add another alternate address before removing this one.",
       "invalidEmail": "Invalid email",
-      "emailTooLong": "The email address needs to be less than 65 characters",
       "isPrimaryEmail": "You can't use your primary email address or alias as an alternate",
       "personalHeader": "Alternate(s)",
       "noPersonalMethods": "None at this time"
