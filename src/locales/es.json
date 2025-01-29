@@ -13,7 +13,9 @@
       "close": "Cerrar"
     },
     "learnMore": "más información",
-    "areYouSure": "¿Seguro que quiere continuar?"
+    "areYouSure": "¿Seguro que quiere continuar?",
+    "error": "Error",
+    "mfaLabelTooLong": "La etiqueta debe contener como máximo 64"
   },
   "app": {
     "login": "Iniciar sesión",
@@ -169,6 +171,7 @@
       "unsaved": "Aún no ha guardado sus cambios.",
       "dontRemoveLastOne": "Por favor agregue una nueva dirección alternativa antes de eliminar esta.",
       "invalidEmail": "Dirección de correo electrónica no válida",
+      "isPrimaryEmail": "No puede utilizar su dirección de correo electrónico principal o alias como alternativa",
       "personalHeader": "Alternativo(s)",
       "noPersonalMethods": "Ninguno en este momento"
     },

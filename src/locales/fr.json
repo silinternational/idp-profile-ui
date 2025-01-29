@@ -13,7 +13,9 @@
       "close": "Fermer"
     },
     "learnMore": "en savoir plus",
-    "areYouSure": "Êtes-vous certain ?"
+    "areYouSure": "Êtes-vous certain ?",
+    "error": "Erreur",
+    "mfaLabelTooLong": "L'étiquette doit contenir au maximum 64"
   },
   "app": {
     "login": "S'identifier",
@@ -169,6 +171,7 @@
       "unsaved": "Vous n'avez pas encore enregistré vos modifications.",
       "dontRemoveLastOne": "Veuillez ajouter une autre adresse e-mail alternative avant de supprimer celle-ci.",
       "invalidEmail": "Adresse email invalide",
+      "isPrimaryEmail": "Vous ne pouvez pas utiliser votre adresse e-mail principale ou votre alias comme alternative",
       "personalHeader": "Alternative(s)",
       "noPersonalMethods": "Aucun en ce moment"
     },

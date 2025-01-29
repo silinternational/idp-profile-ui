@@ -1,7 +1,13 @@
 <template>
   <v-row v-if="editing" no-gutters align="center">
     <v-col cols="9">
-      <v-text-field v-model="newLabel" autofocus @keyup.enter="save" @focus="$event.target.select()" />
+      <v-text-field
+        v-model="newLabel"
+        autofocus
+        :rules="[(v) => v.length < 65 || $t('global.mfaLabelTooLong')]"
+        @keyup.enter="save"
+        @focus="$event.target.select()"
+      />
     </v-col>
 
     <v-col>
@@ -72,6 +78,9 @@ export default {
       this.editing = false
     },
     async save() {
+      if (this.newLabel.length > 65) {
+        throw Error(this.$t('global.mfaLabelTooLong'))
+      }
       const mfa = this.isWebauthn
         ? await changeWebauthn(this.mfaId, this.keyId, {
             label: this.newLabel,

@@ -57,7 +57,9 @@ export default {
   }),
   methods: {
     async verify() {
-      if (this.$refs.form.validate()) {
+      const { valid, errors } = await this.$refs.form.validate()
+
+      if (valid) {
         try {
           await verify(this.$route.query.id, this.code.trim())
 
@@ -67,6 +69,10 @@ export default {
             this.errors.push(this.$t('2sv.smartphone.verifyQrCode.hint'))
           }
         }
+      } else {
+        errors.forEach((error) => {
+          throw Error(error.errorMessages.join('\n'))
+        })
       }
     },
     blur(event) {

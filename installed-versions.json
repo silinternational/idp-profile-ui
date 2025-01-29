@@ -2,8 +2,8 @@
   "name": "idp-profile-ui",
   "dependencies": {
     "@eslint/js": {
-      "version": "9.18.0",
-      "resolved": "https://registry.npmjs.org/@eslint/js/-/js-9.18.0.tgz",
+      "version": "9.19.0",
+      "resolved": "https://registry.npmjs.org/@eslint/js/-/js-9.19.0.tgz",
       "overridden": false
     },
     "@intlify/unplugin-vue-i18n": {
@@ -72,8 +72,8 @@
       "overridden": false
     },
     "eslint": {
-      "version": "9.18.0",
-      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.18.0.tgz",
+      "version": "9.19.0",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.19.0.tgz",
       "overridden": false
     },
     "prettier": {
@@ -132,8 +132,8 @@
       "overridden": false
     },
     "vuetify": {
-      "version": "3.7.7",
-      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.7.tgz",
+      "version": "3.7.8",
+      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.8.tgz",
       "overridden": false
     },
     "zxcvbn": {

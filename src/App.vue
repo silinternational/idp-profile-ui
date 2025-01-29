@@ -36,9 +36,23 @@
       </v-row>
 
       <v-container>
-        <v-alert v-if="!!message" type="error" icon="mdi-alert" closable class="my-2" @click:close="message = ''">
-          <span v-sanitize.basic="message" />
-        </v-alert>
+        <v-dialog v-model="isModalOpen" max-width="400" @after-leave="closeModal">
+          <v-card>
+            <v-card-title>
+              <v-icon color="error" class="mr-2">mdi-alert</v-icon>
+              {{ $t('global.error') }}
+            </v-card-title>
+            <v-card-text>
+              <span v-sanitize.basic="message" />
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer />
+              <v-btn color="primary" @click="closeModal">
+                {{ $t('global.button.close') }}
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
 
         <!-- adding key here helps produce more predictable view behavior (see https://youtu.be/7YZ5DwlLSt8?t=21m22s) -->
         <router-view :key="$route.fullPath" />
@@ -58,6 +72,7 @@ import { useRoute } from 'vue-router'
 import { useDisplay } from 'vuetify'
 
 const message = ref('')
+const isModalOpen = ref(false)
 
 const { xs } = useDisplay()
 
@@ -69,6 +84,10 @@ watch(
     message.value = ''
   },
 )
+
+watch(message, () => {
+  isModalOpen.value = !!message.value
+})
 
 onMounted(() => {
   eventBus.on('clear-messages', () => {
@@ -85,6 +104,10 @@ const logout = () => {
 
 const login = () => {
   user.login()
+}
+
+const closeModal = () => {
+  message.value = ''
 }
 </script>
 
