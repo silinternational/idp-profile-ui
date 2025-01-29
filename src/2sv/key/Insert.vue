@@ -21,8 +21,8 @@
           required
           variant="outlined"
           autofocus
-          @keyup="onKeyup"
           :rules="[(v) => v.length < 65 || $t('global.mfaLabelTooLong')]"
+          @keyup="onKeyup"
         />
       </label>
     </BasePage>

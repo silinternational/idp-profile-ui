@@ -4,9 +4,9 @@
       <v-text-field
         v-model="newLabel"
         autofocus
+        :rules="[(v) => v.length < 65 || $t('global.mfaLabelTooLong')]"
         @keyup.enter="save"
         @focus="$event.target.select()"
-        :rules="[(v) => v.length < 65 || $t('global.mfaLabelTooLong')]"
       />
     </v-col>
 

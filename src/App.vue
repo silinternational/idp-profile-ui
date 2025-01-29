@@ -36,7 +36,7 @@
       </v-row>
 
       <v-container>
-        <v-dialog @after-leave="closeModal" v-model="isModalOpen" max-width="400">
+        <v-dialog v-model="isModalOpen" max-width="400" @after-leave="closeModal">
           <v-card>
             <v-card-title>
               <v-icon color="error" class="mr-2">mdi-alert</v-icon>
