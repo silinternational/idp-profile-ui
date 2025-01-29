@@ -1,7 +1,13 @@
 <template>
   <v-row v-if="editing" no-gutters align="center">
     <v-col cols="9">
-      <v-text-field v-model="newLabel" autofocus @keyup.enter="save" @focus="$event.target.select()" />
+      <v-text-field
+        v-model="newLabel"
+        autofocus
+        @keyup.enter="save"
+        @focus="$event.target.select()"
+        :rules="[(v) => v.length < 65 || $t('global.mfaLabelTooLong')]"
+      />
     </v-col>
 
     <v-col>

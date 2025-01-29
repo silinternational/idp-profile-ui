@@ -16,7 +16,14 @@
       <!-- TODO: Add translations for this label -->
       <label v-if="showLabelInput">
         {{ $t('2sv.key.insert.label') }}
-        <v-text-field v-model="input" required variant="outlined" autofocus @keyup="onKeyup" />
+        <v-text-field
+          v-model="input"
+          required
+          variant="outlined"
+          autofocus
+          @keyup="onKeyup"
+          :rules="[(v) => v.length < 65 || $t('global.mfaLabelTooLong')]"
+        />
       </label>
     </BasePage>
 
@@ -87,6 +94,10 @@ export default {
       const attemptedKeyLabel = this.input.trim()
       if (!attemptedKeyLabel) {
         this.snackBarMessage = this.$t('2sv.key.insert.label')
+        this.snackbarIsOpen = true
+        return
+      } else if (attemptedKeyLabel.length > 65) {
+        this.snackBarMessage = this.$t('global.mfaLabelTooLong')
         this.snackbarIsOpen = true
         return
       } else if (this.isDuplicateKeyLabel(mfa.keys, attemptedKeyLabel)) {
