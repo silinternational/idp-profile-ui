@@ -49,7 +49,6 @@
             (v) =>
               /^$|^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) ||
               $t('password.recovery.invalidEmail'),
-            (v) => v?.length <= 65 || $t('password.recovery.emailTooLong'),
             (v) => !isAlias(v, primary.value) || $t('password.recovery.isPrimaryEmail'),
           ]"
           validate-on-input
