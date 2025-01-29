@@ -70,7 +70,9 @@ export default {
           }
         }
       } else {
-        throw Error(errors[0].errorMessages)
+        errors.forEach((error) => {
+          throw Error(error.errorMessages.join('\n'))
+        })
       }
     },
     blur(event) {

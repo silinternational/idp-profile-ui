@@ -116,7 +116,9 @@ export default {
 
         this.$root.$emit('clear-messages') // listener in App.vue (this is a temporary hack hopefully)
       } else {
-        throw Error(errors[0].errorMessages)
+        errors.forEach((error) => {
+          throw Error(error.errorMessages.join('\n'))
+        })
       }
     },
     remove,

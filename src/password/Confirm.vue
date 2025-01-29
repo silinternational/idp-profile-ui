@@ -102,7 +102,9 @@ export default {
 
         this.$router.push('/password/saved')
       } else {
-        throw Error(errors[0].errorMessages)
+        errors.forEach((error) => {
+          throw Error(error.errorMessages.join('\n'))
+        })
       }
     },
     blur(event) {
