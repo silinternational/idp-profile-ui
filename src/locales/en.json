@@ -229,7 +229,7 @@
       "info": "Before we go any further, we would like to introduce an important step in protecting your account.",
       "incentive": "Adding 2-Step Verification to your account will at least double the lifespan of your password!  Imagine not having to change your password every year anymore... Check the profile page after adding a 2SV to see what your new expiration will be."
     },
-    "smartphone": {
+    "authenticator": {
       "intro": {
         "header": "Do you have an authenticator app?",
         "info": "If you have one and it is usually with you, this can be a very good option for your 2-Step Verification."

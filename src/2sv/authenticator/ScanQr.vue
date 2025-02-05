@@ -2,22 +2,22 @@
   <ProfileWizard>
     <BasePage>
       <template #header>
-        {{ $t('2sv.smartphone.scanQr.header') }}
+        {{ $t('2sv.authenticator.scanQr.header') }}
       </template>
 
       <p class="mx-auto">
-        {{ $t('2sv.smartphone.scanQr.info') }}
+        {{ $t('2sv.authenticator.scanQr.info') }}
       </p>
 
       <ol>
         <li>
           <p class="pl-4">
-            {{ $t('2sv.smartphone.scanQr.add') }}
+            {{ $t('2sv.authenticator.scanQr.add') }}
           </p>
         </li>
         <li>
           <p class="d-flex flex-column pl-4">
-            {{ $t('2sv.smartphone.scanQr.qr') }}
+            {{ $t('2sv.authenticator.scanQr.qr') }}
           </p>
 
           <v-row v-if="newTotp.data" justify="center">
@@ -27,7 +27,7 @@
           </v-row>
           <v-row v-if="newTotp.data" justify="center">
             <v-col cols="auto">
-              {{ $t('2sv.smartphone.scanQr.manual') }}
+              {{ $t('2sv.authenticator.scanQr.manual') }}
               <span class="font-mono">{{ newTotp.data.totpKey }}</span>
             </v-col>
           </v-row>
@@ -36,19 +36,19 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/download-app" tabindex="-1" variant="outlined" class="mb-4 mb-sm-0">
+      <v-btn to="/2sv/authenticator/download-app" tabindex="-1" variant="outlined" class="mb-4 mb-sm-0">
         {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-btn
-        :to="`/2sv/smartphone/verify-qr-code?id=${newTotp.id}`"
+        :to="`/2sv/authenticator/verify-qr-code?id=${newTotp.id}`"
         :disabled="!newTotp.id"
         color="primary"
         variant="outlined"
       >
-        {{ $t('2sv.smartphone.scanQr.button.ok') }}
+        {{ $t('2sv.authenticator.scanQr.button.ok') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

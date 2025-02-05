@@ -229,7 +229,7 @@
       "info": "Avant d'aller plus loin, nous souhaitons introduire une étape importante dans la protection de votre compte.",
       "incentive": "L'ajout d'une vérification en deux étapes à votre compte doublera au moins la durée de vie de votre mot de passe! Imaginez ne plus avoir à changer votre mot de passe chaque année ... Consultez la page de profil après avoir ajouté un 2SV pour voir quelle sera votre nouvelle date d'expiration."
     },
-    "smartphone": {
+    "authenticator": {
       "intro": {
         "header": "Avez-vous une application d'authentification?",
         "info": "Si vous en avez un et que c'est généralement avec vous, cela peut être une très bonne option pour votre vérification en deux étapes."

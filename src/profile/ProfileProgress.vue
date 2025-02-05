@@ -7,7 +7,7 @@
     <a v-if="complete < 1 && !profile.alternates.length" href="#/password/recovery">{{
       $t('profile.progress.addMethod')
     }}</a>
-    <a v-if="complete < 1 && !profile.mfa.totp.id" href="#/2sv/smartphone/intro">{{
+    <a v-if="complete < 1 && !profile.mfa.totp.id" href="#/2sv/authenticator/intro">{{
       $t('profile.progress.addTotp')
     }}</a>
     <a v-if="complete < 1 && !(profile.mfa.u2f.id || profile.mfa.keys.id)" href="#/2sv/usb-security-key/intro">{{
