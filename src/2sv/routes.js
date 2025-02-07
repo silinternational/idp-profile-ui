@@ -1,9 +1,9 @@
 import Intro from './Intro.vue'
-import SmartphoneIntro from './smartphone/Intro.vue'
-import DownloadApp from './smartphone/DownloadApp.vue'
-import ScanQr from './smartphone/ScanQr.vue'
-import VerifyQrCode from './smartphone/VerifyQrCode.vue'
-import CodeVerified from './smartphone/CodeVerified.vue'
+import AuthenticatorIntro from './authenticator/Intro.vue'
+import DownloadApp from './authenticator/DownloadApp.vue'
+import ScanQr from './authenticator/ScanQr.vue'
+import VerifyQrCode from './authenticator/VerifyQrCode.vue'
+import CodeVerified from './authenticator/CodeVerified.vue'
 import KeyIntro from './key/Intro.vue'
 import Insert from './key/Insert.vue'
 import Touch from './key/Touch.vue'
@@ -32,35 +32,35 @@ export default [
     redirect: '/2sv/intro',
   },
   {
-    path: '/2sv/smartphone/intro',
-    component: SmartphoneIntro,
+    path: '/2sv/authenticator/intro',
+    component: AuthenticatorIntro,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
     },
   },
   {
-    path: '/2sv/smartphone/download-app',
+    path: '/2sv/authenticator/download-app',
     component: DownloadApp,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
     },
   },
   {
-    path: '/2sv/smartphone/scan-qr',
+    path: '/2sv/authenticator/scan-qr',
     component: ScanQr,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
     },
   },
   {
-    path: '/2sv/smartphone/verify-qr-code',
+    path: '/2sv/authenticator/verify-qr-code',
     component: VerifyQrCode,
     beforeEnter: (to, from, next) => {
       skipWhen(mfa.totp.id, '/2sv/usb-security-key/intro', next)
     },
   },
   {
-    path: '/2sv/smartphone/code-verified',
+    path: '/2sv/authenticator/code-verified',
     component: CodeVerified,
   },
   {

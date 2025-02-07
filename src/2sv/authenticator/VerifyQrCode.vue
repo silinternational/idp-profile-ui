@@ -2,18 +2,18 @@
   <ProfileWizard>
     <BasePage>
       <template #header>
-        {{ $t('2sv.smartphone.verifyQrCode.header') }}
+        {{ $t('2sv.authenticator.verifyQrCode.header') }}
       </template>
 
       <v-row class="px-5">
         <v-form ref="form" class="pl-2 d-flex flex-column align-center" @submit.prevent="verify">
-          <p>{{ $t('2sv.smartphone.verifyQrCode.info') }}</p>
+          <p>{{ $t('2sv.authenticator.verifyQrCode.info') }}</p>
 
           <BaseTextField
             v-model="code"
             width="100%"
             type="text"
-            :label="$t('2sv.smartphone.verifyQrCode.codeInput')"
+            :label="$t('2sv.authenticator.verifyQrCode.codeInput')"
             :rules="rules"
             :error-messages="errors"
             validate-on-blur
@@ -26,7 +26,7 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/scan-qr" tabindex="-1" variant="outlined">
+      <v-btn to="/2sv/authenticator/scan-qr" tabindex="-1" variant="outlined">
         {{ $t('global.button.back') }}
       </v-btn>
 
@@ -51,7 +51,7 @@ export default {
     code: '',
     rules: [
       // users may enter codes that begin with zeros or they might put a space in between digits
-      (v) => /^\d{3} ?\d{3}$/.test(v) || vm.$t('2sv.smartphone.verifyQrCode.invalidCode'),
+      (v) => /^\d{3} ?\d{3}$/.test(v) || vm.$t('2sv.authenticator.verifyQrCode.invalidCode'),
     ],
     errors: [],
   }),
@@ -63,10 +63,10 @@ export default {
         try {
           await verify(this.$route.query.id, this.code.trim())
 
-          this.$router.push('/2sv/smartphone/code-verified')
+          this.$router.push('/2sv/authenticator/code-verified')
         } catch (error) {
           if (error.status == 400) {
-            this.errors.push(this.$t('2sv.smartphone.verifyQrCode.hint'))
+            this.errors.push(this.$t('2sv.authenticator.verifyQrCode.hint'))
           }
         }
       } else {

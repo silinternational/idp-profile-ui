@@ -40,7 +40,7 @@
       <v-btn v-if="meta.created_utc" :href="`#/2sv/change/${meta.id}`" color="primary" variant="outlined">
         {{ $t('profile.index.totpCard.button.change') }}
       </v-btn>
-      <v-btn v-else href="#/2sv/smartphone/intro" color="primary" variant="outlined">
+      <v-btn v-else href="#/2sv/authenticator/intro" color="primary" variant="outlined">
         {{ $t('global.button.add') }}
       </v-btn>
       <MfaCardRemove v-if="meta.created_utc" :mfa-id="String(meta.id)" />

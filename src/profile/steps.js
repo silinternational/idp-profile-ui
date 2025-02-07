@@ -66,11 +66,11 @@ const totp = {
   nameKey: 'profile.steps.authenticator',
   paths: [
     '/2sv/intro',
-    '/2sv/smartphone/intro',
-    '/2sv/smartphone/download-app',
-    '/2sv/smartphone/scan-qr',
-    '/2sv/smartphone/verify-qr-code',
-    '/2sv/smartphone/code-verified',
+    '/2sv/authenticator/intro',
+    '/2sv/authenticator/download-app',
+    '/2sv/authenticator/scan-qr',
+    '/2sv/authenticator/verify-qr-code',
+    '/2sv/authenticator/code-verified',
   ],
   isRelevant(user, recoveryMethods, mfa) {
     return user.auth_type === 'login' && (isRequested(this.paths) || (!mfa.totp?.id && mfa.numVerified < 3))

@@ -229,7 +229,7 @@
       "info": "Antes de continuar, nos gustaría presentar un paso importante para proteger su cuenta.",
       "incentive": "¡Agregar la verificación de 2 pasos a su cuenta duplicará al menos la vida útil de su contraseña! Piensalo: que ya no tiene que cambiar su contraseña cada año... Verifique la página del perfil después de agregar un verificacion de dos pasos para ver cuál será su nueva caducidad."
     },
-    "smartphone": {
+    "authenticator": {
       "intro": {
         "header": "¿Tienes una aplicación de autenticación?",
         "info": "Si tiene una aplicación de autenticación y normalmente está con usted, esta puede ser una muy buena opción para su verificación de 2 pasos."
@@ -239,7 +239,7 @@
         "recommendation-authenticator": "Hay muchas aplicaciones que puede usar para este paso, sin embargo, recomendamos Google Authenticator por su simplicidad. Es gratis y no utilizará ningún dato móvil.",
         "recommendation-authy": "Hay varias aplicaciones de autenticación disponibles, pero Authy es la opción recomendada. Authy es gratis y no utiliza ningún dato móvil.",
         "button": {
-          "ok": "OK, lo instalé en mi smartphone"
+          "ok": "OK, instalé mi aplicación de autenticación"
         },
         "appname-authenticator": "Autenticación de Google",
         "appname-authy": "Authy"

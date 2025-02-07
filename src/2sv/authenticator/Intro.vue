@@ -2,11 +2,11 @@
   <ProfileWizard>
     <BasePage>
       <template #header>
-        {{ $t('2sv.smartphone.intro.header') }}
+        {{ $t('2sv.authenticator.intro.header') }}
       </template>
 
       <p>
-        {{ $t('2sv.smartphone.intro.info') }}
+        {{ $t('2sv.authenticator.intro.info') }}
       </p>
     </BasePage>
 
@@ -23,7 +23,7 @@
       <v-btn :to="nextUrl" color="primary" tabindex="-1" variant="outlined" class="mr-2 mr-sm-4">
         {{ $t('global.button.no') }}
       </v-btn>
-      <v-btn to="/2sv/smartphone/download-app" color="primary" variant="outlined">
+      <v-btn to="/2sv/authenticator/download-app" color="primary" variant="outlined">
         {{ $t('global.button.yes') }}
       </v-btn>
     </ButtonBar>
@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'IntroSmartphone',
+  name: 'AuthenticatorIntro',
 }
 </script>
 

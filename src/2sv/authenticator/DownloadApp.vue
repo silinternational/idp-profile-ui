@@ -2,11 +2,11 @@
   <ProfileWizard>
     <BasePage>
       <template #header>
-        {{ $t('2sv.smartphone.download.header') }}
+        {{ $t('2sv.authenticator.download.header') }}
       </template>
 
       <p>
-        {{ $t(`2sv.smartphone.download.recommendation-${preferredAppName}`) }}
+        {{ $t(`2sv.authenticator.download.recommendation-${preferredAppName}`) }}
       </p>
 
       <figure class="d-flex align-center justify-center pb-4 my-4">
@@ -14,7 +14,7 @@
         <img v-else :src="authenticator" />
 
         <figcaption class="text-h5 ml-4">
-          {{ $t(`2sv.smartphone.download.appname-${preferredAppName}`) }}
+          {{ $t(`2sv.authenticator.download.appname-${preferredAppName}`) }}
         </figcaption>
       </figure>
 
@@ -29,14 +29,14 @@
     </BasePage>
 
     <ButtonBar>
-      <v-btn to="/2sv/smartphone/intro" tabindex="-1" variant="outlined" class="mb-4 mb-sm-0">
+      <v-btn to="/2sv/authenticator/intro" tabindex="-1" variant="outlined" class="mb-4 mb-sm-0">
         {{ $t('global.button.back') }}
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/smartphone/scan-qr" color="primary" variant="outlined">
-        {{ $t('2sv.smartphone.download.button.ok') }}
+      <v-btn to="/2sv/authenticator/scan-qr" color="primary" variant="outlined">
+        {{ $t('2sv.authenticator.download.button.ok') }}
       </v-btn>
     </ButtonBar>
   </ProfileWizard>

@@ -2,11 +2,11 @@
   <ProfileWizard>
     <BasePage>
       <template #header>
-        {{ $t('2sv.smartphone.codeVerified.header') }}
+        {{ $t('2sv.authenticator.codeVerified.header') }}
       </template>
 
       <p class="text-center">
-        {{ $t('2sv.smartphone.codeVerified.info') }}
+        {{ $t('2sv.authenticator.codeVerified.info') }}
       </p>
     </BasePage>
 

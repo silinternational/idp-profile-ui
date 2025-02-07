@@ -35,7 +35,7 @@
     <ButtonBar>
       <v-spacer></v-spacer>
 
-      <v-btn to="/2sv/smartphone/intro" color="primary" variant="outlined">
+      <v-btn to="/2sv/authenticator/intro" color="primary" variant="outlined">
         {{ $t('global.button.continue') }}
       </v-btn>
     </ButtonBar>
