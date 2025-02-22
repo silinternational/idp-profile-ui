@@ -86,7 +86,7 @@
       },
       "passwordRecoveryCard": {
         "title": "Récupération du mot de passe",
-        "warning": "Aucune adresse de récupération pour l'instant, veuillez en ajouter une.",
+        "warning": "L'adresse e-mail de votre superviseur sera utilisée pour la récupération du mot de passe jusqu'à ce que vous ajoutiez une adresse e-mail. Veuillez ajouter une adresse de récupération.",
         "unverifiedEmails": "Vous avez des adresses e-mail non vérifiées.",
         "unverified": "Vous n'avez pas encore vérifié cette adresse email. Veuillez trouver un email de vérification dans ce compte.",
         "resend": "ré-envoyer"
