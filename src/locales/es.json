@@ -86,7 +86,7 @@
       },
       "passwordRecoveryCard": {
         "title": "Recuperar contraseña",
-        "warning": "No hay direcciones de correo electronico de recuperación en este momento, por favor agregue una.",
+        "warning": "La dirección de correo electrónico de su supervisor se usará para la recuperación de la contraseña hasta que agregue una dirección de correo electrónico. Por favor, agregue una dirección de recuperación.",
         "unverifiedEmails": "Tienes direcciones de correo no verificadas.",
         "unverified": "Este correo electrónico no ha sido verificado todavía, por favor, compruebe su cuenta para un correo electrónico de verificación.",
         "resend": "Enviar de nuevo"

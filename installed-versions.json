@@ -2,8 +2,8 @@
   "name": "idp-profile-ui",
   "dependencies": {
     "@eslint/js": {
-      "version": "9.19.0",
-      "resolved": "https://registry.npmjs.org/@eslint/js/-/js-9.19.0.tgz",
+      "version": "9.21.0",
+      "resolved": "https://registry.npmjs.org/@eslint/js/-/js-9.21.0.tgz",
       "overridden": false
     },
     "@intlify/unplugin-vue-i18n": {
@@ -72,13 +72,13 @@
       "overridden": false
     },
     "eslint": {
-      "version": "9.19.0",
-      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.19.0.tgz",
+      "version": "9.21.0",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.21.0.tgz",
       "overridden": false
     },
     "prettier": {
-      "version": "3.4.2",
-      "resolved": "https://registry.npmjs.org/prettier/-/prettier-3.4.2.tgz",
+      "version": "3.5.2",
+      "resolved": "https://registry.npmjs.org/prettier/-/prettier-3.5.2.tgz",
       "overridden": false
     },
     "rimraf": {
@@ -92,8 +92,8 @@
       "overridden": false
     },
     "sass": {
-      "version": "1.83.4",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.83.4.tgz",
+      "version": "1.85.0",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.85.0.tgz",
       "overridden": false
     },
     "unplugin-vue-components": {
@@ -102,8 +102,8 @@
       "overridden": false
     },
     "vite-plugin-vuetify": {
-      "version": "2.0.4",
-      "resolved": "https://registry.npmjs.org/vite-plugin-vuetify/-/vite-plugin-vuetify-2.0.4.tgz",
+      "version": "2.1.0",
+      "resolved": "https://registry.npmjs.org/vite-plugin-vuetify/-/vite-plugin-vuetify-2.1.0.tgz",
       "overridden": false
     },
     "vite": {
@@ -132,8 +132,8 @@
       "overridden": false
     },
     "vuetify": {
-      "version": "3.7.8",
-      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.8.tgz",
+      "version": "3.7.13",
+      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.13.tgz",
       "overridden": false
     },
     "zxcvbn": {

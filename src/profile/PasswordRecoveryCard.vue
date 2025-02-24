@@ -41,7 +41,7 @@
       </div>
       <v-row v-if="!methods.length">
         <v-col cols="auto">
-          <v-icon size="x-large" color="warning">mdi-alert</v-icon>
+          <v-icon size="x-large" color="error">mdi-alert</v-icon>
         </v-col>
         <v-col>
           <em>{{ $t('profile.index.passwordRecoveryCard.warning') }}</em>
@@ -52,7 +52,7 @@
     <v-card-actions>
       <v-spacer />
 
-      <v-btn :href="'#/password/recovery'" color="primary" variant="outlined">
+      <v-btn :href="'#/password/recovery'" :color="buttonColor" :variant="buttonVariant">
         <span v-if="methods.length">{{ $t('global.button.change') }}</span>
         <span v-else>{{ $t('global.button.add') }}</span>
       </v-btn>
@@ -73,6 +73,8 @@ export default {
   }),
   computed: {
     hasUnverifiedEmails: (vm) => vm.methods.some((m) => !m.verified),
+    buttonColor: (vm) => (vm.methods.length ? 'primary' : 'error'),
+    buttonVariant: (vm) => (vm.methods.length ? 'outlined' : 'elevated'),
   },
   methods: {
     async resend(method) {
