@@ -75,6 +75,8 @@ Copy `.env.dist` to `env.local` and update the relevant values, e.g., a UI deplo
 
 ## Step 2 – Customizations
 
+Custom locales can be added to the skinny repository and applied in the [ci-built-dist.sh](example_ci/ci-build-dist.sh) file. [merge-locales.js](example_ci/merge-locales.js) can be used to merge them with the source files.
+
 The following files can/should be replaced before running the build.
 
 - `./favicon.ico`

@@ -1,0 +1,9 @@
+{
+  "profile": {
+    "index": {
+      "passwordRecoveryCard": {
+        "warning": "Your supervisor's email address (not helpdesk) will be used for password recovery until you add an email address. Please add a recovery address."
+      }
+    }
+  }
+}
