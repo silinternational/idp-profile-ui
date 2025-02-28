@@ -47,8 +47,8 @@
       "overridden": false
     },
     "axios": {
-      "version": "1.7.9",
-      "resolved": "https://registry.npmjs.org/axios/-/axios-1.7.9.tgz",
+      "version": "1.8.1",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-1.8.1.tgz",
       "overridden": false
     },
     "date-fns": {
@@ -92,8 +92,8 @@
       "overridden": false
     },
     "sass": {
-      "version": "1.85.0",
-      "resolved": "https://registry.npmjs.org/sass/-/sass-1.85.0.tgz",
+      "version": "1.85.1",
+      "resolved": "https://registry.npmjs.org/sass/-/sass-1.85.1.tgz",
       "overridden": false
     },
     "unplugin-vue-components": {
@@ -132,8 +132,8 @@
       "overridden": false
     },
     "vuetify": {
-      "version": "3.7.13",
-      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.13.tgz",
+      "version": "3.7.14",
+      "resolved": "https://registry.npmjs.org/vuetify/-/vuetify-3.7.14.tgz",
       "overridden": false
     },
     "zxcvbn": {
