@@ -13,14 +13,12 @@ function deepMerge(target, source) {
 
 const [, , baseFile, customFile] = process.argv
 
-if (!fs.existsSync(baseFile) || !fs.existsSync(customFile)) {
-  console.error('❌ File missing, not merging:', baseFile, customFile)
-  process.exit(0)
+try {
+  const baseData = JSON.parse(fs.readFileSync(baseFile, 'utf8'))
+  const customData = JSON.parse(fs.readFileSync(customFile, 'utf8'))
+  const mergedData = deepMerge(baseData, customData)
+  fs.writeFileSync(baseFile, JSON.stringify(mergedData, null, 2))
+  console.log('✅ Merged:', customFile, 'into', baseFile)
+} catch (error) {
+  console.error('❌ Error merging files:', error)
 }
-
-const baseData = JSON.parse(fs.readFileSync(baseFile, 'utf8'))
-const customData = JSON.parse(fs.readFileSync(customFile, 'utf8'))
-const mergedData = deepMerge(baseData, customData)
-
-fs.writeFileSync(baseFile, JSON.stringify(mergedData, null, 2))
-console.log('✅ Merged:', customFile, 'into', baseFile)

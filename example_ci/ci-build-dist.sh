@@ -21,7 +21,12 @@ if [ -d "$CUSTOM_LOCALES_DIR" ]; then
     echo "Merging custom translations..."
     for file in "$CUSTOM_LOCALES_DIR"/*.json; do
         lang=$(basename "$file")  # Extract filename (e.g., en.json)
-        node "$SCRIPT_DIR/merge-locales.js" "$LOCALES_DIR/$lang" "$file"
+        if [[ -f "$LOCALES_DIR/$lang" && -f "$file" ]]; then
+            node "$SCRIPT_DIR/merge-locales.js" "$LOCALES_DIR/$lang" "$file"
+        else
+            echo "Error: Required files for merging not found: '$LOCALES_DIR/$lang' or '$file'" >&2
+            exit 1
+        fi
     done
 else
     echo "No custom translations found, using default locales."
