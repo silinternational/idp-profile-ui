@@ -17,7 +17,7 @@ services:
       - api
 
   api:
-    image: silintl/idp-pw-api:7.0
+    image: silintl/idp-pw-api:7
     platform: linux/amd64
     ports:
       - '8080:80'
