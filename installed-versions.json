@@ -97,8 +97,8 @@
       "overridden": false
     },
     "unplugin-vue-components": {
-      "version": "0.27.5",
-      "resolved": "https://registry.npmjs.org/unplugin-vue-components/-/unplugin-vue-components-0.27.5.tgz",
+      "version": "28.4.1",
+      "resolved": "https://registry.npmjs.org/unplugin-vue-components/-/unplugin-vue-components-28.4.1.tgz",
       "overridden": false
     },
     "vite-plugin-vuetify": {
@@ -112,8 +112,8 @@
       "overridden": false
     },
     "vue-i18n": {
-      "version": "9.14.3",
-      "resolved": "https://registry.npmjs.org/vue-i18n/-/vue-i18n-9.14.3.tgz",
+      "version": "11.1.2",
+      "resolved": "https://registry.npmjs.org/vue-i18n/-/vue-i18n-11.1.2.tgz",
       "overridden": false
     },
     "vue-router": {
