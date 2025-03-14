@@ -29,6 +29,7 @@ services:
     env_file:
       - ./.env.local
     environment:
+      APP_ENV: 'dev'
       MYSQL_HOST: 'profileDb'
       MYSQL_DATABASE: 'profile'
       MYSQL_USER: 'user'
@@ -54,9 +55,6 @@ services:
       AUTH_SAML_signRequest: 'false'
       AUTH_SAML_checkResponseSigning: 'false'
       AUTH_SAML_requireEncryptedAssertion: 'false'
-      AUTH_SAML_idpCertificate: ''
-      AUTH_SAML_spCertificate: ''
-      AUTH_SAML_spPrivateKey: ''
       AUTH_SAML_entityId: 'profile-api.gtis.guru'
       AUTH_SAML_ssoUrl: 'http://idp.gtis.guru/saml2/idp/SSOService.php'
       AUTH_SAML_sloUrl: 'http://idp.gtis.guru/saml2/idp/SingleLogoutService.php'
