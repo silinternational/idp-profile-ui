@@ -86,7 +86,7 @@
       },
       "passwordRecoveryCard": {
         "title": "Password recovery",
-        "warning": "Your supervisor's email address will be used for password recovery until you add an email address. Please add a recovery address.",
+        "warning": "Your supervisor's email address will be used as a backup for password recovery until you add a recovery email address. Please add a recovery address.",
         "unverifiedEmails": "You have unverified email addresses.",
         "unverified": "This email has not yet been verified, please check its account for a verification email.",
         "resend": "resend"
