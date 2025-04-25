@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /data
 WORKDIR /data
@@ -17,4 +17,4 @@ COPY ./ /data
 RUN npm run build
 
 # default command at runtime spins http server up in production mode
-CMD [ "npm", "run", "serve:prod" ] 
+CMD [ "npm", "run", "serve:prod" ]
